@@ -17,4 +17,8 @@ Please look at these tutorials to help you get up to speed with using the comman
 
 ### Git
 
-Git is required to upload your homework. 
+Git is required to upload your homework. You will need:
+
+* A github account. Sign up here [GitHub](https://github.com)
+* Git installed on your labtop [Git SCM](https://git-scm.com/downloads)
+* A working knowledge of using git. Here is a short tutorial [Digital Ocean Git tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-git-effectively). Here is a cheat sheet. Print out and keep next to you :-) [Git cheat sheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf). If you want to deep dive you can get this free book [Pro-Git](https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.pdf).
