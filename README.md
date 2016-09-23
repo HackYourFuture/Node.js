@@ -13,7 +13,7 @@ Much of the course will be done on the command line so it's important to be fami
 
 * Cygwin. Cygwin is like installing a virtual Linux on your PC. Very powerful, with many options, but not the best choice if you don't like spending time configuring things. [Cygwin project](https://www.cygwin.com/)
 
-Please look at these tutorials to help you get up to speed with using the command line: [Digital Ocean - getting started with Linux](https://www.digitalocean.com/community/tutorial_series/getting-started-with-linux)
+Please look at this tutorial to help you get up to speed with using the command line: [Digital Ocean - getting started with Linux](https://www.digitalocean.com/community/tutorial_series/getting-started-with-linux)
 
 ### Git
 
