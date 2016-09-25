@@ -1,12 +1,13 @@
+// To run this file: node index.js
+// Then in your browser: http://localhost:8080
 var http = require('http');
 
 var port = 8080;
-var host = '0.0.0.0';
 
 var server = http.createServer();
 
 // Start the HTTP server, start listening for requests
-server.listen(port, host, function(error) {
+server.listen(port, function(error) {
   if (error) {
     console.log(error);
   } else {
@@ -15,9 +16,10 @@ server.listen(port, host, function(error) {
 });
 
 // Create a event handler for "request"
+// this is an alternative way
 server.on('request', function(request, response) {
-	console.log('New http request received', request.url);
-	response.write('<html><head></head><body><h1>Hello world</h1></body></html>');
-	response.end();
+  console.log('New http request received', request.url);
+  response.setHeader('content-type', 'text/html');
+  response.write('<html><head></head><body><h1>Hello world</h1></body></html>');
+  response.end();
 });
-
