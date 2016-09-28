@@ -43,10 +43,10 @@ Video: https://www.youtube.com/watch?v=e1Ln1FrLvh8
 Read: http://openmymind.net/2012/2/3/Node-Require-and-Exports/
 
 ### http, http listen
-Video basic: https://www.youtube.com/watch?v=pYOltVz7kL0
-Video routing: https://www.youtube.com/watch?v=_D2w0voFlEk (please focus on request.url, not request.method)
-Read: [Node JS documentation about http](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
-Read Advanced: --
+- Video basic: https://www.youtube.com/watch?v=pYOltVz7kL0
+- Video routing: https://www.youtube.com/watch?v=_D2w0voFlEk (please focus on request.url, not request.method)
+- Read: [Node JS documentation about http](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
+- Read Advanced: 
 
 refresh on command line
 Video Mac/linux: 
