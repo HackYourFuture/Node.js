@@ -24,7 +24,20 @@ Chocolate cake for the person who can succeed the most tests :) (prices will hav
 
 ### Something about ES6 I want you guys to know
 Old guys like Joost, Erol and I are talking about this "ES6" all the time. ES6 basically means: the latest version of NodeJS. It's a lot of really nice new features. For you guys, you should remember the following
-> During the NodeJS course, we will teach you some ES6 features, like Fat Arrow. It's *extremely* important to know whether a function comes from ES6 or from an older version of JavaScript. Why? [Because browsers don't support every new feature just yet](http://kangax.github.io/compat-table/es6/). NodeJS, on the other hand, you can always control which version of Javascript is running, because it's running on your computer, not in the browser. Version 6.x that you are running supports most ES6.  
+> During the NodeJS course, we will teach you some ES6 features, like Fat Arrow. It's *extremely* important to know whether a function comes from ES6 or from an older version of JavaScript. Why? [Because browsers don't support every new feature just yet](http://kangax.github.io/compat-table/es6/). With Node, on the other hand, you can always control which version of Javascript is running, because it's running on your computer, not in the browser. Node Version 6.x that you are running supports most ES6. 
+So in summary: if you're working on the frontend, you probably don't want to use es6 just yet. In backend, type node --version to see which version you are running, and make sure everyone on the team has the same version by adding "engine" to `package.json` like so: 
+
+```
+"dependencies": {
+  ...
+},
+"devDependencies": {
+  ...
+},
+"engines": {
+  "node": ">=6.5.0" // this means you need 6.5 or higher
+},
+```
 
 ### 1. ES6: Fat Arrow functions
 This is one example of how ES6 can help us write cleaner code. I'm adding this as first reading material because it's used a lot on the NodeJS documentation website, so it's a good idea to understand what this means. Bonus points if you write your callbacks this way.   
@@ -42,5 +55,8 @@ Only read the part about readFile, appendFile (you will need this in your assign
 [Node.JS docs - fs.readFile](https://nodejs.org/api/fs.html#fs_fs_readfile_file_options_callback)  
 [Node.JS docs - fs.appendFile](https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback)  
 
-### 4. Buffers in NodeJS 
-[Egghead video tutorial](https://egghead.io/lessons/node-js-node-js-buffers)  
+### 4. Node Fundamentals
+Read parts:
+- 3.1, 3.2
+- 4.1, 4.3
+[Airpair tutorial](https://www.airpair.com/javascript/node-js-tutorial#3-node-fundamentals)  
