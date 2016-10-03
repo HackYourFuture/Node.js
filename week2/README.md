@@ -45,8 +45,8 @@ This is one example of how ES6 can help us write cleaner code. I'm adding this a
 [Video]([https://www.youtube.com/watch?v=J85lRtO_yjY)  
 
 ### 2. NodeJS Process: 
-Don't have to remember everything in this video, just a nice outline
-[Egghead video tutorial](https://egghead.io/lessons/node-js-the-node-js-process-object)
+Don't have to remember everything in this video, just a nice outline  
+[Egghead video tutorial](https://egghead.io/lessons/node-js-the-node-js-process-object)  
 Only read the part about "process.argv"  
 [Node.JS docs - process.argv](https://nodejs.org/docs/latest/api/process.html#process_process_argv)  
 
