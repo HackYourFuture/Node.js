@@ -23,7 +23,7 @@ Chocolate cake for the person who can succeed the most tests :) (prices will hav
 ## Reading material
 
 ### Something about ES6 I want you guys to know
-Old guys like Joost, Erol and I are talking about this "ES6" all the time. ES6 basically means: the latest version of NodeJS. It's a lot of really nice new features. For you guys, you should remember the following
+You may hear us talking about this "ES6" all the time. ES6 basically means: the latest version of JavaScript. It has a lot of really nice new features that makes life as developer easier. For you guys, you should remember the following:
 > During the NodeJS course, we will teach you some ES6 features, like Fat Arrow. It's *extremely* important to know whether a function comes from ES6 or from an older version of JavaScript. Why? [Because browsers don't support every new feature just yet](http://kangax.github.io/compat-table/es6/). With Node, on the other hand, you can always control which version of Javascript is running, because it's running on your computer, not in the browser. Node Version 6.x that you are running supports most ES6. 
 So in summary: if you're working on the frontend, you probably don't want to use es6 just yet. In backend, type node --version to see which version you are running, and make sure everyone on the team has the same version by adding "engine" to `package.json` like so: 
 
