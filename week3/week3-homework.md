@@ -26,4 +26,6 @@ Don't edit the html page. If you find en error in the page please let me know st
 
 I have supplied a skeleton index.js that serves the home page at http://localhost:8080/. You can build on it or create your own.
 
+Retrieving the body of a POST is not obvious. Please read the documentation here: https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/ and remember to think async.
+
 Please excuse the ugliness of my html! I will try to pretty it up later but I will not change any logic.
