@@ -22,3 +22,5 @@ A front-end html page that makes the correct calls and displays the results is s
 Don't edit the html page. If you find en error in the page please let me know straight away so I can fix it for everyone.
 
 I have supplied a skeleton index.js that serves the home page at http://localhost:8080/. You can build on it or create your own.
+
+Please excuse the ugliness of my html! I will try to pretty it up later but I will not change any logic.
