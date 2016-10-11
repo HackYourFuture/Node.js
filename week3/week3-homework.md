@@ -15,7 +15,10 @@
 		- remove a todo and return the new list
 	- DELETE /todos/
 		- clear all the todos from the list
-### Notes:
+		
+All responses should be in JSON. There is a commented out example in my index.js
+
+### Notes
 
 A front-end html page that makes the correct calls and displays the results is supplied. 
 
