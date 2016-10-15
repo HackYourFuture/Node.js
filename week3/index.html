@@ -53,17 +53,21 @@
 			
 			function showTodos(data, status) {
 				$("#todo_list").empty();
-				$.each(data, function (i, val) {
-					$("#todo_list").append(i + " " + val + " <span id='todo" + i + "'>Remove<br>");
-					$("#todo" + i).css(buttonCSS);
-		    		$("#todo" + i).click(function(){
-		    			$.ajax({
-		    				url: "http://localhost:8080/todos/" + i,
-		    				method: "DELETE",
-		    				success: showTodos
-		    			})
-		        	});
-				});
+				if ($.isEmptyObject(data)) {
+					$("#todo_list").append("<h4>You have nothing to do!</h4>");
+				} else {
+					$.each(data, function (i, val) {
+						$("#todo_list").append(i + " " + val + " <span id='todo" + i + "'>Remove<br>");
+						$("#todo" + i).css(buttonCSS);
+			    		$("#todo" + i).click(function(){
+			    			$.ajax({
+			    				url: "http://localhost:8080/todos/" + i,
+			    				method: "DELETE",
+			    				success: showTodos
+			    			})
+			        	});
+					});
+				}
 			}
     	});
 	</script>
