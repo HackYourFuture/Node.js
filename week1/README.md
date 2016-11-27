@@ -1,4 +1,4 @@
-Week 1 outline
+# Week 1 outline
 
 "What it really means is that Node.js is not a silver-bullet new platform that will dominate the web development world. Instead, it’s a platform that fills a particular need."
 
