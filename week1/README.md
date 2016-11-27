@@ -1,3 +1,22 @@
+Week 1 outline
+
+"What it really means is that Node.js is not a silver-bullet new platform that will dominate the web development world. Instead, it’s a platform that fills a particular need."
+
+1. Setting up: node, git, bash, npm, (See https://github.com/HackYourFuture/Node.js/blob/master/README.md)
+2. Introduction to nodejs
+  https://www.tutorialspoint.com/nodejs/nodejs_introduction.htm
+  http://blog.modulus.io/absolute-beginners-guide-to-nodejs
+  https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js
+  https://airpair-blog.s3.amazonaws.com/wp-content/uploads/2014/08/node.png
+  
+3. Nodejs in the MEAN stack (clients and servers)
+  http://image.slidesharecdn.com/mongodbdayspresentation-151014213733-lva1-app6892/95/starting-from-scratch-with-the-mean-stack-22-638.jpg?cb=1444858819
+4. Asynchronous callbacks
+5. HTTP server
+6. Localhost
+7. npm
+8. The assignment
+
 This week's homework
 
 ## Assignment:
