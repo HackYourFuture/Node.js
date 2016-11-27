@@ -14,7 +14,7 @@
 4. Asynchronous callbacks
 5. HTTP server
 6. Localhost
-7. Error codes
+7. Error codes http://www.restapitutorial.com/httpstatuscodes.html
 8. npm
 9. The assignment
 
