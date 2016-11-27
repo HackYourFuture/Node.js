@@ -14,8 +14,9 @@ Week 1 outline
 4. Asynchronous callbacks
 5. HTTP server
 6. Localhost
-7. npm
-8. The assignment
+7. Error codes
+8. npm
+9. The assignment
 
 This week's homework
 
@@ -44,11 +45,16 @@ http://localhost:8080/add
 // /remove
 // Response: "ok" in html format
 // This should subtract 1 ƒrom the current state
-http://localhost:8080/subtract
+http://localhost:8080/remove
 
 // /reset
 // Response: "ok" in html format
 // This should set the state back to 10
+http://localhost:8080/reset
+
+// Any other URL
+// Response: return error code 404: Not found with a friendly message
+// and do not change the state variable
 http://localhost:8080/subtract
 ```
 
