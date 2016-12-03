@@ -1,8 +1,15 @@
-## Summary:
-Last week we looked at building an HTTP interface. The interface allowed us to get a state, and manipulate the state (add, subtract, reset). This week's key topics are:
-1. Persisting data beyond the lifetime of the app.
-1. Building a Command Line Interface
-1. Using Node.JS's FileSystem (FS)
+## Last week Summary
+Last week we looked at building an HTTP interface. The interface allowed us to get a state, and manipulate the state (add, subtract, reset). 
+
+## Today's plan:
+1. Recap last week
+2. Homework
+3. Questions & Answers (Q&A)
+4. Persisting data beyond the lifetime of the app.
+5. Building a Command Line Interface / Working with arguments
+6. Using Node.JS's FileSystem (FS)
+7. CRUD operations
+8. This week's assignment
 
 ## Assignment for this week
 These are the specs for this week's assignment:
@@ -17,8 +24,6 @@ The following commands should be present:
 - add: add a todo item. all the words behind "add" are entered as 1 todo item to the list
 - remove: remove a todo item by its 1-base index.
 - reset: remove all todo items from the list
-
-Chocolate cake for the person who can succeed the most tests :) (prices will have to be shared in case of equal score)
 
 ## Reading material
 
