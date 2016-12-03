@@ -1,10 +1,11 @@
 ## Last week Summary
 Last week we looked at building an HTTP interface. The interface allowed us to get a state, and manipulate the state (add, subtract, reset). 
 
-## Today's plan:
+## Today's meal
 1. Recap last week
 2. Homework
 3. Questions & Answers (Q&A)
+4. Other topics
 4. Persisting data beyond the lifetime of the app.
 5. Building a Command Line Interface / Working with arguments
 6. Using Node.JS's FileSystem (FS)
