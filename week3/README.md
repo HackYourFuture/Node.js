@@ -29,8 +29,3 @@ Some other notes:
 
 
 
-### Notes
-
-We have supplied a skeleton index.js that serves the home page at http://localhost:8080/. You can build on it or create your own.
-
-Retrieving the body of a POST is not obvious. Please read [the documentation here](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/) and remember to think async.
