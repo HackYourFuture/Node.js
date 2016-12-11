@@ -18,21 +18,13 @@ Create Node JS server that
 
 - Listens on port 8080
 
-- Responds to these endpoints:
-	- GET /todos/
-		- Returns list of todos
-	- POST /todos/
-		- add a todo to the list and return the new list
-	- DELETE /todos/`<todo index>`
-		- remove a todo and return the new list
-	- DELETE /todos/
-		- clear all the todos from the list
+- Allows users to list todos, get a todo, delete a todo, delet all todos, and update a todo.
 
 Some other notes:
 - All responses should be in JSON.
 - Try to apply the MVC model to your file structure. It will save you time in following assignments!
 - Test your API using Postman.
-- There is a commented out example in my index.js
+- There is a commented out example to start with in my `index.js`
 
 
 
