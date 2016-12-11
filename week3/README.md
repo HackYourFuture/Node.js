@@ -22,6 +22,7 @@ Create Node JS server that
 
 Some other notes:
 - All responses should be in JSON.
+- Follow the REST design principles: Use the proper method, response status codes, and consistent URL paths.
 - Try to apply the MVC model to your file structure. It will save you time in following assignments!
 - Test your API using Postman.
 - There is a commented out example to start with in my `index.js`
