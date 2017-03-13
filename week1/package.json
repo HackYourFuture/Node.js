@@ -1,6 +1,6 @@
 {
   "name": "week1",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Week 1 homework",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HackYourFuture/Node.js.git"
+  },
+  "scripts": {
+    "start": "node ."
   },
   "keywords": [
     "nodejs"
