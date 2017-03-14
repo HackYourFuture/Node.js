@@ -1,27 +1,32 @@
+var http = require('http');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 var counter = 10;
 
-const server = http.createServer((request, response) => {
+const server = http.createServer(function(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html');
-
+    response.write('<a href="/add"><button>Add</button></a>' + ' | ')
+    response.write('<a href="/remove"><button>Remove</button></a>' + ' | ')
+    response.write('<a href="/reset"><button>Reset</button></a>' + ' | ')
+    response.write('<a href="/state"><button>State</button></a>')
     console.log('The new received http request is: ', request.url)
 
     switch (request.url) {
         case '/state':
         case '/':
-            console.log('Original counter value:', counter, '\n')
+            console.log('Current counter value:', counter, '\n')
             response.write(`<h2>Counter current value is: ` + counter + `</h2>`, 'utf8');
             break;
         case '/add':
             counter += 1;
-            console.log('counter value after ADD:', counter, '\n')
+            console.log('Counter value after ADD:', counter, '\n')
             response.write(`<h2>The counter was successfully increased by 1. <br> Counter new value is: ` + counter + `</h2>`, `utf8`);
             break;
         case '/remove':
             counter -= 1;
-            console.log('counter value after REMOVE:', counter, '\n')
+            console.log('Counter value after REMOVE:', counter, '\n')
             response.write(`<h2>The counter was successfully decreased by 1. <br> Counter new value is: ` + counter + `</h2>`, `utf8`);
             break;
         case '/reset':
@@ -37,6 +42,6 @@ const server = http.createServer((request, response) => {
     response.end();
 });
 
-server.listen(port, hostname, () => {
+server.listen(port, hostname, function() {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
