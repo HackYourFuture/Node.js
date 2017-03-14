@@ -1,22 +1,26 @@
 {
-  "name": "week1",
-  "version": "1.0.0",
-  "description": "Week 1 homework",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HackYourFuture/Node.js.git"
-  },
-  "keywords": [
-    "nodejs"
-  ],
-  "author": "Erol",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HackYourFuture/Node.js/issues"
-  },
-  "homepage": "https://github.com/HackYourFuture/Node.js#readme"
+    "name": "week1",
+    "version": "0.0.1",
+    "description": "Week 1 homework",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HackYourFuture/Node.js.git"
+    },
+    "keywords": [
+        "week1",
+        "nodejs",
+        "eyadkhamis",
+        "hyf"
+    ],
+    "author": "Eyad Khamis",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/HackYourFuture/Node.js/issues"
+    },
+    "homepage": "https://github.com/HackYourFuture/Node.js#readme"
 }
