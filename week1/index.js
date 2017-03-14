@@ -41,7 +41,7 @@ const server = http.createServer(function(request, response) {
             break;
         default:
             response.statusCode = 404;
-            response.write('<h2 style="color: red">Your request is invalid, please type either add, remove, state or reset to continue...<h2>');
+            response.write('<h2 style="color: red">Your request is invalid, please click one of the options to continue...<h2>');
             console.error('Error \n')
     }
     response.end();
