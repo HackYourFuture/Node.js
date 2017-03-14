@@ -8,10 +8,6 @@ var requestLog = [];
 const server = http.createServer(function(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html');
-    response.write('<a href="/add"><button>Add</button></a>' + ' | ')
-    response.write('<a href="/remove"><button>Remove</button></a>' + ' | ')
-    response.write('<a href="/reset"><button>Reset</button></a>' + ' | ')
-    response.write('<a href="/state"><button>State</button></a>')
     console.log('The new received http request is: ', request.url)
 
     switch (request.url) {
@@ -44,7 +40,13 @@ const server = http.createServer(function(request, response) {
             response.write('<h2 style="color: red">Your request is invalid, please click one of the options to continue...<h2>');
             console.error('Error \n')
     }
+
+    response.write('<a href="/add"><button>Add</button></a>' + ' | ')
+    response.write('<a href="/remove"><button>Remove</button></a>' + ' | ')
+    response.write('<a href="/reset"><button>Reset</button></a>' + ' | ')
+    response.write('<a href="/state"><button>State</button></a>')
     response.end();
+
     console.log("Requests' Log: \n" + requestLog + '\n')
 });
 
