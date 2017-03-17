@@ -11,6 +11,11 @@ const server = http.createServer(function(request, response) {
     console.log('The new received http request is: ', request.url)
 
     switch (request.url) {
+        case '/favicon.ico':
+            r.writeHead(200, { 'Content-Type': 'image/x-icon' });
+            r.end();
+            console.log('favicon requested');
+            return;
         case '/state':
         case '/':
             console.log('Current counter value:', counter, '\n')
