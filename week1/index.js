@@ -12,8 +12,7 @@ const server = http.createServer(function(request, response) {
 
     switch (request.url) {
         case '/favicon.ico':
-            r.writeHead(200, { 'Content-Type': 'image/x-icon' });
-            r.end();
+            response.writeHead(200, { 'Content-Type': 'image/x-icon' });
             console.log('favicon requested');
             return;
         case '/state':
