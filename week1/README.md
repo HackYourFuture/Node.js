@@ -1,78 +1,20 @@
-# Week 1 outline
+> Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.
+
+# HackYourFuture Node.js - Reading material week 1
 
 "What it really means is that Node.js is not a silver-bullet new platform that will dominate the web development world. Instead, it’s a platform that fills a particular need."
 
-1. Setting up: node, git, bash, npm, (See https://github.com/HackYourFuture/Node.js/blob/master/README.md)
-2. Introduction to nodejs
-  https://www.tutorialspoint.com/nodejs/nodejs_introduction.htm
-  http://blog.modulus.io/absolute-beginners-guide-to-nodejs
-  https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js
-  https://airpair-blog.s3.amazonaws.com/wp-content/uploads/2014/08/node.png
-  
-3. Nodejs in the MEAN stack (clients and servers)
-  http://image.slidesharecdn.com/mongodbdayspresentation-151014213733-lva1-app6892/95/starting-from-scratch-with-the-mean-stack-22-638.jpg?cb=1444858819
-4. Asynchronous callbacks
-5. HTTP server
-6. Localhost
-7. Error codes http://www.restapitutorial.com/httpstatuscodes.html
-8. npm
-9. The assignment
+### What is Node.js?
+> Read: [What is NodeJS? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq) _estimated time: 10 minutes_
 
-This week's homework
+### Getting started with Node.js and npm
+> Tutorials: [NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node) _estimated time: 4-6 hours_
 
-## Assignment:
-Create a http server that can add and subtract from a number, which we will call the "state". Please see in `index.js` in this folder as starting material. Pay extra attention to line 21, which contains some hints for this week `console.log('New http request received', request.url);`
+### Asynchronous callbacks
+Although most of this was already covered by the JavaScript class, let's refresh our memories on Callbacks.
+> Read: [Understanding Asynchronous JavaScript Callbacks Through Household Chores
+](https://medium.freecodecamp.com/understanding-asynchronous-javascript-callbacks-through-household-chores-e3de9a1dbd04#.8ilr4a7aj) _estimated time: ~1 hour_
 
-Rule 1: DO NOT USE EXPRESS.JS
-Rule 2: you can use other packages, but you HAVE to also make a version WITHOUT any NPM packages (http, of course, is not NPM but a node native package)
-```
-// The state
-var state = 10; 
-```
-
-Endpoints criteria
-```
-// /state 
-// response: the current state in a html format 
-// when the server starts, this should return "10"
-http://localhost:8080/state 
-
-// /add
-// Response: "ok" in html format
-// This should add 1 to the current state
-http://localhost:8080/add
-
-// /remove
-// Response: "ok" in html format
-// This should subtract 1 ƒrom the current state
-http://localhost:8080/remove
-
-// /reset
-// Response: "ok" in html format
-// This should set the state back to 10
-http://localhost:8080/reset
-
-// Any other URL
-// Response: return error code 404: Not found with a friendly message
-// and do not change the state variable
-http://localhost:8080/subtract
-```
-
-## Reading
-### Callbacks: 
-Video: https://www.youtube.com/watch?v=pTbSfCT42_M
-Read: http://callbackhell.com/
-
-### Require/exporting
-Video: https://www.youtube.com/watch?v=e1Ln1FrLvh8
-Read: http://openmymind.net/2012/2/3/Node-Require-and-Exports/
-
-### http, http listen
-- Video basic: https://www.youtube.com/watch?v=pYOltVz7kL0
-- Video routing: https://www.youtube.com/watch?v=_D2w0voFlEk (please focus on request.url, not request.method)
-- Read: [Node JS documentation about http](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
-- Read Advanced: 
-
-refresh on command line
-Video Mac/linux: 
-Video PC: -- ()
+### Control flow and events
+An important term when making applications is _control flow_. You already know all about it. Read through this page and answer this question: how do we control "flow" in JavaScript?
+> Read: [Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
