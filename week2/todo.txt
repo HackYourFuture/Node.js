@@ -1,3 +1,4 @@
-watch tv
-buy a house
-stuff like that
+learn more about splice, slice and join
+learn more about Node.js
+Angular is the great framework
+Node.js is the best framework
