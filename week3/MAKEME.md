@@ -16,5 +16,7 @@ Take care of the following:
 
 - All requests that need a body should be in JSON, and follow the request structure of the other actions
 - All responses should be in JSON, and follow the response structure of the other actions
+- Follow the anatomy of the project
+- Make your code DRY (see https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 - Follow the REST design principles: use the proper method, response status codes, and consistent URL paths
 - Test your API using Postman
