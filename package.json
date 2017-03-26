@@ -2,6 +2,7 @@
   "name": "todo-api",
   "version": "1.0.0",
   "description": "Todo api example",
+  "repository": "https://github.com/HackYourFuture/class7-nodejs-week3.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
