@@ -33,6 +33,8 @@ Note that for these actions, the client should add the following header:
 
 - `Content-Type`: `application/json`
 
+In Postman, make sure to add this header, and set the Body type to "Raw".
+
 ## UUIDs
 
 For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be generated using the `uuid` package, and are guaranteed never to be the same.
