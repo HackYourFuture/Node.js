@@ -29,6 +29,10 @@ When calling the `create` or `update` actions, the request body should look like
 }
 ```
 
+Note that for these actions, the client should add the following header:
+
+- `Content-Type`: `application/json`
+
 ## UUIDs
 
 For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be generated using the `uuid` package, and are guaranteed never to be the same.
