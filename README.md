@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 > Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.
 
 # HackYourFuture - Node.js
@@ -34,3 +35,45 @@ There are many languages for this. We might've heard of Java, C, C++, Go, Python
 There are two reasons why we at HYF choose Node.JS over others:
 1) You already know JavaScript, so it's easier to get started than other languages
 2) Node.js is great for making web APIs because it is asynchronous by nature and thus allows for high input/output. By this we mean that it allows many users to make very light requests at the same time.
+=======
+# TODO API
+
+This is an Express application using `bodyParser` middleware to convert the request body to JSON.
+
+There are currently four actions:
+
+- `list` (`GET /todos`): Lists all todos
+- `create` (`POST /todos`): Creates a new todo
+- `update` (`PUT /todos/:id`): Updates the description of a todo
+- `remove` (`DELETE /todos/:id`): Deletes a todo
+
+## Directory structure
+
+- `actions`: Contains the actions as listed above, each as a express handler (function accepting request and response)
+- `data`: Contains the data file `todos.json`
+- `models`: Contains the Todo model class
+- `util`: Utility functions
+- `index.js` The application file
+
+## Request body format
+
+When calling the `create` or `update` actions, the request body should look like this:
+
+```json
+{
+  "todo": {
+    "description": "(todo description)"
+  }
+}
+```
+
+Note that for these actions, the client should add the following header:
+
+- `Content-Type`: `application/json`
+
+In Postman, make sure to add this header, and set the Body type to "Raw".
+
+## UUIDs
+
+For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be generated using the `uuid` package, and are guaranteed never to be the same.
+>>>>>>> class7-nodejs-week3/master
