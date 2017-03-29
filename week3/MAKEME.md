@@ -3,16 +3,20 @@
 # HackYourFuture Node.js - Homework week 3
 
 ### Assignment for this weak:
-Create Node JS server that
 
-- Listens on port 8080
+- Fork https://github.com/HackYourFuture/class7-nodejs-week3.git.
+- Read through the code, make sure you understand the flow of the program
+- Add three more actions
+    - `clear` (`DELETE /todos`) which will clear the list of todos
+    - `markAsDone` (`POST /todos/:id/done`) which will set the `done` flag of a single todo to `true`
+    - `markAsNotDone` (`DELETE /todos/:id/done`) which will set the `done` flag of a single todo to `false`
+- Update your README to reflect your new actions!
 
-- Allows users to list todos, get a todo, delete a todo, delet all todos, and update a todo.
+Take care of the following:
 
-Some other notes:
-- All responses should be in JSON.
-- Follow the REST design principles: Use the proper method, response status codes, and consistent URL paths.
-- Try to apply the MVC model to your file structure. It will save you time in following assignments!
-- Test your API using Postman.
-- There is a commented out example to start with in my `index.js`
-
+- All requests that need a body should be in JSON, and follow the request structure of the other actions
+- All responses should be in JSON, and follow the response structure of the other actions
+- Follow the anatomy of the project
+- Make your code DRY (see https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+- Follow the REST design principles: use the proper method, response status codes, and consistent URL paths
+- Test your API using Postman
