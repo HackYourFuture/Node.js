@@ -75,6 +75,16 @@ class Todo {
     })
   }
 
+  clear(callback) {
+    this.load( (error, todos) => {
+      if (error) { callback(error); return }
+      todos = FS.writeFile(filename, "");
+      this.save((todos, error) => {
+        if (error) { callback(error); return }
+        callback(null, todo)
+      })
+    })
+  }
 }
 
 module.exports = new Todo()
