@@ -35,3 +35,12 @@ There are many languages for this. We might've heard of Java, C, C++, Go, Python
 There are two reasons why we at HYF choose Node.JS over others:
 1) You already know JavaScript, so it's easier to get started than other languages
 2) Node.js is great for making web APIs because it is asynchronous by nature and thus allows for high input/output. By this we mean that it allows many users to make very light requests at the same time.
+
+## Rewatch previous lectures
+
+- Lecture 1(Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
+- Lecture 2(Joost): https://www.youtube.com/watch?v=pY7IDaLX-no
+- Lecture 3(Joost): https://www.youtube.com/watch?v=oeWCqKJsHtU&t=99s
+
+
+
