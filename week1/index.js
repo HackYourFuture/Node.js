@@ -15,6 +15,8 @@ server.listen(port, function(error) {
   }
 });
 
+console.log('Change here');
+
 // Create a event handler for "request"
 // this is an alternative way
 server.on('request', function(request, response) {
