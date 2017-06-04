@@ -40,7 +40,7 @@ function listTodos() {
       }
     }
 
-    var todos = splitStringByNewline(data);
+    let todos = splitStringByNewline(data);
 
     if (todos.length === 0) {
       return console.log('Nothing to do!')
