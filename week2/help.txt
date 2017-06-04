@@ -1,25 +1,14 @@
-This is the help page for CLI ToDo app
 
-Instructions:
+---------------- Help For Using todo command ------------
 
-To display this set of instructions:
-node index.js help
+The  Instruction to use the (todo)command .
 
-To add an item to your todo's:
-e.g.
-node index.js add I need to brush my teeth
+node index [command][additional parameters];
 
-To list all your todo's
-e.g.
-node index.js list
-
-To remove an item from your todo's 
-First list, and find the location (index, 0 based) of your todo
-
-To remove all items from your todo list
-node index.js reset
-
-e.g.
-node index.js remove 0
-
-
+node index : show the help file;
+node index help: show  the help;
+node index list : list the contains of todo file;
+node index add " to do text": add the text after the add todo file;
+node index remove 3 : to remove the third todo from the todo file;
+node index reset : to empty todo file;
+node index update 2: to update the second element in todo file;

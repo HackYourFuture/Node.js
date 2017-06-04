@@ -1,23 +1,13 @@
 {
-  "name": "week2",
+  "name": "aws",
   "version": "1.0.0",
-  "description": "week 2 example ",
-  "main": "index.js",
+  "description": "teting",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JonasBW/nodeJSEx1.git"
-  },
-  "keywords": [
-    "nodejs",
-    "filesystem"
-  ],
-  "author": "Daan and Erol",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JonasBW/nodeJSEx1/issues"
-  },
-  "homepage": "https://github.com/JonasBW/nodeJSEx1#readme"
+  "author": "aws",
+  "license": "ISC"
 }
