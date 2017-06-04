@@ -39,7 +39,7 @@ function listTodos() {
         return console.log('Error: Something went wrong', error);
       }
     }
-
+ 
     let todos = splitStringByNewline(data);
 
     if (todos.length === 0) {
