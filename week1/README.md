@@ -20,4 +20,4 @@ An important term when making applications is _control flow_. You already know a
 > Read: [Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
 
 ### Check out these video's to prep for the second lecture:
-https://www.lynda.com/SharedPlaylist/a034fd969ef945bb9ebbd9490cc75d5a
+>Watch : [Custom made playlist :boom: Lynda.com](https://www.lynda.com/SharedPlaylist/a034fd969ef945bb9ebbd9490cc75d5a)
