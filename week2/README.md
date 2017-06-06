@@ -23,7 +23,7 @@ You may hear us talking about this "ES6" all the time. ES6 basically means: the 
 > During the NodeJS course, we will teach you some ES6 features, like Fat Arrow. It's *extremely* important to know whether a function comes from ES6 or from an older version of JavaScript. Why? [Because browsers don't support every new feature just yet](http://kangax.github.io/compat-table/es6/). With Node, on the other hand, you can always control which version of Javascript is running, because it's running on your computer, not in the browser. Node Version 6.x that you are running supports most ES6. 
 So in summary: if you're working on the frontend, you probably don't want to use es6 just yet. In backend, type node --version to see which version you are running, and make sure everyone on the team has the same version by adding "engine" to `package.json` like so: 
 
-```
+```js
 "dependencies": {
   ...
 },
@@ -56,3 +56,5 @@ Read parts:
 - 3.1, 3.2
 - 4.1, 4.3
 [Airpair tutorial](https://www.airpair.com/javascript/node-js-tutorial#3-node-fundamentals)  
+
+## As you finish that up, don’t forget to watch next week’s video playlist to prepare for Express. You’ll find it here: https://www.lynda.com/SharedPlaylist/e8a2fec772bb462da38429629a34f3b7

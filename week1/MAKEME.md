@@ -7,13 +7,13 @@ Create an http server that can add and subtract from a number, which we will cal
 
 Rule 1: DO NOT USE EXPRESS.JS
 Rule 2: you can use other packages, but you HAVE to also make a version WITHOUT any NPM packages (http, of course, is not NPM but a node native package)
-```
+```js
 // The state
 var state = 10; 
 ```
 
 Endpoints criteria
-```
+```js
 // /state 
 // response: the current state in a html format 
 // when the server starts, this should return "10"
@@ -58,3 +58,5 @@ Read: http://openmymind.net/2012/2/3/Node-Require-and-Exports/
 refresh on command line
 Video Mac/linux: 
 Video PC: -- ()
+
+While not strictly homework, we’ve created another playlist if you’d like to learn more or review (and as JavaScript developers, you should). https://www.lynda.com/SharedPlaylist/78e6513f51bb4102b03349460491b4e3
