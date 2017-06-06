@@ -14,5 +14,5 @@
 9. Express vs native http library
 6. Building a REST web API for Todos
 
-## Check out the React repo here -> 
-And find out how you can prepare for the first React lecture
+## Check out the React repo [here](https://github.com/HackYourFuture/React)
+And find out how you can prepare for the first React lecture :dancers:
