@@ -37,6 +37,11 @@ There are two reasons why we at HYF choose Node.JS over others:
 1) You already know JavaScript, so it's easier to get started than other languages
 2) Node.js is great for making web APIs because it is asynchronous by nature and thus allows for high input/output. By this we mean that it allows many users to make very light requests at the same time.
 
+## Handing in homework
+A Video to remind you about[how we hand in homework](https://www.youtube.com/watch?v=-o0yomUVVpU&index=2&list=PLVYDhqbgYpYUGxRdtQdYVE5Q8h3bt6SIA).
+
+Also review the Git [workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md) from the JavaScript3 module, use this as a reference.
+
 ## Rewatch previous lectures
 
 - Lecture 1(Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
