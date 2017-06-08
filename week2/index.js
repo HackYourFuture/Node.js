@@ -39,8 +39,8 @@ function listTodos() {
         return console.log('Error: Something went wrong', error);
       }
     }
-
-    var todos = splitStringByNewline(data);
+ 
+    let todos = splitStringByNewline(data);
 
     if (todos.length === 0) {
       return console.log('Nothing to do!')
