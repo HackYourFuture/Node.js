@@ -75,6 +75,57 @@ class Todo {
     })
   }
 
-}
+  clear(callback) {
+    const todos = []
+    this.save(todos, error => {
+      if (error) { callback(error); return }
+      callback(null, todos)
+    })
+  }
 
+  done(id, callback) {
+   this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+       todos = todos.filter(t => {
+        if ( t.id === id ) t.done = true
+        return t
+        if (t.id !== id ) {
+          const error = new Error(`Todo with ID ${id} does not exist`)
+          error.name = 'NotFound'
+          callback(error)
+          return        
+        }
+      })
+
+      this.save(todos, error => {
+      if (error) { callback(error); return }
+      callback(null, todos)
+      })
+    })
+  }
+
+  notDone(id, callback) {
+     this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+       todos = todos.filter(t => {
+        if ( t.id === id ) t.done = false
+        return t
+
+        if (t.id !== id ) {
+          const error = new Error(`Todo with ID ${id} does not exist`)
+          error.name = 'NotFound'
+          callback(error)
+          return        
+        }
+      })
+
+      this.save(todos, error => {
+      if (error) { callback(error); return }
+      callback(null, todos)
+      })
+    })
+  }
+}
 module.exports = new Todo()

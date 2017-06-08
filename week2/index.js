@@ -5,6 +5,15 @@ var options = process.argv.slice(2);
 var command = options[0];
 
 switch (command) {
+  case 'add':
+    addToDo();
+    break;
+  case 'remove':
+    removeToDo();
+    break;
+  case 'reset':
+    resetToDo();
+    break;
   case 'help':
   default:
     showHelp();
@@ -12,6 +21,53 @@ switch (command) {
   case 'list':
     listTodos();
     break;
+}
+
+// check From Value if it's empty or not
+function checkFromValue() {
+  if (process.argv.slice(3) == '') {
+    console.log(` You can't add an empty value!`);
+    return "";
+  } else {
+    console.log('The data is appended');
+    return process.argv.slice(3).join(' ') + "\n";
+    }
+}
+
+// Add a task
+function addToDo() {
+  fs.appendFile('./todo.txt', checkFromValue(), (err) => {
+    if (err) throw err;
+    });
+}
+
+// Remove a task
+function removeToDo() {
+  var item = process.argv.slice(3);
+  if (item == '') 
+    return console.log(`Please enter a valid item`);
+
+  openFile('./todo.txt', (err, data) => {
+    if (err) throw err;
+    
+    var data = data.split('\n');
+        data.splice(item - 1, 1);
+
+    if( item > data.length ) 
+      return console.log("Item is not found");
+    console.log(`item deleted`);
+
+    restData = data.join('\n');
+
+    fs.writeFile('./todo.txt', restData, (err) => {
+      if (err) throw err;
+        });
+    });
+}
+
+// Reset Todo
+function resetToDo() {
+    fs.truncate('./todo.txt', 0, () => console.log('Todo is clean now'));
 }
 
 function splitStringByNewline(string) {
