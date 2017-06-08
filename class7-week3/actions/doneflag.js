@@ -1,9 +1,8 @@
 const Todo = require('../models/todo')
 
-module.exports = function create(request, response) {
-
-  const id = request.params.id || ""
-  Todo.remove(id, error => {
+module.exports = function doneflag(request, response) {
+  const id = request.params.id
+  Todo.doneflag(id, request.method, error => {
     if (error) {
       console.error(error)
       response.status(500)

@@ -45,6 +45,7 @@ class Todo {
 
       const todo = todos.find(t => t.id === id)
       if (todo == null) {
+
         const error = new Error(`Todo with ID ${id} does not exist`)
         error.name = 'NotFound'
 
@@ -65,8 +66,8 @@ class Todo {
   remove(id, callback) {
     this.load((error, todos) => {
       if (error) { callback(error); return }
-
-      todos = todos.filter(t => t.id !== id)
+      if (id === "") {todos = [] }
+      else {todos = todos.filter(t => t.id !== id)}
 
       this.save(todos, error => {
         if (error) { callback(error); return }
@@ -75,6 +76,35 @@ class Todo {
     })
   }
 
+  doneflag(id, method, callback) {
+    this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+      const todo = todos.find(t => t.id === id)
+      if (todo == null) {
+
+        const error = new Error(`Todo with ID ${id} does not exist`)
+        error.name = 'NotFound'
+
+        callback(error)
+        return
+      }
+      if (method === 'PUT'){
+        todo.done = true
+      } else if (method === 'DELETE') {
+        todo.done = false
+      }
+
+
+      this.save(todos, error => {
+        if (error) { callback(error); return }
+
+        callback(null, todo)
+      })
+    })
+  }
 }
+
+
 
 module.exports = new Todo()
