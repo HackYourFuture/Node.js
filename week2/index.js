@@ -1,4 +1,5 @@
 var fs = require('fs');
+console.log('My homework is awesome');
 
 var options = process.argv.slice(2);
 
