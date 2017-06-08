@@ -22,7 +22,10 @@ class Todo {
 
   create(description, callback) {
     this.load((error, todos) => {
-      if (error) { callback(error); return }
+      if (error) {
+        callback(error);
+        return
+      }
 
       const todo = {
         id: uuid(),
@@ -32,7 +35,10 @@ class Todo {
       todos.push(todo)
 
       this.save(todos, error => {
-        if (error) { callback(error); return }
+        if (error) {
+          callback(error);
+          return
+        }
 
         callback(null, todo)
       })
@@ -41,7 +47,10 @@ class Todo {
 
   update(id, description, callback) {
     this.load((error, todos) => {
-      if (error) { callback(error); return }
+      if (error) {
+        callback(error);
+        return
+      }
 
       const todo = todos.find(t => t.id === id)
       if (todo == null) {
@@ -55,7 +64,10 @@ class Todo {
       todo.description = description
 
       this.save(todos, error => {
-        if (error) { callback(error); return }
+        if (error) {
+          callback(error);
+          return
+        }
 
         callback(null, todo)
       })
@@ -64,13 +76,96 @@ class Todo {
 
   remove(id, callback) {
     this.load((error, todos) => {
-      if (error) { callback(error); return }
+      if (error) {
+        callback(error);
+        return
+      }
 
       todos = todos.filter(t => t.id !== id)
 
       this.save(todos, error => {
-        if (error) { callback(error); return }
+        if (error) {
+          callback(error);
+          return
+        }
         callback()
+      })
+    })
+  }
+
+  clean(callback) {
+    this.load((error, todos) => {
+      if (error) {
+        callback(error);
+        return
+      }
+
+todos = todos.filter(t => t.id === '')
+      this.save(todos, error => {
+        if (error) {
+          callback(error);
+          return
+        }
+        callback()
+      })
+    })
+  }
+
+
+  markAsDone(id, callback) {
+    this.load((error, todos) => {
+      if (error) {
+        callback(error);
+        return
+      }
+      console.log("markasdone");
+      const todo = todos.find(t => t.id === id)
+      if (todo == null) {
+        const error = new Error(`Todo with ID ${id} does not exist`)
+        error.name = 'NotFound'
+
+        callback(error)
+        return
+      }
+
+      todo.done = true
+
+      this.save(todos, error => {
+        if (error) {
+          callback(error);
+          return
+        }
+
+        callback(null, todo)
+      })
+    })
+  }
+
+  markAsNotDone(id, callback) {
+    this.load((error, todos) => {
+      if (error) {
+        callback(error);
+        return
+      }
+      console.log("mark as not done");
+      const todo = todos.find(t => t.id === id)
+      if (todo == null) {
+        const error = new Error(`Todo with ID ${id} does not exist`)
+        error.name = 'NotFound'
+
+        callback(error)
+        return
+      }
+
+      todo.done = false
+
+      this.save(todos, error => {
+        if (error) {
+          callback(error);
+          return
+        }
+
+        callback(null, todo)
       })
     })
   }

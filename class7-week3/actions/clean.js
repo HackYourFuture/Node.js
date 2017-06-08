@@ -1,10 +1,10 @@
 const Todo = require('../models/todo')
 
-module.exports = function remove(request, response) {
+module.exports = function clean(request, response) {
 
-  const id = request.params.id
+  //const id = request.params.id
 
-  Todo.remove(id, error => {
+  Todo.clean( error => {
     if (error) {
       console.error(error)
       response.status(500)
