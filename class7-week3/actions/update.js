@@ -4,6 +4,7 @@ const deserializeTodo = require('../util/deserializeTodo')
 module.exports = function update(request, response) {
 
   const id = request.params.id
+  console.log(request.params);
   const todo = deserializeTodo(request, response)
   if (todo == null) { return }
 
