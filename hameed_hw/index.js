@@ -109,7 +109,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:red;background-color:powderblue;text-align:center;"> error code 404: Not found</h1>
+        <h1 style="color:red;background-color:gray;text-align:center;"> error code 404: Not found</h1>
         <a href="http://localhost:3000/state">Pleas chick the state here</a>
         <p>or use a good url (add, remove, or reset)</p>
       </body>
