@@ -1,8 +1,10 @@
-var http = require('http');
-var state = 10
-var server = http.createServer();
+// To run this file: node .
+// Then in your browser: http://localhost:3000
+let http = require('http');
+let state = 10
+let server = http.createServer();
 const port = 3000;
-
+//To listen to the server and console the errors 
 server.listen(port, function(error) {
   if (error) {
     console.log(error);
@@ -11,9 +13,10 @@ server.listen(port, function(error) {
     
   }
 });
-
+// creat a response for the request url
 server.on('request', function(request, response) {
   console.log('New http request received', request.url);
+  //use switch to determine the request url case and prosses the resultes
   switch (request.url) {
   case '/state':
     console.log('state is ' + state);
@@ -22,7 +25,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:blue;background-color:powderblue;text-align:center;marfin-top:40px;padding:10px">
+        <h1 style="color:blue;background-color:powderblue;text-align:center;">
         Current state is : ${state}</h1>
         <a href="http://localhost:3000/add"><button id="add">add</button></a>
 		<a href="http://localhost:3000/remove"><button id="remove">remove</button></a>
@@ -39,7 +42,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:blue;background-color:powderblue;text-align:center;marfin-top:40px;padding:10px">
+        <h1 style="color:blue;background-color:powderblue;text-align:center;">
         Current state is : ${state}</h1>
         <a href="http://localhost:3000/add"><button id="add">add</button></a>
 		<a href="http://localhost:3000/remove"><button id="remove">remove</button></a>
@@ -56,7 +59,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:blue;background-color:powderblue;text-align:center;marfin-top:40px;padding:10px">
+        <h1 style="color:blue;background-color:powderblue;text-align:center;">
         Current state is : ${state}</h1>
         <a href="http://localhost:3000/add"><button id="add">add</button></a>
 		<a href="http://localhost:3000/remove"><button id="remove">remove</button></a>
@@ -73,7 +76,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:blue;background-color:powderblue;text-align:center;marfin-top:40px;padding:10px">
+        <h1 style="color:blue;background-color:powderblue;text-align:center;">
         Current state is : ${state}</h1>
         <a href="http://localhost:3000/add"><button id="add">add</button></a>
 		<a href="http://localhost:3000/remove"><button id="remove">remove</button></a>
@@ -90,7 +93,7 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1 style="color:blue;background-color:powderblue;text-align:center;marfin-top:40px;padding:10px">
+        <h1 style="color:blue;background-color:powderblue;text-align:center;">
         Current state is : ${state}</h1>
         <a href="http://localhost:3000/add"><button id="add">add</button></a>
 		<a href="http://localhost:3000/remove"><button id="remove">remove</button></a>
@@ -106,9 +109,9 @@ server.on('request', function(request, response) {
   	<document>
     <html>
       <body>
-        <h1> error code 404: Not found</h1>
+        <h1 style="color:red;background-color:powderblue;text-align:center;"> error code 404: Not found</h1>
         <a href="http://localhost:3000/state">Pleas chick the state here</a>
-        <p>or use add, remove, or reset</p>
+        <p>or use a good url (add, remove, or reset)</p>
       </body>
     </html>`);
   response.end();
