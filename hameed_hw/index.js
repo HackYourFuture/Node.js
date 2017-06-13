@@ -17,6 +17,7 @@ server.listen(port, function(error) {
 });
 // creat a response for the request url
 server.on('request', function(request, response) {
+  console.log(response.status);
   console.log('New http request received', request.url);
   //use switch to determine the request url case and prosses the resultes
   switch (request.url) {
@@ -42,19 +43,15 @@ server.on('request', function(request, response) {
     showState(state);
     break;
     // This should set the state back to 10
+     // I didnt want to start with error so I did the first step as reset and show the state.
   case '/reset':
-     state = 10;
-    console.log('state is ' + state);
-    showState(state);
-    break;
-    // I didnt want to start with error so I did the first step as rest and show state.
   case '/':
      state = 10;
     console.log('state is ' + state);
     showState(state);
     break;
     // Any other URL
-// Response: return error.
+    // Response: return error.
   default:
   	console.log('error code 404: Not found ');
   	showError();
@@ -64,7 +61,6 @@ server.on('request', function(request, response) {
   function showState(state){
   	response.setHeader('content-type', 'text/html');
  	response.write(`
-  	<document>
     <html>
       <body>
         <h1 style="color:blue;background-color:powderblue;text-align:center;">
@@ -80,12 +76,11 @@ server.on('request', function(request, response) {
   function showError(){
   	response.setHeader('content-type', 'text/html');
 	  response.write(`
-	  	<document>
 	    <html>
 	      <body>
 	        <h1 style="color:red;background-color:gray;text-align:center;"> error code 404: Not found</h1>
-	        <a href="http://localhost:3000/state">Pleas chick the state here</a>
-	        <p>or use a good url (add, remove, or reset)</p>
+	        <a href="http://localhost:3000/state">Pleas check the state here</a>
+	        <p>or use a good url in our case like (add, remove, or reset)</p>
 	      </body>
 	    </html>`);
 	  response.end();
