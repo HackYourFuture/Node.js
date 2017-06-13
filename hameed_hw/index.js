@@ -17,7 +17,7 @@ server.listen(port, function(error) {
 });
 // creat a response for the request url
 server.on('request', function(request, response) {
-  console.log(response.status);
+  //console.log(response);
   console.log('New http request received', request.url);
   //use switch to determine the request url case and prosses the resultes
   switch (request.url) {
@@ -53,8 +53,8 @@ server.on('request', function(request, response) {
     // Any other URL
     // Response: return error.
   default:
-  	console.log('error code 404: Not found ');
-  	showError();
+  	console.log('error code 404: Not found');
+  	setError('error code 404: Not found',response);
   }
   // this function take the state value and make some html tages to show it.
   //  I did some extra button to make the request url faster.
@@ -73,12 +73,13 @@ server.on('request', function(request, response) {
   response.end();
   }
   // this function take the default case wich is wrong url requstes 
-  function showError(){
+    function setError(error, response) {
+    response.statusCode = 404;
   	response.setHeader('content-type', 'text/html');
 	  response.write(`
 	    <html>
 	      <body>
-	        <h1 style="color:red;background-color:gray;text-align:center;"> error code 404: Not found</h1>
+	        <h1 style="color:red;background-color:gray;text-align:center;"> ${error}</h1>
 	        <a href="http://localhost:3000/state">Pleas check the state here</a>
 	        <p>or use a good url in our case like (add, remove, or reset)</p>
 	      </body>
