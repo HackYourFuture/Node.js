@@ -44,7 +44,7 @@ function checkInput (url,data) {
             data = operationsResponseHtml(data);
             break;
         default:
-            otherUrls();
+            otherUrls(data);
     }
     return data;
 }
@@ -76,10 +76,10 @@ function stateResponsHtml (data) {
 
 //function to build HTML response for any other URL that doesn't exist
 //if the user ordered a URL that doesn't exist he will get the response object with the modifications of this function
-function otherUrls () {
-    responsToSendBack.code = 
+function otherUrls (data) {
+    data.code = 
         '<html><body><h2>Apparently, the page you are looking for doesn"t exist :)</h2></body></html>';
-    responsToSendBack.statusCode = 404;
+    data.statusCode = 404;
 };
 
 // Start the HTTP server, start listening for requests
