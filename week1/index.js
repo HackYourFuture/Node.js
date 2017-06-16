@@ -15,10 +15,10 @@ let status = 10;
 
 //Define all my page content as object.
 var htmlObject = {
-	
+
 	title: "<title>hallo NodeJs</title>",
 	acswerOk: "Your request is return: OK"
-	
+
 }
 
 
@@ -26,33 +26,31 @@ var htmlObject = {
 var server = http.createServer();
 
 // Start the HTTP server, start listening for requests
-server.listen(port, function(error) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('api listening on port', port);
-  }
+server.listen(port, function (error) {
+	if (error) {
+		console.log(error);
+	} else {
+		console.log('api listening on port', port);
+	}
 });
 
 // Create a event handler for "request"
 
-server.on('request', function(request, response) {
+server.on('request', function (request, response) {
 	response.setHeader('content-type', 'text/html');
-  switch(request.url){
-	  case '/add':
-		  response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1>'+ '<h1>'+ ++status+'</h1>' +'</body></html>' );
-		  break;
-	  default:
-		 response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1></body></html>'+ '<h1 id="counter">'+ status +'</h1>');
-		  
-				}
-  
-/
-  response.end();
-	
-	
-//	function addCounter(
-//	)
+	switch (request.url) {
+		case '/add':
+			response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1>' + '<h1>' + ++status + '</h1>' + '</body></html>');
+			break;
+		default:
+			response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1></body></html>' + '<h1 id="counter">' + status + '</h1>');
+
+	}
+
+	/
+	response.end();
+
+
+	//	function addCounter(
+	//	)
 });
-	
-	
