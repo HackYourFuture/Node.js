@@ -35,19 +35,19 @@ server.listen(port, function(error) {
 });
 
 // Create a event handler for "request"
-// this is an alternative way
+
 server.on('request', function(request, response) {
 	response.setHeader('content-type', 'text/html');
   switch(request.url){
 	  case '/add':
-		  response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1>'+ '<h1>'+ ++status+'</h1>' +</body></html>'+ );
+		  response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1>'+ '<h1>'+ ++status+'</h1>' +'</body></html>' );
 		  break;
 	  default:
-		 response.write(('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1></body></html>'+ '<h1 id="counter">'+ status +'</h1>'))
+		 response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1></body></html>'+ '<h1 id="counter">'+ status +'</h1>');
 		  
 				}
   
-//  response.write('<html>' + header.title + style + '<head></head><body><h1>Hello world</h1></body></html>');
+/
   response.end();
 	
 	
@@ -55,4 +55,4 @@ server.on('request', function(request, response) {
 //	)
 });
 	
-	// 31687853995- 684423693 puk18079461 ref: 56621175
+	
