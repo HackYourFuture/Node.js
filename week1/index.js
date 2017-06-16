@@ -21,8 +21,6 @@ var htmlObject = {
 
 }
 
-
-
 var server = http.createServer();
 
 // Start the HTTP server, start listening for requests
@@ -46,11 +44,5 @@ server.on('request', function (request, response) {
 			response.write('<html>' + htmlObject.title + style + '<head></head><body><h1>Hello world</h1></body></html>' + '<h1 id="counter">' + status + '</h1>');
 
 	}
-
-	/
 	response.end();
-
-
-	//	function addCounter(
-	//	)
 });
