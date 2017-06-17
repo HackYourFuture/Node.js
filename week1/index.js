@@ -54,7 +54,7 @@ server.on('request', function makeRequest(request, response) {
 		//localhost:3000/ Any other URL
 			response.statusCode = 404;
 			//function will show the error
-			updateError("error : " + response.statusCode +  " (Not found)", response);
+			updateError("error: " + response.statusCode +  " (Not found)", response);
 	} 
 });
 // Start the HTTP server,  start listening for requests
