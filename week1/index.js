@@ -22,39 +22,39 @@ function updateError(error, response) {
 server.on('request', function makeRequest(request, response) {
 	var message;
 	switch (request.url) {
-	case '/':
-	//localhost:3000
-		message = 'You got it';
-		updateResponse(response, message);
-		break;
-	case '/state':
-	//localhost:3000/state
-		message = 'The state is: ' + state;
-		updateResponse(response, message);
-		break;
-	case '/add':
-	//localhost:3000/add			
-		state++;
-		message = 'The state is: ' + state;
-		updateResponse(response, message);
-        break;
-    case '/remove':
-	//localhost:3000/remove
-        state--;
-        message = 'The state is: ' + state;
-		updateResponse(response, message);
-        break;
-    case '/reset':
-	//localhost:3000/reset		
-        state = 10;
-        message = 'you reset The state to: ' + state;
-		updateResponse(response, message);
-        break;
+		case '/':
+		//localhost:3000
+			message = 'You got it';
+			updateResponse(response, message);
+			break;
+		case '/state':
+		//localhost:3000/state
+			message = 'The state is: ' + state;
+			updateResponse(response, message);
+			break;
+		case '/add':
+		//localhost:3000/add			
+			state++;
+			message = 'The state is: ' + state;
+			updateResponse(response, message);
+			break;
+		case '/remove':
+		//localhost:3000/remove
+			state--;
+			message = 'The state is: ' + state;
+			updateResponse(response, message);
+			break;
+		case '/reset':
+		//localhost:3000/reset		
+			state = 10;
+			message = 'you reset The state to: ' + state;
+			updateResponse(response, message);
+			break;
 		default:
 		//localhost:3000/ Any other URL
-		response.statusCode = 404;
-		//function will show the error
-		updateError("error : " + response.statusCode +  " (Not found)", response);
+			response.statusCode = 404;
+			//function will show the error
+			updateError("error : " + response.statusCode +  " (Not found)", response);
 	} 
 });
 // Start the HTTP server,  start listening for requests
