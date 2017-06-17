@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "> Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/essamalsaloum/Node.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/essamalsaloum/Node.js/issues"
+  },
+  "homepage": "https://github.com/essamalsaloum/Node.js#readme"
+}
