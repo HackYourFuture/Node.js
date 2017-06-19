@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/HackYourFuture/Node.js/issues"
   },
-  "homepage": "https://github.com/HackYourFuture/Node.js#readme"
+  "homepage": "https://github.com/HackYourFuture/Node.js#readme",
+  "dependencies": {
+    "http-status-codes": "^1.1.6"
+  }
 }
