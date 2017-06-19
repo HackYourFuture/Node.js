@@ -35,7 +35,7 @@ switch (command) {
     //the list should be numbered with human numbers
     //the function listTodos is invoked in this case which will log the proper response
     case 'list':
-        //listTodos();
+        listTodos(todosFile);
         break;
     //the reset command will remove all the items in the todoList
     //when this command is received the function resetTdosList is invoked, which will remove all the items in the todos
@@ -94,6 +94,27 @@ function removeTodoItem (jsonObject,commands) {
         return fs.writeFile('todo.json',jsonObject);
     }
 }
+
+//this function will show the user the todolist
+//it takes the todos json and returns a string that will be console loged to the user
+//it will be invoked when the user enters the command 'list'
+function listTodos(jsonObject) {
+    //first of all check if we have tasks to do
+    if(jsonObject.tasks.length > 0){
+        //take the tasks array from the json object
+        let itemsToDisplay = jsonObject.tasks;
+        //build first line of the string to display
+        let textToDisplay = 'You have ' + itemsToDisplay.length + ' things to do';
+        itemsToDisplay.forEach(function(item,index){
+            //add on a new line the index of the task and the name of it
+           textToDisplay = textToDisplay + '\n' + (index + 1) + ' ' + item;
+        });
+        console.log(textToDisplay)
+    }else{
+        console.log('No tasks to display');
+    }
+}
+
 function splitStringByNewline(string) {
   return string.split('\n').filter(function(element) {
     element = element.trim();
@@ -103,34 +124,34 @@ function splitStringByNewline(string) {
 
 
 
-function listTodos() {
-  openFile('todo.txt', function(error, data) {
-    if (error) {
-      if (error.code === 'ENOENT') {
-        return console.log('Nothing to do! (or your dog ate your todo list)');
-      } else {
-        return console.log('Error: Something went wrong', error);
-      }
-    }
-
-    var todos = splitStringByNewline(data);
-
-    if (todos.length === 0) {
-      return console.log('Nothing to do!')
-    }
-
-    console.log('Your todo list looks like this');
-    todos.forEach(function(element, index) {
-      index = (index + 1).toString();
-      console.log(index, element);
-    });
-
-    if (todos.length > 5) {
-      console.log('You have too much to do!');
-    }
-  })
-  
-}
+//function listTodos() {
+//  openFile('todo.txt', function(error, data) {
+//    if (error) {
+//      if (error.code === 'ENOENT') {
+//        return console.log('Nothing to do! (or your dog ate your todo list)');
+//      } else {
+//        return console.log('Error: Something went wrong', error);
+//      }
+//    }
+//
+//    var todos = splitStringByNewline(data);
+//
+//    if (todos.length === 0) {
+//      return console.log('Nothing to do!')
+//    }
+//
+//    console.log('Your todo list looks like this');
+//    todos.forEach(function(element, index) {
+//      index = (index + 1).toString();
+//      console.log(index, element);
+//    });
+//
+//    if (todos.length > 5) {
+//      console.log('You have too much to do!');
+//    }
+//  })
+//  
+//}
 
 function openFile(fileName, callback) {
   fs.readFile(__dirname + '/' + fileName, 'utf8', function(error, data) {
