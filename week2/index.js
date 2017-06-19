@@ -3,8 +3,8 @@ var fs = require('fs');
 
 //this object will contain the todo's info and will be written to the todosFile 
 // I have chosen this to be a JSON because we can use the JSON proberities on it
-let todosFile = JSON.parse(fs.readFileSync('todo.json','UTF-8'))
-console.log(todosFile)
+let todosFile = JSON.parse(fs.readFileSync('todo.json','UTF-8'));
+console.log(todosFile);
 
 //shorten the arguments array to the arguments we need
 //take out the first two arguments which are the node path and the file path
@@ -40,12 +40,17 @@ switch (command) {
     //the reset command will remove all the items in the todoList
     //when this command is received the function resetTdosList is invoked, which will remove all the items in the todos
     case 'reset':
-        //resetTodosList();
+        resetTodosList(todosFile);
+        break;
+    //the update command will update the content of the task. Old contents will be removed
+    //When this command is detected the function updateTodosList is invoked
+    case 'update':
+        updateTodosList(todosFile,options);
         break;
     //if the user doesn't enter a valid command, he will be prombted and
     //he will get the help file to learn how to use the commands proberly
     default :
-        console.log('Please enter a valid command')
+        console.log('Please enter a valid command');
         showHelp();
 }
 
@@ -53,7 +58,7 @@ switch (command) {
 //it doesn't take any parameters but depends on the file help.txt
 function showHelp() {	
  const helpText =  fs.readFileSync('./help.txt',{encoding:'UTF-8'});
-    console.log(helpText)
+    console.log(helpText);
 }
 
 //add an item to the todo list
@@ -65,12 +70,12 @@ function addTodoItem(jsonObject,commands) {
     let itemToAdd = commands[1];
     //check if the user has entered text or not
     if(itemToAdd === undefined || itemToAdd.length < 1){
-        console.log('Please enter a name for your task')
+        console.log('Please enter a name for your task');
     }else{
         //push the text the user entered to our data file
         jsonObject.tasks.push(itemToAdd);
         //write the modified object to the todo File
-        console.log(jsonObject.tasks);
+        console.log('Added new item');
         jsonObject = JSON.stringify(jsonObject);
         return fs.writeFile('todo.json',jsonObject);
     }
@@ -88,7 +93,7 @@ function removeTodoItem (jsonObject,commands) {
     }else{
         //remove the task from the jsonObject
         jsonObject.tasks.splice(itemToRemove - 1,1)
-        console.log(jsonObject)
+        console.log('Removed item number ' + itemToRemove)
         //write the changed object to our Todofile to save the changes
         jsonObject = JSON.stringify(jsonObject);
         return fs.writeFile('todo.json',jsonObject);
@@ -109,52 +114,37 @@ function listTodos(jsonObject) {
             //add on a new line the index of the task and the name of it
            textToDisplay = textToDisplay + '\n' + (index + 1) + ' ' + item;
         });
-        console.log(textToDisplay)
+        console.log(textToDisplay);
     }else{
+        //notify the user that he doesn't have any items on his todo list
         console.log('No tasks to display');
     }
 }
 
-function splitStringByNewline(string) {
-  return string.split('\n').filter(function(element) {
-    element = element.trim();
-    return element.length > 0;
-  });
+//resets the amount of tasks to 0
+//takes the todosFile json and modifies the tasks in it
+//this function is invoked when the user enter the command 'reset'
+function resetTodosList (jsonObject) {
+    //empty tasks
+    jsonObject.tasks = [];
+    console.log('tasks list emptied successfully');
+    //turn into string and save it to the file
+    jsonObject = JSON.stringify(jsonObject);
+    return fs.writeFile('todo.json',jsonObject);
 }
 
-
-
-//function listTodos() {
-//  openFile('todo.txt', function(error, data) {
-//    if (error) {
-//      if (error.code === 'ENOENT') {
-//        return console.log('Nothing to do! (or your dog ate your todo list)');
-//      } else {
-//        return console.log('Error: Something went wrong', error);
-//      }
-//    }
-//
-//    var todos = splitStringByNewline(data);
-//
-//    if (todos.length === 0) {
-//      return console.log('Nothing to do!')
-//    }
-//
-//    console.log('Your todo list looks like this');
-//    todos.forEach(function(element, index) {
-//      index = (index + 1).toString();
-//      console.log(index, element);
-//    });
-//
-//    if (todos.length > 5) {
-//      console.log('You have too much to do!');
-//    }
-//  })
-//  
-//}
-
-function openFile(fileName, callback) {
-  fs.readFile(__dirname + '/' + fileName, 'utf8', function(error, data) {
-    callback(error, data);
-  });
+//update the item the user wanted
+//takes two arguments, the todosFile json and the arguments array
+//invoked when the user enters the command 'update'
+function updateTodosList(jsonObject,commands) {
+    let itemToUpdate = commands[1];
+    let newText = commands[2];
+    if(itemToUpdate > jsonObject.tasks.length) {
+        console.log('This item does not exist');
+    }else {
+        jsonObject.tasks[itemToUpdate - 1] = newText;
+        console.log('Updated item number '+itemToUpdate);
+        jsonObject = JSON.stringify(jsonObject);
+        return fs.writeFile('todo.json',jsonObject);
+    }
 }
