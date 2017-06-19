@@ -5,6 +5,7 @@ const server = http.createServer();
 // the state which will be increased or decreased on the user request
 //This port was already chosen by the assignment maker.
 const port = 8080;
+console.log(process.argv)
 
 // Function that checks which URL input we got from the user 
 //Initiates the right action based on the user choice
