@@ -18,6 +18,9 @@ switch (command) {
 	case 'delete':
 		deleteLine();
 		break;
+	case 'reset':
+		resetFile();
+		break;
 }
 
 function splitStringByNewline(string) {
@@ -70,37 +73,37 @@ function addLine() {
 	options.shift();
 	var allLine = options.join(' ');
 
-	fs.appendFileSync('todo.txt', allLine + "\n", 'utf8', function (error) {
-
-		console.log('Done!');
-	});
+	fs.appendFileSync('todo.txt', allLine + "\n", 'utf8');
 }
 
 function deleteLine() {
 
 	if (options[1] <= 0) {
-		console.log('Please enter right line number!!! '+ '\n');
+		console.log('Please enter right line number!!! ' + '\n');
 		showHelp();
 	} else {
 		var lineNumber = options[1] - 1;
-		fs.readFile('todo.txt', 'utf8', function (error, data) {
-			if (error) {
-				console.log(error)
-			}
-			var dataRendering = data.split('\n');
-			dataRendering.splice(lineNumber, 1);
-			var newLines = dataRendering.join('\n');
-			fs.writeFile('todo.txt', newLines);
-			console.log ('The line is deleted!');
-			listTodos();
+		var data = fs.readFileSync('todo.txt', 'utf8')
 
-		});
+		var dataRendering = data.split('\n');
+		dataRendering.splice(lineNumber, 1);
+		var newLines = dataRendering.join('\n');
+		fs.writeFileSync('todo.txt', newLines);
+		console.log('Line ' + options[1] + ' is deleted!' + '\n');
+		listTodos();
+
+
 	}
 }
 
+function resetFile() {
+	fs.writeFileSync('todo.txt', '')
+	console.log('todo list is rested!');
+}
+
+})
+}
 
 function openFile(fileName, callback) {
-	fs.readFile(__dirname + '/' + fileName, 'utf8', function (error, data) {
-		callback(error, data);
-	});
+	fs.readFileSync(__dirname + '/' + fileName, 'utf8');
 }
