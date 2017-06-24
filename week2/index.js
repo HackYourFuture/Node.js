@@ -1,65 +1,39 @@
-var fs = require('fs');
+// Extract the argument and recognize it after making sure that it is a correct argument. If a wrong argument is entered, display a list of allowed arguments. (done)
+// In case of using (help) as an argument or using empty argument, display the contents of help.txt (done)
+// In case of using (add) as an argument, make sure that the second argument is not empty then add it to todo.txt
+// In case of using (remove) as an argument, make sure that the second argument is an acceptable index then show a warning message before removing the item from todo.txt
+// In case of using (update) as an argument, make sure that the second argument is an acceptable index and also the third argument is not empty then show a warning message before updating the item in todo.txt
+// In case of using (reset) as an argument, show a warning message before reseting todo.txt
+// In case of using (list) as an argument, show current todo's, or show an appropriate text if there are no todos.
 
-var options = process.argv.slice(2);
-
-var command = options[0];
-
-switch (command) {
-  case 'help':
-  default:
-    showHelp();
-    break;
-  case 'list':
-    listTodos();
-    break;
-}
-
-function splitStringByNewline(string) {
-  return string.split('\n').filter(function(element) {
-    element = element.trim();
-    return element.length > 0;
-  });
-}
-
-function showHelp() {
-  openFile('help.txt', function(error, data) {
-    if (error) {
-      return console.log('Error: the help file could not be displayed', error);
-    }
-    console.log(data);
-  });
-}
-
-function listTodos() {
-  openFile('todo.txt', function(error, data) {
-    if (error) {
-      if (error.code === 'ENOENT') {
-        return console.log('Nothing to do! (or your dog ate your todo list)');
-      } else {
-        return console.log('Error: Something went wrong', error);
-      }
-    }
-
-    var todos = splitStringByNewline(data);
-
-    if (todos.length === 0) {
-      return console.log('Nothing to do!')
-    }
-
-    console.log('Your todo list looks like this');
-    todos.forEach(function(element, index) {
-      index = (index + 1).toString();
-      console.log(index, element);
-    });
-
-    if (todos.length > 5) {
-      console.log('You have too much to do!');
-    }
-  });
-}
-
-function openFile(fileName, callback) {
-  fs.readFile(__dirname + '/' + fileName, 'utf8', function(error, data) {
-    callback(error, data)
-  });
-}
+var fs = require("fs");
+var path = require("path");
+console.log("\n\n--<( ToDo App )>--\n\n")// Display a title with the app name.
+var arguments = process.argv.slice(2);// To extract the list of arguments
+switch (arguments[0]) {
+    // In case of using "help" or empty argument
+    case "help":
+    case undefined:
+        console.log(fs.readFileSync(path.join(__dirname, "help.txt"), "utf8"));
+        break;
+    case "add":
+        break;
+    case "remove":
+        break;
+    case "update":
+        break;
+    case "reset":
+        break;
+    case "list":
+        break;
+    default:// in case the user used a wrong argument.
+        console.log("You have used an unknown argument.\nThis is a list of all arguments that can be used:\n");
+        var allowedArgsList = fs.readFileSync(path.join(__dirname, "help.txt"), "utf8").split("\n");
+        // To extract only the lines that contain arguments from help.txt
+        allowedArgsList.forEach(function(line, index) {
+            if ((index + 2) % 6 == 0) {
+                console.log(line.slice(0, -2));// To remove ":" from the end of the line.
+            }
+        });
+        console.log("\nFor more information use the argument 'help'");
+                 }
