@@ -97,7 +97,6 @@ function resetFile() {
 	fs.writeFileSync('todo.txt', '')
 	console.log('\n' + '" Done! "' + '\n'); 
 }
-
 //To update the selected item.
 function updateLine() {
 	//Check for the item number.
