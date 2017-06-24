@@ -22,6 +22,9 @@ switch (options[0]) {
 	case 'reset':
 		resetFile();
 		break;
+	case 'update':
+		updateLine();
+		break;
 }
 //separate by new line file content, and filter it in array.
 function splitStringByNewline(string) {
@@ -57,40 +60,65 @@ function listTodos() {
 }
 //Add new todo line, creat a file in case its not exist.
 function addLine() {
-	options.shift();
-	var allLine = options.join(' ');
-	fs.appendFileSync('todo.txt', allLine + "\n", 'utf8');			
+	options.shift(); //remove first element from command
+	var allLine = options.join(' ') ; //wrap all command as one line
+	fs.appendFileSync('todo.txt', allLine + '\n', 'utf8'); // append the new line to list
+	listTodos(); // show the new list
+}
+
+//update new todo line, creat a file in case its not exist.
+function updateLine() {
+	if (options[1] <= 0) { // in case that the user enter worng number
+		console.log('Please enter right line number!!! ' + '\n');
+		showHelp();
+	} else {
+		var lineNumber = options[1] - 1; // get the line number
+		var data = fs.readFileSync('todo.txt', 'utf8') // get file information
+		var dataRendering = data.split('\n'); //split every line to array element
+		if (lineNumber > dataRendering.length) { // check if update line number exist or not
+			console.log("You dont have this line number in your list\n" );
+			showHelp();
+		} else {
+			var updateLine = options.slice(2); // remove first two words from command 
+			dataRendering.splice(lineNumber, 1, updateLine.join(' ')); // replace with index number for length of one with update line.
+			var newLines = dataRendering.join('\n'); // join array element with new line separator
+			fs.writeFileSync('todo.txt', newLines); //Write on file
+			console.log('Line ' + ++lineNumber + ' is Updated!' + '\n');// display confirmation message
+			listTodos(); // show the new list
+		}
+	}
+
 }
 
 //delete one line from todo list by index number.
 function deleteLine() {
-	if (options[1] <= 0) {
+	if (options[1] <= 0) { //Check if the line number is 0 and show help
 		console.log('Please enter right line number!!! ' + '\n');
 		showHelp();
 	} else {
-		var lineNumber = options[1] - 1;
-		var data = fs.readFileSync('todo.txt', 'utf8')
-		var dataRendering = data.split('\n');
-		dataRendering.splice(lineNumber, 1);
-		var newLines = dataRendering.join('\n');
-		fs.writeFileSync('todo.txt', newLines);
-		console.log('Line ' + options[1] + ' is deleted!' + '\n');
-		listTodos();
+		var lineNumber = options[1] - 1; // Get the line number
+		var data = fs.readFileSync('todo.txt', 'utf8') // get file content
+		var dataRendering = data.split('\n'); // create new array
+		dataRendering.splice(lineNumber, 1); // slice the line number
+		var newLines = dataRendering.join('\n'); // rejoin data
+		fs.writeFileSync('todo.txt', newLines); // write to the file 
+		console.log('Line ' + options[1] + ' is deleted!' + '\n'); // show confirmation message
+		listTodos(); // show the result
 	}
 }
 
 //Reset todo list by overwriting blank one.
 function resetFile() {
-	fs.writeFileSync('todo.txt', '')
-	console.log('todo list is rested!');
+	fs.writeFileSync('todo.txt', '') // overwriting file with blank
+	console.log('todo list is rested!'); // show confirmation message 
 }
 
 //Load file content depending on filen ame, and handle error message.
 function openFile(fileName) {
-	var fileContaint;
+	var fileContaint; 
 	try {
-		fileContaint = fs.readFileSync(__dirname + '/' + fileName, 'utf8');
-	} catch (error) {
+		fileContaint = fs.readFileSync(__dirname + '/' + fileName, 'utf8'); //read file with calling name
+	} catch (error) { //handel errors
 		if (error.code === 'ENOENT') {
 			return console.log(fileName + ' Not exist! (or your dog ate your ' + fileName + ' file)');
 		} else {
