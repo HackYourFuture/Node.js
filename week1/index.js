@@ -2,7 +2,7 @@
 "use strict";
 //here the global variables
 let state = 10;
-const port = 3000;
+const port = 8080;
 // Start the HTTP server
 let  http = require('http');
 let  server = http.createServer();
