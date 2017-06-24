@@ -1,5 +1,5 @@
-// Extract the argument and recognize it after making sure that it is a correct argument. If a wrong argument is entered, display a list of allowed arguments.
-// In case of using (help) as an argument or using empty argument, display the contents of help.txt
+// Extract the argument and recognize it after making sure that it is a correct argument. If a wrong argument is entered, display a list of allowed arguments. (done)
+// In case of using (help) as an argument or using empty argument, display the contents of help.txt (done)
 // In case of using (add) as an argument, make sure that the second argument is not empty then add it to todo.txt
 // In case of using (remove) as an argument, make sure that the second argument is an acceptable index then show a warning message before removing the item from todo.txt
 // In case of using (update) as an argument, make sure that the second argument is an acceptable index and also the third argument is not empty then show a warning message before updating the item in todo.txt
@@ -11,8 +11,10 @@ var path = require("path");
 console.log("\n\n--<( ToDo App )>--\n\n")// Display a title with the app name.
 var arguments = process.argv.slice(2);// To extract the list of arguments
 switch (arguments[0]) {
+    // In case of using "help" or empty argument
     case "help":
     case undefined:
+        console.log(fs.readFileSync(path.join(__dirname, "help.txt"), "utf8"));
         break;
     case "add":
         break;
