@@ -27,7 +27,7 @@ function openFile(fileName) {
 	return fileContaint;
 }
 // To check the type of command that will be typed by the user
-switch (command.toLowerCase()) {
+switch (command) {
 	case 'help':
 	default:
 		showHelp();
