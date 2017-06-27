@@ -12,22 +12,22 @@ console.log(`
 ######||***** welcome *****||######
 ######|| My List Todos App ||######
 `);
-//This function is to read the file and catch the error 
+//This function is to read the file and catch the error
 //Which we used it above To assign the variable we will use it later
-function openFile(fileName) {
-	try {
+function openFile(fileName){
+	try{
 		var fileContaint = fs.readFileSync(__dirname + '/' + fileName, 'utf8');
-	} catch (error) {
-		if (error.code === 'ENOENT') {
+	} catch(error){
+		if(error.code === 'ENOENT'){
 			return console.log(fileName + ' Not exist! (or your ' + fileName + ' file)');
-		} else {
+		}else{
 			return console.log('Error: Something went wrong', error);
 		}
 	}
 	return fileContaint;
 }
 // To check the type of command that will be typed by the user
-switch (command) {
+switch(command){
 	case 'help':
 	default:
 		showHelp();
@@ -49,40 +49,44 @@ switch (command) {
 		break;
 }
 //Converts the text file into an array to deal with
-function splitStringByNewline(string) {
-	return string.split('\n').filter(function (element) {
+function splitStringByNewline(string){
+	return string.split('\n').filter(function (element){
 		element = element.trim();
 		return element.length > 0;
 	});
 }
 
 //To call the helper text file.
-function showHelp() {
+function showHelp(){
 	let dataOfHelp = openFile('help.txt')
 	console.log(dataOfHelp);
 }
 //To add a new item.
-function addItem() {
+function addItem(){
+
 	//remove first item from process.argv
-	options.shift(); 
+	options.shift();
 	//Make it on a single line
-	let newItem = options.join(' ') ;
-	// append the new item to list
+	let newItem = options.join(' ');
+	// append the new item to the list
 	fs.appendFileSync('todo.txt', '\n' + newItem + '\n', 'utf8');
+
 	//Open the file todo txt and read it again To update the information
-	dataOfTodos = openFile('todo.txt');
-	todos = splitStringByNewline(dataOfTodos);
-	listTodos(); 
+	//dataOfTodos = openFile('todo.txt');
+	//todos = splitStringByNewline(dataOfTodos);
+	//console.log(dataOfTodos);
+	listTodos();
 }
 //To delete the selected item.
-function deleteLine() {
+function deleteLine(){
 	//Check for the item number
-	if ( valOfOptions > todos.length || valOfOptions <= 0) { 
+	if(isNaN(valOfOptions) === true){
+	return console.log("That is not a number, you must input a number!");
+	}
+	if (valOfOptions > todos.length || valOfOptions <= 0){
 		console.log('\n' + '"Check the number and enter an appropriate number"' + '\n');
 	} else {
-		dataOfTodos = openFile('todo.txt');
-		// create new data
-		todos = splitStringByNewline(dataOfTodos);
+
 		//To delete the selected item
 		todos.splice(valOfOptions - 1, 1);
 		//Make it on a single line
@@ -93,39 +97,44 @@ function deleteLine() {
 	}
 }
 //Delete all items
-function resetFile() {
+function resetFile(){
 	fs.writeFileSync('todo.txt', '')
-	console.log('\n' + '" Done! "' + '\n'); 
+	console.log('\n' + '" Done! "' + '\n');
 }
 //To update the selected item.
-function updateLine() {
+function updateLine(){
 	//Check for the item number.
-	if (valOfOptions > todos.length || valOfOptions <= 0) {
+	if(isNaN(valOfOptions) === true){
+	return console.log("That is not a number, you must input a number!");
+	}
+	if (valOfOptions > todos.length || valOfOptions <= 0){
+		console.log(valOfOptions);
 		console.log('\n' + '"Check the number and enter an appropriate number"' + '\n');
-	} else {
-		dataOfTodos = openFile('todo.txt');
-		todos = splitStringByNewline(dataOfTodos);
+	}else{
+		console.log(valOfOptions);
 		// remove first two items from process.argv
 		let newLine = options.slice(2);
 		// exchange the old item with the new item by index.
 		todos.splice(valOfOptions - 1, 1, newLine.join(' '));
-		let newResult = todos.join('\n'); 
+		let newResult = todos.join('\n');
 		fs.writeFileSync('todo.txt', newResult);
 		console.log( '\n' + '"Item ' + valOfOptions + ' has been updated"' + '\n');
 		listTodos();
 	}
 }
 //to Displays list items
-function listTodos() {
-	if (todos.length === 0) {
-		return console.log('\n' + '"Nothing to do!"' + '\n' )
+function listTodos(){
+	let dataOfTodos = openFile('todo.txt');
+	let todos = splitStringByNewline(dataOfTodos);
+	if(todos.length === 0){
+		return console.log('\n' + '"Nothing to do!"' + '\n')
 	}
-	console.log( '\n' +'"Here is your list todo"' + '\n');
-	todos.forEach(function (element, index) {
+	console.log('\n' +'"Here is your list todo"' + '\n');
+	todos.forEach(function (element, index){
 		index = (index + 1).toString();
 		console.log(index, element);
 	});
-	if (todos.length > 5) {
+	if (todos.length > 5){
 		console.log('\n' +'"You have too much to do!"'+ '\n');
 	}
 }
