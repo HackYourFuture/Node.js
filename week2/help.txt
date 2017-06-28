@@ -1,25 +1,38 @@
-This is the help page for CLI ToDo app
-
 Instructions:
+=============
 
+
+help:
+-----
 To display this set of instructions:
 node index.js help
 
-To add an item to your todo's:
-e.g.
-node index.js add I need to brush my teeth
 
-To list all your todo's
-e.g.
+list:
+-----
+To list all your todo's:
 node index.js list
 
-To remove an item from your todo's 
-First list, and find the location (index, 0 based) of your todo
 
-To remove all items from your todo list
+add:
+----
+To add a new mission to your todo's:
+node index.js add "[your new mission]"
+
+
+remove:
+-------
+To remove an item from your todo's:
+node index.js remove [1 based index of the wanted item]
+
+
+reset:
+------
+To remove all items from your todo list:
 node index.js reset
 
-e.g.
-node index.js remove 0
 
-
+update:
+-------
+To update an existing item from your todo list with a new mission:
+node index.js update [1 based index of the wanted item] "[your new mission]"
