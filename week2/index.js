@@ -58,7 +58,7 @@ function splitStringByNewline(string) {
 }
 //To call the helper text file.
 function showHelp() {
-	let dataOfHelp = openFile('help.txt')
+	let dataOfHelp = openFile('help.txt');
 	console.log(dataOfHelp);
 }
 //To add a new item.
@@ -92,7 +92,7 @@ function deleteLine() {
 }
 //Delete all items
 function resetFile() {
-	fs.writeFileSync(todosTxt, '')
+	fs.writeFileSync(todosTxt, '');
 	console.log('\n' + '" Done! "' + '\n');
 }
 //To update the selected item.
@@ -120,7 +120,7 @@ function listTodos() {
 	let dataOfTodos = openFile(todosTxt);
 	let todos = splitStringByNewline(dataOfTodos);
 	if (todos.length === 0) {
-		return console.log('\n' + '"Nothing to do!"' + '\n')
+		return console.log('\n' + '"Nothing to do!"' + '\n');
 	}
 	console.log('\n' +'"Here is your list todo"' + '\n');
 	todos.forEach(function (element, index){
