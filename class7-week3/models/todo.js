@@ -62,7 +62,7 @@ class Todo {
     })
   }
 
-  remove(id, callback) {
+    remove(id, callback) {
     this.load((error, todos) => {
       if (error) { callback(error); return }
 
@@ -71,6 +71,62 @@ class Todo {
       this.save(todos, error => {
         if (error) { callback(error); return }
         callback()
+      })
+    })
+  }
+    reset() {
+    this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+      todos = []
+
+      this.save(todos, error => {
+        if (error) { callback(error); return }
+      })
+    })
+        
+    }
+    markAsDone(id, done, callback) {
+    this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+      const todo = todos.find(t => t.id === id)
+      if (todo == null) {
+        const error = new Error(`Todo with ID ${id} does not exist`)
+        error.name = 'NotFound'
+
+        callback(error)
+        return
+      }
+
+      todo.done = 'True'
+
+      this.save(todos, error => {
+        if (error) { callback(error); return }
+
+        callback(null, todo)
+      })
+    })
+  }
+    markAsNotDone(id, done, callback) {
+    this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+      const todo = todos.find(t => t.id === id)
+      if (todo == null) {
+        const error = new Error(`Todo with ID ${id} does not exist`)
+        error.name = 'NotFound'
+
+        callback(error)
+        return
+      }
+
+      todo.done = 'False'
+
+      this.save(todos, error => {
+        if (error) { callback(error); return }
+
+        callback(null, todo)
       })
     })
   }
