@@ -98,7 +98,7 @@ class Todo {
         return
       }
 
-      todo.done = true;
+      todo.done = true
 
       this.save(todos, error => {
         if (error) { callback(error); return }
@@ -120,7 +120,7 @@ class Todo {
         return
       }
 
-      todo.done = false;
+      todo.done = false
 
       this.save(todos, error => {
         if (error) { callback(error); return }
