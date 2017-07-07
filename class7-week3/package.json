@@ -2,7 +2,10 @@
   "name": "todo-api",
   "version": "1.0.0",
   "description": "Todo api example",
-  "repository": "https://github.com/HackYourFuture/class7-nodejs-week3.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackYourFuture/class7-nodejs-week3.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +16,10 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "uuid": "^3.0.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/HackYourFuture/class7-nodejs-week3/issues"
+  },
+  "homepage": "https://github.com/HackYourFuture/class7-nodejs-week3#readme",
+  "devDependencies": {}
 }

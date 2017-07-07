@@ -7,7 +7,7 @@ node index.js help
 
 To add an item to your todo's:
 e.g.
-node index.js add I need to brush my teeth
+node index.js add 'I need to brush my teeth'
 
 To list all your todo's
 e.g.
