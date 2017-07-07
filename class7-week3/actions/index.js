@@ -3,5 +3,7 @@ module.exports = {
   create: require('./create'),
   update: require('./update'),
   remove: require('./remove'),
-    reset: require('./reset')
+    reset: require('./reset'),
+    markAsDone: require('./markAsDone'),
+    markAsNotDone: require('./markAsNotDone')
 }

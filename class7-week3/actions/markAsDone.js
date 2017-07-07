@@ -2,12 +2,13 @@ const Todo = require('../models/todo')
 const deserializeTodo = require('../util/deserializeTodo')
 
 module.exports = function update(request, response) {
-    console.log(request.params)
+    
   const id = request.params.id
+  console.log(request.params)
   const todo = deserializeTodo(request, response)
   if (todo == null) { return }
 
-  Todo.update(id, todo.description, (error, todo) => {
+  Todo.markAsDone(id, todo.done, (error, todo) => {
     if (error == null) {
       response.json({todo})
     } else if (error.name === 'NotFound') {

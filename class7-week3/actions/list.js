@@ -1,7 +1,7 @@
 const Todo = require('../models/todo')
 
 module.exports = function list(request, response) {
-
+    
   // Load todos asynchronously (with a callback)
   Todo.load((error, todos) => {
     if (error) {
