@@ -2,12 +2,15 @@
 
 This is an Express application using `bodyParser` middleware to convert the request body to JSON.
 
-There are currently four actions:
+There are currently 7 actions:
 
 - `list` (`GET /todos`): Lists all todos
 - `create` (`POST /todos`): Creates a new todo
 - `update` (`PUT /todos/:id`): Updates the description of a todo
 - `remove` (`DELETE /todos/:id`): Deletes a todo
+- `reset` (`DELETE /todos/`): Deletes all todo
+- `markAsDone` `put('/todos/:id/done',markAsDone)`: Mark one todo as done
+- `markAsNotDone` `delete('/todos/:id/done',markAsNotDone)`: Mark one todo As not done
 
 ## Directory structure
 
@@ -19,7 +22,7 @@ There are currently four actions:
 
 ## Request body format
 
-When calling the `create` or `update` actions, the request body should look like this:
+When calling the `create` ,`update` , `markAsDone`, `markAsNotDone` actions, the request body should look like this:
 
 ```json
 {
