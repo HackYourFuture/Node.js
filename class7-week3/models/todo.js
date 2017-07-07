@@ -62,7 +62,7 @@ class Todo {
     })
   }
 
-  remove(id, callback) {
+    remove(id, callback) {
     this.load((error, todos) => {
       if (error) { callback(error); return }
 
@@ -74,6 +74,18 @@ class Todo {
       })
     })
   }
+    reset() {
+    this.load((error, todos) => {
+      if (error) { callback(error); return }
+
+      todos = {}
+
+      this.save(todos, error => {
+        if (error) { callback(error); return }
+      })
+    })
+        
+    }
 
 }
 
