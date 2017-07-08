@@ -8,6 +8,11 @@ There are currently four actions:
 - `create` (`POST /todos`): Creates a new todo
 - `update` (`PUT /todos/:id`): Updates the description of a todo
 - `remove` (`DELETE /todos/:id`): Deletes a todo
+- `clean`(`Delete/todos`): clear the list of todos
+- `markAsDone`(`post/todos/:id/:done`):set the `done` flag of a single todo to `true`
+- `markAsNotDone`(`Delete/todos/:id/:done`):set the `done` flag of a single todo to `false`
+
+
 
 ## Directory structure
 
