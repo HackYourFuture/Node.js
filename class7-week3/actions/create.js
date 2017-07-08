@@ -14,6 +14,7 @@ module.exports = function create(request, response) {
     } else {
       response.status(201)
       response.json({todo})
+      console.log('create')
     }
   })
 

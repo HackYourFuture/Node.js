@@ -1,6 +1,7 @@
 module.exports = function deserializeTodo(request, response) {
 
   const todo = request.body.todo
+  console.log("my todo is " + todo);
   if (todo == null) {
     setError('Specify a todo', response)
     return null
