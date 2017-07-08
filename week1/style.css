@@ -1,0 +1,16 @@
+<style>
+body{
+	background-color: silver;
+}
+h1{
+	padding-top: 50px;
+	text-align: center;
+	margin-top: auto;
+	color: black;
+	font-family: sans-serif;
+}
+
+#counter{
+	font-size: 3em;
+}
+</style>
