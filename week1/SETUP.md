@@ -16,7 +16,22 @@ Follow the general Homework instructions for this.
 $ npm install --global babel-cli
 ```
 
-## Step 3 - Run the example from the direcory `week1`
+## Step 4 - Install npm packages
+
+Go into the directory where you've cloned the repository, and go into the directory `week`
+
+```
+$ cd <path-to-cloned-repo>
+$ cd week1
+```
+
+Now install NPM packages for the application.
+
+```
+$ npm install
+```
+
+## Step 5 - Run the example from the direcory `week1`
 
 ```
 $ babel-node .
