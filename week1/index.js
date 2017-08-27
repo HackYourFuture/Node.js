@@ -1,19 +1,33 @@
 import HTTP from 'http'
+import Path from 'path'
 
 import sendIndexHTML from './responses/sendIndexHTML'
+import sendPage2HTML from './responses/sendPage2HTML'
 import sendStylesCSS from './responses/sendStylesCSS'
 import sendText from './responses/sendText'
 
 const server = HTTP.createServer((request, response) => {
 	console.log(request.method, request.url)
 
-	if (request.url === '/') {
+	switch (request.url) {
+	case '/':
 		sendIndexHTML(response)
-	} else if (request.url === '/styles.css') {
+		break
+	case '/page2':
+		sendPage2HTML(response)
+		break
+	case '/styles.css':
 		sendStylesCSS(response)
-	} else {
-		response.statusCode = 404
-		sendText(response, 'This page cannot be found')
+		break
+	default:
+		const extension = Path.extname(request.url)
+		if (extension === '') {
+			response.statusCode = 302
+			response.setHeader('Location', '/')
+		} else {
+			response.statusCode = 404
+			sendText(response, "File not found")
+		}
 	}
 	
 	response.end()
