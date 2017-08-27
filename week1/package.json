@@ -1,22 +1,15 @@
 {
   "name": "week1",
   "version": "1.0.0",
-  "description": "Week 1 homework",
+  "description": "Week 1 starting point",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HackYourFuture/Node.js.git"
-  },
-  "keywords": [
-    "nodejs"
-  ],
-  "author": "Erol",
+  "author": "Joost Lubach (HackYourFuture)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HackYourFuture/Node.js/issues"
-  },
-  "homepage": "https://github.com/HackYourFuture/Node.js#readme"
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
