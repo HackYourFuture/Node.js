@@ -1,0 +1,22 @@
+{
+  "name": "ismail",
+  "version": "1.0.0",
+  "description": "\"hwNodeWeek2\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2sma3il1991juve/Node.js/tree/master/week2"
+  },
+  "engines": {
+    "node": ">=7.10.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}

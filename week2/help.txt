@@ -1,0 +1,5 @@
+Welcome to the help guide, please use one of the following commands
+list: to show the todo-list
+add: to add to the todo-list
+remove: to remove an an item from the todo-list
+reset: to remove all todo items from the list 
