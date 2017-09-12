@@ -14,8 +14,8 @@
 9. Express vs native http library
 6. Building a REST web API for Todos
 
-## Check out the React repo [here](https://github.com/HackYourFuture/React)
-And find out how you can prepare for the first React lecture :dancers:
+## Check out the database repository [here](https://github.com/HackYourFuture/database)
+And find out how you can prepare for the first database lecture, Jason and Rob have provided a nice Lynda playlist so we can have a flying kick off.
 
 # TODO API
 
