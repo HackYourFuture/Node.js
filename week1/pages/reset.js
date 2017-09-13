@@ -1,0 +1,16 @@
+
+import HTTP from 'http'
+import STATUS  from './status.js'
+ 
+ 
+
+module.exports = {
+    "body" : function contentHomePage(Response ){
+        STATUS.varia = 10 ;
+        Response.write('<h1>add one</h1>')
+        console.log('this is the value of varia '+ STATUS.varia)
+        Response.write(STATUS.varia.toString())
+        Response.end();
+    },
+   
+}

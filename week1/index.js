@@ -1,38 +1,64 @@
-import HTTP from 'http'
-import Path from 'path'
+ 
+import HTTP    from 'http'
+ 
+import CONTENT from './pages/homePage.js'
+import STATUS  from './pages/status.js'
+import ADD     from './pages/add.js'
+import SUB     from './pages/subs.js'
+import RESET     from './pages/reset.js'
+ 
 
-import sendIndexHTML from './responses/sendIndexHTML'
-import sendPage2HTML from './responses/sendPage2HTML'
-import sendStylesCSS from './responses/sendStylesCSS'
-import sendText from './responses/sendText'
+const server = HTTP.createServer(function (request,Response) {
+    
+        switch (request.url){
+            case '/':
+            CONTENT.body(Response);
+            break;
+            case '/status':
+            STATUS.func(Response);
+            break;
+            case '/add':
+            console.log("run add")
+            ADD.body(Response);
+            break;
+            case '/reset':
+            console.log("run reset")
+            RESET.body(Response);
+            break;
+            case '/sub':
+            console.log("run add")
+            SUB.body(Response);
+            break;
+            default:
+           
+            styll(Response)
+            Response.write("<h1 class='greenn'>The page can not be found</h1>")
+            
+            break;
+        }
+        Response.end()
+    })
 
-const server = HTTP.createServer((request, response) => {
-	console.log(request.method, request.url)
+    function styll(Response) {
+        Response.setHeader('Content-Type','text/html');
+        Response.write(` 
+        <style>
+        .greenn{
+            color:green;
+        }
+        </style>
+        `)
+    }
 
-	switch (request.url) {
-	case '/':
-		sendIndexHTML(response)
-		break
-	case '/page2':
-		sendPage2HTML(response)
-		break
-	case '/styles.css':
-		sendStylesCSS(response)
-		break
-	default:
-		const extension = Path.extname(request.url)
-		if (extension === '') {
-			response.statusCode = 302
-			response.setHeader('Location', '/')
-		} else {
-			response.statusCode = 404
-			sendText(response, "File not found")
-		}
-	}
-	
-	response.end()
-})
+console.log("Hello world somur")
 
-server.listen(3001)
 
-console.log('Server started')
+server.listen(8080)
+
+
+
+
+
+
+
+ 
