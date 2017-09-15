@@ -1,38 +1,35 @@
-import HTTP from 'http'
-import Path from 'path'
 
-import sendIndexHTML from './responses/sendIndexHTML'
-import sendPage2HTML from './responses/sendPage2HTML'
-import sendStylesCSS from './responses/sendStylesCSS'
-import sendText from './responses/sendText'
+var state = 10
+var err = "This page does not exist, please insert correct path name"
+
+import HTTP from 'http'
+import stateHtml from './responses/stateHtml';
+import errorMessage from './responses/errorMessage';
 
 const server = HTTP.createServer((request, response) => {
-	console.log(request.method, request.url)
-
-	switch (request.url) {
-	case '/':
-		sendIndexHTML(response)
-		break
-	case '/page2':
-		sendPage2HTML(response)
-		break
-	case '/styles.css':
-		sendStylesCSS(response)
-		break
-	default:
-		const extension = Path.extname(request.url)
-		if (extension === '') {
-			response.statusCode = 302
-			response.setHeader('Location', '/')
-		} else {
-			response.statusCode = 404
-			sendText(response, "File not found")
-		}
-	}
-	
-	response.end()
+    switch (request.url) {
+        case '/state':
+            stateHtml(response, state);
+            break;
+        case '/add':
+            state += 1
+            stateHtml(response)
+            break
+        case '/remove':
+            state -= 1
+            stateHtml(response)
+            break
+        case '/reset':
+            state = 10
+            stateHtml(response)
+            break
+        default:
+            response.statusCode = 404;
+            errorMessage(response, err);
+    }
+    response.end()
 })
 
-server.listen(3001)
+server.listen(8080)
 
-console.log('Server started')
+console.log("Server started")
