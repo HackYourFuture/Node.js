@@ -1,4 +1,4 @@
-export default function stateHtml(response) {
+export default function stateHtml(response, state) {
     response.setHeader('content-Type', 'text/html')
     response.write(`
     <!html>
@@ -7,7 +7,7 @@ export default function stateHtml(response) {
             <title>Working on 10</title>
         </head>
         <body>
-             ${state}
+             ${state || 'OK'}
         </body>
     </html>`)
 }
