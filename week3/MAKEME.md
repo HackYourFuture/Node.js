@@ -4,7 +4,6 @@
 
 ### Assignment for this weak:
 
-- Fork https://github.com/HackYourFuture/class7-nodejs-week3.git.
 - Read through the code, make sure you understand the flow of the program
 - Add three more actions
     - `clear` (`DELETE /todos`) which will clear the list of todos
