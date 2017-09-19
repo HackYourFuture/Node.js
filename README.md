@@ -7,8 +7,8 @@ This 3 week HYF Module is about Node.JS. We can think of Node.JS as "Javascript 
 ## Planning
 | Week | Topic | Read | Homework |
 | ---- | ----- | ---- | -------- |
-| 0. | introduction | [Week 0 Reading](week0/README.md) | - |
-| 1. | Node.js, NPM, http | [Week 1 Reading](week1/README.md) | [Week 1 Homework](week1/MAKEME.md) |
+| 0. | Node.js, NPM | [Week 0 Reading](week0/README.md) | [Week 0 Homework](week0/homework/README.md) |
+| 1. | http | [Week 1 Reading](week1/README.md) | [Week 1 Homework](week1/MAKEME.md) |
 | 2. | fs, process | [Week 2 Reading](week2/README.md) | [Week 2 Homework](week2/MAKEME.md) |
 | 3. | express, REST | [Week 3 Reading](week3/README.md) | [Week 3 Homework](week3/MAKEME.md) |
 
