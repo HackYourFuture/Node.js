@@ -10,3 +10,13 @@ Try to formulate and answer to the question:
 Take a look at [this video](https://www.youtube.com/watch?v=-o0yomUVVpU&index=2&list=PLVYDhqbgYpYUGxRdtQdYVE5Q8h3bt6SIA) made by Daan, he explains how your homework needs to be handed in from now on.
 
 Also review the Git [workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md) from the JavaScript3 module, use this as a reference.
+
+# Code in class
+
+## async folder
+
+This folder contains an example that shows how async javascript works, in this case we are reading two files and printing their contents.
+
+## contacts_app
+
+This is an app that shows how a node software che be modularized in a set of functions (contained in the contacts_lib.js file) and the main exectution file (index.js). Moreover shows how to exports multiple functions from a module.
