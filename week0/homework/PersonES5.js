@@ -14,12 +14,9 @@ module.exports = function Person(name, age) {
 	};
 
 	this.birthday = function() {
+		this.age += 1;
 		console.log(
-			'wishing ' +
-				this.name +
-				' a happy ' +
-				(this.age + 1) +
-				'th birthday!'
+			'wishing ' + this.name + ' a happy ' + this.age + 'th birthday!'
 		);
 	};
 };

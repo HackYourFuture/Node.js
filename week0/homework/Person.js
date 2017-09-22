@@ -17,6 +17,7 @@ module.exports = class Person {
 	}
 
 	birthday() {
-		console.log(`wishing ${this.name} a happy ${this.age + 1}th birthday!`);
+		this.age += 1;
+		console.log(`wishing ${this.name} a happy ${this.age}th birthday!`);
 	}
 };
