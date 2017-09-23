@@ -1,15 +1,18 @@
-export default function sendIndexHTML(response) {
+export default function sendIndexHTML(response, state) {
 	response.setHeader('Content-Type', 'text/html')
 	response.write(`
 		<!html>
 		<html>
 			<head>
-				<title>Hello</title>
-				<link href="styles.css" type="text/css" rel="stylesheet"/>
+				<title>Total</title>
 			</head>
 			<body>
-				Hello I am a website
+			${state || 'ok'}
+				
 			</body>
+			<style>
+			body {background-color: powderblue;}
+			</style>
 		</html>
 	`)
 }
