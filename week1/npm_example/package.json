@@ -1,0 +1,25 @@
+{
+  "name": "npm_example",
+  "version": "0.0.1",
+  "description": "This is a test project for explore NPM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel ./src -d ./out"
+  },
+  "keywords": [
+    "npm",
+    "example",
+    "code",
+    "learning"
+  ],
+  "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-node8": "^1.2.0"
+  },
+  "dependencies": {}
+}

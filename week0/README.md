@@ -13,10 +13,14 @@ Also review the Git [workflow material](https://github.com/HackYourFuture/Git/bl
 
 # Code in class
 
-## async folder
+## async
 
 This folder contains an example that shows how async javascript works, in this case we are reading two files and printing their contents.
 
 ## contacts_app
 
 This is an app that shows how a node software che be modularized in a set of functions (contained in the contacts_lib.js file) and the main exectution file (index.js). Moreover shows how to exports multiple functions from a module.
+
+## Reading material
+
+https://developer.ibm.com/node/2016/08/24/promises-in-node-js-an-alternative-to-callbacks/ 

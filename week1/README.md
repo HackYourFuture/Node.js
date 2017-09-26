@@ -15,3 +15,13 @@ Although most of this was already covered by the JavaScript class, let's refresh
 
 > Read: [Understanding Asynchronous JavaScript Callbacks Through Household Chores
 ](https://medium.freecodecamp.com/understanding-asynchronous-javascript-callbacks-through-household-chores-e3de9a1dbd04#.8ilr4a7aj) _estimated time: ~1 hour_
+
+## Code in class
+
+### class_contact_list
+
+This is the contact list example I wrote in week0, rewritten as a class.
+
+### npm_example
+
+This is the babel boilerplate that we build useing npm. It's important you have this running because from now on we will use ES6. Cover everything about npm is not easy, if you still are a bit confused about the commands we used today have a look at the [npm docs](https://docs.npmjs.com/).
