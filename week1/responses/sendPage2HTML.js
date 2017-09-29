@@ -1,6 +1,6 @@
 export default function sendPage2HTML(response) {
-	response.setHeader('Content-Type', 'text/html')
-	response.write(`
+  response.setHeader('Content-Type', 'text/html')
+  response.write(`
 		<!html>
 		<html>
 			<head>

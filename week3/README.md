@@ -28,6 +28,11 @@ There are currently four actions:
 - `update` (`PUT /todos/:id`): Updates the description of a todo
 - `remove` (`DELETE /todos/:id`): Deletes a todo
 
+Recently added:
+- `clear` (`DELETE /todos`): Clears all todos
+- `markAsDone` (POST /todos/:id/done`): Marks todo as done
+- `markAsNotDone` (DELETE /todos/:id/done`): Marks todo as not done
+
 ## Directory structure
 
 - `actions`: Contains the actions as listed above, each as a express handler (function accepting request and response)

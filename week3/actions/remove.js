@@ -1,6 +1,6 @@
 const Todo = require('../models/todo')
 
-module.exports = function create(request, response) {
+module.exports = function remove(request, response) {
 
   const id = request.params.id
 

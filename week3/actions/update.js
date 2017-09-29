@@ -7,7 +7,7 @@ module.exports = function update(request, response) {
   const todo = deserializeTodo(request, response)
   if (todo == null) { return }
 
-  Todo.update(id, todo.description, (error, todo) => {
+  Todo.update(id, todo.description, null,  (error, todo) => {
     if (error == null) {
       response.json({todo})
     } else if (error.name === 'NotFound') {
