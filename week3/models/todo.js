@@ -39,7 +39,7 @@ class Todo {
     })
   }
 
-  update(id, description, callback) {
+  update(id, description, state, callback) {
     this.load((error, todos) => {
       if (error) { callback(error); return }
 
@@ -52,8 +52,12 @@ class Todo {
         return
       }
 
-      todo.description = description
+      if (description) {todo.description = description}      
 
+      //add functionality to update the "state" of "todo" item
+      if (state !== null) { todo.done = state }
+      ////////////////////////////////////////////////
+      
       this.save(todos, error => {
         if (error) { callback(error); return }
 
@@ -65,16 +69,20 @@ class Todo {
   remove(id, callback) {
     this.load((error, todos) => {
       if (error) { callback(error); return }
-
-      todos = todos.filter(t => t.id !== id)
-
+      
+      //add check to CLEAR todo list if "id" present
+      if (id){
+        todos = todos.filter(t => t.id !== id)
+      } else {
+        todos.splice(0, todos.length)
+      }
+      ////////////////////////////////////////////////
       this.save(todos, error => {
         if (error) { callback(error); return }
         callback()
       })
     })
   }
-
 }
 
 module.exports = new Todo()

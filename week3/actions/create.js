@@ -4,6 +4,7 @@ const deserializeTodo = require('../util/deserializeTodo')
 module.exports = function create(request, response) {
 
   const todo = deserializeTodo(request, response)
+  
   if (todo == null) { return }
 
   Todo.create(todo.description, (error, todo) => {
