@@ -59,3 +59,20 @@ Read parts:
 
 ## As you finish that up, don’t forget to watch next week’s video playlist to prepare for Express.
 >You’ll find it here: [Lynda :information_desk_person:](https://www.lynda.com/SharedPlaylist/e8a2fec772bb462da38429629a34f3b7)  
+
+## Code in class
+
+### promises_exapmles (not there yet)
+
+This folder contains two examples. the file `index.js` is the same exercise we did in the class in the week0 but with Promises. It's interesting to see that we did not use any external libraries. Try at home to rewrite the same exercise using [Bluebird Promise library](http://bluebirdjs.com/docs/getting-started.html), remember to `npm install` the library.
+
+The file `wait.js` shows how to write a callback style function, and transforming it in a promise. It' s easy in this example to see that the functions are running simultaneously.
+
+### http_server
+
+The HTTP server is a slightly improved version that we did in the class includes:
+ - Code split in modules
+ - Promises
+ - `http` `fs` and `util` code modules
+ - it serves the public folder
+ - *this is very far from a complete implementation of an HTTP server* therefore take it as exercise to understand and use the code modules of node
