@@ -2,21 +2,16 @@
 
 # HackYourFuture Node.js - Reading material week 2
 
-## Last weeks Summary
-Last week we looked at building an HTTP interface. The interface allowed us to get a state, and manipulate the state (add, subtract, reset). 
+### HTTP Module
+This should give you a real quick overview of what we'll be doing in the bnext class.
+> Read:https://www.w3schools.com/nodejs/nodejs_http.asp
 
-## Today's meal
-1. Recap last week
-2. Homework
-3. Questions & Answers (Q&A)
-4. Other topics
-4. Persisting data beyond the lifetime of the app.
-5. Building a Command Line Interface / Working with arguments
-6. Using Node.JS's FileSystem (FS)
-7. CRUD operations
-8. This week's assignment
+This should mostly make sense to you as well, except the body parsing part. So have a read and ignore the things you think you've never seen before.
+> Read: https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/
 
-## Reading material
+### Asynchronous callbacks
+Although most of this was already covered by the JavaScript class, let's refresh our memories on Callbacks.
+> Watch: https://www.youtube.com/watch?v=pTbSfCT42_M
 
 ### Something about ES6 I want you guys to know
 You may hear us talking about this "ES6" all the time. ES6 basically means: the latest version of JavaScript. It has a lot of really nice new features that makes life as developer easier. For you guys, you should remember the following:
@@ -34,6 +29,8 @@ So in summary: if you're working on the frontend, you probably don't want to use
   "node": ">=6.5.0" // this means you need 6.5 or higher
 },
 ```
+> Read: [Understanding Asynchronous JavaScript Callbacks Through Household Chores
+](https://medium.freecodecamp.com/understanding-asynchronous-javascript-callbacks-through-household-chores-e3de9a1dbd04#.8ilr4a7aj) _estimated time: ~1 hour_
 
 ### 1. ES6: Fat Arrow functions
 This is one example of how ES6 can help us write cleaner code. I'm adding this as first reading material because it's used a lot on the NodeJS documentation website, so it's a good idea to understand what this means. Bonus points if you write your callbacks this way.   
