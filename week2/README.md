@@ -62,7 +62,7 @@ Read parts:
 
 ## Code in class
 
-### promises_exapmles (not there yet)
+### promises (not there yet)
 
 This folder contains two examples. the file `index.js` is the same exercise we did in the class in the week0 but with Promises. It's interesting to see that we did not use any external libraries. Try at home to rewrite the same exercise using [Bluebird Promise library](http://bluebirdjs.com/docs/getting-started.html), remember to `npm install` the library.
 
