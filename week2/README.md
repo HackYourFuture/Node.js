@@ -12,7 +12,9 @@ This should mostly make sense to you as well, except the body parsing part. So h
 ### Asynchronous callbacks
 Although most of this was already covered by the JavaScript class, let's refresh our memories on Callbacks.
 > Watch: https://www.youtube.com/watch?v=pTbSfCT42_M
- 
+
+-> Read: [Understanding Asynchronous JavaScript Callbacks Through Household Chores
+ -](https://medium.freecodecamp.com/understanding-asynchronous-javascript-callbacks-through-household-chores-e3de9a1dbd04#.8ilr4a7aj) _estimated time: ~1 hour_
 
 ## Code in class
 
