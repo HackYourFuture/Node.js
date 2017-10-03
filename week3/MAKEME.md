@@ -1,23 +1,21 @@
 > Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.
 
-# HackYourFuture Node.js - Homework week 2
+# HackYourFuture Node.js - Homework week 3
 
-## Assignment for this week
-These are the specs for this week's assignment:
-- The user can run a NodeJs to-do app
-- The user can be able to run the file using node index.js
-- There should be a "help" section that lists all the commands for how to use the app
+### Assignment for this weak:
 
-The following commands should be present:
-- No command: show help section (`node index.js`)
-- help: show help section (`node index.js help`)
-- list: show current todo's, or show an appropriate text if there are no todos (`node index.js list`)
-- add: add a todo item. all the words behind "add" are entered as 1 todo item to the list (`node index.js add "Buy groceries"`)
-- remove: remove a todo item by its 1-base index. (`node index.js remove 2`)
-- reset: remove all todo items from the list (`node index.js reset`)
+- Read through the code, make sure you understand the flow of the program
+- Add three more actions
+    - `clear` (`DELETE /todos`) which will clear the list of todos
+    - `markAsDone` (`POST /todos/:id/done`) which will set the `done` flag of a single todo to `true`
+    - `markAsNotDone` (`DELETE /todos/:id/done`) which will set the `done` flag of a single todo to `false`
+- Update your README to reflect your new actions!
 
-- *BONUS:* update: update a todo item with new text (`node index.js update 3 "Wash teeth"`)
+Take care of the following:
 
-### Consider this:
-- What representation you use in your file (CSV, TSV, JSON, ...)
-- Handle edge cases, i.e. control what happens if user enters unexpected input
+- All requests that need a body should be in JSON, and follow the request structure of the other actions
+- All responses should be in JSON, and follow the response structure of the other actions
+- Follow the anatomy of the project
+- Make your code DRY (see https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+- Follow the REST design principles: use the proper method, response status codes, and consistent URL paths
+- Test your API using Postman
