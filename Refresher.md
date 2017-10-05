@@ -59,7 +59,7 @@ The programs are single threaded and single process.
 console.log("hello world");
 module.exports = function sayHello(){
   console.log("about to write the file");
-  return "hello you";
+  return "hello you";Â
 }
 /// index.js
 var sayHello = require('./helloWorld')
@@ -71,9 +71,13 @@ fs.writeFile('./hello.txt', sayHello(), function(err, result){
 var txt = fs.readFile('./hello.txt', function(err, result){
   if(err) return console.error(err);
   console.log( result.toString() );
-  return  result.toString() ;
+  return  resulÂt.toString() ;
 })
 console.log(txt);
 console.log("waiting for the file write");
+var txtS = fs.readFileSync('./hello.txt')
+console.log(txtS.toString());
+console.log("end: The code was blocked");
 ```
 Notice that neither function blocks the thread.
+Most of the IO functions will have a sync function.
