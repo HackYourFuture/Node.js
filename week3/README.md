@@ -57,3 +57,9 @@ In Postman, make sure to add this header, and set the Body type to "Raw".
 ## UUIDs
 
 For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be generated using the `uuid` package, and are guaranteed never to be the same.
+
+## Code in the class
+
+# express-test
+
+Here you can find the express server we wrote in the class. Remember to complete it by adding the missing endpoints, DELETE and PATCH.
