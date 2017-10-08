@@ -1,6 +1,6 @@
 > Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.
 
-# HackYourFuture Node.js - Homework week 2
+# HackYourFuture Node.js - Homework week 4
 
 ## Assignment for this week
 These are the specs for this week's assignment:
