@@ -1,0 +1,23 @@
+{
+  "name": "node-express-server",
+  "version": "0.0.1",
+  "description": "A simple express server in ES6",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "nodemon dist/index.js",
+    "watch": "babel -w src/ -d dist/ --source-maps",
+    "build": "babel src/ -d dist/ --source-maps"
+  },
+  "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-node8": "^1.2.0",
+    "nodemon": "^1.12.1"
+  }
+}
