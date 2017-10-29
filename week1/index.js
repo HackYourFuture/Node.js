@@ -1,33 +1,38 @@
-const http = require('http');
-const port = 2000
-let state = 10;
+import HTTP from 'http'
+import Path from 'path'
 
-const server = http.createServer((request, response) => {
+import sendIndexHTML from './responses/sendIndexHTML'
+import sendPage2HTML from './responses/sendPage2HTML'
+import sendStylesCSS from './responses/sendStylesCSS'
+import sendText from './responses/sendText'
 
-     console.log(`I have received a request for path: ${ request.url }`);
-     response.writeHead(200, {
-          'Content-Type': 'text/html'
-     });
-     if (request.url === "/") {
-          response.write(`<h1>You requested root path.</h1>`);
-     } else if (request.url === "/state") {
-          response.write(`<h1>You requested the path: ${ request.url }</h1><h2>State: ${state}</h2>`);
-     } else if (request.url === "/add") {
-          state += 1;
-          response.write(`<h1>You requested the path: ${ request.url }</h1><h2>State: ${state}</h2>`);
-     } else if (request.url === "/remove") {
-          state -= 1;
-          response.write(`<h1>You requested the path: ${ request.url }</h1><h2>State: ${state}</h2>`);
-     } else if (request.url === "/reset") {
-          state = 10;
-          response.write(`<h1>You requested the path: ${ request.url }</h1><h2>State: ${state}</h2>`);
-     } else {
-          response.write(`<h1>404 not found</h1>`);
-     }
-     response.end();
-});
+const server = HTTP.createServer((request, response) => {
+	console.log(request.method, request.url)
 
+	switch (request.url) {
+	case '/':
+		sendIndexHTML(response)
+		break
+	case '/page2':
+		sendPage2HTML(response)
+		break
+	case '/styles.css':
+		sendStylesCSS(response)
+		break
+	default:
+		const extension = Path.extname(request.url)
+		if (extension === '') {
+			response.statusCode = 302
+			response.setHeader('Location', '/')
+		} else {
+			response.statusCode = 404
+			sendText(response, "File not found")
+		}
+	}
+	
+	response.end()
+})
 
-server.listen(port, () => {
-     console.log(`The nodejs server is now listening on port ${ port }`)
-});
+server.listen(3001)
+
+console.log('Server started')
