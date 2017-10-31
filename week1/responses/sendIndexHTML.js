@@ -1,5 +1,5 @@
 export default function sendIndexHTML(response) {
-	response.setHeader('Content-Type', 'text/html')
+	response.setHeader('Content-Type', 'text/html');
 	response.write(`
 		<!html>
 		<html>
@@ -11,5 +11,5 @@ export default function sendIndexHTML(response) {
 				Hello I am a website
 			</body>
 		</html>
-	`)
+	`);
 }

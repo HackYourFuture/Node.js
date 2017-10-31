@@ -4,15 +4,21 @@
   "description": "Week 1 starting point",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/babel-node"
   },
   "author": "Joost Lubach (HackYourFuture)",
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1"
   },
   "dependencies": {
-    "babel-core": "^6.26.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-node6": "^11.0.0"
+  },
+  "scripts":{
+    "build": "nodemon --exec babel-node"
   }
+
 }
