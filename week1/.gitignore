@@ -1,1 +1,3 @@
 node_modules
+./resonses/sendIndexHTML.js
+./resonses/sendPage2HTML.js
