@@ -50,6 +50,6 @@ const server = HTTP.createServer((request, response) => {
 	response.end();
 })
 
-server.listen(10007);
+server.listen(3000);
 
 console.log('Server started');
