@@ -1,4 +1,4 @@
-export default function removeHtml(response){
+export default function removeHtml(response, valueModified){
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.write(`
     <html>
@@ -8,6 +8,7 @@ export default function removeHtml(response){
         </head>
         <body>
             <h1>You've subtracted 1 from the value of <code>state</code></h1>
+            <p>It's changed from ${valueModified + 1} to ${valueModified}</p>
         </body>
     </html>
     `)

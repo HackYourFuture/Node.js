@@ -1,4 +1,4 @@
-export default function addHtml(response){
+export default function addHtml(response, valueModified){
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.write(`
     <html>
@@ -8,6 +8,7 @@ export default function addHtml(response){
         </head>
         <body>
             <h1>You've added 1 to the value of <code>state</code></h1>
+            <p>It is changed from ${valueModified - 1} to ${valueModified}</p>
         </body>
     </html>
     `)

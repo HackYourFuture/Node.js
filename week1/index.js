@@ -23,14 +23,14 @@ const server = HTTP.createServer((request, response) => {
 		break;
 	case '/add':
 		state++;
-		addHtml(response);
+		addHtml(response, state);
 		break;
 	case '/styles.css':
 		sendStylesCSS(response);
 		break;
 	case '/remove':
 		state--;
-		removeHtml(response);
+		removeHtml(response, state);
 		break;
 	case '/reset':
 		state = 10;
