@@ -22,9 +22,11 @@ const server = http.createServer((request, response) => {
           state = 10;
           response.write(`<h1>You requested the path: ${ request.url }</h1><h2>State: ${state}</h2>`);
      } else {
-          response.write(`<h1>404 not found</h1>`);
-     }
-     response.end();
+          response.writeHead(404, {
+               'Content-Type': 'text/html'
+          });
+}
+response.end();
 });
 
 
