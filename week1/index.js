@@ -64,7 +64,7 @@ let server = http.createServer( (request, response) => {
 		//response.write(`<h1>The state is :</h1><h2>${state}</h2>`)
 		
 	}else{
-		 response.writeHead(200, {"Content-Type":"text/html"});
+		 response.writeHead(404, {"Content-Type":"text/html"});
 	response.end(`
 <!DOCTYPE html>
 <html>
