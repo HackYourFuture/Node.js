@@ -146,14 +146,18 @@ function update(index){
     //check if an index was actually filled in
     if(index !== undefined){
         index = parseInt(index) - 1;
-        let rl = readline.createInterface(process.stdin, process.stdout);
         fs.readFile('./todos.txt', 'UTF-8', (err, data) => {
             data = data.split('\r\n');
-            rl.question(`the item to be modified is"${data[index]}", what will it be? `, (answer) => {
-                data[index] = answer;
-                todosWriter(data);
-                rl.close();
-            });
+            if(data[index] !== undefined){
+                let rl = readline.createInterface(process.stdin, process.stdout);       
+                rl.question(`the item to be modified is"${data[index]}", what will it be? `, (answer) => {
+                    data[index] = answer;
+                    todosWriter(data);
+                    rl.close();
+                    return;
+                });
+            }
+            console.log('That item doesn\'t exist yet!');            
         });
     } else {
         console.log('Not the correct usage! Try "node index.js help"');                
