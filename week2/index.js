@@ -156,8 +156,9 @@ function update(index){
                     rl.close();
                     return;
                 });
+            } else {
+                console.log('That item doesn\'t exist yet!');            
             }
-            console.log('That item doesn\'t exist yet!');            
         });
     } else {
         console.log('Not the correct usage! Try "node index.js help"');                
