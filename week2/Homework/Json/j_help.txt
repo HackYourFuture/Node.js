@@ -1,0 +1,7 @@
+
+help:   show help section
+list:   show current todo's
+add:    add a todo item. You should enter key then value like: add a apple
+remove: remove a todo item by its key like: remove a
+reset:  remove all todo items from the list
+update: update a todo item with new one. You should enter key then value like: update a apricot
