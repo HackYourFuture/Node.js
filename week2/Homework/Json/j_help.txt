@@ -1,4 +1,3 @@
-
 help:   show help section
 list:   show current todo's
 add:    add a todo item. You should enter key then value like: add a apple
