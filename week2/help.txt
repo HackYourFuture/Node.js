@@ -1,0 +1,8 @@
+how to use this app?
+you can use it to make todo list
+
+type: 'node index.js list' to show your todo list.
+type: 'node index.js add "Task"' to add 'Task' to your todo list.
+type: 'node index.js remove 1' to delete tasin place 1 which you already know :).
+type: 'node index.js update 1 "Task"' to update the task in place 1 to Task.
+type: 'node index.js reset' to reset you list.
