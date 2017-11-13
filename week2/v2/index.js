@@ -1,3 +1,6 @@
+/* jshint esnext: true */
+
+
 const fs = require('fs');
 const readline = require('readline');
 
@@ -54,11 +57,7 @@ function start() {
     }
 }
 
-function fileWriter(parsedData, fileName){
-    fs.writeFile(fileName, JSON.stringify(parsedData), (err) => {
-        if (err) throw err;
-    })
-}
+
 
 function manualReader(){
     fs.readFile('./help.txt', 'UTF-8', (err, data) => {
@@ -81,12 +80,11 @@ function checkFileExistance(){
 
 function addTodoItem(data, item){
     if (item !== undefined){
-        data.push({'id': item, "status": ''})
+        data.push({'id': item, "status": ''});
         fileWriter(data, './todos.json');
     } else {
         console.log('Specify what you want to add! Check "node index.js help" for more information');
-    }
-    
+    }  
 }
 
 function itemsResetter(){
