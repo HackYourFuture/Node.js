@@ -1,0 +1,12 @@
+This is the help manual to use Ji's todo command line application.
+Here are the possible options that you can use:
+    node index.js + (one of the options below):
+
+        add "some todo item"                to add an item to the todo list
+        list                                to list the todo items
+        remove <position>                   to remove a specific todo item
+        update <position>                   to modify an existing todo item
+        cross <position>                    to cross an item as DONE
+        uncross <position>                  to uncross an item if it was marked as DONE
+        reset                               to clear the todo list
+        help                                to display this manual 
