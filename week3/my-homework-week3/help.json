@@ -1,0 +1,1 @@
+[{"/help":"To get a help"},{"/todo/add/:newItem":"To add a new task"},{"/todo/delete/:id":"To remove a task by the id number"},{"/todo":"To reset the todo list"}]
