@@ -1,0 +1,11 @@
+//list
+curl -s -X GET http://localhost:3000/todos
+
+//remove
+curl -s -X DELETE http://localhost:3000/todos/2
+
+//create
+curl -s -X POST -H "Content-Type: application/json" -d '{"todo": {"description": "todo description"}}' http://localhost:3000/todos
+
+//update
+curl -s -X PUT -H "Content-Type: application/json" -d '{"todo": {"description": "New todo description"}}' http://localhost:3000/todos/3
