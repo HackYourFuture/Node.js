@@ -153,6 +153,7 @@ let updateItem = (request, response) => {
     fileReaderAndParse('./todos.json')
     .then((jsonData) => {
         let itemIndex = jsonData.findIndex((item) => item.ID === id);
+        if()
         jsonData[itemIndex].item = newItem;
         fileWriter('./todos.json', jsonData);
         response.json({
