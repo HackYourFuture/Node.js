@@ -1,38 +1,26 @@
-import HTTP from 'http'
-import Path from 'path'
+let http = require('http')
+const port = 3000;
+let state = 10 ;
 
-import sendIndexHTML from './responses/sendIndexHTML'
-import sendPage2HTML from './responses/sendPage2HTML'
-import sendStylesCSS from './responses/sendStylesCSS'
-import sendText from './responses/sendText'
+let server = http.createServer( (request, response) => {
 
-const server = HTTP.createServer((request, response) => {
-	console.log(request.method, request.url)
+  if (request.url === "/"){
+      response.write("you requested root path");
+    } else if (request.url === "/state" ){
+      response.write(`your state is ${state}`);
+    } else if (request.url === "/add"){
+      state += 1;
+      response.write(`your state is ${state}`);
+    } else if (request.url === "/remove"){
+      state -= 1;
+      response.write(`your state is ${state}`);
+    } else if (request.url === "/reset"){
+      state = 10;
+      response.write(`your state is ${state}`);
+    } else response.write(`${request.url} is not found`);
+   response.end()
+});
 
-	switch (request.url) {
-	case '/':
-		sendIndexHTML(response)
-		break
-	case '/page2':
-		sendPage2HTML(response)
-		break
-	case '/styles.css':
-		sendStylesCSS(response)
-		break
-	default:
-		const extension = Path.extname(request.url)
-		if (extension === '') {
-			response.statusCode = 302
-			response.setHeader('Location', '/')
-		} else {
-			response.statusCode = 404
-			sendText(response, "File not found")
-		}
-	}
-	
-	response.end()
-})
-
-server.listen(3001)
-
-console.log('Server started')
+server.listen(port, () =>{
+  console.log(`the node server is now listening on the port ${ port }`)
+});
