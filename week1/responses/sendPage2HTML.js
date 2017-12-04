@@ -1,5 +1,5 @@
 export default function sendPage2HTML(response) {
-	response.setHeader('Content-Type', 'text/html')
+	response.setHeader('Content-Type', 'text/html');
 	response.write(`
 		<!html>
 		<html>
@@ -11,5 +11,5 @@ export default function sendPage2HTML(response) {
 				Hello I am page 2.
 			</body>
 		</html>
-	`)
+	`);
 }

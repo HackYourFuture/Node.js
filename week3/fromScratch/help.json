@@ -1,0 +1,30 @@
+{
+    "message": "This is the help manual, here you can read what you can de on this web server and how to do it",
+    "paths": {
+        "/": {
+            "GET": "Renders this help manual" 
+        },
+        "/help": {
+            "GET": "Renders this help manual"
+        },
+        "/todos": {
+            "GET": "Renders the list of todo items",
+            "DELETE": "Clears everything in the todos list"
+        },
+        "/todos/delete/:ID": {
+            "DELETE": "Allows you to delete a todo item indicated by its id"
+        },
+        "/todos/add/:newItem": {
+            "POST": "Allows you to add an new todo item to the list, it will automatically have a unique id"
+        },
+        "/todos/mark/:ID": {
+            "POST": "Allows your to turn the 'DONE' into true to indicate that the todo item is done"
+        },
+        "/todos/unmark/:ID": {
+            "POST": "Allows you to turn the 'DONE' flag to false if it was true to indicate that the todo item isn't finished yet"
+        },
+        "/todos/update/:ID/:updatedItem": {
+            "POST": "Allows you to change the text of an existing todo item to a new one"
+        }
+    }
+}
