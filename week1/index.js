@@ -6,6 +6,10 @@ import sendPage2HTML from './responses/sendPage2HTML'
 import sendStylesCSS from './responses/sendStylesCSS'
 import sendText from './responses/sendText'
 
+
+console.log("Jason is good at homework");
+
+
 const server = HTTP.createServer((request, response) => {
 	console.log(request.method, request.url)
 
