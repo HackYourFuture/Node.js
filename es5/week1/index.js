@@ -21,5 +21,5 @@ server.on('request', function(request, response) {
   console.log('New http request received', request.url);
   response.setHeader('content-type', 'text/html');
   response.write('<html><head></head><body><h1>Hello world</h1></body></html>');
-  response.end();
+ 
 });
