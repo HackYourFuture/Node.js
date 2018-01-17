@@ -6,33 +6,46 @@ import sendPage2HTML from './responses/sendPage2HTML'
 import sendStylesCSS from './responses/sendStylesCSS'
 import sendText from './responses/sendText'
 
-const server = HTTP.createServer((request, response) => {
-	console.log(request.method, request.url)
+var state = 10;
+var http = require('http');
 
-	switch (request.url) {
-	case '/':
-		sendIndexHTML(response)
-		break
-	case '/page2':
-		sendPage2HTML(response)
-		break
-	case '/styles.css':
-		sendStylesCSS(response)
-		break
-	default:
-		const extension = Path.extname(request.url)
-		if (extension === '') {
-			response.statusCode = 302
-			response.setHeader('Location', '/')
-		} else {
-			response.statusCode = 404
-			sendText(response, "File not found")
-		}
-	}
-	
-	response.end()
-})
+var port = 8080;
 
-server.listen(3001)
+var server = http.createServer();
 
-console.log('Server started')
+server.on('request', (req, res) => {
+    console.log('request', req.url);
+    if (req.url === '/state') {
+        console.log(state);
+    }
+    else if (req.url === '/add') {
+        state += 1;
+        
+    }
+    else if (req.url === '/remove') {
+        state -= 1;
+    }
+    else if (req.url === '/reset') {
+        state = 10;
+    }
+    
+    else {
+      //  res.writeHead(404, { "Content-Type": "text/plain" });
+       // res.write("404 Not found");
+        //res.end();
+    }
+
+
+    res.setHeader('content-type', 'text/html');
+
+    res.write('<h1>'+state+'</h1>');
+    res.end();
+}
+);
+server.listen(port, function (error) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('api listening on port', port);
+    }
+});
