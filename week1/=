@@ -5,7 +5,7 @@ import sendIndexHTML from './responses/sendIndexHTML'
 import sendPage2HTML from './responses/sendPage2HTML'
 import sendStylesCSS from './responses/sendStylesCSS'
 import sendText from './responses/sendText'
-console.log("Hello Class12")
+console.log("To be honest, i should have performed well in class")
 const server = HTTP.createServer((request, response) => {
 	console.log(request.method, request.url)
 
