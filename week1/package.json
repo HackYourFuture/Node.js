@@ -1,18 +1,15 @@
 {
   "name": "week1",
   "version": "1.0.0",
-  "description": "Week 1 starting point",
+  "description": "Create an http server that can add and subtract from a number, which we will call the \"state\"!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Joost Lubach (HackYourFuture)",
-  "license": "ISC",
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1"
+  "repository": {
+    "type": "git",
+    "url": " node"
   },
-  "dependencies": {
-    "babel-core": "^6.26.0"
-  }
+  "author": "",
+  "license": "ISC"
 }
