@@ -14,15 +14,15 @@ server.on("request", (request, response) => {
     console.log("requesting", request.url)
     function setResponse(header) {
         response.setHeader("Content-Type", "Text-html");
-        response.write(header);
+        response.write(`<h1>${header}</h1>`);
         response.end();
     }
     switch (request.url) {
-        case "/add" : state++; setResponse(`<h1>${state}</h1>`); break;
-        case "/remove": state--; setResponse(`<h1>${state}</h1>`); break;
-        case "/reset": state = 10; setResponse(`<h1>${state}</h1>`); break;
-        case "/state": state; setResponse(`<h1>${state}</h1>`); break;
-        default: setResponse(`<h1>Error 404, page not found</h1>`); break;    
+        case "/add" :  setResponse(state++); break;
+        case "/remove":  setResponse(state--); break;
+        case "/reset": setResponse(state = 10); break;
+        case "/state": setResponse(state); break;
+        default: setResponse("Error 404, page not found"); break;    
     }
 })
 const port = 8080;
