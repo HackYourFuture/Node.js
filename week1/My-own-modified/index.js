@@ -6,33 +6,29 @@ const server = http.createServer((req, res) => {
 let state = 10;
 let original = 10;
 server.on("request", (req, res) => {
+  function responseWrite(val) {
+    res.setHeader("content-type", "text/html");
+    res.write(`<h1>${val}</h1>`);
+  }
   console.log(req.method, req.url);
   switch (req.url) {
     case "/state":
-      res.setHeader("content-type", "text/html");
-      res.write(`<h1>${state}</h1>`);
-      res.end()
+      responseWrite(state)
       break;
     case "/add":
-      res.setHeader("content-type", "text/html");
-      res.write(`<h1>${state += 1}</h1>`);
-      res.end()
+      responseWrite(state += 1);
       break;
     case "/remove":
-      res.setHeader("content-type", "text/html");
-      res.write(`<h1>${state -= 1}</h1>`);
-      res.end()
+      responseWrite(state -= 1);
       break;
     case "/reset":
-      res.setHeader("content-type", "text/html");
-      res.write(`<h1>${original}</h1>`);
-      res.end()
-      break;
+      responseWrite(original);
+    break;
     default:
       res.statusCode = 404
-      res.write(`<h1>${res.statusCode}</h1>`);
-      res.end()  
+      responseWrite(res.statusCode);
   }
+  res.end()  
 });
 server.on("connection", () => {
   console.log("connected")
