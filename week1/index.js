@@ -22,7 +22,7 @@ server.on("request", (request, response) => {
         case "/remove":  setResponse(state--); break;
         case "/reset": setResponse(state = 10); break;
         case "/state": setResponse(state); break;
-        default: setResponse("Error 404, page not found"); break;    
+        default: setResponse("Error 404, page not found");   
     }
 })
 const port = 8080;
