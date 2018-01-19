@@ -1,6 +1,5 @@
 "use strict";
 const http = require("http");
-// console.log(http.STATUS_CODES)
 const server = http.createServer((req, res) => {
   console.log("Creating Server");
 });
