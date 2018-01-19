@@ -1,52 +1,59 @@
-// To run this file: node index.js
-// Then in your browser: http://localhost:3000
 const http = require('http');
-const port = 3000;
-let state = 10;
+const port = 8080;
+//  create a server, and that server will take care of handling requests
+//  for data, and then returning some information.
+//pass back header to let the client know what types of files the server will be returning.
 const server = http.createServer((request, response) => {
 	console.log(request.method, request.url);
-	//console.log(response);
+	response.writeHeader(200, {
+		'content-type': 'text/html'
+	});
 });
-// Start the HTTP server, start listening for request
+// Start the HTTP server, start listening for requests
 server.listen(port, (error) => {
 	if (error) {
 		console.log(error);
 	} else {
-		console.log('api listening on port', port);
+		console.log(`Go to http://localhost:${port} on your browser.`);
 	}
 });
-// Create a event handler for "request"
-// this is an alternative way
+
+server.on("connection", () => {
+	console.log("connected");
+});
+
+
+function htmlMessage(message, response) {
+	response.write(
+		`<html>
+			<head>
+			</head>
+			<body>
+				<h1>${message}</h1>
+			</body>
+		</html>`
+	);
+}
+
+let state = 10;
 server.on('request', (request, response) => {
 	console.log('New http request received', request.url);
 	switch (request.url) {
 		case "/state":
-			response.setHeader('content-type', 'text/html');
-			response.write(`<html><head></head><body><h1>The state :${state}</h1></body></html>`);
-			response.end();
+			htmlMessage(`The state: ${state}`, response);
 			break;
 		case "/add":
-			response.setHeader('content-type', 'text/html');
-			response.write(`<html><head></head><body><h1>Adding: ${state++}</h1></body></html>`);
-			response.end();
+			htmlMessage(`Adding: ${state++}`, response);
 			break;
 		case "/remove":
-			response.setHeader('content-type', 'text/html');
-			response.write(`<html><head></head><body><h1>Removing: ${state--}</h1></body></html>`);
-			response.end();
+			htmlMessage(`Removing: ${state--}`, response);
 			break;
 		case "/reset":
-			response.setHeader('content-type', 'text/html');
-			response.write(`<html><head></head><body><h1>reset: ${state = 10}</h1></body></html>`);
-			response.end();
+			htmlMessage(`Reset: ${state = 10}`, response);
 			break;
 		default:
 			response.statusCode = 404;
-			response.write(`<html><head></head><body><h1>The page not found__${response.statusCode}</h1></body></html>`); response.end();
-			response.end();
-
+			htmlMessage(`The page is not found__404`, response);
 	}
-});
-server.on("connection", () => {
-	console.log("connected");
+	response.end();
 });
