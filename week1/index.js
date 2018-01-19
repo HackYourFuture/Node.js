@@ -18,11 +18,11 @@ server.on("request", (request, response) => {
         response.end();
     }
     switch (request.url) {
-        case "/add" :  setResponse(state++); break;
-        case "/remove":  setResponse(state--); break;
+        case "/add": setResponse(state++); break;
+        case "/remove": setResponse(state--); break;
         case "/reset": setResponse(state = 10); break;
         case "/state": setResponse(state); break;
-        default: setResponse("Error 404, page not found");   
+        default: setResponse("Error 404, page not found");
     }
 })
 const port = 8080;
