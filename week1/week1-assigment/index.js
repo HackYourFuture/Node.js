@@ -1,52 +1,48 @@
-// To run this file: node index.js
-// Then in your browser: http://localhost:8080
-var http = require('http');
+' use strict '
 
-var port = 8080;
-let status = 10;
-var server = http.createServer();
+let state = 10;
+const http = require('http');
+const server = http.createServer();
+const PORT = 8080;
 
-// Start the HTTP server, start listening for requests
-server.listen(port, function (error) {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('api listening on port', port);
-    }
+server.listen(PORT, () => {
+    console.log('listening on', PORT);
 });
 
-// Create a event handler for "request"
-// this is an alternative way
-server.on('request', function (request, response) {
+server.on('connection', () => {
+    console.log('connected')
+});
 
-
-    if (request.url === "/state") {
-        response.setHeader('content-type', 'text/html');
-        response.write('<html><head></head><body><h1>' + status + '</h1></body></html>');
-        response.end();
-    } else if (request.url === "/add") {
-        status = status + 1;
-        response.setHeader('content-type', 'text/html');
-        response.write('<html><head></head><body><h1>' + status + '</h1></body></html>');
-        response.end();
-
-    } else if (request.url === "/remove") {
-        status -= 1;
-        response.setHeader('content-type', 'text/html');
-        response.write('<html><head></head><body><h1>' + status + '</h1></body></html>');
-        response.end();
-
-    } else if (request.url === "/reset") {
-        status = 10;
-        response.setHeader('content-type', 'text/html');
-        response.write('<html><head></head><body><h1>' + status + '</h1></body></html>');
-        response.end();
-
-    } else{
-        status++;
-        response.setHeader('content-type', 'text/html');
-        response.write('<html><head></head><body><h1>' + "404 ERROR"+ '</h1></body></html>');
-        response.end();
+server.on('request', (req, res) => {
+    console.log('request', req.url);
+    function switchStates(x) {
+        res.setHeader('content-type', 'text/html')
+        res.write('<h2>The state value is: ' + x + '</h2>');
+        res.end();
+    }
+    switch (req.url) {
+        case '/state':
+            state;
+            switchStates(state)
+            break;
+        case '/add':
+            state++
+            switchStates(state)
+            break;
+        case '/remove':
+            state--
+            switchStates(state)
+            break;
+        case '/reset':
+            state = 10;
+            switchStates(state)
+            break;
+        default:
+            let message = state + ' . Error code 404: Not found';
+            res.setHeader('content-type', 'text/html')
+            res.write('<h2>The state value is: ' + message + '</h2>');
+            res.end();
 
     }
-});
+
+})
