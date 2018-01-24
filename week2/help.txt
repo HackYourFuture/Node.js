@@ -1,0 +1,62 @@
+
+Welcome! This app will help you make a todo list
+
+
+COMMANDS:
+
+Type commands between ~~ ~~ after "node index.js"
+
+NOTE: changing list manually may lead to unexpected behavior
+
+========================================================
+
++ DISPLAY List Items
+
+~~ list ~~
+
+========================================================
+
++ ADD Item to List
+
+~~ add "new item" ~~
+
+- place item to add between quotation marks ""
+- can add only ONE item at a time
+- cannot add an empty item ("") to list
+
+========================================================
+
++ REMOVE Item from List
+
+~~ remove item-number ~~
+
+- e.g. * node index.js remove 3 * to remove 3RD item
+- item-number MUST be greater than or equal to 1
+- item-number CAN'T be greater than number of list items
+
+========================================================
+
++ CHANGE/UPDATE List Item
+
+~~ update item-number "new item" ~~
+
+
+- e.g. to change 2ND list item to "new item":
+    * node index.js update 2 "new item" *
+- item-number MUST be greater or equal to 1
+- item-number CAN'T be greater than number of list items
+
+========================================================
+
++ DELETE ALL Items from List
+
+~~ reset ~~
+
+========================================================
+
++ HELP Menu
+
+~~ help ~~
+
+========================================================
+
