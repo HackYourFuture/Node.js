@@ -14,30 +14,51 @@ var state = 10;
 
 Endpoints criteria
 ```js
-// /state 
-// response: the current state in a html format 
-// when the server starts, this should return "10"
-http://localhost:8080/state 
+'use strict';
 
-// /add
-// Response: "ok" in html format
-// This should add 1 to the current state
-http://localhost:8080/add
+// To run this file: node index.js
+// Then in your browser: http://localhost:8080
+let http = require('http');
+let port = 8080;
+let state = 10;
+let server = http.createServer();
 
-// /remove
-// Response: "ok" in html format
-// This should subtract 1 ƒrom the current state
-http://localhost:8080/remove
+// Start the HTTP server, start listening for requests
+server.listen(port, function (error) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('api listening on port', port);
+    }
+});
 
-// /reset
-// Response: "ok" in html format
-// This should set the state back to 10
-http://localhost:8080/reset
+// Create a event handler for "request"
+// this is an alternative way
+server.on('request', function (request, response) {
+    console.log(request.url);
 
-// Any other URL
-// Response: return error code 404: Not found with a friendly message
-// and do not change the state variable
-http://localhost:8080/subtract
+    if (request.url === '/state') {
+        response.setHeader('content-type', 'text/html');
+        response.write('<h1>'+ state +'</h1>');
+    } else if (request.url === "/add") {
+        state ++;
+        response.setHeader('content-type', 'text/html');
+        response.write('<h1>' + state + '</h1>');
+    } else if (request.url === "/remove") {
+        state --;
+        response.setHeader('content-type', 'text/html');
+        response.write('<h1>' + state + '</h1><');
+    } else if (request.url === "/reset") {
+        state = 10;
+        response.setHeader('content-type', 'text/html');
+        response.write('><h1>' + state + '</h1>');
+    } else {
+        response.setHeader('content-type', 'text/html');
+        response.write('<h1>' + 'error code' + response.state +': Not found kindly check the URL' + '</h1>');
+    }
+
+    response.end();
+});
 ```
 
 ## Reading

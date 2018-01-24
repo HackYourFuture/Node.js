@@ -1,0 +1,11 @@
+-----------------------------------------------------------------------------------
+                              Hello in TODO app Menu 
+-----------------------------------------------------------------------------------
+
+1- list   : to show your TODO list.
+2- add    : to add a new task to your list .
+3- remove : to remove an old task from your list .
+4- update : to update an existing task from your list .
+5- reset  : < Warning > this commend will RESET your list !!.
+6- exit   : to exit the app 
+
