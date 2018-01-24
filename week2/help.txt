@@ -1,0 +1,13 @@
+Help
+==========
+
+* LIST item :
+Use:$node <filename.js>  list
+
+* ADD item :
+Use:$node <filename.js>  add "message"
+
+* REMOVE item:
+Use:$node <filename.js>  remove INDEX OF ITEM
+* HELP
+$node <filename.js> help
