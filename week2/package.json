@@ -1,0 +1,16 @@
+{
+  "name": "week2",
+  "version": "1.0.0",
+  "description": "> Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "talal",
+  "license": "ISC"
+  "engines": {
+  "node": ">=6.5.0" // this means you need 6.5 or higher
+},
+
+}
+
