@@ -1,0 +1,8 @@
+
+This are all the commands that you can type in:
+
+1- add (to add new object with a property).
+2- help (to see all the commands that are used in the program)
+3- list(to see all the items in myToDoList)
+4- reset(to clear all the value in myToDoList ) 
+5- remove(to remove an object from my myToDoList)
