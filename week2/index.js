@@ -1,16 +1,19 @@
 "use-strict";
 
 const fs = require('fs');
-const TODO_FILE = process.env['TODO_file'] || 'todo.json'
-const HELP_MENU = 'help.txt';
+const FILENAMES = { help: "help.txt", todo: "todo.json" }
 
 let readFiles = (filename) => {
     return new Promise((resolve, reject) => {
         fs.readFile(filename, "utf8", (err, data) => {
             if (err) {
                 if (err.code === "ENOENT") {
-                    // No such file or directory
-                    console.log("Sorry, this file doesn't exist.");
+                    console.log(`Sorry, this file doesn't exist, but new file has been created : ${filename}`);
+                    let fileContent = [];
+                    let filePath = `${filename}.json`;
+                    fs.writeFile(filePath, fileContent, (err) => {
+                        if (err) throw err;
+                    })
                 } else if (err.code === "EACCES") {
                     // the user don't have a permission
                     console.log("Sorry, but you don't have permission.");
@@ -18,7 +21,7 @@ let readFiles = (filename) => {
                     // any other Error
                     console.log(` unknown error occurred: ${err.message}`);
                 }
-                process.exit();
+                reject();
             }
             resolve(data);
 
@@ -29,7 +32,7 @@ let readFiles = (filename) => {
 
 let writeFiles = (filename, dataAsString) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(TODO_FILE, dataAsString, (err) => {
+        fs.writeFile(FILENAMES.todo, dataAsString, (err) => {
             if (err) {
                 if (err.code === "ENOENT") {
                     // No such file or directory
@@ -41,7 +44,7 @@ let writeFiles = (filename, dataAsString) => {
                     // any other Error
                     console.log(` unknown error occurred: ${err.message}`);
                 }
-                process.exit();
+                console.log.exit();
             }
             resolve();
         })
@@ -50,10 +53,12 @@ let writeFiles = (filename, dataAsString) => {
 
 let addTodoItem = (filename, todoList, itemText) => {
     todoList.push({
-        TASK_NUMBER: todoList.length + 1,
+        TODO_NUMBER: todoList.length + 1,
         TODO_TASK: itemText
     });
-    writeFiles(filename, JSON.stringify(myTodoList)).then(() => console.log("\nDone Adding the task on your TODO list.\n\n")).then(() => askingLoop());
+    writeFiles(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("\nDone Adding the task on your TODO list.\n\n"))
+        .then(() => askingLoop());
 }
 
 let removeTodoItem = (filename, todoList, taskNumber) => {
@@ -61,7 +66,9 @@ let removeTodoItem = (filename, todoList, taskNumber) => {
     for (let i = 0; i < todoList.length; i++) {
         todoList[i].TASK_NUMBER = i + 1;
     }
-    writeFiles(filename, JSON.stringify(myTodoList)).then(() => console.log("\nDone Removing the task from your TODO list.\n")).then(() => askingLoop());
+    writeFiles(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("\nDone Removing the task from your TODO list.\n"))
+        .then(() => askingLoop());
 }
 
 let updateTodoItem = (filename, todoList, taskNumber, itemText) => {
@@ -69,7 +76,9 @@ let updateTodoItem = (filename, todoList, taskNumber, itemText) => {
         TASK_NUMBER: taskNumber,
         TODO_TASK: itemText
     };
-    writeFiles(filename, JSON.stringify(myTodoList)).then(() => console.log("\nDone Updating the task on your TODO list.\n")).then(() => askingLoop());
+    writeFiles(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("\nDone Updating the task on your TODO list.\n"))
+        .then(() => askingLoop());
 }
 
 let resetTodoItem = (filename, todoList) => {
@@ -77,7 +86,7 @@ let resetTodoItem = (filename, todoList) => {
 }
 
 const readline = require('readline');
-const rl = readline.createInterface(process.stdin, process.stdout);
+const rl = readline.createInterface(console.log.stdin, console.log.stdout);
 
 function askingLoop(data) {
 
@@ -85,9 +94,9 @@ function askingLoop(data) {
 
         switch (data.toString().trim()) {
             case 'help':
-                readFiles(HELP_MENU).then((data) => {
+                readFiles(FILENAMES.help).then((data) => {
                     console.log(data);
-                    process.stdout.write('\nWrite your commend > ')
+                    console.log('\nWrite your commend > ')
                 });
 
                 break;
@@ -95,56 +104,42 @@ function askingLoop(data) {
                 console.log(`\n----------------------------------------------------------------------------------\n`);
                 myTodoList.map(task => { console.log(`    ${task.TASK_NUMBER}:${task.TODO_TASK}`) });
                 console.log(`\n----------------------------------------------------------------------------------\n`);
-                process.stdout.write('\nWrite your commend > ');
+                console.log('\nWrite your commend > ');
                 break;
             case 'add':
 
-                rl.question('\nWrite a new task or "E" to exit> ', function (task) {
-
-                    if (task.toString().trim() != "E" && task.toString().trim() != "e") {
-                        addTodoItem(TODO_FILE, myTodoList, task.toString().trim())
-                    } else {
-                        askingLoop();
-                    }
-
+                rl.question('\nWrite a new task or "Ctrl+C" to exit> ', function (task) {
+                    addTodoItem(FILENAMES.todo, myTodoList, task.toString().trim())
+                    askingLoop();
                 })
                 break;
             case 'remove':
-                rl.question('\nWrite the task number or "E" to exit> ', function (task) {
-                    if (task.toString().trim() != "E" && task.toString().trim() != "e") {
-                        removeTodoItem(TODO_FILE, myTodoList, task);
-                    } else {
-                        askingLoop();
-                    }
-                    
-
+                rl.question('\nWrite the task number or "Ctrl+C" to exit> ', function (task) {
+                    removeTodoItem(FILENAMES.todo, myTodoList, task);
+                    askingLoop();
                 })
                 break;
             case 'update':
-                rl.question('\nWrite the task number or "E" to exit> ', function (task) {
-                    if (task != "E") {
-                        let number = task;
-                        rl.question('\nWrite the new task> ', function (data) {
-                            updateTodoItem(TODO_FILE, myTodoList, number, data);
-                        })
-                    } else {
-                        process.exit();
-                    }
+                rl.question('\nWrite the task number or "Ctrl+C" to exit> ', function (task) {
+                    let number = task;
+                    rl.question('\nWrite the new task> ', function (data) {
+                        updateTodoItem(FILENAMES.todo, myTodoList, number, data);
+                    })
 
                 })
 
                 break;
             case 'reset':
-                rl.question('\n are you sure you wanna reset your list (Y/N)> ', function (task) {   
+                rl.question('\n are you sure you wanna reset your list (Y/N)> ', function (task) {
                     if (task.toString().trim() == "Y") {
-                        resetTodoItem(TODO_FILE, myTodoList);
-                    } 
+                        resetTodoItem(FILENAMES.todo, myTodoList);
+                    }
                 })
 
                 break;
             case 'exit':
                 console.log('Bye !!.');
-                process.exit()
+                console.log.exit()
                 break;
             default:
                 console.log('Sorry, Wrong input kindly use "help" command for more information');
@@ -155,7 +150,7 @@ function askingLoop(data) {
 
 }
 
-readFiles(TODO_FILE).then((data) => {
+readFiles(FILENAMES.todo).then((data) => {
     data = data || "[]";
     myTodoList = JSON.parse(data);
     console.log('\n----------------------------------------------------------------------------------\n                               Welcome to TODO app \n----------------------------------------------------------------------------------\n\n');
