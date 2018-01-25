@@ -67,32 +67,33 @@ const listTodoItem = (todoList) => {
 const showHelpMenu = (filename) => {
     readTodosFile(filename)
         .then((data) => {
-            console.log(data)
-                .catch((err) => {
-                    console.log('ERROR:', err);
-                });
+            console.log(data);
+        })
+        .catch((err) => {
+            console.log('ERROR:', err);
         });
 };
-readTodosFile(TODOS_FILENAME).then((data) => {
-    data = data || "[]";
-    myTodoList = JSON.parse(data);
-    const commandArgs = process.argv.slice(2);
-    switch (commandArgs[0]) {
-        case 'add':
-            addTodoItem(TODOS_FILENAME, myTodoList, commandArgs[1]);
-            break;
-        case 'remove':
-            removeTodoItem(TODOS_FILENAME, myTodoList, commandArgs[1]);
-            break;
-        case 'list':
-            listTodoItem(myTodoList);
-            break;
-        case 'help':
-            showHelpMenu('help.txt');
-            break;
-        default:
-            showHelpMenu('help.txt');
-            break;
-    }
-})
-.catch((err) => console.log('ERROR:', err));
+readTodosFile(TODOS_FILENAME)
+    .then((data) => {
+        data = data || "[]";
+        myTodoList = JSON.parse(data);
+        const commandArgs = process.argv.slice(2);
+        switch (commandArgs[0]) {
+            case 'add':
+                addTodoItem(TODOS_FILENAME, myTodoList, commandArgs[1]);
+                break;
+            case 'remove':
+                removeTodoItem(TODOS_FILENAME, myTodoList, commandArgs[1]);
+                break;
+            case 'list':
+                listTodoItem(myTodoList);
+                break;
+            case 'help':
+                showHelpMenu('help.txt');
+                break;
+            default:
+                showHelpMenu('help.txt');
+                break;
+        }
+    })
+    .catch((err) => console.log(err));
