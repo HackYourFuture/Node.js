@@ -86,7 +86,7 @@ let resetTodoItem = (filename, todoList) => {
 }
 
 const readline = require('readline');
-const rl = readline.createInterface(console.log.stdin, console.log.stdout);
+const rl = readline.createInterface(process.stdin, process.stdout);
 
 function askingLoop(data) {
 
@@ -102,9 +102,8 @@ function askingLoop(data) {
                 break;
             case 'list':
                 console.log(`\n----------------------------------------------------------------------------------\n`);
-                myTodoList.map(task => { console.log(`    ${task.TASK_NUMBER}:${task.TODO_TASK}`) });
+                myTodoList.map(task => { console.log(`    ${task.TODO_NUMBER}:${task.TODO_TASK}`) });
                 console.log(`\n----------------------------------------------------------------------------------\n`);
-                console.log('\nWrite your commend > ');
                 break;
             case 'add':
 
