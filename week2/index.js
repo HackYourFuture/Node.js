@@ -22,7 +22,6 @@ let readFileFunction = (filename) => {
                 } else {
                     console.log(`Uh oh, an unknown error occured: ${err.message}`);
                 }
-                process.exit();
                 reject(err);
             }
             //  console.log(`Successfully read the file: ${filename}`)
@@ -42,7 +41,7 @@ let writeFileFunction = (filename, dataAsString) => {
 };
 
 let addingTask = (taskText) => {
-    readFileFunction(TODOS_FILENAME)
+    readFileFunction("TODOscS_FILENAME")
         .then(data => {
             data = data || "[]";
             myTodoList = JSON.parse(data);
