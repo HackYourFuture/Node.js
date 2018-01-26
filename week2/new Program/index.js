@@ -34,9 +34,7 @@ function filesWriter(path, newData, oldData) {
   return new Promise((resolve, reject) => {
     
     let dataHolder = []
-    if (!oldData) {
-      dataHolder.push(newData)
-    } else if (!newData && !oldData) {
+    if (!oldData && newData || !newData && !oldData) {
       dataHolder.push(newData)
     } else {
       dataHolder.push(oldData, newData)
