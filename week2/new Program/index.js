@@ -16,7 +16,7 @@ The following commands should be present:
 */
 const FS = require("fs")
 const REQUIRE_ARGS = process.argv.slice(2)
-const FIRST_INPUT_COMMAND = REQUIRE_ARGS[0]
+const firstInputCommand = REQUIRE_ARGS[0]
 const FILE_NAME = process.env.todosFileName || "todos.txt"
 
 function filesReader(path) {
@@ -64,7 +64,7 @@ function readingError(e) {
   process.exit()
 }
 
-switch (FIRST_INPUT_COMMAND) {
+switch (firstInputCommand) {
   case "list":
     filesReader(FILE_NAME).then(data => { console.log(data) }).catch(readingError)
     break
@@ -100,7 +100,7 @@ switch (FIRST_INPUT_COMMAND) {
     }).catch(readingError) // filesReader()
     break
   default:
-    if (!process.env.todosFileName || FIRST_INPUT_COMMAND === "help") {
+    if (!process.env.todosFileName || firstInputCommand === "help") {
       filesReader("./help.txt").then(data => { console.log(data) }).catch(e => { console.error(e) })
     } else if (process.env.todosFileName) {
       filesReader(FILE_NAME).catch(readingError)
