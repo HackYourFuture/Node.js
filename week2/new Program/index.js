@@ -14,14 +14,14 @@ The following commands should be present:
   - reset: remove all todo items from the list (node index.js reset)
   - BONUS: update: update a todo item with new text (node index.js update 3 "Wash teeth")
 */
-const FS = require("fs")
+const fs = require("fs")
 const REQUIRE_ARGS = process.argv.slice(2)
 const firstInputCommand = REQUIRE_ARGS[0]
 const FILE_NAME = process.env.todosFileName || "todos.txt"
 
 function filesReader(path) {
   return new Promise((resolve, reject) => {
-    FS.readFile(path, "utf8", (e, data) => {
+    fs.readFile(path, "utf8", (e, data) => {
       if (e) {
         reject(e)
       }
@@ -42,7 +42,7 @@ function filesWriter(path, newData, oldData) {
       dataHolder.push(oldData, newData)
     }
     
-    FS.writeFile(path, dataHolder.join("\n"), (e) => {
+    fs.writeFile(path, dataHolder.join("\n"), (e) => {
       if (e) {
         reject(e)
       }
