@@ -57,11 +57,11 @@ function readingError(e) {
   //   And if the error was "File not found" it will create it automaticly
   if (e.code === "ENOENT") {
     filesWriter(FILE_NAME).catch(e => { console.error(e) })
+    return
   } else {
     console.error("something went wrong")
     console.error(e)
   }
-  process.exit()
 }
 
 switch (firstInputCommand) {
