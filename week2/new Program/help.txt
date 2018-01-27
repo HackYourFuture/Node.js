@@ -1,0 +1,23 @@
+this app is a test for my experiance until now what i did learn in all these days !!
+
+welcome to the Help Menu
+
+Please turn [Command Name] to the command that we show in the next few lines
+`node index.js [Command Name] "input OR Number"`
+
+---- For help:
+- [help] OR any thing that is not from the following.
+------------------------------------------------------
+- [list]                                >. list the todolist file if there is no Input
+- [add]    "Input Needed"               >. add new todo item or new line 
+- [remove] "Number line Needed"         >. remove 
+- [reset]                               >. For remove everything from the todolist
+- [update] "Number line & Input Needed" >. For updating an item that is in the todolist
+
+------------------------------------------------------
+For submiting a new File:
+
+`todosFileName="fileName" node index.js`
+----
+For any Edit to that file Please do the last step with the command that depends the require Edition 
+------------------------------------------------------

@@ -1,10 +1,6 @@
-import HTTP from 'http'
-import Path from 'path'
-
-import sendIndexHTML from './responses/sendIndexHTML'
-import sendPage2HTML from './responses/sendPage2HTML'
-import sendStylesCSS from './responses/sendStylesCSS'
-import sendText from './responses/sendText'
+'use strict'
+const HTTP = require('http')
+const Path = require('path')
 
 const server = HTTP.createServer((request, response) => {
 	console.log(request.method, request.url)
@@ -36,3 +32,47 @@ const server = HTTP.createServer((request, response) => {
 server.listen(3001)
 
 console.log('Server started')
+
+// the Import method is Not working so I copied them here
+function sendIndexHTML(response) {
+	response.setHeader('Content-Type', 'text/html')
+	response.write(`
+		<!html>
+		<html>
+			<head>
+				<title>Hello</title>
+				<link href="styles.css" type="text/css" rel="stylesheet"/>
+			</head>
+			<body>
+				Hello I am a website
+			</body>
+		</html>
+	`)
+}
+function sendPage2HTML(response) {
+	response.setHeader('Content-Type', 'text/html')
+	response.write(`
+		<!html>
+		<html>
+			<head>
+				<title>Hello</title>
+				<link href="styles.css" type="text/css" rel="stylesheet"/>
+			</head>
+			<body>
+				Hello I am page 2.
+			</body>
+		</html>
+	`)
+}
+function sendStylesCSS(response) {
+	response.setHeader('Content-Type', 'text/css')
+	response.write(`
+		body {
+			background: yellow;
+		}
+	`)
+}
+function sendText(response, text) {
+	response.setHeader('Content-Type', 'text/plain')
+	response.write(text)
+}
