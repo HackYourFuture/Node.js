@@ -34,7 +34,28 @@ function filesWriter(path, newData, oldData) {
   return new Promise((resolve, reject) => {
     
     let dataHolder = []
-    if (!oldData && newData || !newData && !oldData) {
+    // Reduced Comment Below the old (if) statement...
+    // if (!oldData && newData || !newData && !oldData)
+    /*  This conditional statement is the same as just writing if ( !oldData ). Here's why.
+    
+      Imagine oldData is falsey, and newData Is also falsey. This statement then says:
+      if ( true && false || true && true )
+    
+      But if oldData is falsey, and newData is truthy, it says:
+      if ( true && true || false && true )
+    
+      So the overall value becomes true if oldData is false, regardless of the value of newData.
+      That means that newData is not involved, and the statement can be reduced to if ( !oldData ).
+      One more point - in this case you're okay, I think, but multiple conditional evaluations
+      can get ambiguous. For example:
+    
+      if ( var1 && var2 || var3 )
+    
+      This can be interpreted as (var1 && var2) || var3, but also as var1 && (var2 || var3).
+      When using multiple conditional checks, it's a best practice to use brackets around the
+      checks you actually want to make, to avoid such ambiguity.
+    */
+    if (!oldData) {
       dataHolder.push(newData)
     } else {
       dataHolder.push(oldData, newData)
