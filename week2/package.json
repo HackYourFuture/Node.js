@@ -1,0 +1,11 @@
+{
+  "name": "week2",
+  "version": "1.0.0",
+  "description": "week2 node homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moesi88",
+  "license": "ISC"
+}

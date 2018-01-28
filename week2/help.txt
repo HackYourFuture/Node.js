@@ -1,0 +1,9 @@
+
+hello user here you can find out the commands that can help you to use this todo app....
+    you should type ( node index.js + (one of the options below)):
+
+        => help               to displaying the help list.
+        => add                for adding an item to the todo list.
+        => remove             for removing a specific todo.
+        => reset              for clearing the todo list.
+        => list               for listing the todo items.
