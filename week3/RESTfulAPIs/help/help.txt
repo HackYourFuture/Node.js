@@ -1,0 +1,10 @@
+help
+========
+
+list (http://localhost:3000/list): Lists all todos
+
+create (http://localhost:3000/add//YOUR NEW TASK): Creates a new todo
+
+update /update/description/ID): Updates the description of a todo BY ID
+
+remove /remove/:id): Deletes a todo by ID
