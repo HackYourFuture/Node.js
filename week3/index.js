@@ -23,7 +23,7 @@ function handleRequest() {
         readTodosFile().then(data => {
             if (!data || data === "[]") res.send("There are no items on the list");
   
-            res.send(JSON.parse(data));
+            res.send(data);
 
         }).catch(err => console.error(err));   
     });
@@ -39,7 +39,7 @@ function handleRequest() {
             writeTodosFile(JSON.stringify(list));
             return list;   
         }).then(list => {
-            res.send(list);
+            res.send(JSON.stringify(list));
         }).catch (err => console.error(err)); 
     });
 
@@ -54,7 +54,7 @@ function handleRequest() {
             writeTodosFile(JSON.stringify(list));
             return list;   
         }).then(list => {
-            res.send(list);
+            res.send(JSON.stringify(list));
         }).catch(err => console.error(err)); 
     });
 
@@ -70,7 +70,7 @@ function handleRequest() {
             writeTodosFile(JSON.stringify(list));
             return list;
         }).then(list => {
-            res.send(list);
+            res.send(JSON.stringify(list));
         }).catch(err => console.error(err)); 
     });
 
