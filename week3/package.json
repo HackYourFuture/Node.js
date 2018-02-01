@@ -1,22 +1,16 @@
 {
-  "name": "todo-api",
+  "name": "week3",
   "version": "1.0.0",
-  "description": "Todo api example",
-  "repository": "https://github.com/HackYourFuture/class7-nodejs-week3.git",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Joost Lubach",
+  "author": "Chileshe",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "uuid": "^3.0.1"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "body-parser": "^1.18.2",
+    "eol": "^0.9.1",
+    "express": "^4.16.2"
   }
 }
