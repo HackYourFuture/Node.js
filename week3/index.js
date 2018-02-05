@@ -12,81 +12,83 @@ app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
+app.use(bodyParser.json());
 
 
-function handleRequest() {
+app.get("/todo-api/list", (req, res) => {
 
-    app.use(bodyParser.json());
-
-
-    app.get("/list", (req, res) => {
-        readTodosFile().then(data => {
-            if (!data || data === "[]") res.send("There are no items on the list");
-  
-            res.send(data);
-
-        }).catch(err => console.error(err));   
+    readTodosFile().then(data => {
+        if (!data || data === []) {
+            res.json({ message: "There are no items on the list" });
+        }
+        res.json(data);
+    }).catch(err => {
+        res.json({ success: false, error: err.message });
     });
+});
 
 
-    app.post("/add", (req, res) => {
+app.post("/todo-api/add", (req, res) => {
 
-        const newTodo = req.body.newTodo;
+    const newTodo = req.body.newTodo;
 
-        readTodosFile().then(data => {
-            const list = JSON.parse(data);
-            list.push(newTodo);
-            writeTodosFile(JSON.stringify(list));
-            return list;   
-        }).then(list => {
-            res.send(JSON.stringify(list));
-        }).catch (err => console.error(err)); 
+    readTodosFile().then(data => {
+        data.push(newTodo);
+        writeTodosFile(data);
+        return data;
+    }).then(data => {
+        res.json(data);
+    }).catch(err => {
+        res.json({ success: false, error: err.message });
     });
+});
 
 
-    app.put("/remove", (req, res) => {
+app.put("/todo-api/remove", (req, res) => {
 
-        const index = req.body.number - 1;
+    const todoIndex = req.body.todoNumber - 1;
 
-        readTodosFile().then(data => {
-            const list = JSON.parse(data);
-            list.splice(index, 1);
-            writeTodosFile(JSON.stringify(list));
-            return list;   
-        }).then(list => {
-            res.send(JSON.stringify(list));
-        }).catch(err => console.error(err)); 
+    readTodosFile().then(data => {
+        data.splice(todoIndex, 1);
+        writeTodosFile(data);
+        return data;
+    }).then(data => {
+        res.json(data);
+    }).catch(err => {
+        res.json({ success: false, error: err.message });
     });
+});
 
 
-    app.put("/update", (req, res) => {
+app.put("/todo-api/update", (req, res) => {
 
-        const index = req.body.number - 1;
-        const newTodo = req.body.newTodo;
-        
-        readTodosFile().then(data => {
-            const list = JSON.parse(data);
-            list.splice(index, 1, newTodo);
-            writeTodosFile(JSON.stringify(list));
-            return list;
-        }).then(list => {
-            res.send(JSON.stringify(list));
-        }).catch(err => console.error(err)); 
+    const todoIndex = req.body.todoNumber - 1;
+    const newTodo = req.body.newTodo;
+
+    readTodosFile().then(data => {
+        data.splice(todoIndex, 1, newTodo);
+        writeTodosFile(data);
+        return data;
+    }).then(data => {
+        res.json(data);
+    }).catch(err => {
+        res.json({ success: false, error: err.message }); 
     });
+});
 
 
-    app.delete("/reset", (req, res) => {
-        readTodosFile().then(() => {
-            const list = [];
-            writeTodosFile(JSON.stringify(list));
-        }).then(list => {
-            res.send("All items have been deleted from list");
-        }).catch(err => console.error(err)); 
+app.delete("/todo-api/reset", (req, res) => {
+
+    readTodosFile().then(() => {
+        const todos = [];
+        writeTodosFile(todos);
+        return todos;
+    }).then(() => {
+        res.json({ message: "All items have been deleted from the list" });
+    }).catch(err => {
+        res.json({ success: false, error: err.message });   
     });
-
-}   
-
-handleRequest();
+});
 
 
 
@@ -94,26 +96,24 @@ function readTodosFile() {
 
     return new Promise((resolve, reject) => {
         fs.readFile(todosFile, "utf8", (err, data) => {
-
             if (err) {
                 reject(err);
             }
-
-            resolve(data);
+            resolve(JSON.parse(data));
         });
-    });    
+    });
 }
 
 
-function writeTodosFile(todosList) {
+function writeTodosFile(todos) {
 
+    const todosList = JSON.stringify(todos);
     fs.writeFile(todosFile, todosList, (err) => {
         if (err) {
             console.error(err);
         }
-
         console.log("Successfully wrote to file");
-    });   
+    });
 }
 
 
