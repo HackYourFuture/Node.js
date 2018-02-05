@@ -1,0 +1,63 @@
+
+    HELP MENU                                                                                              ||
+=================                                                                                          ||
+                                                                                                           ||
+Instructions:                                                                                              ||
+                                                                                                           ||
+---------------------------------------                                                                    ||
+$ curl -X GET 'http://localhost:8080/' >>>>>>>>>>> To display the help menu                                ||
+---------------------------------------                                                                    ||
+                                                                                                           ||
+---------------------------------------                                                                    ||
+$ curl -X GET 'http://localhost:8080/help' >>>>>>>>>>> To display the help menu                            ||
+---------------------------------------                                                                    ||
+                                                                                                           ||
+-----------------------------------------------------                                                      ||
+$ curl -X POST 'http://localhost:8080/todo-list/{newTask}' >>>>>>>>>>> To add a task to the list,          ||
+-----------------------------------------------------                  where {newTask} without spaces.     ||
+                                                                                                           ||
+-----------------------------------------------------                                                      ||
+$ curl -X DELETE 'http://localhost:8080/todo-list/{taskId}' >>>>>>>>>>> To remove a task from the          ||
+-----------------------------------------------------                   list, with a passed id             ||
+                                                                        {taskId}.                          ||
+--------------------------------------------                                                               ||
+$ curl -X DELETE 'http://localhost:8080/todo-list/reset' >>>>>>>>>>> To remove all the tasks.              ||
+--------------------------------------------                                                               ||
+                                                                                                           ||
+----------------------------------------------------------------                                           ||
+$ curl -X PUT 'http://localhost:8080/todo-list/update/{taskId}/{newTask}' >>>>>>>>>>> to update a task.    ||
+----------------------------------------------------------------                                           ||
+                                                                                                           ||
+-------------------------------------------                                                                ||
+$ curl -X GET 'http://localhost:8080/todo-list/list' >>>>>>>>>>> to get a list of tasks.                   ||
+-------------------------------------------                                                                ||
+                                                                                                           ||
+---------------------                                                                                      ||
+$ node index.js list >>>>>>> To get a list of all tasks.                                                   ||
+---------------------        Arguments after list will be ignored.                                         ||
+                                                                                                           ||
+-----------------------------------                                                                        ||
+$ node index.js add "a task to do" >>>>>>>> To add a task to the list, all the words behind                ||
+ ----------------------------------         "add" are entered as 1 todo item                               ||
+                                            to the list (node index.js add "Buy groceries"),               ||                    
+                                            and the task should be surrounded with quotes.                 ||       
+                                                                                                           ||
+------------------------                                                                                   ||
+$ node index remove {n} >>>>>>>>>> To remove task number {n} from the list.                                ||
+------------------------                                                                                   ||
+                                                                                                           ||
+----------------------                                                                                     ||
+$ node index.js reset >>>>>>>>> To delete all tasks and reset the list.                                    ||
+----------------------          Arguments after reset will be ignored.                                     ||
+                                                                                                           ||
+------------------------------------------                                                                 ||
+$ node index.js update {n} "updated task" >>>>>>>>> To update task number {n} with new task.               ||
+------------------------------------------                                                                 ||
+                                                                                                           ||
+---------------------                                                                                      ||
+$ node index.js help >>>>>>>>> To display the help menu, this instruction menu.                            ||
+---------------------                                                                                      ||
+                                                                                                           ||
+                                                                                                           || 
+                                                                                                           ||
+===========================================================================================================++
