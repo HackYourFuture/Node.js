@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const fs = require("fs");
 const helperFunctions = require("./helperFunctions.js")
 
 
@@ -15,59 +14,57 @@ app.get("/", (req, res) => {
             req.body = data
             res.send(req.body + "\n")
         })
-        .catch(err => res.send(err.message))
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message } + "\n"))
 })
 
 app.get("/help", (req, res) => {
     helperFunctions.showHelpMenu()
         .then(data => {
             req.body = data
-            res.send(req.body + "\n")
+            res.send(req.body)
         })
-        .catch(err => res.send(err.message))
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message }))
 
 })
 
-app.get("/list", (req, res) => {
+app.get("/todo-list/list", (req, res) => {
     helperFunctions.readFileFunction("to-do-list.json")
         .then((data) => {
             data = data || "[]";
             helperFunctions.myTodoList = JSON.parse(data);
             if (helperFunctions.myTodoList.length === 0) {
-                res.send("You have no tasks to do, you are free\n");
+                res.send({ "result": "list is empty" });
             } else {
-                res.send("Tasks to do: " + JSON.stringify(helperFunctions.myTodoList) + "\n");
+                res.send(helperFunctions.myTodoList );
             }
         })
-        .catch(err => res.send(`an error happened while reading the file ${err} \n`));
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message }));
 })
 
-app.post("/add/:task", (req, res) => {
-    helperFunctions.addingTask(req.params.task, "to-do-list.json")
-        .then(data => {
-            res.send("A task has been added \n")
-        })
-        .catch(err => res.send("failed to add the task " + err.message + "\n"))
+app.post("/todo-list/:newTask", (req, res) => {
+    helperFunctions.addingTask(req.params.newTask, "to-do-list.json")
+        .then(data => res.send({ "result": "added a task successfully" }))
+        .catch(err => res.send({ "result": "Error", "errorMessage": err.message } ))
 })
 
-app.put("/update/:id/:updatedTask", (req, res) => {
+app.put("/todo-list/update/:id/:updatedTask", (req, res) => {
     let taskId = req.params.id;
     let newTask = req.params.updatedTask;
     helperFunctions.updateFunction(taskId, newTask)
-        .then(() => res.send("Task has been updated\n"))
-        .catch(err => res.send("Failed to update the task " + err.message + "\n"))
+        .then(() => res.send({ "result": "Task has been updated" } ))
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message } ))
 })
 
-app.put("/reset", (req,res) => {  
+app.delete("/todo-list/reset", (req, res) => {
     helperFunctions.resetFunction()
-        .then(() => res.send("Tasks list has been reset\n"))
-        .catch(err => res.send("Failed to reset the tasks list \n" + err.message + "\n"));
+        .then(() => res.send({ "result": "success" } ))
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message }));
 })
 
-app.delete("/delete/:id", (req, res) => {
+app.delete("/todo-list/:id", (req, res) => {
     helperFunctions.removeTask(req.params.id)
-        .then(() =>  res.send("Task has been removed\n"))
-        .catch(err => res.send("Failed to remove the task\n" + err.message + "\n"))
+        .then(() => res.send({ "result": "success" }))
+        .catch(err => res.send({ "result": "error", "errorMessage": err.message }))
 })
 
 const port = 8080;
