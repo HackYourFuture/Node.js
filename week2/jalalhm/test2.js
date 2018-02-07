@@ -12,8 +12,8 @@ let readTodosFile = (filename) => {
     return new Promise((resolve, reject) => {
         fs.readFile(filename, "utf8", (err, data) => {
             if (err) {
-                throw err
-                reject()
+                
+                reject(err => errors(err))
             }
             //console.log(`Successfully read the file: ${filename}`)
             resolve(data)
@@ -26,7 +26,7 @@ let writeTodosFile = (filename, dataAsString) => {
     return new Promise((resolve, reject) => {
         fs.writeFile(TODOS_FILENAME, dataAsString, (err) => {
             if (err) {
-                errors(err)
+                 reject(err => errors(err))
             };
             //console.log(`Saved todos file: ${filename}`);
             resolve();
@@ -38,18 +38,22 @@ let addTodoItem = (filename, todoList, itemText) => {
     todoList.push({
         message: itemText
     })
-    writeTodosFile(filename, JSON.stringify(myTodoList)).then(() => console.log("Done adding todo."));
+    writeTodosFile(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("Done adding todo."))
+        .catch(err)
 }
 
 let resettingTodo = (filename) => {
     myTodoList = []
-    writeTodosFile(filename, JSON.stringify(myTodoList)).then(() => console.log("Done reseting todo."));
+    writeTodosFile(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("Done reseting todo."))
+        .catch(err)
 }
 
 let showHelpMenu = (filename) => {
     fs.readFile(filename, "utf8", (err, data) => {
         if (err) {
-            errors(err)
+            reject(errors(err))
         }
         console.log(data);
     })
@@ -64,17 +68,22 @@ let removeTodoItem = (filename, index) => {
     } else {
         console.log("Out of bounds");
     }
-    writeTodosFile(filename, JSON.stringify(myTodoList)).then(() => console.log("element deleted"))
+    writeTodosFile(filename, JSON.stringify(myTodoList))
+        .then(() => console.log("element deleted"))
+        .catch(err)
 }
 
 let updateTodo = (filename, todoList, todoNumber, newTodo) => {
     let newTodoObj = { message: newTodo }
     if (todoNumber < todoList.length) {
         todoList.splice(todoNumber - 1, 1, newTodoObj);
+        writeTodosFile(filename, JSON.stringify(todoList))
+            .then(() => console.log("element updated"))
+            .catch(err)
     } else {
         console.log("Out of bounds");
     }
-    writeTodosFile(filename, JSON.stringify(todoList)).then(() => console.log("element updated"))
+    
 }
 
 function errors(error) {
