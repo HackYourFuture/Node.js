@@ -98,7 +98,6 @@ function errors(error) {
 }
 
 // Program start
-
 readTodosFile(TODOS_FILENAME).then((data) => {
     data = data || "[]"
     myTodoList = JSON.parse(data)
