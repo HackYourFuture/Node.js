@@ -1,0 +1,13 @@
+Command options:
+
+No command: This will show help section (example: node index.js)
+
+help: This will show help section (example: node index.js help)
+
+list:This will show current todos file, or show an appropriate text if there are no todos (example: node index.js list)
+
+add: This add a todos file item. all the words behind "add" are entered as 1 todo item to the list (example: node index.js add "Buy groceries")
+
+remove: This will remove a todos file item by its 1-base index. (example: node index.js remove 2)
+
+reset:This will remove all todos file items from the list (example: node index.js reset)
