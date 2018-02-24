@@ -1,38 +1,24 @@
-# Set up
+# Setup
 
 Follow the instructions in this file to set up your environment.
 
-## Step 1 - Install Node
+## Step 1 - Fork this repository and clone it to your hard drive
 
-Depending on your platform, install node either through an installer (Windows) or through `nvm` (Mac OS X)
+Follow the general homework instructions for this.
 
-## Step 2 - Fork the repository and clone it to your hard drive
+## Step 2 - Install dependencies
 
-Follow the general Homework instructions for this.
+Change to the directory where you've cloned this repository, then `week1`
+directory and finally install dependencies using `npm`.
 
-## Step 3 - Install `babel-cli`
-
-```
-$ npm install --global babel-cli
-```
-
-## Step 4 - Install npm packages
-
-Go into the directory where you've cloned the repository, and go into the directory `week`
-
-```
-$ cd <path-to-cloned-repo>
-$ cd week1
+```bash
+cd path/to/your/cloned/repo
+cd week1
+npm install
 ```
 
-Now install NPM packages for the application.
+## Step 3 - Run the project from that directory
 
-```
-$ npm install
-```
-
-## Step 5 - Run the example from the direcory `week1`
-
-```
-$ babel-node .
+```bash
+node .
 ```

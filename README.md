@@ -50,6 +50,7 @@ A Video to remind you about [how we hand in homework](https://www.youtube.com/wa
 
 Also review the [Git workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md) and use it as a reference.
 
+
 ## Rewatch previous lectures
 
 - Lecture 1(Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
