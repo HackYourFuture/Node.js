@@ -8,6 +8,8 @@ const sendOtherPage = require('./responses/sendOtherPage');
 const sendStyles    = require('./responses/sendStyles');
 const sendText      = require('./responses/sendText');
 
+const PORT = 3000;
+
 function handleRequest(request, response) {
   console.log(request.method, request.url);
 
@@ -38,6 +40,6 @@ function handleRequest(request, response) {
 
 const server = http.createServer(handleRequest);
 
-server.listen(3000, () => {
-  console.log('Server started');
+server.listen(PORT, () => {
+  console.log(`Server started http://localhost:${PORT}`);
 });
