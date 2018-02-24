@@ -8,8 +8,10 @@ function read(todo, request, response) {
     })
     // We are ignoring the actual error
     .catch(error => {
+      console.error(error);
+
       response.status(500);
-      response.json({ error });
+      response.json({ error: 'Internal Server Error' });
     });
 };
 

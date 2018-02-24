@@ -13,9 +13,8 @@ function deserializeTodo(request, response) {
     return null;
   }
 
-  if (todo.description != null) {
+  if (todo.description != null)
     todo.description = todo.description.trim();
-  }
 
   if (todo.description == null || todo.description.length === 0) {
     setError(response, 'Specify a description');

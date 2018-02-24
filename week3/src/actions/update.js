@@ -7,8 +7,6 @@ function update(todo, request, response) {
   const _todo = deserializeTodo(request, response);
 
   if (_todo == null) {
-    response.status(400);
-    response.json({ error: 'Bad Request' });
     return;
   }
 
