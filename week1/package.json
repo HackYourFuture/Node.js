@@ -2,6 +2,7 @@
   "name": "hyf-node-week-1",
   "version": "1.0.0",
   "description": "HackYourFuture Node.js Week 1",
+  "repository": "https://github.com/HackYourFuture/nodejs.git",
   "main": "src/index.js",
   "author": "George Sapkin",
   "license": "MIT",

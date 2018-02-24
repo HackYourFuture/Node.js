@@ -1,22 +1,22 @@
 {
-  "name": "todo-api",
+  "name": "hyf-node-week-1",
   "version": "1.0.0",
-  "description": "Todo api example",
-  "repository": "https://github.com/HackYourFuture/class7-nodejs-week3.git",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
-  },
-  "author": "Joost Lubach",
-  "license": "ISC",
+  "description": "HackYourFuture Node.js Week 3 - Todo App",
+  "repository": "https://github.com/HackYourFuture/nodejs.git",
+  "main": "src/index.js",
+  "author": "George Sapkin",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "uuid": "^3.0.1"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
