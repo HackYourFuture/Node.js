@@ -1,7 +1,7 @@
 ## Watch before your first Node.js session
 
 - Go through the [README.md](https://github.com/HackYourFuture/Node.js) of this
-  repo
+  repository
 - Watch Jason's playlist on [Lynda.com]
   (https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
 
@@ -16,7 +16,7 @@ and use it as a reference.
 ## Node.js Setup
 
 We're going to use latest Node.js LTS 8.x. Follow one of the following
-instructions dependending on your operating system:
+instructions depending on your operating system:
 
 * [CentOS/Fedora/RHEL](https://github.com/nodesource/distributions#rpminstall)
 * [Debian/Ubuntu](https://github.com/nodesource/distributions#debinstall)
