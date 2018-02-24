@@ -2,7 +2,7 @@
 
 ## Assignment
 
-Create an http server that can add and subtract from a number, which we will
+Create an HTTP server that can add and subtract from a number, which we will
 call `state`. Use project in `week1` directory as starting material.
 Pay extra attention to line 21, which contains some hints for this week
 `console.log('New http request received', request.url);`
@@ -67,9 +67,9 @@ Read: http://callbackhell.com/
 Video: https://www.youtube.com/watch?v=e1Ln1FrLvh8
 Read: http://openmymind.net/2012/2/3/Node-Require-and-Exports/
 
-### `http`, listen
+### `http`, `listen`
 - Video basic: https://www.youtube.com/watch?v=pYOltVz7kL0
-- Video routing: https://www.youtube.com/watch?v=_D2w0voFlEk (please focus on request.url, not request.method)
+- Video routing: https://www.youtube.com/watch?v=_D2w0voFlEk (please focus on `request.url`, not `request.method`)
 - Read: [Node.js documentation about `http`](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
 - Read Advanced:
 

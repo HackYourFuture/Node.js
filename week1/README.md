@@ -4,6 +4,19 @@
 will dominate the web development world. Instead, it’s a platform that fills a
 particular need."
 
+## Agenda
+
+1. Recap last week
+2. Previous homework
+3. Questions & Answers (Q&A)
+4. What is Node.js?
+5. Setting up a Node.js project using `npm init`
+6. Importing modules using `require`
+5. Building an HTTP server using built-in `http` module
+    1. HTTP methods
+    2. HTTP status codes
+8. Homework
+
 ### What is Node.js?
 
 [What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
@@ -14,14 +27,10 @@ _estimated time: 10 minutes_
 Tutorials: [NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
 _estimated time: 4-6 hours_
 
-### Asynchronous callbacks
+### Promises' refresher
 
-Although most of this was already covered by the JavaScript class, let's refresh
-our memories on Callbacks.
-
-Read: [Understanding Asynchronous JavaScript Callbacks Through Household Chores
-](https://medium.freecodecamp.com/understanding-asynchronous-javascript-callbacks-through-household-chores-e3de9a1dbd04#.8ilr4a7aj)
-_estimated time: ~1 hour_
+Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
+from JavaScript module.
 
 ### Control flow and events
 
