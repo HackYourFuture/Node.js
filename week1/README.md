@@ -9,11 +9,12 @@
 5.  Finding documentation
 6.  Setting up a Node.js project using `npm init` and `package.json`
 7.  Installing dependencies using `npm install`
+    1. Local and global mode
 8.  Importing modules using `require`
     1. Built-in, external modules and local files
 9.  Building an HTTP server using built-in `http` module
-    1. HTTP methods
-    2. HTTP status codes
+    1. HTTP request methods
+    2. HTTP response status codes
 10. Homework
 
 ## What is Node.js?
@@ -30,13 +31,39 @@ _estimated time: 10 minutes_
 
 ## Getting started with Node.js and npm
 
-Tutorials: [NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
+[A Beginner’s Guide to npm — the Node Package Manager](https://www.sitepoint.com/beginners-guide-node-package-manager/)
+[NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
 _estimated time: 4-6 hours_
 
-## Promises' refresher
+## Finding documentation
 
-Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
-from JavaScript module.
+[Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web)
+
+[Node.js Documentation](https://nodejs.org/docs/latest-v8.x/api/documentation.html)
+
+## Setting up a Node.js project using `npm init` and `package.json`
+
+[`npm init`](https://docs.npmjs.com/cli/init)
+
+[`package.json`](https://docs.npmjs.com/files/package.json)
+
+## Installing dependencies using `npm install`
+
+[`npm install`](https://docs.npmjs.com/cli/install)
+
+## Importing modules using `require`
+
+[Node.js Modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
+
+## Building an HTTP server using built-in `http` module
+
+[HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+
+[HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+## Homework
+
+Check [README.md](homework/README.md) in `homework` subdirectory.
 
 ## Control flow and events
 

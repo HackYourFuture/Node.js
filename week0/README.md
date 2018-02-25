@@ -5,6 +5,11 @@
 - Watch Jason's playlist on [Lynda.com]
   (https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
 
+## Promises' refresher
+
+Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
+from JavaScript module.
+
 ## Handing in homework
 
 Take a look at [this video](https://www.youtube.com/watch?v=-o0yomUVVpU&index=2&list=PLVYDhqbgYpYUGxRdtQdYVE5Q8h3bt6SIA)
