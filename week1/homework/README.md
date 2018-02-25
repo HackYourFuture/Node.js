@@ -1,5 +1,30 @@
 # HackYourFuture Node.js - Homework week 1
 
+# Setup
+
+Follow the instructions in this file to set up your environment.
+
+## 1. Fork this repository and clone it to your hard drive
+
+Follow the general homework instructions for this.
+
+## 2. Install dependencies
+
+Change to the directory where you've cloned this repository, then
+`week1/homework` directory and finally install dependencies using `npm`.
+
+```bash
+cd path/to/your/cloned/repo
+cd week1/homework
+npm install
+```
+
+## 3. Run the project from that directory
+
+```bash
+node .
+```
+
 ## Assignment
 
 Create an HTTP server that can add and subtract from a number, which we will

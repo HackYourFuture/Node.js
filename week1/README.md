@@ -10,12 +10,14 @@ particular need."
 2. Previous homework
 3. Questions & Answers (Q&A)
 4. What is Node.js?
-5. Setting up a Node.js project using `npm init`
-6. Importing modules using `require`
-5. Building an HTTP server using built-in `http` module
+5. Setting up a Node.js project using `npm init` and `package.json`
+6. Installing dependencies using `npm install`
+7. Importing modules using `require`
+    1. Built-in, external modules and local files
+7. Building an HTTP server using built-in `http` module
     1. HTTP methods
     2. HTTP status codes
-8. Homework
+9. Homework
 
 ### What is Node.js?
 
