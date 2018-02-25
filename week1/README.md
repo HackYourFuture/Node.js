@@ -4,7 +4,7 @@
 
 1.  Recap last week
 2.  Previous homework
-3.  Questions & Answers (Q&A)
+3.  Questions & answers (Q&A)
 4.  What is Node.js?
 5.  Finding documentation
 6.  Setting up a Node.js project using `npm init` and `package.json`

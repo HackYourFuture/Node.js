@@ -9,11 +9,11 @@ get a state, and manipulate the state (add, subtract, reset).
 
 1. Recap last week
 2. Previous homework
-3. Questions & Answers (Q&A)
+3. Questions & answers (Q&A)
 4. Persisting data beyond the lifetime of the app
 5. Building a command line interface (CLI)
 6. Accessing file system with Node.js `fs` module
-7. CRUD operations
+7. CRUD operations, create, read, update and delete
 8. Homework
 
 ## Reading material
