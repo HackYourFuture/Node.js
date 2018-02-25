@@ -53,9 +53,11 @@ _estimated time: 4-6 hours_
 
 ## Importing modules using `require`
 
-[Node.js Modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
+[Node.js modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
 
 ## Building an HTTP server using built-in `http` module
+
+[`http` module documentation](https://nodejs.org/docs/latest-v8.x/api/http.html)
 
 [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 
