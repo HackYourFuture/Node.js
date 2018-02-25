@@ -14,7 +14,7 @@ particular need."
 6. Installing dependencies using `npm install`
 7. Importing modules using `require`
     1. Built-in, external modules and local files
-7. Building an HTTP server using built-in `http` module
+8. Building an HTTP server using built-in `http` module
     1. HTTP methods
     2. HTTP status codes
 9. Homework
