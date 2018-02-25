@@ -39,6 +39,6 @@ Read parts:
 - 4.1, 4.3
 [Airpair tutorial](https://www.airpair.com/javascript/node-js-tutorial#3-node-fundamentals)
 
-## As you finish that up, don’t forget to watch next week’s video playlist to prepare for Express.
+## Prepare for the next lecture
 
-You’ll find it here: [Lynda :information_desk_person:](https://www.lynda.com/SharedPlaylist/e8a2fec772bb462da38429629a34f3b7)
+[Lynda playlist :information_desk_person:](https://www.lynda.com/SharedPlaylist/e8a2fec772bb462da38429629a34f3b7)

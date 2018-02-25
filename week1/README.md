@@ -16,7 +16,7 @@
     2. HTTP status codes
 10. Homework
 
-### What is Node.js?
+## What is Node.js?
 
 From Node.js' [website]()https://nodejs.org/en/:
 
@@ -28,17 +28,17 @@ From Node.js' [website]()https://nodejs.org/en/:
 [What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
 _estimated time: 10 minutes_
 
-### Getting started with Node.js and npm
+## Getting started with Node.js and npm
 
 Tutorials: [NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
 _estimated time: 4-6 hours_
 
-### Promises' refresher
+## Promises' refresher
 
 Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
 from JavaScript module.
 
-### Control flow and events
+## Control flow and events
 
 An important term when making applications is _control flow_. You already know
 all about it. Read through this page and answer this question: how do we control
@@ -46,6 +46,6 @@ all about it. Read through this page and answer this question: how do we control
 
 Read: [Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
 
-### Check out these videos to prepare for the second lecture:
+## Prepare for the next lecture
 
 [Custom made playlist :boom: Lynda.com](https://www.lynda.com/SharedPlaylist/a034fd969ef945bb9ebbd9490cc75d5a)

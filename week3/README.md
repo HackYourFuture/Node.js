@@ -55,7 +55,7 @@ In Postman, make sure to add this header, and set the Body type to "Raw".
 For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be
 generated using the `uuid` package, and are guaranteed never to be the same.
 
-## Prepare for next module
+## Prepare for the next module
 
 Check out the [databases repository](https://github.com/HackYourFuture/databases)
 and find out how you can prepare for the first database lecture, Jason and Rob
