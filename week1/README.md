@@ -1,25 +1,29 @@
 # HackYourFuture Node.js - Reading material week 1
 
-"What it really means is that Node.js is not a silver-bullet new platform that
-will dominate the web development world. Instead, it’s a platform that fills a
-particular need."
-
 ## Agenda
 
-1. Recap last week
-2. Previous homework
-3. Questions & Answers (Q&A)
-4. What is Node.js?
-5. Setting up a Node.js project using `npm init` and `package.json`
-6. Installing dependencies using `npm install`
-7. Importing modules using `require`
+1.  Recap last week
+2.  Previous homework
+3.  Questions & Answers (Q&A)
+4.  What is Node.js?
+5.  Finding documentation
+6.  Setting up a Node.js project using `npm init` and `package.json`
+7.  Installing dependencies using `npm install`
+8.  Importing modules using `require`
     1. Built-in, external modules and local files
-8. Building an HTTP server using built-in `http` module
+9.  Building an HTTP server using built-in `http` module
     1. HTTP methods
     2. HTTP status codes
-9. Homework
+10. Homework
 
 ### What is Node.js?
+
+From Node.js' [website]()https://nodejs.org/en/:
+
+> Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+> Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
+> and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of
+> open source libraries in the world.
 
 [What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
 _estimated time: 10 minutes_

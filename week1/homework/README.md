@@ -2,7 +2,7 @@
 
 # Setup
 
-Follow the instructions in this file to set up your environment.
+Follow these instructions to set up your environment.
 
 ## 1. Fork this repository and clone it to your hard drive
 
@@ -10,7 +10,7 @@ Follow the general homework instructions for this.
 
 ## 2. Install dependencies
 
-Change to the directory where you've cloned this repository, then
+Change to the directory where you've cloned this repository, then to
 `week1/homework` directory and finally install dependencies using `npm`.
 
 ```bash
