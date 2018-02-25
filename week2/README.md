@@ -18,9 +18,9 @@ get a state, and manipulate the state (add, subtract, reset).
 
 ## Reading material
 
-### Node.js process:
+### Node.js process
 
-You Don't have to remember everything in this video, just a nice outline
+You don't have to remember everything in this video, just a nice outline
 [Egghead video tutorial](https://egghead.io/lessons/node-js-the-node-js-process-object)
 Only read the part about "process.argv"
 [Node.JS docs - process.argv](https://nodejs.org/docs/latest/api/process.html#process_process_argv)
