@@ -1,0 +1,29 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 1",
+      "program": "${workspaceFolder}/week1/src/index.js",
+      "cwd": "${workspaceFolder}/week1"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 2",
+      "program": "${workspaceFolder}/week2/src/index.js",
+      "cwd": "${workspaceFolder}/week2"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 3",
+      "program": "${workspaceFolder}/week3/src/index.js",
+      "cwd": "${workspaceFolder}/week3"
+    }
+  ]
+}
