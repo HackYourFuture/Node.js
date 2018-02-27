@@ -11,7 +11,9 @@ server.on('request', (req, res) => {
   console.log('requesting', req.url);
   function setResponse(header) {
     res.setHeader('Content-Type', 'Text-html');
-    res.write(`<h1 style="background-color:blue;color:white;font-size:46px;">${header}</h1>`);
+    res.write(
+      `<h1 style="background-color:blue;color:white;font-size:46px;">${header}</h1>`
+    );
     res.end();
   }
   switch (req.url) {
