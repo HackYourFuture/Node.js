@@ -1,6 +1,6 @@
 'use strict';
 let state = 10;
-let http = require('http');
+const http = require('http');
 let server = http.createServer();
 
 server.on('connection', () => {
