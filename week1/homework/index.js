@@ -1,5 +1,5 @@
 'use strict';
-const state = 10;
+let state = 10;
 const http = require('http');
 const server = http.createServer();
 
@@ -33,5 +33,5 @@ server.on('request', (request, response) => {
 });
 const port = 8080;
 server.listen(port, () => {
-  console.log('Listening on port 8080...', port);
+  console.log('We are now listening on port...', port);
 });
