@@ -1,5 +1,5 @@
 'use strict';
-let state = 10;
+const state = 10;
 const http = require('http');
 const server = http.createServer();
 
