@@ -7,14 +7,14 @@ server.on('connection', () => {
   console.log('server is connected');
 });
 
-server.on('request', (request, response) => {
-  console.log('requesting', request.url);
+server.on('request', (req, res) => {
+  console.log('requesting', req.url);
   function setResponse(header) {
-    response.setHeader('Content-Type', 'Text/..html');
-    response.write(`<h1>${header}</h1>`);
-    response.end();
+    res.setHeader('Content-Type', 'Text/..html');
+    res.write(`<h1>${header}</h1>`);
+    res.end();
   }
-  switch (request.url) {
+  switch (req.url) {
     case '/add':
       setResponse(state++);
       break;
