@@ -1,7 +1,7 @@
 'use strict';
 let state = 10;
 const http = require('http');
-let server = http.createServer();
+const server = http.createServer();
 
 server.on('connection', () => {
   console.log('server is connected');
