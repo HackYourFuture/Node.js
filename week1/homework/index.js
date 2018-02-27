@@ -10,7 +10,7 @@ server.on('connection', () => {
 server.on('request', (req, res) => {
   console.log('requesting', req.url);
   function setResponse(header) {
-    res.setHeader('Content-Type', 'Text/..html');
+    res.setHeader('Content-Type', 'Text-html');
     res.write(`<h1>${header}</h1>`);
     res.end();
   }
