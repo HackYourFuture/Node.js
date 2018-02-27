@@ -31,7 +31,7 @@ server.on('request', (request, response) => {
       setResponse('Error 404, page not found');
   }
 });
-const port = 8080;
+const port = 3030;
 server.listen(port, () => {
-  console.log('Listening on', port);
+  console.log('Listening on port 3030...', port);
 });
