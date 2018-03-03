@@ -9,7 +9,7 @@ function holdState(req, res) {
       res.write(`<h1>the state is ${state}</h1>`);
       break;
     case '/add':
-      state++;    
+      state++;
       res.writeHead(200, { 'Context-type': 'text/html' });
       res.write(`<p><strong>ok</strong> the state is ${state}</p>`);
       break;
@@ -25,10 +25,10 @@ function holdState(req, res) {
       break;
     default:
       res.writeHead(404, { 'Context-type': 'text/html' });
-      res.write(`<p><strong>error 404</strong> the page in not found be sour to input the right url</p>`);
+      res.write(`<p><strong>error 404</strong>pleas input the right url</p>`);
       break;
   }
-  res.end(); 
+  res.end();
 }
 const server = http.createServer(holdState);
 server.listen(8080, () => {
