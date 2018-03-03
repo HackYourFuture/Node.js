@@ -1,4 +1,4 @@
-# HackYourFuture Node.js - Homework week 3
+# HackYourFuture Node.js Week 3 - Homework
 
 ### Assignment
 

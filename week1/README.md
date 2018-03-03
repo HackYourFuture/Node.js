@@ -1,4 +1,4 @@
-# HackYourFuture Node.js - Reading material week 1
+# HackYourFuture Node.js Week 1
 
 ## Agenda
 
@@ -7,19 +7,21 @@
 3.  Questions & answers (Q&A)
 4.  What is Node.js?
 5.  Finding documentation
-6.  Setting up a Node.js project using `npm init` and `package.json`
-7.  Installing dependencies using `npm install`
+6.  Read-eval-print loop (REPL)
+7.  Setting up a Node.js project using `npm init` and `package.json`
+8.  Installing dependencies using `npm install`
     1. Local and global mode
-8.  Importing modules using `require`
+9.  Importing modules using `require`
     1. Built-in, external modules and local files
-9.  Building an HTTP server using built-in `http` module
+10. Building an HTTP server using built-in `http` module
     1. HTTP request methods
     2. HTTP response status codes
-10. Homework
+    3. Example
+11. Homework
 
 ## What is Node.js?
 
-From Node.js' [website]()https://nodejs.org/en/:
+From Node.js' [website](https://nodejs.org/en/):
 
 > Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 > Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
@@ -40,6 +42,10 @@ _estimated time: 4-6 hours_
 [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web)
 
 [Node.js Documentation](https://nodejs.org/docs/latest-v8.x/api/documentation.html)
+
+## Read-eval-print loop (REPL)
+
+[REPL](https://nodejs.org/docs/latest-v8.x/api/repl.html)
 
 ## Setting up a Node.js project using `npm init` and `package.json`
 
@@ -63,10 +69,6 @@ _estimated time: 4-6 hours_
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-## Homework
-
-Check [README.md](homework/README.md) in `homework` subdirectory.
-
 ## Control flow and events
 
 An important term when making applications is _control flow_. You already know
@@ -74,6 +76,10 @@ all about it. Read through this page and answer this question: how do we control
 "flow" in JavaScript?
 
 Read: [Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
+
+## Homework
+
+Check [README.md](homework/README.md) in `homework` subdirectory.
 
 ## Prepare for the next lecture
 
