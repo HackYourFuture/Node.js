@@ -4,6 +4,10 @@ let state = 10;
 function holdState(req, res) {
   console.log('you are in the url:' + req.url);
   switch (req.url) {
+    case '/':
+      res.writeHead(200, { 'Context-type': 'text/html' });
+      res.write(`<h1>the home page</h1>`);
+      break;
     case '/state':
       res.writeHead(200, { 'Context-type': 'text/html' });
       res.write(`<h1>the state is ${state}</h1>`);
