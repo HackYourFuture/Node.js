@@ -16,7 +16,8 @@
 10. Building an HTTP server using built-in `http` module
     1. HTTP request methods
     2. HTTP response status codes
-    3. Example
+    3. Routing
+    4. Example
 11. Homework
 
 ## What is Node.js?
@@ -27,6 +28,14 @@ From Node.js' [website](https://nodejs.org/en/):
 > Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
 > and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of
 > open source libraries in the world.
+
+Videos:
+
+[Introduction to Node.js](https://www.youtube.com/watch?v=w-7RQ46RgxU&index=1&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[The V8 Engine](https://www.youtube.com/watch?v=86tgU7UaJmU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=3).
+
+Reading:
 
 [What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
 _estimated time: 10 minutes_
@@ -49,6 +58,14 @@ _estimated time: 4-6 hours_
 
 ## Setting up a Node.js project using `npm init` and `package.json`
 
+Videos:
+
+[Node Package Manager](https://www.youtube.com/watch?v=kQ1j0rEI7EI&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=20)
+
+[The package.json File](https://www.youtube.com/watch?v=_eRwjuIDJ2Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=21)
+
+Documentation:
+
 [`npm init`](https://docs.npmjs.com/cli/init)
 
 [`package.json`](https://docs.npmjs.com/files/package.json)
@@ -59,9 +76,27 @@ _estimated time: 4-6 hours_
 
 ## Importing modules using `require`
 
+Videos:
+
+[Modules and `require()`](https://www.youtube.com/watch?v=xHLd36QoS4k&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=6)
+
+[Module Patterns](https://www.youtube.com/watch?v=9UaZtgB5tQI&index=7&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+Documentation:
+
 [Node.js modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
 
 ## Building an HTTP server using built-in `http` module
+
+Videos:
+
+[Clients & Servers](https://www.youtube.com/watch?v=qSAze9b0wrY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=11)
+
+[Creating a Server](https://www.youtube.com/watch?v=lm86czWdrk0&index=12&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Basic Routing](https://www.youtube.com/watch?v=_zvWeGwVkCY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=19)
+
+Documentation:
 
 [`http` module documentation](https://nodejs.org/docs/latest-v8.x/api/http.html)
 

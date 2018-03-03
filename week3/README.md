@@ -9,8 +9,8 @@
 5. Express.js vs native `http` library
     1. HTTP request method refresher
     2. HTTP response status code refresher
-    3. Example
-    4. Routing
+    3. Routing
+    4. Example
 6. Building a REST API for To-dos
 7. Homework
 
@@ -19,6 +19,16 @@
 ## Testing with Postman
 
 ## Express.js vs native `http` library
+
+Videos:
+
+[Introduction to Express](https://www.youtube.com/watch?v=9TSBKO59u0Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=23)
+
+[Express Route Params](https://www.youtube.com/watch?v=MuMs1pLuT7I&index=24&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Middleware & Static Files](https://www.youtube.com/watch?v=-lRgL9kj_h0&index=28&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+Documentation:
 
 [Express.js Hello World](https://expressjs.com/en/starter/hello-world.html)
 

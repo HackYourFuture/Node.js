@@ -23,6 +23,12 @@ state and manipulate it (add, subtract, reset).
 
 ### Node.js file system module `fs`
 
+Videos:
+
+[Reading & Writing Files](https://www.youtube.com/watch?v=U57kU311-nE&index=9&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+Documentation:
+
 [Main documentation](https://nodejs.org/docs/latest-v8.x/api/fs.html)
 
 [fs.readFile()](https://nodejs.org/docs/latest-v8.x/api/fs.html#fs_fs_readfile_path_options_callback)

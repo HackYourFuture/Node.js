@@ -17,8 +17,9 @@ developer".
 
 ## Watch before your first Node.js session
 
-- Watch Jason's playlist on [Lynda.com]
-  (https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
+Watch Jason's playlist on [Lynda.com](https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
+
+And you can start with the [Node.js Tutorial for Beginners](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
 
 ## Promises' refresher
 
