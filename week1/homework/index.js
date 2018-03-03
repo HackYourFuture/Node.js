@@ -24,7 +24,7 @@ server.on('request', (req, res) => {
       setResponse(state--);
       break;
     case '/reset':
-      setResponse((state = 10));
+      setResponse(state = 10);
       break;
     case '/state':
       setResponse(state);
