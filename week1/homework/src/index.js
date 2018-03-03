@@ -20,7 +20,7 @@ function handleRequest(request, response) {
       response.write(`<h2>OK</h2> ${state}`);
       break;
     case "/reset":
-      state = '';
+      state = 10;
       response.setHeader("content-type", "text/html");
       response.write(`<h2>OK</h2> ${state}`);
       break;
