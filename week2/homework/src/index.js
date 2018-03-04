@@ -33,3 +33,5 @@ function printHelp() {
 /* Or we could destructure the array instead
  * const [,, cmd, ...args] = process.argv;
  */
+const cmd = process.argv[2];
+const args = process.argv.slice(3);
