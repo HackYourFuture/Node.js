@@ -21,3 +21,15 @@ function WriteFile(...text) {
         )
     )
 }
+function printHelp() {
+    console.log(`Usage:node index.js [options]
+    HackYourFuture Node.js Week 2 - Lecture To - Do App
+    Options:
+        read read all to - dos
+    write[to - do] add to - do
+        help show this help text
+    `)
+}
+/* Or we could destructure the array instead
+ * const [,, cmd, ...args] = process.argv;
+ */
