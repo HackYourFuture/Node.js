@@ -9,16 +9,15 @@ let state = 10;
 let server = http.createServer((req, res) => {
     res.setHeader('Content-type', 'text/html')
     switch (req.url) {
-        case '/' :
-        break;
+     
         case '/state':
             res.write(`<h1> OK :${state}</h1>`);
             break;
         case '/add':
-            res.write(`<h1> oK :${state + 1}</h1>`);
+            res.write(`<h1> oK :${state++}</h1>`);
             break;
         case '/subtract':
-            res.write(`<h1> Ok :${state - 1}</h1>`);
+            res.write(`<h1> Ok :${state--}</h1>`);
             break;
         case '/reset':
         res.write(`<h1 id = 'state'> oK :${state}</h1>`);
