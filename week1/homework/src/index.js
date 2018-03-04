@@ -1,3 +1,14 @@
 'use strict';
+const http = require("http");
 
-// Write the homework code in this file
+
+function handelRequest(request, response) {
+    console.log("on request", request.url);
+}
+
+const server = http.createServer();
+server.listen(3000, () => {
+    console.log("server.listening on http://localhost:3000");
+});
+
+
