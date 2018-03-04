@@ -2,7 +2,7 @@
 
 "use strict";
 
-const state = 10;
+let state = 10;
 
 const http = require("http");
 
@@ -18,19 +18,16 @@ function handleRequest(request, response) {
             response.write(`<h1>This is the original state: ${state}</h1>`);
             break;
         case addUrl:
-            let add = state + 1;
-            console.log(add);
+            state++;
             response.write(`<h1>OK</h1>`);
             break;
         case subtractUrl:
-            let subtract = state - 1;
-            console.log(subtract);
+            state--;
             response.write(`<h1>OK</h1>`);
             break;
         case resetUrl:
-            let reset = state;
-            console.log(reset);
-            response.write(`<h1>Back to the original state: ${reset}</h1>`);
+            state = 10;
+            response.write(`<h1>Back to the original state: ${state}</h1>`);
             break;
         default:
             response.statusCode = 404;
