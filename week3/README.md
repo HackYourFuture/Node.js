@@ -1,4 +1,4 @@
-# HackYourFuture Node.js - Reading material week 3
+# HackYourFuture Node.js Week 3
 
 ## Agenda
 
@@ -7,10 +7,42 @@
 3. Questions & answers (Q&A)
 4. Testing with Postman
 5. Express.js vs native `http` library
+    1. HTTP request method refresher
+    2. HTTP response status code refresher
+    3. Routing
+    4. Example
 6. Building a REST API for To-dos
 7. Homework
 
-# TODO API
+## Last week's summary
+
+## Testing with Postman
+
+## Express.js vs native `http` library
+
+Videos:
+
+[Introduction to Express](https://www.youtube.com/watch?v=9TSBKO59u0Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=23)
+
+[Express Route Params](https://www.youtube.com/watch?v=MuMs1pLuT7I&index=24&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Middleware & Static Files](https://www.youtube.com/watch?v=-lRgL9kj_h0&index=28&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+Documentation:
+
+[Express.js Hello World](https://expressjs.com/en/starter/hello-world.html)
+
+[Express.js routing](https://expressjs.com/en/guide/routing.html)
+
+[Express.js API](https://expressjs.com/en/4x/api.html)
+
+[HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+
+[HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+## Building a REST API for To-dos
+
+## TODO API
 
 This is an Express application using `bodyParser` middleware to convert the
 request body to JSON.
@@ -54,6 +86,10 @@ In Postman, make sure to add this header, and set the Body type to "Raw".
 
 For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be
 generated using the `uuid` package, and are guaranteed never to be the same.
+
+## Homework
+
+Check [README.md](homework/README.md) in `homework` subdirectory.
 
 ## Prepare for the next module
 
