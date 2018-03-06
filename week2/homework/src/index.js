@@ -5,20 +5,21 @@ const fs = require('fs');
 const STORE_FILE_NAME = 'store.txt';
 
 function readFile() {
-    return new Promise(resolve => fs.readFile(STORE_FILE_NAME, (err, Date) => resolve(err ? '' : date.toString()))
-    )
+    return new Promise(resolve => fs.readFile(STORE_FILE_NAME, (err, Date) => resolve(err ? '' : date.toString())))
 
 }
+
 function WriteFile(...text) {
     return new Promise(
         (resolve, reject) => fs.appendFile(
             STORE_FILE_NAME, `${text.join('')}\n`,
-            (err, date) => err
-                ? reject(err)
-            :resolve (date)   
+            (err, date) => err ?
+            reject(err) :
+            resolve(date)
         )
     )
 }
+
 function printHelp() {
     console.log(`Usage:node index.js [options]
     HackYourFuture Node.js Week 2 - Lecture To - Do App
@@ -34,3 +35,9 @@ function printHelp() {
 const cmd = process.argv[2];
 const args = process.argv.slice(3);
 const argsNum = parseInt(process.argv.slice(3));
+
+function help() {
+    const message = `list : Shows current to-dos, or shows an appropriate text if there are no to-dos \n add : Adds a to-do item. All the words behind add are entered as 1 to-do item to the list. \n
+remove: Removes a to - do item by its 1 - base index, e.g.to remove second item, execute: \n reset: Removes all to - do items from the list: `;
+
+}
