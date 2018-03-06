@@ -33,3 +33,4 @@ function printHelp() {
  */
 const cmd = process.argv[2];
 const args = process.argv.slice(3);
+const argsNum = parseInt(process.argv.slice(3));
