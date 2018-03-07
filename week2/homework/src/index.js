@@ -32,6 +32,14 @@ function printHelp() {
 /* Or we could destructure the array instead
  * const [,, cmd, ...args] = process.argv;
  */
+
+const fs = require('fs');
+if (process.argv[2] === 'list') {
+    fs.appendFile('./toDo.txt', 'UTF-8', (err, date) =>
+    {
+        
+    }    
+}
 const cmd = process.argv[2];
 const args = process.argv.slice(3);
 const argsNum = parseInt(process.argv.slice(3));
