@@ -23,8 +23,8 @@ And you can start with the [Node.js Tutorial for Beginners](https://www.youtube.
 
 ## Promises' refresher
 
-Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
-from JavaScript module.
+Read Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
+from JavaScript module and [Promises, async/await](http://javascript.info/async).
 
 ## Node.js Setup
 

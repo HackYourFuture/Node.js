@@ -11,12 +11,21 @@
     2. HTTP response status code refresher
     3. Routing
     4. Example
-6. Building a REST API for To-dos
+6. Building a REST API for To-Dos
 7. Homework
 
 ## Last week's summary
 
+Last week we made a CLI To-Do application. This week we are going to rewrite
+into an Express-based server.
+
 ## Testing with Postman
+
+Download and install [Postman](https://www.getpostman.com/apps).
+
+Videos:
+
+[Getting Started with Postman](https://www.youtube.com/watch?v=q78_AJBGrVw)
 
 ## Express.js vs native `http` library
 
@@ -40,32 +49,35 @@ Documentation:
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-## Building a REST API for To-dos
+## Building a REST API for To-Dos
 
-## TODO API
+### To-Do API
 
-This is an Express application using `bodyParser` middleware to convert the
-request body to JSON.
+This is an Express application using [body-parser](https://github.com/expressjs/body-parser) middleware that automatically parser
+JSON from request body.
 
-There are currently four actions:
+There are currently 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
+actions:
 
-- `list` (`GET /todos`): Lists all todos
-- `create` (`POST /todos`): Creates a new todo
-- `update` (`PUT /todos/:id`): Updates the description of a todo
-- `remove` (`DELETE /todos/:id`): Deletes a todo
+- Create (`POST /todos`)
 
-## Directory structure
+  Creates a new to-do
 
-- `actions`: Contains the actions as listed above, each as an Express handler
-             (i.e. function accepting request and response)
-- `data`: Contains the data file `todos.json`
-- `models`: Contains the Todo model class
-- `util`: Utility functions
-- `index.js` The application file
+- Read (`GET /todos`)
 
-## Request body format
+  Reads and lists all to-dos
 
-When calling the `create` or `update` actions, the request body should look like
+- Update (`PUT /todos/:id`)
+
+  Updates the description of a to-do with ID `:id`
+
+- Delete (`DELETE /todos/:id`)
+
+  Deletes a to-do with ID `:id`
+
+### Request Body Format
+
+When calling the `create` or `update` actions, the request body must look like
 this:
 
 ```json
@@ -76,16 +88,17 @@ this:
 }
 ```
 
-Note that for these actions, the client should add the following header:
+Note that for these actions, the client must add the following header:
 
 - `Content-Type`: `application/json`
 
-In Postman, make sure to add this header, and set the Body type to "Raw".
+In Postman, make sure to add this header, and set the Body type to _Raw_.
 
 ## UUIDs
 
-For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be
-generated using the `uuid` package, and are guaranteed never to be the same.
+For IDs, this application uses [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) -
+Universally Unique IDs. They can be generated using the [uuid/v4](https://github.com/kelektiv/node-uuid)
+package, and are guaranteed never to be the same.
 
 ## Homework
 
