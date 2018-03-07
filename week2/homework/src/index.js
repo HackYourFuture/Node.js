@@ -36,8 +36,3 @@ const cmd = process.argv[2];
 const args = process.argv.slice(3);
 const argsNum = parseInt(process.argv.slice(3));
 
-function help() {
-    const msg = `list : Shows current to-dos, or shows an appropriate text if there are no to-dos \n add : Adds a to-do item. All the words behind add are entered as 1 to-do item to the list. \n
-remove: Removes a to - do item by its 1 - base index, e.g.to remove second item, execute: \n reset: Removes all to - do items from the list: `;
-    console.log(msg);
-}
