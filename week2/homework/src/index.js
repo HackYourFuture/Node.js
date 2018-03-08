@@ -89,6 +89,12 @@ switch (cmd) {
 
         break;
     case "reset":
+        let resetFactory = "";
+        fs.writeFileSync(TO_DO, resetFactory);
+        fs.readFile(TO_DO, "UTF-8", (err, data) => {
+            if (err) console.log("error");
+            console.log(data);
+        });
         break;
     case "help":
         argv.help();
