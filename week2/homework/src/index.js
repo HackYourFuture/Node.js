@@ -49,6 +49,9 @@ switch (cmd) {
             .then(data => console.log('\nTo-Dos:\n${data}'))
             .catch(console.error);
         break;
+    
+    case "list":
+  
 
     case "help":
     default:
