@@ -53,6 +53,8 @@ switch (cmd) {
     case "list":
         readFile().then(data => console.log('Listing all notes'));
         break;
+    case "add":
+     readFile().then(data => console.log('Adding new note'));
     case "help":
     default:
         printHelp();
