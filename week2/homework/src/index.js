@@ -55,5 +55,3 @@ switch (cmd) {
         printHelp
         break;
 }
-
-}
