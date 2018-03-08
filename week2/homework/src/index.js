@@ -64,7 +64,14 @@ switch (cmd) {
         break;
     case "add":
         readFile().then(data => console.log('Adding new note'));
+        break;
+    case "remove":
+        
+        break;
+    case "reset":
+        break;    
     case "help":
+        argv.help();    
     default:
         printHelp();
         break;
