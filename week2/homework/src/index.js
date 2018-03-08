@@ -51,7 +51,16 @@ switch (cmd) {
         break;
     
     case "list":
-        readFile().then(data => console.log('Listing all notes'));
+        fs.readFile(cmd, (err, list) => {
+            if (err) return console.error(err)
+            list.forEach((item) => {
+                if (item.STORE_FILE_NAME("." + args))
+                    console.log(item)
+            })
+        });
+
+            
+        
         break;
     case "add":
      readFile().then(data => console.log('Adding new note'));
