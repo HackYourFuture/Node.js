@@ -3,7 +3,9 @@
 // Write the homework code in this file
 const fs = require('fs');
 const STORE_FILE_NAME = 'store.txt';
-const TO_DO="toDo.txt"
+const TO_DO = "toDo.txt";
+const ADD = "add.txt";
+const HELP = "help.txt";
 
 function readFile() {
     return new Promise(resolve => fs.readFile(STORE_FILE_NAME, (err, Date) => resolve(err ? '' : date.toString())))
@@ -63,7 +65,7 @@ switch (cmd) {
 
         break;
     case "add":
-        readFile().then(data => console.log('Adding new note'));
+        fs.readFile("").then(data => console.log('Adding new note'));
         break;
     case "remove":
         
