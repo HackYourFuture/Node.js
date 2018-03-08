@@ -3,6 +3,7 @@
 // Write the homework code in this file
 const fs = require('fs');
 const STORE_FILE_NAME = 'store.txt';
+const TO_DO="toDo.txt"
 
 function readFile() {
     return new Promise(resolve => fs.readFile(STORE_FILE_NAME, (err, Date) => resolve(err ? '' : date.toString())))
@@ -54,7 +55,7 @@ switch (cmd) {
         fs.readFile(cmd, (err, list) => {
             if (err) return console.error(err)
             list.forEach((item) => {
-                if (item.STORE_FILE_NAME("." + args))
+                if (item.TO_DO("." + args))
                     console.log(item)
             })
         });
