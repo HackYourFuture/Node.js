@@ -1,5 +1,3 @@
-import { writeFile } from 'fs';
-
 'use strict';
 
 // Write the homework code in this file
@@ -43,7 +41,7 @@ switch (cmd) {
     case "read":
         readFile().then(data => console.log('To-dos:\n${data}'));
         break;
-    
+
     case "write":
         writeFile(...args)
             .then(() => console.log('wrote to-do to file'))
@@ -51,12 +49,11 @@ switch (cmd) {
             .then(data => console.log('\nTo-Dos:\n${data}'))
             .catch(console.error);
         break;
-    
+
     case "help":
     default:
         printHelp
         break;
 }
-        
-}
 
+}
