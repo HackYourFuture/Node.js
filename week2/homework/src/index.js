@@ -51,8 +51,8 @@ switch (cmd) {
         break;
     
     case "list":
-  
-
+        readFile().then(data => console.log('Listing all notes'));
+        break;
     case "help":
     default:
         printHelp();
