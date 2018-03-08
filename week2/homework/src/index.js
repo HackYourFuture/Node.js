@@ -77,6 +77,15 @@ switch (cmd) {
         });
         break;
     case "remove":
+        let remove = (args) - 1;
+        fs.readFile(TO_DO, "UFT-8", (err, data) => {
+            if (err) console.log("error");
+            let dat = msContentScript.split("\n");
+            dat.splice(remove, 1);
+            let un_writ = dat.join("\n");
+            console.log(un_writ);
+            fs.writeFile(TO_DO, un_writ);
+        });
 
         break;
     case "reset":
