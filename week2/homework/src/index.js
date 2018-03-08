@@ -65,15 +65,24 @@ switch (cmd) {
 
         break;
     case "add":
-        fs.readFile("").then(data => console.log('Adding new note'));
+        fs.appendFile(ADD, "UFT-8", (err, data) => {
+            let addToDo = data + args + "" + "\n";
+            fs.writeFile(ADD, addToDo, (err, data) => {
+                if (err) console.log("error");
+                fs.readFile(ADD, "UFT-8", (err, data) => {
+                    console.log(data);
+                });
+
+            });
+        });
         break;
     case "remove":
-        
+
         break;
     case "reset":
-        break;    
+        break;
     case "help":
-        argv.help();    
+        argv.help();
     default:
         printHelp();
         break;
