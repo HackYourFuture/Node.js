@@ -1,3 +1,5 @@
+import { writeFile } from 'fs';
+
 'use strict';
 
 // Write the homework code in this file
@@ -33,14 +35,28 @@ function printHelp() {
  * const [,, cmd, ...args] = process.argv;
  */
 
-const fs = require('fs');
-if (process.argv[2] === 'list') {
-    fs.appendFile('./toDo.txt', 'UTF-8', (err, date) =>
-    {
-        
-    }    
-}
+
 const cmd = process.argv[2];
 const args = process.argv.slice(3);
-const argsNum = parseInt(process.argv.slice(3));
+
+switch (cmd) {
+    case "read":
+        readFile().then(data => console.log('To-dos:\n${data}'));
+        break;
+    
+    case "write":
+        writeFile(...args)
+            .then(() => console.log('wrote to-do to file'))
+            .then(() => readFile())
+            .then(data => console.log('\nTo-Dos:\n${data}'))
+            .catch(console.error);
+        break;
+    
+    case "help":
+    default:
+        printHelp
+        break;
+}
+        
+}
 
