@@ -52,6 +52,6 @@ switch (cmd) {
 
     case "help":
     default:
-        printHelp
+        printHelp();
         break;
 }
