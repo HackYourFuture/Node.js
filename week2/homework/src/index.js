@@ -49,7 +49,7 @@ switch (cmd) {
             .then(data => console.log('\nTo-Dos:\n${data}'))
             .catch(console.error);
         break;
-    
+
     case "list":
         fs.readFile(cmd, (err, list) => {
             if (err) return console.error(err)
@@ -59,11 +59,10 @@ switch (cmd) {
             })
         });
 
-            
-        
+
         break;
     case "add":
-     readFile().then(data => console.log('Adding new note'));
+        readFile().then(data => console.log('Adding new note'));
     case "help":
     default:
         printHelp();
