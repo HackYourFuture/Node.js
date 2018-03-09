@@ -38,31 +38,27 @@ const cmd = process.argv[2];
 const args = process.argv.slice(3);
 
 switch (cmd) {
-  case "help":
+  case "add":
+    writeFile(...args)
+      .then(() => console.log("wrote to-do to file"))
+      .then(() => readFile())
+      .then(data => console.log(`to-doS:\n ${data}`))
+      .catch(console.error);
+    break;
+  case "list":
+    readFile(fileName).then(content => {
+      console.log("toDoS:\n", content.toString());
+    });
+    break;
+  case "remove":
+    remove(args - 1);
+    break;
+  case "reset":
+        fs.writeFile(fileName, '', console.log('all toDo items are removed!'));
+        break;
+  default: "help"
     fs.readFile("help.txt", "utf8", function(err, data) {
       console.log(data);
     });
-    break;
-  case "add":
-        writeFile(...args)
-            .then(() => console.log('wrote to-do to file'))
-            .then(() => readFile())
-            .then(data => console.log(`to-doS:\n ${data}`))
-            .catch(console.error);
-        break;
-    case "read":
-        readFile()
-            .then(data => console.log(`to-doS:\n ${data}`));
-        break;
-    case "list":
-        readFile(fileName).then(content => {
-            console.log('toDoS:\n', content.toString());
-        });
-        break;
-    case "remove":
-        remove(args - 1);
-        break;
-
-  default:
     break;
 }
