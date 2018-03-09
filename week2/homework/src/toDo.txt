@@ -1,0 +1,4 @@
+buy apples
+go cinema
+call mom
+do homework
