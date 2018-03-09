@@ -1,4 +1,4 @@
-# HackYourFuture Node.js - Reading material week 3
+# HackYourFuture Node.js Week 3
 
 ## Agenda
 
@@ -7,33 +7,77 @@
 3. Questions & answers (Q&A)
 4. Testing with Postman
 5. Express.js vs native `http` library
-6. Building a REST API for To-dos
+    1. HTTP request method refresher
+    2. HTTP response status code refresher
+    3. Routing
+    4. Example
+6. Building a REST API for To-Dos
 7. Homework
 
-# TODO API
+## Last week's summary
 
-This is an Express application using `bodyParser` middleware to convert the
-request body to JSON.
+Last week we made a CLI To-Do application. This week we are going to rewrite
+into an Express-based server.
 
-There are currently four actions:
+## Testing with Postman
 
-- `list` (`GET /todos`): Lists all todos
-- `create` (`POST /todos`): Creates a new todo
-- `update` (`PUT /todos/:id`): Updates the description of a todo
-- `remove` (`DELETE /todos/:id`): Deletes a todo
+Download and install [Postman](https://www.getpostman.com/apps).
 
-## Directory structure
+Videos:
 
-- `actions`: Contains the actions as listed above, each as an Express handler
-             (i.e. function accepting request and response)
-- `data`: Contains the data file `todos.json`
-- `models`: Contains the Todo model class
-- `util`: Utility functions
-- `index.js` The application file
+[Getting Started with Postman](https://www.youtube.com/watch?v=q78_AJBGrVw)
 
-## Request body format
+## Express.js vs native `http` library
 
-When calling the `create` or `update` actions, the request body should look like
+Videos:
+
+[Introduction to Express](https://www.youtube.com/watch?v=9TSBKO59u0Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=23)
+
+[Express Route Params](https://www.youtube.com/watch?v=MuMs1pLuT7I&index=24&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Middleware & Static Files](https://www.youtube.com/watch?v=-lRgL9kj_h0&index=28&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+Documentation:
+
+[Express.js Hello World](https://expressjs.com/en/starter/hello-world.html)
+
+[Express.js routing](https://expressjs.com/en/guide/routing.html)
+
+[Express.js API](https://expressjs.com/en/4x/api.html)
+
+[HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+
+[HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+## Building a REST API for To-Dos
+
+### To-Do API
+
+This is an Express application using [body-parser](https://github.com/expressjs/body-parser) middleware that automatically parser
+JSON from request body.
+
+There are currently 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
+actions:
+
+- Create (`POST /todos`)
+
+  Creates a new to-do
+
+- Read (`GET /todos`)
+
+  Reads and lists all to-dos
+
+- Update (`PUT /todos/:id`)
+
+  Updates the description of a to-do with ID `:id`
+
+- Delete (`DELETE /todos/:id`)
+
+  Deletes a to-do with ID `:id`
+
+### Request Body Format
+
+When calling the `create` or `update` actions, the request body must look like
 this:
 
 ```json
@@ -44,16 +88,21 @@ this:
 }
 ```
 
-Note that for these actions, the client should add the following header:
+Note that for these actions, the client must add the following header:
 
 - `Content-Type`: `application/json`
 
-In Postman, make sure to add this header, and set the Body type to "Raw".
+In Postman, make sure to add this header, and set the Body type to _Raw_.
 
 ## UUIDs
 
-For IDs, this application uses "UUIDs" (Universally Unique IDs). They can be
-generated using the `uuid` package, and are guaranteed never to be the same.
+For IDs, this application uses [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) -
+Universally Unique IDs. They can be generated using the [uuid/v4](https://github.com/kelektiv/node-uuid)
+package, and are guaranteed never to be the same.
+
+## Homework
+
+Check [README.md](homework/README.md) in `homework` subdirectory.
 
 ## Prepare for the next module
 

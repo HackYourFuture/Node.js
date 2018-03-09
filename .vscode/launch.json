@@ -7,23 +7,23 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Week 1",
-      "program": "${workspaceFolder}/week1/src/index.js",
-      "cwd": "${workspaceFolder}/week1"
+      "name": "Launch Week 1 - Lecture",
+      "program": "${workspaceFolder}/week1/lecture/src/index.js",
+      "cwd": "${workspaceFolder}/week1/lecture"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Week 2",
-      "program": "${workspaceFolder}/week2/src/index.js",
-      "cwd": "${workspaceFolder}/week2"
+      "name": "Launch Week 2 - Lecture",
+      "program": "${workspaceFolder}/week2/lecture/src/index.js",
+      "cwd": "${workspaceFolder}/week2/lecture"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Week 3",
-      "program": "${workspaceFolder}/week3/src/index.js",
-      "cwd": "${workspaceFolder}/week3"
+      "name": "Launch Week 3 - Lecture",
+      "program": "${workspaceFolder}/week3/lecture/src/index.js",
+      "cwd": "${workspaceFolder}/week3/lecture"
     }
   ]
 }
