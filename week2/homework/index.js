@@ -50,15 +50,29 @@ function readFile() {
 }
 
 function remove() {
-    readFile()
-        .then((data) => {
-            let arr = data.split('\n')
-            let item = arr.length - 1;
-            arr.splice(item, 1);
-            writeFile(arr);
-        })
-        .then(() => console.log(`THE LAST ITEM REMOVED!`))
-        .catch(console.error);
+    if (!args) {
+        readFile()
+            .then((data) => {
+                let arr = data.split('\n')
+                let item = arr.length - 1;
+                arr.splice(item, 1);
+                writeFile(arr);
+            })
+            .then(() => console.log(`THE LAST ITEM REMOVED!`))
+            .catch(console.error);
+    }
+    else {
+        readFile()
+            .then((data) => {
+                let arr = data.split('\n')
+                let item = arr.length - args;
+                arr.splice(item, 1);
+                writeFile(arr);
+            })
+            .then(() => console.log(`ONE ITEM REMOVED!`))
+            .catch(console.error);
+
+    }
 }
 
 function printHelp() {
