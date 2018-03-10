@@ -1,14 +1,14 @@
-# HackYourFuture Node.js - Homework week 1
+# HackYourFuture Node.js Week 1 - Homework
 
-# Setup
+## Setup
 
 Follow these instructions to set up your environment.
 
-## 1. Fork this repository and clone it to your hard drive
+### 1. Fork this repository and clone it to your hard drive
 
 Follow the general homework instructions for this.
 
-## 2. Install dependencies
+### 2. Install dependencies
 
 Change to the directory where you've cloned this repository, then to
 `week1/homework` directory and finally install dependencies using `npm`.
@@ -19,7 +19,7 @@ cd week1/homework
 npm install
 ```
 
-## 3. Run the project from that directory
+### 3. Run the project from that directory
 
 ```bash
 node .

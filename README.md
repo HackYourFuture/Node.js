@@ -11,11 +11,30 @@ developer".
 
 | Week | Topic              | Read                              | Homework                                    |
 | ---: | ------------------ | --------------------------------- | ------------------------------------------- |
-|   0. | Introduction       | [Week 0 Reading](week0/README.md) | None                                        |
 |   1. | Node.js, npm, http | [Week 1 Reading](week1/README.md) | [Week 1 Homework](week1/homework/README.md) |
 |   2. | fs, process        | [Week 2 Reading](week2/README.md) | [Week 2 Homework](week2/homework/README.md) |
 |   3. | express, REST      | [Week 3 Reading](week3/README.md) | [Week 3 Homework](week3/homework/README.md) |
 
+## Watch before your first Node.js session
+
+Watch Jason's playlist on [Lynda.com](https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
+
+And you can start with the [Node.js Tutorial for Beginners](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+## Promises' refresher
+
+Read Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
+from JavaScript module and [Promises, async/await](http://javascript.info/async).
+
+## Node.js Setup
+
+We're going to use the latest Node.js LTS 8.x. Follow one of the following
+instructions depending on your operating system:
+
+* [CentOS/Fedora/RHEL](https://github.com/nodesource/distributions#rpminstall)
+* [Debian/Ubuntu](https://github.com/nodesource/distributions#debinstall)
+* [macOS](https://nodejs.org/en/download/)
+* [Windows](https://nodejs.org/en/download/)
 
 ## Pre-requisites
 
@@ -55,11 +74,11 @@ There are two reasons why we at HYF chose Node.js over others:
 
 ## Handing in homework
 
-A Video to remind you about [how we hand in homework](https://www.youtube.com/watch?v=-o0yomUVVpU&index=2&list=PLVYDhqbgYpYUGxRdtQdYVE5Q8h3bt6SIA).
+Take a look at [this video](https://www.youtube.com/watch?v=-o0yomUVVpU)
+made by Daan, he explains how your homework needs to be handed in from now on.
 
 Also review the [Git workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md)
 and use it as a reference.
-
 
 ## Rewatch previous lectures
 

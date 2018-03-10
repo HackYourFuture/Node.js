@@ -1,15 +1,18 @@
-# HackYourFuture Node.js - Homework week 2
+# HackYourFuture Node.js Week 2 - Homework
 
-## Assignment for this week
+## Assignment
 
 These are the specs for this week's assignment:
 
-- The user can run a Node.js to-do app
-- The user must be able to run the file using `node index.js`
-- There should be a "help" section that lists all the commands for how to use
-  the app
+- Write a Node.js command line application
+- The user must be able to run the file using `node index.js` or `node .` in the
+  project directory
+- There must be a `help` section that lists all the commands and a short
+  description for each of them
+- The user must be able to add, remove and list to-dos.
+- The user must be able to remove all to-dos at once.
 
-The following commands should be present:
+The following commands must be present:
 
 ### No command or `help`
 
@@ -58,15 +61,22 @@ Removes all to-do items from the list:
 node index.js reset
 ```
 
-### *BONUS:* `update`
+## Bonus assignment
+
+- Use JSON to store to-dos and add following commands
+- Split each action (i.e. read, write, etc.) into a separate file
+- Use [commander](https://www.npmjs.com/package/commander) library to implement
+  command line interface
+
+### `update`
 
 Updates a to-do item with new text:
 
 ```
-node index.js update 3 "Wash teeth"
+node index.js update 3 "Brush teeth"
 ```
 
 ### Things to consider
 
-- What representation you use in your file (CSV, TSV, JSON, ...)
+- What representation you use in your file (CSV, TSV, JSON, etc).
 - Handle edge cases, i.e. control what happens if user enters unexpected input
