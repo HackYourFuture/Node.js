@@ -27,6 +27,14 @@ function writeFile(...text) {
     );
 }
 
+function overWriteFile(text) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(STORE_FILE_NAME, text,
+            (err, data) => err
+                ? reject(err)
+                : resolve(data))
+    })
+}
 function printHelp() {
     console.log(`Usage: node index.js [options] "Commits"
 
@@ -50,7 +58,7 @@ const cmd = process.argv[2];
 const args = process.argv.slice(3);
 
 switch (cmd) {
-    case 'list':    
+    case 'list':
         readFile()
             .then(data => console.log(`To-Dos:\n${data}`));
         break;
@@ -63,15 +71,23 @@ switch (cmd) {
             .catch(console.error);
         break;
     case 'remove':
-        writeFile(...args)
-            .then(() => console.log('Remove to-do to file content'))
-            .catch(console.error);
+        readFile(STORE_FILE_NAME)
+            .then(content => {
+                let subString = content.toString().split('\n')
+                let editStrings = subString.splice(args - 1, 1)
+                overWriteFile(subString.join('\n'))
+                    .then(data => {
+                        console.log(`To-Dos: \n${ subString.join('\n') }`)
+                    })
+                    .catch(console.error);
+            })
         break;
     case 'reset':
-        writeFile()
-            .then((data) => data = [])
-            .then(() => console.log('Reseted to-do to file content'))
-            .catch(console.error);
+        overWriteFile('')
+            .then(data => {console.log('Your To-do is reseted')})
+            .then(() => readFile())
+            .then(data => console.log(`\nTo-Dos:\n${data}`))
+            .catch(err => console.log(err))
         break;
 
     case 'help':
