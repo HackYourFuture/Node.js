@@ -5,9 +5,9 @@
 Read through the code from the lecture, make sure you understand the flow of the
 program.
 
-Add three more actions and update your `README.md` to reflect your new actions.
+Add three more actions:
 
-### `clear` (`DELETE /todos`)
+### `clearTodos` (`DELETE /todos`)
 
 Clears the list of to-dos
 

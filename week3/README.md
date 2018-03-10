@@ -59,19 +59,19 @@ middleware that automatically parses JSON from request body.
 There are 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
 actions:
 
-- Create (`POST /todos`)
+#### `createTodo` (`POST /todos`)
 
   Creates a new to-do
 
-- Read (`GET /todos`)
+#### `readTodos` (`GET /todos`)
 
   Reads and lists all to-dos
 
-- Update (`PUT /todos/:id`)
+#### `updateTodo` (`PUT /todos/:id`)
 
   Updates the description of a to-do with ID `:id`
 
-- Delete (`DELETE /todos/:id`)
+#### `deleteTodo` (`DELETE /todos/:id`)
 
   Deletes a to-do with ID `:id`
 
@@ -92,7 +92,8 @@ Note that for these actions, the client must add the following header:
 
 - `Content-Type`: `application/json`
 
-In Postman, make sure to add this header, and set the Body type to _Raw_.
+In Postman, make sure to add this header, and set the Body type to _raw_ and
+_JSON (application/json)_.
 
 ## UUIDs
 
