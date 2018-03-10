@@ -1,7 +1,10 @@
+
 'use strict';
 
 const fs   = require('fs');
 const uuid = require('uuid/v4');
+
+const DEFAULT_ENCODING = 'utf8';
 
 class Todo {
   constructor(filename) {
@@ -27,7 +30,7 @@ class Todo {
 
   read() {
     return new Promise(resolve => {
-      fs.readFile(this._filename, 'utf-8', (error, data) => {
+      fs.readFile(this._filename, DEFAULT_ENCODING, (error, data) => {
         if (error)
           return resolve([]);
 
@@ -41,7 +44,7 @@ class Todo {
 
     const todo = todos.find(t => t.id === id);
     if (todo == null) {
-      const error = new Error(`Todo with ID ${id} does not exist`);
+      const error = new Error(`To-do with ID ${id} does not exist`);
       error.code = 'not-found';
       throw error;
     }

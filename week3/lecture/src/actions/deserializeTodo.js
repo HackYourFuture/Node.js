@@ -7,9 +7,9 @@ function setError(response, error) {
 }
 
 function deserializeTodo(request, response) {
-  const todo = request.body.todo;
+  const { todo } = request.body;
   if (todo == null) {
-    setError(response, 'Specify a todo');
+    setError(response, 'Specify a to-do');
     return null;
   }
 
