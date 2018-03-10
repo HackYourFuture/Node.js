@@ -8,7 +8,7 @@ const {
   create,
   read,
   update,
-  // delete is a JavaScript keywoard, using delete_ instead
+  // delete is a JavaScript keyword, using delete_ instead
   delete_
 } = require('./actions');
 

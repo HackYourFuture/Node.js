@@ -1,6 +1,6 @@
 'use strict';
 
-// delete is a JavaScript keywoard, using delete_ instead
+// delete is a JavaScript keyword, using delete_ instead
 function delete_(todo, request, response) {
   const id = request.params.id;
 
