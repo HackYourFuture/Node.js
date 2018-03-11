@@ -1,33 +1,32 @@
 'use strict';
 
-const bodyParser = require('body-parser');
-const Express    = require('express');
+const Express = require('express');
 
 // import our CRUD actions
 const {
-  create,
-  read,
-  update,
-  // delete is a JavaScript keywoard, using delete_ instead
-  delete_
+  createTodo,
+  readTodos,
+  updateTodo,
+  deleteTodo
 } = require('./actions');
 
 const Todo = require('./todo');
 
-const FILENAME = 'todos.json';
-
-const PORT = 3000;
+const FILENAME  = 'todos.json';
+const PORT      = 3000;
+const TODO_SLUG = 'todos';
 
 const todo = new Todo(FILENAME);
 
-const app = Express();
+const app = new Express();
 
-app.use(bodyParser.json());
+// Use built-in JSON middleware to automatically parse JSON
+app.use(Express.json());
 
-app.post('/todos',       create.bind(null, todo));
-app.get('/todos',        read.bind(null, todo));
-app.put('/todos/:id',    update.bind(null, todo));
-app.delete('/todos/:id', delete_.bind(null, todo));
+app.post(`/${TODO_SLUG}`,       createTodo.bind(null, todo));
+app.get(`/${TODO_SLUG}`,        readTodos.bind(null, todo));
+app.put(`/${TODO_SLUG}/:id`,    updateTodo.bind(null, todo));
+app.delete(`/${TODO_SLUG}/:id`, deleteTodo.bind(null, todo));
 
 app.listen(PORT, error => {
   if (error)
