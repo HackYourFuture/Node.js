@@ -1,7 +1,6 @@
 'use strict';
 
-const bodyParser = require('body-parser');
-const Express    = require('express');
+const Express = require('express');
 
 // import our CRUD actions
 const {
@@ -19,9 +18,10 @@ const TODO_SLUG = 'todos';
 
 const todo = new Todo(FILENAME);
 
-const app = Express();
+const app = new Express();
 
-app.use(bodyParser.json());
+// Use built-in JSON middleware to automatically parse JSON
+app.use(Express.json());
 
 app.post(`/${TODO_SLUG}`,       createTodo.bind(null, todo));
 app.get(`/${TODO_SLUG}`,        readTodos.bind(null, todo));
