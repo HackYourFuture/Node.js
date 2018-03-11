@@ -8,14 +8,11 @@ function ReadFile(path) {
             } else {
                 resolve(data);
             }
-
         })
-
     })
 }
 function WriteFile(name, text) {
     return new Promise((resolve, reject) => {
-        
         fs.appendFile(name, text, (err, data) => {
             if (err) {
                 reject(err)
@@ -96,15 +93,12 @@ switch (cmd) {
         let argsUpdate = process.argv.slice(4);
         ReadFile('toDo').then((content) => {
             let newContent = content.toString().split('\n');
-            
-
             let updateElement = newContent.splice(argsNum, 1, argsUpdate.toString());
             overWriteFile('toDo', `${newContent.join('\n')}`).then(data => {
                 console.log(`You file was like this : \n ${content.toString()} \n and Now : \n ${newContent.join('\n')}  `)
             }).catch(err => console.log(err));
         })
         break;
-
     }
     case 'help': {
         help();
