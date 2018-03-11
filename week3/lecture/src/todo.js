@@ -1,4 +1,3 @@
-
 'use strict';
 
 const fs   = require('fs');
@@ -68,7 +67,7 @@ class Todo {
     return new Promise((resolve, reject) => {
       fs.writeFile(
         this._filename,
-        JSON.stringify(todos),
+        JSON.stringify(todos, null, 2),
         error => error == null
           ? resolve()
           : reject(error)

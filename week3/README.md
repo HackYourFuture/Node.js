@@ -51,10 +51,20 @@ Documentation:
 
 ## Building a REST API for To-Dos
 
+Videos:
+
+[What is REST?](http://www.restapitutorial.com/lessons/whatisrest.html)
+
+Documentation:
+
+[REST](https://en.wikipedia.org/wiki/Representational_state_transfer)
+
+[Learn REST: A RESTful Tutorial](http://www.restapitutorial.com/)
+
 ### To-Do API
 
-This week we are going to write an Express application using [body-parser](https://github.com/expressjs/body-parser)
-middleware that automatically parses JSON from request body.
+This week we are going to write an Express application with request body in JSON
+format.
 
 There are 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
 actions:
