@@ -1,10 +1,6 @@
-
-
 'use strict';
 
-// Write the homework code in this file
 const fs = require('fs');
-
 const STORE_FILE_NAME = 'store.txt';
 
 function readFile() {
@@ -20,9 +16,7 @@ function writeFile(...text) {
         (resolve, reject) => fs.appendFile(
             STORE_FILE_NAME,
             `${text.join(' ')}\n`,
-            (err, data) => err
-                ? reject(err)
-                : resolve(data)
+            (err, data) => err ? reject(err) : resolve(data)
         )
     );
 }
@@ -30,11 +24,10 @@ function writeFile(...text) {
 function overWriteFile(text) {
     return new Promise((resolve, reject) => {
         fs.writeFile(STORE_FILE_NAME, text,
-            (err, data) => err
-                ? reject(err)
-                : resolve(data))
+            (err, data) => err ? reject(err) : resolve(data))
     })
 }
+
 function printHelp() {
     console.log(`Usage: node index.js [options] "Commits"
 
@@ -51,9 +44,6 @@ Options:
   `);
 }
 
-/* Or we could destructure the array instead
- * const [,, cmd, ...args] = process.argv;
- */
 const cmd = process.argv[2];
 const args = process.argv.slice(3);
 
@@ -73,21 +63,19 @@ switch (cmd) {
     case 'remove':
         readFile(STORE_FILE_NAME)
             .then(content => {
-                let subString = content.toString().split('\n')
-                let editStrings = subString.splice(args - 1, 1)
+                let subString = content.toString().split('\n');
+                let editStrings = subString.splice(args - 1, 1);
                 overWriteFile(subString.join('\n'))
-                    .then(data => {
-                        console.log(`To-Dos: \n${ subString.join('\n') }`)
-                    })
+                    .then(data => console.log(`To-Dos: \n${ subString.join('\n') }`))
                     .catch(console.error);
             })
         break;
     case 'reset':
-        overWriteFile('')
-            .then(data => {console.log('Your To-do is reseted')})
-            .then(() => readFile())
-            .then(data => console.log(`\nTo-Dos:\n${data}`))
-            .catch(err => console.log(err))
+        fs.unlink('store.txt', (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                    console.log("Successfully reset");}})
         break;
 
     case 'help':
