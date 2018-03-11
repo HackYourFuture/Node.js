@@ -2,18 +2,20 @@
 
 const fs = require('fs');
 
-const STORE_FILE_NAME = 'store.txt';
+const DEFAULT_ENCODING = 'utf8';
+const STORE_FILE_NAME  = 'store.txt';
 
 function readFile() {
   return new Promise(
     resolve => fs.readFile(
       STORE_FILE_NAME,
-      (err, data) => resolve(err ? '' : data.toString())
+      DEFAULT_ENCODING,
+      (err, data) => resolve(err ? '' : data)
     )
   );
 }
 
-function writeFile(...text) {
+function appendFile(...text) {
   return new Promise(
     (resolve, reject) => fs.appendFile(
       STORE_FILE_NAME,
@@ -51,7 +53,7 @@ switch (cmd) {
     break;
 
   case 'write':
-    writeFile(...args)
+    appendFile(...args)
       .then(() => console.log('Wrote to-do to file'))
       .then(() => readFile())
       .then(data => console.log(`\nTo-Dos:\n${data}`))

@@ -16,7 +16,7 @@
 
 ## Last week's summary
 
-Last week we made a CLI To-Do application. This week we are going to rewrite
+Last week we made a CLI To-Do application. This week we are going to rewrite it
 into an Express-based server.
 
 ## Testing with Postman
@@ -53,25 +53,25 @@ Documentation:
 
 ### To-Do API
 
-This is an Express application using [body-parser](https://github.com/expressjs/body-parser) middleware that automatically parser
-JSON from request body.
+This week we are going to write an Express application using [body-parser](https://github.com/expressjs/body-parser)
+middleware that automatically parses JSON from request body.
 
-There are currently 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
+There are 4 [CRUD](https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete)
 actions:
 
-- Create (`POST /todos`)
+#### `createTodo` (`POST /todos`)
 
   Creates a new to-do
 
-- Read (`GET /todos`)
+#### `readTodos` (`GET /todos`)
 
   Reads and lists all to-dos
 
-- Update (`PUT /todos/:id`)
+#### `updateTodo` (`PUT /todos/:id`)
 
   Updates the description of a to-do with ID `:id`
 
-- Delete (`DELETE /todos/:id`)
+#### `deleteTodo` (`DELETE /todos/:id`)
 
   Deletes a to-do with ID `:id`
 
@@ -92,7 +92,8 @@ Note that for these actions, the client must add the following header:
 
 - `Content-Type`: `application/json`
 
-In Postman, make sure to add this header, and set the Body type to _Raw_.
+In Postman, make sure to add this header, and set the Body type to _raw_ and
+_JSON (application/json)_.
 
 ## UUIDs
 
