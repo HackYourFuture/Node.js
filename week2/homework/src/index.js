@@ -41,16 +41,16 @@ function readFile(path) {
 
 
 let cmd = process.argv[2];
-let data = process.argv[3];
+let arg = process.argv[3];
 let location = "todo.txt";
 
-function readFileFunc(location) {
-    return readFile(location)
-        .then(function (data) {
-            console.log("To Do:");
-            console.log(data.toString());
-        })
-}
+// function readFileFunc(location) {
+//     return readFile(location)
+//         .then(function (data) {
+//             console.log("To Do:");
+//             console.log(data.toString());
+//         })
+// }
 
 function help() {
     console.log(`add: To add extra item to the txt file.\n
@@ -61,19 +61,44 @@ function help() {
 
 switch (cmd) {
     case "add":
-        appendFile(location, data)
+        appendFile(location, arg)
             .then(function () {
-                console.log(`Added: ${data}`);
-                readFileFunc(location);
+                console.log(`Added: ${arg}`);
+                console.log("To Dos:")
+                return readFile(location)
+            }).then(function (data) {
+                console.log(data.toString());
             })
         break;
     case "list":
-        readFileFunc(location);
+        readFile(location)
+            .then(function (data) {
+                console.log("To Dos:")
+                console.log(data.toString());
+        })
+        break;
+    case "remove":
+        readFile(location)
+            .then(function (data) {
+                let info = data.toString().split("\n");
+                info.splice(arg - 1, 1);
+                let backToString = info.join("\n");
+                writeFile(location, backToString)
+                    .then(function () {
+                    return readFile(location)
+                    }).then(function (data) {
+                        console.log("To Dos:");
+                        console.log(data.toString());
+                })
+                })  
         break;
     case "reset":
         writeFile(location, "")
             .then(function () {
-                readFileFunc(location);
+                return readFile(location)
+                    .then(function (data) {
+                    console.log(data.toString())
+                })
             })
         break;
     case "help":
