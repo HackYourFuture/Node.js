@@ -27,10 +27,6 @@ function writeFile(data) {
   );
 }
 
-function taskStatus() {
-  const task = false;
-}
-
 app.use(express.json());
 
 app.get("/todos", (req, res) => {
@@ -42,16 +38,12 @@ app.get("/todos", (req, res) => {
 
 app.get("/todos/:id", (req, res) => {
   const getTodoId = req.params.id;
-  const getTodoInfo = req.body.todo.description;
   readFile()
     .then(todos => {
       const getTodo = todos.filter(todo => todo.id === getTodoId);
-      getTodo.description = getTodoInfo;
-    })
-    .then(() => {
-      res.send(`todo info: ${getTodoInfo}`);
+      res.json(getTodo);
       res.end();
-  })
+    })
 });
 
 app.post("/todos", (req, res) => {
