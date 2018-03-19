@@ -1,35 +1,33 @@
-"use strict";
-
 const fs = require("fs");
+const FILE_NAME = "todo.txt";
 
-function writeFile(path, text) {
+function writeFile(text) {
     return new Promise(function (resolve, reject) {
-        fs.writeFile(path, `${text}`, function (error) {
+        fs.writeFile(FILE_NAME, text, function (error) {
             if (error) {
                 reject(error);
             } else {
-                resolve();
+                resolve("OK");
             }
         })
     })
 }
 
-function appendFile(path, text) {
+function appendFile(text) {
     return new Promise(function (resolve, reject) {
-        fs.appendFile(path, `${text}\n`, function (error) {
+        fs.appendFile(FILE_NAME, `${text}\n`, function (error) {
             if (error) {
                 reject(error);
             } else {
-                resolve();
+                resolve("OK");
             }
         })
     })
 }
 
-
-function readFile(path) {
+function readFile() {
     return new Promise(function (resolve, reject) {
-        fs.readFile(path, function (error, data) {
+        fs.readFile(FILE_NAME, function (error, data) {
             if (error) {
                 reject(error);
             } else {
@@ -38,73 +36,75 @@ function readFile(path) {
         })
     })
 }
+const arg = process.argv[3];
+const command = process.argv[2];
+const argup = process.argv[4];
+const help = `Available commands:\n
+add: To add an extra item to your todo list.\n
+list: To list all items in your todo list.\n
+reset: To remove all items from your todo list.\n
+remove: To remove one item at a time from your todo list.\n
+update: To replace an item with another or to update an existing item.`;
 
-
-let cmd = process.argv[2];
-let arg = process.argv[3];
-let location = "todo.txt";
-
-// function readFileFunc(location) {
-//     return readFile(location)
-//         .then(function (data) {
-//             console.log("To Do:");
-//             console.log(data.toString());
-//         })
-// }
-
-function help() {
-    console.log(`add: To add extra item to the txt file.\n
-        remove: To remove a string from an existing txt file\n
-        list: To list all items in txt file\n
-        reset: To remove all existing items inside a txt file`)
-}
-
-switch (cmd) {
-    case "add":
-        appendFile(location, arg)
-            .then(function () {
-                console.log(`Added: ${arg}`);
-                console.log("To Dos:")
-                return readFile(location)
-            }).then(function (data) {
-                console.log(data.toString());
-            })
+switch (command) {
+    case "help":
+        console.log(help);
         break;
     case "list":
-        readFile(location)
+        readFile()
             .then(function (data) {
-                console.log("To Dos:")
-                console.log(data.toString());
-        })
-        break;
-    case "remove":
-        readFile(location)
-            .then(function (data) {
-                let info = data.toString().split("\n");
-                info.splice(arg - 1, 1);
-                let backToString = info.join("\n");
-                writeFile(location, backToString)
-                    .then(function () {
-                    return readFile(location)
-                    }).then(function (data) {
-                        console.log("To Dos:");
-                        console.log(data.toString());
-                })
-                })  
-        break;
-    case "reset":
-        writeFile(location, "")
-            .then(function () {
-                return readFile(location)
-                    .then(function (data) {
-                    console.log(data.toString())
-                })
+                console.log(`Your todos:\n${data.toString()}`);
             })
         break;
-    case "help":
-        help();
+    case "add":
+        appendFile(arg)
+            .then(function () {
+                console.log(`Added item: ${arg}`);
+            })
+        break;
+    case "reset":
+        writeFile("")
+            .then(function () {
+                console.log("Todo list has been successfully reset.");
+            })
+        break;
+    case "remove":
+        readFile()
+            .then(function (data) {
+                let dataToArray = data.toString().split("\n");
+                dataToArray.splice(arg - 1, 1);
+                let arrayToString = dataToArray.join("\n");
+                writeFile(arrayToString)
+                    .then(function () {
+                        return readFile()
+                    }).then(function (data) {
+                        if (arg > 0 && arg !== NaN) {
+                            console.log(data.toString());
+                        } else {
+                            console.log("You have inserted invaild value!");
+                        }    
+                    })
+            })
+        break;
+    case "update":
+        readFile()
+            .then(function (data) {
+                let dataToArray = data.toString().split("\n");
+                dataToArray.splice(arg - 1, 1, argup);
+                let arrayToString = dataToArray.join("\n");
+                writeFile(arrayToString)
+                    .then(function () {
+                        return readFile()
+                    }).then(function (data) {
+                        if (arg > 0 && arg !== NaN) {
+                            console.log(`Updated item NR.${arg}:\n${data.toString()}`);
+                        } else {
+                            console.log("You have inserted invaild value!");
+                        }
+                    })
+            })
         break;
     default:
-        console.log(`Command was not found. Check available commands below ↓\n`);
-        help();
+        console.log(`Command was not found check available commands by typing: node revise.js help`);
+        break;
 }
