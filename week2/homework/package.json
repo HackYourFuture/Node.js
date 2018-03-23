@@ -1,15 +1,11 @@
 {
-  "name": "hyf-node-week-3-todo",
-  "version": "1.0.1",
-  "description": "HackYourFuture Node.js Week 3 - To-Do App",
+  "name": "hyf-node-week-2-homework",
+  "version": "1.0.0",
+  "description": "HackYourFuture Node.js Week 2 - Homework",
   "repository": "https://github.com/HackYourFuture/nodejs.git",
   "main": "src/index.js",
   "author": "George Sapkin",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.16.2",
-    "uuid": "^3.2.1"
-  },
   "devDependencies": {
     "eslint": "^4.2.0",
     "eslint-config-standard": "^11.0.0",

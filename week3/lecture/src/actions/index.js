@@ -2,8 +2,8 @@
 
 // CRUD actions
 module.exports = {
-  create:  require('./create'),
-  read:    require('./read'),
-  update:  require('./update'),
-  delete_: require('./delete')
+  createTodo: require('./createTodo'),
+  readTodos:  require('./readTodos'),
+  updateTodo: require('./updateTodo'),
+  deleteTodo: require('./deleteTodo')
 };
