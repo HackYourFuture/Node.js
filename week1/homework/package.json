@@ -1,17 +1,32 @@
 {
   "name": "hyf-node-week-1-homework",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "HackYourFuture Node.js Week 1 - Homework",
   "repository": "https://github.com/HackYourFuture/nodejs.git",
   "main": "src/index.js",
   "author": "George Sapkin",
   "license": "MIT",
+  "scripts": {
+    "test": "jest --silent=false",
+    "test:watch": "jest --silent=false --watchAll --notify"
+  },
   "devDependencies": {
     "eslint": "^4.2.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.3",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.test.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

@@ -15,16 +15,22 @@ developer".
 |   2. | fs, process        | [Week 2 Reading](week2/README.md) | [Week 2 Homework](week2/homework/README.md) |
 |   3. | express, REST      | [Week 3 Reading](week3/README.md) | [Week 3 Homework](week3/homework/README.md) |
 
-## Watch before your first Node.js session
+## Before your first Node.js lecture
 
-Watch Jason's playlist on [Lynda.com](https://www.lynda.com/SharedPlaylist/a850f6b7bddf437f8b98679f5f9d9cc3) (45 min)
+Start with the Node.js tutorials for beginners [from The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and
+[from thenewboston](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_).
 
-And you can start with the [Node.js Tutorial for Beginners](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+Read first weeks's [README.md](week1/README.md).
 
 ## Promises' refresher
 
-Read Jim's [summary of promises](https://github.com/remarcmij/JavaScript/blob/master/fundamentals/promises.md)
-from JavaScript module and [Promises, async/await](http://javascript.info/async).
+Reading:
+
+Read Jim's summaries of [promises](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/promises.md)
+and [async & await](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/async_await.md)
+from JavaScript module
+
+[Promises, async/await](http://javascript.info/async)
 
 ## Node.js Setup
 

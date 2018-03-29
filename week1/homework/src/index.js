@@ -1,3 +1,9 @@
 'use strict';
 
-// TODO: Write the homework code in this file
+const {
+  createServer
+} = require('./server');
+
+const PORT = 3000;
+
+createServer(PORT);

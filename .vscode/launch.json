@@ -7,6 +7,24 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Week 1 - Homework",
+      "program": "${workspaceFolder}/week1/homework/src/index.js",
+      "cwd": "${workspaceFolder}/week1/homework"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 1 - Homework Tests",
+      "program": "${workspaceRoot}/week1/homework/node_modules/.bin/jest",
+      "cwd": "${workspaceFolder}/week1/homework",
+      "args": [
+          "--runInBand"
+      ],
+      "outFiles": []
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Week 1 - Lecture",
       "program": "${workspaceFolder}/week1/lecture/src/index.js",
       "cwd": "${workspaceFolder}/week1/lecture"
