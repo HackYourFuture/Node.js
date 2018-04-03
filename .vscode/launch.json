@@ -15,12 +15,16 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Week 1 - Homework Tests",
-      "program": "${workspaceRoot}/week1/homework/node_modules/.bin/jest",
-      "cwd": "${workspaceFolder}/week1/homework",
+      "program": "${workspaceRoot}/week1/homework/node_modules/ava/profile.js",
       "args": [
-          "--runInBand"
+        "--concurrency=1",
+        "--no-color",
+        "--serial",
+        "${workspaceRoot}/week1/homework/test/server.test.js"
       ],
-      "outFiles": []
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
     },
     {
       "type": "node",

@@ -2,6 +2,9 @@
 
 const http = require('http');
 
+/* `createServer` MUST return an instance of `http.Server` otherwise the tests
+ * will fail.
+ */
 function createServer(port) {
   let state = 10;
 
@@ -9,7 +12,7 @@ function createServer(port) {
     // TODO: Write your homework code here
   });
 
-  return new Promise(resolve => server.listen(port, () => resolve(server)));
+  return server;
 }
 
 module.exports = {

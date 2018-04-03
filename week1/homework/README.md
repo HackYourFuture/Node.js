@@ -46,41 +46,42 @@ Try and run the tests without writing any code first. You will see that all the
 tests will fail:
 
 ```bash
- FAIL  test/server.spec.js
-  homework 1 server
-    ✕ /state returns 10 (153ms)
-    ✕ /add returns 11 (113ms)
-    ✕ /subtract returns 9 (109ms)
-    ✕ /reset returns 10 (107ms)
-    ✕ /add, /reset returns 10 (107ms)
-    ✕ /subtract, /reset returns 10 (109ms)
-    ✕ /add, /add, /add, /subtract returns 12 (109ms)
-    ✕ /subtract, /subtract, /reset, /add, /subtract, /add returns 11 (109ms)
-    ✕ /add, /add, /add, /add, /add, /add, /add, /add, /add, /add returns 20 (107ms)
-    ✕ /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract
-, /subtract returns 0 (106ms)
-    ✕ querying undefined URL returns 404 Not Found (128ms)
+  ✖ /state returns 10 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /add returns 11 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /subtract returns 9 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /reset returns 10 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /add, /reset returns 10 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /subtract, /reset returns 10 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /add, /add, /add, /subtract returns 12 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /subtract, /subtract, /reset, /add, /subtract, /add returns 11 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /add, /add, /add, /add, /add, /add, /add, /add, /add, /add returns 20 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract,/subtract, /subtract, /subtract returns 0 Expected server to respond without an error, got Timeout of 100ms exceeded
+  ✖ querying undefined URL returns 404 Not Found Expected server to respond without an error, got Timeout of 100ms exceeded
+
+  11 tests failed
 ```
 
 Then write the code as required by the assignment and run the tests again. Fix
 any issues until all tests pass.
 
 ```bash
- PASS  test/server.spec.js
-  homework 1 server
-    ✓ /state returns 10 (42ms)
-    ✓ /add returns 11 (3ms)
-    ✓ /subtract returns 9 (2ms)
-    ✓ /reset returns 10 (2ms)
-    ✓ /add, /reset returns 10 (4ms)
-    ✓ /subtract, /reset returns 10 (5ms)
-    ✓ /add, /add, /add, /subtract returns 12 (6ms)
-    ✓ /subtract, /subtract, /reset, /add, /subtract, /add returns 11 (5ms)
-    ✓ /add, /add, /add, /add, /add, /add, /add, /add, /add, /add returns 20 (9ms)
-    ✓ /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract
-, /subtract returns 0 (10ms)
-    ✓ querying undefined URL returns 404 Not Found (1ms)
+  ✔ /state returns 10
+  ✔ /add returns 11
+  ✔ /subtract returns 9
+  ✔ /reset returns 10
+  ✔ querying undefined URL returns 404 Not Found
+  ✔ /add, /reset returns 10
+  ✔ /subtract, /reset returns 10
+  ✔ /add, /add, /add, /subtract returns 12
+  ✔ /subtract, /subtract, /reset, /add, /subtract, /add returns 11
+  ✔ /add, /add, /add, /add, /add, /add, /add, /add, /add, /add returns 20
+  ✔ /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract, /subtract returns 0
+
+  11 tests passed
 ```
+
+Before submitting your homework via a pull request, make sure that your server
+passes all the unit tests as described above.
 
 ## Run the project
 
@@ -90,19 +91,26 @@ In `week1/homework` run:
 node .
 ```
 
+You can interactively test the endpoints with a browser or by using [Postman](https://www.getpostman.com/).
+
 ## Assignment
 
 Create an HTTP server that can add and subtract from a number, which we will
-call `state`. Use project in `week1/lecture` directory for reference.
+call `state`. Use the project in `week1/lecture` directory for reference.
 
 State should be persisted between individual calls and not reset before each
 one.
 
 ### Rule 1
 
-**DO NOT USE EXPRESS.JS**
+Your modifications should be limited to the `src` folder. Do not make any
+changes to the `test` folder.
 
 ### Rule 2
+
+**DO NOT USE EXPRESS.JS**
+
+### Rule 3
 
 You can use other packages, but the server _must_ be implemented using the
 built-in `http` module.
