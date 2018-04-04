@@ -42,7 +42,10 @@ _estimated time: 10 minutes_
 
 ## Getting started with Node.js and npm
 
+Reading:
+
 [A Beginner’s Guide to npm — the Node Package Manager](https://www.sitepoint.com/beginners-guide-node-package-manager/)
+
 [NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
 _estimated time: 4-6 hours_
 
@@ -53,6 +56,8 @@ _estimated time: 4-6 hours_
 [Node.js Documentation](https://nodejs.org/docs/latest-v8.x/api/documentation.html)
 
 ## Read-eval-print loop (REPL)
+
+Documentation:
 
 [REPL](https://nodejs.org/docs/latest-v8.x/api/repl.html)
 
@@ -66,21 +71,27 @@ Videos:
 
 Documentation:
 
-[`npm init`](https://docs.npmjs.com/cli/init)
+[npm init](https://docs.npmjs.com/cli/init)
 
-[`package.json`](https://docs.npmjs.com/files/package.json)
+[package.json](https://docs.npmjs.com/files/package.json)
 
 ## Installing dependencies using `npm install`
 
-[`npm install`](https://docs.npmjs.com/cli/install)
+[npm install](https://docs.npmjs.com/cli/install)
 
 ## Importing modules using `require`
 
 Videos:
 
-[Modules and `require()`](https://www.youtube.com/watch?v=xHLd36QoS4k&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=6)
+[Modules and require()](https://www.youtube.com/watch?v=xHLd36QoS4k&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=6)
 
 [Module Patterns](https://www.youtube.com/watch?v=9UaZtgB5tQI&index=7&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Modules](https://www.youtube.com/watch?v=9JhvjhZLsEw&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=8)
+
+[More on Modules](https://www.youtube.com/watch?v=aNN1IKoEIdM&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=9)
+
+[require Function](https://www.youtube.com/watch?v=e1Ln1FrLvh8&index=3&list=PLYxzS__5yYQmHbpKMARP04F344zYRX91I)
 
 Documentation:
 
@@ -93,6 +104,10 @@ Videos:
 [Clients & Servers](https://www.youtube.com/watch?v=qSAze9b0wrY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=11)
 
 [Creating a Server](https://www.youtube.com/watch?v=lm86czWdrk0&index=12&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+
+[Creating a Basic Server](https://www.youtube.com/watch?v=pYOltVz7kL0&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=13)
+
+[Simple Web File Server](https://www.youtube.com/watch?v=_D2w0voFlEk&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=14)
 
 [Basic Routing](https://www.youtube.com/watch?v=_zvWeGwVkCY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=19)
 
@@ -108,14 +123,15 @@ Documentation:
 
 An important term when making applications is _control flow_. You already know
 all about it. Read through this page and answer this question: how do we control
-"flow" in JavaScript?
+_flow_ in JavaScript?
 
-Read: [Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
+[Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
 
 ## Homework
 
-Check [README.md](homework/README.md) in `homework` subdirectory.
+Check [README.md](homework/README.md) in `homework` subdirectory and use project
+in [lecture](lecture) for reference.
 
 ## Prepare for the next lecture
 
-[Custom made playlist :boom: Lynda.com](https://www.lynda.com/SharedPlaylist/a034fd969ef945bb9ebbd9490cc75d5a)
+Read the [README.md](../week2/README.md) for week 2.
