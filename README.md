@@ -91,3 +91,6 @@ and use it as a reference.
 - Lecture 1 (Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
 - Lecture 2 (Joost): https://www.youtube.com/watch?v=pY7IDaLX-no
 - Lecture 3 (Joost): https://www.youtube.com/watch?v=oeWCqKJsHtU&t=99s
+
+*The HackYourFuture curriculum is subject to CC BY copyright. This means you can freely use our materials, but just make sure to give us credit for it :)*
+
