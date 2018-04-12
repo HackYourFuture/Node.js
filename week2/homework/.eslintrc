@@ -4,9 +4,6 @@
     "node": true
   },
   "extends": "standard",
-  "plugins": [
-    "ava"
-  ],
   "rules": {
     "brace-style": [
       "warn",
