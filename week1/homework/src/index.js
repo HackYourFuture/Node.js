@@ -34,7 +34,7 @@ function handleRequest(request, response) {
     default:
       response.setHeader('Content-Type', 'text/html');
       response.write(`<h1 style="background-color:blue;color:white;font-size:46px;">Error code 404 : 'Not found'
-       <br> please try something else </h1>`);
+ <br> please try something else </h1>`);
   }
   response.end();
 }
