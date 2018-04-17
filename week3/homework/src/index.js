@@ -12,8 +12,9 @@ const {writeFile,readFile} = require('./todos.js');
 
 
 app.use(express.json());
+//readTodos (GET /todos) Reads and lists all to - dos
 
-app.get('todos', (require, response) => {
+app.get('/todos', (require, response) => {
     readFile().then(data => {
         response.json(data);
         response.end();
@@ -21,13 +22,13 @@ app.get('todos', (require, response) => {
 
 });
 
-app.post('todos', (require, response) => {
+app.post('/todos', (require, response) => {
     readFile().then(todos => {
         const todosToAdd = require.body.todos;
         todosToAdd.id = uuidv4();
         todos.push(todosToAdd);
         writeFile(todos).then(() => {
-            response.send(`Wrote ${require.body.todos}`);
+            response.send(`"${require.body.todos}"added to the list of toDos.`);
             response.end();
         });
     });
@@ -39,7 +40,7 @@ app.delete('/todos/:id', (require, response) => {
     readFile().then(todos => {
         const newTodos = todos.filter(todo => todo.id !== removed);
         writeFile(newTodos).then(() => {
-            response.send(`"${removeID}"removed" from the list of toDos.`);
+            response.send(`"${removeID}" "removed" from the list of toDos.`);
             response.end();
         });
     });
@@ -68,7 +69,7 @@ app.post('/todos/:id/done', (require, response) => {
 });
 
 app.delete('/todos/:id/done', (require, response) => {
-    const markAsNotDoneId = req.params.id;
+    const markAsNotDoneId = require.params.id;
     readFile().then(todos => {
             const idToChangeStatus = todos.find(todo => todo.id === markAsNotDoneId);
             idToChangeStatus.done = "false";
@@ -89,8 +90,16 @@ app.put('/todos/:id', (require, response) => {
             todoToUpdate.age = newTodoAge;
             return writeFile(todos)
         }).then(() => {
-            response.send(`Updated${updateId}`);
+            response.send(`The description of "${updateId}" "updated".`);
             response.end();
         });
 
+});
+app.listen(port, error => {
+    if (error) {
+        console.error(error.message);
+    }
+    else {
+        console.log(`server is listening at http://localhost:${PORT}`)
+    };
 });
