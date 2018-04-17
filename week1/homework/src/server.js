@@ -10,14 +10,13 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
-
+    response.setHeader('Content-Type', 'application/json');
     switch (request.url) {
       case '/state':
         state = 10;
         let number = JSON.stringify({
           state: state
         });
-        response.setHeader('Content-Type', 'application/json');
         response.write(`${number}`);
         break;
 
@@ -25,7 +24,6 @@ function createServer(port) {
         let add = JSON.stringify({
           state: ++state
         });
-        response.setHeader('Content-Type', 'application/json');
         response.write(`${add}`);
         break;
 
@@ -33,7 +31,6 @@ function createServer(port) {
         let subtract = JSON.stringify({
           state: --state
         });
-        response.setHeader('Content-Type', 'application/json');
         response.write(`${subtract}`);
         break;
 
@@ -42,7 +39,6 @@ function createServer(port) {
         let reset = JSON.stringify({
           state: state
         });
-        response.setHeader('Content-Type', 'application/json');
         response.write(`${reset}`);
         break;
 
@@ -50,12 +46,10 @@ function createServer(port) {
         let error = JSON.stringify({
           error: 'Not found'
         });
-        response.setHeader('Content-Type', 'application/json');
         response.statusCode = 404;
         response.write(`${error}`);
         break;
     }
-
     response.end();
   });
   return server;
