@@ -10,6 +10,32 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    switch (request.url) {
+      case '/state':
+        response.setHeader('Content-Type', 'application/json');
+        response.write(`{"state": ${state}}`);
+        break;
+      case '/add':
+        state++;
+        response.setHeader('Content-Type', 'application/json');
+        response.write(`{"state": ${state}}`);
+        break;
+      case '/subtract':
+        state--;
+        response.setHeader('Content-Type', 'application/json');
+        response.write(`{"state": ${state}}`);
+        break;
+      case '/reset':
+        state = 10;
+        response.setHeader('Content-Type', 'application/json');
+        response.write(`{"state": ${state}}`);
+        break;
+      default:
+        response.statusCode = 404;
+        response.setHeader('Content-Type', 'application/json');
+        response.write('{"error": "Not found"}');
+    }
+    response.end();
   });
 
   return server;
