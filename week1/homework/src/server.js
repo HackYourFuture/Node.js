@@ -6,7 +6,6 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     response.setHeader('Content-Type', 'application/json');
     if (request.url === '/state') {
-      state = 10;
       const defaultValue = JSON.stringify({
         state: state
       });
