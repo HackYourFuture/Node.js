@@ -13,7 +13,8 @@ function createServer(port) {
     console.log(request.url);
     function switchStates(x) {
       response.setHeader(`Content-Type`, `application/json`);
-      response.write(`status: ${x}`);
+      let message = { 'state': x };
+      response.write(JSON.stringify(message));
       response.end();
     }
     switch (request.url) {
@@ -21,21 +22,22 @@ function createServer(port) {
         switchStates(state);
         break;
       case '/add':
-        // state++;
-        switchStates(state++);
+        state++;
+        switchStates(state);
         break;
       case '/subtract':
-        // state--;
-        switchStates(state--);
+        state--;
+        switchStates(state);
         break;
       case '/reset':
-        // state = 10;
-        switchStates(state = 10);
+        state = 10;
+        switchStates(state);
         break;
       default:
         response.statusCode = 404;
         response.setHeader(`content-Type`, `application/json`);
-        response.write(`error: Not found`);
+        let message = { 'error': 'Not found' };
+        response.write(JSON.stringify(message));
         response.end();
     }
   });
