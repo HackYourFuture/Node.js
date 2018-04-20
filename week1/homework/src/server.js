@@ -35,8 +35,8 @@ function createServer(port) {
         response.statusCode = 404;
         const errorMessage = { 'error': 'Not found' };
         response.write(JSON.stringify(errorMessage));
+        response.end();
     }
-    response.end();
   });
   return server;
 }
