@@ -9,7 +9,6 @@ function createServer(port) {
   let state = 10;
 
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code heres
     let States = (state) => {
       response.setHeader('Content-Type', 'application/json');
       const num = JSON.stringify({ state: state });
