@@ -16,14 +16,17 @@ function createServer(port) {
         response.write(`The state is ${state}`);
         break;
       case '/add':
+        state += 1;
         response.setHeader('Content-Type', 'application/json');
-        response.write(`The state is ${state + 1}`);
+        response.write(`The state is ${state}`);
         break;
       case '/subtract':
+        state -= 1;
         response.setHeader('Content-Type', 'application/json');
         response.write(`The state is ${state - 1}`);
         break;
       case '/reset':
+        state = 10;
         response.setHeader('Content-Type', 'application/json');
         response.write(`The state is ${state}`);
         break;
@@ -31,7 +34,8 @@ function createServer(port) {
         response.statusCode = 404; // otherwise, by default is is code 200.
         break;
     }
-    // never modifying state, and should return a json object - setting content type, but never actually returning a JSON thing.
+    // never modifying state, and should return a json object -
+    // setting content type, but never actually returning a JSON thing.
     // return a JSON first, then modify.
     return response.end();
   });
