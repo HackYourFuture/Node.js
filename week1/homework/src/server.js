@@ -8,31 +8,28 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
+  function responseStatusCode200(response) {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'application/json');
+    response.write(JSON.stringify({ state }));
+  }
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
     switch (request.url) {
       case '/state':
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
+        responseStatusCode200(response);
         break;
       case '/add':
         state += 1;
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
+        responseStatusCode200(response);
         break;
       case '/subtract':
         state -= 1;
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
+        responseStatusCode200(response);
         break;
       case '/reset':
         state = 10;
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
+        responseStatusCode200(response);
         break;
       default:
         response.setHeader('Content-Type', 'application/json');
