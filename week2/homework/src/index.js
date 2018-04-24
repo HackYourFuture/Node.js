@@ -1,5 +1,4 @@
 'use strict';
-
 // TODO: Write the homework code in this file
 const {
   promisify
@@ -56,7 +55,7 @@ async function main() {
         }
 
       } else {
-        console.info('The TODO-ITEM is not exist !!!');
+        console.info('The TODO-ITEM is not exist!!');
       }
 
       break;
