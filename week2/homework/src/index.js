@@ -55,7 +55,7 @@ async function main() {
         }
 
       } else {
-        console.info('The TODO-ITEM is not exist!');
+        console.info('The TODO-ITEM is not exist...!');
       }
 
       break;
