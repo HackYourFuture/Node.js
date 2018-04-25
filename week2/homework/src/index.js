@@ -9,7 +9,6 @@ const writeFileWithPromise = promisify(writeFile);
 const appendFileWithPromise = promisify(appendFile);
 
 const TODO_FILE = 'todo.json';
-const HELP_FILE = 'help.json';
 
 async function main() {
   const [, , cmd, ...args] = process.argv;
@@ -50,7 +49,6 @@ async function main() {
           console.info(`Please type a number after remove command `);
           return;
         }
-
         const items = [todos];
         items[0].splice(index - 1, 1);
         let newTodos = items[0];
@@ -66,6 +64,36 @@ async function main() {
       const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
       const todos = JSON.parse(data);
       console.info(todos);
+      break;
+    }
+
+    case 'update': {
+      const [, , cmd, baseIndex, replacedText, ...args] = process.argv;
+      const index = parseInt(baseIndex);
+      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
+      const todos = JSON.parse(data);
+
+      if ((typeof (index) === 'number' && !isNaN(index))) {
+        const todosSize = Object.keys(todos).length;
+        if (index > todosSize) {
+          console.info(`There is ${todosSize} items in the file choose a number between (1 to ${todosSize} )`);
+          return;
+        }
+        else if (index <= 0) {
+          console.info(`Please type a valid number after remove command `);
+          return;
+        }
+        else if (baseIndex == null) {
+          console.info(`Please type a number after remove command `);
+          return;
+        }
+        const items = [todos];
+        items[0].splice(index - 1, 1, replacedText);
+        let newTodos = items[0];
+        await writeFileWithPromise(TODO_FILE, JSON.stringify(newTodos));
+        console.info(newTodos);
+      }
+      else { console.info('Please use number after command'); }
       break;
     }
 
