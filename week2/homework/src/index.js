@@ -34,7 +34,7 @@ async function main() {
             console.info('To-dos:', todos);
             break;
         }
-        case 'remove':
+        case 'remove': {
             const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
             const todos = JSON.parse(data);
             const value = args - 1;
@@ -48,16 +48,15 @@ async function main() {
                 }
             }
             break;
-
-        // case 'update':
-        //  const [, , cmd, updatedText, ...args] = process.argv;
-        //  const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
-        //  const todos = JSON.parse(data);
-        //  const value = args - 1;
-        //  todos.splice(value, 1, updatedText);
-        //  await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
-        //  break;
-
+        }
+        case 'update': {
+            const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
+            const todos = JSON.parse(data);
+            const value = args[0] - 1;
+            todos.splice(value, 1, args[1]);
+            await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
+            break;
+        }
         case 'help':
         default:
             console.info(`Help section :\n 
