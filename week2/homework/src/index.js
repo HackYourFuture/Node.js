@@ -55,28 +55,38 @@ async function removeTodo() {
 
 async function resetTodo() {
   await writeFileWithPromise(TODO_FILE, JSON.stringify([]));
-  console.info('ToDo\'s is EMPTY now!!!');
+  const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
+  const todos = JSON.parse(data);
+  console.info(todos + ' ToDo\'s is EMPTY now!!!');
+
 }
 
 async function updateTodo() {
+  const [, , cmd, index, itemToUpdated, ...args] = process.argv;
   const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
   const todos = JSON.parse(data);
-  const index = args[0] - 1;
-  const itemToUpdated = args[1];
+  const indexTodo = parseInt(index)
   const arrTodo = [];
-  arrTodo.push(data);
-  /*
-  console.log('todos: ' + todos);
-  console.log('arrTodo: ' + arrTodo.entries(args));
-  console.log('args: ' + args);
-  console.log('index: ' + index);
-  console.log('todos[index]: ' + todos[index]);
-  console.log('item to UPDATED: ' + itemToUpdated);
-  */
-  const newTodo = todos.join().replace(args[index], itemToUpdated);
-  await writeFileWithPromise(TODO_FILE, JSON.stringify(newTodo));
-  const result = todos[index] + ' : has been UPDATED!!!';
-  console.info(result);
+  arrTodo.push(todos);
+  let sizeOfTodos = Object.keys(todos).length;
+
+  if ((typeof indexTodo === 'number' && !isNaN(indexTodo))) {
+
+    if (indexTodo <= 0 || indexTodo > sizeOfTodos) {
+
+      console.info('The TODO-ITEM is not exist...!\nYou must enter index between 1 and ' + sizeOfTodos);
+
+    } else {
+      arrTodo[0].splice(indexTodo - 1, 1, itemToUpdated);
+      let newTodo = arrTodo[0];
+      await writeFileWithPromise(TODO_FILE, JSON.stringify(newTodo));
+      const result = 'index ' + index + ' has been UPDATED by: ' + newTodo[indexTodo - 1];
+      console.info(result);
+      listTodos();
+    }
+  } else {
+    console.info('Your index is not a number, YOU MUST ENTER a number !');
+  }
 }
 
 function help() {
@@ -84,7 +94,7 @@ function help() {
     'Hello to my CLI >>> You have 5 choices : \n 1. Adds a to-do item: add todo-nam' +
     'e\n 2. List All Todos: list\n 3. Removes a to-do item by its 1-base index: rem' +
     'ove todo-index\n 4. Removes all to-do items from the list: reset\n 5. Updates ' +
-    'a to-do item with new text: update todo-index your-update '
+    'a to-do item by its 1-base index: update todo-index your-update '
 
   );
 }
