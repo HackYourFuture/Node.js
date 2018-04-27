@@ -1,4 +1,5 @@
 'use strict';
+
 // TODO: Write the homework code in this file
 const { appendFile, readFile, writeFile } = require('fs');
 const { promisify } = require('util');
@@ -6,46 +7,56 @@ const appendFileWithPromise = promisify(appendFile);
 const readFileWithPromise = promisify(readFile);
 const writeFileWithPromise = promisify(writeFile);
 const TODO_FILE = 'todo.json';
+
 async function main() {
     const [, , cmd, ...args] = process.argv;
-    // var value = process.argv[3]
-    let value = args[0];
+    const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
+    let todos = JSON.parse(data);
+    function wirteToDos() {
+        return writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
+    }
     switch (cmd) {
         case 'add': {
-            const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
-            const todos = JSON.parse(data);
-            const newTodo = args.join(' ');
-            todos.push(newTodo);
-            await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
+            todos.push(args.join(' '));
+            await wirteToDos();
             break;
         }
         case 'list': {
-            const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
-            const todos = JSON.parse(data);
             console.info(todos);
             break;
         }
         case 'reset': {
-            await writeFileWithPromise(TODO_FILE, JSON.stringify([]));
-            const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
-            const todos = JSON.parse(data);
+            todos = [];
+            await wirteToDos();
             console.info('To-dos:', todos);
             break;
         }
         case 'remove': {
-            const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
-            const todos = JSON.parse(data);
-            // const result = todos[value];
-            if (todos.length === 0) {
-                console.info('TODOS is EMPTY NOW!!!');
-            }
-            else if (value > 0 && value <= todos.length) {
+            const value = args[0];
+            if (value <= todos.length && value > +0) {
+                const removedItem = todos[value - 1];
                 todos.splice(value - 1, 1);
-                await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
-                console.info(' element is removed from your TO-DO list!');
+                await wirteToDos();
+                console.info(removedItem + ' : is  Removed from your TO-DO list!');
+                if (todos.length === 0)
+                    console.info('TODOS is EMPTY NOW!!!');
+            } else {
+                console.log('Item number is out of range ');
             }
-            else if (value <= 0 || value > todos.length) {
-                console.info(`enter number from 1 and <= ${todos.length}`);
+            break;
+        }
+        case 'update': {
+            const value = args[0];
+            const newText = args.slice(1).join(' ');
+            if (value <= todos.length && value > +0) {
+                const removedItem = todos[value - 1];
+                todos.splice(value - 1, 1, newText);
+                await wirteToDos();
+                console.info(removedItem + ' : is modified to ' + newText);
+                if (todos.length === 0)
+                    console.info('TODOS is EMPTY NOW!!!');
+            } else {
+                console.log('Item number is out of range ');
             }
             break;
         }
@@ -59,4 +70,5 @@ async function main() {
             break;
     }
 }
+
 main();
