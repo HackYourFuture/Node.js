@@ -17,25 +17,28 @@ const appendFileWithPromise = promisify(appendFile);
 const TODO_FILE = 'todo.json';
 const [, , cmd, ...args] = process.argv;
 
-async function addTodo() {
+async function getTodo() {
   const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
   const todos = JSON.parse(data);
+  return todos;
+}
+
+async function addTodo() {
   const newTodo = args.join(' ');
+  const todos = await getTodo();
   todos.push(newTodo);
   console.log(newTodo);
   await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
 }
 
 async function listTodos() {
-  const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
-  const todos = JSON.parse(data);
+  const todos = await getTodo();
   console.info(todos);
 
 }
 
 async function removeTodo() {
-  const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
-  const todos = JSON.parse(data);
+  const todos = await getTodo();
   const index = args - 1;
   const result = todos[index];
 
@@ -55,8 +58,7 @@ async function removeTodo() {
 
 async function resetTodo() {
   await writeFileWithPromise(TODO_FILE, JSON.stringify([]));
-  const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-  const todos = JSON.parse(data);
+  const todos = await getTodo();
   console.info(todos + ' ToDo\'s is EMPTY now!!!');
 
 }
@@ -64,8 +66,7 @@ async function resetTodo() {
 async function updateTodo() {
   const [, , cmd, index, itemToUpdated, ...args] = process.argv;
 
-  const data = await readFileWithPromise(TODO_FILE, 'utf-8').catch(() => '[]');
-  const todos = JSON.parse(data);
+  const todos = await getTodo();
 
   const indexTodo = parseInt(index)
 
@@ -106,15 +107,6 @@ module.exports = {
   removeTodo,
   resetTodo,
   updateTodo,
-  help,
-  promisify,
-  readFile,
-  writeFile,
-  appendFile,
-  readFileWithPromise,
-  writeFileWithPromise,
-  appendFileWithPromise,
-  TODO_FILE,
-  args,
-  cmd
+  help
+
 };

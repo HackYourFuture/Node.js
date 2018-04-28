@@ -8,19 +8,11 @@ const {
   removeTodo,
   resetTodo,
   updateTodo,
-  help,
-  promisify,
-  readFile,
-  writeFile,
-  appendFile,
-  readFileWithPromise,
-  writeFileWithPromise,
-  appendFileWithPromise,
-  TODO_FILE,
-  args,
-  cmd
+  help
 
 } = require('./functions');
+
+const [, , cmd, ...args] = process.argv;
 
 async function main() {
 
