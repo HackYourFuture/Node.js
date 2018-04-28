@@ -7,7 +7,7 @@ const { readFile, writeFile } = require('fs');
 const { promisify } = require('util');
 
 
-const appendFileWithPromise = promisify(appendFile);
+//const appendFileWithPromise = promisify(appendFile);
 const readFileWithPromise = promisify(readFile);
 const writeFileWithPromise = promisify(writeFile);
 
@@ -34,15 +34,33 @@ async function main() {
     case 'reset': {
       await writeFileWithPromise(TODO_FILE, JSON.stringify([]));
       const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
-      const todos = JSON.parse(data);
-      console.info('To-dos:', todos);
       break;
     }
-    case 'remove':
+    case 'remove': {
+      const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
+      const todos = JSON.parse(data);
+      const removeTodo = args.join(' ');
+      todos.slice(removeTodo);
+      await writeFileWithPromise(TODO_FILE, (JSON.stringify(todos)));
       break;
+    }
+    case 'update': {
+      const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
+      const todos = JSON.parse(data);
+      const updatedTodo = args.join(' ');
+      todos.splice(updatedTodo);
+      await writeFileWithPromise(TODO_FILE, (JSON.stringify(todos)));
+      break;
+    }
     case 'help':
     default:
-      console.info('Some help');
+      console.info('These are valid options: \
+        \"node . help\"  - displays help menu \
+        \"node .\" - displays current to-do list \
+        \"node . add [to do-list item]\" - adds to-do list item \
+        \"node . remove [index number]\" - removes a to-do item by index number. \
+        \"node . update [index number, task]\" - updates a to-do item at index wth something else.\
+        \"node . reset\" - removes all items from list.');
       break;
   }
 }
