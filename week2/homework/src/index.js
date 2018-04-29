@@ -56,12 +56,12 @@ async function main() {
     }
     case 'help':
     default:
-      console.info('These are valid options: \n
-        \"node . help\"  - displays help menu \n
-        \"node .\" - displays current to-do list \n
-        \"node . add [to do-list item]\" - adds to-do list item \n
-        \"node . remove [index number]\" - removes a to-do item by index number. \n
-        \"node . update [index number, task]\" - updates a to-do item at index wth something else.\n
+      console.info('These are valid options: \n\
+        \"node . help\"  - displays help menu \n\
+        \"node . list\" - displays current to-do list \n\
+        \"node . add [to do-list item]\" - adds to-do list item \n\
+        \"node . remove [index number]\" - removes a to-do item by index number. \n\
+        \"node . update [index number, task]\" - updates a to-do item at index wth something else.\n\
         \"node . reset\" - removes all items from list.');
       break;
   }
