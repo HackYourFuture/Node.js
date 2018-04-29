@@ -14,7 +14,7 @@ const writeFileWithPromise = promisify(writeFile);
 const TODO_FILE = 'todo.json';
 
 async function main() {
-  const [, , cmd, ...args] = process.argv;
+  const [, , cmd, ...args] = process.argv; // process.argv is a global variable.
 
   switch (cmd) {
     case 'add': {
@@ -39,16 +39,18 @@ async function main() {
     case 'remove': {
       const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
       const todos = JSON.parse(data);
-      const removeTodo = args.join(' ');
-      todos.slice(removeTodo);
+      const indexOfElementToBeRemoved = parseInt(args[0], 10);
+      todos.splice(indexOfElementToBeRemoved - 1, 1);
       await writeFileWithPromise(TODO_FILE, (JSON.stringify(todos)));
       break;
     }
     case 'update': {
       const data = await readFileWithPromise(TODO_FILE, 'utf8').catch(() => '[]');
       const todos = JSON.parse(data);
-      const updatedTodo = args.join(' ');
-      todos.splice(updatedTodo);
+      const indexOfElementToBeRemoved = parseInt(args[0], 10);
+      const updatedTodo = args.slice(1).join(' ');
+      todos.splice(indexOfElementToBeRemoved - 1, 1, updatedTodo);
+
       await writeFileWithPromise(TODO_FILE, (JSON.stringify(todos)));
       break;
     }
