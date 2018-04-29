@@ -1,9 +1,28 @@
 'use strict';
 
-const fs = require('fs');
+//const fs = require('fs'); // access to fs module. Then look at documentation for FS module
+const { readFile, writeFile } = require('fs');
+//these are properties on an object - requesting specific properties of an fs object.
+
+const { promisify } = require('util'); //is a built in method 
+
+//today: read file, append file, write file (usually overwrites)
 
 const DEFAULT_ENCODING = 'utf8';
 const STORE_FILE_NAME = 'store.txt';
+
+/* readFile('some-file.txt', 'utf8', (err, data) => {
+  if (err)
+  return console.error(err);
+  console.info(data);
+})*/
+
+/* function readFileWith Promise(path, encoding) {
+  return new Promise (resolve, reject)
+  [see 12:50 et seq]
+})*/
+
+/* can simply then say const readFileWithPromise - promisify(readFile);*/
 
 function readFile() {
   return new Promise(
