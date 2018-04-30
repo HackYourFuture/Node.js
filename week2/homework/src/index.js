@@ -1,106 +1,72 @@
 'use strict';
-// TODO: Write the homework code in this file
-'use strict';
-const { readFile, writeFile, appendFile } = require('fs');
+const { readFile, writeFile } = require('fs');
 const { promisify } = require('util');
-
 const readFileWithPromise = promisify(readFile);
 const writeFileWithPromise = promisify(writeFile);
-const appendFileWithPromise = promisify(appendFile);
-
 const TODO_FILE = 'todo.json';
 
 async function main() {
   const [, , cmd, ...args] = process.argv;
   switch (cmd) {
     case 'list': {
-      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-      const todos = JSON.parse(data);
+      const todos = await readTodos();
       console.info(todos);
       break;
     }
-
     case 'add': {
-      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-      const todos = JSON.parse(data);
-      const newTodo = args.join(' ');
-      todos.push(newTodo);
-      await writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
+      const todos = await readTodos();
+      todos.push(args.join(' '));
+      await writeTodos(todos);
       break;
     }
-
-    case 'remove': {
-      const [, , cmd, baseIndex, ...args] = process.argv;
-      const index = parseInt(baseIndex);
-      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-      const todos = JSON.parse(data);
-
-      if ((typeof (index) === 'number' && !isNaN(index))) {
-        const todosSize = Object.keys(todos).length;
-        if (index > todosSize) {
-          console.info(`There is ${todosSize} items in the file choose a number between (1 to ${todosSize} )`);
-          return;
-        }
-        else if (index <= 0) {
-          console.info(`Please type a valid number after remove command `);
-          return;
-        }
-        else if (baseIndex == null) {
-          console.info(`Please type a number after remove command `);
-          return;
-        }
-        const items = [todos];
-        items[0].splice(index - 1, 1);
-        let newTodos = items[0];
-        await writeFileWithPromise(TODO_FILE, JSON.stringify(newTodos));
-        console.info(newTodos);
-      }
-      else { console.info('Please use number after command'); }
-      break;
-    }
-
     case 'reset': {
-      await writeFileWithPromise(TODO_FILE, JSON.stringify([]));
-      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-      const todos = JSON.parse(data);
-      console.info(todos);
+      await writeTodos([]);
+      console.info(await readTodos());
       break;
     }
-
-    case 'update': {
-      const [, , cmd, baseIndex, replacedText, ...args] = process.argv;
-      const index = parseInt(baseIndex);
-      const data = await readFileWithPromise(TODO_FILE, `utf8`).catch(() => '[]');
-      const todos = JSON.parse(data);
-
+    case 'remove': {
+      const index = parseInt(args[0]);
+      const todos = await readTodos();
       if ((typeof (index) === 'number' && !isNaN(index))) {
-        const todosSize = Object.keys(todos).length;
-        if (index > todosSize) {
-          console.info(`There is ${todosSize} items in the file choose a number between (1 to ${todosSize} )`);
+        if (todos.length === 0) {
+          console.info('TODOS is empty');
           return;
         }
-        else if (index <= 0) {
-          console.info(`Please type a valid number after remove command `);
+        if (index <= 0 || index > todos.length) {
+          console.info(`There is ${todos.length} items in the file choose a number between (1 to ${todos.length} )`);
           return;
         }
-        else if (baseIndex == null) {
-          console.info(`Please type a number after remove command `);
-          return;
-        }
-        const items = [todos];
-        items[0].splice(index - 1, 1, replacedText);
-        let newTodos = items[0];
-        await writeFileWithPromise(TODO_FILE, JSON.stringify(newTodos));
-        console.info(newTodos);
+        todos.splice(index - 1, 1);
+        await writeTodos(todos);
+        console.info(todos);
       }
       else { console.info('Please use number after command'); }
       break;
     }
-
+    case 'update': {
+      const index = parseInt(args[0]);
+      const replacedText = args[1];
+      const todos = await readTodos();
+      if ((typeof (index) === 'number' && !isNaN(index))) {
+        if (todos.length === 0) {
+          console.info('TODOS is empty');
+          return;
+        }
+        if (index <= 0 || index > todos.length) {
+          console.info(`There is ${todos.length} items in the file choose a number between (1 to ${todos.length} )`);
+          return;
+        }
+        todos.splice(index - 1, 1, replacedText);
+        await writeTodos(todos);
+        console.info(todos);
+      }
+      else { console.info('Please use a number and a text after command'); }
+      break;
+    }
     case 'help':
     default:
-      console.info('Commands: ');
-      const commands = `help: Shows help section.
+      const commands = `Commands: 
+      help: Shows help section.
       list: Shows current to - dos or shows an appropriate text if there are no to - dos.
       add: Adds a to-do item. All the words behind add are entered as 1 to-do item to the list.
       remove: Removes a to-do item by its 1-base index, e.g. to remove second item.
@@ -109,4 +75,13 @@ async function main() {
       break;
   }
 }
-main(); 
+main();
+function readTodos() {
+  return readFileWithPromise(TODO_FILE, 'utf8').then(
+    JSON.parse,
+    () => []
+  );
+}
+function writeTodos(todos) {
+  return writeFileWithPromise(TODO_FILE, JSON.stringify(todos));
+}
