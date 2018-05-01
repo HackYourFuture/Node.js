@@ -2,64 +2,67 @@
 
 const fs = require('fs');
 
-const STORE_FILE_NAME = 'store.txt';
-
+let fileName = 'toDo.json';
+// console.log(fileName);
 function readFile() {
-  return new Promise(
-    resolve => fs.readFile(
-      STORE_FILE_NAME,
-      (err, data) => resolve(err ? '' : data.toString())
-    )
-  );
+    return new Promise(
+        resolve => fs.readFile(
+            fileName,
+            (err, data) => resolve(err ? '' : data.toString())
+        )
+    );
+}
+
+function remove() {
+    readFile()
+        .then(content => {
+            let newArray = content.split('\n');
+            let i = newArray.length-1
+            newArray.splice(i, 1);
+           let new2 =  newArray.join('\n')    
+            writeFile(new2);
+            console.log(content);
+        })
 }
 
 function writeFile(...text) {
-  return new Promise(
-    (resolve, reject) => fs.appendFile(
-      STORE_FILE_NAME,
-      `${text.join(' ')}\n`,
-      (err, data) => err
-        ? reject(err)
-        : resolve(data)
-    )
-  );
+    return new Promise(
+        (resolve, reject) => fs.appendFile(
+            fileName,
+            `${text.join(' ')}\n`,
+            (err, data) => err
+                ? reject(err)
+                : resolve(data)
+        )
+    );
 }
 
-function printHelp() {
-  console.log(`Usage: node index.js [options]
-
-HackYourFuture Node.js Week 2 - Lecture To-Do App
-
-Options:
-
-  read          read all to-dos
-  write [to-do] add to-do
-  help          show this help text
-  `);
-}
-
-/* Or we could destructure the array instead
- * const [,, cmd, ...args] = process.argv;
- */
-const cmd  = process.argv[2];
+const cmd = process.argv[2];
 const args = process.argv.slice(3);
+const removeArgs = args[0];
 
 switch (cmd) {
-  case 'read':
-    readFile()
-      .then(data => console.log(`To-Dos:\n${data}`));
-    break;
-
-  case 'write':
+  case "add":
     writeFile(...args)
-      .then(() => console.log('Wrote to-do to file'))
+      .then(() => console.log("wrote to-do to file"))
       .then(() => readFile())
-      .then(data => console.log(`\nTo-Dos:\n${data}`))
+      .then(data => console.log(`to-doS:\n ${data}`))
       .catch(console.error);
     break;
-
-  case 'help':
-  default:
-    printHelp();
+  case "list":
+    readFile(fileName).then(content => {
+      console.log("toDoS:\n", content.toString());
+    });
+    break;
+  case "remove":
+    remove(removeArgs);
+    break;
+  case "reset":
+        fs.writeFile(fileName, '', console.log('all toDo items are removed!'));
+        break;
+  default: "help"
+    fs.readFile("help.txt", "utf8", function(err, data) {
+      console.log(data);
+    });
     break;
 }
