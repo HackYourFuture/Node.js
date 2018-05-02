@@ -27,29 +27,12 @@ const TODO_FILE = 'todo.json';
 
 function readTodos() {
   return readFile(TODO_FILE, 'utf-8').then(JSON.parse, () => []);
-
 }
 
 function writeTodos(todos) {
   return writeFile(TODO_FILE, JSON.stringify(todos));
-
 }
 
-//READ ALL TODOs
-app.get('/todos', async (req, res) => {
-  const todos = await readTodos();
-  res.json(todos);
-  res.end();
-});
-
-//READ TODO BY ID
-app.get('/todos/:id', async (req, res) => {
-  const id = req.params.id;
-  const todos = await readTodos();
-  const todo = todos.find(x => x.id === id);
-  res.json(todo);
-  res.end();
-});
 
 //CREATE TODO
 app.post('/todos', async (req, res) => {
@@ -64,18 +47,57 @@ app.post('/todos', async (req, res) => {
 
 });
 
+//READ ALL TODOs
+app.get('/todos', async (req, res) => {
+  const todos = await readTodos();
+  res.json(todos);
+  res.end();
+});
+
+//READ TODO BY ID
+app.get('/todos/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const todos = await readTodos();
+    const todo = todos.find(x => x.id === id);
+    if (typeof todo === 'undefined') {
+      res.json({
+        'Error Message': 'NO such ID !!'
+      });
+    }
+    res.json(todo);
+    res.end();
+
+  } catch (err) {
+    res.json({
+      'Error Name': err.name,
+      'Error Message': err.message
+    });
+  }
+
+});
+
 //DELETE TODO BY ID
 app.delete('/todos/:id', async (req, res) => {
-  const id = req.params.id;
-  const todos = await readTodos();
-  const index = todos.findIndex(x => x.id === id);
-  if (!todos.hasOwnProperty('id')) {
-    return res.status(500).send("There is no object with this ID !!! ");
-  } else {
-    todos.splice(index, 1);
-    await writeTodos(todos);
+  try {
+    const id = req.params.id;
+    const todos = await readTodos();
+    const index = todos.findIndex(x => x.id === id);
+    if (typeof todos[index] === 'undefined') {
+      res.json({
+        'Error Message': 'NO such ID !!'
+      });
+    } else {
+      todos.splice(index, 1);
+      await writeTodos(todos);
+    }
     res.json(todos);
     res.end();
+  } catch (err) {
+    res.json({
+      'Error Name': err.name,
+      'Error Message': err.message
+    });
   }
 
 });
@@ -89,44 +111,81 @@ app.delete('/todos', async (req, res) => {
 
 //UPDATE TODO BY ID
 app.put('/todos/:id', async (req, res) => {
-  const id = req.params.id;
-  const todos = await readTodos();
-  const newTodo = req.body;
-  newTodo.id = id;
-  const index = todos.findIndex(x => x.id === id);
-  newTodo.done = todos[index].done;
-  todos.splice(index, 1, newTodo);
-  await writeTodos(todos);
-  res.json(todos);
-  res.end();
-
+  try {
+    const id = req.params.id;
+    const todos = await readTodos();
+    const newTodo = req.body;
+    newTodo.id = id;
+    const index = todos.findIndex(x => x.id === id);
+    if (typeof todos[index] === 'undefined') {
+      res.json({
+        'Error Message': 'NO such ID !!'
+      });
+    } else {
+      newTodo.done = todos[index].done;
+      todos.splice(index, 1, newTodo);
+      await writeTodos(todos);
+    }
+    res.json(todos);
+    res.end();
+  } catch (err) {
+    res.json({
+      'Error Name': err.name,
+      'Error Message': err.message
+    });
+  }
 
 });
 
 //markAsDone TODO
 app.post('/todos/:id/done', async (req, res) => {
-  const id = req.params.id;
-  const todos = await readTodos();
-  const newTodos = todos.find(todos => todos.id === id);
-  newTodos.done = true;
-  await writeTodos(todos);
-  res.json(todos);
-  res.end();
+  try {
+    const id = req.params.id;
+    const todos = await readTodos();
+    const newTodos = todos.find(todos => todos.id === id);
+    if (typeof newTodos === 'undefined') {
+      res.json({
+        'Error Message': 'NO such ID !!'
+      });
+    } else {
+      newTodos.done = true;
+      await writeTodos(todos);
+    }
+    res.json(todos);
+    res.end();
+  } catch (err) {
+    res.json({
+      'Error Name': err.name,
+      'Error Message': err.message
+    });
+  }
 
 });
 
 //markAsNotDone TODO
 app.delete('/todos/:id/done', async (req, res) => {
-  const id = req.params.id;
-  const todos = await readTodos();
-  const newTodos = todos.find(todos => todos.id === id);
-  newTodos.done = false;
-  await writeTodos(todos);
-  res.json(todos);
-  res.end();
+  try {
+    const id = req.params.id;
+    const todos = await readTodos();
+    const newTodos = todos.find(todos => todos.id === id);
+    if (typeof newTodos === 'undefined') {
+      res.json({
+        'Error Message': 'NO such ID !!'
+      });
+    } else {
+      newTodos.done = false;
+      await writeTodos(todos);
+    }
+    res.json(todos);
+    res.end();
+  } catch (err) {
+    res.json({
+      'Error Name': err.name,
+      'Error Message': err.message
+    });
+  }
 
 });
-
 
 app.listen(3000, () => {
   console.info('Listening on http://localhost:3000');
