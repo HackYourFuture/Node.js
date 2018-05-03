@@ -93,23 +93,22 @@ app.put('/todos/:id', async(req, res) => {
   }
 });
 app.post('/todos/:id/done', async(require, response) => {
-  const markAsDoneId = require.params.id;
+  const Done = require.params.id;
   const todos = await readTodos();
 
-  const idToChangeStatus = todos.find(todo => todo.id === markAsDoneId);
+  const idToChangeStatus = todos.find(todo => todo.id === Done);
   idToChangeStatus.done = true;
   await writeTodos(todos);
-  response.send(`The status of "${markAsDoneId}" changed as "true".`);
+  response.send(`The status of "${Done}" changed as "true".`);
   response.json(todos);
 });
 app.delete('/todos/:id/done', async(require, response) => {
-  const markAsDoneId = require.params.id;
+  const NotDone = require.params.id;
   const todos = await readTodos();
-
-  const idToChangeStatus = todos.find(todo => todo.id === markAsDoneId);
+  const idToChangeStatus = todos.find(todo => todo.id === NotDone);
   idToChangeStatus.done = false;
   await writeTodos(todos);
-  response.send(`The status of "${markAsDoneId}" changed as "false".`);
+  response.send(`The status of "${NotDone}" changed as "false".`);
   response.json(todos);
 });
 
