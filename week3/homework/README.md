@@ -1,10 +1,9 @@
-> Please help us improve and share your feedback! If you find better tutorials or links, please share them by opening a Pull Request.
-
 # HackYourFuture Node.js - Homework week 3
 
-### Assignment for this weak:
+### Assignment
 
-- Read through the code, make sure you understand the flow of the program
+- Read through the code from the lecture, make sure you understand the flow of
+  the program
 - Add three more actions
     - `clear` (`DELETE /todos`) which will clear the list of todos
     - `markAsDone` (`POST /todos/:id/done`) which will set the `done` flag of a single todo to `true`

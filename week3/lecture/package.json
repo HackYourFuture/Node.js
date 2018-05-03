@@ -1,0 +1,22 @@
+{
+  "name": "hyf-node-week-3-todo",
+  "version": "1.0.0",
+  "description": "HackYourFuture Node.js Week 3 - Todo App",
+  "repository": "https://github.com/HackYourFuture/nodejs.git",
+  "main": "src/index.js",
+  "author": "George Sapkin",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
