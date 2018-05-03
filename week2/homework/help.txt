@@ -1,0 +1,13 @@
+Options:
+
+read    read all to-dos
+
+write   add anything what you want
+
+list    shows what we have
+
+remove  removes an to-do item
+
+reset   removes all items from the list
+
+help    show this help text
