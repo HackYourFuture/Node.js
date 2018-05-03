@@ -45,7 +45,8 @@ app.get('/todos', async (req, res) => {
 app.get('/todos/:id', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
-  res.json(todos[id]);
+  if (id in todos) { res.json(todos[id]); }
+  else { res.json(`this ID isn't exist `); }
 });
 
 //Delete all todos
@@ -58,9 +59,12 @@ app.delete('/todos', async (req, res) => {
 app.delete('/todos/:id', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
-  delete todos[id];
-  await writeTodos(todos);
-  res.json(todos);
+  if (id in todos) {
+    delete todos[id];
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else { res.json(`this ID isn't exist `); }
 });
 
 //update a todo
@@ -68,27 +72,36 @@ app.put('/todos/:id', async (req, res) => {
   const id = req.params.id;
   const newTodo = req.body;
   const todos = await readTodos();
-  todos[id].description = newTodo.description;
-  await writeTodos(todos);
-  res.json(todos);
+  if (id in todos) {
+    todos[id].description = newTodo.description;
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else { res.json(`this ID isn't exist `); }
 });
 
 //Mark a todo as done
 app.post('/todos/:id/done', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
-  todos[id].done = true;
-  await writeTodos(todos);
-  res.json(todos);
+  if (id in todos) {
+    todos[id].done = true;
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else { res.json(`this ID isn't exist `); }
 });
 
 //Mark a todo as not done
 app.delete('/todos/:id/done', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
-  todos[id].done = false;
-  await writeTodos(todos);
-  res.json(todos);
+  if (id in todos) {
+    todos[id].done = false;
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else { res.json(`this ID isn't exist `); }
 });
 
 app.listen(3000, () => {
