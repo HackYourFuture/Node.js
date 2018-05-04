@@ -26,7 +26,7 @@ function writeTodos(data) {
 
 //Create a todo
 app.post('/todos', async (req, res) => {
-  const newTodo = req.body;
+  const newTodo = req.body.todo;
   const id = uuid();
   newTodo.done = false;
   const todos = await readTodos();
@@ -46,7 +46,9 @@ app.get('/todos/:id', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
   if (id in todos) { res.json(todos[id]); }
-  else { res.json(`this ID isn't exist `); }
+  else {
+    res.json({ error: "id not found" });
+  }
 });
 
 //Delete all todos
@@ -64,20 +66,24 @@ app.delete('/todos/:id', async (req, res) => {
     await writeTodos(todos);
     res.json(todos);
   }
-  else { res.json(`this ID isn't exist `); }
+  else {
+    res.json({ error: "id not found" });
+  }
 });
 
 //update a todo
 app.put('/todos/:id', async (req, res) => {
   const id = req.params.id;
-  const newTodo = req.body;
+  const newTodo = req.body.todo;
   const todos = await readTodos();
   if (id in todos) {
     todos[id].description = newTodo.description;
     await writeTodos(todos);
     res.json(todos);
   }
-  else { res.json(`this ID isn't exist `); }
+  else {
+    res.json({ error: "id not found" });
+  }
 });
 
 //Mark a todo as done
@@ -89,7 +95,9 @@ app.post('/todos/:id/done', async (req, res) => {
     await writeTodos(todos);
     res.json(todos);
   }
-  else { res.json(`this ID isn't exist `); }
+  else {
+    res.json({ error: "id not found" });
+  }
 });
 
 //Mark a todo as not done
@@ -101,7 +109,9 @@ app.delete('/todos/:id/done', async (req, res) => {
     await writeTodos(todos);
     res.json(todos);
   }
-  else { res.json(`this ID isn't exist `); }
+  else {
+    res.json({ error: "id not found" });
+  }
 });
 
 app.listen(3000, () => {
