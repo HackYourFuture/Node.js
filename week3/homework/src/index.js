@@ -38,13 +38,13 @@ app.get('/todos/:id', async (req, res) => {
     res.json(todos[id]);
   }
   else {
-    res.json({ "error ": "id not found" });
+    res.json({ error: "id not found" });
   }
 });
 
 //Create a todo
 app.post('/todos', async (req, res) => {
-  const newTodo = req.body;
+  const newTodo = req.body.todo;
   const id = uuid();
   const todos = await readTodos();
   todos[id] = newTodo;
@@ -63,7 +63,7 @@ app.delete('/todos/:id', async (req, res) => {
     res.json(todos);
   }
   else {
-    res.json({ "error ": "id not found" });
+    res.json({ error: "id not found" });
   }
 });
 
@@ -77,14 +77,14 @@ app.delete('/todos', async (req, res) => {
 app.put('/todos/:id', async (req, res) => {
   const id = req.params.id;
   const todos = await readTodos();
-  const updatedTodo = req.body;
+  const updatedTodo = req.body.todo;
   if (todos.hasOwnProperty(id)) {
     todos[id].description = updatedTodo.description;
     await writeTodos(todos);
     res.json(todos[id]);
   }
   else {
-    res.json({ "error ": "id not found" });
+    res.json({ error: "id not found" });
   }
 });
 //markAsDone
@@ -97,7 +97,7 @@ app.post('/todos/:id/done', async (req, res) => {
     res.json(todos[id]);
   }
   else {
-    res.json({ "error ": "id not found" });
+    res.json({ error: "id not found" });
   }
 });
 
@@ -111,7 +111,7 @@ app.delete('/todos/:id/done', async (req, res) => {
     res.json(todos[id]);
   }
   else {
-    res.json({ "error ": "id not found" });
+    res.json({ error: "id not found" });
   }
 });
 
