@@ -1,8 +1,9 @@
 'use strict';
-
 const express = require('express');
 
 const uuid = require('uuid/v4');
+
+const app = express();
 
 const {
   readFile: _readFile,
@@ -16,7 +17,7 @@ const {
 const readFile = promisify(_readFile);
 const writeFile = promisify(_writeFile);
 
-const app = express();
+
 
 //USE BUILT-IN JSON middleware to automatically parse JSON
 app.use(express.json());
@@ -68,6 +69,7 @@ module.exports = {
   markTodo,
   readTodos,
   writeTodos,
-  app
+  app,
+  uuid
 
 };
