@@ -1,10 +1,21 @@
 {
   "env": {
-    "es6":  true,
+    "es6": true,
     "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
   },
   "extends": "standard",
   "rules": {
+    "indent": [
+      "error",
+      4
+    ],
     "brace-style": [
       "warn",
       "stroustrup",
@@ -18,13 +29,13 @@
     "generator-star-spacing": [
       "warn",
       {
-        "after":  true,
+        "after": true,
         "before": false
       }
     ],
     "key-spacing": [
       "off"
-      ],
+    ],
     "max-len": [
       "warn",
       80
