@@ -34,17 +34,23 @@ function writeTodos(todos) {
 
 //Find Todo
 async function findTodo(req) {
+
   const id = req.params.id;
   const todos = await readTodos();
   const todo = todos.find(todos => todos.id === id);
   const done = req.body.done;
-  return await [
-    id,
-    req.body,
-    done,
-    todo,
-    todos
-  ];
+  if (todo === 'undefined' || !todo || todo === null) {
+    throw new Error('No ID or Null ID');
+  } else {
+    return [
+      id,
+      req.body,
+      done,
+      todo,
+      todos
+    ];
+  }
+
 }
 
 //MarkTodo Function
@@ -53,13 +59,14 @@ async function markTodo(req, res, doneFlag) {
     done,
     todo,
     todos
-  ] = await findTodo(req);
-  if (typeof todo === 'undefined') {
-    return new Error(res.send('NO SUCH ID'));
-  } else {
-    todo.done = doneFlag;
-    await writeTodos(todos);
-  }
+  ] = await findTodo(req).catch(err => {
+    return res.json({
+      'error': err
+    });
+  });
+
+  todo.done = doneFlag;
+  await writeTodos(todos);
   res.json(todos);
 }
 
