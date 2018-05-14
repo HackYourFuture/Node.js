@@ -43,9 +43,6 @@ async function findTodo(req) {
     throw new Error('No ID or Null ID');
   } else {
     return [
-      id,
-      req.body,
-      done,
       todo,
       todos
     ];
@@ -55,8 +52,7 @@ async function findTodo(req) {
 
 //MarkTodo Function
 async function markTodo(req, res, doneFlag) {
-  const [, ,
-    done,
+  const [
     todo,
     todos
   ] = await findTodo(req).catch(err => {

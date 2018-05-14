@@ -32,7 +32,7 @@ app.get('/todos', async (req, res) => {
 //READ TODO BY ID
 app.get('/todos/:id', async (req, res) => {
 
-  const [, , , todo, ] = await findTodo(req).catch(err => {
+  const [todo] = await findTodo(req).catch(err => {
     return res.json({
       'error': err
     });
@@ -43,7 +43,7 @@ app.get('/todos/:id', async (req, res) => {
 //DELETE TODO BY ID
 app.delete('/todos/:id', async (req, res) => {
 
-  const [, , ,
+  const [
     todo,
     todos
   ] = await findTodo(req).catch(err => {
@@ -66,9 +66,6 @@ app.delete('/todos', async (req, res) => {
 app.put('/todos/:id', async (req, res) => {
 
   const [
-    id,
-    bodyReq,
-    done,
     todo,
     todos
   ] = await findTodo(req).catch(err => {
@@ -76,8 +73,8 @@ app.put('/todos/:id', async (req, res) => {
       'error': err
     });
   });
-  const newTodo = bodyReq;
-  newTodo.id = id;
+  const newTodo = req.body;
+  newTodo.id = req.params.id;
   newTodo.done = todo.done;
   todos.splice(todos.indexOf(todo), 1, newTodo);
   await writeTodos(todos);
