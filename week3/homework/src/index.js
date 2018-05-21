@@ -22,7 +22,7 @@ const TODO_FILE = 'todo.json';
 function readTodos() {
   return readFile(TODO_FILE, 'utf8').then(
     JSON.parse,
-    () => []
+    () => { }
   );
 }
 
@@ -89,6 +89,34 @@ app.put('/todos/:id', (req, res) => {
   const todos = await readTodos();
   if (id in todos) {
     todos[id].description = newTodo.description;
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else {
+    res.json({ error: "id not found" });
+  }
+});
+
+//Mark a todo as done
+app.post('/todos/:id/done', async (req, res) => {
+  const id = req.params.id;
+  const todos = await readTodos();
+  if (id in todos) {
+    todos[id].done = true;
+    await writeTodos(todos);
+    res.json(todos);
+  }
+  else {
+    res.json({ error: "id not found" });
+  }
+});
+
+//Mark a todo as not done
+app.delete('/todos/:id/done', async (req, res) => {
+  const id = req.params.id;
+  const todos = await readTodos();
+  if (id in todos) {
+    todos[id].done = false;
     await writeTodos(todos);
     res.json(todos);
   }
