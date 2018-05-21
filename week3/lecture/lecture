@@ -1,0 +1,11 @@
+Express.js - simplifies life and tasks when writing services.
+
+12:25 starts
+
+npm install express
+
+npm install-g nodemon (to install nodemon globally, so that postman works without having to manually refresh)
+
+UUID - universal unique identifier - 128 bit code to give an (effectively) unique code.
+
+Can install npm -g uuid
