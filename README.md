@@ -47,7 +47,9 @@ instructions depending on your operating system:
 We will build on knowledge from the following HYF (sub)modules. If we feel we
 have gaps we should review the curriculum ourselves or ask a teacher to help.
 
-- [JavaScript](https://github.com/HackYourFuture/JavaScript)
+- [JavaScript1](https://github.com/HackYourFuture/JavaScript1)
+- [JavaScript2](https://github.com/HackYourFuture/JavaScript2)
+- [JavaScript3](https://github.com/HackYourFuture/JavaScript3)
 - [Git](https://github.com/HackYourFuture/Git)
 - [Bash/Command Line Interface](https://github.com/HackYourFuture/CommandLine)
 
@@ -91,3 +93,6 @@ and use it as a reference.
 - Lecture 1 (Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
 - Lecture 2 (Joost): https://www.youtube.com/watch?v=pY7IDaLX-no
 - Lecture 3 (Joost): https://www.youtube.com/watch?v=oeWCqKJsHtU&t=99s
+
+*The HackYourFuture curriculum is subject to CC BY copyright. This means you can freely use our materials, but just make sure to give us credit for it :)*
+
