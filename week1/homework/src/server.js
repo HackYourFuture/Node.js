@@ -6,10 +6,37 @@ const http = require('http');
  * will fail.
  */
 function createServer(port) {
-  let state = 10;
+  const startState = 10;
+  const stateObj = {
+    state: startState
+  };
+
+  function showState(response, obj) {
+    const code = (obj.hasOwnProperty('error')) ? 404 : 200;
+    response.writeHead(code, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(obj, null, 4));
+  }
 
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
+    switch (request.url) {
+      case '/state':
+        showState(response, stateObj);
+        break;
+      case '/add':
+        stateObj.state++;
+        showState(response, stateObj);
+        break;
+      case '/subtract':
+        stateObj.state--;
+        showState(response, stateObj);
+        break;
+      case '/reset':
+        stateObj.state = startState;
+        showState(response, stateObj);
+        break;
+      default:
+        showState(response, { error: 'Not found' });
+    }
   });
 
   return server;
