@@ -5,7 +5,7 @@
 * purpose of this project
 */
 const request = require('supertest');
-const test    = require('ava');
+const test = require('ava');
 
 const {
   createServer
@@ -50,14 +50,14 @@ const range = x => new Array(x).fill();
 
 testCmd(10, 'state');
 testCmd(11, 'add');
-testCmd(9,  'subtract');
+testCmd(9, 'subtract');
 testCmd(10, 'reset');
 testCmd(10, 'add', 'reset');
 testCmd(10, 'subtract', 'reset');
 testCmd(12, 'add', 'add', 'state', 'add', 'subtract');
-testCmd(11, 'subtract', 'subtract', 'reset', 'add',  'state', 'subtract', 'add');
+testCmd(11, 'subtract', 'subtract', 'reset', 'add', 'state', 'subtract', 'add');
 testCmd(20, ...range(10).map(() => 'add'), 'state');
-testCmd(0,  ...range(10).map(() => 'subtract'), 'state');
+testCmd(0, ...range(10).map(() => 'subtract'), 'state');
 
 test(
   'querying undefined URL returns 404 Not Found',
