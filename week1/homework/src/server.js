@@ -13,30 +13,31 @@ function createServer(port) {
 
     switch (request.url) {
       case '/state':
-        serverResponse();
+        serverResponse(response);
         break;
       case '/add':
         state += 1;
-        serverResponse();
+        serverResponse(response);
         break;
       case '/subtract':
         state -= 1;
-        serverResponse();
+        serverResponse(response);
         break;
       case '/reset':
         state = 10;
-        serverResponse();
+        serverResponse(response);
         break;
       default:
         response.writeHead(404, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify({ error: 'Not found' }));
         break;
     }
-    function serverResponse() {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ state: state }));
-    }
   });
+
+  function serverResponse(response) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ state: state }));
+  }
 
   return server;
 }
