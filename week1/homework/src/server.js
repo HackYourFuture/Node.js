@@ -17,11 +17,11 @@ function createServer(port) {
         respond(response);
         break;
       case '/add':
-        state = state + 1;
+        state++;
         respond(response);
         break;
       case '/subtract':
-        state = state - 1;
+        state--;
         respond(response);
         break;
       case '/reset':
