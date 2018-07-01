@@ -7,11 +7,33 @@ const http = require('http');
  */
 function createServer(port) {
   let state = 10;
-
+  function respond(response) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ state: state }));
+  }
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
+    switch (request.url) {
+      case '/state':
+        respond(response);
+        break;
+      case '/add':
+        state++;
+        respond(response);
+        break;
+      case '/subtract':
+        state--;
+        respond(response);
+        break;
+      case '/reset':
+        state = 10;
+        respond(response);
+        break;
+      default:
+        response.writeHead(404, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: 'Not found' }));
+    }
+    response.end();
   });
-
   return server;
 }
 
