@@ -1,3 +1,57 @@
 'use strict';
 
 // TODO: Write the homework code in this file
+const { readFile, writeFile } = require('fs');
+
+const { promisify } = require('util');
+
+// const appendFileWithPromise = promisify(appendFile);
+
+const readFileWithPromise = promisify(readFile);
+const writeFileWithPromise = promisify(writeFile);
+
+const args = process.argv.slice(2);
+
+const cmd = args[0];
+
+const TODO_PATH = 'todo.json';
+
+function readTodos() {
+  return readFileWithPromise(TODO_PATH, 'utf8')
+    .then(JSON.parse)
+    .catch(() => ([]));
+}
+
+function writeTodos(todos) {
+  return writeFileWithPromise(TODO_PATH, JSON.stringify(todos, null, 2));
+}
+
+async function main() {
+  switch (cmd) {
+    case 'add':
+      const text = args[1];
+      const todos = await readTodos();
+      todos.push({
+        text: text,
+        done: false
+      });
+
+      await writeTodos();
+      const newTodos = await readTodos();
+      console.log(newTodos);
+      break;
+    case 'delete':
+
+      break;
+    case 'update':
+
+      break;
+    case 'list':
+      readTodos().then(console.log);
+      break;
+    default:
+      console.log('Some help');
+      break;
+  }
+}
+main();
