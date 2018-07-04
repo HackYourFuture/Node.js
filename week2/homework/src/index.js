@@ -1,25 +1,10 @@
 'use strict';
 
-const { readFile, writeFile } = require('fs');
-const { promisify } = require('util');
-
-const readWithPromise = promisify(readFile);
-const writeWithPromise = promisify(writeFile);
+const { readTODOs, writeTODOs } = require('./fileOperations');
 const filePath = 'TODOs2.txt';
 
 const cmd = process.argv[2];
 const parameters = process.argv.slice(3);
-
-function readTODOs() {
-  return readWithPromise(filePath, 'utf8')
-    .then(JSON.parse)
-    .catch(() => ([]));
-}
-
-function writeTODOs(toDos) {
-  return writeWithPromise(filePath, JSON.stringify(toDos, null, 2))
-    .catch(() => 'File writing error');
-}
 
 function displayHelp() {
   console.log(`Usage: node . [options] 
@@ -38,33 +23,34 @@ Options:
 
 function displayTodos(todos) {
   if (todos.length === 0)
-    return console.log('TODOs list is now empty, use ADD command to add some!.');
+    return console.log('TODOs list is now empty, use ADD command to add some!');
   todos.forEach((element, index) => {
     console.log(`${index + 1}- ${element}`);
   });
 }
 
-async function main() {
-  const todos = await readTODOs();
-  async function edit(index, todo) {
-    if (isNaN(index)) return displayHelp();
-    if (index > todos.length || index < 1)
-      return console.log(`TODO #${index} isn't in the list`);
-    todo ? todos.splice(index - 1, 1, todo) : todos.splice(index - 1, 1);
-    try {
-      await writeTODOs(todos);
-      displayTodos(todos);
-    }
-    catch (error) {
-      console.error(error);
-    }
+async function editAndWrite(list, index, item) {
+  if (isNaN(index)) return displayHelp();
+  if (index > list.length || index < 1)
+    return console.log(`TODO #${index} isn't in the list`);
+  item ? list.splice(index - 1, 1, item) : list.splice(index - 1, 1);
+  try {
+    await writeTODOs(filePath, list);
+    displayTodos(list);
   }
+  catch (error) {
+    console.error(error);
+  }
+}
+
+async function main() {
+  const todos = await readTODOs(filePath);
   switch (cmd) {
     case 'add':
       if (!parameters[0]) return displayHelp();
       try {
         todos.push(parameters[0]);
-        await writeTODOs(todos);
+        await writeTODOs(filePath, todos);
         displayTodos(todos);
       }
       catch (error) {
@@ -72,18 +58,18 @@ async function main() {
       }
       break;
     case 'remove':
-      edit(parameters[0]);
+      editAndWrite(todos, parameters[0]);
       break;
     case 'update':
       if (!parameters[1]) return displayHelp();
-      edit(parameters[0], parameters[1]);
+      editAndWrite(todos, parameters[0], parameters[1]);
       break;
     case 'list':
       displayTodos(todos);
       break;
     case 'reset':
       try {
-        await writeTODOs([]);
+        await writeTODOs(filePath, []);
         displayTodos([]);
       }
       catch (error) {
