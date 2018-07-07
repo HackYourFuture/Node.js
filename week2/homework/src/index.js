@@ -179,6 +179,3 @@ function updateTodo(userIndexInput, allTodos) {
     );
   }
 }
-
-// Why do you iterate over the whole array to update 1 item ? The whole point of an array is that you can access item by index.Also,
-// the assignment is to remove and update items using 1 - based index and not zero - based.
