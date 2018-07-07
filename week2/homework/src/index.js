@@ -27,7 +27,7 @@ function storeTodos(todos) {
 function resetTodos() {
   return unlinkPromisified(TODOS_PATH).catch(() => {
     console.log('no todos to reset, you might want to **add** one first');
-    console.log(helpMessages.help);
+    console.log(helpMessages.add);
   });
 }
 
@@ -69,115 +69,116 @@ async function main() {
   const userIndexInput = parseInt(args[1]);
   const allTodos = await readJSON();
 
-  function addTodo() {
-    const userTodoInput = args[1];
-    if (userTodoInput === undefined) {
-      console.log(
-        chalk.red('Error while adding a todo, see this:\n'),
-        helpMessages.add
-      );
-    } else {
-      allTodos.push({
-        task: userTodoInput,
-        done: 'not done'
-      });
-      storeTodos(allTodos);
-      console.log(`added todo: '${chalk.cyan(args[1])}'`);
-    }
-  }
-
-  function removeTodo() {
-    if (userIndexInput >= allTodos.length) {
-      console.log(`${chalk.red("didn't find a todo with that index")}`);
-      console.log(helpMessages.remove);
-    }
-    allTodos.forEach((todo, index) => {
-      if (userIndexInput === index) {
-        allTodos.pop(index);
-        storeTodos(allTodos);
-        console.log(`successfully removed '${chalk.cyan(todo.task)}'`);
-      }
-    });
-  }
-
-  function listTodos() {
-    if (allTodos.length === 0) {
-      console.log('no todos yet, start by adding one');
-      console.log(helpMessages.add);
-    } else {
-      console.log('your todos are:');
-      allTodos.forEach((todo, index) => {
-        console.log(
-          `  ${chalk.cyan(index)}- ${todo.task} ${
-            todo.done === 'done'
-              ? chalk.green.bold(todo.done)
-              : chalk.magenta.bold(todo.done)
-          }`
-        );
-      });
-    }
-  }
-
-  function markTodoAsDone() {
-    allTodos.forEach((todo, index) => {
-      if (index === userIndexInput) {
-        if (todo.done === 'done') {
-          console.log(
-            `${chalk.inverse(`you've already marked '${todo.task}' as done`)}`
-          );
-        } else {
-          todo.done = 'done';
-          console.log(`Successfully marked '${chalk.cyan(todo.task)}' as done`);
-          storeTodos(allTodos);
-        }
-      }
-    });
-    if (userIndexInput >= allTodos.length) {
-      console.log(`${chalk.red("didn't find a todo with that index")}`);
-    }
-  }
-
-  function updateTodo() {
-    allTodos.forEach((todo, index) => {
-      if (index === userIndexInput) {
-        const oldTodo = todo.task;
-        console.log(
-          `updated '${chalk.red(oldTodo)}' with '${chalk.cyan(args[2])}'`
-        );
-        allTodos[index].task = args[2];
-        allTodos[index].done = 'not done';
-        storeTodos(allTodos);
-      }
-    });
-    if (userIndexInput >= allTodos.length) {
-      console.log(`${chalk.red("didn't find a todo with that index")}`);
-    }
-  }
-
   switch (cmd) {
     case 'add':
-      addTodo();
+      addTodo(allTodos);
       break;
     case 'remove':
-      removeTodo();
+      removeTodo(userIndexInput, allTodos);
       break;
     case 'list':
-      listTodos();
+      listTodos(allTodos);
       break;
     case 'done':
-      markTodoAsDone();
+      markTodoAsDone(userIndexInput, allTodos);
       break;
     case 'update':
-      updateTodo();
+      updateTodo(userIndexInput, allTodos);
       break;
     case 'reset':
       resetTodos();
       break;
     case 'help':
-      console.log(helpMessages.help);
-      break;
     default:
       console.log(helpMessages.help);
   }
 }
 main();
+
+function addTodo(allTodos) {
+  const userTodoInput = args[1];
+  if (userTodoInput === undefined) {
+    console.log(
+      chalk.red('Error while adding a todo, see this:\n'),
+      helpMessages.add
+    );
+  } else {
+    allTodos.push({
+      task: userTodoInput,
+      done: 'not done'
+    });
+    storeTodos(allTodos);
+    console.log(`added todo: '${chalk.cyan(args[1])}'`);
+  }
+}
+
+function removeTodo(userIndexInput, allTodos) {
+  if (userIndexInput > allTodos.length || userIndexInput < 1) {
+    console.log(`${chalk.red("didn't find a todo with that index")}`);
+    listTodos(allTodos);
+  } else {
+    const oldTodo = allTodos[userIndexInput - 1].task;
+    allTodos.splice(userIndexInput - 1, 1);
+    console.log(`successfully removed '${chalk.cyan(oldTodo)}'`);
+    storeTodos(allTodos);
+  }
+}
+
+function listTodos(allTodos) {
+  if (allTodos.length === 0) {
+    console.log('no todos yet, start by adding one');
+    console.log(helpMessages.add);
+  } else {
+    console.log('your todos are:');
+    allTodos.forEach((todo, index) => {
+      console.log(
+        `  ${chalk.cyan(index + 1)}- ${todo.task} ${
+          todo.done === 'done'
+            ? chalk.green.bold(todo.done)
+            : chalk.magenta.bold(todo.done)
+        }`
+      );
+    });
+  }
+}
+
+function markTodoAsDone(userIndexInput, allTodos) {
+  if (userIndexInput > allTodos.length || userIndexInput < 1) {
+    console.log(`${chalk.red("didn't find a todo with that index")}`);
+    listTodos(allTodos);
+  } else {
+    const userDoneInput = allTodos[userIndexInput - 1];
+    if (userDoneInput.done === 'done') {
+      console.log(
+        `${chalk.inverse(
+          `you've already marked '${userDoneInput.task}' as done`
+        )}`
+      );
+    } else {
+      userDoneInput.done = 'done';
+      console.log(
+        `Successfully marked '${chalk.cyan(userDoneInput.task)}' as done`
+      );
+      storeTodos(allTodos);
+    }
+  }
+}
+
+function updateTodo(userIndexInput, allTodos) {
+  if (userIndexInput > allTodos.length || userIndexInput < 1) {
+    console.log(`${chalk.red("didn't find a todo with that index")}`);
+    listTodos(allTodos);
+  } else {
+    const oldTodo = allTodos[userIndexInput - 1].task;
+    const newTodo = allTodos[userIndexInput - 1];
+    newTodo.task = args[2];
+    newTodo.done = 'not done';
+    storeTodos(allTodos);
+    console.log(
+      `updated '${chalk.red(oldTodo)}' with '${chalk.cyan(args[2])}'`
+    );
+  }
+}
+
+// Why do you iterate over the whole array to update 1 item ? The whole point of an array is that you can access item by index.Also,
+// the assignment is to remove and update items using 1 - based index and not zero - based.
