@@ -11,7 +11,7 @@ let state = 10;
 function sendResponse(response, status, stateValue, contentType) {
   state = stateValue;
   response.writeHead(status, { 'Content-Type': contentType });
-  response.write(`{ "state": ${state}}`);
+  response.write(JSON.stringify({ state }));
 }
 
 function createServer(port) {
