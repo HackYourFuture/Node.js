@@ -1,4 +1,4 @@
-('use strict');
+'use strict';
 
 const { readFile, writeFile, unlink } = require('fs');
 const { promisify } = require('util');
