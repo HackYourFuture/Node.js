@@ -16,8 +16,6 @@
   },
   "dependencies": {
     "boxt": "^0.3.1",
-    "chalk": "^2.4.1",
-    "commander": "^2.16.0",
-    "node-emoji": "^1.8.1"
+    "chalk": "^2.4.1"
   }
 }
