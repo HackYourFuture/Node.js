@@ -9,17 +9,36 @@ const args = process.argv.slice(2);
 const cmd = args[0];
 const TODO_PATH = 'todo.json';
 
+function readTodos() {
+  return readFileWithPromise(TODO_PATH, 'utf8')
+    .then(JSON.parse)
+    .catch(() => ([]));
+}
+
+function writeTodos(todos) {
+  return writeFileWithPromise(TODO_PATH, JSON.stringify(todos));
+}
 
 switch (cmd) {
   case 'add':
-    break;
-  case 'reset':
+    const text = args[1];
+    readTodos().then(todos => {
+      todos.push({
+        text,
+        done: false
+      });
+      return todos;
+    }).then(writeTodos);
     break;
   case 'remove':
-    state--;
-    handleRequest(state);
     break;
-  case '/reset': ;
+  case 'reset':
+    console.log('reset');
+    break;
+  case 'help':
+    break;
+  case 'list':
     break;
   default:
+    console.log('something');
 }
