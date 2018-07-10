@@ -77,9 +77,34 @@ async function updateTodo(id, todo) {
   }
 }
 
+async function readTodo(id) {
+  const list = await readTodosFile(path);
+  const map = new Map(list);
+  const todo = map.get(id);
+  if (todo) {
+    return todo;
+  }
+  else {
+    const error = new Error(`To-do with ID ${id} does not exist`);
+    throw error;
+  }
+}
+
+async function clearTodos() {
+  try {
+    await writeTodosFile(path, []);
+    return 'To-dos list has been deleted';
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createTodo,
   readTodos,
   deleteTodo,
-  updateTodo
+  updateTodo,
+  readTodo,
+  clearTodos
 };

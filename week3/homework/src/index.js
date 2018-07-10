@@ -6,7 +6,9 @@ const {
   createTodo,
   deleteTodo,
   readTodos,
-  updateTodo
+  updateTodo,
+  readTodo,
+  clearTodos
 } = require('./actions');
 
 const PORT = 3000;
@@ -52,6 +54,20 @@ app.delete('/todos/:id', (req, res, next) => {
 });
 
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
+
+app.get('/todos/:id', (req, res, next) => {
+  const { id } = req.params;
+
+  readTodo(id)
+    .then(data => res.send(data))
+    .catch(err => next(err.message));
+});
+
+app.delete('/todos', (req, res, next) => {
+  clearTodos()
+    .then(data => res.send({ data }))
+    .catch(err => next(err.message));
+});
 
 // error handling
 app.use((error, req, res, next) => {
