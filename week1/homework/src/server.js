@@ -32,6 +32,7 @@ function createServer(port) {
         break;
 
       case '/reset':
+        state = 10;
         calculate(response);
         break;
 
