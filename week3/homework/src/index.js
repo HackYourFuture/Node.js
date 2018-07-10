@@ -22,14 +22,14 @@ app.post('/todos', (req, res, next) => {
 
   createTodo(todo)
     .then(data => res.send(data))
-    .catch(err => next(err));
+    .catch(err => next(err.message));
 });
 
 // readTodos
 app.get('/todos', (req, res, next) => {
   readTodos()
     .then(data => res.send(data))
-    .catch(err => next(err));
+    .catch(err => next(err.message));
 });
 
 // updateTodo
@@ -39,7 +39,7 @@ app.put('/todos/:id', (req, res, next) => {
 
   updateTodo(id, todo)
     .then(data => res.send(data))
-    .catch(err => next(err));
+    .catch(err => next(err.message));
 });
 
 // deleteTodo

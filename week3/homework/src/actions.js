@@ -3,13 +3,27 @@ const { readTodosFile, writeTodosFile } = require('./fileOperations');
 const uuid = require('uuid/v4');
 const path = './todo.json';
 
+async function isValidTodo(todo) {
+  if (todo == null)
+    throw new Error('todo not set');
+
+  if (todo.description != null)
+    todo.description = todo.description.trim();
+
+  if (todo.description == null || todo.description.length === 0)
+    throw new Error('description not set');
+
+  return todo;
+};
+
 async function createTodo(todo) {
-  const list = await readTodosFile(path);
-  const id = uuid();
-  const map = new Map();
-  map.set(id, todo);
-  list.push(...map);
   try {
+    todo = await isValidTodo(todo);
+    const list = await readTodosFile(path);
+    const id = uuid();
+    const map = new Map();
+    map.set(id, todo);
+    list.push(...map);
     await writeTodosFile(path, list);
     return list;
   }
@@ -42,22 +56,23 @@ async function deleteTodo(id) {
 }
 
 async function updateTodo(id, todo) {
-  const list = await readTodosFile(path);
-  const map = new Map(list);
-  const old = map.get(id);
-  if (old) {
-    old.description = todo.description;
-    map.set(id, old);
-    try {
+  try {
+    todo = await isValidTodo(todo);
+    const list = await readTodosFile(path);
+    const map = new Map(list);
+    const old = map.get(id);
+    if (old) {
+      old.description = todo.description;
+      map.set(id, old);
       await writeTodosFile(path, [...map]);
       return [...map];
     }
-    catch (error) {
+    else {
+      const error = new Error(`To-do with ID ${id} does not exist`);
       throw error;
     }
   }
-  else {
-    const error = new Error(`To-do with ID ${id} does not exist`);
+  catch (error) {
     throw error;
   }
 }
