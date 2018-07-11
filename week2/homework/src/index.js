@@ -1,9 +1,6 @@
 'use strict';
 
 // TODO: Write the homework code in this file
-'use strict';
-
-// TODO: Write the homework code in this file
 
 const { readFile, writeFile } = require('fs');
 const { promisify } = require('util');
