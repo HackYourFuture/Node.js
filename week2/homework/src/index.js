@@ -23,7 +23,6 @@ async function app() {
 
     case 'add':
       const task = args[1];
-      // let toDos = await readToDos();
       toDos.push({
         task,
         done: false
@@ -47,8 +46,7 @@ async function app() {
       break;
 
     case 'reset':
-      resetToDos()
-        .catch(() => ([]));
+      resetToDos();
       break;
 
     case 'done':
