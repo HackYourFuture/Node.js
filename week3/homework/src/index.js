@@ -2,13 +2,13 @@
 
 const Express = require('express');
 const {
-  // TODO: implement the following actions:
   createTodo,
   deleteTodo,
   readTodos,
   updateTodo,
   readTodo,
-  clearTodos
+  clearTodos,
+  markAs
 } = require('./actions');
 
 const PORT = 3000;
@@ -53,8 +53,6 @@ app.delete('/todos/:id', (req, res, next) => {
     .catch(err => next(err.message));
 });
 
-// TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
-
 app.get('/todos/:id', (req, res, next) => {
   const { id } = req.params;
 
@@ -65,7 +63,21 @@ app.get('/todos/:id', (req, res, next) => {
 
 app.delete('/todos', (req, res, next) => {
   clearTodos()
-    .then(data => res.send({ data }))
+    .then(data => res.send(data))
+    .catch(err => next(err.message));
+});
+
+app.post('/todos/:id/done', (req, res, next) => {
+  const { id } = req.params;
+  markAs(id, true)
+    .then(data => res.send(data))
+    .catch(err => next(err.message));
+});
+
+app.delete('/todos/:id/done', (req, res, next) => {
+  const { id } = req.params;
+  markAs(id, false)
+    .then(data => res.send(data))
     .catch(err => next(err.message));
 });
 
