@@ -23,7 +23,7 @@ app.post('/todos', (req, res, next) => {
   const { todo } = req.body;
 
   createTodo(todo)
-    .then(data => res.send(data))
+    .then(data => res.json(data))
     .catch(err => next(err.message));
 });
 

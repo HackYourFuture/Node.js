@@ -13,6 +13,10 @@ async function isValidTodo(todo) {
   if (todo.description == null || todo.description.length === 0)
     throw new Error('description not set');
 
+  // set done = false by default unless it's value is true.
+  if (todo.done !== true && todo.done !== 'true')
+    todo.done = false;
+
   return todo;
 };
 
