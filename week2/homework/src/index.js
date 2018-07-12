@@ -35,10 +35,17 @@ switch (cmd) {
   case 'reset':
     console.log('reset');
     break;
-  case 'help':
-    break;
   case 'list':
+    console.log('list');
     break;
+  case 'help':
   default:
-    console.log('something');
+    const commands = `Commands: 
+      add: Adds a to-do item. All the words behind add are entered as 1 to-do item to the list.
+      remove: Removes a to-do item by its 1-base index, e.g. to remove second item.
+      reset: Removes all to-do items from the list.
+      list: Shows current to-dos, or shows an appropriate text if there are no to-dos.
+      help: Shows help section.`;
+    console.info(commands);
+    break;
 }
