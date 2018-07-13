@@ -109,8 +109,6 @@ function writeTodos(data) {
 
 // createTodo
 app.post('/todos', async(req, res, next) => {
-  // const { todo } = req.body;
-
   const newTodo = req.body;
   newTodo.id = uuid();
   const todos = await readTodos();
@@ -124,26 +122,26 @@ app.get('/todos', async(req, res) => {
   const todos = await readTodos();
   res.json(todos);
 });
-/*
+
 // updateTodo
 app.put('/todos/:id', (req, res) => {
-  const { id } = req.params;
-  const { todo } = req.body;
 
-  updateTodo(id, todo)
-    .then(data => res.send(data))
-    .catch(err => next(err));
 });
 
 // deleteTodo
-app.delete('/todos/:id', (req, res) => {
-  const { id } = req.params;
-
-  deleteTodo(id)
-    .then(data => res.send(data))
-    .catch(err => next(err));
+app.delete('/todos/:id', async(req, res) => {
+/* const id = req.params.id;
+  const todos = await readTodos();
+  const todo = todos.find(x => x.id === id);
+  writeTodos([]);
+  res.json(todo); */
 });
-*/
+
+// clearTodos
+app.delete('/todos', async(req, res) => {
+  await writeTodos([]);
+  res.json([]);
+});
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
 
 // error handling
