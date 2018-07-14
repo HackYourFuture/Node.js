@@ -8,7 +8,6 @@ const readFileWithPromise = promisify(readFile);
 const writeFileWithPromise = promisify(writeFile);
 
 const TODO_PATH = 'todo.json';
-const listToDos = readToDos();
 
 function readToDos() {
   return readFileWithPromise(TODO_PATH, 'utf8')
@@ -18,51 +17,46 @@ function readToDos() {
 
 function createToDo(todo) {
   if (!todo.description) throw Error('Please write a description to create a new todo!');
-  
-  const id = uuid();
-  todo.id = id;
-  todo.done = false;
 
-  return writeFileWithPromise(TODO_PATH, JSON.stringify(todo, null, 2));
+  const listToDos =  readToDos();
+  const id = uuid();
+  todo.done = false;
+  console.log(listToDos, typeof listToDos);
+  listToDos[id] = todo;
+  console.log(listToDos, typeof listToDos);
+
+  return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
 
-function deleteToDo(id) {
+async function deleteToDo(id) {
   if(!id) {
     throw Error(`Please specify a todo you want to delete by providing it's ID`)
   } 
   else {
-    const remainingToDos = listToDos.map(todo => {
-      todo.id != id;
-    });
-    if (remainingToDos === listToDos){
-      throw Error(`Please check the ID provided no such todo is listed`)
-    }
+    const listToDos = await readToDos();
+    delete listToDos.id;
   }
-  return remainingToDos;
+  return listToDos;
 }
 
-function updateToDo(id, newToDo) {
+async function updateToDo(id, newToDo) {
+  
   if (!newToDo.description && !id) {
     throw Error('Please write a description and/or the ID of the todo you want to update!');
   }
-  const updatedList = listToDos.map(todo => todo.id != id);
-  if (updatedList === listToDos) {
-    throw Error(`Please check the ID provided no such todo is listed`)
-  }
-  return updatedList;
+  const listToDos = await readToDos();
+  listToDos.id = newToDo;
+  return listToDos;
 }
 
-function markAsDone(id, state) {
+async function markAsDone(id, state) {
   if (!id) {
     throw Error(`Please specify a todo you want to mark by providing it's ID`)
   } 
   else {
+    const listToDos = await readToDos();
     const updateDone = (state === 'done');
-
-    listToDos.forEach(todo => {
-      if (todo.id === id) 
-      todo.done = updateDone;
-    });
+    listToDos.id.done = updateDone;
   }
   return listToDos;
 }
