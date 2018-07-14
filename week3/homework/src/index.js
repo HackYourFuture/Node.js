@@ -44,6 +44,7 @@ app.post('/todos', (req, res, next) => {
 app.put('/todos/:id', (req, res, next) => {
   const { id } = req.params;
   const { newToDo } = req.body;
+  console.log(newToDo, id);
 
   updateToDo(id, newToDo)
     .then(createToDo)
@@ -53,7 +54,7 @@ app.put('/todos/:id', (req, res, next) => {
 });
 
 // clearTodo
-app.delete('/todos/:id', (req, res) => {
+app.delete('/todos/:id', (req, res, next) => {
   const { id } = req.params;
 
   deleteToDo(id)

@@ -12,13 +12,13 @@ const TODO_PATH = 'todo.json';
 function readToDos() {
   return readFileWithPromise(TODO_PATH, 'utf8')
     .then(JSON.parse)
-    .catch(() => ([]));
+    .catch(() => ({}));
 }
 
-function createToDo(todo) {
+async function createToDo(todo) {
   if (!todo.description) throw Error('Please write a description to create a new todo!');
 
-  let listToDos =  readToDos();
+  let listToDos =  await readToDos();
   const id = uuid();
   todo.done = false;
   console.log(listToDos, typeof listToDos);
@@ -29,22 +29,20 @@ function createToDo(todo) {
 }
 
 async function deleteToDo(id) {
-  if(!id) {
-    throw Error(`Please specify a todo you want to delete by providing it's ID`)
-  } 
-  else {
-    const listToDos = await readToDos();
-    delete listToDos.id;
+  if (!id) {
+    throw Error('id is missing!');
   }
+  let listToDos = await readToDos();
+  delete listToDos.id;
   return listToDos;
 }
 
 async function updateToDo(id, newToDo) {
   
-  if (!newToDo.description && !id) {
+  if (!newToDo.description || !id) {
     throw Error('Please write a description and/or the ID of the todo you want to update!');
   }
-  const listToDos = await readToDos();
+  let listToDos = await readToDos();
   listToDos.id = newToDo;
   return listToDos;
 }
@@ -54,7 +52,7 @@ async function markAsDone(id, state) {
     throw Error(`Please specify a todo you want to mark by providing it's ID`)
   } 
   else {
-    const listToDos = await readToDos();
+    let listToDos = await readToDos();
     const updateDone = (state === 'done');
     listToDos.id.done = updateDone;
   }
