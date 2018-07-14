@@ -56,7 +56,7 @@ app.put('/todos/:id', (req, res, next) => {
 // clearTodo
 app.delete('/todos/:id', (req, res, next) => {
   const { id } = req.params;
-
+  console.log(id);
   deleteToDo(id)
     .then(createToDo)
     .then(readToDos)

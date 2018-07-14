@@ -21,9 +21,7 @@ async function createToDo(todo) {
   let listToDos =  await readToDos();
   const id = uuid();
   todo.done = false;
-  console.log(listToDos, typeof listToDos);
   listToDos[id] = todo;
-  console.log(listToDos, typeof listToDos);
 
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
@@ -33,7 +31,9 @@ async function deleteToDo(id) {
     throw Error('id is missing!');
   }
   let listToDos = await readToDos();
-  delete listToDos.id;
+  console.log(typeof listToDos);
+  delete listToDos[id];
+  console.log(listToDos);
   return listToDos;
 }
 
@@ -56,6 +56,7 @@ async function markAsDone(id, state) {
     const updateDone = (state === 'done');
     listToDos.id.done = updateDone;
   }
+  console.log(listToDos);
   return listToDos;
 }
 
