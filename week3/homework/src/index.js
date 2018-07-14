@@ -46,20 +46,22 @@ app.get('/todos', async(req, res) => {
   res.json(todos);
 });
 
-// updateTodo
-app.put('/todos/:id', (req, res) => {
-
-});
-
 // deleteTodo
-app.delete('/todos/:id', (req, res) => {
+app.delete('/todos/:id', async(req, res) => {
+  const todoId = Number(req.params.id);
 
-// ========this code below is wrong, i still have to fix it============
+  try {
+    const todos = await readTodos();
+    const newTodos = todos.filter(function(todo) {
+      return todo.id !== todoId;
+    });
+    writeTodos(newTodos);
 
-/* const id = req.params.id;
-  const todos = await readTodos();
-  const todo = todos.find(x => x.id === id);
-  res.json(todo); */
+    res.status(200).json({ message: 'todo successfully deleted' });
+  }
+  catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // readTodo
@@ -78,6 +80,48 @@ app.get('/todos/:id', async(req, res) => {
 app.delete('/todos', async(req, res) => {
   await writeTodos([]);
   res.json([]);
+});
+
+// markAsDone
+app.post('/todos/:id/done', async(req, res) => {
+  const todoId = Number(req.params.id);
+  try {
+    const todos = await readTodos();
+    const newTodos = todos.map(todo => {
+      if (todo.id === todoId) {
+        return { ...todo, done: true }; // changes just one property of todo
+      }
+      return todo; // return original todo object, without altering
+    });
+
+    writeTodos(newTodos); // update todos file, overwrite with new todos
+
+    res.status(200).json({ success: true });
+  }
+  catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// markAsNotDone
+app.delete('/todos/:id/done', async(req, res) => {
+  const todoId = Number(req.params.id);
+  try {
+    const todos = await readTodos();
+    const newTodos = todos.map(todo => {
+      if (todo.id === todoId) {
+        return { ...todo, done: false };
+      }
+      return todo;
+    });
+
+    writeTodos(newTodos);
+
+    res.status(200).json({ success: false });
+  }
+  catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
