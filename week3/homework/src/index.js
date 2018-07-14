@@ -88,7 +88,7 @@ const app = Express();
 
 // request body parser
 app.use(Express.json());
-// -----------------------------------------------------------------------
+
 const uuid = require('uuid/v4');
 const { readFile, writeFile} = require('fs');
 const { promisify } = require('util');
@@ -105,15 +105,16 @@ function readTodos() {
 function writeTodos(data) {
   return writeFileWithPromise(TODO_PATH, JSON.stringify(data, null, 2));
 }
-// ------------------------------------------------------------------
 
 // createTodo
 app.post('/todos', async(req, res, next) => {
   const newTodo = req.body;
   newTodo.id = uuid();
+
   const todos = await readTodos();
   todos.push(newTodo);
   await writeTodos(todos);
+
   res.json(todos);
 });
 
@@ -129,12 +130,23 @@ app.put('/todos/:id', (req, res) => {
 });
 
 // deleteTodo
-app.delete('/todos/:id', async(req, res) => {
+app.delete('/todos/:id', (req, res) => {
 /* const id = req.params.id;
   const todos = await readTodos();
   const todo = todos.find(x => x.id === id);
-  writeTodos([]);
   res.json(todo); */
+});
+
+// readTodo
+app.get('/todos/:id', async(req, res) => {
+  const id = req.params.id;
+  const todos = await readTodos();
+
+  const todo = todos.find(function(singleTodo) {
+    return singleTodo.id === id;
+  });
+
+  res.json(todo);
 });
 
 // clearTodos
@@ -142,6 +154,7 @@ app.delete('/todos', async(req, res) => {
   await writeTodos([]);
   res.json([]);
 });
+
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
 
 // error handling
