@@ -84,7 +84,7 @@ app.delete('/todos', async(req, res) => {
 
 // markAsDone
 app.post('/todos/:id/done', async(req, res) => {
-  const todoId = Number(req.params.id);
+  const todoId = req.params.id;
   try {
     const todos = await readTodos();
     const newTodos = todos.map(todo => {
@@ -105,7 +105,7 @@ app.post('/todos/:id/done', async(req, res) => {
 
 // markAsNotDone
 app.delete('/todos/:id/done', async(req, res) => {
-  const todoId = Number(req.params.id);
+  const todoId = req.params.id;
   try {
     const todos = await readTodos();
     const newTodos = todos.map(todo => {
