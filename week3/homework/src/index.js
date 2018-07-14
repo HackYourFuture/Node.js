@@ -64,7 +64,7 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 // markAsDone
-app.put('/todos:id', (req, res, next) => {
+app.put('/todos/:id/done', (req, res, next) => {
   const { id } = req.params;
   const state = 'done';
 
@@ -76,7 +76,7 @@ app.put('/todos:id', (req, res, next) => {
 });
 
 // markAsNotDone
-app.put('/todos:id/undone', (req, res, next) => {
+app.put('/todos/:id/undone', (req, res, next) => {
   const { id } = req.params;
   const state = 'undone';
 
