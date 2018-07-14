@@ -18,7 +18,7 @@ function readToDos() {
 function createToDo(todo) {
   if (!todo.description) throw Error('Please write a description to create a new todo!');
 
-  const listToDos =  readToDos();
+  let listToDos =  readToDos();
   const id = uuid();
   todo.done = false;
   console.log(listToDos, typeof listToDos);
