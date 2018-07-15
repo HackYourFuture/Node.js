@@ -43,7 +43,6 @@ async function updateToDo(id, newToDo) {
   }
   newToDo.done = false;
   let listToDos = await readToDos();
-  console.log(listToDos);
   listToDos[id] = newToDo;
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
@@ -56,7 +55,6 @@ async function markAsDoneNotDone(id, state) {
   let listToDos = await readToDos();
   const updateDone = (state === 'done');
   listToDos[id].done = updateDone;
-  console.log(listToDos);
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
 

@@ -42,7 +42,6 @@ app.post('/todos', (req, res, next) => {
 app.put('/todos/:id', (req, res, next) => {
   const { id } = req.params;
   const newToDo = req.body;
-  console.log(newToDo, id);
 
   updateToDo(id, newToDo)
     .then(readToDos)
@@ -53,7 +52,6 @@ app.put('/todos/:id', (req, res, next) => {
 // clearTodo
 app.delete('/todos/:id', (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
   deleteToDo(id)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
