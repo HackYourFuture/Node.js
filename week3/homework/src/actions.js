@@ -43,7 +43,7 @@ async function updateToDo(id, newToDo) {
   }
   newToDo.done = false;
   let listToDos = await readToDos();
-  listToDos[id] = newToDo;
+  listToDos[id] = newToDo.todo;
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
 
