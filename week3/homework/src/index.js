@@ -9,7 +9,7 @@ const {
   deleteToDo,
   readToDos,
   updateToDo,
-  markAsDone,
+  markAsDoneNotDone
 } = require('./actions');
 
 const PORT = 3000;
@@ -22,7 +22,7 @@ app.use(Express.json());
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
 
 // readTodos
-app.get('/todos', (req, res) => {
+app.get('/todos', (req, res, next) => {
   readToDos()
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
@@ -31,10 +31,8 @@ app.get('/todos', (req, res) => {
 // createTodo
 app.post('/todos', (req, res, next) => {
   const { todo } = req.body;
-  
-  readToDos()
-    .then(currentToDo => currentToDo.todo = todo)
-    .then(createToDo)
+
+  createToDo(todo)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
@@ -43,11 +41,10 @@ app.post('/todos', (req, res, next) => {
 // updateTodo
 app.put('/todos/:id', (req, res, next) => {
   const { id } = req.params;
-  const { newToDo } = req.body;
+  const newToDo = req.body;
   console.log(newToDo, id);
 
   updateToDo(id, newToDo)
-    .then(createToDo)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
@@ -58,30 +55,29 @@ app.delete('/todos/:id', (req, res, next) => {
   const { id } = req.params;
   console.log(id);
   deleteToDo(id)
-    .then(createToDo)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
 });
 
 // markAsDone
-app.put('/todos/:id/done', (req, res, next) => {
+app.post('/todos/:id/done', (req, res, next) => {
   const { id } = req.params;
   const state = 'done';
 
-  markAsDone(id, state)
-    .then(createToDo)
+  markAsDoneNotDone(id, state)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
 });
 
 // markAsNotDone
-app.put('/todos/:id/undone', (req, res, next) => {
+app.delete('/todos/:id/undone', (req, res, next) => {
   const { id } = req.params;
   const state = 'undone';
 
-  markAsDone(id, state)
+  markAsDoneNotDone(id, state)
+    .then(readToDos)
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
 });
