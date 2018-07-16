@@ -24,11 +24,10 @@ async function createTodo(todo) {
   todo = await isValidTodo(todo);
   const list = await readTodosFile(path);
   const id = uuid();
-  const map = new Map();
+  const map = new Map(list);
   map.set(id, todo);
-  list.push(...map);
-  await writeTodosFile(path, list);
-  return list;
+  await writeTodosFile(path, [...map]);
+  return [...map];
 }
 
 async function readTodos() {
