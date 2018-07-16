@@ -43,12 +43,12 @@ const updateTodo = async (id, newTodo) => {
     }
 };
 
-const markAsDoneOrNotDone = async (id, boolean) => {
+const markAsDoneOrNotDone = async (id, done) => {
     const todoList = await readTheList();
 
     try {
         const foundItem = todoList.find(todo => todo[id]);
-        foundItem[id].done = boolean;
+        foundItem[id].done = done;
         await writeTodo(todoList);
         return todoList;
     } catch (error) {
