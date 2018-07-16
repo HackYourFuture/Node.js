@@ -9,7 +9,7 @@ const FILE_PATH = 'todo.json';
 const list = {};
 
 
-const fileContent = (todo) => {
+const writeTodo = (todo) => {
     return write(FILE_PATH, JSON.stringify(todo, null, 2));
 };
 
@@ -21,7 +21,7 @@ const createTodo = async (todo) => {
     list[id] = todo;
     list[id].done = false;
     todoList.push(list);
-    await fileContent(todoList);
+    await writeTodo(todoList);
     return todoList;
 };
 
@@ -36,7 +36,7 @@ const updateTodo = async (id, newTodo) => {
     try {
         const foundItem = todoList.find(todo => todo[id]);
         foundItem[id].description = newTodo.description;
-        await fileContent(todoList);
+        await writeTodo(todoList);
         return todoList;
     } catch (error) {
         throw new Error('Item cannot be found.');
@@ -49,7 +49,7 @@ const markAsDoneOrNotDone = async (id, boolean) => {
     try {
         const foundItem = todoList.find(todo => todo[id]);
         foundItem[id].done = boolean;
-        await fileContent(todoList);
+        await writeTodo(todoList);
         return todoList;
     } catch (error) {
         throw new Error('Item cannot be found.')
@@ -58,9 +58,7 @@ const markAsDoneOrNotDone = async (id, boolean) => {
 
 const clearTodos = async () => {
     const todoList = await readTheList();
-
-    if (todoList.length === 0) throw new Error('The list is empty');
-    return await fileContent([]);
+    return await writeTodo([]);
 };
 
 const deleteTodo = async (id) => {
@@ -70,7 +68,7 @@ const deleteTodo = async (id) => {
         const foundItem = todoList.find(todo => todo[id]);
         const index = todoList.indexOf(foundItem);
         todoList.splice(index, 1);
-        await fileContent(todoList);
+        await writeTodo(todoList);
         return todoList;
     }
     catch (error) {

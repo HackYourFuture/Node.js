@@ -26,7 +26,7 @@ app.post('/todos', (req, res, next) => {
 });
 
 // readList
-app.get('/todos', (req, res) => {
+app.get('/todos', (req, res, next) => {
     readTheList()
         .then(data => res.send(data))
         .catch(err => next(err));
