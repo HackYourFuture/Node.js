@@ -24,7 +24,7 @@ function writeTodos(todos) {
 }
 
 function myHelper() {
-  console.log('Get help from these commands:\n 1- node . add = "Add a todo" \n 2- node . remove [type index to be removed]  = remove item from the list. \n 3- node . update = [type index to be updated]"type new todo here".\n 4- node . list  = List all items. \n 5- node . reset  = Reset the list.');
+  console.log('Get help from these commands :\n 1- node . add = "Add a todo". \n 2- node . remove [type index to be removed]  = remove item from the list. \n 3- node . update = [type index to be updated]"type new todo here".\n 4- node . list  = List all items. \n 5- node . reset  = Reset the list.');
 }
 
 switch (cmd) {
@@ -48,7 +48,7 @@ switch (cmd) {
           todos.splice(item, 1);
         }
         else {
-          console.log('Wrong input, please try again');
+          console.log('Wrong input please try again');
         }
         return todos;
       }).then(writeTodos);
