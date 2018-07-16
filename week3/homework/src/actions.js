@@ -21,19 +21,14 @@ async function isValidTodo(todo) {
 };
 
 async function createTodo(todo) {
-  try {
-    todo = await isValidTodo(todo);
-    const list = await readTodosFile(path);
-    const id = uuid();
-    const map = new Map();
-    map.set(id, todo);
-    list.push(...map);
-    await writeTodosFile(path, list);
-    return list;
-  }
-  catch (error) {
-    throw error;
-  }
+  todo = await isValidTodo(todo);
+  const list = await readTodosFile(path);
+  const id = uuid();
+  const map = new Map();
+  map.set(id, todo);
+  list.push(...map);
+  await writeTodosFile(path, list);
+  return list;
 }
 
 async function readTodos() {
@@ -45,39 +40,27 @@ async function deleteTodo(id) {
   const list = await readTodosFile(path);
   const map = new Map(list);
   if (map.delete(id)) {
-    try {
-      await writeTodosFile(path, [...map]);
-      return [...map];
-    }
-    catch (error) {
-      throw error;
-    }
+    await writeTodosFile(path, [...map]);
+    return [...map];
   }
   else {
-    const error = new Error(`To-do with ID ${id} does not exist`);
-    throw error;
+    throw new Error(`To-do with ID ${id} does not exist`);
   }
 }
 
 async function updateTodo(id, todo) {
-  try {
-    todo = await isValidTodo(todo);
-    const list = await readTodosFile(path);
-    const map = new Map(list);
-    const old = map.get(id);
-    if (old) {
-      old.description = todo.description;
-      map.set(id, old);
-      await writeTodosFile(path, [...map]);
-      return [...map];
-    }
-    else {
-      const error = new Error(`To-do with ID ${id} does not exist`);
-      throw error;
-    }
+  todo = await isValidTodo(todo);
+  const list = await readTodosFile(path);
+  const map = new Map(list);
+  const old = map.get(id);
+  if (old) {
+    old.description = todo.description;
+    map.set(id, old);
+    await writeTodosFile(path, [...map]);
+    return [...map];
   }
-  catch (error) {
-    throw error;
+  else {
+    throw new Error(`To-do with ID ${id} does not exist`);
   }
 }
 
@@ -89,39 +72,27 @@ async function readTodo(id) {
     return todo;
   }
   else {
-    const error = new Error(`To-do with ID ${id} does not exist`);
-    throw error;
+    throw new Error(`To-do with ID ${id} does not exist`);
   }
 }
 
 async function clearTodos() {
-  try {
-    await writeTodosFile(path, []);
-    return { message: 'To-dos list has been deleted' };
-  }
-  catch (error) {
-    throw error;
-  }
+  await writeTodosFile(path, []);
+  return { message: 'To-dos list has been deleted' };
 }
 
 async function markAs(id, done) {
-  try {
-    const list = await readTodosFile(path);
-    const map = new Map(list);
-    const todo = map.get(id);
-    if (todo) {
-      todo.done = done;
-      map.set(id, todo);
-      await writeTodosFile(path, [...map]);
-      return [...map];
-    }
-    else {
-      const error = new Error(`To-do with ID ${id} does not exist`);
-      throw error;
-    }
+  const list = await readTodosFile(path);
+  const map = new Map(list);
+  const todo = map.get(id);
+  if (todo) {
+    todo.done = done;
+    map.set(id, todo);
+    await writeTodosFile(path, [...map]);
+    return [...map];
   }
-  catch (error) {
-    throw error;
+  else {
+    throw new Error(`To-do with ID ${id} does not exist`);
   }
 }
 
