@@ -52,31 +52,8 @@ app.get('/todos', async(req, res) => {
   res.json(todos);
 });
 
-// updateTodo
-app.put('/todos/:id', (req, res) => {
-
-});
-// ============ modify from below
-/* case 'update':
-let updateItem = args[1];
-let newItem = args[2];
-readTodos()
-  .then(todos => {
-    if (updateItem >= 0 && typeof newItem === 'string') {
-      todos.splice(updateItem, 1);
-      todos[updateItem] = { todo: newItem };
-    }
-    else {
-      console.log('Wrong input, please try again');
-    }
-    return todos;
-  }).then(writeTodos);
-break;
-*/
-// ===========================
 // deleteTodo
 app.delete('/todos/:id', async(req, res) => {
-  // const todoId = Number(req.params.id);
   const todoId = req.params.id;
   try {
     const todos = await readTodos();
