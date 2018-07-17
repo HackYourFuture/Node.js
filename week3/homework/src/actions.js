@@ -18,7 +18,7 @@ const createTodo = async (todo) => {
     const todoList = await readTodos();
     const id = uuid();
     todo.id = id;
-    todo.done = 'unknown';
+    todo.status = 'Todo needs action';
     todoList.push(todo);
     await toWrite(todoList);
     return todoList;
@@ -28,44 +28,41 @@ const deleteTodo = async (id) => {
     const todoList = await readTodos();
     const targetTodo = todoList.find(todo => todo.id === id);
     const index = todoList.indexOf(targetTodo);
+
     if (typeof targetTodo === 'undefined') {
         throw new Error('Please enter valid id');
     }
-    else if (typeof targetTodo === 'object') {
-        todoList.splice(index, 1);
-        await toWrite(todoList);
-        return todoList;
-    }
+
+    todoList.splice(index, 1);
+    await toWrite(todoList);
+    return todoList;
 };
 
 const clearTodos = async () => {
-    const todoList = await readTodos();
-    const deletedList = await toWrite([]);
-    return deletedList;
+    await readTodos();
+    return toWrite([]);
 };
+
 const updateTodo = async (id, updateTodo) => {
     const todoList = await readTodos();
     const currentTodo = todoList.find(todo => todo.id === id);
     if (typeof currentTodo === 'undefined') {
         throw new Error('Please enter valid id');
-    } else if (typeof currentTodo === 'object') {
-        currentTodo.description = updateTodo.description;
-        await toWrite(todoList);
-        return todoList;
     }
+    currentTodo.description = updateTodo.description;
+    await toWrite(todoList);
+    return todoList;
 };
-const markTodo = async (id, done) => {
+const markTodo = async (id, status) => {
     if (!id) throw new Error('Please enter valid ID');
     const todoList = await readTodos();
     const targetTodo = todoList.find(todo => todo.id === id);
-    if (done === false) {
-        const index = todoList.indexOf(targetTodo);
-        todoList.splice(index, 1);
-        toWrite(todoList);
-        return todoList;
-    } else if (done === true) {
-        targetTodo.done = true;
-        toWrite(todoList);
+    if (status === false) {
+        return deleteTodo(id);
+    }
+    else if (status === true) {
+        targetTodo.status = true;
+        await toWrite(todoList);
         return todoList;
     }
 };
