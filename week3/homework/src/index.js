@@ -30,14 +30,20 @@ function writeTodos(data) {
 
 // createTodo
 app.post('/todos', async(req, res, next) => {
-  const newTodo = req.body;
-  newTodo.id = uuid();
+  try {
+    const newTodo = req.body;
+    newTodo.id = uuid();
 
-  const todos = await readTodos();
-  todos.push(newTodo);
-  await writeTodos(todos);
+    const todos = await readTodos();
+    todos.push(newTodo);
+    await writeTodos(todos);
 
-  res.json(todos);
+    res.json(todos);
+  }
+  catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+    console.log('Your todo could not be created, please try again...');
+  }
 });
 
 // readTodos
@@ -46,10 +52,32 @@ app.get('/todos', async(req, res) => {
   res.json(todos);
 });
 
+// updateTodo
+app.put('/todos/:id', (req, res) => {
+
+});
+// ============ modify from below
+/* case 'update':
+let updateItem = args[1];
+let newItem = args[2];
+readTodos()
+  .then(todos => {
+    if (updateItem >= 0 && typeof newItem === 'string') {
+      todos.splice(updateItem, 1);
+      todos[updateItem] = { todo: newItem };
+    }
+    else {
+      console.log('Wrong input, please try again');
+    }
+    return todos;
+  }).then(writeTodos);
+break;
+*/
+// ===========================
 // deleteTodo
 app.delete('/todos/:id', async(req, res) => {
-  const todoId = Number(req.params.id);
-
+  // const todoId = Number(req.params.id);
+  const todoId = req.params.id;
   try {
     const todos = await readTodos();
     const newTodos = todos.filter(function(todo) {
@@ -61,6 +89,7 @@ app.delete('/todos/:id', async(req, res) => {
   }
   catch (err) {
     res.status(500).json({ success: false, error: err.message });
+    console.log('Your todo could not be deleted, please try again...');
   }
 });
 

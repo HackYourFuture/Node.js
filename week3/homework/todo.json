@@ -1,0 +1,22 @@
+[
+  {
+    "todo": "plant flowers",
+    "done": true,
+    "id": "f8e9d8b4-f53e-4cbc-83b6-15e1939b74be"
+  },
+  {
+    "todo": "wash dishes",
+    "done": "false",
+    "id": "6c987571-701e-4a96-b0fe-14bbd910b73e"
+  },
+  {
+    "todo": "iron clothes",
+    "done": "false",
+    "id": "0c00ead9-031d-49ac-bf5c-70ff7a56b849"
+  },
+  {
+    "todo": "make dinner",
+    "done": false,
+    "id": "92223307-d0df-474e-9112-ef19ac7505d1"
+  }
+]
