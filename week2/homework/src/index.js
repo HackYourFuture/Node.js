@@ -45,7 +45,7 @@ switch (cmd) {
     readTodos()
       .then(todos => {
         if (item >= 0) {
-          todos.splice(item, 1);
+          todos.splice(item - 1, 1);
         }
         else {
           console.log('Wrong input please try again');
