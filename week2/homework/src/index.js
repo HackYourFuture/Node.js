@@ -44,7 +44,7 @@ switch (cmd) {
     let item = args[1];
     readTodos()
       .then(todos => {
-        if (item > 0) {
+        if (item >= 0) {
           todos.splice(item, 1);
         }
         else {
@@ -60,7 +60,7 @@ switch (cmd) {
     readTodos()
       .then(todos => {
         if (updateItem >= 0 && typeof newItem === 'string') {
-          todos.splice(updateItem, 1);
+          todos.splice();
           todos[updateItem] = { todo: newItem };
         }
         else {
