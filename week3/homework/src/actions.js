@@ -37,6 +37,11 @@ async function deleteToDo(id) {
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
 
+async function resetToDos() {
+  let listToDos = await readToDos();
+  return writeFileWithPromise(TODO_PATH, JSON.stringify({}, null, 2));
+}
+
 async function updateToDo(id, newToDo) {
   if (!newToDo) {
     throw Error('update is missing!');
@@ -62,6 +67,7 @@ module.exports = {
   createToDo,
   readToDos,
   deleteToDo,
+  resetToDos,
   updateToDo,
   markAsDoneNotDone
 };

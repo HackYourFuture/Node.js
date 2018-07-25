@@ -7,6 +7,7 @@ const {
   // TODO: implement the following actions:
   createToDo,
   deleteToDo,
+  resetToDos,
   readToDos,
   updateToDo,
   markAsDoneNotDone
@@ -55,6 +56,14 @@ app.delete('/todos/:id', (req, res, next) => {
   deleteToDo(id)
     .then(readToDos)
     .then(toDoList => res.send(toDoList))
+    .catch(err => next(err));
+});
+
+// resetTodos
+app.delete('/reset', (req, res, next) => {
+  console.log('trying to reset');
+  resetToDos()
+    .then(res.send(`List is reset`))
     .catch(err => next(err));
 });
 
