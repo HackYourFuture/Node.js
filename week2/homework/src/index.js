@@ -61,7 +61,7 @@ switch (cmd) {
       .then(todos => {
         if (updateItem >= 0 && typeof newItem === 'string') {
           todos.splice();
-          todos[updateItem] = { todo: newItem };
+          todos[updateItem - 1] = { todo: newItem };
         }
         else {
           console.log('Wrong input, please try again');
