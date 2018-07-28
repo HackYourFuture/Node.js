@@ -12,34 +12,30 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
 
-    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.setHeader('Content-Type', 'application/json');
 
     switch (request.url) {
       case '/state':
         console.log(state);
-        response.write(`${{ 'state': state }}`);
+        response.write(JSON.stringify({ state: state }));
         break;
       case '/add':
-        response.write(`${{ 'state': state += 1 }}`);
+        response.write(JSON.stringify({ state: state += 1 }));
         break;
       case '/subtract':
-        response.write(`${{ 'state': state -= 1 }}`);
+        response.write(JSON.stringify({ state: state -= 1 }));
         break;
       case '/reset':
         state = 10;
-        response.write(`${{ 'state': state }}`);
+        response.write(JSON.stringify({ state: state }));
         break;
       default:
-        const extension = path.extname(request.url);
-        if (extension === '') {
-          response.statusCode = 302;
-          // response.setHeader('Location', '/');
-          response.write('This is invalid path!!');
-        }
+        response.statusCode = 404;
+        response.setHeader('Content-Type', 'application/json');
+        response.write(JSON.stringify('404 Not found'));
     }
 
     response.end();
-
   });
 
   return server;
