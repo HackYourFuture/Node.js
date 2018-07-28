@@ -1,7 +1,7 @@
 'use strict';
 
 const http = require('http');
-var path = require('path');
+// var path = require('path');
 
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
