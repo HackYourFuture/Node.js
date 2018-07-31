@@ -18,7 +18,6 @@ const createTodo = async (todo) => {
     const todoList = await readTodos();
     const id = uuid();
     todo.id = id;
-    todo.status = 'Todo needs action';
     todoList.push(todo);
     await toWrite(todoList);
     return todoList;
@@ -58,13 +57,13 @@ const markTodo = async (id, status) => {
     const todoList = await readTodos();
     const targetTodo = todoList.find(todo => todo.id === id);
     if (status === false) {
-        return deleteTodo(id);
+        targetTodo.status = false;
     }
     else if (status === true) {
         targetTodo.status = true;
-        await toWrite(todoList);
-        return todoList;
     }
+    await toWrite(todoList);
+    return todoList;
 };
 module.exports = {
     createTodo,
