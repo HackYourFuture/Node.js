@@ -20,7 +20,7 @@ async function createToDo(todo) {
     throw Error('Please write a description to create a new todo!');
   }
 
-  let listToDos = await readToDos();
+  let listToDos =  await readToDos();
   const id = uuid();
   todo.done = false;
   listToDos[id] = todo;
@@ -37,8 +37,7 @@ async function deleteToDo(id) {
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
 }
 
-async function resetToDos() {
-  let listToDos = await readToDos();
+function resetToDos() {
   return writeFileWithPromise(TODO_PATH, JSON.stringify({}, null, 2));
 }
 

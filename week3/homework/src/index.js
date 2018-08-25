@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 // TODO: Write the homework code in this file
 
-const Express = require("express");
+const Express = require('express');
 const {
   // TODO: implement the following actions:
   createToDo,
@@ -11,7 +11,7 @@ const {
   readToDos,
   updateToDo,
   markAsDoneNotDone
-} = require("./actions");
+} = require('./actions');
 
 const PORT = 3000;
 
@@ -23,14 +23,14 @@ app.use(Express.json());
 // TODO: implement readTodo, clearTodos, markAsDone and markAsNotDone routes and actions
 
 // readTodos
-app.get("/todos", (req, res, next) => {
+app.get('/todos', (req, res, next) => {
   readToDos()
     .then(toDoList => res.send(toDoList))
     .catch(err => next(err));
 });
 
 // createTodo
-app.post("/todos", (req, res, next) => {
+app.post('/todos', (req, res, next) => {
   const { todo } = req.body;
 
   createToDo(todo)
@@ -40,7 +40,7 @@ app.post("/todos", (req, res, next) => {
 });
 
 // updateTodo
-app.put("/todos/:id", (req, res, next) => {
+app.put('/todos/:id', (req, res, next) => {
   const { id } = req.params;
   const newToDo = req.body;
 
@@ -51,7 +51,7 @@ app.put("/todos/:id", (req, res, next) => {
 });
 
 // clearTodo
-app.delete("/todos/:id", (req, res, next) => {
+app.delete('/todos/:id', (req, res, next) => {
   const { id } = req.params;
   deleteToDo(id)
     .then(readToDos)
@@ -60,17 +60,17 @@ app.delete("/todos/:id", (req, res, next) => {
 });
 
 // resetTodos
-app.delete("/todos", (req, res, next) => {
-  console.log("trying to reset");
+app.delete('/todos', (req, res, next) => {
+  console.log('trying to reset');
   resetToDos()
     .then(res.send(`List is reset`))
     .catch(err => next(err));
 });
 
 // markAsDone
-app.post("/todos/:id/done", (req, res, next) => {
+app.post('/todos/:id/done', (req, res, next) => {
   const { id } = req.params;
-  const state = "done";
+  const state = 'done';
 
   markAsDoneNotDone(id, state)
     .then(readToDos)
@@ -79,9 +79,9 @@ app.post("/todos/:id/done", (req, res, next) => {
 });
 
 // markAsNotDone
-app.delete("/todos/:id/undone", (req, res, next) => {
+app.delete('/todos/:id/undone', (req, res, next) => {
   const { id } = req.params;
-  const state = "undone";
+  const state = 'undone';
 
   markAsDoneNotDone(id, state)
     .then(readToDos)
@@ -94,6 +94,4 @@ app.use((error, req, res, next) => {
   res.status(500).send({ error });
 });
 
-app.listen(PORT, () =>
-  console.log(`Server listening on http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
