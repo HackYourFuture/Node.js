@@ -20,7 +20,7 @@ async function createToDo(todo) {
     throw Error('Please write a description to create a new todo!');
   }
 
-  let listToDos =  await readToDos();
+  let listToDos = await readToDos();
   const id = uuid();
   todo.done = false;
   listToDos[id] = todo;
