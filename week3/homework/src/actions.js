@@ -45,7 +45,6 @@ async function updateToDo(id, newToDo) {
   if (!newToDo) {
     throw Error('update is missing!');
   }
-  newToDo.done = false;
   let listToDos = await readToDos();
   listToDos[id] = newToDo.todo;
   return writeFileWithPromise(TODO_PATH, JSON.stringify(listToDos, null, 2));
