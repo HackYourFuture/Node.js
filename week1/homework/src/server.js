@@ -7,9 +7,42 @@ const http = require('http');
  */
 function createServer(port) {
   let state = 10;
+  let body;
+  let statusCode = 200;
+  let message = 'OK';
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    switch (request.url) {
+      case '/state':
+        body = JSON.stringify({state});
+        console.log('route /state', state);
+        break;
+      case '/add':
+        state++;
+        body = JSON.stringify({state});
+        console.log('route /add', state);
+        break;
+      case '/subtract':
+        state--;
+        body = JSON.stringify({state});
+        console.log('route /subtract', state);
+        break;
+      case '/reset':
+        state = 10;
+        body = JSON.stringify({state});
+        console.log('route /reset', state);
+        break;
+      default:
+        statusCode = 404;
+        message = 'Not Found';
+        body = JSON.stringify({error: 'Not Found'});
+    }
+    response.setHeader('Content-Type', 'application/json');
+    response.statusMessage = message;
+    response.statusCode = statusCode;
+    response.write(body);
+    response.end();
   });
 
   return server;
