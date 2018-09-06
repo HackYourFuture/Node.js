@@ -7,6 +7,7 @@
   "author": "George Sapkin",
   "license": "MIT",
   "scripts": {
+    "start": "node ./src/index.js",
     "test": "ava --verbose",
     "test:watch": "yarn test --watch"
   },

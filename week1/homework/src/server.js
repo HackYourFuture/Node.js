@@ -7,42 +7,37 @@ const http = require('http');
  */
 function createServer(port) {
   let state = 10;
-  let body;
-  let statusCode = 200;
-  let message = 'OK';
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    function sendResponse(status, body) {
+      response.writeHead(status, {'Content-Type': 'application/json'});
+      response.write(JSON.stringify(body));
+      response.end();
+    }
     switch (request.url) {
       case '/state':
-        body = JSON.stringify({state}, null, 2);
+        sendResponse(200, { state });
         console.log('route /state', state);
         break;
       case '/add':
         state++;
-        body = JSON.stringify({state}, null, 2);
+        sendResponse(200, { state });
         console.log('route /add', state);
         break;
       case '/subtract':
         state--;
-        body = JSON.stringify({state}, null, 2);
+        sendResponse(200, { state });
         console.log('route /subtract', state);
         break;
       case '/reset':
         state = 10;
-        body = JSON.stringify({state}, null, 2);
+        sendResponse(200, { state });
         console.log('route /reset', state);
         break;
       default:
-        statusCode = 404;
-        message = 'Not found';
-        body = JSON.stringify({error: 'Not found'}, null, 2);
+        sendResponse(404, { 'error': 'Not found'});
     }
-    response.setHeader('Content-Type', 'application/json');
-    response.statusMessage = message;
-    response.statusCode = statusCode;
-    response.write(body);
-    response.end();
   });
 
   return server;

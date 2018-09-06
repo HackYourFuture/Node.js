@@ -73,7 +73,6 @@ test(
         `Expected server to respond without an error, got: ${err.message}`
       );
     }
-
     t.is(response.status, 404, 'Expected status code to be 404');
     t.is(response.headers['content-type'], 'application/json',
       'Expected content type to be application/json'
