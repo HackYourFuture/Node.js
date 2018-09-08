@@ -2,19 +2,27 @@
 
 const http = require('http');
 
-/* `createServer` MUST return an instance of `http.Server` otherwise the tests
- * will fail.
- */
-function createServer(port) {
+const sendState = require('./responses/sendState');
+const sendError = require('./responses/sendError');
+
+const createServer = port => {
   let state = 10;
 
-  const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
+  return http.createServer(({ url }, response) => {
+    url === '/'
+      ? response.writeHead(302, { Location: '/state' })
+      : url === '/state'
+        ? sendState(response, state)
+        : url === '/add'
+          ? sendState(response, ++state)
+          : url === '/subtract'
+            ? sendState(response, --state)
+            : url === '/reset'
+              ? sendState(response, (state = 10))
+              : ((response.statusCode = 404), sendError(response, 'Not found'));
+    response.end();
   });
-
-  return server;
-}
-
+};
 module.exports = {
   createServer
 };
