@@ -9,7 +9,7 @@ const http = require('http');
 const responseError = { "error": "Not found"};
 
 function createServer(port) {
-  let responseObject = {'state': 10};
+  
   const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-type": "application/json"});
     switch(request.url)
