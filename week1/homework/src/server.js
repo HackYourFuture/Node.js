@@ -1,25 +1,33 @@
-'use strict';
+"use strict";
 
-const http = require('http');
+const http = require("http");
 
-const sendState = require('./responses/sendState');
-const sendError = require('./responses/sendError');
+const sendState = require("./responses/sendState");
+const sendError = require("./responses/sendError");
 
 const createServer = port => {
   let state = 10;
 
   return http.createServer(({ url }, response) => {
-    url === '/'
-      ? response.writeHead(302, { Location: '/state' })
-      : url === '/state'
-        ? sendState(response, state)
-        : url === '/add'
-          ? sendState(response, ++state)
-          : url === '/subtract'
-            ? sendState(response, --state)
-            : url === '/reset'
-              ? sendState(response, (state = 10))
-              : ((response.statusCode = 404), sendError(response, 'Not found'));
+    switch (url) {
+      case "/":
+        response.writeHead(302, { Location: "/state" });
+        break;
+      case "/state":
+        sendState(response, state);
+        break;
+      case "/add":
+        sendState(response, ++state);
+        break;
+      case "/subtract":
+        sendState(response, --state);
+        break;
+      case "/reset":
+        sendState(response, (state = 10));
+        break;
+      default:
+        (response.statusCode = 404), sendError(response, "Not found");
+    }
     response.end();
   });
 };
