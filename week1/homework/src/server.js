@@ -9,32 +9,30 @@ function createServer(port) {
   let state = 10;
 
   const server = http.createServer((request, response) => {
+    function stateStatus(status, state) {
+      response.writeHead(status, { 'Content-Type': 'application/json' });
+      response.write(JSON.stringify(state, null, 2));
+      response.end();
+    }
     // TODO: Write your homework code here
-    if (request.url === '/state') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      const main = { 'state': state };
-      response.end(JSON.stringify(main));
-    }
-    else if (request.url === '/add') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      const add = { 'state': ++state };
-      response.end(JSON.stringify(add));
-    }
-    else if (request.url === '/subtract') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      const subtract = { 'state': --state };
-      response.end(JSON.stringify(subtract));
-    }
-    else if (request.url === '/reset') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      state = 10;
-      const reset = { 'state': state };
-      response.end(JSON.stringify(reset));
-    }
-    else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
-      const err = { 'error': 'Not found' };
-      response.end(JSON.stringify(err));
+    switch (request.url) {
+      case '/state':
+        stateStatus(200, {'state': state});
+        break;
+      case '/add':
+        ++state;
+        stateStatus(200, {'state': state});
+        break;
+      case '/subtract':
+        --state;
+        stateStatus(200, {'state': state});
+        break;
+      case '/reset':
+        state = 10;
+        stateStatus(200, {'state': state});
+        break;
+      default:
+        stateStatus(404, {'error': 'Not found'});
     }
   });
 
