@@ -13,5 +13,9 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "commander": "^2.18.0",
+    "prompt-confirm": "^2.0.4"
   }
 }
