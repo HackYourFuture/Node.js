@@ -85,7 +85,7 @@ function help(topic) {
     } else if (Object.keys(allDescription).includes(`${topic}Description`)) {
         console.log(allDescription[`${topic}Description`]);
     } else {
-        console.log(anythingDecription);
+        console.log(anythingDescription);
     }
 }
 
