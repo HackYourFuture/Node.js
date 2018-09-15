@@ -4,7 +4,7 @@ let order = process.argv[2];
 let orderDefinition = process.argv[3];
 let orderDefinition2 = process.argv[4];
 
-fs.readFile('./toDo.json', 'utf8', function(error, data) {
+fs.readFile('./toDo.json', 'utf8', function (error, data) {
   if (error) {
     console.log(error);
   }
@@ -12,7 +12,7 @@ fs.readFile('./toDo.json', 'utf8', function(error, data) {
     let myToDoList = JSON.parse(data);
 
     function help() {
-      fs.readFile('./help.txt', 'utf8', function(error, data) {
+      fs.readFile('./help.txt', 'utf8', function (error, data) {
         if (error) {
           console.log(error);
         }
@@ -24,7 +24,13 @@ fs.readFile('./toDo.json', 'utf8', function(error, data) {
     };
 
     function list() {
-      if (Object.keys(myToDoList).length === 0) {
+      function isEmpty(myToDoList) {
+        if (Object.values(myToDoList).length === 0) {
+          return true;
+        }
+        return false;
+      }
+      if (isEmpty(myToDoList)) {
         console.log('You have not any plan in your To Do List');
       }
       else {
@@ -32,8 +38,9 @@ fs.readFile('./toDo.json', 'utf8', function(error, data) {
       }
     };
 
-    function add(orderDefinition) {
-      myToDoList[Object.keys(myToDoList).length + 1] = orderDefinition;
+    function add(orderDefinition, orderDefinition2) {
+      let toDoDate = orderDefinition2.toLocaleDateString();
+      myToDoList[Object.keys(myToDoList).length + 1] = orderDefinition + ' ' + toDoDate;
       fs.writeFile(
         './toDo.json',
         JSON.stringify(myToDoList),
@@ -82,7 +89,7 @@ fs.readFile('./toDo.json', 'utf8', function(error, data) {
         list();
         break;
       case 'add':   // All the words behind add are entered as 1 to-do item to the list.
-        add(orderDefinition);
+        add(orderDefinition, orderDefinition2);
         break;
       case 'remove':  // Removes a to-do item by its 1-base index, e.g. to remove second item, execute:
         remove(orderDefinition);
@@ -94,6 +101,7 @@ fs.readFile('./toDo.json', 'utf8', function(error, data) {
         update(orderDefinition, orderDefinition2);
         break;
       default:
+        console.log('Please use a valid code which you can find at below!!!');
         help();
     }
   }

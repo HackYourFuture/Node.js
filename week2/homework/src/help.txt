@@ -1,4 +1,7 @@
-Please refer to an order from below
+
+===This program helps to create a to-do list.===
+
+Usable commands:
 
 list: 'Shows current to-dos',
 add: 'Adds a to-do item. All the words behind add are entered as 1 to-do item to the list.'
