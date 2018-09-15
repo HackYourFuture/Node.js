@@ -85,7 +85,7 @@ function help() {
     console.log('\n' +
         'use add <text> to add to-do to the list '
         + '\n' + '\n' +
-        'use remove <number> to remove to-do from the list'
+        'use remove <number> to remove to-dos from the list'
         + '\n' + '\n' +
         'use update <number> <text> to update to-dos from the list '
         + '\n' + '\n' +
