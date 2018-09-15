@@ -1,0 +1,11 @@
+use 'list' to list all To-do's,
+
+use 'add' to add new To-do,
+
+use 'update' and number of To-do that has to be updated,
+
+use 'delete' and number of To-do that has to be deleted,
+
+use 'help' to open this section again.
+
+            | (• ◡•)| 
