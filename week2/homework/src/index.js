@@ -50,13 +50,18 @@ fs.readFile('./toDo.json', 'utf8', function (error, data) {
     };
 
     function remove(orderDefinition) {
-      delete myToDoList[orderDefinition];
-      fs.writeFile(
-        './toDo.json',
-        JSON.stringify(myToDoList),
-        (error) => {
-          if (error) { console.log(error); }
-        });
+      if (orderDefinition > 0) {
+        delete myToDoList[orderDefinition];
+        fs.writeFile(
+          './toDo.json',
+          JSON.stringify(myToDoList),
+          (error) => {
+            if (error) { console.log(error); }
+          });
+      }
+      else {
+        console.log('The parameter you entered as index is invalid');
+      }
     };
 
     function reset() {
@@ -69,13 +74,18 @@ fs.readFile('./toDo.json', 'utf8', function (error, data) {
     };
 
     function update(orderDefinition, orderDefinition2) {
-      myToDoList[orderDefinition] = orderDefinition2;
-      fs.writeFile(
-        './toDo.json',
-        JSON.stringify(myToDoList),
-        (error) => {
-          if (error) { console.log(error); }
-        });
+      if (orderDefinition > 0) {
+        myToDoList[orderDefinition] = orderDefinition2;
+        fs.writeFile(
+          './toDo.json',
+          JSON.stringify(myToDoList),
+          (error) => {
+            if (error) { console.log(error); }
+          });
+      }
+      else {
+        console.log('The parameter you entered as index is invalid');
+      }
     };
 
     switch (order) {
