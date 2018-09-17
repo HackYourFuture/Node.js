@@ -1,1 +1,18 @@
-{"1":"Swim lesson 12.10.18 15:00 - 16:00","2":"Baseball lesson 13.10.18 15:00 - 16:00"}
+[
+  {
+    "index": 0,
+    "description": "Swim lesson"
+  },
+  {
+    "index": 1,
+    "description": "Dutch lesson"
+  },
+  {
+    "index": 2,
+    "description": "Baseball lesson"
+  },
+  {
+    "index": 3,
+    "description": "English lesson"
+  }
+]

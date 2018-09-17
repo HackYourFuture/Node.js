@@ -3,8 +3,12 @@
 
 Usable commands:
 
-list: 'Shows current to-dos',
-add: 'Adds a to-do item. All the words behind add are entered as 1 to-do item to the list.'
-remove: 'Removes a to-do item by its 1-base index.'
-reset: 'Removes all to-do items from the list.'
-update: 'Updates a to-do item with new text.'
+list : 'Shows current todo list',
+
+reset : 'Removes all todo items from the list.'
+
+add [todo] : 'Adds a [todo] item to list.'
+
+remove [number] : 'Removes a todo item by depending on its 1-base index [number].'
+
+update [number] [todo]: 'Updates todo number [number] in the list with new [todo]'
