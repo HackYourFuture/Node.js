@@ -7,7 +7,8 @@ const newToDo = process.argv[4];
 function help() {
   fs.readFile('./help.txt', 'utf8', function (error, data) {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return;
     }
     console.log(data);
   });
@@ -16,11 +17,13 @@ function help() {
 function list() {
   fs.readFile('./toDo.json', 'utf8', function (error, data) {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return;
     }
     const myToDoList = JSON.parse(data);
     if (Object.values(myToDoList).length === 0) {
-      return console.log('You have not any plan in your To Do List');
+      console.log('You have not any plan in your To Do List');
+      return;
     }
     console.log(myToDoList);
   });
@@ -29,7 +32,8 @@ function list() {
 function add(commandExpression) {
   fs.readFile('./toDo.json', 'utf8', function (error, data) {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return;
     }
 
     const myToDoList = JSON.parse(data);
@@ -53,10 +57,12 @@ function add(commandExpression) {
 function remove(commandExpression) {
   fs.readFile('./toDo.json', 'utf8', function (error, data) {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return;
     }
     if (commandExpression < 0) {
-      return console.log('The parameter you entered as index is invalid');
+      console.log('The parameter you entered as index is invalid');
+      return;
     }
 
     const myToDoList = JSON.parse(data);
@@ -87,10 +93,12 @@ function reset() {
 function update(commandExpression, newToDo) {
   fs.readFile('./toDo.json', 'utf8', function (error, data) {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return;
     }
     if (commandExpression < 0) {
-      return console.log('The parameter you entered as index is invalid');
+      console.log('The parameter you entered as index is invalid');
+      return;
     }
 
     const myToDoList = JSON.parse(data);
