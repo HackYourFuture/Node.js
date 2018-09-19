@@ -12,7 +12,7 @@ program
 program
     .command('list')
     .description('Shows current to-dos')
-    .action(() => listItems());
+    .action(listItems);
 program
     .command('add <index>')
     .description('add a item to the list')
@@ -24,16 +24,20 @@ program
 program
     .command('reset')
     .description('removes all the items from the list')
-    .action(() => resetList());
+    .action(resetList);
 program
     .command('update <index> <newItem>')
     .description('update a item from the list')
-    .action((index, updatedTask) => updateItem(index, updatedTask));
+    .action(updateItem);
 program
     .command('help')
     .description('show help')
-    .action(() => printHelp());
+    .action(() => program.help());
 program.parse(process.argv);
+
+if (program.args.length === 0) {
+    program.help();
+}
 
 function listItems() {
     fs.readFile(fileName, defaultEncoding, (err, data) => {
@@ -47,7 +51,6 @@ function listItems() {
 }
 
 function addItem(index) {
-    index = process.argv[3];
     fs.appendFile(fileName, index + '\n', function (error) {
         if (error) {
             console.log(error);
@@ -57,7 +60,6 @@ function addItem(index) {
 
 function removeItem(index) {
     fs.readFile(fileName, defaultEncoding, (err, data) => {
-        index = process.argv[3];
         let changedData = data.split('\n');
         if (index > 0 && index <= changedData.length) {
             changedData.splice(index - 1, 1);
@@ -94,7 +96,6 @@ function updateItem(index, updatedTask) {
             console.log(err);
         }
         else {
-            index = process.argv[3];
             let dataToArray = data.split('\n');
             dataToArray.splice(index - 1, 1, updatedTask);
             dataToArray = dataToArray.join('\n');
@@ -109,17 +110,4 @@ function updateItem(index, updatedTask) {
             });
         }
     });
-}
-
-function printHelp() {
-    console.log(`Usage: node index.js [options]
-HackYourFuture Node.js Week 2 - Homework To-Do App
-Options:
-  list               show all the tasks
-  add [to-do]        add task 
-  remove [to-do]     remove task
-  update [to-do]     update a task from the list
-  reset              remove all the tasks from the list
-  help               show this help text
-  `);
 }
