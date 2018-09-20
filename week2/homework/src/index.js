@@ -1,21 +1,25 @@
 'use strict';
 
 // TODO: Write the homework code in this file
-let fs = require('fs');
-let command = process.argv[2];
-let item = process.argv[3];
+'use strict';
+
+// TODO: Write the homework code in this file
+const fs = require('fs');
+const command = process.argv[2];
+const index = process.argv[3];
+
 switch(command){
     case 'add' :
-        add(item);
+        add(index);
         break
     case 'remove':
-        remove(item);
+        remove(index);
         break;
     case 'list':
-        list(item);
+        list();
         break;
     case 'reset':
-        reset(item);
+        reset();
         break;
     case 'help' :
         console.log( `Usage:
@@ -28,34 +32,37 @@ switch(command){
            -- help       Show  information of cli commands`);
            break;
 };
-function add (item){
-    fs.appendFile('./data.txt', item + '\n', (error)=>{
-        if (error){
-            console.log(error);
-        };
-    });
+function add (index){
+    if(fs.existsSync('./data.txt')){
+        fs.appendFile('./data.txt', index + '\n', (error)=>{
+             if (error){
+                console.log(error);
+                };
+            });
+        
+    }else{
+        fs.writeFileSync('./data.txt','**TODO List**'+'\n'+index+'\n',{flag:'wx'},function(err){
+            console.log(err)
+        })
+    };
 };
-function remove (item){
+function remove (index){
     let arrayRemove= fs.readFileSync('./data.txt').toString().split('\n');
-    arrayRemove.splice(item,1);
+    arrayRemove.splice(index,1);
     fs.writeFile('./data.txt',arrayRemove.join('\n'),(error)=>{
         if(error){
             console.log(error);
         };
     });
 };
-function list (){
-    let arrayList=fs.readFileSync('./data.txt','utf8');        
-    if(arrayList.length == 0){
-        console.log(`There is nothing in the to-do list`);
+function list (){      
+    if(fs.existsSync('./data.txt')){
+        let arrayList=fs.readFileSync('./data.txt','utf8'); 
+        console.log(arrayList);
     }else{
-        console.log(arrayList)
+        console.log(`There is nothing in the to-do list`)
     };
 };
 function reset(){
-    fs.truncate('./data.txt',0,(err,data)=>{       
-         if (err){
-        console.log(err)
-        };
-    });
+    fs.unlinkSync('./data.txt')
 };
