@@ -1,15 +1,16 @@
 'use strict';
 
 const fs = require('fs');
+const storage = './todos.json';
 
-const runTheFunction = function (func, param1, param2) {
-    fs.readFile('./todos.json', 'utf8', (err, data) => {
+function runTheFunction(func, param1, param2) {
+    fs.readFile(storage, 'utf8', (err, data) => {
         if (err) {
             if (err.errno === -4058) {
-                fs.appendFile('./todos.json', '[]', (error) => {
+                fs.appendFile(storage, '[]', (error) => {
                     if (error) { console.log(error); }
 
-                    fs.readFile('./todos.json', 'utf8', (error, data) => {
+                    fs.readFile(storage, 'utf8', (error, data) => {
                         if (error) {
                             console.log(error);
                         } else {
@@ -48,7 +49,7 @@ function add(data, item) {
     };
     toDoList.push(itemObj);
 
-    fs.writeFile('./todos.json', JSON.stringify(toDoList), (error) => {
+    fs.writeFile(storage, JSON.stringify(toDoList), (error) => {
         if (error) { console.log(error); }
     })
 }
@@ -56,17 +57,14 @@ function add(data, item) {
 function mark(data, index, type) {
     const toDoList = JSON.parse(data);
     toDoList[index - 1].done = type;
-
-    fs.writeFile('./todos.json', JSON.stringify(toDoList), (error) => {
+    fs.writeFile(storage, JSON.stringify(toDoList), (error) => {
         if (error) { console.log(error); }
     });
-
 }
 
 function list(data, index, response) {
     const toDoList = JSON.parse(data);
     let output;
-
     if (toDoList.length === 0) {
         const warningMessage = "your to-do list is empty, you can plan your day now!";
         output = { "error": warningMessage };
@@ -76,14 +74,13 @@ function list(data, index, response) {
     } else {
         output = toDoList[index - 1];
     }
-
     response
         .status(200)
         .json(output);
 }
 
 function reset() {
-    fs.writeFile('./todos.json', '[]', (error) => {
+    fs.writeFile(storage, '[]', (error) => {
         if (error) { console.log(error); }
     });;
 }

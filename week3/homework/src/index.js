@@ -1,10 +1,8 @@
 'use strict';
 
 const express = require('express');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const manipulate = require('./manipulate');
-
 const app = express();
 const port = 3030;
 
@@ -22,14 +20,11 @@ app.delete('/todos', (request, response) => {
         .json({ result: "your to-do list is cleaned" });
 });
 
-//this is used for adding new tasks into todos.json file.
-//this was not included to homework but I did it.
 app.post('/todos', (request, response) => {
     manipulate.runTheFunction('add', request.body.task);
     response
         .status(201)
         .json({ result: "your task is added!" });
-
 });
 
 app.post('/todos/:id(\\d+)/done', (request, response) => {
@@ -38,7 +33,6 @@ app.post('/todos/:id(\\d+)/done', (request, response) => {
     response
         .status(201)
         .json({ result: "it is marked as done!" });
-
 });
 
 app.delete('/todos/:id(\\d+)/done', (request, response) => {
