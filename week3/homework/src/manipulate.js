@@ -2,6 +2,44 @@
 
 const fs = require('fs');
 
+const runTheFunction = function (func, param1, param2) {
+    fs.readFile('./todos.json', 'utf8', (err, data) => {
+        if (err) {
+            if (err.errno === -4058) {
+                fs.appendFile('./todos.json', '[]', (error) => {
+                    if (error) { console.log(error); }
+
+                    fs.readFile('./todos.json', 'utf8', (error, data) => {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            allFunctions(func, data, param1, param2);
+                        }
+                    });
+                });
+            } else {
+                console.log(err);
+            }
+        } else {
+            allFunctions(func, data, param1, param2);
+        }
+    });
+}
+
+function allFunctions(func, data, param1, param2) {
+    switch (func) {
+        case 'add':
+            add(data, param1);
+            break;
+        case 'mark':
+            mark(data, param1, param2);
+            break;
+        case 'list':
+            list(data, param1, param2);
+            break;
+    }
+}
+
 function add(data, item) {
     const toDoList = JSON.parse(data);
     const itemObj = {
@@ -12,8 +50,7 @@ function add(data, item) {
 
     fs.writeFile('./todos.json', JSON.stringify(toDoList), (error) => {
         if (error) { console.log(error); }
-    });
-
+    })
 }
 
 function mark(data, index, type) {
@@ -26,18 +63,23 @@ function mark(data, index, type) {
 
 }
 
-function list(data, index) {
+function list(data, index, response) {
     const toDoList = JSON.parse(data);
+    let output;
 
     if (toDoList.length === 0) {
         const warningMessage = "your to-do list is empty, you can plan your day now!";
-        return { "error": warningMessage };
+        output = { "error": warningMessage };
     } else if (index > toDoList.length || index < 1) {
         const warningMessage = "please change the id you typed!";
-        return { "error": warningMessage };
+        output = { "error": warningMessage };
     } else {
-        return toDoList[index - 1];
+        output = toDoList[index - 1];
     }
+
+    response
+        .status(200)
+        .json(output);
 }
 
 function reset() {
@@ -47,8 +89,6 @@ function reset() {
 }
 
 module.exports = {
-    add: add,
-    mark: mark,
-    list: list,
+    runTheFunction: runTheFunction,
     reset: reset
 }
