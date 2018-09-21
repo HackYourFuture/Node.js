@@ -2,15 +2,23 @@ const fs = require('fs');
 
 function add(data, item) {
     const to_do = JSON.parse(data);
-    const newTaskObject = {
-        index: to_do.length + 1,
-        description: item
-    };
-    to_do.push(newTaskObject);
+    const lastObject =to_do[to_do.length - 1];
+        let counter = 0;
+        if (lastObject === undefined) {
+            counter;
+        } else {
+            counter = parseInt(lastObject.id) + 1;
+        }
+   const newTaskObject = {
+       index: counter,
+       description: item
+   };
+   to_do.push(newTaskObject);
 
-    fs.writeFile('./to-do.json', JSON.stringify(to_do), (error) => {
-        if (error) { console.log(error); }
-    });
+   fs.writeFile('./to-do.json', JSON.stringify(to_do), (error) => {
+            if (err) throw err;
+            console.log(data);
+   });
 
 }
 
