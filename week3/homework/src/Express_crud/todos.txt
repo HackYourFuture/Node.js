@@ -1,0 +1,4 @@
+Cycling in forest => done: false
+Buy groceries => done: true
+Irish pub friday => done: false
+Swimming pull => done: false
