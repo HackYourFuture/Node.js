@@ -1,10 +1,8 @@
 'use strict';
-
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
 app.use(bodyParser.json());
 
 app.get('/list', function (request, response) {
