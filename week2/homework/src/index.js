@@ -2,28 +2,28 @@
 
 let fs = require('fs');
 let command = process.argv[2];
-let index = process.argv[3];
+let toDo = process.argv[3];
 let item = process.argv[4];
 
 switch (command) {
     case 'list':
-        listValue()
+        listValue();
         break;
 
     case 'add':
-        add(index);
+        add(toDo);
         break;
 
     case 'remove':
-        Mydelete(index);
+        myDelete(toDo);
         break;
 
     case 'update':
-        updateValue(index, item)
+        updateValue(toDo, item);
         break;
 
     case 'reset':
-        Mydelete(0, 1);
+        myDelete(0, 1);
         break;
 
     case 'help':
@@ -43,25 +43,28 @@ function listValue() {
 
 function add(main) {
     fs.appendFile('./to-do.txt', main + '\n', function (error) {
-        if (error)
+        if (error) {
             console.log(error);
+        }
     });
 }
 
-function Mydelete(index, reset) {
+function myDelete(index, reset) {
     fs.readFile('to-do.txt', 'utf8', function (error, data) {
         if (error) {
             console.log(error);
         }
         else {
             let corrected = data.split('\n');
-            corrected.splice(index - 1, 1);
+            corrected.splice(index - 1, true);
             corrected = corrected.join('\n');
-            if (reset)
+            if (reset) {
                 corrected = "";
+            }
             fs.writeFile('to-do.txt', corrected, function () {
-                if (error)
+                if (error) {
                     console.log(error);
+                }
 
             });
         }
