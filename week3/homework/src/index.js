@@ -53,15 +53,11 @@ app.post("/add/:item", function (request, response) {
       'description': request.params.item
     };
     myToDoList.push(newToDoItem);
-    fs.writeFile(
-      './toDo.json',
-      JSON.stringify(myToDoList),
-      function (error) {
-        if (error) {
-          console.error(error);
-        }
+    fs.writeFile('./toDo.json', JSON.stringify(myToDoList), function (error) {
+      if (error) {
+        console.error(error);
       }
-    );
+    });
     response.json(myToDoList);
   });
 });
@@ -77,13 +73,9 @@ app.delete('/delete', function (request, response) {
       response.end('I can not delete an empty list, firsty try to add sth to list.');
       return;
     }
-    fs.writeFile(
-      './toDo.json',
-      '[]',
-      (error) => {
-        if (error) { console.log(error); }
-      }
-    );
+    fs.writeFile('./toDo.json', '[]', function (error) {
+      if (error) { console.log(error); }
+    });
     response.end("You have cleared all items of to-do list")
   });
 });
@@ -107,13 +99,9 @@ app.delete('/delete/:item', function (request, response) {
     myToDoList.forEach(function (x) {
       x.index = myToDoList.indexOf(x);
     });
-    fs.writeFile(
-      './toDo.json',
-      JSON.stringify(myToDoList),
-      (error) => {
-        if (error) { console.log(error); }
-      }
-    );
+    fs.writeFile('./toDo.json', JSON.stringify(myToDoList), function (error) {
+      if (error) { console.log(error); }
+    });
     response.end(`You have deleted item " ${request.params.item} " and re-created to-do list`)
   });
 });
@@ -126,13 +114,9 @@ app.post('/mark/:id/done', function (request, response) {
     }
     const myToDoList = JSON.parse(data);
     myToDoList[request.params.id].done = "true";
-    fs.writeFile(
-      './toDo.json',
-      JSON.stringify(myToDoList),
-      (error) => {
-        if (error) { console.log(error); }
-      }
-    );
+    fs.writeFile('./toDo.json', JSON.stringify(myToDoList), function (error) {
+      if (error) { console.log(error); }
+    });
     response.end(`You have marked item " ${request.params.id} " as done`)
   });
 });
@@ -145,13 +129,9 @@ app.delete('/mark/:id/done', function (request, response) {
     }
     const myToDoList = JSON.parse(data);
     delete myToDoList[request.params.id].done;
-    fs.writeFile(
-      './toDo.json',
-      JSON.stringify(myToDoList),
-      (error) => {
-        if (error) { console.log(error); }
-      }
-    );
+    fs.writeFile('./toDo.json', JSON.stringify(myToDoList), function (error) {
+      if (error) { console.log(error); }
+    });
     response.end(`You have deleted done-mark of item " ${request.params.id} "`)
   });
 });
