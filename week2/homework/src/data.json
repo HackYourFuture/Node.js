@@ -1,6 +1,7 @@
 {
-    "todo": {
-        "1": "shopping",
-        "2": "lunch"
-    }
+    "todo": [
+        {
+            "text": "dsadas"
+        }
+    ]
 }
