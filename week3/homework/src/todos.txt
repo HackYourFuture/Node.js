@@ -1,0 +1,6 @@
+hack your future/done: true
+dance/done :false
+study/done :false
+sleep/done :false
+drink/done :false
+drive/done :false
