@@ -1,8 +1,14 @@
+
 'use strict';
 
+const deserializeTodo = require('./deserializeTodo');
+
 function updateTodo(todo, request, response) {
-  const id = request.params.id;
-  return todo.updateIn(id, true)
+  deserializeTodo(request, response)
+    .then(({ description }) => {
+      const id = request.params.id;
+      return todo.update(id, description);
+    })
     .then(todo => {
       response.status(200);
       response.json({ todo });

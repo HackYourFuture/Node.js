@@ -1,10 +1,8 @@
 'use strict';
 
 function readTodos(todo, request, response) {
-  const id = request.params.id;
-  todo.readin(id)
+  todo.read()
     .then(todos => {
-      console.log(todos)
       response.json({ todos });
       response.end();
     })
