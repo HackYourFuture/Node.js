@@ -8,39 +8,41 @@ const port = 3030;
 
 app.use(bodyParser.json());
 
-app.get('/todos/:id(\\d+)', (request, response) => {
-    const index = request.params.id;
-    manipulate.runTheFunction('list', index, response);
+app.get('/todos', (request, response) => {
+    manipulate.list(response);
 });
 
-app.delete('/todos', (request, response) => {
-    manipulate.reset();
-    response
-        .status(301)
-        .json({ result: "your to-do list is cleaned" });
+app.get('/todos/:id(\\d+)', (request, response) => {
+    const index = request.params.id - 1;
+    manipulate.list(response, index);
 });
 
 app.post('/todos', (request, response) => {
-    manipulate.runTheFunction('add', request.body.task);
-    response
-        .status(201)
-        .json({ result: "your task is added!" });
+    manipulate.add(request.body.task, response);
 });
 
 app.post('/todos/:id(\\d+)/done', (request, response) => {
-    const index = request.params.id;
-    manipulate.runTheFunction('mark', index, true);
-    response
-        .status(201)
-        .json({ result: "it is marked as done!" });
+    const index = request.params.id - 1;
+    manipulate.mark(index, true, response);
+});
+
+app.delete('/todos', (request, response) => {
+    manipulate.reset(response);
 });
 
 app.delete('/todos/:id(\\d+)/done', (request, response) => {
-    const index = request.params.id;
-    manipulate.runTheFunction('mark', index, false);
-    response
-        .status(301)
-        .json({ result: "it is marked as undone!" });
+    const index = request.params.id - 1;
+    manipulate.mark(index, false, response);
+});
+
+app.delete('/todos/:id(\\d+)', (request, response) => {
+    const index = request.params.id - 1;
+    manipulate.remove(index, response);
+});
+
+app.put('/todos/:id(\\d+)', (request, response) => {
+    const index = request.params.id - 1;
+    manipulate.update(index, request.body.task, response);
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));
