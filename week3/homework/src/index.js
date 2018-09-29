@@ -8,7 +8,7 @@ const {
   readTodos,
   updateTodo,
   deleteTodo
-  , readSingalTodo,
+  , readSingleTodo,
   markAsDone,
   markAsNotDone,
   clearTodoList
@@ -33,9 +33,9 @@ app.put(`/${TODO_SLUG}/:id`, updateTodo.bind(null, todo));
 app.delete(`/${TODO_SLUG}/:id`, deleteTodo.bind(null, todo));
 
 
-app.get(`/${TODO_SLUG}/:id`, readSingalTodo.bind(null, todo));
-app.put(`/${TODO_SLUG}/:id/done`, markAsDone.bind(null, todo));
-app.put(`/${TODO_SLUG}/:id/notyet`, markAsNotDone.bind(null, todo));
+app.get(`/${TODO_SLUG}/:id`, readSingleTodo.bind(null, todo));
+app.post(`/${TODO_SLUG}/:id/done`, markAsDone.bind(null, todo));
+app.delete(`/${TODO_SLUG}/:id/done`, markAsNotDone.bind(null, todo));
 app.delete(`/${TODO_SLUG}`, clearTodoList.bind(null, todo));
 
 app.listen(PORT, error => {

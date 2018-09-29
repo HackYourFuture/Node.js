@@ -41,17 +41,16 @@ class Todo {
   async readin(id) {
     console.log(id)
     const todos = await this.read();
-    const todo = todos.find(t => t.id == id);
+    const todo = todos.find(t => t.id === id);
     return todo;
 
   }
 
-  async deleteIn() {
-    const filteredTodos = []
-    return this._save(filteredTodos);
+  async ClearFile() {
+    return this._save([]);
   }
 
-  async updateIn(id, bool) {
+  async updateStatus(id, bool) {
     const todos = await this.read();
 
     const todo = todos.find(t => t.id === id);

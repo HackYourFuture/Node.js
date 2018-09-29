@@ -2,7 +2,7 @@
 
 function markAsDone(todo, request, response) {
   const id = request.params.id;
-  return todo.updateIn(id, true)
+  return todo.updateStatus(id, true)
     .then(todo => {
       response.status(200);
       response.json({ todo });

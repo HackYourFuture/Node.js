@@ -1,7 +1,7 @@
 'use strict';
 
 function clearTodoList(todo, request, response) {
-  todo.deleteIn()
+  todo.ClearFile()
     .then(() => {
       response.status(204);
       response.end();

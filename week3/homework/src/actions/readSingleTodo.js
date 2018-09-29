@@ -1,6 +1,6 @@
 'use strict';
 
-function readSingalTodo(todo, request, response) {
+function readSingleTodo(todo, request, response) {
   const id = request.params.id;
   todo.readin(id)
     .then(todos => {
@@ -14,4 +14,4 @@ function readSingalTodo(todo, request, response) {
     });
 };
 
-module.exports = readSingalTodo;
+module.exports = readSingleTodo;

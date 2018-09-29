@@ -2,7 +2,7 @@
 
 function markAsNotDone(todo, request, response) {
   const id = request.params.id;
-  return todo.updateIn(id, false)
+  return todo.updateStatus(id, false)
     .then(todo => {
       response.status(200);
       response.json({ todo });
