@@ -4,94 +4,99 @@
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
+const uuid = require('uuid/v4');
+const toDoFile = './todos.json';
 
 const app = express();
 app.use(bodyParser.json());
 
 app.get('/todos', (request, response) => {
-    fs.readFile('./todos.txt', 'utf8', (error, data) => {
-        if (error) {
-            console.log(error);
-        }
-        else if (data.length === 0) {
-            response.json({ 'message': 'there is no task to do!' });
-        }
-        else {
-            response.json({ 'Todos-List': data.split('\n') });
+    readFile().then((data) => {
+        if (data.length === 0) {
+            response.send('the list is empty!');
+        } else {
+            response.send(JSON.parse(data));
         }
     });
 });
 
-app.get('/todos/:id', (request, response) => {
-    let id = request.params.id;
-    fs.readFile('./todos.txt', 'utf8', (error, data) => {
-        if (error) {
-            console.log(error);
+app.post('/add', (request, response) => {
+    readFile().then((data) => {
+        let newTask = [];
+        if (data.length !== 0) {
+            newTask = JSON.parse(data);
         }
-        else {
-            let dataToArray = data.split('\n');
-            response.json({ 'To-do': dataToArray[id] });
-        }
+        const todo = {
+            id: uuid(),
+            task: request.body.task,
+            done: false
+        };
+        newTask.push(todo);
+        writeFile(JSON.stringify(newTask, null, 2))
+            .then(() => response
+                .status(201)
+                .json({ result: 'task added' })
+            )
+            .catch((err) => { errCatch(response, err) })
     });
 });
 
-app.post('/todo', (request, response) => {
-    fs.readFile('./todos.txt', 'utf8', (error) => {
-        if (error) {
-            console.error(error);
+app.put('/todos:id/done', (request, response) => {
+    const id = request.params.id;
+    readFile().then((data) => {
+        let task = JSON.parse(data);
+        const updatedTask = json.find(element => element.id === id);
+        if (updatedTask.done === true) {
+            response.send(`the task is already done!`);
+        } else {
+            updatedTask.done = true;
+            writeFile(JSON.stringify(task, null, 2))
+                .then(() => {
+                    response
+                        .status(200)
+                        .json({ result: 'task marked as done!' });
+                }).catch((err) => errCatch(response, err))
         }
-
-        let newTodo = [];
-        newTodo.push(request.body[0].task);
-
-        fs.appendFile('./todos.txt', newTodo + '/' + 'done :' + false + '\n', (error) => {
-            if (error) {
-                console.error(error);
-            }
-        })
-        response.json({ 'new todo added ': newTodo });
     });
-});
-
-app.put('/todos/:id/done', (request, response) => {
-    let id = request.params.id;
-
-    fs.readFile('./todos.txt', 'utf8', (error, data) => {
-        if (error) {
-            console.log(error);
-        }
-
-        let dataToArray = data.split('\n');
-        let newStatus = dataToArray[id - 1].replace('done: ' + false, 'done: ' + true);
-        console.log(newStatus);
-        let split = [];
-        dataToArray.forEach((item) => {
-            split.push(item + '\n');
-            let updatedTask = split.toString().replace(dataToArray[id - 1], newStatus);
-            fs.writeFile('./todos.txt', updatedTask.replace(/,/g, ''), (error) => {
-                if (error) {
-                    console.log(error);
-                }
-            })
-        })
-    })
-
-    response
-        .status(201)
-        .json({ result: 'task is done!' });
-
 });
 
 app.delete('/delete', (request, response) => {
-    fs.writeFile('./todos.txt', '', (error) => {
-        if (error) {
-            console.error(error);
-        }
-        else {
+    writeFile('')
+        .then(() => {
             response
-                .json({ 'to do list': 'the list is reset' });
-        }
-    });
+                .status(200)
+                .json({ result: 'all tasks deleted!' });
+        })
+        .catch((err) => errCatch(response, err))
 });
+
+function readFile() {
+    return new Promise((resolve, reject) => {
+        fs.readFile(toDoFile, (err, data) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(data);
+        });
+    });
+}
+
+function writeFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(toDoFile, data, err => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(data);
+        });
+    });
+}
+
+function errCatch(response, err) {
+    response
+        .status(500)
+        .json({ error: err });
+}
+
 
 app.listen(3030);
