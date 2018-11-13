@@ -16,13 +16,13 @@ function createServer(port) {
         response.end();
         break;
       case '/add':
-        state++
+        state++;
         response.writeHead(200, { 'content-type': 'application/json' });
         response.write(JSON.stringify({ state }));
         response.end();
         break;
       case '/subtract':
-        state--
+        state--;
         response.writeHead(200, { 'content-type': 'application/json' });
         response.write(JSON.stringify({ state }));
         response.end();
@@ -35,7 +35,7 @@ function createServer(port) {
         break;
       default:
         response.writeHead(404, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ "error": "Not found" }));
+        response.write(JSON.stringify({ 'error': 'Not found' }));
         response.end();
     }
   });
