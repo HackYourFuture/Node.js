@@ -10,34 +10,31 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    function writeApi(state, content) {
+      response.writeHead(state, { 'content-type': 'application/json' });
+      response.write(JSON.stringify(content));
+      response.end();
+    }
+    switch (request.url) {
+      case '/state':
+        writeApi(200, { state });
+        break;
 
-    if (request.url === '/state') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ 'state': state }));
-      response.end();
-    }
-    else if (request.url === '/add') {
-      state++;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ 'state': state }));
-      response.end();
-    }
-    else if (request.url === '/subtract') {
-      state--;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ 'state': state }));
-      response.end();
-    }
-    else if (request.url === '/reset') {
-      state = 10;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ 'state': state }));
-      response.end();
-    }
-    else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ 'error': 'Not found' }));
-      response.end();
+      case '/add':
+        state++;
+        writeApi(200, { state });
+        break;
+
+      case '/subtract':
+        state--;
+        writeApi(200, { state });
+        break;
+      case '/reset':
+        state = 10;
+        writeApi(200, { state });
+        break;
+      default:
+        writeApi(404, { 'error': 'Not found' });
     }
   });
   return server;
