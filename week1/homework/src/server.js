@@ -9,34 +9,30 @@ function createServer(port) {
   let state = 10;
 
   const server = http.createServer((request, response) => {
+
+    function getResponse(state, body) {
+      response.writeHead(state, { 'Content-Type': 'application/json' });
+      response.end(JSON.stringify(body));
+    }
+
     switch (request.url) {
       case '/state':
-        response.writeHead(200, { 'content-type': 'application/json' });
-        response.write(JSON.stringify({ state }));
-        response.end();
+        getResponse(200, { state });
         break;
       case '/add':
         state++;
-        response.writeHead(200, { 'content-type': 'application/json' });
-        response.write(JSON.stringify({ state }));
-        response.end();
+        getResponse(200, { state });
         break;
       case '/subtract':
         state--;
-        response.writeHead(200, { 'content-type': 'application/json' });
-        response.write(JSON.stringify({ state }));
-        response.end();
+        getResponse(200, { state });
         break;
       case '/reset':
         state = 10;
-        response.writeHead(200, { 'content-type': 'application/json' });
-        response.write(JSON.stringify({ state }));
-        response.end();
+        getResponse(200, { state });
         break;
       default:
-        response.writeHead(404, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ 'error': 'Not found' }));
-        response.end();
+        getResponse(404, { 'error': 'Not found' });
     }
   });
 
