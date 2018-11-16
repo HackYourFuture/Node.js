@@ -1,9 +1,14 @@
 [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g"
+  {
+    "task": "Have my breakfast"
+  },
+  {
+    "task": "Clean up my house"
+  },
+  {
+    "task": "Cook something for this afternoon"
+  },
+  {
+    "task": "Buy house wear and perfume"
+  }
 ]

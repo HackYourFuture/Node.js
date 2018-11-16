@@ -22,10 +22,10 @@ function helpMe() {
   help.forEach(el => console.log(el));
 }
 function showList() {
-  if (!toDos[0]) {
-    console.log("the to-Do list is empty");
+  if (toDos[0]) {
+    toDos.forEach((el, i) => console.log(`${i + 1}- ${el.task}`));
   } else {
-    toDos.forEach((el, i) => console.log(`${i + 1}- ${el}`));
+    console.log("the to-Do list is empty");
   }
 }
 
@@ -40,7 +40,7 @@ function writeData(data) {
 }
 
 function appendItem(item) {
-  toDos.push(item);
+  toDos.push({ task: item });
   let data = JSON.stringify(toDos, null, 2);
   writeData(data);
 }
@@ -57,7 +57,7 @@ function removeItem(index) {
 
 function updateItem(index, item) {
   if (index <= toDos.length) {
-    toDos.splice(index - 1, 1, item);
+    toDos.splice(index - 1, 1, { task: item });
     let data = JSON.stringify(toDos, null, 2);
     writeData(data);
   } else {
