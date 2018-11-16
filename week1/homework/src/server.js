@@ -6,33 +6,39 @@ const http = require('http');
  * will fail.
  */
 function createServer() {
-  let state = 10;
+  const num = { state: 10 };
 
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
-    if (request.url === '/' || request.url === '/state') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ state: state }));
-    } else if (request.url === '/add') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      state++;
-      response.end(JSON.stringify({ state: state }));
-    } else if (request.url === '/subtract') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      state--;
-      response.end(JSON.stringify({ state: state }));
-    } else if (request.url === '/reset') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      state = 10;
-      response.end(JSON.stringify({ state: state }));
-    } else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ "error": "Not found" }));
-      response.end();
+    switch (request.url) {
+      case "/":
+      case "/state":
+        responser(response, num);
+        break;
+      case "/add":
+        num.state++;
+        responser(response, num);
+        break;
+      case "/subtract":
+        num.state--;
+        responser(response, num);
+        break;
+      case "/reset":
+        num.state = 10;
+        responser(response, num);
+        break;
+      default:
+        response.writeHead(404, { 'Content-Type': 'application/json' });
+        response.write(JSON.stringify({ "error": "Not found" }));
+        response.end();
     }
   });
 
   return server;
+}
+
+function responser(res, num) {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify(num, null, 2));
 }
 
 module.exports = {
