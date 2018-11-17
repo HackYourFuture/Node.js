@@ -32,25 +32,6 @@ function createServer(port) {
       default:
         writeRespond(404, { error: 'Not found' }, response);
     }
-    /*if (requestedUrl.pathname === '/state') {
-      response.writeHead(200, { 'Content-type': 'application/json' });
-      response.end(JSON.stringify({ state: newState }));
-    } else if (requestedUrl.pathname === '/add') {
-      response.writeHead(200, { 'Content-type': 'application/json' });
-      newState = newState + 1;
-      response.end(JSON.stringify({ state: newState }));
-    } else if (requestedUrl.pathname === '/subtract') {
-      response.writeHead(200, { 'Content-type': 'application/json' });
-      newState = newState - 1;
-      response.end(JSON.stringify({ state: newState }));
-    } else if (requestedUrl.pathname === '/reset') {
-      response.writeHead(200, { 'Content-type': 'application/json' });
-      newState = state;
-      response.end(JSON.stringify({ state: newState }));
-    } else {
-      response.writeHead(404, { 'Content-type': 'application/json' });
-      response.end(JSON.stringify({ error: 'Not found' }));
-    }*/
   });
   return server;
 }
