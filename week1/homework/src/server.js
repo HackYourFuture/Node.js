@@ -2,7 +2,6 @@
 
 const url = require('url');
 const http = require('http');
-// const fs = require('fs');
 
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
@@ -14,8 +13,26 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
     const requestedUrl = url.parse(request.url, true);
-
-    if (requestedUrl.pathname === '/state') {
+    switch (requestedUrl.pathname) {
+      case '/state':
+        writeRespond(200, { state: newState }, response);
+        break;
+      case '/add':
+        newState++;
+        writeRespond(200, { state: newState }, response);
+        break;
+      case '/subtract':
+        newState--;
+        writeRespond(200, { state: newState }, response);
+        break;
+      case '/reset':
+        newState = state;
+        writeRespond(200, { state: newState }, response);
+        break;
+      default:
+        writeRespond(404, { error: 'Not found' }, response);
+    }
+    /*if (requestedUrl.pathname === '/state') {
       response.writeHead(200, { 'Content-type': 'application/json' });
       response.end(JSON.stringify({ state: newState }));
     } else if (requestedUrl.pathname === '/add') {
@@ -33,11 +50,15 @@ function createServer(port) {
     } else {
       response.writeHead(404, { 'Content-type': 'application/json' });
       response.end(JSON.stringify({ error: 'Not found' }));
-    }
+    }*/
   });
   return server;
 }
 
+function writeRespond(statuCode, stateMsg, response) {
+  response.writeHead(statuCode, { 'Content-type': 'application/json' });
+  response.end(JSON.stringify(stateMsg));
+}
 module.exports = {
   createServer
 };
