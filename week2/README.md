@@ -37,9 +37,6 @@ Documentation:
 
 ### Building a command line interface (CLI)
 
-[Understand the Node.js process object](https://egghead.io/lessons/node-js-understand-the-node-js-process-object)
-You don't have to remember everything in this video, it's just a nice outline.
-
 [Node.js Process Documentation](https://nodejs.org/docs/latest-v8.x/api/process.html)
 
 [process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv)
