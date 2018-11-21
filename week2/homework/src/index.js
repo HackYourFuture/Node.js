@@ -12,8 +12,8 @@ const help = [
 ];
 
 let command = process.argv[2];
-let index = process.argv[process.argv.length - 2];
-let item = process.argv[process.argv.length - 1];
+let index = process.argv[3];
+let item = process.argv[4];
 let argvLen = process.argv.length;
 const file = fs.readFileSync("./to-dos.json", "utf8");
 let toDos = JSON.parse(file);
@@ -21,6 +21,7 @@ let toDos = JSON.parse(file);
 function helpMe() {
   help.forEach(el => console.log(el));
 }
+
 function showList() {
   if (toDos[0]) {
     toDos.forEach((el, i) => console.log(`${i + 1}- ${el.task}`));
@@ -29,20 +30,20 @@ function showList() {
   }
 }
 
-function writeData(data) {
+function writeData(json) {
+  let data = JSON.stringify(json, null, 2);
   fs.writeFile("to-dos.json", data, (err) => {
     if (err) {
-      console.log("There is something wrong happened, try again");
+      console.log("There is something wrong happened, try again!");
     } else {
-      console.log("Done");
+      console.log("The item has been edited successfully.");
     }
   });
 }
 
 function appendItem(item) {
   toDos.push({ task: item });
-  let data = JSON.stringify(toDos, null, 2);
-  writeData(data);
+  writeData(toDos);
 }
 
 function removeItem(index) {
@@ -50,16 +51,14 @@ function removeItem(index) {
     console.log("The item you are trying to remove is not existing");
   } else {
     toDos.splice(index - 1, 1);
-    let data = JSON.stringify(toDos, null, 2);
-    writeData(data);
+    writeData(toDos);
   }
 }
 
 function updateItem(index, item) {
   if (index <= toDos.length) {
     toDos.splice(index - 1, 1, { task: item });
-    let data = JSON.stringify(toDos, null, 2);
-    writeData(data);
+    writeData(toDos);
   } else {
     console.log("The item you are trying to update is not existing");
   }
@@ -67,8 +66,7 @@ function updateItem(index, item) {
 
 function deleteList() {
   toDos.length = 0;
-  let data = JSON.stringify(toDos, null, 2);
-  writeData(data);
+  writeData(toDos);
 }
 
 function renderCommand() {
