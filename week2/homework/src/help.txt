@@ -1,0 +1,7 @@
+  help
+  - To show all tasks just type: node index.js -or node . - list  .
+  - To add new task just type: node index.js -or node . - add "type here any task you want" .
+  - To remove task just type: node index.js -or node . - remove "type here line number of the task you want to delete" .
+  - To rest all tasks just type: node index.js -or node . - reset .
+  - To update take in the list  just type: node index.js -or node . - update "line number of the task you want to update"  "type here the editing" .
+  
