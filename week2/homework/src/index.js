@@ -45,7 +45,7 @@ switch (process.argv[2]) {
 }
 
 // fs.writeFileSync("./convert.json", JSON.stringify(data.to_dos));
-data.convertData;
+data.convertData(data.to_dos);
 
 
 
