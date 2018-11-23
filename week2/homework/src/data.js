@@ -12,12 +12,8 @@ const writeData = data => {
   })
 }
 
-const convertData = data => {
-  fs.writeFileSync("./convert.json", JSON.stringify(data));
-}
 module.exports = {
   writeData,
   stringTo_dos,
-  to_dos,
-  convertData
+  to_dos
 }
