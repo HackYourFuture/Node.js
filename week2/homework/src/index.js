@@ -1,8 +1,9 @@
 'use strict';
 
 const data = require('./data');
-const remove = require('./remove');
-const update = require('./update');
+const removeData = require('./remove');
+const updateData = require('./update');
+const convertData = require('./convert');
 
 const fs = require('fs');
 const process = require('process');
@@ -32,20 +33,20 @@ switch (process.argv[2]) {
     console.log("you made your to-dos list empty!");
     break;
   case "remove":
-    remove.removeData(process.argv[3]);
+    removeData(process.argv[3]);
     break;
   case "list":
     to_dos.length > 0 ? console.log(data.to_dos) : console.log("there is no items in your list!");
     break;
   case "update":
-    update.updateData(process.argv[3], process.argv[4]);
+    updateData(process.argv[3], process.argv[4]);
     break;
   default:
     console.log(commands);
 }
 
-// fs.writeFileSync("./convert.json", JSON.stringify(data.to_dos));
-data.convertData(data.to_dos);
+convertData(data.to_dos);
+
 
 
 
