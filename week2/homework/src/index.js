@@ -7,10 +7,10 @@ let listArr = JSON.parse(listFile);
 
 switch (command) {
   case 'list':
-    ViewTasks();
+    viewTasks();
     break;
   case 'add':
-    AddTask();
+    addTask();
     break;
   case 'help':
   case undefined:
@@ -18,29 +18,30 @@ switch (command) {
     console.log(helpFile);
     break;
   case 'remove':
-    RemoveTask(value);
+    removeTask(value);
     break;
   case 'reset':
-    ClearTasks();
+    clearTasks();
+    break;
 
   case 'update':
-    UpdateTasks(value, process.argv[4]);
+    updateTasks(value);
     break;
 
   default:
     console.log('wrong command check the help menu by typing help');
 }
 
-function ViewTasks() {
-  if (listArr) {
-    listArr.forEach(element => { console.log(element) });
+function viewTasks() {
+  if (listArr === undefined || listArr.length == 0) {
+    console.log('no toDos sorted');
   }
   else {
-    console.log('no toDos sorted');
+    listArr.forEach(element => { console.log(element) });
   }
 }
 
-function AddTask() {
+function addTask() {
   if (process.argv.length < 4) {
     console.log('incomplete command check the help menu by typing help');
   }
@@ -52,9 +53,9 @@ function AddTask() {
   }
 }
 
-function RemoveTask(i) {
+function removeTask(i) {
   if (i > listArr.length) {
-    console.log('not existed task check the help menu by typing help');
+    console.log('not existed task type list to view existed tasks');
   }
   else if (process.argv.length < 4) {
     console.log('incomplete command check the help menu by typing help');
@@ -65,19 +66,23 @@ function RemoveTask(i) {
   }
 }
 
-function ClearTasks() {
-  fs.writeFile('./list.json', JSON.stringify(listArr = '[]'), (err) => { if (err) throw err; });
+function clearTasks() {
+  listArr = "[]";
+  fs.writeFile('./list.json', listArr, (err) => { if (err) throw err; });
 }
 
-function UpdateTasks(i, newTask) {
+function updateTasks(i) {
   if (i > listArr.length) {
-    console.log('not existed task check the help menu by typing help');
+    console.log('not existed task type list to view existed tasks');
   }
   else if (process.argv.length < 5) {
     console.log('incomplete command check the help menu by typing help');
   }
-  listArr.splice(i - 1, 1, newTask);
-  fs.writeFile('./list.json', JSON.stringify(listArr), (err) => { if (err) throw err; });
+  let taskLine = '';
+  for (let i = 4; i <= process.argv.length - 1; i++) {
+    taskLine += process.argv[i] + ' ';
+  }
+  listArr.splice(i - 1, 1, taskLine);
+  fs.writeFile('./list.json', JSON.stringify(listArr, null, 2), (err) => { if (err) throw err; });
 }
-
 
