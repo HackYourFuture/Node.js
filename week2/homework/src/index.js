@@ -40,8 +40,7 @@ switch (process.argv[2]) {
     decorateData();
     break;
   case "list":
-    to_dos.length > 0 ? console.log(data.to_dos) : console.log("there is no items in your list!");
-    decorateData();
+    data.to_dos.length > 0 ? decorateData() : console.log("there is no items in your list!");
     break;
   case "update":
     updateData(process.argv[3], process.argv[4]);
