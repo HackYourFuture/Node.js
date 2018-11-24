@@ -4,6 +4,8 @@ const data = require('./data');
 const removeData = require('./remove');
 const updateData = require('./update');
 const convertData = require('./convert');
+const decorateData = require('./decorate');
+
 
 const fs = require('fs');
 const process = require('process');
@@ -23,6 +25,7 @@ switch (process.argv[2]) {
   case "add":
     data.to_dos.push(process.argv[3]);
     data.writeData(data.to_dos);
+    decorateData()
     break;
   case "help":
     console.log(commands);
@@ -34,12 +37,15 @@ switch (process.argv[2]) {
     break;
   case "remove":
     removeData(process.argv[3]);
+    decorateData();
     break;
   case "list":
     to_dos.length > 0 ? console.log(data.to_dos) : console.log("there is no items in your list!");
+    decorateData();
     break;
   case "update":
     updateData(process.argv[3], process.argv[4]);
+    decorateData();
     break;
   default:
     console.log(commands);
