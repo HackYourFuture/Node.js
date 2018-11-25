@@ -3,7 +3,7 @@ const data = require('./data');
 
 let d = [];
 const updateData = (a, b) =>
-  a == 1 || a == data.to_dos.length ?
+  a > 0 && a <= data.to_dos.length ?
     d = data.to_dos.splice((a - 1), 1, b) &&
     data.writeData(data.to_dos)
     :
