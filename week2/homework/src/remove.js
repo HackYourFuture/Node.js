@@ -1,4 +1,3 @@
-const fs = require('fs');
 const data = require('./data');
 
 let r = [];
