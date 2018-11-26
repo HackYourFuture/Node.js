@@ -33,7 +33,7 @@ switch (command) {
 }
 
 function viewTasks() {
-  if (listArr === undefined || listArr.length == 0) {
+  if (!listArr || listArr.length == 0) {
     console.log('no toDos sorted');
   }
   else {
@@ -54,8 +54,8 @@ function addTask() {
 }
 
 function removeTask(i) {
-  if (i > listArr.length) {
-    console.log('not existed task type list to view existed tasks');
+  if (i > listArr.length || i == 0) {
+    console.log('not existed task type list to view existed tasks (starting index is 1) ');
   }
   else if (process.argv.length < 4) {
     console.log('incomplete command check the help menu by typing help');
@@ -72,8 +72,8 @@ function clearTasks() {
 }
 
 function updateTasks(i) {
-  if (i > listArr.length) {
-    console.log('not existed task type list to view existed tasks');
+  if (i > listArr.length || i == 0) {
+    console.log('not existed task type list to view existed tasks (starting index is 1)');
   }
   else if (process.argv.length < 5) {
     console.log('incomplete command check the help menu by typing help');
