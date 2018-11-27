@@ -4,11 +4,11 @@
 const fs = require("fs");
 
 const help = [
-  "Run 'list' to show the current To-Do list, the item must be inside quotes ' '.",
-  "Run 'add' and then the Item you want to add to a To-Do list, the item must be inside quotes ' '.",
-  "Run 'remove' and then the Item then the item's Number to remove item from To-Do list, the item must be inside quotes ' '.",
-  "Run 'reset' to remove all To-Do items from the list, the item must be inside quotes ' '.",
-  "Run 'update' and then the item's Number you want to update in To-Do list then New Text, the item must be inside quotes ' '."
+  "list - It shows all the items in the list.",
+  "add 'todo item' - It adds 'todo item' to the list.",
+  "update 2 'other todo item' - It updates item at index 2 with 'other todo item'.",
+  "remove 2 - It removes item at index 2.",
+  "reset - It clears the list and deletes all the items."
 ];
 
 let command = process.argv[2];
@@ -34,7 +34,7 @@ function writeData(json) {
   let data = JSON.stringify(json, null, 2);
   fs.writeFile("to-dos.json", data, (err) => {
     if (err) {
-      console.log("There is something wrong happened, try again!");
+      console.error("Something wrong happened, try again!", err);
     } else {
       console.log("The item has been edited successfully.");
     }
