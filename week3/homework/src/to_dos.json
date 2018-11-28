@@ -1,0 +1,30 @@
+[
+  {
+    "todo": {
+      "description": "(reading)",
+      "id": "3c7b2452-824a-48a3-975a-6ff830c59cd4",
+      "done": false
+    }
+  },
+  {
+    "todo": {
+      "description": "(studying)",
+      "id": "f5ac5535-847d-40e0-9fc1-935c382884aa",
+      "done": false
+    }
+  },
+  {
+    "todo": {
+      "description": "(running)",
+      "id": "30144b33-06db-45bc-bbfa-dee0dda2df4b",
+      "done": false
+    }
+  },
+  {
+    "todo": {
+      "description": "(cleaning)",
+      "id": "2c2bc5b4-eb18-4982-8679-e306c1f80aa2",
+      "done": false
+    }
+  }
+]
