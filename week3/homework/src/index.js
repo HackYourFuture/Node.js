@@ -42,12 +42,9 @@ app.put('/todos/:id', (req, res, next) => {
 
 app.delete('/todos/:id', (req, res) => {
   let taskId = req.params.id;
-  list.forEach(element => {
-    if (element.id === taskId) {
-      list.splice(taskId - 1, 1);
-      res.send('task deleted successfully');
-    }
-  });
+  let index = list.findIndex(element => element.id == taskId);
+  list.splice(index, 1);
+  res.send('deleted task of index ' + index + ' successfully');
   writeFile(list);
 });
 
