@@ -1,0 +1,37 @@
+[
+  "route: todo",
+  {
+    "description": "get todo",
+    "functionality": "list all todos"
+  },
+  {
+    "description": "post todo",
+    "functionality": "add todo to the list"
+  },
+  {
+    "description": "delete todo",
+    "functionality": "clear todo list"
+  },
+  "route: todo/:id :",
+  {
+    "description": "delete todo",
+    "functionality": "delete a specific todo item by id"
+  },
+  {
+    "description": "put todo",
+    "functionality": "update the description of a specific todo by id"
+  },
+  {
+    "description": "get todo",
+    "functionality": "get a specific todo item by id"
+  },
+  "route: todo/:id/done :",
+  {
+    "description": "post todo",
+    "functionality": "switch's the done flag of a single todo"
+  },
+  {
+    "description": "delete todo",
+    "functionality": "Sets the done flag of a single todo to false"
+  }
+]
