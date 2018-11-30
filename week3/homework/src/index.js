@@ -34,10 +34,8 @@ app.route('/todo')
   })
 
   .delete(function (req, res) {
-    let newToDo = req.body;
     res.send(file);
     list.length = 0;
-    list.push(newToDo);
     writeData(list, FILENAME);
   })
 
