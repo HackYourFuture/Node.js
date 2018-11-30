@@ -1,0 +1,27 @@
+[
+  {
+    "task": "Wakeup at 7 am",
+    "id": "8934063a-554c-472b-8db7-aaffe779947d",
+    "done": false
+  },
+  {
+    "task": "Prepare the breakfast",
+    "id": "0009a75d-c116-4777-8d7d-e0a6ed7e3690",
+    "done": false
+  },
+  {
+    "task": "study",
+    "id": "4fde459a-f44f-44b4-8c1c-a451deaa59eb",
+    "done": false
+  },
+  {
+    "task": "House cleaning",
+    "id": "d79b3926-cfcf-4589-b3f9-1a9fc9b70db0",
+    "done": false
+  },
+  {
+    "task": "Visit a friend",
+    "id": "22c4b5ff-202b-4389-a597-5d9ca6d04698",
+    "done": false
+  }
+]
