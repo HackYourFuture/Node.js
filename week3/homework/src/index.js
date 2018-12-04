@@ -6,15 +6,14 @@ const bodyParser = require('body-parser');
 const fs = require("fs");
 const uuid = require('uuid/v4');
 const todos = require('./tasks.json');
-const json = fs.readFileSync("./tasks.json", "utf-8");
-const jsonData = JSON.parse(json);
+
 
 app.use(bodyParser());
 
 function checkID(req) {
   const id = req.params.id;
-  for (let i = 0; i < jsonData.length; i++) {
-    if (jsonData[i].id === id) {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === id) {
       return id;
     }
   }
@@ -36,12 +35,12 @@ app.put('/todos/:id', function (req, res) {
   const id = checkID(req);
   if (id !== false) {
     const UpDateDetails = req.body.todo.description;
-    jsonData.forEach(item => {
+    todos.forEach(item => {
       if (item.id === id) {
         item.task = UpDateDetails;
       }
     });
-    let newJsonData = JSON.stringify(jsonData);
+    let newJsonData = JSON.stringify(todos);
     fs.writeFileSync('tasks.json', newJsonData);
     res.send("Update is successful");
   }
@@ -79,12 +78,12 @@ app.get('/todos/:id', function (req, res) {
 app.post('/todos/:id/done', function (req, res) {
   const id = checkID(req);
   if (id !== false) {
-    jsonData.forEach(item => {
+    todos.forEach(item => {
       if (item.id === id) {
         item.done = true;
       }
     });
-    let newJsonData = JSON.stringify(jsonData);
+    let newJsonData = JSON.stringify(todos);
     fs.writeFileSync('tasks.json', newJsonData);
     res.send("Mark As Done is successful");
   }
@@ -96,12 +95,12 @@ app.post('/todos/:id/done', function (req, res) {
 app.delete('/todos/:id/done', function (req, res) {
   const id = checkID(req);
   if (id !== false) {
-    jsonData.forEach(item => {
+    todos.forEach(item => {
       if (item.id === id) {
         item.done = false;
       }
     });
-    let newJsonData = JSON.stringify(jsonData);
+    let newJsonData = JSON.stringify(todos);
     fs.writeFileSync('tasks.json', newJsonData);
     res.send("Mark As Not Done is successful ");
   }
@@ -112,8 +111,8 @@ app.delete('/todos/:id/done', function (req, res) {
 });
 
 app.delete('/todos', function (req, res) {
-  jsonData.splice(0, jsonData.length);
-  let newJsonData = JSON.stringify(jsonData);
+  todos.splice(0, todos.length);
+  let newJsonData = JSON.stringify(todos);
   fs.writeFileSync('tasks.json', newJsonData);
   res.send("clear is successful");
 });
