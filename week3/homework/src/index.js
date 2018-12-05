@@ -4,6 +4,7 @@
 
 // TODO: Write the homework code in this file
 const fs = require('fs');
+const uuidv4 = require('uuid-v4');
 
 
 let toDoList = [];
@@ -84,7 +85,7 @@ function updateToDo() {
 }
 //CLI
 function removeToDo(index) {
-  toDoList.splice(index - 1, 1);
+  toDoList.splice(index, 1);
   updateFile();
 }
 
@@ -112,37 +113,75 @@ function readToDoFile(indexToDo) {
 
 function addToDoFromHTML(newItem) {
   readToDoFile();
+  if (!newItem.hasOwnProperty('done')) {
+    newItem.done = "false";
+  }
+  newItem.id = uuidv4();
   toDoList.push(newItem);
   updateFile();
+  return 'New todo is added.';
 }
 //Index range starts from zero
-function updateToDoFromHTML(toDoIndex, newToDo) {
-  readToDoFile();
-  toDoList[toDoIndex - 1] = newToDo;
-  updateFile();
+function updateToDoFromHTML(todoId, newToDo) {
+  const index = findIndexTodo(todoId);
+  if (index !== -1) {
+    toDoList[index].name = newToDo.name;
+    toDoList[index].done = 'false';
+    updateFile();
+    return 'todo is successfully updated.';
+  }
+  return 'todo is not updated.';
 }
 
-function deleteToDoFromHTML(toDoIndex) {
-  readToDoFile();
-  if (toDoIndex == undefined) {//Remove all items from list
+function deleteToDoFromHTML(todoId) {
+
+  if (todoId == undefined) {//Remove all items from list
+    readToDoFile();
     while (toDoList.length > 0) {
       removeToDo(toDoList.length - 1);
     }
+    return 'All todos are deleted.';
   } else {
-    removeToDo(toDoIndex);//Remove the item from list
+    const index = findIndexTodo(todoId);
+    if (index !== -1) {
+      removeToDo(index);//Remove the item from list
+      return 'Todo is successfully deleted.';
+    }
+    return 'Delete process is unsuccessful.';
   }
-  updateFile();
-}
-function upDateDone(indexToDo) {
-  readToDoFile();
-  toDoList[indexToDo - 1].done = true;
-  updateFile();
+
 }
 
-function upDateNotDone(indexToDo) {
+function upDateDone(todoId) {
+  const index = findIndexTodo(todoId);
+  if (index !== -1) {
+    toDoList[index].done = true;
+    updateFile();
+    return 'Update process is successful.';
+  }
+  return 'Update process is not successful.';
+}
+
+function findIndexTodo(todoId) {//return index of todo that is searched
   readToDoFile();
-  toDoList[indexToDo - 1].done = false;
-  updateFile();
+  let index = -1;
+  toDoList.forEach((todo, i) => {
+    let currentTodoId = JSON.parse(JSON.stringify(todo)).id;
+    if (currentTodoId === todoId) {
+      index = i;
+    }
+  });
+  return index;
+}
+
+function upDateNotDone(todoId) {
+  const index = findIndexTodo(todoId);
+  if (index !== -1) {
+    toDoList[index].done = false;
+    updateFile();
+    return 'Update process is successful.';
+  }
+  return 'Update process is not successful.';
 }
 
 function updateFile() {
@@ -153,4 +192,11 @@ function updateFile() {
     console.log('File couldn\'t be updated. Err: ' + err);
   }
 }
-module.exports = [readToDoFile, addToDoFromHTML, updateToDoFromHTML, deleteToDoFromHTML, upDateDone, upDateNotDone];
+module.exports = {
+  readToDoFile,
+  addToDoFromHTML,
+  updateToDoFromHTML,
+  deleteToDoFromHTML,
+  upDateDone,
+  upDateNotDone
+};
