@@ -1,15 +1,6 @@
-const express = require("express");
-const fs = require("fs");
+'use strict'
 
-module.exports = {
-  parser: require("body-parser"),
-  uuidv4: require('uuid/v4'),
-  app: express(),
-  readData: readData,
-  writeData: writeData,
-  checkId: checkId,
-  notFound: notFound
-}
+const fs = require("fs");
 
 function readData(cb) {
   fs.readFile("to-dos.json", "utf8", (err, file) => {
@@ -21,13 +12,15 @@ function readData(cb) {
     }
   });
 }
+
 function writeData(json) {
   let data = JSON.stringify(json, null, 2);
   fs.writeFile("to-dos.json", data, (err) => {
     console.log(err ? `Something wrong happened, please try again!${err}` : "Done");
   });
 }
-function checkId(list, id) {
+
+function getIndexById(list, id) {
   let x;
   list.forEach((el, i) => {
     if (el.id === id) {
@@ -36,6 +29,14 @@ function checkId(list, id) {
   });
   return x;
 }
+
 function notFound(res, id) {
   res.send(`There is no item with id: ${id}`);
+}
+
+module.exports = {
+  readData: readData,
+  writeData: writeData,
+  getIndexById: getIndexById,
+  notFound: notFound
 }
