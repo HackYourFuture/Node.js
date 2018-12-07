@@ -4,6 +4,7 @@
 const bodyParser = require('body-parser');
 const express = require("express");
 const app = express();
+const util = require('./utility.js');
 const action = require("./to-dos-actions.js");
 
 app.use(bodyParser());
@@ -11,13 +12,25 @@ app.use(bodyParser());
 // Show list, create new to-do and delete to-dos list 
 app.route("/todos")
   .get((req, res) => {
-    action.printList(req, res);
+    // Print the toDos list
+    util.readData((list) => {
+      res.json(list);
+    });
   })
   .post((req, res) => {
-    action.createItem(req, res);
+    util.readData((list) => {
+      action.createItem(list, req.body.todo);
+      util.writeData(list);
+      res.send(`A new to -do has been created successfully. \n\n ${JSON.stringify(req.body.todo, null, 2)}`);
+    });
   })
   .delete((req, res) => {
-    action.deleteList(req, res);
+    // delete or clear toDo list
+    util.readData((list) => {
+      list.length = 0;
+      util.writeData(list);
+      res.send("The list has been deleted successfully.");
+    });
   });
 
 app.route("/todos/:id")
