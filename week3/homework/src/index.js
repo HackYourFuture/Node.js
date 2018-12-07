@@ -4,8 +4,6 @@ const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const uuidv4 = require('uuid/v4');
-const file = fs.readFileSync('./toDos.json', 'utf8');
-let list = JSON.parse(file);
 const app = express();
 function writeFile() {
   fs.writeFileSync('./toDos.json', JSON.stringify(list, null, 2), (err) => {
@@ -16,6 +14,7 @@ function writeFile() {
 app.use(bodyParser());
 
 app.post('/todos', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let newTask = req.body;
   newTask.todo.id = uuidv4();
   newTask.todo.done = false;
@@ -25,10 +24,12 @@ app.post('/todos', (req, res) => {
 });
 
 app.get('/todos', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   res.send(list);
 });
 
 app.put('/todos/:id', (req, res, next) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let taskId = req.params.id;
   let updatedTask = req.body;
   list.forEach(element => {
@@ -41,6 +42,7 @@ app.put('/todos/:id', (req, res, next) => {
 });
 
 app.delete('/todos/:id', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let taskId = req.params.id;
   let index = list.findIndex(element => element.id == taskId);
   list.splice(index, 1);
@@ -49,6 +51,7 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 app.get('/todos/:id', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let taskId = req.params.id;
   list.forEach(element => {
     if (element.id === taskId) {
@@ -58,12 +61,14 @@ app.get('/todos/:id', (req, res) => {
 });
 
 app.delete('/todos', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   list = [];
   writeFile(list);
   res.send('delete all todos');
 });
 
 app.post('/todos/:id/done', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let taskId = req.params.id;
   list.forEach(element => {
     if (element.id === taskId) {
@@ -75,6 +80,7 @@ app.post('/todos/:id/done', (req, res) => {
 });
 
 app.delete('/todos/:id/done', (req, res) => {
+  let list = JSON.parse(fs.readFileSync('./toDos.json', 'utf8'));
   let taskId = req.params.id;
   list.forEach(element => {
     if (element.id === taskId && element.done === true) {

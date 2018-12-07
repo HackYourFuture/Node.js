@@ -18,6 +18,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
+    "mysql": "^2.16.0",
     "uuid": "^3.3.2"
   }
 }
