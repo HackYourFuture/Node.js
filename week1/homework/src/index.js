@@ -1,11 +1,9 @@
 'use strict';
 
-const {
-  createServer
-} = require('./server');
+const { createServer } = require('./server');
 
 const PORT = 3000;
 
-createServer().listen(PORT, () => {
+createServer(PORT).listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
