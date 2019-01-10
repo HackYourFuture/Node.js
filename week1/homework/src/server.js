@@ -29,30 +29,30 @@ function createServer(port) {
         break;
       case '/state':
         sendResponse(response, {
-          state: state
+          state
         }, 200);
         break;
       case '/add':
         state++;
         sendResponse(response, {
-          state: state
+          state
         }, 200);
         break;
       case '/subtract':
         state--;
         sendResponse(response, {
-          state: state
+          state
         }, 200);
         break;
       case '/reset':
         state = 10;
         sendResponse(response, {
-          state: state
+          state
         }, 200);
         break;
       default:
         sendResponse(response, {
-          error: error
+          error
         }, 404);
         break;
     }
