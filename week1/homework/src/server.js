@@ -12,10 +12,10 @@ function createServer(port) {
     // TODO: Write your homework code here
     function sendResponse(statusNum, content) {
       response.statusCode = statusNum;
-      response.writeHeader(200, { 'content-type': 'application/json' });
+      response.setHeader('content-type', 'text/plain');
       statusNum === 200
         ? response.write(JSON.stringify({ state: content }))
-        : response.write(JSON.stringify({ 404: 'notfound' }));
+        : response.write(JSON.stringify({ 404: 'not found' }));
       response.end();
     }
     switch (request.url) {
