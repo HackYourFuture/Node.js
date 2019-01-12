@@ -8,33 +8,33 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
+  function sendResponse(serverResponse, stateValue) {
+    serverResponse.writeHead(200, { 'Content-Type': 'application/json' });
+    serverResponse.write(JSON.stringify({ state: stateValue }));
+    serverResponse.end();
+  }
+
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
 
-    function sendResponse(stateValue) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: stateValue }));
-      response.end();
-    }
-
     switch (request.url) {
       case '/state':
-        sendResponse(state);
+        sendResponse(response, state);
         break;
 
       case '/add':
         state += 1;
-        sendResponse(state);
+        sendResponse(response, state);
         break;
 
       case '/subtract':
         state -= 1;
-        sendResponse(state);
+        sendResponse(response, state);
         break;
 
       case '/reset':
         state = 10;
-        sendResponse(state);
+        sendResponse(response, state);
         break;
 
       default:
@@ -48,5 +48,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  createServer,
+  createServer
 };
