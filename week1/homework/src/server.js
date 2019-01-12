@@ -5,14 +5,14 @@ const http = require('http');
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
  */
+function sendResponse(serverResponse, stateValue) {
+  serverResponse.writeHead(200, { 'Content-Type': 'application/json' });
+  serverResponse.write(JSON.stringify({ state: stateValue }));
+  serverResponse.end();
+}
+
 function createServer(port) {
   let state = 10;
-
-  function sendResponse(serverResponse, stateValue) {
-    serverResponse.writeHead(200, { 'Content-Type': 'application/json' });
-    serverResponse.write(JSON.stringify({ state: stateValue }));
-    serverResponse.end();
-  }
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
