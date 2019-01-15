@@ -27,7 +27,7 @@ switch (command) {
     break;
   case 'help':
   default:
-    fs.readFile('./help.txt', 'utf8', function(error, data) {
+    fs.readFile('help.txt', 'utf8', function(error, data) {
       if (error) {
         console.log(error);
       } else {
