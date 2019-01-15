@@ -11,8 +11,6 @@
 
  Commands:
 
-  -- Use: node index.js or node . to the help commands. 
-
   -- Use: node index.js or node . list
         Description: print a list of todo tasks
 
