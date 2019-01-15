@@ -1,20 +1,30 @@
   ---- READ ----
   Line Number starts from: 0
 
+
+  --- TO GET HELP ---
+
+  Use: node . help 
+       node .  
+       node index.js help  
+       node index.js
+
  Commands:
-  
-  -- Use: node index.js -or node . list
+
+  -- Use: node index.js or node . to the help commands. 
+
+  -- Use: node index.js or node . list
         Description: print a list of todo tasks
 
-  -- Use: node index.js - or node . add "type here any task you want"
+  -- Use: node index.js or node . add "type here any task you want"
         Description: Adds a task to the to-do list
 
-  -- Use: node index.js -or node . remove "type here line number of the task you want to delete"
+  -- Use: node index.js or node . remove "type here line number of the task you want to delete"
         Description: Removes a task from the to-do list
 
-  -- Use: node index.js -or node . reset 
+  -- Use: node index.js or node . reset 
         Description: Resets the to-do list to 0
 
-  -- Use: node index.js -or node . - update "line number of the task you want to update"  "type here the update"
-        Description: You can change/update 
+  -- Use: node index.js or node . - update "line number of the task you want to update"  "type here the update"
+        Description: You can change/update a selected task
 
