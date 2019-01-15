@@ -17,7 +17,7 @@ let list = () => {
     console.log(todosList);
   }
 };
-// remove command
+// 
 let remove = () => {
   let todosList = fs.readFileSync('todos.txt', 'utf8');
   let todosArray = todosList.split('\n');
