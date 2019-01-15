@@ -1,0 +1,13 @@
+ add : usage: add [ string ] 
+       Description : this command adds the specified string to a file 
+           
+
+remove : usage: remove [ number ] 
+       Description : this command removes the specified  line number from  a file 
+
+reset : usage : reset 
+         Description : this resets a file to empty
+
+list : usage : list 
+        Description : it gives content of the file line by line
+ 
