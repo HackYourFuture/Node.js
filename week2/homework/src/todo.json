@@ -1,1 +1,10 @@
-[]
+[
+  { "task": "Wake up at 6am" },
+  { "task": "Feed my cat" },
+  { "task": "Prepare and drink coffee" },
+  { "task": "Go to school" },
+  { "task": "Return home" },
+  { "task": "Write code" },
+  { "task": "sleep" },
+  { "task": "Repeat" }
+]
