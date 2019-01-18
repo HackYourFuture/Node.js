@@ -1,6 +1,7 @@
+'use strict';
+
 const fs = require('fs');
 
-// list command
 let list = () => {
   let todosList = fs.readFileSync('todos.txt', 'utf8');
   if (!todosList) {

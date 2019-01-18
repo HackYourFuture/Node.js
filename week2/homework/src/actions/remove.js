@@ -1,4 +1,7 @@
+'use strict';
+
 const fs = require('fs');
+
 let remove = () => {
   let todosList = fs.readFileSync('todos.txt', 'utf8');
   let todosArray = todosList.split('\n');

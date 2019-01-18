@@ -1,4 +1,5 @@
 // add command
+'use strict';
 const fs = require('fs');
 let add = (todo) => {
   fs.readFileSync('todos.txt', 'utf8');
