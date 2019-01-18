@@ -1,14 +1,14 @@
 'use strict';
 
 const fs = require('fs');
-// add command 
+// add command
 let add = () => {
   let todo = fs.readFileSync('todos.txt', 'utf8');
   let text = process.argv[3];
   fs.appendFileSync('todos.txt', `${text}\n`);
   return text;
 };
-// list command 
+// list command
 let list = () => {
   let todosList = fs.readFileSync('todos.txt', 'utf8');
   if (!todosList) {
@@ -30,10 +30,11 @@ let remove = () => {
   } else {
     todosArray.forEach((element, index) => {
       if (commandArg === index) {
-        let removedItem = todosArray.splice(index - 1, 1).join('\n');
+        let removedItem = todosArray.splice(index - 1, 1);
         const restItems = todosArray.join('\n');
         fs.writeFileSync('todos.txt', restItems);
-        console.log(removedItem);
+        console.log('the ff item is removed from the list:');
+        console.log('-- ' + removedItem);
       }
     });
   }
@@ -44,12 +45,16 @@ let reset = () => {
   fs.writeFileSync('todos.txt', '');
 };
 
+// help command
+let help = () => {
+  console.log(fs.readFileSync('help.txt', 'utf8'));
+};
 
 let command = process.argv[2];
 
 switch (command) {
-  case ('help'):
-    console.log(fs.readFileSync('help.txt', 'utf8'));
+  case 'help':
+    help();
     break;
   case 'add':
     add();
@@ -64,6 +69,6 @@ switch (command) {
     remove();
     break;
   default:
-    console.log(fs.readFileSync('help.txt', 'utf8'));;
+    help();
     break;
 }
