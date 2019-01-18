@@ -1,69 +1,23 @@
+#!/usr/bin/env node
+
 'use strict';
 
-const fs = require('fs');
-// add command 
-let add = () => {
-  let todo = fs.readFileSync('todos.txt', 'utf8');
-  let text = process.argv[3];
-  fs.appendFileSync('todos.txt', `${text}\n`);
-  return text;
-};
-// list command 
-let list = () => {
-  let todosList = fs.readFileSync('todos.txt', 'utf8');
-  if (!todosList) {
-    console.log('The TODOs list file is empty');
-  } else {
-    console.log(todosList);
-  }
-};
-// 
-let remove = () => {
-  let todosList = fs.readFileSync('todos.txt', 'utf8');
-  let todosArray = todosList.split('\n');
-  let commandArg = parseInt(process.argv[3]);
+require('fs');
+const program = require('commander');
 
-  if (!todosList) {
-    console.log('The TODO list file is empty');
-  } else if (commandArg > todosArray.length) {
-    console.log(`the requested line number ${commandArg} is empty`);
-  } else {
-    todosArray.forEach((element, index) => {
-      if (commandArg === index) {
-        let removedItem = todosArray.splice(index - 1, 1).join('\n');
-        const restItems = todosArray.join('\n');
-        fs.writeFileSync('todos.txt', restItems);
-        console.log(removedItem);
-      }
-    });
-  }
-};
+const add = require('./actions/add.js');
+const list = require('./actions/list');
+const reset = require('./actions/reset');
+const remove = require('./actions/remove');
+const update = require('./actions/update');
+const help = require('./actions/help.js');
 
-// reset command
-let reset = () => {
-  fs.writeFileSync('todos.txt', '');
-};
-
-
-let command = process.argv[2];
-
-switch (command) {
-  case ('help'):
-    console.log(fs.readFileSync('help.txt', 'utf8'));
-    break;
-  case 'add':
-    add();
-    break;
-  case 'list':
-    list();
-    break;
-  case 'reset':
-    reset();
-    break;
-  case 'remove':
-    remove();
-    break;
-  default:
-    console.log(fs.readFileSync('help.txt', 'utf8'));;
-    break;
-}
+program
+  .version('0.0.1')
+  .option('-a, --add <todo>', 'Add todos to the list ', add)
+  .option('-l, --list ', 'list todos ', list)
+  .option('-r, --remove <index>', 'remove an indexed todo ', remove)
+  .option('-R, --reset ', 'removes todos list', reset)
+  .option('-h, --help ', 'usage of the commands', help)
+  .option('-u, --update <index> ', 'updates a todo item', update)
+  .parse(process.argv);

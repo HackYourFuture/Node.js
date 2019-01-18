@@ -1,6 +1,5 @@
-Attend programming class
-lunch
-walk with the dog
-bring my son from School
-work Home work
-swimming lesson 
+{"todo":"study"}
+{"todo":"walk"}
+{"todo":"attend"}
+{"todo":"attend class"}
+{"todo":"sleep"}

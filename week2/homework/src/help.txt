@@ -1,13 +1,15 @@
- add : usage: add [ string ] 
-       Description : this command adds the specified string to a file 
-           
+add : usage: -a <string >
+       Description : adds the specified string to a file 
+         
+remove : usage: -r <lineNumber> 
+       Description : removes the specified  line number from  a file 
 
-remove : usage: remove [ number ] 
-       Description : this command removes the specified  line number from  a file 
+update : usage: -u <lineNumber> <update todo>
+         Description : Updates todo on the lineNumber  
 
-reset : usage : reset 
-         Description : this resets a file to empty
+reset : usage : -R 
+         Description : resets a file to empty
 
-list : usage : list 
-        Description : it gives content of the file line by line
+list : usage : -l
+        Description : list of todos
  
