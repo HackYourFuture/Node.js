@@ -9,33 +9,6 @@ let value = process.argv[3];
 let index = parseInt(value);
 let updateTask = process.argv[4];
 
-switch (command) {
-  case 'list':
-    todoList();
-    break;
-  case 'add':
-    add(value);
-    break;
-  case 'remove':
-    remove(index);
-    break;
-  case 'reset':
-    reset();
-    break;
-  case 'update':
-    update(index, updateTask);
-    break;
-  case 'help':
-  default:
-    fs.readFile('help.txt', 'utf8', function(error, data) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(data);
-      }
-    });
-}
-
 function todoList() {
   jsonData.forEach(elem => console.log(elem.task));
 }
@@ -72,4 +45,31 @@ function update(index, updateTask) {
   } else {
     console.log('Please use a line number');
   }
+}
+
+switch (command) {
+  case 'list':
+    todoList();
+    break;
+  case 'add':
+    add(value);
+    break;
+  case 'remove':
+    remove(index);
+    break;
+  case 'reset':
+    reset();
+    break;
+  case 'update':
+    update(index, updateTask);
+    break;
+  case 'help':
+  default:
+    fs.readFile('help.txt', 'utf8', function(error, data) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(data);
+      }
+    });
 }
