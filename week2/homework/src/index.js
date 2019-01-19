@@ -80,7 +80,7 @@ switch (commandsArray[0]) {
     resetList();
     break;
   case 'update':
-    updateList(itemIndex, process.argv[4]);
+    updateList(itemIndex, commandsArray[2]);
     break;
   default:
     showHelp();
