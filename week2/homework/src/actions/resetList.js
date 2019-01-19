@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs');
+const writeF = require('./writeF');
 
 function resetList() {
-  fs.writeFileSync('./data.txt', '');
+  writeF('');
 }
 
 module.exports = resetList;

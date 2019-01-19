@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs');
+const readF = require('./readF');
 
 function showList() {
-  const string = fs.readFileSync('./data.txt', 'utf8');
+  const string = readF('./data.txt');
   if (!string) {
     console.log('There are no "to-do items" to be displayed.');
   } else {

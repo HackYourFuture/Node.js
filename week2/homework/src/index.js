@@ -8,12 +8,10 @@ const removeFromList = require('./actions/removeFromList');
 const updateList = require('./actions/updateList');
 const resetList = require('./actions/resetList');
 
-const command = process.argv[2];
-const addition = process.argv[3];
-const itemIndex = parseInt(addition) - 1;
-const secondAddition = process.argv[4];
+const commands = [process.argv[2], process.argv[3], process.argv[4]];
+const itemIndex = parseInt(commands[1]) - 1;
 
-switch (command) {
+switch (commands[0]) {
   case 'help':
     showHelp();
     break;
@@ -21,7 +19,7 @@ switch (command) {
     showList();
     break;
   case 'add':
-    addToList(addition);
+    addToList(commands[1]);
     break;
   case 'remove':
     removeFromList(itemIndex);
@@ -30,7 +28,7 @@ switch (command) {
     resetList();
     break;
   case 'update':
-    updateList(itemIndex, secondAddition);
+    updateList(itemIndex, commands[2]);
     break;
   default:
     showHelp();

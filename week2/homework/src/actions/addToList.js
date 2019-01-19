@@ -1,16 +1,17 @@
 'use strict';
 
-const fs = require('fs');
+const readF = require('./readF');
+const writeF = require('./writeF');
 
 function addToList(item) {
-  const previousString = fs.readFileSync('./data.txt', 'utf8');
+  const previousString = readF('./data.txt');
   if (previousString) {
     const toDoesArray = JSON.parse(previousString);
     toDoesArray.push(item);
-    fs.writeFileSync('./data.txt', JSON.stringify(toDoesArray));
+    writeF(JSON.stringify(toDoesArray));
   } else {
     const toDoesArray = [item];
-    fs.writeFileSync('./data.txt', JSON.stringify(toDoesArray));
+    writeF(JSON.stringify(toDoesArray));
   }
 }
 

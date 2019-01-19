@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs');
+const readF = require('./readF');
 
 function showHelp() {
-  console.log(fs.readFileSync('./help.txt', 'utf8'));
+  console.log(readF('./help.txt'));
 }
 
 module.exports = showHelp;
