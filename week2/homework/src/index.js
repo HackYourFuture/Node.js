@@ -7,6 +7,7 @@ const addToList = require('./actions/addToList');
 const removeFromList = require('./actions/removeFromList');
 const updateList = require('./actions/updateList');
 const resetList = require('./actions/resetList');
+const writeF = require('./actions/writeF');
 
 const commands = [process.argv[2], process.argv[3], process.argv[4]];
 const itemIndex = parseInt(commands[1]) - 1;
@@ -25,7 +26,7 @@ switch (commands[0]) {
     removeFromList(itemIndex);
     break;
   case 'reset':
-    resetList();
+    writeF('');
     break;
   case 'update':
     updateList(itemIndex, commands[2]);
