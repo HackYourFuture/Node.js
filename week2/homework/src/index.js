@@ -40,27 +40,33 @@ function addToList(item) {
 }
 
 function removeFromList(index) {
-  const itemsArray = readF('./data.txt').split('\n');
-  if (index >= 0 && index < itemsArray.length) {
-    itemsArray.splice(index, 1);
-    writeF(itemsArray.join('\n'));
-  } else {
+  const str = readF('./data.txt');
+  if (str === '') {
     console.log('The list has no corresponding "to-do element" to be removed.');
+  } else {
+    const itemsArray = str.split('\n');
+    if (index >= 0 && index < itemsArray.length) {
+      itemsArray.splice(index, 1);
+      writeF(itemsArray.join('\n'));
+    } else {
+      console.log('The list has no corresponding "to-do element" to be removed.');
+    }
   }
 }
 
 function updateList(index, addedItem) {
-  const itemsArray = readF('./data.txt').split('\n');
-  if (index >= 0 && index < itemsArray.length) {
-    itemsArray.splice(index, 1, addedItem);
-    writeF(itemsArray.join('\n'));
-  } else {
+  const str = readF('./data.txt');
+  if (str === '') {
     console.log('The list has no corresponding "to-do element" to be updated.');
+  } else {
+    const itemsArray = str.split('\n');
+    if (index >= 0 && index < itemsArray.length) {
+      itemsArray.splice(index, 1, addedItem);
+      writeF(itemsArray.join('\n'));
+    } else {
+      console.log('The list has no corresponding "to-do element" to be updated.');
+    }
   }
-}
-
-function resetList() {
-  writeF('');
 }
 
 switch (commandsArray[0]) {
@@ -77,7 +83,7 @@ switch (commandsArray[0]) {
     removeFromList(itemIndex);
     break;
   case 'reset':
-    resetList();
+    writeF('');
     break;
   case 'update':
     updateList(itemIndex, commandsArray[2]);
