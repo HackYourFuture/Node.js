@@ -1,0 +1,15 @@
+
+To run the application use the commands: node index.js  or  node . 
+
+To show help use the commands: node index.js  or  node index.js help
+
+To show the current 'to-do list' use the command: node index.js list
+
+To add a 'to-do item' to the list use the command: node index.js add <to-do item>
+
+To remove an item from the list use the command: node index.js remove <item's position in the list>
+
+To update an item in the list with a new text use the command: node index.js update <the item's position in the list> <a new to-do item>
+
+To remove all 'to-do items' from the list use the command: node index.js reset
+
