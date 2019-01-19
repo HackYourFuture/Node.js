@@ -48,29 +48,43 @@ function readTodos(cbFn) {
             return;
         }
 
-        if (!data) {
-            console.log(chalk.yellow('There are no to-dos'));
-            return;
-        }
+        const todos = (!data) ? [] : JSON.parse(data);
 
-        const todos = data.split(',');
-        
         cbFn(todos);
     });
 }
 
+function writeTodos(todos, okMsg) {
+    const todosTxt = JSON.stringify(todos);
+
+    fs.writeFile(todosFileName, todosTxt, 'utf8', (error) => {
+        if (error) {
+            console.log(chalk.red(error));
+            return;
+        }
+
+        console.log(chalk.green(okMsg));
+    });
+}
+
 if (command === 'list') {
-    let listTodosFn = (todos) => {
+    readTodos((todos) => {
+        if (!todos || todos.length === 0) {
+            console.log(chalk.yellow('There are no to-dos'));
+            return;
+        }
+
         const todosOnNewLines = todos.join('\n');
         console.log(chalk.green(todosOnNewLines));
-    };
-
-    readTodos(listTodosFn);
+    });
 }
 
 if (command === 'add') {
-    fs.appendFile(todosFileName, args[3]+',',(error, data) => {
-        console.log("Data added");
+    const newTodoTxt = args[3];
+
+    readTodos((todos) => {
+        todos.push(newTodoTxt);
+        writeTodos(todos, "Data added");
     });
 }
 
@@ -85,26 +99,16 @@ if (command === 'remove') {
         return;
     }
 
-    let deleteTodoFn = (todos) => {
+    readTodos((todos) => {
         if (todoPosition > todos.length) {
             console.log(chalk.red("Invalid to-do position: '" + args[3] + "', there are only " + todos.length + " elements"));
             return;
         }
 
         todos.splice(todoPosition-1, 1);
-        const todosCommaSeparated = todos.join(',');
 
-        fs.writeFile(todosFileName, todosCommaSeparated, 'utf8', (error) => {
-            if (error) {
-                console.log(chalk.red(error));
-                return;
-            }
-        
-            console.log(chalk.yellow("To-do at position " + todoPosition + " has been removed"));
-        });
-    };
-
-    readTodos(deleteTodoFn);
+        writeTodos(todos, "To-do at position " + todoPosition + " has been removed");
+    });
 }
 
 
@@ -115,32 +119,23 @@ if (command === 'update') {
         return;
     }
     if (todoPosition < 1) {
-        console.log(chalk.red("The minimum position to update is 1, provided: '" + todoPosition + "'"));
+        console.log(chalk.red("The minimum position to delete is 1, provided: '" + todoPosition + "'"));
         return;
     }
     const newTodoTxt = args[4];
 
-    let updateTodoFn = (todos) => {
+    readTodos((todos) => {
         if (todoPosition > todos.length) {
-            console.log(chalk.red("Invalid to-do position: '" + args[3] + "', there are only " + todos.length + " elements"));
+            console.log(chalk.red("Invalid to-do update: '" + args[3] + "', there are only " + todos.length + " elements"));
             return;
         }
 
         todos[todoPosition-1] = newTodoTxt;
-        const todosCommaSeparated = todos.join(',');
 
-        fs.writeFile(todosFileName, todosCommaSeparated, 'utf8', (error) => {
-            if (error) {
-                console.log(chalk.red(error));
-                return;
-            }
-        
-            console.log(chalk.yellow("To-do at position " + todoPosition + " has been updated"));
-        });
-    };
-
-    readTodos(updateTodoFn);
+        writeTodos(todos, "To-do at position " + todoPosition + " has been updated");
+    });
 }
+
 
 if (command === 'reset') {
     fs.truncate(todosFileName, 0, (error, data) => {
@@ -149,24 +144,21 @@ if (command === 'reset') {
 }
 
 if (!command || command === 'help') {
-        console.log("A parameter is necessary to execute\n\n");
-        console.log("Usage:");
-        console.log("   list: Shows current to-dos, or shows an appropriate text if there are no to-dos\n");
-        console.log("       node index.js list\n");
-        
-        console.log("   add: Adds a to-do item. All the words behind add are entered as 1 to-do item to the list\n");
-        console.log('       node index.js add "Buy groceries"\n');  
-
-        console.log("   remove: Removes a to-do item by its 1-base index, e.g. to remove second item, execute\n");
-        console.log("       node index.js remove 2\n");  
-
-        console.log("   reset: Removes all to-do items from the list:\n");
-        console.log("       node index.js reset\n");
-        
-        console.log("   update: Updates a to-do item with new text:\n");
-        console.log('       node index.js update 3 "Brush teeth"\n');  
-
-       
+    console.log("A parameter is necessary to execute\n\n");
+    console.log("Usage:");
+    console.log("   list: Shows current to-dos, or shows an appropriate text if there are no to-dos\n");
+    console.log("       node index.js list\n");
     
-    }
+    console.log("   add: Adds a to-do item. All the words behind add are entered as 1 to-do item to the list\n");
+    console.log('       node index.js add "Buy groceries"\n');  
+
+    console.log("   remove: Removes a to-do item by its 1-base index, e.g. to remove second item, execute\n");
+    console.log("       node index.js remove 2\n");  
+
+    console.log("   reset: Removes all to-do items from the list:\n");
+    console.log("       node index.js reset\n");
+    
+    console.log("   update: Updates a to-do item with new text:\n");
+    console.log('       node index.js update 3 "Brush teeth"\n');  
+}
 

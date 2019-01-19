@@ -1,1 +1,1 @@
-Go to the gym,Do the homework,Buy groceries
+["Buy tomatoes","Go to the gym","Do the homework"]
