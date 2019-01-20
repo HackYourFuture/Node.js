@@ -1,5 +1,6 @@
 'use strict';
 // TODO: Write the homework code in this file
+let fs = require('fs');
 let command = process.argv[2];
 let value = process.argv[3];
 let index = parseInt(value);
