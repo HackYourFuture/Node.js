@@ -1,14 +1,16 @@
 'use strict';
 
 const fs = require('fs');
+const readAndParseTodos = require('./readAndparse');
 
 let add = (todo) => {
-  fs.readFileSync('todos.txt', 'utf8');
-  let JSONText = {
-    todo
-  };
-  fs.appendFileSync('todos.txt', `${JSON.stringify(JSONText)}\n`);
-  console.log(`  you add the new todo : \n  ${JSON.stringify(JSONText)}`);
+  const parsedTodos = readAndParseTodos();
+  parsedTodos.push({
+    todo: todo
+  });
+  const stringifiedTodos = JSON.stringify(parsedTodos);
+  fs.writeFileSync('todos.json', stringifiedTodos);
+  console.log(`  you add the new todo : \n -- ${todo}`);
 };
 
 module.exports = add;

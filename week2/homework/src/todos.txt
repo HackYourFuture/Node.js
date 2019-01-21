@@ -1,5 +1,0 @@
-{"todo":"study"}
-{"todo":"walk"}
-{"todo":"attend"}
-{"todo":"attend class"}
-{"todo":"sleep"}
