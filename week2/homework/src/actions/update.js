@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const readAndParseTodos = require('./readAndparse');
-const list = require('./list');
+require('./list');
 const update = (todo) => {
   const parsedTodos = readAndParseTodos();
   let index = parseInt(process.argv[3]);

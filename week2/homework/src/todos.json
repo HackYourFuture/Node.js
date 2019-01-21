@@ -1,1 +1,11 @@
-[{"todo":"Breakfast"},{"todo":"swimming"},{"todo":"study"},{"todo":"church"},{"todo":"class"},{"todo":"sport"},{"todo":"GYM"},{"todo":"GYM"}]
+{
+  "todo": "study"
+} {
+  "todo": "walk"
+} {
+  "todo": "attend"
+} {
+  "todo": "attend class"
+} {
+  "todo": "sleep"
+}
