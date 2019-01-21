@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const readAndParseTodos = require('./readAndparse');
-
-let add = (todo) => {
+const todo = process.argv[3];
+let add = () => {
   const parsedTodos = readAndParseTodos();
   parsedTodos.push({
     todo: todo

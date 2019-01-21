@@ -2,15 +2,15 @@
 
 const fs = require('fs');
 const readAndParseTodos = require('./readAndparse');
-const list = require('./list');
-const update = (todo) => {
+const todo = process.argv[4];
+
+const update = () => {
   const parsedTodos = readAndParseTodos();
   let index = parseInt(process.argv[3]);
   let updatedToDo = {
-    todo
+    todo: todo
   };
-
-  if (!parsedTodos) {
+  if (parsedTodos.length === 0) {
     console.log('The TODO list file is empty');
   }
  else if (index > parsedTodos.length) {

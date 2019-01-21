@@ -1,5 +1,5 @@
 [{
-  "todo": "Breakfast"
+  "todo": "Dinner"
 }, {
   "todo": "swimming"
 }, {
@@ -14,4 +14,8 @@
   "todo": "GYM"
 }, {
   "todo": "GYM"
+}, {
+  "todo": "Eat"
+}, {
+  "todo": "House work"
 }]
