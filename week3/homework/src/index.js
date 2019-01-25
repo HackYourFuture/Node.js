@@ -40,6 +40,8 @@ app.post('/todos/:id/:action', (req, res) => {
     } else {
       res.send(returnedValue);
     }
+  } else {
+    res.send(readF());
   }
 });
 
@@ -77,6 +79,8 @@ app.delete('/todos/:id/:action', (req, res) => {
     } else {
       res.send(returnedValue);
     }
+  } else {
+    res.send(readF());
   }
 });
 
