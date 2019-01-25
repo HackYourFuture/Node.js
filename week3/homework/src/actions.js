@@ -61,7 +61,7 @@ function markDone(toDoId) {
     if (toDosArray[index].done === 'true') {
       return 'The task is already done.';
     } else {
-      toDosArray[index].done = 'true';
+      toDosArray[index].done = true;
       stringifyAndWrite(toDosArray);
     }
   }
@@ -76,7 +76,7 @@ function markUnDone(toDoId) {
     if (toDosArray[index].done === 'false') {
       return 'The task is already not done.';
     } else {
-      toDosArray[index].done = 'false';
+      toDosArray[index].done = false;
       stringifyAndWrite(toDosArray);
     }
   }
