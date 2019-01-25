@@ -58,7 +58,7 @@ function markDone(toDoId) {
   if (index === -1) {
     return 'The list has no corresponding "to-do element"';
   } else {
-    if (toDosArray[index].done === 'true') {
+    if (toDosArray[index].done === true) {
       return 'The task is already done.';
     } else {
       toDosArray[index].done = true;
@@ -73,7 +73,7 @@ function markUnDone(toDoId) {
   if (index === -1) {
     return 'The list has no corresponding "to-do element"';
   } else {
-    if (toDosArray[index].done === 'false') {
+    if (toDosArray[index].done === false) {
       return 'The task is already not done.';
     } else {
       toDosArray[index].done = false;
