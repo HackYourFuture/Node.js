@@ -6,7 +6,6 @@ const showHelp = require('./actions/showHelp');
 const addToList = require('./actions/addToList');
 const removeFromList = require('./actions/removeFromList');
 const updateList = require('./actions/updateList');
-const resetList = require('./actions/resetList');
 const writeF = require('./actions/writeF');
 
 const commands = [process.argv[2], process.argv[3], process.argv[4]];
