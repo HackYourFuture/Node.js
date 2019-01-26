@@ -4,21 +4,22 @@
 const fs = require('fs');
 const commandsArray = [process.argv[2], process.argv[3], process.argv[4]];
 const itemIndex = parseInt(commandsArray[1]) - 1;
+const dataFile = './data.txt';
 
 function readF(file) {
   return fs.readFileSync(file, 'utf8');
 }
 
 function writeF(string) {
-  fs.writeFileSync('./data.txt', string);
+  fs.writeFileSync(dataFile, string);
 }
 
 function appendF(string) {
-  fs.appendFileSync('./data.txt', string);
+  fs.appendFileSync(dataFile, string);
 }
 
 function showList() {
-  const list = readF('./data.txt');
+  const list = readF(dataFile);
   if (!list) {
     console.log('There are no "to-do items" to be displayed.');
   } else {
@@ -31,7 +32,7 @@ function showHelp() {
 }
 
 function addToList(item) {
-  const previousString = readF('./data.txt');
+  const previousString = readF(dataFile);
   if (previousString) {
     appendF('\n' + item);
   } else {
@@ -40,7 +41,7 @@ function addToList(item) {
 }
 
 function removeFromList(index) {
-  const str = readF('./data.txt');
+  const str = readF(dataFile);
   if (str === '') {
     console.log('The list has no corresponding "to-do element" to be removed.');
   } else {
@@ -55,7 +56,7 @@ function removeFromList(index) {
 }
 
 function updateList(index, addedItem) {
-  const str = readF('./data.txt');
+  const str = readF(dataFile);
   if (str === '') {
     console.log('The list has no corresponding "to-do element" to be updated.');
   } else {
