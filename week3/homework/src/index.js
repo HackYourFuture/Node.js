@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 app.get('/todos', (request, response) => {
-  fs.readFileSync('./toDo.txt', 'utf8', function (error, data = []) {
+  fs.readFileSync('./todo.txt', 'utf8', function (error, data = []) {
     if (error) {
       console.log(error)
     } else {
@@ -26,7 +26,7 @@ app.get('/todos', (request, response) => {
 
 app.get('/todos/:id', (request, response) => {
   const id = uuid();
-  fs.readFileSync('./toDo.txt', 'utf8', function (error, data = []) {
+  fs.readFileSync('./todo.txt', 'utf8', function (error, data = []) {
     if (error) {
       console.log(error)
     } else {
@@ -40,7 +40,7 @@ app.get('/todos/:id', (request, response) => {
 
 app.delete('/delete', (request, response) => {
   const id = uuid();
-  fs.writeFileSync('./toDo.txt', '', function (error) {
+  fs.writeFileSync('./todo.txt', '', function (error) {
     if (error) {
       console.log(error)
     } else {
@@ -49,6 +49,26 @@ app.delete('/delete', (request, response) => {
     }
   })
 
+});
+
+app.post('/todo', (request, response) => {
+  fs.readFile('./todo.txt', 'utf8', (error) => {
+    if (error) {
+      console.error(error);
+    }
+
+    const newTodo = [];
+    newTodo.push(request.body[0].task);
+
+    fs.appendFile('./todo.txt', newTodo + '/' + 'done: ' + false + '\n', (error) => {
+      if (error) {
+        console.error(error);
+      }
+    })
+    response
+      .json({ 'new Task added': newTodo });
+
+  })
 });
 
 app.post('/todos/:id/done', (request, response) => {
@@ -119,6 +139,6 @@ app.delete('/todos/:id/done', (request, response) => {
 
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
