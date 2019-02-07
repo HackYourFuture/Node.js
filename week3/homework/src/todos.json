@@ -1,7 +1,4 @@
 [{
-  "id": "b0050a10-22eb-11e9-9b1d-01cad895b9f1",
-  "todo": "breakfast"
-}, {
   "id": "b9de3fc0-22eb-11e9-afa2-13972e9db041",
   "todo": "EAT",
   "done": true
@@ -19,4 +16,13 @@
   "id": "ffdd1d80-22ef-11e9-ae8e-9fa2570918ad",
   "todo": "Library",
   "done": true
+}, {
+  "id": "69a6bf10-2aba-11e9-98de-af3ce68c28c4",
+  "todo": "new entry"
+}, {
+  "id": "f35c58f0-2aba-11e9-b6da-2958fe19f6b7",
+  "todo": "Dinner"
+}, {
+  "id": "af728640-2abb-11e9-864e-f36100133b8b",
+  "todo": "Cinema"
 }]
