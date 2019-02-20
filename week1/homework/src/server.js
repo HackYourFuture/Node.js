@@ -14,7 +14,7 @@ function displayState(response, status, data) {
 
 function createServer(port) {
   let state = 10;
-  const error = 'not found';
+  const error = 'Not found';
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
@@ -36,7 +36,7 @@ function createServer(port) {
         displayState(response, 200, { state });
         break;
       default:
-        displayState(response, 200, { error });
+        displayState(response, 404, { error });
     }
   });
 
