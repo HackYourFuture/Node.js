@@ -10,45 +10,30 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    function responseOk(statusCode, write) {
+      response.statusCode = statusCode;
+      response.setHeader('Content-Type', 'application/json');
+      response.write(write);
+      response.end();
+    }
     switch (request.url) {
       case '/state':
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
-        response.end();
+        responseOk(200, JSON.stringify({ state }));
         break;
       case '/reset':
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'application/json');
         state = 10;
-        response.write(JSON.stringify({ state }));
-        response.end();
+        responseOk(200, JSON.stringify({ state }));
         break;
       case '/add':
-        response.statusCode = 200;
-        while (request.url === '/add') {
-          state += 1;
-          break;
-        }
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
-        response.end();
+        state++;
+        responseOk(200, JSON.stringify({ state }));
         break;
       case '/subtract':
-        response.statusCode = 200;
-        while (request.url === '/subtract') {
-          state -= 1;
-          break;
-        }
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state }));
-        response.end();
+        state--;
+        responseOk(200, JSON.stringify({ state }));
         break;
       default:
-        response.statusCode = 404;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(`{ "error": "Not found" }`);
-        response.end();
+        responseOk(404, `{ "error": "Not found" }`);
     }
   });
 
@@ -56,5 +41,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  createServer,
+  createServer
 };
