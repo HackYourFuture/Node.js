@@ -10,7 +10,7 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
-    function responseOk(statusCode, write) {
+    function DisplayResponse(statusCode, write) {
       response.statusCode = statusCode;
       response.setHeader('Content-Type', 'application/json');
       response.write(write);
@@ -18,22 +18,22 @@ function createServer(port) {
     }
     switch (request.url) {
       case '/state':
-        responseOk(200, JSON.stringify({ state }));
+        DisplayResponse(200, JSON.stringify({ state }));
         break;
       case '/reset':
         state = 10;
-        responseOk(200, JSON.stringify({ state }));
+        DisplayResponse(200, JSON.stringify({ state }));
         break;
       case '/add':
         state++;
-        responseOk(200, JSON.stringify({ state }));
+        DisplayResponse(200, JSON.stringify({ state }));
         break;
       case '/subtract':
         state--;
-        responseOk(200, JSON.stringify({ state }));
+        DisplayResponse(200, JSON.stringify({ state }));
         break;
       default:
-        responseOk(404, `{ "error": "Not found" }`);
+        DisplayResponse(404, `{ "error": "Not found" }`);
     }
   });
 
