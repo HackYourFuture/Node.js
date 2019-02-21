@@ -10,34 +10,32 @@ function createServer(port) {
   let state = 10;
 
   // Created a function in order to not repeating myself.
-  function showResponse(response) {
+  function showResponse(response, state) {
     response.setHeader('Content-Type', 'application/json');
-    response.write(JSON.stringify({ state }));
+    response.write(JSON.stringify(state));
     response.end();
   }
 
   const server = http.createServer((request, response) => {
     switch (request.url) {
       case '/state':
-        showResponse(response);
+        showResponse(response, { state });
         break;
       case '/add':
         state++;
-        showResponse(response);
+        showResponse(response, { state });
         break;
       case '/subtract':
         state--;
-        showResponse(response);
+        showResponse(response, { state });
         break;
       case '/reset':
         state = 10;
-        showResponse(response);
+        showResponse(response, { state });
         break;
       default:
         response.statusCode = 404;
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ error: 'Not found' }));
-        response.end();
+        showResponse(response, { error: 'Not found' });
     }
   });
 
