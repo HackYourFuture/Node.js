@@ -8,10 +8,10 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
-  function respond(response) {
-    response.writeHead(200, {'Content-Type':'application/json'});
-    response.write(JSON.stringify({state}));
-    response.end();
+  function respond(status) {
+    status.writeHead(200, {'Content-Type':'application/json'});
+    status.write(JSON.stringify({state}));
+    status.end();
   }
 
   const server = http.createServer((request, response) => {
