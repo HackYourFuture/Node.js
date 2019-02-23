@@ -1,0 +1,6 @@
+help
+list
+add
+remove
+reset
+update
