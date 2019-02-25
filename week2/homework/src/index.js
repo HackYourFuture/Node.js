@@ -15,8 +15,7 @@ const update = functions.update;
 if (!process.argv[2]) {
   help();
   // console.log(process.argv[2]);
-}
- else {
+} else {
   program
     .command('help')
     .description('to get help')
@@ -55,8 +54,8 @@ if (!process.argv[2]) {
   program
     .command('update <existingToDo> <updatedToDo>')
     .description('to list to-dos')
-    .action((existingToDo, updatedToDo) => {
-      update(existingToDo, updatedToDo);
+    .action((toDoNumber, newToDo) => {
+      update(toDoNumber, newToDo);
     });
 
   program.parse(process.argv);

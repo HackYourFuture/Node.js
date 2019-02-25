@@ -1,6 +1,6 @@
 help -- to get help about this app
 list -- to list the to-do list
-add -- to add new item to to-do list
-remove -- to remove an item from to-do list
+add -- to add new item to to-do , usage: add <newToDo>
+remove -- to remove an item from to-do list, usage: remove <toDoNumber>
 reset -- to reset all to-dos
-update -- to update  a to-do
+update -- to update  a to-do, usage: update <toDoNumber> <newToDo>

@@ -7,11 +7,9 @@ const functions = {
     fs.readFile('./to-do.txt', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
-      }
- else if (data === '') {
+      } else if (data === '') {
         console.log('There is nothing in to-do list!');
-      }
- else {
+      } else {
         let newData = data.split('\n');
         newData.pop();
         newData = newData.join('\n');
@@ -24,8 +22,7 @@ const functions = {
     fs.appendFile('./to-do.txt', item + '\n', err => {
       if (err) {
         console.log(err);
-      }
- else {
+      } else {
         console.log('New item added!');
       }
     });
@@ -35,12 +32,10 @@ const functions = {
     fs.readFile('./to-do.txt', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
-      }
- else {
+      } else {
         if (index > data.split('\n').length) {
           console.log(`Please write a number from 1 to ${data.split('\n').length}`);
-        }
- else {
+        } else {
           let newData = data.split('\n');
           newData.splice(index - 1, 1);
           newData = newData.join('\n');
@@ -48,8 +43,7 @@ const functions = {
           fs.writeFile('./to-do.txt', newData, err => {
             if (err) {
               console.log(err);
-            }
- else {
+            } else {
               console.log('Selected item removed!');
             }
           });
@@ -63,35 +57,30 @@ const functions = {
     fs.writeFile('./to-do.txt', resetData, err => {
       if (err) {
         console.log(err);
-      }
- else {
+      } else {
         console.log('The to-do list has been reset!');
       }
     });
   },
 
-  update: (index, newItem) => {
+  update: (toDoNo, newItem) => {
     fs.readFile('./to-do.txt', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
-      }
- else {
+      } else {
         if (data === '') {
           console.log(`There is no item to update. Please add items.`);
-        }
- else if (index > data.split('\n').length) {
+        } else if (toDoNo > data.split('\n').length) {
           console.log(`Please write a number from 1 to ${data.split('\n').length}`);
-        }
- else {
+        } else {
           let newData = data.split('\n');
-          newData.splice(index - 1, 1, newItem);
+          newData.splice(toDoNo - 1, 1, newItem);
           newData = newData.join('\n');
 
           fs.writeFile('./to-do.txt', newData, err => {
             if (err) {
               console.log(err);
-            }
- else {
+            } else {
               console.log('Selected item updated!');
             }
           });
@@ -104,8 +93,7 @@ const functions = {
     fs.readFile('./help.txt', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
-      }
- else {
+      } else {
         console.log(data);
       }
     });
