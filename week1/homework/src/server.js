@@ -8,29 +8,29 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
   const server = http.createServer((request, response) => {
-    let FinalResponse = function(status, state) {
+    const finalResponse = (status, state) => {
       response.writeHead(status, { 'Content-Type': 'application/json' });
       response.end(JSON.stringify(state));
     };
     const error = 'Not found';
     switch (request.url) {
       case '/':
-        FinalResponse(200, { state });
+        finalResponse(200, { state });
         break;
       case '/state':
-        FinalResponse(200, { state });
+        finalResponse(200, { state });
         break;
       case '/add':
         state++;
-        FinalResponse(200, { state });
+        finalResponse(200, { state });
         break;
       case '/subtract': state--;
-        FinalResponse(200, { state });
+        finalResponse(200, { state });
         break;
       case '/reset': state = 10;
-        FinalResponse(200, { state });
+        finalResponse(200, { state });
         break;
-      default: FinalResponse(404, {error});
+      default: finalResponse(404, {error});
     }
   });
 
