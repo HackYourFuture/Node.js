@@ -25,9 +25,14 @@ switch (command) {
     callCommand(addToDos.addToDos(...args), () => console.log('To-do is added to the file.'));
     break;
   case 'remove':
-    callCommand(removeToDo.removeToDo(...args), () =>
-      console.log('To-do is removed from the file.')
-    );
+    if (args < 1) {
+      console.log(`\nindex must be greater than 0!\n`);
+    } else {
+      callCommand(removeToDo.removeToDo(...args), () =>
+        console.log('To-do is removed from the file.')
+      );
+    }
+
     break;
   case 'reset':
     callCommand(removeAllToDos.removeAllToDos(), () =>
@@ -35,7 +40,11 @@ switch (command) {
     );
     break;
   case 'update':
-    callCommand(updateToDo.updateToDo(...args), () => console.log('To-do is updated.'));
+    if (args < 1) {
+      console.log(`\nindex must be greater than 0!\n`);
+    } else {
+      callCommand(updateToDo.updateToDo(...args), () => console.log('To-do is updated.'));
+    }
     break;
   case 'help':
   default:
