@@ -1,0 +1,14 @@
+{
+  "name": "cli-homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "cli": "node cli.js"
+  },
+  "author": "ufuk",
+  "license": "ISC",
+  "bin": {
+    "hyf": "cli.js"
+  }
+}
