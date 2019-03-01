@@ -3,7 +3,7 @@ const log = () => {
     
   Usage:  node -command- -file- -task-
 
-  Options:
+  Options: 
   list: to list all your task,
   add: to add a new task to your list,
   remove: to remove a specific task,

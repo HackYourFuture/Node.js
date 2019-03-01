@@ -9,7 +9,7 @@ const helper = require('./help')
 
 const command = process.argv[0];
 const file = process.argv[1]
-const task = process.argv[2]
+const task = process.argv[2] 
 
 switch(command){
   case "list":

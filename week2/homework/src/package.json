@@ -9,6 +9,6 @@
   "author": "ufuk",
   "license": "ISC",
   "bin": {
-    "hyf": "cli.js"
+    "hyf": "cli.js" 
   }
 }

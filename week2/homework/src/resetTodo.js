@@ -6,4 +6,4 @@ const reset = file =>{
   })
 }
 
-module.exports={reset}
+module.exports={reset} 

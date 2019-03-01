@@ -10,7 +10,7 @@ const remove = (file, task) =>{
     const index = arr.indexOf(task)
     const removed = arr.splice(index,1);
     fs.writeFile(file, arr.join("\n"),err => {
-      if(err) throw err
+      if(err) throw err 
     })
   })
     
