@@ -1,0 +1,8 @@
+{
+  "list": "Display the numbered list of all todos. $ node index.js list. ",
+  "add": "Add new Todo item to the Todos list regardless of quotes. All the words behind add are entered as 1 to-do item to the list. You can either use $ node index.js add 'new Todo' OR $ node index.js add new Todo. i.e: $ node index.js add 'do homework' OR $ node index.js add do homework. ",
+  "remove": "Remove a Todo at specified index. Index starts from 1. $ node index.js remove index. i.e: $ node index.js remove 3. ",
+  "update": "Update a Todo at specified index. Index starts from 1. All the words behind update are entered as 1 to-do item to the list. $ node index.js update index 'updated value' OR $ node index.js update index updated value. i.e: $ node index.js update 1 'do breakfast' OR $ node index.js update 1 do breakfast. ",
+  "reset": "Remove all Todos from the Todos list. node index.js reset",
+  "help": "Display help menu. node index.js help. "
+}
