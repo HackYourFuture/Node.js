@@ -2,7 +2,7 @@
 
 /** ---------------------------------------
      Base
- ---------------------------------------- */
+ ----------------------------------------- */
 const program = require('commander');
 const help = require('./intro.js');
 const add = require('./add.js');
