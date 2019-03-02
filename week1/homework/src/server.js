@@ -14,21 +14,6 @@ function createServer(port) {
       response.write(JSON.stringify({ state }));
       response.end();
     }
- else if (request.url === '/add') {
-      state += 1;
-      response.write(JSON.stringify({ state }));
-      response.end();
-    }
- else if (request.url === '/subtract') {
-      state -= 1;
-      response.write(JSON.stringify({ state }));
-      response.end();
-    }
- else if (request.url === '/reset') {
-      state = 10;
-      response.write(JSON.stringify({ state }));
-      response.end();
-    }
  else {
       response.statusCode = 404;
       const error = response.statusCode;
