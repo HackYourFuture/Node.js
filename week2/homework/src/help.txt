@@ -1,0 +1,5 @@
+type 'list': to view your to do list
+type 'add + task text': to insert new task
+type 'remove + task number': to delete a task
+type 'reset': to delete all tasks
+type 'update': to update a task text
