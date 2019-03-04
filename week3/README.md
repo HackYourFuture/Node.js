@@ -117,6 +117,6 @@ Check [README.md](homework/README.md) in `homework` subdirectory.
 
 ## Prepare for the next module
 
-Check out the [databases repository](https://github.com/HackYourFuture/databases)
+Check out the [databases repository](https://github.com/FooCoding/databases)
 and find out how you can prepare for the first database lecture, Jason and Rob
 have provided a nice Lynda playlist so we can have a flying kick off.

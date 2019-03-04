@@ -1,7 +1,7 @@
 > Please help us improve and share your feedback! If you find better tutorials
-or links, please share them by [opening a pull request](https://github.com/HackYourFuture/Node.js/pulls).
+or links, please share them by [opening a pull request](https://github.com/FooCoding/Node.js/pulls).
 
-# HackYourFuture - Node.js
+# Node.js
 
 This 3-week HYF Module is about Node.js. We can think of Node.js as "Javascript
 not running in a browser". This is what we mean by "backend", as in "backend
@@ -26,8 +26,8 @@ Read first weeks's [README.md](week1/README.md).
 
 Reading:
 
-Read Jim's summaries of [promises](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/promises.md)
-and [async & await](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/async_await.md)
+Read Jim's summaries of [promises](https://github.com/FooCoding/fundamentals/blob/master/fundamentals/promises.md)
+and [async & await](https://github.com/FooCoding/fundamentals/blob/master/fundamentals/async_await.md)
 from JavaScript module
 
 [Promises, async/await](http://javascript.info/async)
@@ -47,11 +47,11 @@ instructions depending on your operating system:
 We will build on knowledge from the following HYF (sub)modules. If we feel we
 have gaps we should review the curriculum ourselves or ask a teacher to help.
 
-- [JavaScript1](https://github.com/HackYourFuture/JavaScript1)
-- [JavaScript2](https://github.com/HackYourFuture/JavaScript2)
-- [JavaScript3](https://github.com/HackYourFuture/JavaScript3)
-- [Git](https://github.com/HackYourFuture/Git)
-- [Bash/Command Line Interface](https://github.com/HackYourFuture/CommandLine)
+- [JavaScript1](https://github.com/FooCoding/JavaScript1)
+- [JavaScript2](https://github.com/FooCoding/JavaScript2)
+- [JavaScript3](https://github.com/FooCoding/JavaScript3)
+- [Git](https://github.com/FooCoding/Git)
+- [Bash/Command Line Interface](https://github.com/FooCoding/CommandLine)
 
 ## What will we learn?
 
@@ -85,7 +85,7 @@ There are two reasons why we at HYF chose Node.js over others:
 Take a look at [this video](https://www.youtube.com/watch?v=-o0yomUVVpU)
 made by Daan, he explains how your homework needs to be handed in from now on.
 
-Also review the [Git workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md)
+Also review the [Git workflow material](https://github.com/FooCoding/Git/blob/master/Lecture-3.md)
 and use it as a reference.
 
 ## Rewatch previous lectures
@@ -94,5 +94,5 @@ and use it as a reference.
 - Lecture 2 (Joost): https://www.youtube.com/watch?v=pY7IDaLX-no
 - Lecture 3 (Joost): https://www.youtube.com/watch?v=oeWCqKJsHtU&t=99s
 
-*The HackYourFuture curriculum is subject to CC BY copyright. This means you can freely use our materials, but just make sure to give us credit for it :)*
-
+---
+Credit goes to [HackYourFuture](https://github.com/HackYourFuture) which this is based upon.
