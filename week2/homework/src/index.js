@@ -1,35 +1,35 @@
 'use strict';
 
 const commandList = require('./commandsList');
-const theMethods = require('./methods.js');
+const methods = require('./methods.js');
 
 if (!commandList[0]) {
-  theMethods.displayHelp();
+  methods.displayHelp();
 }
  else {
   switch (commandList[0]) {
     case 'add':
-      theMethods.add(commandList[1]);
+      methods.add(commandList[1]);
       break;
 
     case 'delete':
-      theMethods.delete(commandList[1]);
+      methods.delete(commandList[1]);
       break;
 
     case 'update':
-      theMethods.update(commandList[1], commandList[2]);
+      methods.update(commandList[1], commandList[2]);
       break;
 
     case 'list':
-      theMethods.readList();
+      methods.readList();
       break;
 
     case 'reset':
-      theMethods.reset();
+      methods.reset();
       break;
 
     case 'help':
-      theMethods.displayHelp();
+      methods.displayHelp();
       break;
 
     default:
