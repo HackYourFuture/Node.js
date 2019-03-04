@@ -14,7 +14,8 @@ const update = functions.update;
 
 if (!process.argv[2]) {
   help();
-  // console.log(process.argv[2]);
+} else if (process.argv[3].substring(0, 1) === '-') {
+  console.log('Please write a positive number!');
 } else {
   program
     .command('help')
@@ -38,10 +39,10 @@ if (!process.argv[2]) {
     });
 
   program
-    .command('remove <toDo>')
+    .command('remove <toDoNumber>')
     .description('to remove an existing to-do')
-    .action(toDo => {
-      remove(toDo);
+    .action(toDoNumber => {
+      remove(toDoNumber);
     });
 
   program
@@ -52,7 +53,7 @@ if (!process.argv[2]) {
     });
 
   program
-    .command('update <existingToDo> <updatedToDo>')
+    .command('update <existingToDoNumber> <updatedToDo>')
     .description('to list to-dos')
     .action((toDoNumber, newToDo) => {
       update(toDoNumber, newToDo);
