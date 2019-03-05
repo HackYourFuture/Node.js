@@ -10,21 +10,14 @@ const fs = require('fs');
     CRUD 'deletes all items'
  ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+const tasksText = fs.readFileSync('./toDos.json', 'utf8');
+let tasksList = JSON.parse(tasksText);
 const removeAll = () => {
-  fs.readFile('toDos.txt', 'utf8', (err, data) => {
-    if (err) {
-      throw 'Something went wrong.' + err;
-    } else {
-      data.splice(0, userInput.length);
-    }
+  tasksList = '[]';
+  fs.writeFile('./toDos.json', tasksList, err => {
+    if (err) throw err;
   });
-  fs.writeFile('toDo.txt', data, 'utf8', err => {
-    if (err) {
-      throw 'Something went wrong.' + err;
-    } else {
-      console.log('list has been deleted successfully.');
-    }
-  });
+  console.log('To-Dos list is reset');
 };
 
 /**~~~~~~~~~~~~~~~~~~~~~~~~~

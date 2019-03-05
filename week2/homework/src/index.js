@@ -2,30 +2,33 @@
 
 'use strict';
 
+const fs = require('fs');
 const helpMenu = require('./helpMenu');
 const list = require('./list');
 const add = require('./add');
 const removeLine = require('./removeLine');
 const removeAll = require('./removeAll');
 const update = require('./update');
-const args = require('./arguments');
 
-switch (args.arguments[0]) {
+const command = process.argv[2];
+const value = process.argv[3];
+
+switch (command) {
   case 'add':
-    add.add(args.arguments[1]);
+    add(value);
     break;
   case 'update':
-    update.update();
+    update(value);
   case 'list':
-    list.list();
+    list();
     break;
   case 'remove':
-    removeLine.remove(args.arguments[1]);
+    removeLine(value);
     break;
   case 'reset':
-    removeAll.reset();
+    removeAll();
     break;
   case 'help':
   default:
-    helpMenu.help();
+    helpMenu();
 }

@@ -10,20 +10,22 @@ const fs = require('fs');
     CRUD 'replace item'
  ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-const update = (index, text) => {
-  fs.readFile('toDos.txt', 'utf8', (err, data) => {
-    if (err) {
-      throw 'Something went wrong.' + err;
-    } else {
-      data = data.splice(index - 1, 1, `\n${text.join(' ')}`);
-      fs.writeFile('toDo.txt', text, 'utf8', err => {
-        if (err) {
-          throw 'Something went wrong.' + err;
-        } else {
-          console.log('list has been updated successfully.');
-        }
-      });
-    }
+const tasksText = fs.readFileSync('./toDos.json', 'utf8');
+const tasksList = JSON.parse(tasksText);
+const update = index => {
+  if (index > tasksList.length) {
+    console.log('The index you entered in not assigned to a task yet');
+  } else if (process.argv.length < 5) {
+    console.log(' Wrong command type help to check the commands available');
+  }
+  let task = '';
+  for (let i = 4; i <= process.argv.length - 1; i++) {
+    task += process.argv[i] + ' ';
+  }
+  tasksList.splice(index - 1, 1, task);
+  console.log(" 'Chosen task is updated successfully' ");
+  fs.writeFile('./toDos.json', JSON.stringify(tasksList, null, 2), err => {
+    if (err) throw err;
   });
 };
 
