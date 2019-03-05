@@ -10,12 +10,10 @@ const fs = require('fs');
  ---------------------------------------- */
 function fillEmptyDatabase() {
   const content = fs.readFileSync('To-Do Database.json', 'utf8');
-  switch (content) {
-    case '':
-      fs.appendFile('To-Do Database.json', JSON.stringify([]), err => {
-        if (err) throw err;
-      });
-      break;
+  if (!content) {
+    fs.appendFile('To-Do Database.json', JSON.stringify([]), err => {
+      if (err) throw err;
+    });
   }
 }
 
@@ -31,7 +29,7 @@ const add = {
         console.log('New To-Do Created !');
       });
     });
-  }
+  },
 };
 
 /** ---------------------------------------

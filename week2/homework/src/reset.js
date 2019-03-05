@@ -11,17 +11,15 @@ const fs = require('fs');
 const reset = {
   execute: () => {
     const content = fs.readFileSync('To-Do Database.json', 'utf8');
-    switch (content) {
-      case '':
-        console.log('There is nothing to remove !');
-        break;
-      default:
-        fs.writeFile('To-Do Database.json', '', err => {
-          if (err) throw err;
-          console.log('To-Dos Removed !');
-        });
+    if (!content) {
+      console.log('There is nothing to remove !');
+    } else {
+      fs.writeFile('To-Do Database.json', '', err => {
+        if (err) throw err;
+        console.log('To-Dos Removed !');
+      });
     }
-  }
+  },
 };
 
 /** ---------------------------------------

@@ -14,6 +14,7 @@ const reset = require('./reset.js');
 /** ---------------------------------------
      Commands
  ---------------------------------------- */
+
 program.command('help').action(() => {
   help.execute();
 });
@@ -39,3 +40,7 @@ program.command('reset').action(() => {
 });
 
 program.parse(process.argv);
+
+if (!program.args.length) {
+  help.execute();
+}
