@@ -1,11 +1,17 @@
 {
-  "name": "hyf-node-week-3-homework",
-  "version": "1.0.0",
-  "description": "HackYourFuture Node.js Week 3 - Homework",
+  "name": "hyf-node-week-3-todo",
+  "version": "1.0.1",
+  "description": "HackYourFuture Node.js Week 3 - To-Do App",
   "repository": "https://github.com/HackYourFuture/nodejs.git",
-  "main": "src/index.js",
-  "author": "George Sapkin",
+  "main": "index.js",
+  "author": "Ammar Vehbi",
   "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lowdb": "^1.0.0",
+    "nanoid": "^2.0.1"
+  },
   "devDependencies": {
     "eslint": "^4.2.0",
     "eslint-config-standard": "^11.0.0",
