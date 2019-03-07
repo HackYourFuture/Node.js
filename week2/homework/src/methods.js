@@ -23,25 +23,36 @@ const method = {
 
   remove: row => {
     const removeLines = (data, lines = []) => {
-      return data
-        .split('\n')
-        .filter((val, idx) => lines.indexOf(idx) === -1)
-        .join('\n');
-    };
+      if (lines) {
+        return data
+          .split('\n')
+          .filter((val, idx) => lines.indexOf(idx) === -1)
+          .join('\n');
+      }
 
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) throw err;
+      fs.readFile(path, 'utf8', (err, data) => {
+        if (err) throw err;
 
-      fs.writeFile(path, removeLines(data, [row - 1]), 'utf8', () => {
-        console.log('Deleted successfully');
+        fs.writeFile(path, removeLines(data, [row - 1]), 'utf8', () => {
+          console.log('Deleted successfully');
+        });
       });
-    });
+    };
   },
 
   reset: () => {
     fs.writeFile(path, '', () => {
       console.log('Reset successfully');
     });
+  },
+
+  help: () => {
+    return console.log(`You are now using ToDo Methods to manage your data
+    1- You can type [add + 'your data'] to add new todo 
+    2- You can type [list] to see all todos
+    3- type [remove + the line of the todo] to delete the todo
+    4- type [reset] to clear all your todos
+  `);
   },
 };
 

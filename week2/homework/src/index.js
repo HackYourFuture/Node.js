@@ -22,5 +22,5 @@ switch (command) {
     method.reset();
     break;
   default:
-    console.log(method);
+    method.help();
 }
