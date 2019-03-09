@@ -13,6 +13,6 @@ function createTodo(todo, request, response) {
       response.status(500);
       response.json({ error: message });
     });
-};
+}
 
 module.exports = createTodo;
