@@ -17,7 +17,7 @@ switch (args.arguments[0]) {
   case 'update':
     update.update();
   case 'list':
-    list.list();
+    list();
     break;
   case 'remove':
     removeLine.remove(args.arguments[1]);
@@ -27,5 +27,5 @@ switch (args.arguments[0]) {
     break;
   case 'help':
   default:
-    helpMenu.help();
+    helpMenu();
 }
