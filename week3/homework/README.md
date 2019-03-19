@@ -9,19 +9,19 @@ Add four more actions:
 
 ### `readTodo` (`GET /todos/:id`)
 
-  Get a single to-do with ID `:id`
+Get a single to-do with ID `:id`
 
 ### `clearTodos` (`DELETE /todos`)
 
-  Clears the list of to-dos
+Clears the list of to-dos
 
 ### `markAsDone` (`POST /todos/:id/done`)
 
-  Sets the `done` flag of a single to-do to `true`
+Sets the `done` flag of a single to-do to `true`
 
 ### `markAsNotDone` (`DELETE /todos/:id/done`)
 
-  Sets the `done` flag of a single to-do to `false`
+Sets the `done` flag of a single to-do to `false`
 
 ## Requirements
 
@@ -34,3 +34,9 @@ Add four more actions:
 - Follow the REST design principles: use the proper method, response status
   codes, and consistent URL paths
 - Test your API using Postman
+
+## Extra materials to practice
+
+Have time left over? Try out the following resources to learn more about using Node.js and API calls:
+
+- Project: [Ebook Sales App](https://www.youtube.com/watch?v=QT3_zT97_1g)

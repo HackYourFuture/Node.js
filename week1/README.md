@@ -2,136 +2,62 @@
 
 ## Agenda
 
-1.  Recap last week
-2.  Previous homework
-3.  Questions & answers (Q&A)
-4.  What is Node.js?
-5.  Finding documentation
-6.  Read-eval-print loop (REPL)
-7.  Setting up a Node.js project using `npm init` and `package.json`
-8.  Installing dependencies using `npm install`
-    1. Local and global mode
-9.  Importing modules using `require`
-    1. Built-in, external modules and local files
-10. Building an HTTP server using built-in `http` module
-    1. HTTP request methods
-    2. HTTP response status codes
-    3. Routing
-    4. Example
-11. Homework
+1. What is backend?
+2. What is Node.js?
+3. Setting up Node.js
+4. Getting started with our first Node.js project
 
-## What is Node.js?
+## 1. What is backend?
 
-From Node.js' [website](https://nodejs.org/en/):
+In software development, we separate the user experience and utility (the `front end`) from the code that actually makes it work (the `back end`). The real world contains many examples of this division: take for example an [ATM](../images/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
 
-> Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-> Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
-> and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of
-> open source libraries in the world.
+In web development the term backend can be boiled down to 3 components:
 
-Videos:
+- A `server`: a computer that is connected to other computers, which runs an application (see below) that allows for sharing and managing services (like a calculator or word processor) and resources (like images, text files).
+- A `database`: software that manages and saves sensitive data for later use.
+- An `application`: software that communicates between the server, database and frontend.
 
-[Introduction to Node.js](https://www.youtube.com/watch?v=w-7RQ46RgxU&index=1&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+[Basics of backend development](https://www.upwork.com/hiring/development/a-beginners-guide-to-back-end-development/)
 
-[The V8 Engine](https://www.youtube.com/watch?v=86tgU7UaJmU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=3).
+When people refer to backend programming, they usually refer to **writing the application** part of the backend: the software that interacts with a server and database, and moves data from one computer to the next. The application consists of code that will be read by a database and/or server, so that they know what to do with the incoming input.
 
-Reading:
+## 2. What is Node.js?
 
-[What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
-_estimated time: 10 minutes_
+Node.js is software that allows you to use JavaScript to write the `application` part of the backend. The application is written in different _.js_ files, and are then read and executed using the _node_ command in the Command Line. For example, `node script.js`.
 
-## Getting started with Node.js and npm
+Read the following article and code along: [Introduction into Node.js](https://codeburst.io/the-only-nodejs-introduction-youll-ever-need-d969a47ef219)
 
-Reading:
+**Key insight: Software builds on other software**. Node.js is powerful because it allows us to use software others have written to help build our own unique applications. In Node.js these are called `modules`/`packages`/`dependencies` (can be used interchangeably). An easy way to get access to these is by using the Node Package Manager, also known as `npm`.
 
-[A Beginner’s Guide to npm — the Node Package Manager](https://www.sitepoint.com/beginners-guide-node-package-manager/)
+Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
-[NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
-_estimated time: 4-6 hours_
+It is also powerful because we can use the language we already know, JavaScript, to write backend applications.
 
-## Finding documentation
+## 3. Setting up Node.js
 
-[Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web)
+In order to make use of Node.js we have to install the software to our computer. We do this through the following:
 
-[Node.js Documentation](https://nodejs.org/docs/latest-v8.x/api/documentation.html)
+1. Go to the [Node.js website](https://nodejs.org/en/)
+2. Download and install the `LTS` version, which should be version `10.15.3` (make sure it's the right one for your operating system)
+3. Open up your Command Line Interface and verify that it's installed: run the commands `node -v` and `npm -v`
 
-## Read-eval-print loop (REPL)
+For a more in-depth visualization of this (and to get some practice in immediately), watch the following [video](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
 
-Documentation:
+## 4. Structure of these 3 weeks
 
-[REPL](https://nodejs.org/docs/latest-v8.x/api/repl.html)
+In the following three weeks you'll be learning about `backend`, using Node.js as a means to that end. Every week you'll be reading about various backend concepts and then have homework that will help you practice what you've learned. This will be done in 2 parts:
 
-## Setting up a Node.js project using `npm init` and `package.json`
+1. You'll be doing exercises to practice each concept
+2. You'll build a small full-stack application
 
-Videos:
+Now that we've got the theory out of the way, let's get practical. Let's start building our very own Node.js-based full-stack application. We will call it **HackYourTemperature**, an app that allows one to type in a city and get back the real-time temperature. Here's how it will [look](https://quiet-sea-26203.herokuapp.com/).
 
-[Node Package Manager](https://www.youtube.com/watch?v=kQ1j0rEI7EI&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=20)
-
-[The package.json File](https://www.youtube.com/watch?v=_eRwjuIDJ2Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=21)
-
-Documentation:
-
-[npm init](https://docs.npmjs.com/cli/init)
-
-[package.json](https://docs.npmjs.com/files/package.json)
-
-## Installing dependencies using `npm install`
-
-[npm install](https://docs.npmjs.com/cli/install)
-
-## Importing modules using `require`
-
-Videos:
-
-[Modules and require()](https://www.youtube.com/watch?v=xHLd36QoS4k&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=6)
-
-[Module Patterns](https://www.youtube.com/watch?v=9UaZtgB5tQI&index=7&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
-
-[Modules](https://www.youtube.com/watch?v=9JhvjhZLsEw&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=8)
-
-[More on Modules](https://www.youtube.com/watch?v=aNN1IKoEIdM&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=9)
-
-[require Function](https://www.youtube.com/watch?v=e1Ln1FrLvh8&index=3&list=PLYxzS__5yYQmHbpKMARP04F344zYRX91I)
-
-Documentation:
-
-[Node.js modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
-
-## Building an HTTP server using built-in `http` module
-
-Videos:
-
-[Clients & Servers](https://www.youtube.com/watch?v=qSAze9b0wrY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=11)
-
-[Creating a Server](https://www.youtube.com/watch?v=lm86czWdrk0&index=12&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
-
-[Creating a Basic Server](https://www.youtube.com/watch?v=pYOltVz7kL0&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=13)
-
-[Simple Web File Server](https://www.youtube.com/watch?v=_D2w0voFlEk&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=14)
-
-[Basic Routing](https://www.youtube.com/watch?v=_zvWeGwVkCY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=19)
-
-Documentation:
-
-[`http` module documentation](https://nodejs.org/docs/latest-v8.x/api/http.html)
-
-[HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
-
-[HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-
-## Control flow and events
-
-An important term when making applications is _control flow_. You already know
-all about it. Read through this page and answer this question: how do we control
-_flow_ in JavaScript?
-
-[Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
+It might not look like much, but a lot is happening on the backend. Let's get [started](homework/README.md)!
 
 ## Homework
 
-Check [README.md](homework/README.md) in `homework` subdirectory and use project
-in [lecture](lecture) for reference.
+Check [README.md](homework/README.md) in `homework` subdirectory and look at the class notes in [lecture](lecture)
 
-## Prepare for the next lecture
+## Prepare for next week
 
 Read the [README.md](../week2/README.md) for week 2.

@@ -29,17 +29,17 @@ Videos:
 
 Documentation:
 
-[Main documentation](https://nodejs.org/docs/latest-v8.x/api/fs.html)
+[Main documentation](https://nodejs.org/docs/latest-v10.x/api/fs.html)
 
-[fs.readFile()](https://nodejs.org/docs/latest-v8.x/api/fs.html#fs_fs_readfile_path_options_callback)
+[fs.readFile()](https://nodejs.org/docs/latest-v10.x/api/fs.html#fs_fs_readfile_path_options_callback)
 
-[fs.appendFile()](https://nodejs.org/docs/latest-v8.x/api/fs.html#fs_fs_appendfile_file_data_options_callback)
+[fs.appendFile()](https://nodejs.org/docs/latest-v10.x/api/fs.html#fs_fs_appendfile_file_data_options_callback)
 
 ### Building a command line interface (CLI)
 
-[Node.js Process Documentation](https://nodejs.org/docs/latest-v8.x/api/process.html)
+[Node.js Process Documentation](https://nodejs.org/docs/latest-v10.x/api/process.html)
 
-[process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv)
+[process.argv](https://nodejs.org/docs/latest-v10.x/api/process.html#process_process_argv)
 
 ### CRUD
 
