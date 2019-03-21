@@ -1,16 +1,16 @@
 const fs = require('fs');
 const util = require('util');
 
-const readFile = util.promisify(fs.readFile);
+var readFile = util.promisify(fs.readFile);
 
-const remove = (file, index) => {
+const update = (file, index, newTask) => {
   readFile(file, 'utf-8').then(data => {
-    const arr = data.split('\n');
-    const removed = arr.splice(index, 1);
+    let arr = data.split('\n');
+    arr[index] = newTask;
     fs.writeFile(file, arr.join('\n'), err => {
       if (err) throw err;
     });
   });
 };
 
-module.exports = { remove };
+module.exports = { update };
