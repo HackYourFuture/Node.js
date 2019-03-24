@@ -1,18 +1,6 @@
-# HackYourFuture Node.js Week 3
+# HackYourFuture Node.js Week 3 (Readings)
 
 ## Agenda
-
-1. Recap last Week
-2. Previous homework
-3. Questions & answers (Q&A)
-4. Testing with Postman
-5. Express.js vs native `http` library
-    1. HTTP request method refresher
-    2. HTTP response status code refresher
-    3. Routing
-    4. Example
-6. Building a REST API for To-Dos
-7. Homework
 
 ## Last week's summary
 
@@ -71,19 +59,19 @@ actions:
 
 #### `createTodo` (`POST /todos`)
 
-  Creates a new to-do
+Creates a new to-do
 
 #### `readTodos` (`GET /todos`)
 
-  Reads and lists all to-dos
+Reads and lists all to-dos
 
 #### `updateTodo` (`PUT /todos/:id`)
 
-  Updates the description of a to-do with ID `:id`
+Updates the description of a to-do with ID `:id`
 
 #### `deleteTodo` (`DELETE /todos/:id`)
 
-  Deletes a to-do with ID `:id`
+Deletes a to-do with ID `:id`
 
 ### Request Body Format
 
