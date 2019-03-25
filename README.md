@@ -22,10 +22,10 @@ In this module you will get familiar with the world of backend development. By t
 - What is meant by the term `backend`
 - The `client-server` model
 - What HTTP and REST mean
-- How to `create your own servers` with Node.js, using `Express`
+- How to `create your own web servers` with Node.js, using `Express.js`
 - What a `templating engine` is.
 - How to use the `Node Package Manager (NPM)`.
-- How to use `Express` to make a RESTful API
+- How to use Express.js to make a `RESTful API`
 - How to build a small `full-stack application`
 
 ## Node.js Setup
@@ -43,7 +43,7 @@ Verify the installation by running `node -v` (-v is short for version) from the 
 Every week you'll be reading about various backend concepts and then have homework that will help you practice what you've learned. Each week's homework consists of 2 parts:
 
 1. Doing exercises to practice with the concepts
-2. Building on a mini full-stack application, called **HackYourTemperature**
+2. Building a mini full-stack application, called **HackYourTemperature**
 
 Here's how it will [look](https://quiet-sea-26203.herokuapp.com/). It might not look like much, but a lot is happening on the backend.
 

@@ -6,12 +6,12 @@
 2. What is Node.js?
 3. The client-server model
 4. Hypertext Transfer Protocol (HTTP)
-5. Representational State Transfer (REST)
+5. Express.js
 6. (Optional) How does the internet work?
 
 ## 1. What is backend?
 
-In software development, we separate the user experience and utility (the `front end`) from the code that actually makes it work (the `back end`). The real world contains many examples of this division: take for example an [ATM](../images/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
+In software development, we separate the user experience and utility (the `frontend`) from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../images/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
 
 In web development the term backend can be boiled down to 3 components:
 
@@ -19,12 +19,19 @@ In web development the term backend can be boiled down to 3 components:
 - A `database`: software that manages and saves sensitive data for later use.
 - An `application`: software that communicates between the server, database and frontend. It contains code that allows it to interact with and manipulate the server, database and other type of software services.
 
+For more information, read:
 [Basics of backend development](https://www.upwork.com/hiring/development/a-beginners-guide-to-back-end-development/)
+[Getting started with backend development](https://codeburst.io/getting-started-with-backend-development-bfd8299e22e8)
 
 When people refer to backend programming, they usually refer to **writing the application** part of the backend: the software that interacts with a server and database, and moves data from one computer to the next. The application consists of code that will be read by a database and/or server, so that they know what to do with the incoming input.
 
 Why would we need a backend? There are multiple reasons:
 
+- **Security**. We don't want any random user to directly access our sensitive data, without verifying who they are. For example, if you have an online back account then you need to login to verify it's you. The whole process of login and verification is code written in a place that can't be reached so easily.
+- **Performance**. The speed of our user interfaces is greatly dependent upon the server that provides it. The backend contains code that makes sure it optimally makes use of the server's resources (hardware, memory, etc.) to provide the user with the best experience.
+- **Software interactions**. A web application usually makes use of other people's software, web services. The code that communicates with these services and implements it into the frontend is also contained within the backend.
+
+For more information, read:
 [Why do we need the backend?](https://www.quora.com/Why-do-we-need-a-back-end-in-web-development-Cant-the-front-end-directly-send-requests-to-the-database)
 
 ## 2. What is Node.js?
@@ -54,7 +61,7 @@ Look into the following resources to increase your understanding:
 
 ## 4. HTTP
 
-When you've typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for Hypertext Transfer Protocol and is the basic way of sending requests and receiving responses.
+If you've every typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the basic way of sending requests and receiving responses.
 
 Like verbal communication, there's the _content_ (WHAT you are saying) and the _style_ (HOW you are saying it). HTTP refers to the \***\*style\*\*** of online communication. How you communicate over the web is done through specific HTTP methods (also called HTTP verbs), that describe what type of request is being made. The most important ones are:
 
@@ -70,7 +77,21 @@ Look into the following resources to increase your understanding:
 - [The Http and the Web: Http explained](https://www.youtube.com/watch?v=eesqK59rhGA)
 - [Basics concepts of web applications](https://www.youtube.com/watch?v=RsQ1tFLwldY)
 
-## 5. Express
+## 5. Express.js
+
+In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
+
+Practically speaking, what can we do with a web server like `http` or `Express`? All the magic that makes the frontend work:
+
+- Get and store data that comes from the frontend
+- Make API calls to other services
+- Secure data that comes from both the frontend and the database
+- Any other type of calculation or business logic
+
+For more research, use the following resources:
+
+- [Express JS Crash Course](https://www.youtube.com/watch?v=L72fhGm1tfE)
+- [Going out to eat and understanding the basics of Express.js](https://medium.freecodecamp.org/going-out-to-eat-and-understanding-the-basics-of-express-js-f034a029fb66)
 
 ## 6. (Optional) How does the internet work?
 

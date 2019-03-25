@@ -1,4 +1,4 @@
-# Node.js Week 1 (Lesson Plan)
+# Node.js Week 3 (Lesson Plan)
 
 ## Agenda
 
