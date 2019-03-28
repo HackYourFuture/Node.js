@@ -2,6 +2,9 @@
 
 ## Agenda
 
+1. Client-server model
+2. Web servers
+
 ## Core concepts
 
 ## Build with students

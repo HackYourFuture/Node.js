@@ -1,6 +1,10 @@
 # Node.js Week 2 (Homework)
 
-### Assignment
+## Learning goals
+
+## 1. Make a basic CRUD application
+
+## 2. [PROJECT] Extending HackYourTemperature
 
 ## Extra materials to practice
 

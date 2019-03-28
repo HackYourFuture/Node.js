@@ -5,9 +5,8 @@
 1. What is backend?
 2. What is Node.js?
 3. The client-server model
-4. Hypertext Transfer Protocol (HTTP)
-5. Express.js
-6. (Optional) How does the internet work?
+4. Express.js
+5. (Optional) How does the internet work?
 
 ## 1. What is backend?
 
@@ -59,25 +58,7 @@ Look into the following resources to increase your understanding:
 - [The Client Server Model](https://www.youtube.com/watch?v=L5BlpPU_muY)
 - [Client-Server Model & Structure of a Web Application](https://medium.freecodecamp.org/how-the-web-works-part-ii-client-server-model-the-structure-of-a-web-application-735b4b6d76e3)
 
-## 4. HTTP
-
-If you've every typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the basic way of sending requests and receiving responses.
-
-Like verbal communication, there's the _content_ (WHAT you are saying) and the _style_ (HOW you are saying it). HTTP refers to the \***\*style\*\*** of online communication. How you communicate over the web is done through specific HTTP methods (also called HTTP verbs), that describe what type of request is being made. The most important ones are:
-
-- **GET**. This type of request is only about getting data from the server. Whenever a user enters a new webpage, this usually means a GET request gets send to the server to get the required files to display that webpage. All other data in the website stays unaffected.
-- **POST**. This type of request allows the client to submit new data to the server. Generally speaking, its purpose is to store this new data into a database, or manipulate it and later return it back to the client.
-- **PUT**. This type of request allows the client to update existing data, which is already present in the client. The data is edited and then send back to the server, similar to the POST request but more semantic.
-- **DELETE**. This type of request tells the server to delete a particular set of data or resources.
-
-Why do you need to know all of this? HTTP is the foundation of how client-server interactions work on the web. It's important to have a universal policy that everyone holds on to, in order to have fast and effective online communication.
-
-Look into the following resources to increase your understanding:
-
-- [The Http and the Web: Http explained](https://www.youtube.com/watch?v=eesqK59rhGA)
-- [Basics concepts of web applications](https://www.youtube.com/watch?v=RsQ1tFLwldY)
-
-## 5. Express.js
+## 4. Express.js
 
 In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
 
@@ -93,7 +74,7 @@ For more research, use the following resources:
 - [Express JS Crash Course](https://www.youtube.com/watch?v=L72fhGm1tfE)
 - [Going out to eat and understanding the basics of Express.js](https://medium.freecodecamp.org/going-out-to-eat-and-understanding-the-basics-of-express-js-f034a029fb66)
 
-## 6. (Optional) How does the internet work?
+## 5. (Optional) How does the internet work?
 
 This part is optional, but still recommended to understand the wider context of what we as web developers deal with:
 

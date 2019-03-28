@@ -1,6 +1,10 @@
 # Node.js Week 3 (Homework)
 
-### Assignment
+## Learning goals
+
+## 1.
+
+## 2. Finished HackYourTemperature
 
 ## Extra materials to practice
 
