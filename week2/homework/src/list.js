@@ -1,30 +1,19 @@
-'use strict';
-
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    File System
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
 const fs = require('fs');
-
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    CRUD 'shows list'
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const tasksText = fs.readFileSync('./toDos.json', 'utf8');
-const tasksList = JSON.parse(tasksText);
+const util = require('util');
+const readFile = util.promisify(fs.readFile);
 
 const list = () => {
-  if (tasksList.length == 0) {
-    console.log('to-Dos list is yet empty. Add tasks first');
-  } else {
-    tasksList.forEach(task => {
-      console.log(task);
-    });
-  }
+  readFile('todos.json', 'utf-8').then(data => {
+    const inputData = JSON.parse(data);
+    if (inputData.length === 0) {
+      console.log('To do list is yet empty. Try to insert tasks first');
+    }
+ else {
+      inputData.forEach(element => {
+        console.log(element);
+      });
+    }
+  });
 };
-
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    Module Exports
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 module.exports = list;

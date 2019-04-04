@@ -1,35 +1,21 @@
-'use strict';
-
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    File System
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
 const fs = require('fs');
+const util = require('util');
+const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    CRUD 'adds item to list'
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const tasksText = fs.readFileSync('./toDos.json', 'utf8');
-const tasksList = JSON.parse(tasksText);
-const add = () => {
-  if (process.argv.length < 4) {
-    console.log('Wrong command type help to check the commands available');
-  } else {
-    let newTask = '';
-    for (let i = 3; i <= process.argv.length - 1; i++) {
-      newTask += process.argv[i] + ' ';
+const add = input => {
+  readFile('todos.json', 'utf-8').then(data => {
+    const inputData = JSON.parse(data);
+    if (inputData.includes(input)) {
+      console.log('Task already exists. Enter a new task');
     }
-    tasksList.push(newTask);
-    console.log('Task has been added');
-    fs.writeFile('./toDos.json', JSON.stringify(tasksList, null, 2), err => {
-      if (err) throw err;
-    });
-  }
-};
+ else {
+      inputData.push(input);
 
-/**~~~~~~~~~~~~~~~~~~~~~~~~~
-    Module Exports
- ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+      writeFile('todos.json', JSON.stringify(inputData), 'utf-8');
+      console.log('Task has been added successfully.');
+    }
+  });
+};
 
 module.exports = add;
