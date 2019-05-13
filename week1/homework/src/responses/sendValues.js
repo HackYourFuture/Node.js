@@ -1,7 +1,7 @@
 'use strict';
 
 function handleResponse(response, status, value) {
-  response.writeHeader(status, { 'Content-Type': 'application/json' });
+  response.writeHead(status, { 'Content-Type': 'application/json' });
   if (status === 200) {
     response.write(JSON.stringify({ state: value }));
   } else {
