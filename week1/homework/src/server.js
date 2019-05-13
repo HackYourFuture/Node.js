@@ -1,37 +1,36 @@
 'use strict';
 
 const http = require('http');
-
+const run = require('./responses/sendValues');
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
  */
-function createServer(port) {
+function createServer() {
   let state = 10;
 
-  const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
-    if (request.url === '/state') {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ key: state }));
-    } else if (request.url === '/add') {
-      state = state + 1;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ key: state }));
-    } else if (request.url === '/subtract') {
-      state = state - 1;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ key: state }));
-    } else if (request.url === '/reset') {
-      state = 10;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ key: state }));
-    } else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ error: 'Error' }));
+  const allRequestesAndResposes = function(request, response) {
+    switch (request.url) {
+      case '/state':
+        run.handleResponse(response, 200, state);
+        break;
+      case '/add':
+        state = state + 1;
+        run.handleResponse(response, 200, state);
+        break;
+      case '/subtract':
+        state = state - 1;
+        run.handleResponse(response, 200, state);
+        break;
+      case '/reset':
+        state = 10;
+        run.handleResponse(response, 200, state);
+        break;
+      default:
+        run.handleResponse(response, 404, 'Not found');
     }
-
     response.end();
-  });
+  };
+  const server = http.createServer(allRequestesAndResposes);
 
   return server;
 }
