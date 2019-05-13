@@ -9,6 +9,4 @@ function handleResponse(response, status, value) {
   }
 }
 
-module.exports = {
-  handleResponse,
-};
+module.exports = handleResponse;
