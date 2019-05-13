@@ -5,8 +5,8 @@ const path = require('path');
 
 const sendIndexPage = require('./responses/sendIndexPage');
 const sendOtherPage = require('./responses/sendOtherPage');
-const sendStyles    = require('./responses/sendStyles');
-const sendText      = require('./responses/sendText');
+const sendStyles = require('./responses/sendStyles');
+const sendText = require('./responses/sendText');
 
 const PORT = 3000;
 
@@ -28,8 +28,7 @@ function handleRequest(request, response) {
       if (extension === '') {
         response.statusCode = 302;
         response.setHeader('Location', '/');
-      }
-      else {
+      } else {
         response.statusCode = 404;
         sendText(response, 'File not found');
       }
