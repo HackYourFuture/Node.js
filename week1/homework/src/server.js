@@ -1,7 +1,7 @@
 'use strict';
 
 const http = require('http');
-
+const responseHandler = require('./responseHandler');
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
  */
@@ -11,27 +11,22 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     switch (request.url) {
       case '/state':
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ state: state }));
+        responseHandler.handleResponse(response, 200, state);
         break;
       case '/add':
-        state += 1;
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ state: state }));
+        state++;
+        responseHandler.handleResponse(response, 200, state);
         break;
       case '/subtract':
-        state -= 1;
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ state: state }));
+        state--;
+        responseHandler.handleResponse(response, 200, state);
         break;
       case '/reset':
         state = 10;
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ state: state }));
+        responseHandler.handleResponse(response, 200, state);
         break;
       default:
-        response.writeHead(404, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ error: 'Not found' }));
+        responseHandler.handleResponse(response, 404, 'Not found');
     }
     response.end();
   });

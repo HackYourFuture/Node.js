@@ -1,6 +1,6 @@
 {
   "env": {
-    "es6":  true,
+    "es6": true,
     "node": true
   },
   "extends": "standard",
@@ -21,13 +21,13 @@
     "generator-star-spacing": [
       "warn",
       {
-        "after":  true,
+        "after": true,
         "before": false
       }
     ],
     "key-spacing": [
       "off"
-      ],
+    ],
     "max-len": [
       "warn",
       80
