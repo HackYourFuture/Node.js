@@ -12,12 +12,10 @@ module.exports = {
         writeHeadAndStringify(200, state);
         break;
       case '/add':
-        state = ++state;
-        writeHeadAndStringify(200, state);
+        writeHeadAndStringify(200, ++state);
         break;
       case '/subtract':
-        state = --state;
-        writeHeadAndStringify(200, state);
+        writeHeadAndStringify(200, --state);
         break;
       case '/reset':
         state = 10;
