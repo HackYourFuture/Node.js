@@ -1,29 +1,29 @@
+/* eslint-disable */
 module.exports = {
   myStateFunction: function(request, response, state) {
+    function writeHeadAndStringify(code, value) {
+      response.writeHead(code, { 'Content-Type': 'application/json' });
+      if (typeof value === 'number') {
+        response.write(JSON.stringify({ state: value }));
+      } else {
+        response.write(JSON.stringify({ error: value }));
+      }
+    }
     if (request.url === `/state`) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state }));
-    }
- else if (request.url === '/add') {
+      writeHeadAndStringify(200, state);
+    } else if (request.url === '/add') {
       state = ++state;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
-    }
- else if (request.url === '/subtract') {
+      writeHeadAndStringify(200, state);
+    } else if (request.url === '/subtract') {
       state = --state;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
-    }
- else if (request.url === '/reset') {
+      writeHeadAndStringify(200, state);
+    } else if (request.url === '/reset') {
       state = 10;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state }));
-    }
- else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
+      writeHeadAndStringify(200, state);
+    } else {
       const error = 'Not found';
-      response.write(JSON.stringify({ error }));
+      writeHeadAndStringify(404, error);
     }
     return state;
-  }
+  },
 };
