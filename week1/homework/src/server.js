@@ -42,7 +42,6 @@ function createServer(port) {
       default:
         sendErrorResponse(response, { error: 'Not found' });
     }
-    response.end();
   });
 
   return server;
