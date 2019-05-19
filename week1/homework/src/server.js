@@ -16,6 +16,7 @@ function createServer(port) {
       case '/state':
         response.write(JSON.stringify({ state }));
         break;
+
       case '/add':
         state++;
         response.write(JSON.stringify({ state }));
@@ -43,6 +44,4 @@ function createServer(port) {
   return server;
 }
 
-module.exports = {
-  createServer,
-};
+module.exports = createServer;
