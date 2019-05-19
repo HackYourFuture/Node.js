@@ -2,37 +2,45 @@
 
 const http = require('http');
 
-/* `createServer` MUST return an instance of `http.Server` otherwise the tests
- * will fail.
- */
-
 function createServer(port) {
   let state = 10;
+  const outputJson = {
+    'Content-Type': 'application/json'
+  };
 
   const server = http.createServer((request, response) => {
-    if (request.url.startsWith('/state')) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
+    if (request.url === '/state') {
+      response.writeHead(200, outputJson);
+      response.write(JSON.stringify({
+        state
+      }));
     }
  else if (request.url === '/add') {
       state = state + 1;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
+      response.writeHead(200, outputJson);
+      response.write(JSON.stringify({
+        state
+      }));
     }
  else if (request.url === '/subtract') {
       state = state - 1;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
+      response.writeHead(200, outputJson);
+      response.write(JSON.stringify({
+        state
+      }));
     }
  else if (request.url === '/reset') {
       state = 10;
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.write(JSON.stringify({ state: state }));
+      response.writeHead(200, outputJson);
+      response.write(JSON.stringify({
+        state
+      }));
     }
  else {
-      response.writeHead(404, { 'Content-Type': 'application/json' });
-      // obj = { error: 'Not found' };
-      response.write(JSON.stringify({ error: 'Not found' }));
+      response.writeHead(404, outputJson);
+      response.write(JSON.stringify({
+        error: 'Not found'
+      }));
     }
 
     response.end();
