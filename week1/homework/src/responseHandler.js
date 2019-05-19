@@ -1,7 +1,7 @@
 /**
  * handle the response of the server
- * @param {response} response the response
- * @param {integer} status the value of the status code
+ * @param {http.ServerResponse} response the response
+ * @param {number} status the value of the status code
  * @param {variable or string} state the value of the state or the error
  */
 
