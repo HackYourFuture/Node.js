@@ -12,7 +12,7 @@ function handleRequest(response, state) {
 }
 function handleError(response) {
   response.writeHead(404, { 'Content-Type': 'application/json' });
-  response.write(JSON.stringify({ error: 'Nothing here!' }));
+  response.write(JSON.stringify({ error: 'Not found' }));
 }
 
 function createServer(port) {
