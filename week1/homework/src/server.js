@@ -27,10 +27,11 @@ function createServer(port) {
         response.write(JSON.stringify({ state }));
         break;
       default:
-        if (request.url === '' || request.url === '/') {
-          response.statusCode = 302;
+        if (request.url === '/') {
           response.write(JSON.stringify({ state }));
-        } else {
+        }
+        // eslint-disable-next-line indent
+        else {
           const error = 'Not found';
           response.writeHead(404, { 'Content-Type': 'application/json' });
           response.write(JSON.stringify({ error }));
@@ -43,6 +44,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  // eslint-disable-next-line comma-dangle
-  createServer,
+  createServer
 };
