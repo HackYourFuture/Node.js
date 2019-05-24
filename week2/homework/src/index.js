@@ -8,17 +8,20 @@ The functions are:
   help();
   list();
   remove();
+  update();
   reset();
   help();
+  It should control what happens if user enters unexpected input, e.g. remove -100
 */
 let fs = require('fs');
 let args = process.argv.slice(2);
-// takes only two args after the . in the command line
+// shows args starting from the . in the command line
 let command = args[0];
 // the 1st arg is the command that calls the meant function
 let todoItem = args[1];
 // the 2nd arg is the item we are dealing with of a number of its position
-
+let newVal = args[2];
+// the 3rd arg is the item's updated value
 if (command === 'add') {
   add(todoItem);
 } else if (command === 'help') {
@@ -27,6 +30,8 @@ if (command === 'add') {
   list();
 } else if (command === 'remove') {
   remove(todoItem);
+} else if (command === 'update') {
+  update(todoItem, newVal);
 } else if (command === 'reset') {
   reset();
 } else if (command === 'help' || !command) {
@@ -34,7 +39,7 @@ if (command === 'add') {
 }
 
 function list() {
-  fs.readFile('./todoList.txt', 'utf8', (error, todoList) => {
+  fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
       if (error.code === 'ENOENT') {
         console.log('no data found');
@@ -47,7 +52,8 @@ function list() {
   });
 }
 function add(todoItem) {
-  fs.appendFile('./todoList.txt', todoItem + '\n', error => {
+  fs.appendFile('./src/todoList.txt', todoItem + '\n', error => {
+    // appendFile: creates the file if it does not exist already
     if (error) {
       console.error(error);
     } else {
@@ -55,8 +61,12 @@ function add(todoItem) {
     }
   });
 }
-function remove(index) {
-  fs.readFile('./todoList.txt', 'utf8', (error, todoList) => {
+/* remove()
+1. Read existing todoList.txt
+2. Filter the item to be removed
+3. Write new contents back to todoList.txt */
+function remove(num, arr) {
+  fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
       if (error.code === 'ENOENT') {
         console.log('no data found');
@@ -64,20 +74,50 @@ function remove(index) {
         console.log(error);
       }
     } else {
-      const splitList = todoList.split('\n');
-      // make the list an array of lines
-      const position = index + 1;
-      const newList = splitList.filter(elem => elem !== position);
-      newList.join('\n');
-      // join the new list as a normal list
-      console.log(newList);
-      console.log(splitList);
-      fs.writeFile('./todoList.txt', newList, error => console.error(error));
+      if (num < 0 || num > todoList.length) {
+        console.log('Please write a valid number');
+      } else {
+        const splitList = todoList.split('\n');
+        // make the list an array of lines
+        const newList = splitList.filter((elem, index) => index !== num - 1).join('\n');
+        console.log(newList);
+        fs.writeFile('./src/todoList.txt', newList, error => console.error(error));
+      }
+    }
+  });
+}
+/* update()
+1. Read existing todoList.txt
+2. Map all the items to update the item
+3. Write new contents back to todoList.txt */
+function update(num, newVal, arr) {
+  fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
+    if (error) {
+      if (error.code === 'ENOENT') {
+        console.log('no data found');
+      } else {
+        console.log(error);
+      }
+    } else {
+      if (num < 0 || num > todoList.length) {
+        console.log('Please write a valid number');
+      } else {
+        const splitList = todoList.split('\n');
+        console.log(num);
+        console.log(newVal);
+
+        // make the list an array of lines
+        const newList = splitList
+          .map((elem, index) => (index === num - 1 ? newVal : elem))
+          .join('\n');
+        // console.log(newList);
+        fs.writeFile('./src/todoList.txt', newList, error => console.error(error));
+      }
     }
   });
 }
 function reset() {
-  fs.writeFile('./todoList.txt', '', (error, todoList) => {
+  fs.writeFile('./src/todoList.txt', '', (error, todoList) => {
     if (error) {
       if (error.code === 'ENOENT') {
         console.log('no data found');
@@ -91,7 +131,7 @@ function reset() {
   });
 }
 function help() {
-  fs.readFile('./todoList.txt', 'utf8', error => {
+  fs.readFile('./src/todoList.txt', 'utf8', error => {
     if (error) {
       if (error.code === 'ENOENT') {
         console.log('no data found');
@@ -110,7 +150,10 @@ function help() {
            
       * node index.js remove (number)
       Removes a to-do item by its 1-base index.
-      
+
+      * node index.js update 3 "Brush teeth"
+      Updates a to-do item with new text
+     
       * node index.js reset
       Removes all to-do items from the list`);
     }
