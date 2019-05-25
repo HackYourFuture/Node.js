@@ -6,10 +6,10 @@ const http = require('http');
 const createServer = () => {
   let state = 10;
   const server = http.createServer((req, res) => {
-    const renderResponse = (statusCode, write) => {
+    const renderResponse = (statusCode, state) => {
       res.statusCode = statusCode;
       res.setHeader('Content-Type', 'application/json');
-      res.write(JSON.stringify(write));
+      res.write(JSON.stringify(state));
       res.end();
     };
     req.url === '/state'
