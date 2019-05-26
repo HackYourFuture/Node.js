@@ -104,7 +104,9 @@ function update() {
     }
     else {
       // eslint-disable-next-line no-undef
-      const newList = splitList.splice(3, 1, 'Brush teeth').join('\n');
+      let splitList = todoList.split('\n');
+      splitList.splice(3 - 1, 1, 'Brush teeth');
+      const newList = splitList.join('\n');
       fs.writeFile(path, newList, 'utf8', () => {
         console.log('update is done!');
       });
