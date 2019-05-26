@@ -1,13 +1,12 @@
 'use strict';
 
-let fs = require('fs');
-let args = process.argv.slice(2);
-// console.log(args);
+const fs = require('fs');
+const args = process.argv.slice(2);
 
-let command = args[0];
-let todoItem = args[1];
+const command = args[0];
+const todoItem = args[1];
 
-if (command === undefined || 'help') {
+if (command === undefined || command === 'help') {
   help(todoItem);
 } else if (command === 'add') {
   add(todoItem);
@@ -39,13 +38,14 @@ function list() {
 function add(todoItem) {
   fs.appendFile('./todoList.txt', todoItem + '\n', error => {
     console.error(error);
+    return console.log('Todo item is added');
   });
 }
 
 function remove(index) {
   fs.readFile('./todoList.txt', 'utf8', (err, data) => {
     if (err) throw err;
-    let newList = data.split('\n');
+    const newList = data.split('\n');
     newList.splice(index - 1, 1);
     fs.writeFile('./todoList.txt', newList.join('\n'), err => {
       if (err) throw err;
@@ -54,14 +54,14 @@ function remove(index) {
 }
 
 function reset(todoItem) {
-  fs.writeFile('./todoList.txt', '', function(err) {
+  fs.writeFile('./todoList.txt', '', err => {
     if (err) throw err;
     console.log('Reset!');
   });
 }
 
 function help(todoItem) {
-  fs.readFile('./help.txt', 'utf8', function(err, data) {
+  fs.readFile('./help.txt', 'utf8', (err, data) => {
     if (err) throw err;
     console.log(data);
   });
