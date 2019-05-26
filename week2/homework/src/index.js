@@ -4,11 +4,8 @@ const fs = require('fs');
 const fileName = `${__dirname}/todoList.txt`;
 
 const command = process.argv[2];
+const number = process.argv[3];
 const args = process.argv.slice(3);
-
-const newItem = process.argv.slice(4);
-
-const number = parseInt(args);
 
 if (command === 'add') {
   add(...args).then(() => console.log(`a new item has been added`));
@@ -21,17 +18,20 @@ if (command === 'add') {
 } else if (command === 'reset') {
   reset().then(() => console.log('All to-do items has been deleted'));
 } else if (command === 'update') {
+  const newItem = process.argv.slice(4);
   update(number, newItem);
+} else {
+  console.log('please write a valid command or look at help list');
 }
 
 async function update(index, text) {
   try {
     const data = await list();
-    let arr = data.split('\n');
-    write(arr);
+    const arr = data.split('\n');
+
     if (index <= arr.length && index > 0) {
       arr.splice(index - 1, 1, text);
-      write(arr).then(console.log('an item has been removed'));
+      write(arr).then(console.log('an item has been modified'));
     } else {
       console.log('invalid number');
     }
@@ -43,10 +43,10 @@ async function update(index, text) {
 async function remove(index) {
   try {
     const data = await list();
-    let arr = data.split('\n');
+    const arr = data.split('\n');
     if (index <= arr.length && index > 0) {
       arr.splice(index - 1, 1);
-      write(arr).then(console.log('an item has been modified'));
+      write(arr).then(console.log('an item has been removed'));
     } else {
       console.log('invalid number');
     }
@@ -57,13 +57,13 @@ async function remove(index) {
 
 function write(arr) {
   return new Promise((resolve, reject) =>
-    fs.writeFile(fileName, `${arr.join('\n')}`, (err, data) => (err ? reject(err) : resolve(data))),
+    fs.writeFile(fileName, arr.join('\n'), (err, data) => (err ? reject(err) : resolve(data))),
   );
 }
 
 function add(...text) {
   return new Promise((resolve, reject) =>
-    fs.appendFile(fileName, `${text.join(' ')}\n`, (err, data) =>
+    fs.appendFile(fileName, text.join(' ') + '\n', (err, data) =>
       err ? reject(err) : resolve(data),
     ),
   );
@@ -71,7 +71,7 @@ function add(...text) {
 
 function list() {
   return new Promise(resolve =>
-    fs.readFile(fileName, 'utf8', (err, data) => resolve(err ? '' : data)),
+    fs.readFile(fileName, 'utf8', (err, data) => (err ? reject(err) : resolve(err ? '' : data))),
   );
 }
 
@@ -88,10 +88,11 @@ To-Do App
 
 Options:
 
-  read            read all to-dos
-  write [to-do]   add to-do
+  add             add new item to the to-dos
+  list            read all to-dos
   reset           remove all to-dos
   remove          remove a specific item in to-dos by passing a index number
   help            show this help text
+  update          change specific item from to-dos depended on a passed number 
   `);
 }
