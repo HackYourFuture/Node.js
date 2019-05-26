@@ -1,11 +1,10 @@
 'use strict';
 
 // TODO: Write the homework code in this file
-let fs = require('fs');
-let args = process.argv.slice(2);
-let command = args[0];
-let todoItem = args[1];
-let commandDescription = args[2];
+const fs = require('fs');
+const args = process.argv.slice(2);
+const command = args[0];
+const todoItem = args[1];
 
 if (command === 'add') {
   add(todoItem);
@@ -17,6 +16,8 @@ if (command === 'add') {
   remove(todoItem);
 } else if (command === 'reset') {
   reset();
+} else {
+  console.error('Please use help command to see the appropriate commands');
 }
 
 // Shows current to-dos
@@ -26,11 +27,11 @@ function list() {
       if (error.code === 'ENOENT') {
         console.log('no data found');
       } else {
-        console.error(error);
+        console.log(error);
       }
     } else {
-      const newTodoList = todoList.split('\n');
-      if (newTodoList.length === 1) {
+      const arrayOfTodoList = todoList.split('\n').filter(todo => todo.trim());
+      if (arrayOfTodoList.length === 0) {
         console.log('There is nothing in todo list!');
       } else {
         console.log(todoList);
@@ -41,47 +42,25 @@ function list() {
 
 //Adds a to-do item
 function add(todoItem) {
-  if (!commandDescription) {
-    console.log('Please write a short description about command');
-  } else if (commandDescription) {
-    fs.appendFile('./todoList.txt', todoItem + '\n', error => {
-      console.error(error);
-    });
-    fs.appendFile('./helpList.txt', `${todoItem} - ${commandDescription}` + '\n', error => {
-      console.error(error);
-    });
-  }
+  fs.appendFile('./todoList.txt', todoItem + '\n', error => {
+    console.error(error);
+  });
 }
 
-//Removes one to-do item from todoList and helpList
+//Removes one to-do item from todoList
 function remove(todoItem) {
   fs.readFile('./todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
       console.error(error);
     } else {
-      let newTodoList = todoList.split('\n');
-      if (todoItem < 0 || todoItem > newTodoList.length - 1) {
-        console.log('The number must be positive and smaller than total command count.');
-      } else if (0 < todoItem < newTodoList.length) {
-        //to remove from todoList.txt
-        newTodoList.splice(todoItem - 1, 1);
-        fs.writeFile('./todoList.txt', newTodoList.join('\n'), error => {
+      const arrayOfTodoList = todoList.split('\n');
+      if (todoItem < 1 || todoItem > arrayOfTodoList.length) {
+        console.log('The number should be between zero and the total number of commands');
+      } else if (0 < todoItem < arrayOfTodoList.length + 1) {
+        arrayOfTodoList.splice(todoItem - 1, 1);
+        fs.writeFile('./todoList.txt', arrayOfTodoList.join('\n'), error => {
           if (error) {
             console.error(error);
-          }
-        });
-        //to remove from helpList.txt
-        fs.readFile('./helpList.txt', 'utf8', (error, helpList) => {
-          if (error) {
-            console.error(error);
-          } else {
-            let newHelpList = helpList.split('\n');
-            newHelpList.splice(todoItem - 1, 1);
-            fs.writeFile('./helpList.txt', newHelpList.join('\n'), error => {
-              if (error) {
-                console.error(error);
-              }
-            });
           }
         });
       }
@@ -89,14 +68,9 @@ function remove(todoItem) {
   });
 }
 
-//resets todoList and helpList
+//resets todoList
 function reset() {
   fs.writeFile('./todoList.txt', '', error => {
-    if (error) {
-      console.error(error);
-    }
-  });
-  fs.writeFile('./helpList.txt', '', error => {
     if (error) {
       console.error(error);
     }
@@ -104,17 +78,12 @@ function reset() {
 }
 
 //shows help section
-function help(commandDescription) {
+function help() {
   fs.readFile('./helpList.txt', 'utf8', (error, helpList) => {
     if (error) {
       console.error(error);
     } else {
-      const newList = helpList.split('\n');
-      if (newList.length === 1) {
-        console.log('There is nothing in command list!');
-      } else {
-        console.log(helpList);
-      }
+      console.log(helpList);
     }
   });
 }

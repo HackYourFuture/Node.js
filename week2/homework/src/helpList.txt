@@ -1,0 +1,4 @@
+add (str)- Adds a to-do item
+list - Lists current to-dos
+remove (number) - Removes one to-do item from todoList
+reset - Resets todoList
