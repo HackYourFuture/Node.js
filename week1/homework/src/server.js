@@ -15,9 +15,9 @@ function createServer(port) {
     response.end();
   }
 
-  function sendErrorResponse(response, state) {
+  function sendErrorResponse(response, error) {
     response.writeHead(404, { 'Content-Type': 'application/json' });
-    response.write(JSON.stringify(state));
+    response.write(JSON.stringify(error));
     response.end();
   }
 
