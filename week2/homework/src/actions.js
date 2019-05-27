@@ -12,45 +12,62 @@ const actions = {
         if (err.code === 'ENOENT') console.log('no data found');
         throw err;
       }
-      console.log(todoList);
+      console.log(`\nTodo list:\n${todoList}`);
     });
   },
   add: todoItem => {
-    fs.appendFile(PATH, JSON.stringify(todoItem) + '\n', err => {
-      if (err) throw err;
-    });
-  },
-  remove: index => {
-    fs.readFile(PATH, ENCODING, (err, data) => {
+    fs.readFile(PATH, ENCODING, (err, todoList) => {
       if (err) {
         if (err.code === 'ENOENT') console.log('no data found');
         throw err;
       }
-      const todoList = JSON.parse(data);
-      todoList.splice(index - 1, 1);
-      return fs.writeFile(PATH, JSON.stringify(todoList), ENCODING, err => {
-        throw err;
+      todoList = JSON.parse(todoList);
+      todoList.push(todoItem);
+      fs.writeFile(PATH, JSON.stringify(todoList), err => {
+        if (err) throw err;
       });
-      console.log(todoList);
+      console.log(`'${todoItem}' has been added to the Todo list.`);
     });
   },
-  reset: todoItem => {
-    fs.writeFile(PATH, '', err => {
+  remove: index => {
+    fs.readFile(PATH, ENCODING, (err, todoList) => {
+      if (err) {
+        if (err.code === 'ENOENT') console.log('no data found');
+        throw err;
+      }
+      todoList = JSON.parse(todoList);
+      if (index > 0 && index <= todoList.length) {
+        todoList.splice(index - 1, 1);
+        console.log('Todo item has been removed');
+        fs.writeFile(PATH, JSON.stringify(todoList), err => {
+          if (err) throw err;
+        });
+      } else {
+        console.log('Please insert a valid number.');
+      }
+    });
+  },
+  reset: () => {
+    fs.writeFile(PATH, JSON.stringify([]), err => {
       if (err) throw err;
     });
   },
   update: (index, updatedItem) => {
-    fs.readFile(PATH, ENCODING, (err, data) => {
+    fs.readFile(PATH, ENCODING, (err, todoList) => {
       if (err) {
         if (err.code === 'ENOENT') console.log('no data found');
         throw err;
       }
-      const todoList = JSON.parse(data);
-      todoList.splice(index - 1, 1, `/n${updatedItem.join(' ')}`);
-      return fs.writeFile(PATH, JSON.stringify(todoList), ENCODING, err => {
-        throw err;
-      });
-      console.log(todoList);
+      todoList = JSON.parse(todoList);
+      if (index > 0 && index <= todoList.length) {
+        todoList.splice(index - 1, 1, updatedItem);
+        console.log('Todo item has been modified');
+        fs.writeFile(PATH, JSON.stringify(todoList), ENCODING, err => {
+          if (err) throw err;
+        });
+      } else {
+        console.log('Please insert a valid number.');
+      }
     });
   },
   help: () => {

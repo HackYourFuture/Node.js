@@ -6,6 +6,7 @@ const { list, add, remove, reset, update, help } = require('./actions');
 const args = process.argv.slice(2);
 const command = args[0];
 const todoItem = args[1];
+const updatedItem = args[2];
 
 switch (command) {
   case 'list':
@@ -15,13 +16,13 @@ switch (command) {
     add(todoItem);
     break;
   case 'remove':
-    remove(index);
+    remove(todoItem);
     break;
   case 'reset':
     reset();
     break;
   case 'update':
-    update(index, updatedItem);
+    update(todoItem, updatedItem);
     break;
   case 'help':
   default:
