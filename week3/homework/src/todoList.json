@@ -2,5 +2,5 @@
   { "done": false, "description": "Read books" },
   { "done": false, "description": "Listen to music" },
   { "done": false, "description": "Do homework" },
-  { "done": true, "description": "play football" }
+  { "done": false, "description": "play football" }
 ]

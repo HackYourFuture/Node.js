@@ -14,7 +14,12 @@ app.get('/todo/:id', (req, res) => {
   list((err, todoList) => {
     if (err) throw err;
     todoList = JSON.parse(todoList);
-    res.status(200).send(todoList[req.params.id]);
+    let index = parseInt(req.params.id);
+    if (index > 0 && index <= todoList.length) {
+      res.status(200).send(todoList[index - 1]);
+    } else {
+      res.status(404).send('invalid id number');
+    }
   });
 });
 
@@ -31,12 +36,17 @@ app.post('/todo/:id/done', (req, res) => {
   list((err, todoList) => {
     if (err) throw err;
     todoList = JSON.parse(todoList);
-    todoList[req.params.id].done = true;
-    update(todoList, err => {
-      if (err) throw err;
-      // this message will be shown inside the body. it could be object json file
-      res.status(201).send('done value has been changed to true');
-    });
+    let index = parseInt(req.params.id);
+    if (index > 0 && index <= todoList.length) {
+      todoList[index - 1].done = true;
+      update(todoList, err => {
+        if (err) throw err;
+        // this message will be shown inside the body. it could be object json file
+        res.status(201).send('the value has been changed to true');
+      });
+    } else {
+      res.status(404).send('invalid id number');
+    }
   });
 });
 
@@ -45,12 +55,17 @@ app.delete('/todo/:id/done', (req, res) => {
   list((err, todoList) => {
     if (err) throw err;
     todoList = JSON.parse(todoList);
-    todoList[req.params.id].done = false;
-    update(todoList, err => {
-      if (err) throw err;
-      // this message will be shown inside the body. it could be object json file
-      res.status(201).send('done value has been changed to false');
-    });
+    let index = parseInt(req.params.id);
+    if (index > 0 && index <= todoList.length) {
+      todoList[index - 1].done = false;
+      update(todoList, err => {
+        if (err) throw err;
+        // this message will be shown inside the body. it could be object json file
+        res.status(201).send('the value has been changed to false');
+      });
+    } else {
+      res.status(404).send('invalid id number');
+    }
   });
 });
 
@@ -79,7 +94,7 @@ app.post('/todo/new', (req, res) => {
 });
 
 // get all todo list
-app.get('/todo/all', (req, res) => {
+app.get('/todos', (req, res) => {
   list((err, todoList) => {
     if (err) throw err;
     todoList = JSON.parse(todoList);
