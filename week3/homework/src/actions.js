@@ -6,48 +6,42 @@ const ENCODING = 'utf8';
 const PATH = `${__dirname}/todoList.json`;
 
 const actions = {
-  list: cb => {
-    fs.readFile(PATH, ENCODING, (err, todoList) => {
-      if (err) {
-        if (err.code === 'ENOENT') console.log('no data found');
-        cb(err);
-      }
-
-      return cb(null, todoList);
-    });
-  },
-  reset: cb => {
-    fs.writeFile(PATH, JSON.stringify([]), err => {
-      if (err) {
-        cb(err);
-      }
-      return cb(null, JSON.stringify([]));
-    });
-  },
-  update: (changedData, cb) => {
-    fs.writeFile(PATH, JSON.stringify(changedData), (err, data) => {
-      if (err) {
-        cb(err);
-      }
-      return cb(null, data);
-    });
-  },
-  // i will not use this function, i live it as a reference.
-  add: newTodoItem => {
-    fs.readFile(PATH, ENCODING, (err, todoList) => {
-      if (err) {
-        if (err.code === 'ENOENT') console.log('no data found');
-        throw err;
-      }
-      todoList = JSON.parse(todoList);
-      todoList.push(newTodoItem);
-      fs.writeFile(PATH, JSON.stringify(todoList), err => {
-        if (err) throw err;
+  list: () => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(PATH, ENCODING, (err, todoList) => {
+        if (err) {
+          if (err.code === 'ENOENT') console.log('no data found');
+          reject(err);
+        }
+        resolve(todoList);
       });
     });
   },
+  reset: data => {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(PATH, JSON.stringify(data), err => {
+        if (err) {
+          reject(err);
+        }
+        resolve();
+      });
+    });
+  },
+  update: async (request, response, value) => {
+    try {
+      let read = await list();
+      read = JSON.parse(read);
+      let index = parseInt(request.params.id) - 1;
+      console.log(index);
+      read[index].done = value;
+      await reset(read);
+      response.status(201).send('data has been modified');
+    } catch {
+      response.status(404).send('there is an error');
+    }
+  },
 };
 
-const { list, add, reset, update } = actions;
+const { list, reset, update } = actions;
 
-module.exports = { list, add, reset, update };
+module.exports = { list, reset, update };

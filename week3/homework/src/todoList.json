@@ -1,6 +1,6 @@
 [
-  { "done": false, "description": "Read books" },
-  { "done": false, "description": "Listen to music" },
+  { "done": true, "description": "Read books" },
+  { "done": true, "description": "Listen to music" },
   { "done": false, "description": "Do homework" },
-  { "done": false, "description": "play football" }
+  { "done": true, "description": "play football" }
 ]
