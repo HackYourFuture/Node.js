@@ -31,8 +31,7 @@ const actions = {
     try {
       let read = await list();
       read = JSON.parse(read);
-      let index = parseInt(request.params.id) - 1;
-      console.log(index);
+      const index = parseInt(request.params.id) - 1;
       read[index].done = value;
       await reset(read);
       response.status(201).send('data has been modified');
