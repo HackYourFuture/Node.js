@@ -1,0 +1,7 @@
+[
+  { "text": "done", "done": false },
+  { "text": "Finish homework", "done": false },
+  { "text": "Meet up with the friend", "done": false },
+  { "text": "Clean house", "done": false },
+  { "text": "Go to the gym", "done": false }
+]
