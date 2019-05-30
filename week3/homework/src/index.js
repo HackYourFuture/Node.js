@@ -33,6 +33,8 @@ app.delete('/todo', async (request, response) => {
   }
 });
 
+// instead of calling list(read) and reset(write) each time, i used update function to prevent repeating code.
+
 // Sets the done flag of a single to-do to true
 app.post('/todo/:id/done', (request, response) => {
   update(request, response, true);
