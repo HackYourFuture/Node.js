@@ -5,10 +5,14 @@ const fs = require('fs');
 const ENCODING = 'utf8';
 const PATH = `${__dirname}/todoList.json`;
 
-const actions = {
-  list: () => {
+class Actions {
+  constructor(filename) {
+    this._filename = filename;
+  }
+
+  list() {
     return new Promise((resolve, reject) => {
-      fs.readFile(PATH, ENCODING, (err, todoList) => {
+      fs.readFile(this._filename, ENCODING, (err, todoList) => {
         if (err) {
           if (err.code === 'ENOENT') console.log('no data found');
           reject(err);
@@ -16,31 +20,32 @@ const actions = {
         resolve(todoList);
       });
     });
-  },
-  reset: data => {
+  }
+  reset(data) {
     return new Promise((resolve, reject) => {
-      fs.writeFile(PATH, JSON.stringify(data), err => {
+      fs.writeFile(this._filename, JSON.stringify(data), err => {
         if (err) {
           reject(err);
         }
         resolve();
       });
     });
-  },
-  update: async (request, response, value) => {
+  }
+  async update(request, response, value) {
     try {
-      let read = await list();
+      let read = await this.list();
       read = JSON.parse(read);
-      const index = parseInt(request.params.id) - 1;
+      let index = parseInt(request.params.id) - 1;
+      console.log(index);
       read[index].done = value;
-      await reset(read);
+      await this.reset(read);
       response.status(201).send('data has been modified');
     } catch {
       response.status(404).send('there is an error');
     }
-  },
-};
+  }
+}
 
-const { list, reset, update } = actions;
+// const { list, reset, update } = actions;
 
-module.exports = { list, reset, update };
+module.exports = Actions;
