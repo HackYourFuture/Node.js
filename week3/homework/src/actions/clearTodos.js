@@ -1,8 +1,8 @@
-const { reset } = require('../helpFunctions');
+'use strict';
 
-async function clearTodos(request, response) {
+async function clearTodos(todo, request, response) {
   try {
-    await reset([]);
+    await todo.reset([]);
     response.status(201).send('All to-dos have been removed');
   } catch (error) {
     response.status(404).send({ error: 'Not found' });

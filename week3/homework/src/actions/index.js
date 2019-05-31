@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   readTodo: require('./readTodo'),
   clearTodos: require('./clearTodos'),

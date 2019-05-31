@@ -3,12 +3,15 @@
 const fs = require('fs');
 
 const ENCODING = 'utf8';
-const PATH = `${__dirname}/todoList.json`;
 
-const actions = {
-  list: () => {
+class Todo {
+  constructor(filename) {
+    this._filename = filename;
+  }
+
+  list() {
     return new Promise((resolve, reject) =>
-      fs.readFile(PATH, ENCODING, (err, todoList) => {
+      fs.readFile(this._filename, ENCODING, (err, todoList) => {
         if (err) {
           if (err.code === 'ENOENT') console.log('no data found');
           reject(err);
@@ -16,17 +19,16 @@ const actions = {
         resolve(todoList);
       }),
     );
-  },
-  reset: data => {
+  }
+
+  reset(data) {
     return new Promise((resolve, reject) => {
-      fs.writeFile(PATH, JSON.stringify(data), err => {
+      fs.writeFile(this._filename, JSON.stringify(data), err => {
         if (err) reject(err);
       });
       resolve();
     });
-  },
-};
+  }
+}
 
-const { list, reset } = actions;
-
-module.exports = { list, reset };
+module.exports = Todo;

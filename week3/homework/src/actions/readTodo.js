@@ -1,8 +1,8 @@
-const { list } = require('../helpFunctions');
+'use strict';
 
-async function readTodo(request, response) {
+async function readTodo(todo, request, response) {
   try {
-    let todoList = await list().then(todoList => JSON.parse(todoList));
+    let todoList = await todo.list().then(todoList => JSON.parse(todoList));
     const index = parseInt(request.params.id);
     if (index >= 0 && index < todoList.length) {
       response.status(200).send(todoList[index]);
