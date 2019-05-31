@@ -6,7 +6,7 @@ async function readToDo(action, request, response) {
     if (index > 0 && index <= todoList.length) {
       response.status(200).send(todoList[index - 1]);
     } else {
-      response.status(404).send({ error: 'invalid id number' });
+      response.status(404).send({ filed: 'invalid id number' });
     }
   } catch {
     response.status(404).send({ error: 'there is an error' });

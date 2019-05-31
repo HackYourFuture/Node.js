@@ -35,11 +35,15 @@ class Actions {
       let read = await this.list();
       read = JSON.parse(read);
       const index = parseInt(request.params.id);
-      read[index - 1].done = value;
-      await this.reset(read);
-      response.status(201).send('data has been modified');
+      if (index > 0 && index <= read.length) {
+        read[index - 1].done = value;
+        await this.reset(read);
+        response.status(201).send({ succeeded: 'data has been modified' });
+      } else {
+        response.status(404).send({ filed: 'invalid id number' });
+      }
     } catch {
-      response.status(404).send('there is an error');
+      response.status(404).send({ error: 'there is an error' });
     }
   }
 }
