@@ -1,9 +1,8 @@
-async function middleWare(action, request, response) {
+async function readToDo(action, request, response) {
   try {
     let todoList = await action.list();
-    // get a specific element
     todoList = JSON.parse(todoList);
-    let index = parseInt(request.params.id);
+    const index = parseInt(request.params.id);
     if (index > 0 && index <= todoList.length) {
       response.status(200).send(todoList[index - 1]);
     } else {
@@ -14,4 +13,4 @@ async function middleWare(action, request, response) {
   }
 }
 
-module.exports = middleWare;
+module.exports = readToDo;

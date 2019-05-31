@@ -3,7 +3,6 @@
 const fs = require('fs');
 
 const ENCODING = 'utf8';
-const PATH = `${__dirname}/todoList.json`;
 
 class Actions {
   constructor(filename) {
@@ -35,9 +34,8 @@ class Actions {
     try {
       let read = await this.list();
       read = JSON.parse(read);
-      let index = parseInt(request.params.id) - 1;
-      console.log(index);
-      read[index].done = value;
+      const index = parseInt(request.params.id);
+      read[index - 1].done = value;
       await this.reset(read);
       response.status(201).send('data has been modified');
     } catch {
@@ -45,7 +43,5 @@ class Actions {
     }
   }
 }
-
-// const { list, reset, update } = actions;
 
 module.exports = Actions;
