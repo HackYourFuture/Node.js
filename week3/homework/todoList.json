@@ -1,6 +1,0 @@
-[
-  { "description": "going to the library", "done": false },
-  { "description": "going to the kitchen", "done": true },
-  { "description": "reading a book", "done": true },
-  { "description": "washing the dishes", "done": false }
-]
