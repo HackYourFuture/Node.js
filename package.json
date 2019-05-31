@@ -1,0 +1,22 @@
+{
+  "name": "week-2",
+  "version": "1.0.0",
+  "description": "> Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/Node.js/pulls).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigma21/Node.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sigma21/Node.js/issues"
+  },
+  "homepage": "https://github.com/sigma21/Node.js#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
