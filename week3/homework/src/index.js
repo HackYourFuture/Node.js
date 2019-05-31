@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 
 const Actions = require('./actions');
 
-// create new object
 const action = new Actions('todoList.json');
 
 // Get a single to-do with ID :id
@@ -24,6 +23,7 @@ app.post('/todo/:id/done', setTrue.bind(null, action));
 
 // Sets the done flag of a single to-do to false
 app.delete('/todo/:id/done', setFalse.bind(null, action));
+
 // another way
 // app.delete('/todo/:id/done', (request, response) => {
 //   action.update(request, response, false);
