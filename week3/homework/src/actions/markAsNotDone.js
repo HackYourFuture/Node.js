@@ -12,4 +12,4 @@ async function markAsNotDone(todo, request, response) {
   }
 }
 
-module.exports = { markAsNotDone };
+module.exports = markAsNotDone;

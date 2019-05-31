@@ -9,4 +9,4 @@ async function clearTodos(todo, request, response) {
   }
 }
 
-module.exports = { clearTodos };
+module.exports = clearTodos;

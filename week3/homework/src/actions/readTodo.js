@@ -14,4 +14,4 @@ async function readTodo(todo, request, response) {
   }
 }
 
-module.exports = { readTodo };
+module.exports = readTodo;

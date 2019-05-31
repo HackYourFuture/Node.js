@@ -4,16 +4,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-// Import actions
-const { readTodo } = require('./actions/readTodo');
-const { clearTodos } = require('./actions/clearTodos');
-const { markAsDone } = require('./actions/markAsDone');
-const { markAsNotDone } = require('./actions/markAsNotDone');
-
-// const { readTodo, clearTodos, markAsDone, markAsNotDone } = require('./actions');
+const { readTodo, clearTodos, markAsDone, markAsNotDone } = require('./actions');
 
 const Todo = require('./todo');
-const FILENAME = 'todoList.json';
+const FILENAME = `${__dirname}/todoList.json`;
 const todo = new Todo(FILENAME);
 
 app.use(bodyParser.json());
