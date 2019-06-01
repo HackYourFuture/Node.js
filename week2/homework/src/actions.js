@@ -38,9 +38,9 @@ const actions = {
       todoList = JSON.parse(todoList);
       if (index > 0 && index <= todoList.length) {
         todoList.splice(index - 1, 1);
-        console.log('Todo item has been removed');
         fs.writeFile(PATH, JSON.stringify(todoList), err => {
           if (err) throw err;
+          console.log('Todo item has been removed');
         });
       } else {
         console.log('Please insert a valid number.');
@@ -61,9 +61,9 @@ const actions = {
       todoList = JSON.parse(todoList);
       if (index > 0 && index <= todoList.length) {
         todoList.splice(index - 1, 1, updatedItem);
-        console.log('Todo item has been modified');
         fs.writeFile(PATH, JSON.stringify(todoList), ENCODING, err => {
           if (err) throw err;
+          console.log('Todo item has been modified');
         });
       } else {
         console.log('Please insert a valid number.');
