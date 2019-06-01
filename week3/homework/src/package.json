@@ -1,0 +1,17 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "nanoid": "^2.0.3",
+    "nodemon": "^1.19.1"
+  }
+}
