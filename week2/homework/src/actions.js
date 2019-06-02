@@ -1,13 +1,19 @@
-let fs = require('fs');
+/* eslint-disable indent */
+const fs = require('fs');
 function add(item) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
-    } else {
-      let todos = JSON.parse(data);
+    }
+ else {
+      const todos = JSON.parse(data);
       todos.push(item);
-      let dataString = JSON.stringify(todos);
-      fs.writeFileSync('./todoList.json', dataString, 'utf8');
+      const dataString = JSON.stringify(todos);
+      fs.writeFile('./todoList.json', dataString, error => {
+        if (error) {
+          console.log(error);
+        }
+      });
     }
   });
 }
@@ -16,11 +22,13 @@ function list() {
     if (error) {
       if (error.code === 'EN0ENT') {
         console.log('No data found');
-      } else {
+      }
+ else {
         console.error(error);
       }
-    } else {
-      let todos = JSON.parse(todoList);
+    }
+ else {
+      const todos = JSON.parse(todoList);
       todos.forEach(elem => console.log(elem));
     }
   });
@@ -30,10 +38,11 @@ function remove(index) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
-    } else {
-      let todos = JSON.parse(data);
+    }
+ else {
+      const todos = JSON.parse(data);
       todos.splice(index - 1, 1);
-      let dataString = JSON.stringify(todos);
+      const dataString = JSON.stringify(todos);
       fs.writeFileSync('./todoList.json', dataString, 'utf8');
     }
   });
@@ -56,7 +65,10 @@ Options:
 }
 
 function reset() {
-  fs.writeFile('./todoList.json', '[]', () => {
+  fs.writeFile('./todoList.json', '[]', error => {
+    if (error) {
+      console.log(error);
+    }
     console.log('Your to-do list is empty now');
   });
 }
@@ -65,11 +77,12 @@ function update(index, newItem) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
-    } else {
-      let todos = JSON.parse(data);
+    }
+ else {
+      const todos = JSON.parse(data);
       todos.splice(index - 1, 1, newItem);
 
-      let dataString = JSON.stringify(todos);
+      const dataString = JSON.stringify(todos);
       fs.writeFileSync('./todoList.json', dataString, 'utf8');
     }
   });
