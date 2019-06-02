@@ -5,7 +5,6 @@ The user must be able to add, remove and list to-dos.
 The user must be able to remove all to-dos at once.
 The functions are: 
   add();
-  help();
   list();
   remove();
   update();
@@ -13,19 +12,19 @@ The functions are:
   help();
   It should control what happens if user enters unexpected input, e.g. remove -100
 */
-let fs = require('fs');
-let args = process.argv.slice(2);
+const fs = require('fs');
+const error = require('./error');
+
+const args = process.argv.slice(2);
 // shows args starting from the . in the command line
-let command = args[0];
+const command = args[0];
 // the 1st arg is the command that calls the meant function
-let todoItem = args[1];
+const todoItem = args[1];
 // the 2nd arg is the item we are dealing with of a number of its position
-let newVal = args[2];
+const newVal = args[2];
 // the 3rd arg is the item's updated value
 if (command === 'add') {
   add(todoItem);
-} else if (command === 'help') {
-  help();
 } else if (command === 'list') {
   list();
 } else if (command === 'remove') {
@@ -34,18 +33,14 @@ if (command === 'add') {
   update(todoItem, newVal);
 } else if (command === 'reset') {
   reset();
-} else if (command === 'help' || !command) {
+} else if (command === 'help' || !command || todoItem <= 0 || todoItem > todoList.length) {
   help();
 }
 
 function list() {
   fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-      } else {
-        console.log(error);
-      }
+      error.e404(error);
     } else {
       console.log(todoList);
     }
@@ -61,27 +56,31 @@ function add(todoItem) {
     }
   });
 }
+
 /* remove()
 1. Read existing todoList.txt
 2. Filter the item to be removed
 3. Write new contents back to todoList.txt */
-function remove(num, arr) {
+function remove(num) {
   fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-      } else {
-        console.log(error);
-      }
+      error.e404(error);
     } else {
-      if (num < 0 || num > todoList.length) {
-        console.log('Please write a valid number');
-      } else {
         const splitList = todoList.split('\n');
-        // make the list an array of lines
-        const newList = splitList.filter((elem, index) => index !== num - 1).join('\n');
-        console.log(newList);
-        fs.writeFile('./src/todoList.txt', newList, error => console.error(error));
+      // make the list an array of lines
+      if (num <= 0 || num > splitList.length) {
+          help();
+      } else {
+          console.log(splitList.length)
+          const newList = splitList.filter((elem, index) => index !== num - 1).join('\n');
+          console.log(newList);
+        fs.writeFile('./src/todoList.txt', newList, error => {
+          if (error) {
+            console.error(error);
+            } else {
+              console.log(newList);
+            }
+          });
       }
     }
   });
@@ -90,40 +89,35 @@ function remove(num, arr) {
 1. Read existing todoList.txt
 2. Map all the items to update the item
 3. Write new contents back to todoList.txt */
-function update(num, newVal, arr) {
+function update(num, newVal) {
   fs.readFile('./src/todoList.txt', 'utf8', (error, todoList) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-      } else {
-        console.log(error);
-      }
+      error.e404(error);
     } else {
-      if (num < 0 || num > todoList.length) {
-        console.log('Please write a valid number');
-      } else {
-        const splitList = todoList.split('\n');
-        console.log(num);
-        console.log(newVal);
-
+      const splitList = todoList.split('\n');
         // make the list an array of lines
-        const newList = splitList
+      if (num <= 0 || num > splitList.length) {
+        console.log(splitList.length)
+        help();
+    } else {
+          const newList = splitList
           .map((elem, index) => (index === num - 1 ? newVal : elem))
           .join('\n');
-        // console.log(newList);
-        fs.writeFile('./src/todoList.txt', newList, error => console.error(error));
-      }
+      fs.writeFile('./src/todoList.txt', newList, error => {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log(newList);
+        }
+        });
+        }
     }
   });
 }
 function reset() {
   fs.writeFile('./src/todoList.txt', '', (error, todoList) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-      } else {
-        console.log(error);
-      }
+      console.log(error);
     } else {
       console.log(`Rest!
       Nothing to be done in the list`);
@@ -131,17 +125,8 @@ function reset() {
   });
 }
 function help() {
-  fs.readFile('./src/todoList.txt', 'utf8', error => {
-    if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-      } else {
-        console.log(error);
-      }
-    } else {
-      console.log(`Tip: You did not enter any command, 
-      you can enter one of the following commands:
-
+  fs.readFile('./src/todoList.txt', 'utf8', () => {
+    console.log(`Please write a valid number and one of the following commands:
       * node index.js list
       Shows current to-dos, or shows an appropriate text if there are no to-dos
       
@@ -150,12 +135,10 @@ function help() {
            
       * node index.js remove (number)
       Removes a to-do item by its 1-base index.
-
       * node index.js update 3 "Brush teeth"
       Updates a to-do item with new text
      
       * node index.js reset
       Removes all to-do items from the list`);
-    }
-  });
+  })
 }
