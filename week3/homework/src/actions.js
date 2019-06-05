@@ -23,6 +23,7 @@ function add(request, response) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
+      response.status(500).send('some problem.');
     } else {
       let todos = JSON.parse(data);
       const todo = { text: request.params.text, done: false };
@@ -38,6 +39,7 @@ function clearTodos(request, response) {
   fs.writeFile('./todoList.json', '[]', err => {
     if (err) {
       console.log(err);
+      response.status(500).send('some problem.');
     }
     response.send('All todos is deleted!');
   });
@@ -47,6 +49,7 @@ function markAsDone(request, response) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
+      response.status(500).send('some problem.');
     } else {
       let todos = JSON.parse(data);
       todos[--request.params.id]['done'] = true;
@@ -60,6 +63,7 @@ function markAsNotDone(request, response) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
+      response.status(500).send('some problem.');
     } else {
       let todos = JSON.parse(data);
       todos[--request.params.id]['done'] = false;
@@ -73,6 +77,7 @@ function markAsNotDone(request, response) {
 function remove(request, response) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
+      response.status(500).send('some problem.');
       console.log(error);
     } else {
       let todos = JSON.parse(data);
@@ -87,6 +92,7 @@ function remove(request, response) {
 function update(request, response) {
   fs.readFile('./todoList.json', 'utf8', (error, data) => {
     if (error) {
+      response.status(500).send('some problem.');
       console.log(error);
     } else {
       let todos = JSON.parse(data);
