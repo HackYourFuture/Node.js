@@ -12,7 +12,7 @@ const helpText = `type <help> for listing functions
 <remove index> for removing an item of a specific index.
 `;
 
-switch (cmd) {
+switch (command) {
   case 'list':
     list(todoItem);
     break;
