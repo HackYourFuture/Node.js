@@ -2,13 +2,14 @@
 
 // TODO: Write the homework code in this file
 
-let fs = require('fs');
+const fs = require('fs');
 
-let args = process.argv.slice(2);
+const args = process.argv.slice(2);
 
-let command = args[0];
-let todoItem = args[1];
+const command = args[0];
+const todoItem = args[1];
 
+const helpText = "type <help> for listing functions\n     <list> for listing items\n     <add> for adding items\n     <remove index> for removing an item of a specific index. ";
 
 
 if(command === 'add') {
@@ -19,6 +20,9 @@ if(command === 'add') {
   list(todoItem);
 } else if (command === 'remove') {
   remove(todoItem);
+} else {
+    console.log("Invalid command. See below for possible commands:");
+    help();
 };
 
 function list(){
@@ -33,7 +37,11 @@ function list(){
 
 function add(todoItem){
   fs.appendFile('./todoList.txt', todoItem + '\n', (error) => {
-    console.error(error);
+    if (error){
+        console.error(error);
+    } else {
+        console.log("Item added.");
+    };
   });
 };
 
@@ -42,7 +50,7 @@ function remove(todoItem){
     if (err) {
       throw err;
     } else {      
-      let dataArray = data.split('\n');
+      const dataArray = data.split('\n');
       
       dataArray.splice((todoItem-1),1);
           
@@ -59,7 +67,6 @@ function remove(todoItem){
   });
 };
 
-const helpText = "type <help> for listing functions\n     <list> for listing items\n     <add> for adding items\n     <remove index> for removing an item of a specific index. ";
 
 function help() {
   console.log(helpText);
