@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.get('/todos/:id', readTodo);
 app.delete('/todos', clearTodos);
 app.post('/todos/add/:text', add);
-app.put('/todos/done/:id', markAsDone);
-app.put('/todos/notDone/:id', markAsNotDone);
+app.post('/todos/:id/done', markAsDone);
+app.delete('/todos/:id/done', markAsNotDone);
 app.delete('/todos/:id/remove', remove);
 app.put('/todos/:id/:newText', update);
 
