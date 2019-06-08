@@ -14,9 +14,9 @@ class Todo {
       fs.readFile(this._filename, ENCODING, (err, todoList) => {
         if (err) {
           if (err.code === 'ENOENT') console.log('no data found');
-          reject(err);
+          return reject(err);
         }
-        resolve(todoList);
+        return resolve(todoList);
       }),
     );
   }
@@ -24,9 +24,9 @@ class Todo {
   reset(data) {
     return new Promise((resolve, reject) => {
       fs.writeFile(this._filename, JSON.stringify(data), err => {
-        if (err) reject(err);
+        if (err) return reject(err);
       });
-      resolve();
+      return resolve();
     });
   }
 }
