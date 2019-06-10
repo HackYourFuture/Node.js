@@ -1,21 +1,12 @@
 'use strict';
 
+// TODO: Write the homework code in this file
 const express = require('express');
-const router = express.Router();
-const main = require('./main');
+const routes = require('./routes');
 const app = express();
 
 app.use(express.json());
 
-app.use('/todos', router);
+app.use('/todos', routes);
 
-app.listen(3020, () => console.log(`I am listening to http://localhost:3020`));
-
-router.get('/', main);
-router.get('/:id', main);
-router.post('/', main);
-router.post('/:id/:done', main);
-router.delete('/:id/:done', main);
-router.put('/:id', main);
-router.delete('/:id', main);
-router.delete('/', main);
+app.listen(3001, () => console.log(`Todo app started!`));

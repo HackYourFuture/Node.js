@@ -1,18 +1,13 @@
 {
   "todos": [
     {
-      "id": "lEYzK23GLI_twYt7yaD8g",
-      "task": "make your homework",
-      "done": true
+      "id": "reD7MSCpru0JG_Zy1muYM",
+      "todo": "go home",
+      "done": false
     },
     {
-      "id": "78cPvhGSQH2weasDsakhT",
-      "task": "go to school",
-      "done": true
-    },
-    {
-      "id": "so1HXfzUGqsC-eLvjWSJX",
-      "task": "go home",
+      "id": "18-WRnKkizpR8Eo9evBnw",
+      "todo": "make your homework",
       "done": false
     }
   ]
