@@ -16,7 +16,10 @@ function readFile(path) {
 function writeFile(path, data) {
   return new Promise((resolve, reject) => {
     fs.writeFile(path, JSON.stringify(data), 'utf8', error => {
-      reject(error);
+      if (error){
+        return reject(error)
+      };
+      return resolve(); 
     });
   });
 }
@@ -53,9 +56,10 @@ function readToDo(number, path, response) {
   readFile(path)
     .then(data => {
       const todoList = JSON.parse(data);
-      const todo = todoList.find(todo => {
-        return todo.id == number;
-      });
+      const todo = todoList[number];
+      // const todo = todoList.find(todo => {
+      //   return todo.id == number;
+      // });
       todo !== undefined
         ? sendResponse(todo.name, response)
         : sendResponse('todo not found', response);
@@ -65,47 +69,54 @@ function readToDo(number, path, response) {
     });
 }
 
+
 async function markAsDone(number, path, response) {
   try {
-    await readFile(path)
-      .then(data => {
-        const todoList = JSON.parse(data);
-        const todo = todoList.find(todo => {
-          return todo.id == number;
+    if (path){
+      await readFile(path)
+        .then(data => {
+          const todoList = JSON.parse(data);
+          const todo = todoList[number];
+          // const todo = todoList.find(todo => {
+          //   return todo.id == number;
+          // });
+          todo.done = true;
+          writeFile(path, todoList);
+        })
+        .catch(error => {
+          response.status(404).send({ error: 'there is an error' });
         });
-        todo.done = true;
-        writeFile(path, todoList);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    listToDo(path, response);
-  } catch {
+      listToDo(path, response);
+    }
+  }catch {
     response.status(404).send({ error: 'there is an error' });
   }
 }
 async function markAsNotDone(number, path, response) {
   try {
-    await readFile(path)
-      .then(data => {
-        const todoList = JSON.parse(data);
-        const todo = todoList.find(todo => {
-          return todo.id == number;
+      if(path){
+      await readFile(path)
+        .then(data => {
+          const todoList = JSON.parse(data);
+          const todo = todoList[number];
+          // const todo = todoList.find(todo => {
+          //   return todo.id == number;
+          // });
+          todo.done = false;
+          writeFile(path, todoList);
+        })
+        .catch(error => {
+          response.status(404).send({ error: 'there is an error' });
         });
-        todo.done = false;
-        writeFile(path, todoList);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    listToDo(path, response);
+      listToDo(path, response);
+      }
   } catch {
     response.status(404).send({ error: 'there is an error' });
   }
 }
 
 function clearToDos(path, response) {
-  writeFile(path, []).then(response.json('You now have a brand new todo list'))
+  writeFile(path, []).then(response.send('You now have a brand new todo list'))
   .catch(error=>response.status(404).send({ error: 'there is an error' });)
 }
 
