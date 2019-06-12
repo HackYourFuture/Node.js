@@ -6,7 +6,7 @@ function addToDo(req, res) {
   }
   // eslint-disable-next-line indent
   else {
-    res.status(201);
+    res.status(200);
     res.json(requireAddFunc.addToDo(req.body.todo));
   }
 }

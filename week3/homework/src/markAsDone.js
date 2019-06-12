@@ -5,7 +5,7 @@ const requireFunc = require('./actions');
 
 function markAsDone(req, res) {
   if (requireFunc.getItem(req.params.id)) {
-    res.status(206);
+    res.status(200);
     res.json(requireFunc.done(req.params.id) && requireFunc.get());
   }
  else {
