@@ -3,7 +3,8 @@
 function deleteTodo(todo, request, response) {
   const id = request.params.id;
 
-  todo.delete_(id)
+  todo
+    .delete_(id)
     .then(() => {
       response.status(204);
       response.end();
@@ -12,6 +13,6 @@ function deleteTodo(todo, request, response) {
       response.status(500);
       response.json({ error: message });
     });
-};
+}
 
 module.exports = deleteTodo;

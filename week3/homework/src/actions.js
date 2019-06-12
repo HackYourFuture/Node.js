@@ -14,7 +14,7 @@ class Actions {
       fs.readFile(this._filename, ENCODING, (err, todoList) => {
         if (err) {
           if (err.code === 'ENOENT') console.log('no data found');
-          reject(err);
+          return reject(err);
         }
         resolve(todoList);
       });
@@ -24,7 +24,7 @@ class Actions {
     return new Promise((resolve, reject) => {
       fs.writeFile(this._filename, JSON.stringify(data), err => {
         if (err) {
-          reject(err);
+          return reject(err);
         }
         resolve();
       });
