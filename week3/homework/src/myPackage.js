@@ -33,8 +33,14 @@ function markAsDoneOrNotDone(request, response, boolean) {
       response.status(500).send("some problem.");
     } else {
       const index = request.params.id;
-      let newData = JSON.parse(data);
-      newData[index - 1].done = boolean;
+      const newData = JSON.parse(data);
+      if (index > Object.keys(newData).length || index<=0) {
+        console.log("Wrong ID given.")
+        
+      } else{
+        newData[index - 1].done = boolean;
+      }
+      
 
       fs.writeFile("./todos.json", JSON.stringify(newData), error => {
         if (error) {
