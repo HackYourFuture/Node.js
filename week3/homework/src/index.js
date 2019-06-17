@@ -15,15 +15,22 @@ app.post('/todos', (request, response) => {
   fs.readFile('./todos.txt', 'utf8', (error, todoList) => {
     if (error) {
       console.error(error);
+      response.status(404).send('');
     } else {
-      const todos = todoList.trim() == '' ? [] : JSON.parse(todoList);
+      const todos = todoList.trim() === '' ? [] : JSON.parse(todoList);
       todos.push({
         text: request.body.todo,
-        done: '',
+        done: 'false'
       });
       fs.writeFile('./todos.txt', JSON.stringify(todos), error => {
-        console.error(error);
-        response.json({ result: request.body.todo });
+        if (error) {
+          console.error(error);
+          response.status(404).send('');
+        } else {
+          response.json({
+            result: request.body.todo
+          });
+        }
       });
     }
   });
@@ -37,14 +44,14 @@ app.get('/todos/:id', (request, response) => {
     const objTodoList = JSON.parse(todoList);
 
     if (error) {
-      if (error.code === 'ENOENT') {
-        console.log('no data found');
-        response.status(404).send('');
-      } else console.error(error);
-    } else if (id < 0 || id >= objTodoList.length) {
-      response.send('id should be an index of todo item');
+      console.error(error);
+      response.status(404).send('');
+    } else if (id <= 0 || id > objTodoList.length) {
+      response.status(406).send('id should be an index of todo item');
     } else {
-      response.json({ result: objTodoList[id] });
+      response.json({
+        result: objTodoList[id - 1]
+      });
     }
   });
 });
@@ -57,11 +64,23 @@ app.post('/todos/:id/done', (request, response) => {
     const todos = JSON.parse(todoList);
     if (error) {
       console.error(error);
-    } else if (id < 0 || id >= todos.length) {
-      response.send('id should be an index of todo item');
+      response.status(404).send('');
+    } else if (id <= 0 || id > todos.length) {
+      response.status(406).send('id should be an index of todo item');
     } else {
-      todos[id].done = 'true';
-      response.json({ result: todos[id] });
+      todos[id - 1].done = 'true';
+      todos.splice(id - 1, 1, todos[id - 1]);
+
+      fs.writeFile('./todos.txt', JSON.stringify(todos), error => {
+        if (error) {
+          console.error(error)
+          response.status(404).send('');
+        } else {
+          response.json({
+            result: todos[id - 1]
+          });
+        }
+      });
     }
   });
 });
@@ -72,13 +91,27 @@ app.delete('/todos/:id/done', (request, response) => {
   fs.readFile('./todos.txt', 'utf8', (error, todoList) => {
     const id = request.params.id;
     const todos = JSON.parse(todoList);
+
     if (error) {
       console.error(error);
-    } else if (id < 0 || id >= todos.length) {
-      response.send('id should be an index of todo item');
+      response.status(404).send('');
+    } else if (id <= 0 || id > todos.length) {
+      response.status(406).send('id should be an index of todo item');
     } else {
-      todos[id].done = 'false';
-      response.json({ result: todos[id] });
+      todos[id - 1].done = 'false';
+      todos.splice(id - 1, 1, todos[id - 1]);
+
+      fs.writeFile('./todos.txt', JSON.stringify(todos), error => {
+        if (error) {
+          console.error(error)
+          response.status(404).send('');
+        } else {
+          response.json({
+            result: todos[id - 1]
+          });
+        }
+      });
+
     }
   });
 });
@@ -89,6 +122,7 @@ app.delete('/todos', (request, response) => {
   fs.writeFile('./todos.txt', '', error => {
     if (error) {
       console.error(error);
+      response.status(404).send('');
     } else {
       response.send('Todo list is deleted');
     }
