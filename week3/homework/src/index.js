@@ -12,8 +12,13 @@ function readToDo(request, response) {
       response.status(500).send('Problem Occurred.');
     } else {
       const index = request.params.id - 1;
-      response.json(JSON.parse(data)[index]);
-      console.log(data);
+      const parsedData = JSON.parse(data);
+      if (index > Object.keys(parsedData).length || index < 0) {
+        console.log('Not valid');
+      } else {
+        response.json(JSON.parse(data)[index]);
+        console.log(data);
+      }
     }
   });
 }
@@ -38,17 +43,22 @@ function markAsDoneOrNotDone(request, response, boolean) {
     } else {
       const index = request.params.id - 1;
       const finalData = JSON.parse(data);
-      finalData[index].done = boolean;
 
-      fs.writeFile('./todos.json', JSON.stringify(finalData), error => {
-        if (error) {
-          console.log(error);
-          response.status(500).send('Problem occurred while writing data.');
-        } else {
-          console.log('Status of todo item changed.');
-          response.json(finalData);
-        }
-      });
+      if (index > Object.keys(finalData).length || index < 0) {
+        console.log('Not valid');
+      } else {
+        finalData[index].done = boolean;
+
+        fs.writeFile('./todos.json', JSON.stringify(finalData), error => {
+          if (error) {
+            console.log(error);
+            response.status(500).send('Problem occurred while writing data.');
+          } else {
+            console.log('Status of todo item changed.');
+            response.json(finalData);
+          }
+        });
+      }
     }
   });
 }
@@ -59,7 +69,7 @@ app.get('/todos/:id', (request, response) => {
   readToDo(request, response);
 });
 
-app.delete('/todos/', (request, response) => {
+app.delete('/todos/', response => {
   clearToDos(response);
 });
 
