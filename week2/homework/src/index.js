@@ -1,6 +1,7 @@
 'use strict';
 
 // TODO: Write the homework code in this file
+<<<<<<< week2
 let fs = require ('fs');
 console.log(process.argv);
 
@@ -12,6 +13,17 @@ let todoItem = args[1]
 
 if(command === 'help') {
    help(todoItem)
+=======
+const fs = require ('fs');
+
+const args = process.argv.slice(2);
+
+const command = args[0];
+const todoItem = args[1]
+
+if(command === 'help') {
+   help()
+>>>>>>> local
 } else if (command === 'add') {
     add(todoItem)
 } else if (command === 'list') {
@@ -20,6 +32,11 @@ if(command === 'help') {
     remove(todoItem)
 } else if (command === 'reset') {
     reset(todoItem)
+<<<<<<< week2
+=======
+} else if (command !== 'command') {
+    console.log('invalid command!!, please check the help section');
+>>>>>>> local
 }
 
 function help () {
@@ -34,7 +51,13 @@ function help () {
 
 function add (todoItem) {
     fs.appendFile('./todoList.txt', todoItem + '\n', (error) => {
+<<<<<<< week2
         console.error(error)
+=======
+        if (error) {
+        console.error(error)
+        }
+>>>>>>> local
     })
 }
 
@@ -58,10 +81,19 @@ function remove (todoItem) {
         if (error) {
             console.log(error)
         } else {
+<<<<<<< week2
             let newText = todoList.split('\n');
             newText.splice(todoItem -1, 1)
             fs.writeFile('./todoList.txt', newText.join('\n'), (error) => {
                 console.log(error)
+=======
+            const newText = todoList.split('\n');
+            newText.splice(todoItem -1, 1)
+            fs.writeFile('./todoList.txt', newText.join('\n'), (error) => {
+                if(error) {
+                    console.log(error);
+                }
+>>>>>>> local
             })
         }
     })
@@ -72,7 +104,11 @@ function reset () {
         if(error) {
             console.log(error)
         } else {
+<<<<<<< week2
             console.log('')
+=======
+            console.log('Your todoList has been reset')
+>>>>>>> local
         }
     })
 }
