@@ -1,8 +1,1 @@
-[
-  { "text": "Sen an E-mail to a teacher", "done": false },
-  { "text": "Send an E-mail to a friend", "done": false },
-  { "text": "Shopping for dinner", "done": false },
-  { "text": "Buying a ticket", "done": false },
-  { "text": "clean the kitchen", "done": false },
-  { "text": "Homework", "done": false }
-]
+[{"text":"Send an E-mail to a friend","done":false},{"text":"Shopping for dinner","done":true},{"text":"Buying a ticket","done":false},{"text":"clean the kitchen","done":true},{"text":"Homework","done":false},{"text":"ahmet","done":false},{"text":"shopping","done":false}]
