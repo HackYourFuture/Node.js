@@ -28,9 +28,9 @@ function createServer(port) {
         break;
       default:
         response.statusCode = 404;
-        const error = new Error('Not found');
+        const errorMessage = 'Not found';
         response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ error: error.message }));
+        response.write(JSON.stringify({ error: errorMessage }));
         break;
     }
     response.end();
