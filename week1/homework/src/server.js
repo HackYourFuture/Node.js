@@ -7,31 +7,30 @@ const http = require('http');
  */
 function createServer(port) {
   let state = 10;
-
+  function respSetHeadAndWriteState(response) {
+    response.setHeader('Content-Type', 'application/json');
+    response.end(JSON.stringify({ state: state }));
+  }
   const server = http.createServer((request, response) => {
     switch (request.url) {
       case '/add':
-        response.setHeader('Content-Type', 'application/json');
         state++;
-        response.end(JSON.stringify({ state: state }));
+        respSetHeadAndWriteState(response);
         break;
       case '/state':
-        response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state: state }));
+        respSetHeadAndWriteState(response);
         break;
       case '/subtract':
-        response.setHeader('Content-Type', 'application/json');
         state--;
-        response.write(JSON.stringify({ state: state }));
+        respSetHeadAndWriteState(response);
         break;
       case '/reset':
-        response.setHeader('Content-Type', 'application/json');
         state = 10;
-        response.write(JSON.stringify({ state: state }));
+        respSetHeadAndWriteState(response);
         break;
       default:
-        response.setHeader('Content-Type', 'application/json');
         response.statusCode = 404;
+        response.setHeader('Content-Type', 'application/json');
         response.write(JSON.stringify({ error: 'Not found' }));
     }
     response.end();
