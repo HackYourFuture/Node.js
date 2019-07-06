@@ -1,0 +1,11 @@
+{
+  "name": "week1",
+  "version": "1.0.0",
+  "description": "1.  Recap last week\r 2.  Previous homework\r 3.  Questions & answers (Q&A)\r 4.  What is Node.js?\r 5.  Finding documentation\r 6.  Read-eval-print loop (REPL)\r 7.  Setting up a Node.js project using `npm init` and `package.json`\r 8.  Installing dependencies using `npm install`\r     1. Local and global mode\r 9.  Importing modules using `require`\r     1. Built-in, external modules and local files\r 10. Building an HTTP server using built-in `http` module\r     1. HTTP request methods\r     2. HTTP response status codes\r     3. Routing\r     4. Example\r 11. Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
