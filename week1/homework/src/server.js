@@ -2,37 +2,38 @@
 
 const http = require('http');
 
-/* `createServer` MUST return an instance of `http.Server` otherwise the tests
- * will fail.
- */
-function createServer(port) {
+function createServer() {
   let state = 10;
-  const results = { 'Contest-Type': 'application/json' };
+  const results = { 'Content-Type': 'application/json' };
 
   const server = http.createServer((request, response) => {
-    if (request.url === '/state') {
+    let url = request.url;
+    if (url === '/state') {
       response.writeHead(200, results);
       response.write(JSON.stringify({ state: state }));
     }
- else if (request.url === '/add') {
+ else if (url === '/add') {
+      state = state + 1;
       response.writeHead(200, results);
-      response.write(JSON.stringify({ state: state + 1 }));
+      response.write(JSON.stringify({ state: state }));
     }
- else if (request.url === '/subtract') {
+ else if (url === '/subtract') {
+      state = state - 1;
       response.writeHead(200, results);
-      response.write(JSON.stringify({ state: state - 1 }));
+      response.write(JSON.stringify({ state: state }));
     }
- else if (request.url === '/reset') {
+ else if (url === '/reset') {
+      state = 10;
       response.writeHead(200, results);
       response.write(JSON.stringify({ state: state }));
     }
  else {
       response.writeHead(404, results);
-      response.write(JSON.stringify({ error: 'not found' }));
+      response.write(JSON.stringify({ error: 'Not found' }));
     }
+
     response.end();
   });
-
   return server;
 }
 
