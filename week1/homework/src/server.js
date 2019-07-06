@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 const http = require('http');
@@ -7,32 +8,30 @@ const http = require('http');
  */
 function createServer(port) {
   let state = 10;
+  const results = { 'Contest-Type': 'application/json' };
 
   const server = http.createServer((request, response) => {
     if (request.url === '/state') {
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ state: state }));
+      response.writeHead(200, results);
+      response.write(JSON.stringify({ state: state }));
     }
-    if (request.url === '/add') {
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ state: ++state }));
+ else if (request.url === '/add') {
+      response.writeHead(200, results);
+      response.write(JSON.stringify({ state: state + 1 }));
     }
-    if (request.url === '/subtract') {
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ state: --state }));
+ else if (request.url === '/subtract') {
+      response.writeHead(200, results);
+      response.write(JSON.stringify({ state: state - 1 }));
     }
-    if (request.url === '/reset') {
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ state: state }));
+ else if (request.url === '/reset') {
+      response.writeHead(200, results);
+      response.write(JSON.stringify({ state: state }));
     }
-    // eslint-disable-next-line indent
-    else {
-      response.setHeader('Content-Type', 'application/json');
-      response.statusCode = 404;
-      response.end(JSON.stringify({ error: 'Not found' }));
+ else {
+      response.writeHead(404, results);
+      response.write(JSON.stringify({ error: 'not found' }));
     }
     response.end();
-    // TODO: Write your homework code here
   });
 
   return server;
