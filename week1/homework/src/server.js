@@ -11,7 +11,7 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     console.log(request.method, request.url);
 
-    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.setHeader('Content-Type', 'application/json');
     switch (request.url) {
       case '/state':
         response.write(JSON.stringify({ state }));
@@ -30,7 +30,7 @@ function createServer(port) {
         break;
       default:
         const error = 'Not found';
-        response.writeHead(404, { 'Content-Type': 'application/json' });
+        response.statusCode = 404;
         response.write(JSON.stringify({ error }));
         break;
     }
@@ -40,5 +40,5 @@ function createServer(port) {
   return server;
 }
 module.exports = {
-  createServer,
+  createServer
 };
