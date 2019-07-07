@@ -19,13 +19,13 @@ function createServer(port) {
       case '/add':
         state += 1;
         response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state: state}));
+        response.write(JSON.stringify({ state: state }));
 
         break;
       case '/subtract':
         state -= 1;
         response.setHeader('Content-Type', 'application/json');
-        response.write(JSON.stringify({ state: state}));
+        response.write(JSON.stringify({ state: state }));
 
         break;
       case '/reset':
@@ -45,5 +45,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  createServer
+  createServer,
 };
