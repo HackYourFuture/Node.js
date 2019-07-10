@@ -33,8 +33,8 @@ app.delete('/todos', (req, res) => {
       todo.splice(targetIndex, 1);
       todos = [];
     }
-      res.json({ result: "item deleted!"})
-      res.send(200);
+    res.status(200);
+    res.send([]).json()
 
   });
 
@@ -47,7 +47,7 @@ app.delete('/todos', (req, res) => {
          }
          return item
      })
-     res.send(todoItem)
+     res.send(todos)
   });
 
 app.delete('/todos/:id/done', (req, res) => {
@@ -60,7 +60,7 @@ app.delete('/todos/:id/done', (req, res) => {
          return item
      })
      res.status(200)
-     res.send(todoItem)
+     res.send(todos)
 });
 
 
