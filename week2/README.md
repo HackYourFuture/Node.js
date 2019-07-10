@@ -52,7 +52,3 @@ Read parts 3.1, 3.2, 4.1, 4.3 of [Airpair tutorial](https://www.airpair.com/java
 ## Homework
 
 Check [README.md](homework/README.md) in `homework` subdirectory.
-
-## Prepare for the next lecture
-
-[Lynda playlist :information_desk_person:](https://www.lynda.com/SharedPlaylist/e8a2fec772bb462da38429629a34f3b7)
