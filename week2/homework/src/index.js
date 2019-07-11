@@ -13,19 +13,19 @@ const update = require('./update');
 
 switch (command) {
   case 'list':
-    list().then(data => console.log(data));
+    list().then(toDos => console.log(toDos));
     break;
   case 'add':
-    add(todoItem).then(data => console.log(data));
+    add(todoItem).then(toDos => console.log(toDos));
     break;
   case 'remove':
-    remove(todoItem).then(data => console.log(`You still have to do: \n${data}`));
+    remove(todoItem).then(toDos => console.log(`You still have to do: \n${toDos}`));
     break;
   case 'reset':
-    reset().then(data => console.log(`There is nothing to be done \n${data}`));
+    reset().then(toDos => console.log(`There is nothing to be done \n${toDos}`));
     break;
   case 'update':
-    update(todoItem, newVal).then(data => console.log(data));
+    update(todoItem, newVal).then(toDos => console.log(toDos));
     break;
 
   default:
