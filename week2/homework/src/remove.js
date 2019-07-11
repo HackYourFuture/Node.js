@@ -12,7 +12,7 @@ function remove(todoItem) {
         const todoList = JSON.parse(toDos);
         const filteredList = todoList.filter((elem, index) => index !== todoItem - 1);
         const newList = JSON.stringify(filteredList, null, 2);
-        return fs.writeFile(fileName, newList, error => (error ? reject(error) : resolve(newList)));
+        return fs.writeFile(fileName, newList, error => (error ? reject(error) : resolve(toDos)));
       }
     });
   });
