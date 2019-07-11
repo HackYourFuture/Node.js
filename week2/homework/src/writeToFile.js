@@ -1,15 +1,14 @@
-'use strict';
 const fs = require('fs');
-const readFile = require('./readAndAppend');
-function writeToFile(string) {
-  return new Promise((resolve, reject) =>
-    fs.writeFile('./data.json', string, (err, data) => {
+
+function writeToFile(data) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('data.json', data, (err, data) => {
       if (err) {
-        reject(err);
+        reject(console.error);
       } else {
         resolve(data);
       }
-    }),
-  );
+    });
+  });
 }
 module.exports = writeToFile;

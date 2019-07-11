@@ -1,22 +1,17 @@
-'use strict';
 const fs = require('fs');
-function remove(args) {
-  return new Promise(resolve =>
-    fs.readFile('./data.json', 'utf-8', (err, data) => {
-      if (err) {
-        resolve(err);
-      } else {
-        data = JSON.parse(data);
-        let index = args;
-        if (data.hasOwnProperty(index)) {
-          console.log(`\n${index} ${data[index]} deleted\n`);
-          delete data[index];
-        } else {
-          console.log('\nTODO # does not exist\n');
-        }
-        resolve(JSON.stringify(data, null, 2));
-      }
-    }),
-  );
+
+function remove(data, args) {
+  return new Promise((resolve, reject) => {
+    args.join(' ');
+    if (data.hasOwnProperty(args)) {
+      console.log('\x1b[33m%s\x1b[0m ', `\n\n${data[args]} removed\n\n`);
+      delete data[args];
+      resolve(JSON.stringify(data));
+    } else {
+      console.log('\x1b[33m%s\x1b[0m ', ' \n\n no such TODO \n\n');
+      reject(console.error);
+    }
+  });
 }
+
 module.exports = remove;

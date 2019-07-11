@@ -1,23 +1,14 @@
-'use strict';
-const fs = require('fs');
-function update(args) {
-  return new Promise(resolve =>
-    fs.readFile('./data.json', 'utf-8', (err, data) => {
-      if (err) {
-        resolve(err);
-      } else {
-        data = JSON.parse(data);
-        let index = args[0];
-        if (data.hasOwnProperty(index)) {
-          console.log(`\n${data[index]} has been updated as : `);
-          data[index] = args[1];
-          console.log(`\n${data[index]}\n`);
-        } else {
-          console.log('\nTODO # does not exist\n');
-        }
-        resolve(JSON.stringify(data, null, 2));
-      }
-    }),
-  );
+const readFile = require('./readFile');
+
+async function update(args) {
+  const data = await readFile();
+  if (!data.hasOwnProperty(args[0])) {
+    console.log('\x1b[33m%s\x1b[0m ', 'no such TODO');
+  } else if (args.length === 1) {
+    console.log('\nNo update value provided');
+  } else {
+    data[args[0]] = args.slice(1).join(' ');
+  }
+  return JSON.stringify(data);
 }
 module.exports = update;

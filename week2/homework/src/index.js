@@ -1,46 +1,76 @@
 'use strict';
+const add = require('./add');
+const readFile = require('./readFile');
 const writeToFile = require('./writeToFile');
-const readAndAppend = require('./readAndAppend');
 const displayList = require('./displayList');
-const remove = require('./remove');
 const update = require('./update');
-const reset = require('./reset');
-const command = process.argv[2];
+const remove = require('./remove');
 const args = process.argv.slice(3);
+const command = process.argv[2];
 switch (command) {
   case 'help':
   default:
     console.log(
-      '\ncommands :\n\n' +
-        '\tadd\t: to add item to TODO list Eg: node . add buy groceries\n\n' +
-        '\tlist\t: to see items in the TODO list Eg: node . list\n\n' +
-        '\tremove\t: to remove the nth item from the TODO list \n \tEg: node . remove 2 (removes 2nd item from the list)\n\n' +
-        '\treset\t: remove all items from the TODO list Eg: node . reset\n\n' +
-        '\tupdate\t: update an item in the TODO list Eg: node . update TODO# New TODO\n\n' +
-        '\treset\t: remove all items from the TODO list Eg: node . reset\n\n',
+      '\x1b[33m%s\x1b[0m ',
+      '\n\ncommands\n\n' +
+        '\thelp\t: shows commands\n\n' +
+        '\tlist\t: shows list of TODOS\n\n' +
+        '\tremove\t: removes TODO based on index\n\n' +
+        '\tupdate\t: updates TODO based on index\n\n' +
+        '\treset\t: deletes all TODOs from the list\n\n' +
+        '\tadd\t: adds new TODO to TODO list\n\n',
     );
+
     break;
   case 'add':
-    readAndAppend(args)
-      .then(data => writeToFile(data).then(displayList()))
-      .catch(console.error);
+    (async () => {
+      try {
+        const data = await readFile();
+        const dataAddedArgs = await add(data, args);
+        await writeToFile(dataAddedArgs);
+        displayList();
+      } catch (error) {
+        console.error;
+      }
+    })();
     break;
+
   case 'update':
-    update(args)
-      .then(data => writeToFile(data))
-      .catch(console.error);
+    (async () => {
+      try {
+        const updatedData = await update(args);
+        await writeToFile(updatedData);
+        displayList();
+      } catch (error) {
+        console.error;
+      }
+    })();
+
+    break;
+
+  case 'list':
+    displayList();
     break;
   case 'remove':
-    remove(...args)
-      .then(data => writeToFile(data).then(displayList()))
-      .catch(console.error);
-    break;
-  case 'list':
-    displayList().catch(console.error);
+    (async () => {
+      try {
+        const data = await readFile();
+        const removedData = await remove(data, args);
+        await writeToFile(removedData);
+        displayList();
+      } catch (error) {
+        console.error;
+      }
+    })();
     break;
   case 'reset':
-    reset()
-      .then(data => writeToFile(data).then(displayList()))
-      .catch(console.error);
+    (async () => {
+      try {
+        await writeToFile('{}');
+        console.log('\x1b[33m%s\x1b[0m ', 'All TODOS deleted');
+      } catch (error) {
+        console.error;
+      }
+    })();
     break;
 }
