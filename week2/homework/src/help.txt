@@ -1,8 +1,8 @@
 Usage: node index.js [method] [fileName] [args]
 
 Methods:
-  list        Print all todos
-  add         Add todo(s) to a specific file
-  remove      Remove todo from a specific file
-  update      Update todos with a new text
-  reset       Delete all todos
+  list <file>                       Print all todos
+  add <file> [todos...]             Add todo(s) to a specific file
+  update <file> <line> <newText>    Update todos with a new text
+  remove <file> <line>              Remove todo from a specific file
+  reset                             Delete all todos
