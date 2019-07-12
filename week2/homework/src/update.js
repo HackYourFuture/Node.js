@@ -10,7 +10,9 @@ function update(todoItem, newVal) {
         help();
       } else {
         const todoList = JSON.parse(toDos);
-        const mappedList = todoList.map((elem, index) => (index === todoItem - 1 ? newVal : elem));
+        const mappedList = todoList.map((elem, index) =>
+          index === Number(todoItem) - 2 ? newVal : elem,
+        );
         const newList = JSON.stringify(mappedList, null, 2);
         return fs.writeFile(fileName, newList, error => (error ? reject(error) : resolve(toDos)));
       }
