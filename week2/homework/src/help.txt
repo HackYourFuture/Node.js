@@ -1,0 +1,17 @@
+help: Shows help section .
+    just type: node index help
+
+list: Shows to-do list .
+    just type: node index list
+
+remove: Removes a to-do item .
+    example: node index remove 1 (this will delete the first line)
+
+reset: Removes all to-do items from the list.
+    just write: node index reset
+
+add: Adds a to-do item.
+    example: node index add "go to work" 
+
+update: To replace one line with another 
+    example: node index update 2 "inter the new content "
