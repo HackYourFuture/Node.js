@@ -88,12 +88,9 @@ function remove() {
     }
     else {
       let todoList = JSON.parse(todos);
-      // .filter((todo, index) => index !== todoItem - 1)
-      // .join('\n');
       todoList.splice(todoItem - 1, 1);
       console.log(todoList);
       const newList = JSON.stringify(todoList);
-
       fs.writeFile(path, newList, 'utf8', () => {
         console.log('ok!');
       });
