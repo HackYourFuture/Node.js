@@ -1,24 +1,20 @@
 const fs = require('fs');
 
 function update(toDoItem, newValue) {
-  //read todo.txt
-  fs.readFile('./toDo.txt', 'utf8', (error, data) => {
+  fs.readFile('./toDo.json', 'utf8', (error, data) => {
     if (error) {
       console.log(error);
     } else {
-      const result = data.split('\n');
-      // make array from data
-      // change the value of certain index
+      const parsedData = JSON.parse(data);
       toDoItem--;
-      if (toDoItem > result.length) {
+      if (isNaN(toDoItem)) {
+        console.log('please inter a number.');
+      } else if (toDoItem > parsedData.length || toDoItem < 0) {
         console.log('There is no such a line');
       } else {
-        result[toDoItem] = newValue;
-        console.log(toDoItem);
-        //make a string form an array
-        const updated = result.join('\n');
-        ///write todo.txt again
-        fs.writeFile('./toDo.txt', updated, error => {
+        parsedData[toDoItem] = newValue;
+        const jsonData = JSON.stringify(parsedData, null, 2);
+        fs.writeFile('./toDo.json', jsonData, error => {
           if (error) {
             console.log(error);
           } else {
