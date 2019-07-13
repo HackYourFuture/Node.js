@@ -49,7 +49,7 @@ switch (command) {
     break;
 
   case 'list':
-    displayList();
+    displayList().catch(error => console.log(error));
     break;
   case 'remove':
     (async () => {
