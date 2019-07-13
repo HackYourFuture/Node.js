@@ -31,22 +31,24 @@ program
         console.log(error);
       }
       const todoList = JSON.parse(toDos);
-      const filteredList = todoList.filter((elem, index) => index !== Number(todoItem) - 2);
+      const filteredList = todoList.filter((elem, index) => index !== Number(todoItem) - 1);
       const newList = JSON.stringify(filteredList, null, 2);
       console.log(newList);
       return fs.writeFile('./bonus/list.json', newList, error => console.log(error));
     });
-  })
-  // The `update` takes only one argument, the second one is `undefined`.
-  // When I try to update an item it becomes `null`
-  .option('update <row number> <new value>', 'update one todo item', function(todoItem, newVal) {
+  });
+program
+  .command('update')
+  .usage('<row number> [new value...]')
+  .description('update one todo item')
+  .action(function(todoItem, newVal) {
     fs.readFile('./bonus/list.json', 'utf8', (error, toDos) => {
       if (error) {
         console.log(error);
       }
       const todoList = JSON.parse(toDos);
       const mappedList = todoList.map((elem, index) =>
-        index === Number(todoItem) - 2 ? newVal : elem,
+        index === Number(todoItem) - 1 ? newVal : elem,
       );
       const newList = JSON.stringify(mappedList, null, 2);
       console.log(newList);
