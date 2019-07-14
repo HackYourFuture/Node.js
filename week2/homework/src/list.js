@@ -2,9 +2,8 @@ const fs = require('fs');
 
 function list() {
   fs.readFile('./src/data.json', 'utf8', (error, data) => {
-    if (error) {
-      console.log(error);
-    } else if (data) {
+    if (error) throw error;
+    if (data) {
       console.log(data);
     } else if (!data) {
       console.log('There is not a ToDo list!');
