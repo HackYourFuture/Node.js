@@ -2,7 +2,7 @@
 const fs = require('fs');
 const args = process.argv.slice(2); // start from the value of the argument
 const command = args[0]; // help, add, reset, update,...
-const todoItem = args[1];
+const todoItem = args[1]; // string / number.
 const description = args[2];
 const path = './todoList.json';
 
@@ -72,9 +72,14 @@ function add() {
       else {
         todoList.push(todoItem);
         const newList = JSON.stringify(todoList);
-        fs.writeFile(path, newList, 'utf8', () => {
-          console.log(todoList);
-          console.log('todo added!');
+        fs.writeFile(path, newList, 'utf8', error => {
+          if (!error) {
+            console.log(todoList);
+            console.log('todo added!');
+          }
+          else {
+            console.error(error);
+          }
         });
       }
     }
@@ -88,6 +93,7 @@ function remove() {
     }
     else {
       let todoList = JSON.parse(todos);
+      // todoList[todoItem - 1] = description;
       todoList.splice(todoItem - 1, 1);
       console.log(todoList);
       const newList = JSON.stringify(todoList);
