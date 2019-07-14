@@ -4,7 +4,7 @@
   "description": "HackYourFuture Node.js Week 2 - Homework",
   "repository": "https://github.com/HackYourFuture/nodejs.git",
   "main": "src/index.js",
-  "author": "George Sapkin",
+  "author": "Alusine Q. Sesay",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^4.2.0",
@@ -13,5 +13,9 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.14",
+    "yargs": "^13.2.4"
   }
 }
