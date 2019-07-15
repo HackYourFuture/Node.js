@@ -8,6 +8,7 @@ const add = require('./add.js');
 const deletes = require('./deletes.js');
 const list = require('./list.js');
 const help = require('./help.js');
+const reset = require('./reset.js');
 
 const argv = yargs.argv;
 
@@ -23,6 +24,10 @@ if (command === 'addTodo') {
   let allTodos = list.listTodos();
   console.log(`Printing ${allTodos.length} todo(s).`);
   allTodos.forEach(todo => list.logTodo(todo));
+} else if (command === 'resetTodo') {
+  reset.resetTodo();
+  const message = 'All Todos have been removed';
+  console.log(message);
 } else if (command === 'printHelp') {
   help.printHelp();
 } else {

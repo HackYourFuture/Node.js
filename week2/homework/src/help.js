@@ -9,6 +9,7 @@ const printHelp = () => {
   deleteTodo --title=''............ Deletes a To-do
   listTodos ....................... List all To-dos     
   help ............................ Displays help for the app 
+  resetTodo ....................... Removes all To-dos.
   `);
 };
 
