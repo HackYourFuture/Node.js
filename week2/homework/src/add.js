@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const fs = require('fs');
 
 function add(toDoList) {
@@ -6,8 +7,12 @@ function add(toDoList) {
   }
  else {
     fs.appendFile('./todoList.txt', toDoList + '\n', error => {
-      console.error(error);
-      return console.log('item was added successfully');
+      if (error) {
+        console.log('there was an error');
+      }
+ else {
+        return console.log('item was added successfully');
+      }
     });
   }
 }

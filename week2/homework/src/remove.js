@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const fs = require('fs');
 
 function remove(index) {
@@ -6,8 +7,12 @@ function remove(index) {
     const removeSelectedItem = data.split('\n');
     removeSelectedItem.splice(index - 1, 1);
     fs.writeFile('./todoList.txt', removeSelectedItem.join('\n'), err => {
-      if (err) throw err;
-      console.log('Item was removed successfully');
+      if (err) {
+        console.log('there is an error');
+      }
+ else {
+        console.log('Item was removed successfully');
+      }
     });
   });
 }
