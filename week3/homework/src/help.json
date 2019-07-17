@@ -1,0 +1,27 @@
+{
+  "name": "To-Do List Application",
+  "format to use": {
+    "todo": {
+      "description": "(to-do description)"
+    }
+  },
+  "usage": {
+    "get": {
+      "/": "See help information",
+      "/todos": "List all to-dos",
+      "/todos/:id": "list a to-do which has the specified id"
+    },
+    "post": {
+      "/todos": "Create a to-do",
+      "/todos/:id/done": "Mark a to-do which has the specified id as done"
+    },
+    "put": {
+      "/todos/:id": "Update a to-do which has the specified id"
+    },
+    "delete": {
+      "/todos": "Clear to-do list",
+      "/todos/:id": "delete a to-do which has the specified id",
+      "/todos/:id/done": "Mark a to-do which has the specified id as not done"
+    }
+  }
+}
