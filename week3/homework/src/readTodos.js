@@ -6,7 +6,7 @@ const fileName = './src/data.json';
 async function readTodos() {
   return new Promise((resolve, reject) => {
     fs.readFile(fileName, 'utf8', (error, toDos) => {
-      error ? reject(error) : resolve(toDos);
+      error ? reject(error) : resolve(JSON.parse(toDos));
     });
   });
 }

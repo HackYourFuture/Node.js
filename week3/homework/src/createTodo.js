@@ -12,10 +12,9 @@ async function createTodo(description) {
     done: false,
     description,
   };
-  const list = JSON.parse(todos);
-  list.push(todo);
+  todos.push(todo);
 
-  return fs.writeFile(fileName, JSON.stringify(list, null, 2), error => {
+  return fs.writeFile(fileName, JSON.stringify(todos, null, 2), error => {
     if (error) {
       console.log(error);
     }

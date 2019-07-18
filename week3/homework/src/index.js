@@ -17,8 +17,7 @@ app.use(express.json());
 
 try {
   app.get('/todos', (request, response) => {
-    readTodos();
-    response.status(200).json(request.body);
+    readTodos().then(todos => response.status(200).json(todos));
   });
 
   app.get('/todos/:id', (request, response) => {
