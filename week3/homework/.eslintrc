@@ -28,6 +28,7 @@
     "standard/array-bracket-even-spacing": ["off"],
     "standard/object-curly-even-spacing": ["off"],
     "template-tag-spacing": ["off"],
-    "undefined": 0
+    "undefined": 0,
+    "parser": "babel-eslint"
   }
 }
