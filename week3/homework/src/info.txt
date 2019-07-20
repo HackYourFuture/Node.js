@@ -1,0 +1,8 @@
+How it works?
+To add a TODO         : POST todos/ (request body should include a JSON as {"text":"TODO"})
+To see all TODOS      : GET todos/
+To update a TODO      : POST todos/id:  (request body should include a JSON as {"text":"TODO"})
+To delete a TODO      : DELETE todos/id:
+To delete all  TODOS  : DELETE/todos
+To set todo as done   : POST /todos/id:/done
+To set TODO as undone : DELETE /todos/id:/done
