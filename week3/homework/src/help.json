@@ -1,0 +1,11 @@
+{
+  "GET/": "Shows help information",
+  "GET/todos": "Lists all to-dos",
+  "GET/todos/:id": "Lists a to-do which has the specified id",
+  "POST/todos": "Creates a to-do",
+  "POST/todos/:id/done": "Marks a to-do which has the specified id as done",
+  "PUT/todos/:id": "Updates a to-do which has the specified id",
+  "DELETE/todos": "Clears to-do list",
+  "DELETE/todos/:id": "Deletes a to-do which has the specified id",
+  "DELETE/todos/:id/done": "Marks a to-do which has the specified id as not done"
+}
