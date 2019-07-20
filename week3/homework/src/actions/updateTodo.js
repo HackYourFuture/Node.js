@@ -8,7 +8,8 @@ async function updateTodo(todo, request, response) {
 
     response.status(200);
     response.json(newTodo);
-  } catch ({ message, code }) {
+  }
+  catch ({ message, code }) {
     response.status(code);
     response.json({ error: message });
   }

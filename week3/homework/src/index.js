@@ -1,10 +1,18 @@
 'use strict';
 
+const path = require('path');
+
 const PORT = 3333;
-const FILE_PATH = './todos.json';
+const FILE_PATH = path.join(__dirname, '/todos.json');
 const TODO_URL = '/todos';
 
-const { readTodos, createTodo, updateTodo, deleteTodo, markTodo } = require('./actions');
+const {
+  readTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
+  markTodo
+} = require('./actions');
 
 const express = require('express');
 const app = express();

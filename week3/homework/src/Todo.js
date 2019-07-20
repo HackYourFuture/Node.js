@@ -10,20 +10,35 @@ const writePromise = util.promisify(fs.writeFile);
 const DEFAULT_ENCODING = 'utf8';
 
 class Todo {
-  constructor(filename) {
-    this.filename = filename;
+  constructor(filePath) {
+    this.filePath = filePath;
   }
 
   async read(id = undefined) {
-    const todos = JSON.parse(await readPromise(this.filename, DEFAULT_ENCODING));
+    try {
+      const todos = JSON.parse(await readPromise(this.filePath, DEFAULT_ENCODING));
 
-    // If Id has not been provided then return all todos
-    if (id === undefined) return todos;
+      // If Id has not been provided then return all todos
+      if (id === undefined) return todos;
 
-    const todo = todos.find(t => t.id === id);
-    if (todo === undefined) this._errorHandler(`To-do with ID '${id}' does not exist`, 404);
+      const todo = todos.find(t => t.id === id);
+      if (todo === undefined)
+        this._errorHandler(`To-do with ID '${id}' does not exist`, 404);
 
-    return todo;
+      return todo;
+    }
+    catch (error) {
+      // If there is no initial todo.json file
+      if (error.code === 'ENOENT') {
+        // GET /todos = []
+        if (id === undefined) return [];
+
+        // GET /todos/:id = null
+        return null;
+      }
+
+      throw error;
+    }
   }
 
   async createSave(text) {
@@ -43,7 +58,10 @@ class Todo {
 
   async update(id, text) {
     const todos = await this.read();
-    const todo = await this.read(id);
+    const todo = todos.find(t => t.id === id);
+
+    if (todo === undefined)
+      this._errorHandler(`To-do with ID '${id}' does not exist`, 404);
 
     todo.text = text;
     await this._save(todos);
@@ -69,7 +87,10 @@ class Todo {
 
   async mark(id, isDone) {
     const todos = await this.read();
-    const todo = await this.read(id);
+    const todo = todos.find(t => t.id === id);
+
+    if (todo === undefined)
+      this._errorHandler(`To-do with ID '${id}' does not exist`, 404);
 
     if (isDone) todo.done = true;
     else todo.done = false;
@@ -99,7 +120,7 @@ class Todo {
   }
 
   _save(todos) {
-    return writePromise(this.filename, JSON.stringify(todos, null, 2));
+    return writePromise(this.filePath, JSON.stringify(todos, null, 2));
   }
 
   _errorHandler(message, code) {
