@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "done": false,
+    "text": "read the book"
+  },
+  { "id": 2,
+    "done": false,
+    "text": "gardening" 
+  },
+  { "id": 3,
+  "done": false, 
+  "text": "call the friend"
+  }
+]
