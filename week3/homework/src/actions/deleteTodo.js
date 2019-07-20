@@ -1,6 +1,6 @@
 'use strict';
 
-const { readTodos, saveTodos } = './index';
+const { readTodos, saveTodos } = require('./index');
 
 function deleteTodo(req, res) {
   return new Promise((resolve, reject) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const saveTodos = './index';
+const saveTodos = require('./index');
 
 function clearTodos(todos) {
   return new Promise((resolve, reject) => {
@@ -10,4 +10,4 @@ function clearTodos(todos) {
       .catch(error => reject(error));
   });
 }
-module.exports = clearTodos();
+module.exports = clearTodos;

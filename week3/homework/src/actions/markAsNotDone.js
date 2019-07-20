@@ -1,6 +1,6 @@
 'use strict';
 
-const { readTodos, saveTodos } = './index';
+const { readTodos, saveTodos } = require('./index');
 
 function markAsNotDone(req, res) {
   return new Promise((resolve, reject) => {
@@ -12,10 +12,10 @@ function markAsNotDone(req, res) {
       else {
         todoItem.done = 'false';
         saveTodos(todos);
-        resolve();
+        resolve(todoItem.id);
       }
     });
   });
 }
 
-module.exports = markAsNotDone();
+module.exports = markAsNotDone;

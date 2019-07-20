@@ -1,13 +1,14 @@
 'use strict';
-const { readTodos, saveTodos } = './index';
+const { readTodos, saveTodos } = require('./index');
 
 function updateTodo(req, res) {
   return new Promise((resolve, reject) => {
+    console.log(readTodos);
     readTodos()
       .then(todos => {
         const todoItem = todos.find(todo => todo.id === req.params.id);
         if (!todoItem) {
-          reject(new Error('No item found!'));
+          reject(new Error('item not found!'));
         }
         else {
           const { todo } = req.body;
@@ -19,4 +20,4 @@ function updateTodo(req, res) {
       .catch(error => reject(error));
   });
 }
-module.exports = updateTodo();
+module.exports = updateTodo;
