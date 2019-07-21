@@ -16,6 +16,7 @@ function update(index, newToDo) {
         }
       });
     }
+    return newToDo;
   } else {
     console.log('WARN: first parameter of update command must be an integer and greater than 0!');
   }

@@ -5,5 +5,6 @@ function add(todoText) {
   const parsedData = JSON.parse(data);
   parsedData.push({ text: todoText });
   fs.writeFileSync('todos.json', JSON.stringify(parsedData));
+  return todoText;
 }
 module.exports = { add, desc };
