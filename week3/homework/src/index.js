@@ -3,80 +3,81 @@
 const express = require('express');
 const Joi = require('joi');
 const app = express();
-const todos = require('./todos');
+const validateTodos = require('./validateTodos');
+const todo = require('./todo.json');
 app.use(express.json());
 
-// get the list of todos
-app.get('/todos', (req, res) => {
-  res.send(todos);
-});
-
-// get todo by id number
-app.get('/todos/:id', (req, res) => {
-  const todo = todos.find(c => c.id === parseInt(req.params.id));
-  if (!todo) return res.status(404).send('the given api not found');
+// get the list of todo
+app.get('/todo', (req, res) => {
   res.send(todo);
 });
 
+// get todo by id number
+app.get('/todo/:id', (req, res) => {
+  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
+  if (!todoItem) return res.status(404).send('Id not found');
+  res.send(todoItem);
+});
+
 // add todo
-app.post('/todos', (req, res) => {
+app.post('/todo', (req, res) => {
   const { error } = validateTodos(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
 
-  const todo = {
-    id: todos.length + 1,
-    name: req.body.name,
+  const todoItem = {
+    id: todo.length + 1,
+    name: req.body.description,
     done: false,
   };
-  todos.push(todo);
-  res.send(todos);
+  todo.push(todoItem);
+  res.send(todo);
 });
 
 // modify todo
-app.put('/todos/:id', (req, res) => {
-  const todo = todos.find(c => c.id === parseInt(req.params.id));
-  if (!todo) return res.status(404).send('the given api not found');
+app.put('/todo/:id', (req, res) => {
+  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
+  if (!todoItem) return res.status(404).send('Id not found');
 
   const { error } = validateTodos(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  todo.name = req.body.name;
-  res.send(todos);
+  todoItem.description = req.body.description;
+  res.send(todo);
 });
 
 // mark to do as done
-app.delete('/todos/:id/true', (req, res) => {
-  const todo = todos.find(c => c.id === parseInt(req.params.id));
-  if (!todo) return res.status(404).send('the given api not found');
+app.delete('/todo/:id/true', (req, res) => {
+  const todoItem = todo.find(c => c.id === parseInt(req.params.id));
+  if (!todoItem) return res.status(404).send(`The given ID : ${id} is not found`);
 
   const { error } = validateTodos(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  todo.done = true;
-  res.send(todo);
+  todoItem.done = true;
+  res.send(todoItem);
 });
 
 // mark todo as not done
-app.delete('/todos/:id/false', (req, res) => {
-  const todo = todos.find(c => c.id === parseInt(req.params.id));
-  if (!todo) return res.status(404).send('the given api not found');
+app.delete('/todo/:id/false', (req, res) => {
+  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
+  if (!todoItem) return res.status(404).send(`The given ID : ${id} is not found`);
 
   const { error } = validateTodos(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  todo.done = false;
-  res.send(todo);
+  todoItem.done = false;
+  res.send(todoItem);
 });
 
 // delete todo by id number
-app.delete('/todos/:id', (req, res) => {
-  const todo = todos.find(c => c.id === parseInt(req.params.id));
-  if (!todo) return res.status(404).send('the given api not found');
+app.delete('/todo/:id', (req, res) => {
+  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
+  if (!todoItem) return res.status(404).send(`The given ID is not found`);
 
-  const index = todos.indexOf(todo);
-  todos.splice(index, 1);
+  const index = todo.indexOf(todoItem);
+  todo.splice(index, 1);
   res.send(todo);
 });
 

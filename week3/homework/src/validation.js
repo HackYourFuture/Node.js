@@ -4,7 +4,7 @@ function validateTodos(todo) {
   const schema = {
     name: Joi.string()
       .min(3)
-      .required()
+      .required(),
   };
   return Joi.validate(todo, schema);
 }
