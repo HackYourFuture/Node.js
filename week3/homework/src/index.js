@@ -1,7 +1,6 @@
 // 'use strict';
 
 const express = require('express');
-const Joi = require('joi');
 const app = express();
 const validateTodos = require('./validateTodos');
 const todo = require('./todo.json');
@@ -50,7 +49,7 @@ app.put('/todo/:id', (req, res) => {
 // mark to do as done
 app.delete('/todo/:id/true', (req, res) => {
   const todoItem = todo.find(c => c.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send(`The given ID : ${id} is not found`);
+  if (!todoItem) return res.status(404).send('Id not found');
 
   const { error } = validateTodos(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -62,7 +61,7 @@ app.delete('/todo/:id/true', (req, res) => {
 // mark todo as not done
 app.delete('/todo/:id/false', (req, res) => {
   const todoItem = todo.find(i => i.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send(`The given ID : ${id} is not found`);
+  if (!todoItem) return res.status(404).send('Id not found');
 
   const { error } = validateTodos(req.body);
   if (error) return res.status(400).send(error.details[0].message);
