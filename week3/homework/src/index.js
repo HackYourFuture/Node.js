@@ -8,7 +8,7 @@ const {
   showOneToDo,
   mark,
   handleError,
-} = require('./actions');
+} = require('./actionsAndStaff');
 
 const express = require('express');
 const app = express();
@@ -17,58 +17,76 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', (request, response) => {
-  readAndParse('help')
-    .then(help => response.json(help))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.get('/', async (request, response) => {
+  try {
+    response.json(await readAndParse('help'));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.get('/todos', (request, response) => {
-  readAndParse()
-    .then(list => response.json(list))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.get('/todos', async (request, response) => {
+  try {
+    response.json(await readAndParse());
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.get('/todos/:id', (request, response) => {
-  showOneToDo(request.params.id)
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.get('/todos/:id', async (request, response) => {
+  try {
+    response.json(await showOneToDo(request.params.id));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.post('/todos', (request, response) => {
-  create(request)
-    .then(result => response.status(201).json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.post('/todos', async (request, response) => {
+  try {
+    response.status(201).json(await create(request));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.post('/todos/:id/done', (request, response) => {
-  mark(request.params.id)
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.post('/todos/:id/done', async (request, response) => {
+  try {
+    response.json(await mark(request.params.id));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.put('/todos/:id', (request, response) => {
-  update(request, request.params.id)
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.put('/todos/:id', async (request, response) => {
+  try {
+    response.json(await update(request, request.params.id));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.delete('/todos', (request, response) => {
-  deleteToDo()
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.delete('/todos', async (request, response) => {
+  try {
+    response.json(await deleteToDo());
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.delete('/todos/:id', (request, response) => {
-  deleteToDo(request.params.id)
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.delete('/todos/:id', async (request, response) => {
+  try {
+    response.json(await deleteToDo(request.params.id));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
-app.delete('/todos/:id/done', (request, response) => {
-  mark(request.params.id, request.method)
-    .then(result => response.json(result))
-    .catch(error => response.status(error.statusCode || 500).json(handleError(error)));
+app.delete('/todos/:id/done', async (request, response) => {
+  try {
+    response.json(await mark(request.params.id, request.method));
+  } catch (error) {
+    response.status(error.statusCode || 500).json(handleError(error));
+  }
 });
 
 app.listen(PORT, () => console.log(`Server is listening on => http://localhost:${PORT}`));
