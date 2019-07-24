@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Gym",
+    "description": "Go to the gym",
+    "done": false
+  },
+  {
+    "id": 2,
+    "title": "Shopping",
+    "description": "Going for shopping",
+    "done": false
+  },
+  {
+    "id": 3,
+    "title": "Homework",
+    "description": "Do the homework",
+    "done": false
+  },
+  {
+    "id": 4,
+    "title": "Laundry",
+    "description": "Do the laundry",
+    "done": false
+  },
+  {
+    "id": 5,
+    "title": "Doctor",
+    "description": "See the doctor",
+    "done": false
+  }
+]
