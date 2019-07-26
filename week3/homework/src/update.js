@@ -8,7 +8,7 @@ function update(id, text) {
     updatedTodo.text = text;
     const dataStringified = JSON.stringify(todos);
 
-    fs.writeFile('./src/todos.json', dataStringified, error => {
+    fs.writeFile('./todos.json', dataStringified, error => {
       if (error) throw error;
     });
   });
