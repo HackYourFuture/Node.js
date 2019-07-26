@@ -1,6 +1,8 @@
 'use strict';
 
 const fs = require('fs');
+const util = require('util');
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const readAndParse = require('./readTodo');
 
@@ -16,9 +18,7 @@ class ErrorWithStatus extends Error {
 
 async function write(jsonData) {
   try {
-    await fs.writeFile(LIST_FILE_PATH, JSON.stringify(jsonData, null, 2), error => {
-      if (error) throw error;
-    });
+    await writeFileAsync(LIST_FILE_PATH, JSON.stringify(jsonData, null, 2));
     return jsonData;
   } catch (error) {
     throw error;
@@ -26,15 +26,11 @@ async function write(jsonData) {
 }
 
 async function findToDoWithId(id) {
-  try {
-    const toDoList = await readAndParse();
-    for (let index = 0; index < toDoList.todos.length; index++) {
-      if (toDoList.todos[index].id === id) return { toDoList, index };
-    }
-    throw new ErrorWithStatus(`No to-do is found with id: ${id}`, 404);
-  } catch (error) {
-    throw error;
+  const toDoList = await readAndParse();
+  for (let index = 0; index < toDoList.todos.length; index++) {
+    if (toDoList.todos[index].id === id) return { toDoList, index };
   }
+  throw new ErrorWithStatus(`No to-do is found with id: ${id}`, 404);
 }
 
 function isToDoValid(request) {

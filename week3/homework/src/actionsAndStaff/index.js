@@ -8,4 +8,5 @@ module.exports = {
   showOneToDo: require('./showOneTodo'),
   mark: require('./markTodo'),
   handleError: require('./handleError'),
+  wrap: require('./wrap'),
 };

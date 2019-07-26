@@ -8,6 +8,7 @@ const {
   showOneToDo,
   mark,
   handleError,
+  wrap,
 } = require('./actionsAndStaff');
 
 const express = require('express');
@@ -17,76 +18,25 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', async (request, response) => {
-  try {
-    response.json(await readAndParse('help'));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.get('/', wrap(async (request, response) => await readAndParse('help')));
 
-app.get('/todos', async (request, response) => {
-  try {
-    response.json(await readAndParse());
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.get('/todos', wrap(async (request, response) => await readAndParse()));
 
-app.get('/todos/:id', async (request, response) => {
-  try {
-    response.json(await showOneToDo(request.params.id));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.get('/todos/:id', wrap(async (request, response) => await showOneToDo(request.params.id)));
 
-app.post('/todos', async (request, response) => {
-  try {
-    response.status(201).json(await create(request));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.post('/todos', wrap(async (request, response) => await create(request), 201));
 
-app.post('/todos/:id/done', async (request, response) => {
-  try {
-    response.json(await mark(request.params.id));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.post('/todos/:id/done', wrap(async (request, response) => await mark(request.params.id)));
 
-app.put('/todos/:id', async (request, response) => {
-  try {
-    response.json(await update(request, request.params.id));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.put('/todos/:id', wrap(async (request, response) => await update(request, request.params.id)));
 
-app.delete('/todos', async (request, response) => {
-  try {
-    response.json(await deleteToDo());
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.delete('/todos', wrap(async (request, response) => await deleteToDo()));
 
-app.delete('/todos/:id', async (request, response) => {
-  try {
-    response.json(await deleteToDo(request.params.id));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.delete('/todos/:id', wrap(async (request, response) => await deleteToDo(request.params.id)));
 
-app.delete('/todos/:id/done', async (request, response) => {
-  try {
-    response.json(await mark(request.params.id, request.method));
-  } catch (error) {
-    response.status(error.statusCode || 500).json(handleError(error));
-  }
-});
+app.delete(
+  '/todos/:id/done',
+  wrap(async (request, response) => await mark(request.params.id, request.method)),
+);
 
 app.listen(PORT, () => console.log(`Server is listening on => http://localhost:${PORT}`));
