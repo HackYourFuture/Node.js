@@ -19,9 +19,9 @@ if (command === 'add') {
 } else if (command === 'remove') {
   remove(toDoText);
 } else if (command === 'list') {
-  list(toDoText);
+  list();
 } else if (command === 'reset') {
-  reset(toDoText);
+  reset();
 } else {
   console.log('This is not a command, please write appropriate word.');
   console.log(instructions);
