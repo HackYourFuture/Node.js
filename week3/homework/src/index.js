@@ -9,6 +9,11 @@ app.use((request, response, next) => {
   next();
 });
 
+//Getting all toDoThings
+app.get('/todos', (request, response) => {
+  myFunctions.readToDos(request, response);
+});
+
 //Getting toDoThing with a specific id
 app.get('/todos/:id', (request, response) => {
   myFunctions.readToDo(request, response);
@@ -22,6 +27,11 @@ app.post('/todos', (request, response) => {
 //Deleting toDoThing
 app.delete('/todos/:id', (request, response) => {
   myFunctions.deleteToDo(request, response);
+});
+
+//Updating toDoThing
+app.put('/todos/:id', (request, response) => {
+  myFunctions.updateToDo(request, response);
 });
 
 //Clearing All ToDos

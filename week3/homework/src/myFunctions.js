@@ -15,6 +15,17 @@ function createToDo(request, response) {
   });
 }
 
+function readToDos(request, response) {
+  fs.readFile('./todos.json', 'utf8', (error, file) => {
+    if (error) {
+      response.status(500).send('There is no toDoList file.');
+      return 'An Error Occured';
+    } else {
+      response.json(JSON.parse(file));
+    }
+  });
+}
+
 function readToDo(request, response) {
   fs.readFile('./todos.json', 'utf8', (error, file) => {
     if (error) {
@@ -77,4 +88,29 @@ function markAsDoneOrMarkAsNotDone(request, response, trueOrFalse) {
   });
 }
 
-module.exports = { createToDo, readToDo, deleteToDo, clearToDos, markAsDoneOrMarkAsNotDone };
+function updateToDo(request, response) {
+  fs.readFile('./todos.json', 'utf8', (error, contents) => {
+    if (error) {
+      response.status(500).send('Whats wrong with you');
+    } else {
+      const updatedContent = JSON.parse(contents);
+      updatedContent[request.params.id - 1].todo = request.body.todo;
+      const updatedNewContent = JSON.stringify(updatedContent);
+      fs.writeFile('./todos.json', updatedNewContent, err => {
+        if (err) throw err;
+        console.log(request.params.id, 'is updated to', request.body.todo);
+      });
+      response.send(updatedNewContent);
+    }
+  });
+}
+
+module.exports = {
+  createToDo,
+  readToDos,
+  readToDo,
+  deleteToDo,
+  clearToDos,
+  markAsDoneOrMarkAsNotDone,
+  updateToDo,
+};
