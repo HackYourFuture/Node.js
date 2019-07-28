@@ -7,7 +7,6 @@ const {
   deleteToDo,
   showOneToDo,
   mark,
-  handleError,
   wrap,
 } = require('./actionsAndStaff');
 
