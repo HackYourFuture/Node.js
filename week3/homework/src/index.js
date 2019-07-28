@@ -2,83 +2,97 @@
 
 const express = require('express');
 const app = express();
-const validateTodos = require('./validateTodos');
-const todo = require('./todo.json');
+const fs = require('fs');
 app.use(express.json());
 
 // get the list of todo
 app.get('/todo', (req, res) => {
-  res.send(todo);
+  fs.readFile('./todo.json', 'utf8', (error, data) => {
+    if (error) return res.status(500).send('no data found');
+    const todo = JSON.stringify(data);
+    res.json(todo);
+  });
 });
 
 // get todo by id number
 app.get('/todo/:id', (req, res) => {
-  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send('Id not found');
-  res.send(todoItem);
+  fs.readFile('./todo.json', 'utf8', (error, data) => {
+    if (error) return res.status(400).send(`No data with id : ${id} found !`);
+    const id = req.param.id - 1;
+    const todo = JSON.stringify(data)[id];
+    res.json(todo);
+  });
 });
 
-// add todo
+// add todo item
 app.post('/todo', (req, res) => {
-  const { error } = validateTodos(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
-
-  const todoItem = {
-    id: todo.length + 1,
-    name: req.body.description,
-    done: false,
-  };
-  todo.push(todoItem);
-  res.send(todo);
-});
-
-// modify todo
-app.put('/todo/:id', (req, res) => {
-  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send('Id not found');
-
-  const { error } = validateTodos(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  todoItem.description = req.body.description;
-  res.send(todo);
+  fs.readFile('./todo.json', 'utf8', (error, contents) => {
+    if (error) {
+      res.status(500).send('There is an error');
+    } else {
+      const todo = JSON.parse(contents);
+      const todoItem = {
+        id: todo.length + 1,
+        description: req.body.description,
+        done: false,
+      };
+      todo.push(todoItem);
+      const newTodo = JSON.stringify(todo);
+      fs.writeFile('/todo.json', newTodo, error => {
+        if (error) throw error;
+      });
+    }
+  });
+  res.send(newTodo);
 });
 
 // mark to do as done
 app.delete('/todo/:id/true', (req, res) => {
-  const todoItem = todo.find(c => c.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send('Id not found');
+  fs.readFile('./todo.json', 'utf8', (error, data) => {
+    if (error) return res.status(400).send('id not found');
+    const id = req.params.id - 1;
+    const todo = JSON.parse(data);
+    todo[id].done = true;
+    const newTodo = JSON.stringify(todo);
 
-  const { error } = validateTodos(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  todoItem.done = true;
-  res.send(todoItem);
+    fs.writeFile('./todo.json', newTodo, error => {
+      if (error) return res.status(500).send('there is an error');
+      res.json(newTodo);
+    });
+  });
 });
 
 // mark todo as not done
 app.delete('/todo/:id/false', (req, res) => {
-  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send('Id not found');
+  fs.readFile('./todo.json', 'utf8', (error, data) => {
+    if (error) return res.status(400).send('id not found');
+    const id = req.params.id - 1;
+    const todo = JSON.parse(data);
+    todo[id].done = false;
+    const newTodo = JSON.stringify(todo);
 
-  const { error } = validateTodos(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  todoItem.done = false;
-  res.send(todoItem);
+    fs.writeFile('./todo.json', newTodo, error => {
+      if (error) return res.status(500).send('there is an error');
+      res.json(newTodo);
+    });
+  });
 });
 
 // delete todo by id number
 app.delete('/todo/:id', (req, res) => {
-  const todoItem = todo.find(i => i.id === parseInt(req.params.id));
-  if (!todoItem) return res.status(404).send(`The given ID is not found`);
+  fs.readFile('./todo.json', 'utf8', (error, data) => {
+    if (error) return res.status(400).send(` id : ${id} is not found !`);
+    const todo = JSON.parse(data);
+    const id = req.params.id - 1;
+    todo.splice(id, 1);
+    const newTodo = JSON.stringify(todo);
 
-  const index = todo.indexOf(todoItem);
-  todo.splice(index, 1);
-  res.send(todo);
+    fs.writeFile('./todo.json', 'utf8', newTodo, error => {
+      if (error) throw error;
+      res.json(newTodo);
+    });
+  });
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
