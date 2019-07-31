@@ -1,8 +1,10 @@
 // 'use strict';
 
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
 const fs = require('fs');
+
+const app = express();
 app.use(express.json());
 
 // get the list of todo
