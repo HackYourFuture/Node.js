@@ -12,8 +12,12 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Read All Todos
-app.get('/todos', (req, res) => {
+app.get('/todo', (req, res) => {
   const db = require('./db');
+
+  // fs.readFile('./db.json', JSON.stringify(db, null, 2), error => {
+  //   if (error) throw error;
+  // });
   res.status(200).send({
     msg: 'All todos retrieved successfully',
     todos: db,
@@ -24,21 +28,16 @@ app.get('/todos', (req, res) => {
 app.get('/todo/:id', (req, res) => {
   const db = require('./db');
   const id = parseInt(req.params.id, 10);
-  db.map(todo => {
-    if (todo.id === id) {
-      return res.status(200).send({
-        message: 'todo successfully retrieved',
-        todo,
-      });
-    }
-  });
+  const todo = db.find(todo => todo.id === id);
+
+  res.status(200).send(todo);
   return res.status(404).send({
     message: `Todo not found`,
   });
 });
 
 // Create Todo
-app.post('/create/todos', (req, res) => {
+app.post('/todos', (req, res) => {
   const db = require('./db');
   if (!req.body.title || !req.body.description) {
     return res.status(400).send({
@@ -64,7 +63,7 @@ app.post('/create/todos', (req, res) => {
 });
 
 // Delete Todo
-app.delete('/delete/todo/:id', (req, res) => {
+app.delete('/todo/:id', (req, res) => {
   const db = require('./db');
   const id = parseInt(req.params.id, 10);
 
@@ -186,6 +185,9 @@ app.delete('/delete/todos', (req, res) => {
   const db = require('./db');
   const fs = require('fs');
   fs.writeFile('./db.json', '[]', error => {
+    if (error) {
+      throw error;
+    }
     return res.status(201).send('All todos have been removed');
   });
 });
