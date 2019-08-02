@@ -4,7 +4,7 @@ const app = express();
 if (!fs.existsSync('./todos.json')) {
   fs.writeFileSync('todos.json', '[]');
 }
-
+app.use(express.json());
 const clearToDos = require('./reset.js');
 const readToDo = require('./readToDo.js');
 const markAsDone = require('./markAsDone.js');
@@ -22,16 +22,16 @@ try {
     res.json(readToDo.read());
   });
 
-  app.post('/todos/:todo/add', (req, res) => {
-    res.json(add.add(req.params.todo) + ' is added');
+  app.post('/todos', (req, res) => {
+    res.json(add.add(req.body.todo.description) + ' is added');
   });
 
   app.post('/todos/:id/done', (req, res) => {
     res.json(markAsDone.done(req.params.id) + ' is done');
   });
-  app.put('/todos/:id/:todo/update', (req, res) => {
+  app.put('/todos/:id', (req, res) => {
     res.json(
-      update.update(req.params.id, req.params.todo) +
+      update.update(req.params.id, req.body.todo.description) +
         ` is placed in ${req.params.id}. place in the list`,
     );
   });
