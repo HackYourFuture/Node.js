@@ -10,13 +10,7 @@ By doing this homework you will learn:
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v10** and NPM should be at least **v6**.
 
-## 1. Create an HTTP web server
-
-Create an HTTP web server using the native Node.js `http` module.
-
-TO BE CONTINUED
-
-## 2. [PROJECT] Setting up HackYourTemperature
+## 1. [PROJECT] Setting up HackYourTemperature
 
 In this part of the homework you'll be setting up the basis of your project. To start you first have to make a project folder. In the same folder that holds your other homework, create a new folder called `hackyourtemperature`. Then follow the following instructions:
 
