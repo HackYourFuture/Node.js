@@ -2,9 +2,9 @@
 
 const http = require('http');
 
-const getResponse = (responseStatus, response, responseText) => {
+const getResponse = (responseStatus, response, responseObj) => {
   response.writeHead(responseStatus, { 'Content-Type': 'application/json' });
-  response.end(JSON.stringify(responseText));
+  response.end(JSON.stringify(responseObj));
 };
 
 function createServer(port) {
