@@ -2,19 +2,23 @@
 
 const http = require('http');
 
-/* `createServer` MUST return an instance of `http.Server` otherwise the tests
- * will fail.
- */
+const getResponse = (responseStatus, response, responseText) => {
+  response.writeHead(responseStatus, { 'Content-Type': 'application/json' });
+  response.end(JSON.stringify(responseText));
+};
+
 function createServer(port) {
   let state = 10;
-
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
+    if (request.url === '/state') getResponse(200, response, { state: state });
+    else if (request.url === '/add') getResponse(200, response, { state: ++state });
+    else if (request.url === '/subtract') getResponse(200, response, { state: --state });
+    else if (request.url === '/reset') getResponse(200, response, { state: (state = 10) });
+    else getResponse(404, response, { error: 'Not found' });
   });
-
   return server;
 }
 
 module.exports = {
-  createServer
+  createServer,
 };
