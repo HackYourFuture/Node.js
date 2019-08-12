@@ -1,0 +1,11 @@
+{
+  "name": "extra-homework",
+  "version": "1.0.0",
+  "description": "HYF Node.js Week 1 - Extra Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
