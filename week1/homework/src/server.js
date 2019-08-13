@@ -20,5 +20,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  createServer,
+  createServer
 };
