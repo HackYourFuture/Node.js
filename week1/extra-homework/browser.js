@@ -1,7 +1,11 @@
 'use strict';
 
 {
-  const img = document.createElement('img');
-  img.setAttribute('src', './image.gif');
-  document.body.appendChild(img);
+  function createAndAppend(parent, element, props = {}) {
+    const child = Object.assign(document.createElement(element), props);
+    parent.appendChild(child);
+    return child;
+  }
+
+  createAndAppend(document.body, 'img', { src: './image.gif' });
 }

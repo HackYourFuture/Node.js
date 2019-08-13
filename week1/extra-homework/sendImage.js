@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 function sendImage(response) {
   response.setHeader('Content-Type', 'image/gif');

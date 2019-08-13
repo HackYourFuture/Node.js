@@ -7,14 +7,14 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
-  function sendState(res) {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ state }));
+  function sendState(response) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ state }));
   }
 
-  function sendError(res) {
-    res.writeHead(404, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Not found' }));
+  function sendError(response) {
+    response.writeHead(404, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ error: 'Not found' }));
   }
 
   const server = http.createServer((request, response) => {
