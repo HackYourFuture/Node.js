@@ -17,31 +17,21 @@ function createServer(port) {
     };
     if (request.url === `/state`) {
       giveResult(200, { state });
-      // response.writeHead(200, { 'Content-Type': 'application/json' });
-      // response.write(JSON.stringify({ state }));
     }
  else if (request.url === `/add`) {
       state++;
       giveResult(200, { state });
-      // response.writeHead(200, { 'Content-Type': 'application/json' });
-      // response.write(JSON.stringify({ state }));
     }
  else if (request.url === `/subtract`) {
       state--;
       giveResult(200, { state });
-      // response.writeHead(200, { 'Content-Type': 'application/json' });
-      // response.write(JSON.stringify({ state }));
     }
  else if (request.url === `/reset`) {
       state = 10;
       giveResult(200, { state });
-      // response.writeHead(200, { 'Content-Type': 'application/json' });
-      // response.write(JSON.stringify({ state }));
     }
  else {
       giveResult(404, { error: `Not found` });
-      // response.writeHead(404, { 'Content-Type': 'application/json' });
-      // response.write(JSON.stringify({ error: `Not found` }));
     }
 
     // Finish writing my code.
