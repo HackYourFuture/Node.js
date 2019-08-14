@@ -8,8 +8,33 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
+  function changeState(response) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ state }));
+  }
+
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
+    switch (request.url) {
+      case '/state':
+        changeState(response);
+        break;
+      case '/add':
+        state += 1;
+        changeState(response);
+        break;
+      case '/subtract':
+        state -= 1;
+        changeState(response);
+        break;
+      case '/reset':
+        state = 10;
+        changeState(response);
+        break;
+      default:
+        response.writeHead(404, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: 'Not found' }));
+        break;
+    }
   });
 
   return server;
