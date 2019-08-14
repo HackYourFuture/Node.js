@@ -15,23 +15,25 @@ function createServer(port) {
       response.writeHead(statusCode, { 'Content-Type': 'application/json' });
       response.write(JSON.stringify(object));
     };
-    if (request.url === `/state`) {
-      giveResult(200, { state });
-    }
- else if (request.url === `/add`) {
-      state++;
-      giveResult(200, { state });
-    }
- else if (request.url === `/subtract`) {
-      state--;
-      giveResult(200, { state });
-    }
- else if (request.url === `/reset`) {
-      state = 10;
-      giveResult(200, { state });
-    }
- else {
-      giveResult(404, { error: `Not found` });
+
+    switch (request.url) {
+      default: giveResult(404, { error: `Not found` });
+        break;
+      case `/state`:
+        giveResult(200, { state });
+        break;
+      case `/add`:
+        state++;
+        giveResult(200, { state });
+        break;
+      case `/subtract`:
+        state--;
+        giveResult(200, { state });
+        break;
+      case `/reset`:
+        state = 10;
+        giveResult(200, { state });
+        break;
     }
 
     // Finish writing my code.
