@@ -10,6 +10,9 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    console.log(request.url);
+    // Finish writing my code.
+    response.end();
   });
 
   return server;
