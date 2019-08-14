@@ -10,7 +10,6 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
-    console.log(request.url);
     const giveResult = (statusCode, object) => {
       response.writeHead(statusCode, { 'Content-Type': 'application/json' });
       response.write(JSON.stringify(object));
