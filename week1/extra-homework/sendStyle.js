@@ -1,10 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-function sendStyle(response) {
-  response.setHeader('Content-Type', 'text/css');
-  const data = fs.readFileSync('./style.css', 'utf8');
-  response.write(data);
+function sendStyle(res) {
+  res.writeHead(200, { 'Content-Type': 'text/css' });
+  fs.createReadStream('./style.css').pipe(res);
 }
 
 module.exports = sendStyle;

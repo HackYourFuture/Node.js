@@ -9,7 +9,7 @@ const sendStyle = require('./sendStyle');
 const PORT = 3000;
 
 function handleRequest(req, res) {
-  console.log(req.method, req.url);
+  console.log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
   switch (req.url) {
     case '/style.css':
       sendStyle(res);
@@ -24,7 +24,6 @@ function handleRequest(req, res) {
       sendIndex(res);
       break;
   }
-  res.end();
 }
 
 const server = http.createServer(handleRequest);

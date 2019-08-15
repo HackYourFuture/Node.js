@@ -1,10 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-function sendImage(response) {
-  response.setHeader('Content-Type', 'image/gif');
-  const data = fs.readFileSync('./image.gif');
-  response.write(data);
+function sendImage(res) {
+  res.writeHead(200, { 'Content-Type': 'image/gif' });
+  fs.createReadStream('./image.gif').pipe(res);
 }
 
 module.exports = sendImage;

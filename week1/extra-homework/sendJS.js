@@ -1,10 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-function sendJS(response) {
-  response.setHeader('Content-Type', 'text/javascript');
-  const data = fs.readFileSync('./browser.js', 'utf8');
-  response.write(data);
+function sendJS(res) {
+  res.writeHead(200, { 'Content-Type': 'ext/javascript' });
+  fs.createReadStream('./browser.js').pipe(res);
 }
 
 module.exports = sendJS;
