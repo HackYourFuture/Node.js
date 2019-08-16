@@ -7,35 +7,31 @@ const State = require('./state');
  */
 function createServer(port) {
   const state = new State();
-  function sendState(response) {
-    response.writeHead(200, { 'Content-Type': 'application/json' });
-    response.end(JSON.stringify(state));
-  }
-
-  function sendError(response) {
-    response.writeHead(404, { 'Content-Type': 'application/json' });
-    response.end(JSON.stringify({ error: 'Not found' }));
+  const error = { error: 'Not found' };
+  function sendJSON(response, status, content) {
+    response.writeHead(status, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(content));
   }
 
   const server = http.createServer((request, response) => {
     switch (request.url) {
       case '/state':
-        sendState(response);
+        sendJSON(response, 200, state);
         break;
       case '/add':
         state.add();
-        sendState(response);
+        sendJSON(response, 200, state);
         break;
       case '/subtract':
         state.subtract();
-        sendState(response);
+        sendJSON(response, 200, state);
         break;
       case '/reset':
         state.reset();
-        sendState(response);
+        sendJSON(response, 200, state);
         break;
       default:
-        sendError(response);
+        sendJSON(response, 404, error);
         break;
     }
   });

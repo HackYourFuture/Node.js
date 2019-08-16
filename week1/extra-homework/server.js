@@ -7,7 +7,7 @@ const sendImage = require('./sendImage');
 const sendStyle = require('./sendStyle');
 
 function createServer(port) {
-  function handleRequest(req, res) {
+  function handleResponse(req, res) {
     console.log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
     switch (req.url) {
       case '/style.css':
@@ -25,7 +25,7 @@ function createServer(port) {
     }
   }
 
-  return http.createServer(handleRequest);
+  return http.createServer(handleResponse);
 }
 
 module.exports = { createServer };
