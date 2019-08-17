@@ -10,52 +10,28 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
-
+    function writeResponse(statusCode, responseObject) {
+      response.writeHead(statusCode, {
+        'Content-Type': 'application/json'
+      });
+      response.end(JSON.stringify(responseObject));
+    }
     switch (request.url) {
       case '/add':
-        response.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-
-        response.end(JSON.stringify({
-          state: ++state
-        }, null, 2));
+        writeResponse(200, { state: ++state });
         break;
       case '/state':
-        response.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-
-        response.end(JSON.stringify({
-          state: state
-        }, null, 2));
+        writeResponse(200, { state: state });
         break;
       case '/subtract':
-        response.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-
-        response.end(JSON.stringify({
-          state: --state
-        }, null, 2));
+        writeResponse(200, { state: --state });
         break;
 
       case '/reset':
-        response.writeHead(200, {
-          'Content-Type': 'application/json'
-        });
-
-        response.end(JSON.stringify({
-          state: (state = 10)
-        }, null, 2));
+        writeResponse(200, { state: (state = 10) });
         break;
       default:
-        response.writeHead(404, {
-          'Content-Type': 'application/json'
-        });
-        response.end(JSON.stringify({
-          error: 'Not found'
-        }, null, 2));
+        writeResponse(404, { error: 'Not found' });
     }
   });
 
