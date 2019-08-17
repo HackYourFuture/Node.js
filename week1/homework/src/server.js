@@ -8,25 +8,28 @@ const http = require('http');
 
 function createServer(port) {
   let state = 10;
-  function sendResponseToClient(statusCode, res) {
-    res.writeHead(statusCode, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ state }));
+  function sendResponseToClient(stateX = {}, res) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(stateX));
   }
   function handlerRequest(req, res) {
     switch (req.url) {
-      case '/subtract':
-        state--;
-        sendResponseToClient(200, res);
-        break;
-      case '/reset':
       case '/state':
-        state = 10;
-        sendResponseToClient(200, res);
+        sendResponseToClient({ state }, res);
         break;
       case '/add':
         state++;
-        sendResponseToClient(200, res);
+        sendResponseToClient({ state }, res);
         break;
+      case '/subtract':
+        state--;
+        sendResponseToClient({ state }, res);
+        break;
+      case '/reset':
+        state = 10;
+        sendResponseToClient({ state }, res);
+        break;
+
       default:
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Not found' }));
