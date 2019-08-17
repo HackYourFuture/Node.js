@@ -15,21 +15,24 @@ function createServer(port) {
     }
 
     switch (request.url) {
-      default:
-        responseWrite(404, { error: 'Not found' });
-        break;
       case '/state':
         responseWrite(200, { state });
         break;
 
       case '/add':
-        responseWrite(200, { state: (state += 1) });
+        state += 1;
+        responseWrite(200, { state: state });
         break;
       case '/subtract':
-        responseWrite(200, { state: (state -= 1) });
+        state -= 1;
+        responseWrite(200, { state: state });
         break;
       case '/reset':
-        responseWrite(200, { state: (state = 10) });
+        state = 10;
+        responseWrite(200, { state: state });
+        break;
+      default:
+        responseWrite(404, { error: 'Not found' });
         break;
     }
     response.end();
