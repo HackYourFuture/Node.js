@@ -11,5 +11,5 @@ program
     executableFile: 'remove'
   })
   .command('reset', 'remove all to-do items from the list', { executableFile: 'reset' })
-  .command('update <index> <todo>', 'update an item by index', { executableFile: 'update' })
+  .command('update <index> <todo>', 'update a to-do item by index', { executableFile: 'update' })
   .parse(process.argv);

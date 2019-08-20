@@ -1,22 +1,23 @@
 'use strict';
+
 const fs = require('fs');
 const program = require('commander');
 const config = require('./config');
 program.parse(process.argv);
-const task = program.args.join(' ');
-if (!task.length) {
-  console.error('Task required');
-  process.exit(1);
-}
-fs.readFile(config.DATA_FILE, config.ENCODING, (err, data) => {
-  if (err) throw err;
-  const todoObj = JSON.parse(data);
-  const id = todoObj.length ? Math.max.apply(null, todoObj.map(i => i.id)) + 1 : 1;
-  const newTask = { id, task };
-  todoObj.push(newTask);
-  data = JSON.stringify(todoObj);
-  fs.writeFile(config.DATA_FILE, data, err => {
-    if (err) throw err;
+
+try {
+  const task = program.args.join(' ');
+  if (!task.length) {
+    throw new Error('Task required');
+  }
+  const data = fs.readFileSync(config.DATA_FILE, { encoding: config.ENCODING });
+  const tasks = JSON.parse(data);
+  tasks.push({
+    id: tasks.length ? Math.max(...tasks.map(i => i.id)) + 1 : 1,
+    description: task
   });
-  console.log('Task added');
-});
+  fs.writeFileSync(config.DATA_FILE, JSON.stringify(tasks, null, 2));
+}
+ catch (error) {
+  console.log(error.message);
+}
