@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "title": "get milk",
+      "delete": true
+    },
+    {
+      "title": "walk dog",
+      "delete": false
+    },
+    {
+      "title": "swim 3 km",
+      "delete": false
+    },
+    {
+      "title": "run 10 km",
+      "delete": false
+    },
+    {
+      "title": "sleep 4 hours",
+      "delete": false
+    }
+  ]
+}

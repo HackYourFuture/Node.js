@@ -6,9 +6,8 @@ const http = require('http');
 /* `createServer` MUST return an instance of `http.Server` otherwise the tests
  * will fail.
  */
-const sendResponse =
-(responseStatus, response, responseObj) => {
-  response.writeHead(responseStatus, {'Content-Type': 'application/json'});
+const sendResponse = (responseStatus, response, responseObj) => {
+  response.writeHead(responseStatus, { 'Content-Type': 'application/json' });
   response.end(JSON.stringify(responseObj));
 };
 
