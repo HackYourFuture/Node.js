@@ -137,6 +137,12 @@ function prompt(question) {
   }
 
   function removeAllTodos(){
+    
+    let todosLength = db.get('todos').value().length;
+    let i = 0;
+    for(i; i<todosLength; i++){
+      db.set(`todos[${i}].delete`, true).write()
+    }
    
     
    

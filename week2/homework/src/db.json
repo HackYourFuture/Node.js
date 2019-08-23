@@ -6,18 +6,30 @@
     },
     {
       "title": "walk dog",
-      "delete": false
+      "delete": true
     },
     {
       "title": "swim 3 km",
-      "delete": false
+      "delete": true
     },
     {
       "title": "run 10 km",
-      "delete": false
+      "delete": true
     },
     {
       "title": "sleep 4 hours",
+      "delete": true
+    },
+    {
+      "title": "study 12 hours",
+      "delete": true
+    },
+    {
+      "title": "take shower",
+      "delete": false
+    },
+    {
+      "title": "feed cat",
       "delete": false
     }
   ]
