@@ -4,12 +4,27 @@ const chalk = require('chalk');
 const log = console.log;
 let todoList = [];
 
-const add = todo => {
+const list = () => {
   todoList = JSON.parse(fs.readFileSync('todoList.json'));
-  console.log(`${todo} is added to your todo list`);
-  todoList.push({ todo });
+  if (todoList.length === 0) {
+    console.log(`There is nothing to show on ${todoList}, please add some tasks`);
+  }
+ else {
+    console.log(todoList);
+  }
+};
 
-  fs.writeFileSync('todoList.json', JSON.stringify(todoList));
+const add = todo => {
+  try {
+    todoList = JSON.parse(fs.readFileSync('todoList.json'));
+    console.log(`${todo} is added to your todo list`);
+    todoList.push({ todo });
+
+    fs.writeFileSync('todoList.json', JSON.stringify(todoList));
+  }
+ catch (err) {
+    throw Error(err);
+  }
 };
 
 const remove = index => {
@@ -44,6 +59,7 @@ const help = () => {
 module.exports = {
   add,
   remove,
+  list,
   reset,
   help
 };
