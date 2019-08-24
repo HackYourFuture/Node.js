@@ -26,7 +26,7 @@ switch (command) {
     break;
   case 'list':
     if (todo) {
-      commands.list(todo);
+      commands.list();
     }
     break;
   case 'reset':
