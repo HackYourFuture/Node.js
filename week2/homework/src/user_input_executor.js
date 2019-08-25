@@ -3,7 +3,22 @@
 const fs = require('fs');
 
 const help = fs.readFileSync('./instruction.txt', `utf8`);
-const list = x => console.log(x);
+const showList = function() {
+  let list = [];
+  if (fs.existsSync('./tasks_list.json')) {
+    list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
+  }
+
+  if (list[0] !== undefined) {
+    list.forEach((task, index) => {
+      console.log(`${index + 1}-${task}`);
+    });
+    return;
+  }
+  if (list[0] === undefined) {
+    console.log(`The list dose't have any task yet.`);
+  }
+};
 const reset = () => fs.writeFileSync('./tasks_list.json', JSON.stringify([]));
 const add = function(x) {
   let list = [];
@@ -15,4 +30,4 @@ const add = function(x) {
 };
 const remove = x => console.log(x);
 
-module.exports = { help, list, reset, add, remove };
+module.exports = { help, showList, reset, add, remove };
