@@ -36,13 +36,14 @@ const remove = function(x) {
   if (fs.existsSync('./tasks_list.json')) {
     list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
   }
-  if (x <= 0 || x >= list.length) {
-    console.log(`You typed wrong number.
-    /n The list contains no task with the number ${x}`);
+  if (x <= 0 || x > list.length) {
+    console.log(`You typed a wrong number.\
+    The list contains no task with the number ${x}.`);
     return;
   }
-  if (x > 0 || x < list.length) {
+  if (x > 0 || x <= list.length) {
     list.splice(x - 1, 1);
+    console.log(`The task is successfully deleted form the list`);
   }
 
   fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
