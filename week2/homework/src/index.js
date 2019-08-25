@@ -5,9 +5,10 @@
 const userInput = process.argv;
 const executor = require(`./user_input_executor`);
 const warning = `You have to type a valid command!`;
+console.log(executor.information);
 
 if (userInput.length === 2) {
-  console.log(executor.help);
+  console.log(executor.information);
 }
 
 if (userInput.length === 3) {
