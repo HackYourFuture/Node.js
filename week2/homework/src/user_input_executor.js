@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const help = fs.readFileSync('./instruction.txt', `utf8`);
 const list = x => console.log(x);
-const reset = x => console.log(x);
+const reset = () => fs.writeFileSync('./tasks_list.json', JSON.stringify([]));
 const add = function(x) {
   let list = [];
   if (fs.existsSync('./tasks_list.json')) {
