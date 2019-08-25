@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const help = fs.readFileSync('./instruction.txt', `utf8`);
+const information = fs.readFileSync('./instruction.txt', `utf8`);
 const showList = function() {
   let list = [];
   if (fs.existsSync('./tasks_list.json')) {
@@ -33,4 +33,4 @@ const add = function(x) {
 };
 const remove = x => console.log(x);
 
-module.exports = { help, showList, reset, add, remove };
+module.exports = { information, showList, reset, add, remove };

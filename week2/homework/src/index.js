@@ -13,7 +13,7 @@ if (userInput.length === 2) {
 if (userInput.length === 3) {
   switch (userInput[2]) {
     case `help`:
-      console.log(executor.help);
+      console.log(executor.information);
       break;
     case `list`:
       executor.showList(userInput[2]);
