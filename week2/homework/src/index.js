@@ -27,12 +27,13 @@ if (userInput.length === 3) {
 }
 
 if (userInput.length === 4) {
+  const task = userInput[3];
   switch (userInput[2]) {
     case `add`:
-      executor.add(userInput[2]);
+      executor.add(task);
       break;
     case `remove`:
-      executor.remove(userInput[2]);
+      executor.remove(task);
       break;
     default:
       console.log(warning);
