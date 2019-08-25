@@ -3,21 +3,30 @@
 // TODO: Write the homework code in this file
 
 const userInput = process.argv;
-if (userInput[2] === `help` && userInput.length === 3) {
-  console.log(process.argv[2]);
+if (userInput.length === 3) {
+  switch (userInput[2]) {
+    case `help`:
+      console.log(userInput[2]);
+      break;
+    case `list`:
+      console.log(userInput[2]);
+      break;
+    case `rest`:
+      console.log(userInput[2]);
+      break;
+    default:
+      console.log(`You have to type a valid command!`);
+  }
 }
- else if (userInput[2] === `list` && userInput.length === 3) {
-  console.log(process.argv[2]);
-}
- else if (userInput[2] === `rest` && userInput.length === 3) {
-  console.log(process.argv[2]);
-}
- else if (userInput[2] === `add` && userInput.length === 4) {
-  console.log(process.argv[3]);
-}
- else if (userInput[2] === `remove` && userInput.length === 4) {
-  console.log(process.argv[3]);
-}
- else {
-  console.log(`Pleas type valid command!`);
+if (userInput.length === 4) {
+  switch (userInput[2]) {
+    case `add`:
+      console.log(userInput[2]);
+      break;
+    case `remove`:
+      console.log(userInput[2]);
+      break;
+    default:
+      console.log(`You have to type a valid command!`);
+  }
 }
