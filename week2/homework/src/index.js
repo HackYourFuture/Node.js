@@ -30,3 +30,6 @@ if (userInput.length === 4) {
       console.log(`You have to type a valid command!`);
   }
 }
+if (userInput.length > 4) {
+  console.log(`You have to type a valid command!`);
+}
