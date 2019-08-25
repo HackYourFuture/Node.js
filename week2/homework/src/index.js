@@ -1,12 +1,19 @@
 'use strict';
 
 // TODO: Write the homework code in this file
-const executor = require(`./executor`);
+
 const userInput = process.argv;
+const executor = require(`./executor`);
+const warning = `You have to type a valid command!`;
+
+if (userInput.length === 2) {
+  console.log(executor.help);
+}
+
 if (userInput.length === 3) {
   switch (userInput[2]) {
     case `help`:
-      executor.help(userInput[2]);
+      console.log(executor.help);
       break;
     case `list`:
       executor.list(userInput[2]);
@@ -15,9 +22,10 @@ if (userInput.length === 3) {
       executor.reset(userInput[2]);
       break;
     default:
-      console.log(`You have to type a valid command!`);
+      console.log(warning);
   }
 }
+
 if (userInput.length === 4) {
   switch (userInput[2]) {
     case `add`:
@@ -27,9 +35,9 @@ if (userInput.length === 4) {
       executor.remove(userInput[2]);
       break;
     default:
-      console.log(`You have to type a valid command!`);
+      console.log(warning);
   }
 }
 if (userInput.length > 4) {
-  console.log(`You have to type a valid command!`);
+  console.log(warning);
 }
