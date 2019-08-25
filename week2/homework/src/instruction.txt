@@ -1,0 +1,20 @@
+﻿
+--<< Welcome by the To-Do List Application >>--
+Here is the list of the valid commands:
+
+* To read the help section: 
+  node index.js help
+
+* To read the current tasks list: 
+  node index.js list
+
+* To aad a task to the list: 
+  node index.js add "write the task's sentence between double quote"
+
+* To remove task from the list,
+  you have to replace the number 2
+  with the task's number that you want to delete:
+  node index.js remove 2
+
+* To remove all the tasks form the list:
+  node index.js reset
