@@ -1,9 +1,12 @@
 ﻿
 --<< Welcome by the To-Do List Application >>--
+This is the help section.
 Here is the list of the valid commands:
 
 * To read the help section: 
   node index.js help
+  or just:
+  node index.js
 
 * To read the current tasks list: 
   node index.js list
