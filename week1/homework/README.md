@@ -11,8 +11,7 @@
 
 ## Prerequisites
 
-You need to have Node.js > 8.x installed. Check main [README](../../README.md)
-for instructions on how to do that.
+You need to have Node.js > 10.x installed.
 
 ## Installing dependencies
 
@@ -20,30 +19,21 @@ Change to the directory where you've cloned this repository, then to
 `week1/homework` directory and finally install dependencies:
 
 ```bash
-cd path/to/your/cloned/repo
-cd week1/homework
+$ cd path/to/your/cloned/repo
+$ cd week1/homework
 
-yarn
-
-# or
-
-npm install
+$ npm install
 ```
 
 ## Running tests
 
-Depending your package manager, you can run the tests using:
+Try and run the tests without writing any code first.
 
 ```bash
-yarn test
-
-# or
-
-npm test
+$ npm test
 ```
 
-Try and run the tests without writing any code first. You will see that all the
-tests will fail:
+You will see that all the tests will fail:
 
 ```bash
   ✖ /state returns 10 Expected server to respond without an error, got Timeout of 100ms exceeded
@@ -61,8 +51,7 @@ tests will fail:
   11 tests failed
 ```
 
-Then write the code as required by the assignment and run the tests again. Fix
-any issues until all tests pass.
+Then write the code as required by the assignment and run the tests again. Fix any issues until all tests pass.
 
 ```bash
   ✔ /state returns 10
@@ -80,8 +69,7 @@ any issues until all tests pass.
   11 tests passed
 ```
 
-Before submitting your homework via a pull request, make sure that your server
-passes all the unit tests as described above.
+Before submitting your homework via a pull request, make sure that your server passes all the unit tests as described above.
 
 ## Run the project
 
@@ -95,7 +83,7 @@ You can interactively test the endpoints with a browser or by using [Postman](ht
 
 ## Assignment
 
-Create an HTTP server that can add and subtract from a number, which we will
+Create an HTTP server that can add and subtract from a number, which we will 
 call `state`. Use the project in `week1/lecture` directory for reference.
 
 State should be persisted between individual calls and not reset before each
