@@ -16,7 +16,7 @@ if (userInput.length === 3) {
       console.log(executor.help);
       break;
     case `list`:
-      executor.list(userInput[2]);
+      executor.showList(userInput[2]);
       break;
     case `reset`:
       executor.reset(userInput[2]);
