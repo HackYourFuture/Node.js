@@ -1,5 +1,7 @@
 'use strict';
-const help = x => console.log(x);
+
+const fs = require('fs');
+const help = fs.readFileSync('./instruction.txt', `utf8`);
 const list = x => console.log(x);
 const reset = x => console.log(x);
 const add = x => console.log(x);
