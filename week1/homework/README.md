@@ -13,6 +13,14 @@
 
 You need to have Node.js > 10.x installed.
 
+## Forking and branching
+```bash
+$ cd path/to/where/you/want/to/keep/your/homework
+$ git clone https://github.com/HackYourFutureBelgium/Node.js.git 
+$ git checkout class5
+$ git branch your-username-homework
+```
+
 ## Installing dependencies
 
 Change to the directory where you've cloned this repository, then to
