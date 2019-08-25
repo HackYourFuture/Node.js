@@ -23,6 +23,7 @@ $ git clone https://github.com/HackYourFutureBelgium/Node.js.git
 $ cd Node.js
 $ git checkout class5
 $ git branch your-username-homework
+$ git checkout your-username-homework
 ```
 
 ## Installing dependencies
