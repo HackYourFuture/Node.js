@@ -31,6 +31,21 @@ const add = function(x) {
   list.push([x]);
   fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
 };
-const remove = x => console.log(x);
+const remove = function(x) {
+  let list = [];
+  if (fs.existsSync('./tasks_list.json')) {
+    list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
+  }
+  if (x <= 0 || x >= list.length) {
+    console.log(`You typed wrong number.
+    /n The list contains no task with the number ${x}`);
+    return;
+  }
+  if (x > 0 || x < list.length) {
+    list.splice(x - 1, 1);
+  }
+
+  fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
+};
 
 module.exports = { information, showList, reset, add, remove };
