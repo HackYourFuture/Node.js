@@ -14,20 +14,23 @@
 You need to have Node.js > 10.x installed.
 
 ## Forking and branching
+Clone the repository to the folder where you want to keep your homework.
+Go into the folder and check out the `class5` branch. Then create your own branch named `your-username-homework`.
+
 ```bash
 $ cd path/to/where/you/want/to/keep/your/homework
 $ git clone https://github.com/HackYourFutureBelgium/Node.js.git 
+$ cd Node.js
 $ git checkout class5
 $ git branch your-username-homework
 ```
 
 ## Installing dependencies
 
-Change to the directory where you've cloned this repository, then to
-`week1/homework` directory and finally install dependencies:
+Make sure you're still in your repository's directory. Then go to the `week1/homework` directory and install dependencies:
 
 ```bash
-$ cd path/to/your/cloned/repo
+$ cd path/to/your/cloned/repo # only if you are not in your repository directory
 $ cd week1/homework
 
 $ npm install
