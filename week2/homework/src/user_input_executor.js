@@ -19,7 +19,10 @@ const showList = function() {
     console.log(`The list dose't have any task yet.`);
   }
 };
-const reset = () => fs.writeFileSync('./tasks_list.json', JSON.stringify([]));
+const reset = function() {
+  fs.writeFileSync('./tasks_list.json', JSON.stringify([]));
+  console.log('The tasks list is now empty.');
+};
 const add = function(x) {
   let list = [];
   if (fs.existsSync('./tasks_list.json')) {
