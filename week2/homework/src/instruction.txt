@@ -11,7 +11,7 @@ Here is the list of the valid commands:
 * To read the current tasks list: 
   node index.js list
 
-* To aad a task to the list: 
+* To add a task to the list: 
   node index.js add "write the task's sentence between double quote"
 
 * To remove task from the list,
