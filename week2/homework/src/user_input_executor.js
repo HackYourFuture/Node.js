@@ -31,7 +31,7 @@ const add = function(task) {
   let list = reading;
   list.push([task]);
   writing(list);
-  console.log(`The task is successfully added to the list`);
+  console.log(`The task is successfully added to the list.`);
 };
 
 const remove = function(taskNumber) {
@@ -43,7 +43,7 @@ const remove = function(taskNumber) {
   }
   if (taskNumber > 0 || taskNumber <= list.length) {
     list.splice(taskNumber - 1, 1);
-    console.log(`The task is successfully deleted form the list`);
+    console.log(`The task is successfully deleted form the list.`);
   }
 
   writing(list);
