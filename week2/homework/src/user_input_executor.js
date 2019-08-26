@@ -3,11 +3,15 @@
 const fs = require('fs');
 
 const information = fs.readFileSync('./instruction.txt', `utf8`);
-const showList = function() {
-  let list = [];
+const reading = function() {
+  let text = [];
   if (fs.existsSync('./tasks_list.json')) {
-    list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
+    text = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
   }
+  return text;
+};
+const showList = function() {
+  let list = reading();
 
   if (list[0] !== undefined) {
     list.forEach((task, index) => {
@@ -24,18 +28,12 @@ const reset = function() {
   console.log('The tasks list is now empty.');
 };
 const add = function(x) {
-  let list = [];
-  if (fs.existsSync('./tasks_list.json')) {
-    list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
-  }
+  let list = reading();
   list.push([x]);
   fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
 };
 const remove = function(x) {
-  let list = [];
-  if (fs.existsSync('./tasks_list.json')) {
-    list = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
-  }
+  let list = reading();
   if (x <= 0 || x > list.length) {
     console.log(`You typed a wrong number.\
     The list contains no task with the number ${x}.`);
