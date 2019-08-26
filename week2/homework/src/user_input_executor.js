@@ -4,11 +4,11 @@ const fs = require('fs');
 
 const information = fs.readFileSync('./instruction.txt', `utf8`);
 const reading = function() {
-  let text = [];
+  let tasks = [];
   if (fs.existsSync('./tasks_list.json')) {
-    text = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
+    tasks = JSON.parse(fs.readFileSync('./tasks_list.json', 'utf8'));
   }
-  return text;
+  return tasks;
 };
 const showList = function() {
   let list = reading();
