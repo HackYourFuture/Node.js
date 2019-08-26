@@ -31,7 +31,8 @@ const reset = function() {
 const add = function(task) {
   let list = reading;
   list.push([task]);
-  fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
+  writing(list);
+  // fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
 };
 
 const remove = function(taskNumber) {
