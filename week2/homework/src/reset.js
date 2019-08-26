@@ -1,8 +1,7 @@
 'use strict';
 
-const fs = require('fs');
 const inquirer = require('inquirer');
-const config = require('./config');
+const todoList = require('./todoList');
 
 const question = [
   {
@@ -16,7 +15,7 @@ const question = [
 try {
   inquirer.prompt(question).then(answer => {
     if (answer.toDelete) {
-      fs.writeFileSync(config.DATA_FILE, JSON.stringify([], null, 2));
+      todoList.reset();
       console.log('All tasks are deleted.');
     }
   });
