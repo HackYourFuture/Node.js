@@ -1,12 +1,12 @@
 'use strict';
 
 const fs = require('fs');
+const information = fs.readFileSync('./instruction.txt', `utf8`);
+
 const read = require(`./read`);
 const reading = read.reading();
 const write = require('./write');
 const writing = write.writing;
-
-const information = fs.readFileSync('./instruction.txt', `utf8`);
 
 const showList = function() {
   let list = reading;
@@ -31,6 +31,7 @@ const add = function(task) {
   let list = reading;
   list.push([task]);
   writing(list);
+  console.log(`The task is successfully added to the list`);
 };
 
 const remove = function(taskNumber) {
