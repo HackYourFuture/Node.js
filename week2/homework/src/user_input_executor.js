@@ -32,7 +32,6 @@ const add = function(task) {
   let list = reading;
   list.push([task]);
   writing(list);
-  // fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
 };
 
 const remove = function(taskNumber) {
@@ -47,7 +46,7 @@ const remove = function(taskNumber) {
     console.log(`The task is successfully deleted form the list`);
   }
 
-  fs.writeFileSync('./tasks_list.json', JSON.stringify(list));
+  writing(list);
 };
 
 module.exports = { information, showList, reset, add, remove };
