@@ -3,6 +3,9 @@
 const fs = require('fs');
 const read = require(`./read`);
 const reading = read.reading();
+const testWriting = require('./write');
+const writeMe = testWriting.writing;
+
 const writing = function(updatedList) {
   fs.writeFileSync('./tasks_list.json', JSON.stringify(updatedList));
 };
@@ -24,7 +27,8 @@ const showList = function() {
 };
 
 const reset = function() {
-  writing([]);
+  writeMe([]);
+  // writing([]);
   console.log('The tasks list is now empty.');
 };
 
