@@ -13,35 +13,34 @@ const editToDo = require('./editToDo');
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.post('/addTodo', (req, res) => {
-  const toWrite = req.body.todo.description;
+app.post('/creatingNewTodo', (req, res) => {
+  const toWrite = req.body.description;
   addOne(req, res, toWrite);
 });
 
-app.get('/todos', (req, res) => {
+app.get('/todo', (req, res) => {
   getList(req, res);
 });
 
-app.get('/todo/?', (req, res) => {
-  const id = req.query.id;
-  getToDo(req, res, id);
+app.get('/todo/:id', (req, res) => {
+  getToDo(req, res, req.params.id);
 });
 
 app.delete('/todos', (req, res) => {
   deleteAll(req, res);
 });
 
-app.put('/todo/?', (req, res) => {
-  deleteOne(req, res, req.query.id);
+app.put('/todo/:id', (req, res) => {
+  deleteOne(req, res, req.params.id);
 });
 
-app.put('/todoDone/?', (req, res) => {
-  markDone(req, res, req.query.id);
+app.put('/todoDone/:id', (req, res) => {
+  markDone(req, res, req.params.id);
 });
 
-app.put('/todo/edit/?', (req, res) => {
-  const toEdit = req.body.todo.description;
-  editToDo(req, res, toEdit, req.query.id);
+app.put('/todo/edit/:id', (req, res) => {
+  const toEdit = req.body.description;
+  editToDo(req, res, toEdit, req.params.id);
 });
 
 const port = 5055;
