@@ -1,0 +1,7 @@
+Use the following commands after you type node <your file name>:
+E.g. node index.js help
+1-help: To show list of commands.
+2-list: Shows current to-dos.
+3-add: Removes a to-do item by its 1-base index.
+4-update: Updates a to-do item.
+5-reset: Removes all to-do items from the list.
