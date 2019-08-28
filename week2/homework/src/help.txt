@@ -1,0 +1,25 @@
+  
+  Hello there! 
+
+  Did you type 'node index.js' or 'node index.js help' 
+  to see the help section?
+
+  Since you are already here.. 
+
+  Type node index.js and then type..
+
+  list -> Shows current to-dos(Shows nothing if the list is empty)
+          Example: node index.js list
+
+  add  -> Adds to-do tasks to the list. 
+          Use quotes around the task you want to add.
+          Example: node index.js add "Buy milk"
+
+remove -> Removes to-do tasks from the list. 
+          Use quotes around the task and be very specific of what you 
+          want to remove since it is case sensitive.
+          Example: node index.js remove "Buy milk"
+
+ reset -> Resets the list of to-dos.
+          Example: node index.js reset
+
