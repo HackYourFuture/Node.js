@@ -65,7 +65,7 @@ yargs.command({
 yargs.command({
   command: 'complete',
   describe: 'Complete a to-do',
-  handler: function(argv) {
+  handler: function() {
     rl.question(chalk.yellow(`Please, enter to-do order to complete it:  `), answer => {
       completeToDo(parseInt(answer));
       rl.close();

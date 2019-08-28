@@ -9,10 +9,7 @@ const exportToDos = async filename => {
   try {
     const todos = await loadToDos();
     const output = todos
-      .map(todo => {
-        const line = [todo.index + '. ' + todo.body + ' ' + todo.complete];
-        return line.join(', ');
-      })
+      .map(todo => [todo.index + '. ' + todo.body + ' ' + todo.complete].join(', '))
       .join('\n');
     fs.writeFile(file + '.txt', 'Your to-dos:\n' + output).then(() => {
       logScreen(`Your todos exported into ${file}.txt file`, 'green');
