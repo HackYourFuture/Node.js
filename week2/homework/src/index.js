@@ -72,8 +72,9 @@ yargs
         `${chalk.red.inverse('This will remove all to-dos!!!')}\n
       Type ${chalk.green('yes')} to continue or ${chalk.red('no')} to cancel\n`,
         answer => {
-          answer === 'yes' ? resetToDos() : rl.close();
-          rl.close();
+          if (answer === 'yes') resetToDos().then(() => rl.close());
+          else if (answer === 'no') rl.close();
+          else this.handler();
         },
       );
     },
