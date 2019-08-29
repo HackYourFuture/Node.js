@@ -17,7 +17,7 @@ const saveJSON = todos => {
 
 const createOrderValue = array => {
   array.forEach((elem, index) => {
-    return (elem.order = index + 1);
+    elem.order = index + 1;
   });
 };
 
