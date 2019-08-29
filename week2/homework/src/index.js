@@ -1,14 +1,17 @@
 'use strict';
 
 // TODO: Write the homework code in this file
-const yargs = require('yargs');
+const yargs = require('yargs').help(false);
 const commands = require('./commands');
 
-let command = yargs.argv._[0];
-let todo = yargs.argv.todo;
+const command = yargs.argv._[0];
+const todo = yargs.argv.todo;
 
 switch (command) {
   default:
+    console.log(
+      'In case you came across with a problem, read the the implementation of the commands carefully and try again!'
+    );
     commands.help();
     break;
   case '--help':
@@ -25,9 +28,8 @@ switch (command) {
     }
     break;
   case 'list':
-    if (todo) {
-      commands.list();
-    }
+    commands.list();
+
     break;
   case 'update':
     if (todo) {
@@ -35,8 +37,7 @@ switch (command) {
     }
     break;
   case 'reset':
-    if (todo) {
-      commands.reset();
-    }
+    commands.reset();
+
     break;
 }
