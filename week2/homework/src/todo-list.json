@@ -1,0 +1,1 @@
+{"ToDos":[{"id":1,"todo":"task1"},{"id":2,"todo":"last test"},{"id":3,"todo":"Brush teeth"}],"usage":[{"add":"add the new todo to the list"},{"help":"show the short description about the commands"},{"remove":"remove the todo with given id from the list "},{"rest ":"remove all "},{"list ":"show all ToDo 'slist "},{"update ":"add a new todo item "}]}
