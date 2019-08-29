@@ -34,6 +34,13 @@ const remove = index => {
   fs.writeFileSync('todoList.json', JSON.stringify(todoList));
 };
 
+const update = (index, str) => {
+  todoList = JSON.parse(fs.readFileSync('todoList.json'));
+  todoList.splice(index - 1, 1, { str });
+  console.log(`The item in the ${index} place is up-to date`);
+  fs.writeFileSync('todoList.json', JSON.stringify(todoList));
+};
+
 const reset = () => {
   try {
     todoList = JSON.parse(fs.readFileSync('todoList.json'));
@@ -61,5 +68,6 @@ module.exports = {
   remove,
   list,
   reset,
+  update,
   help
 };

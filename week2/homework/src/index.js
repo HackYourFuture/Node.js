@@ -29,6 +29,11 @@ switch (command) {
       commands.list();
     }
     break;
+  case 'update':
+    if (todo) {
+      commands.update(todo);
+    }
+    break;
   case 'reset':
     if (todo) {
       commands.reset();
