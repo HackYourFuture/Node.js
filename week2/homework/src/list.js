@@ -10,8 +10,7 @@ try {
   tasks.forEach(task => {
     console.log(`[${task.id}]\t${task.description}`);
   });
-}
- catch (error) {
+} catch (error) {
   console.log(error.message);
 }
 console.log('-'.repeat(50));

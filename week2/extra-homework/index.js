@@ -47,7 +47,7 @@ app.post('/counters', async (req, res) => {
   try {
     const counters = await Counters.read(COUNTERS_FILE, config.ENCODING);
     const id = Number(Math.max(...counters.map(counter => counter.id))) + 1;
-    newCounter = { id, value: 0 };
+    const newCounter = { id, value: 0 };
     counters.push(newCounter);
     await Counters.write(COUNTERS_FILE, counters);
     res.json(newCounter);

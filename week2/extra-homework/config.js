@@ -1,4 +1,4 @@
 module.exports = {
-  COUNTERS_FILE: `${__dirname}/counters.json`,
+  COUNTERS_FILE: `${__dirname}/counter.json`,
   ENCODING: 'utf8',
 };

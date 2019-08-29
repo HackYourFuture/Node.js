@@ -7,9 +7,9 @@ class Counters {
     this.file = file;
   }
 
-  static read(file, encoding) {
+  static read(file) {
     return new Promise((resolve, reject) => {
-      fs.readFile(file, encoding, (err, data) => {
+      fs.readFile(file, 'utf8', (err, data) => {
         err ? reject(err) : resolve(JSON.parse(data));
       });
     });

@@ -8,7 +8,6 @@ program.parse(process.argv);
 try {
   const id = parseInt(program.args[0]);
   todoList.remove(id);
-}
- catch (error) {
+} catch (error) {
   console.log(error.message);
 }

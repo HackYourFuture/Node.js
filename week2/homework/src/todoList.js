@@ -43,16 +43,9 @@ class TodoList {
   }
 
   remove(id) {
-    if (!this.todos.map(i => i.id).includes(parseInt(id))) {
-      throw new Error('Invalid Index');
-    }
-    const filteredTodos = this.todos
-      .filter(task => task.id !== id)
-      .map(task => task.description)
-      .reduce((tasks, description, index) => {
-        tasks.push({ id: index + 1, description });
-        return tasks;
-      }, []);
+    const todo = this.todos.find(item => item.id === parseInt(id));
+    if (!todo) throw new Error('Invalid Index');
+    const filteredTodos = this.todos.filter(task => task.id !== id);
     _write.get(this)(filteredTodos);
   }
 
@@ -62,13 +55,10 @@ class TodoList {
   }
 
   update(id, task) {
-    if (!this.todos.map(i => i.id).includes(parseInt(id))) {
-      throw new Error('Invalid Index');
-    }
-    if (!task.length) {
-      throw new Error('Task required');
-    }
-    this.todos.find(item => item.id === +id).description = task;
+    const todo = this.todos.find(item => item.id === parseInt(id));
+    if (!todo) throw new Error('Invalid Index');
+    if (!task.length) throw new Error('Task required');
+    todo.description = task;
     _write.get(this)(this.todos);
   }
 }
