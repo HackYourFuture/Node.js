@@ -1,9 +1,10 @@
 const fs = require('fs');
 let toDoList = [];
-function generateToDosList(toDo) {
+function generateToDo(toDo) {
   try {
     toDoList = JSON.parse(fs.readFileSync('toDoList.json'));
-  } catch (error) {
+  }
+ catch (error) {
     console.log(`${error}`);
   }
   const index = toDoList.findIndex(item => item.list === toDo);
@@ -15,5 +16,5 @@ function generateToDosList(toDo) {
 }
 
 module.exports = {
-  generateToDosList: generateToDosList,
+  generateToDo
 };

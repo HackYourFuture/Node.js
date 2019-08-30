@@ -3,13 +3,14 @@
 // TODO: Write the homework code in this file
 const program = require('commander');
 const commands = require('./commands');
-const addToDoList = require('./addToDos');
+const addToDo = require('./addToDo');
 const showList = require('./showList');
-const remove = require('./removeList');
+const remove = require('./removeToDo');
 const reset = require('./resetList');
 if (process.argv.length === 2) {
   commands.showCommandsList();
-} else {
+}
+ else {
   program
     .command('help')
     .alias('hp')
@@ -23,7 +24,7 @@ if (process.argv.length === 2) {
     .alias('a')
     .description('Adds a to-do item')
     .action(toDo => {
-      addToDoList.generateToDosList(toDo);
+      addToDo.generateToDo(toDo);
     });
 
   program
@@ -39,7 +40,7 @@ if (process.argv.length === 2) {
     .alias('rm')
     .description('Removes a to-do item')
     .action(index => {
-      remove.removeList(index);
+      remove.removeToDo(index);
     });
   program
     .command('reset')

@@ -6,5 +6,5 @@ function showCommandsList() {
 }
 
 module.exports = {
-  showCommandsList: showCommandsList,
+  showCommandsList
 };
