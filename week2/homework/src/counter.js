@@ -3,11 +3,8 @@
 const fs = require('fs').promises;
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
 
 const PORT = app.get('port');
@@ -29,7 +26,7 @@ const saveCounters = async counters => {
     return [];
   }
 };
-// This function might be not needed
+
 const listCounters = async () => {
   try {
     return await loadCounters();
