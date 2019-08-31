@@ -80,7 +80,6 @@ app
       res.status(400).send(e.message);
     }
   })
-
   .post('/counters', async (req, res) => {
     const counters = await loadCounters();
     if (counters.length) {
@@ -88,7 +87,6 @@ app
       res.send(await addCounter(id + 1));
     } else res.send(await addCounter(1));
   })
-
   .put('/counters/:id', async (req, res) => {
     try {
       res.send(await updateCounter(parseInt(req.params.id)));
