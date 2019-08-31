@@ -2,7 +2,7 @@
 
 const { saveToDo, logScreen } = require('./Util');
 
-const resetToDos = async () => {
+const resetToDos = () => {
   saveToDo([]).then(() => logScreen('All to-dos has removed successfully!', 'green'));
 };
 
