@@ -1,1 +1,7 @@
-[{"id":1,"state":5},{"id":2,"state":6},{"id":3,"state":0}]
+[
+  { "id": 1, "state": 11 },
+  { "id": 2, "state": 40 },
+  { "id": 3, "state": 0 },
+  { "id": 4, "state": 0 },
+  { "id": 5, "state": 0 }
+]

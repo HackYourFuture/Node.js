@@ -75,7 +75,7 @@ app
   })
   .get('/counters/:id', async (req, res) => {
     try {
-      res.send(await readCounter(parseInt(req.params.id)));
+      res.send(await readCounter(parseInt(new Number(req.params.id))));
     } catch (e) {
       res.status(400).send(e.message);
     }
@@ -89,7 +89,8 @@ app
   })
   .put('/counters/:id', async (req, res) => {
     try {
-      res.send(await updateCounter(parseInt(req.params.id)));
+      console.log(req.params.id);
+      res.send(await updateCounter(parseInt(new Number(req.params.id))));
     } catch (e) {
       res.status(400).send(e.message);
     }
