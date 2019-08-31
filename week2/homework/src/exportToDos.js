@@ -15,7 +15,7 @@ const exportToDos = async filename => {
       logScreen(`Your todos exported into ${file}.txt file`, 'green');
     });
   }
- catch (err) {
+  catch (err) {
     logScreen(`Could not been exported! Please, try again...`, 'red');
   }
 };

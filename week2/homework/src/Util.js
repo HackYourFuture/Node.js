@@ -5,11 +5,12 @@ const logScreen = (msg, color) => {
   console.log(chalk[color].inverse(msg));
 };
 
-const loadToDos = async () => {
+const loadToDos = async() => {
   try {
     const todos = await fs.readFile('notes.json', 'utf8');
     return JSON.parse(todos);
-  } catch (err) {
+  }
+  catch (err) {
     return [];
   }
 };
@@ -19,7 +20,8 @@ const saveToDo = async todos => {
     todos.forEach((todo, order = 1) => (todo.index = ++order));
     const dataJSON = JSON.stringify(todos);
     fs.writeFile('notes.json', dataJSON).then(() => logScreen('Changes are saved', 'green'));
-  } catch (err) {
+  }
+  catch (err) {
     logScreen("Couldn't save, please try again!", 'red');
   }
 };

@@ -3,7 +3,7 @@
 const { loadToDos, logScreen } = require('./Util');
 const chalk = require('chalk');
 
-const listToDos = async () => {
+const listToDos = async() => {
   const todos = await loadToDos();
   logScreen('\nYour to-dos\n', 'yellow');
   if (todos.length === 0) return logScreen('\nThere is not any to-do\n', 'red');
