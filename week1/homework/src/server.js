@@ -16,19 +16,29 @@
     const server = http.createServer((request, response) => {
       switch (request.url) {
         case '/state':
-          postData(200, response, { state: state });
+          postData(200, response, {
+            state: state
+          });
           break;
         case '/add':
-          postData(200, response, { state: ++state });
+          postData(200, response, {
+            state: ++state
+          });
           break;
         case '/subtract':
-          postData(200, response, { state: --state });
+          postData(200, response, {
+            state: --state
+          });
           break;
         case '/reset':
-          postData(200, response, { state: (state = 10) });
+          postData(200, response, {
+            state: (state = 10)
+          });
           break;
         default:
-          postData(404, response, { error: 'Not found' });
+          postData(404, response, {
+            error: 'Not found'
+          });
           break;
       }
     });
