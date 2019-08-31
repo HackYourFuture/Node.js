@@ -8,7 +8,8 @@ const updateToDo = async (order, body) => {
   if (todo) {
     todos[order - 1] = { index: order, body, complete: '➖' };
     logScreen(`${order}. to-do is updated!`, 'green');
-  } else logScreen(`${order}. to-do is not in the list`, 'red');
+  }
+ else logScreen(`${order}. to-do is not in the list`, 'red');
   saveToDo(todos);
 };
 

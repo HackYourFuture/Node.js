@@ -9,12 +9,13 @@ const exportToDos = async filename => {
   try {
     const todos = await loadToDos();
     const output = todos
-      .map(todo => [todo.index + '. ' + todo.body + ' ' + todo.complete].join(', '))
+      .map(todo => [todo.index + '. ' + todo.body + ' ' + todo.complete])
       .join('\n');
     fs.writeFile(file + '.txt', 'Your to-dos:\n' + output).then(() => {
       logScreen(`Your todos exported into ${file}.txt file`, 'green');
     });
-  } catch (err) {
+  }
+ catch (err) {
     logScreen(`Could not been exported! Please, try again...`, 'red');
   }
 };
