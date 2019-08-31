@@ -17,7 +17,7 @@ const loadCounters = async () => {
   try {
     const counters = await fs.readFile(FILE, 'utf8');
     return JSON.parse(counters);
-  } catch (err) {
+  } catch (e) {
     return [];
   }
 };
@@ -25,13 +25,17 @@ const loadCounters = async () => {
 const saveCounters = async counters => {
   try {
     return await fs.writeFile(FILE, JSON.stringify(counters));
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    return [];
   }
 };
 // This function might be not needed
 const listCounters = async () => {
-  return await loadCounters();
+  try {
+    return await loadCounters();
+  } catch (e) {
+    throw new Error('Please, refresh the page!');
+  }
 };
 
 const addCounter = async (id, state = 0) => {
@@ -43,31 +47,58 @@ const addCounter = async (id, state = 0) => {
 
 const readCounter = async id => {
   const counters = await loadCounters();
-  return counters.find(counter => counter.id === id);
+  const counter = counters.find(counter => counter.id === id);
+  if (!counter) {
+    throw new Error('Counter is not found');
+  }
+  return counter;
 };
 
 const updateCounter = async id => {
   const counters = await loadCounters();
   const counter = counters.find(counter => counter.id === id);
-  if (counter) ++counter.state;
+  if (!counter) {
+    throw new Error('Counter is not found');
+  }
+  ++counter.state;
   saveCounters(counters);
   return counter;
 };
 
 app
   .get('/counters', async (req, res) => {
-    res.send(await listCounters());
+    try {
+      res.send(await listCounters());
+    } catch (e) {
+      res.status(400).send(e.message);
+    }
   })
   .get('/counters/:id', async (req, res) => {
-    res.send(await readCounter(parseInt(req.params.id)));
+    try {
+      res.send(await readCounter(parseInt(req.params.id)));
+    } catch (e) {
+      res.status(400).send(e.message);
+    }
   })
-  // The post request coming from postman in the body as a JSON. e.g {"id":90 }
+
   .post('/counters', async (req, res) => {
-    res.send(await addCounter(parseInt(req.body.id)));
+    const counters = await loadCounters();
+    if (counters.length) {
+      const id = counters[counters.length - 1].id;
+      res.send(await addCounter(id + 1));
+    } else res.send(await addCounter(1));
   })
-  // increments the state of the counter
+
   .put('/counters/:id', async (req, res) => {
-    res.send(await updateCounter(parseInt(req.params.id)));
+    try {
+      res.send(await updateCounter(parseInt(req.params.id)));
+    } catch (e) {
+      res.status(400).send(e.message);
+    }
+  })
+  .use((req, res, next) => {
+    const err = new Error('Page Not Found!');
+    res.status(404).send(err.message);
   })
   .listen(PORT, () => {
     console.log(`Server is activated on port ${PORT}.`);
