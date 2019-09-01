@@ -19,7 +19,7 @@ const help = () => {
     console.log('5. update - Updates a to-do item with new text');
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -50,7 +50,7 @@ const addTodo = title => {
     }
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -67,7 +67,7 @@ const deleteTodo = index => {
     }
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -83,7 +83,7 @@ const updateTodo = (index, todo) => {
     }
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -92,7 +92,7 @@ const saveData = data => {
     fs.writeFileSync('todoData.json', JSON.stringify(data));
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -103,7 +103,7 @@ const resetTodo = () => {
     saveData(todoArray);
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
@@ -123,7 +123,7 @@ const listTodo = () => {
     }
   }
  catch (error) {
-    return error;
+    return console.log(error.message);
   }
 };
 
