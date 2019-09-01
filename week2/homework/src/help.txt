@@ -1,0 +1,8 @@
+//hi I know that having lots of problem with node.js 
+//unfortunately I couldnt get it properly by myself,I would be appreciate if there is someone who have some tip for me to learning it better or helping me on node.js concepts
+
+help   >> help documentation
+listTodo   >> print list of todoes
+addTodo   >> for add new to do lets do like example: node index.js addTodo --title "sport"
+removeTodo >> removes one to-do item
+reset  >> removes to-do items 

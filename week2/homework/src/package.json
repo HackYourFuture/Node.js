@@ -1,0 +1,16 @@
+{
+  "name": "todos-node",
+  "version": "1.0.0",
+  "description": "To Do Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Far",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-standard": "^14.1.0",
+    "lodash": "^4.17.15",
+    "yargs": "^14.0.0"
+  }
+}
