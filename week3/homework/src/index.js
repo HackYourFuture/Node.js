@@ -2,13 +2,10 @@
 
 // TODO: Write the homework code in this file
 const http = require('http');
+const app = require('./app');
 const port = process.env.PORT || 3000;
 
-const server = http.createServer(function(req, res) {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify({ test: 'It is working!' }));
-  res.end();
-});
+const server = http.createServer(app);
 
 server.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
