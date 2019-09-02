@@ -13,7 +13,7 @@ const editToDo = require('./editToDo');
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.post('/creatingNewTodo', (req, res) => {
+app.post('/todo', (req, res) => {
   const toWrite = req.body.description;
   addOne(req, res, toWrite);
 });
@@ -30,7 +30,7 @@ app.delete('/todos', (req, res) => {
   deleteAll(req, res);
 });
 
-app.put('/todo/:id', (req, res) => {
+app.delete('/todo/:id', (req, res) => {
   deleteOne(req, res, req.params.id);
 });
 
