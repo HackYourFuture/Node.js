@@ -10,10 +10,10 @@ const read = function(directory, Unicode) {
     });
   });
 };
-
-read('todolist.json', 'utf8')
-  .then(res => console.log(JSON.parse(res)))
-  .catch(err => console.log(err.message));
+module.exports = { read };
+// read('todolist.json', 'utf8')
+//   .then(res => console.log(JSON.parse(res)))
+//   .catch(err => console.log(err.message));
 
 // -----------------------------------------
 // function write(directory, data) {
