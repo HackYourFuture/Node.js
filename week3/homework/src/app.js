@@ -15,6 +15,7 @@ app.all('/', (req, res, next) => {
 
 app.post('/todos', (req, res, next) => {
   res.status(200).json({ testExpress: 'POST method: Express handler.' });
+  console.log(req.body);
 });
 
 app.get('/todos', (req, res, next) => {
