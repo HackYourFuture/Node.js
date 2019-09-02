@@ -16,7 +16,19 @@ app.all('/', (req, res, next) => {
 app.post('/todos', (req, res, next) => {
   res.status(200).json({ testExpress: 'POST method: Express handler.' });
   const newTodo = req.body.todo.description;
-  console.log(newTodo);
+  const newToDoObjet = {
+    id: '99',
+    description: `${newTodo}`,
+    done: false
+  };
+
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const resultArry = JSON.parse(result);
+      resultArry.push(newToDoObjet);
+      console.log(resultArry);
+    })
+    .catch(err => res.status(404).json({ Error: err.message }));
 });
 
 app.get('/todos', (req, res, next) => {
