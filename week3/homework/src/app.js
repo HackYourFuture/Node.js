@@ -5,7 +5,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res, next) => {
+app.all('/', (req, res, next) => {
   res.status(200).json({ testExpress: 'Express is working!' });
 });
 
