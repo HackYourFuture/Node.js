@@ -1,6 +1,5 @@
 'use strict';
 
-// TODO: Write the homework code in this file
 {
   const fs = require('fs');
   // const showHelp = require('./help.txt');
@@ -11,8 +10,8 @@
   const todoTask = process.argv[3];
 
   if (command === undefined || command === 'help') {
-    const somehelp = fs.readFileSync('./help.txt', 'utf8');
-    console.log(somehelp);
+    const help = fs.readFileSync('./help.txt', 'utf8');
+    console.log(help);
   }
 
   if (command === 'list') {
