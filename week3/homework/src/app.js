@@ -45,26 +45,70 @@ app.get('/todos', (req, res, next) => {
 
 // ( 3 )
 app.put('/todos/:id', (req, res, next) => {
-  res.status(200).json({
-    testExpress: 'Put method: update the description of a single To-Do with ID :id.',
-    id: req.params.id
-  });
+  const postedId = req.params.id;
+  const postedTodo = req.body.todo.description;
+
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      if (wantedTodo === undefined) {
+        throw new Error(`There is No To-Do item with ID:${postedId}`);
+      }
+      wantedTodo.description = postedTodo;
+      write('./data/todolist.json', JSON.stringify(CurrentList));
+      res.status(200).json({ Notification: 'new To-DO is added' });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos/:id'
+      })
+    );
 });
 
 // ( 4 )
 app.delete('/todos/:id', (req, res, next) => {
-  res.status(200).json({
-    testExpress: 'delete method: delete a single To-Do from the list with ID :id.',
-    id: req.params.id
-  });
+  const postedId = req.params.id;
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      // const updatedList = CurrentList.filter(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      if (wantedTodo === undefined) {
+        throw new Error(`The To-Do item with ID:${postedId} is already not existed`);
+      }
+      CurrentList.filter(todo => todo !== wantedTodo);
+
+      write('./data/todolist.json', JSON.stringify(CurrentList));
+      res.status(200).json({ Notification: `The To-Do item with ID: ${postedId} is deleted` });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos/:id'
+      })
+    );
 });
 
 // ( 5 )
 app.get('/todos/:id', (req, res, next) => {
-  res.status(200).json({
-    testExpress: 'get method: get a single To-Do from the list with ID :id.',
-    id: req.params.id
-  });
+  const postedId = req.params.id;
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      if (wantedTodo === undefined) {
+        throw new Error(`There is NO To-Do item with ID:${postedId}`);
+      }
+      res.status(200).json(wantedTodo);
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.get: /todos/:id'
+      })
+    );
 });
 
 // ( 6 )
