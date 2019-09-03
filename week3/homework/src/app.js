@@ -2,6 +2,8 @@
 
 const dataDealer = require('./data/data_dealer');
 const read = dataDealer.read;
+const write = dataDealer.write;
+
 //  handling endpoints/routing with express
 
 const express = require('express');
@@ -16,8 +18,8 @@ app.all('/', (req, res, next) => {
 
 // ( 1 )
 app.post('/todos', (req, res, next) => {
-  res.status(200).json({ testExpress: 'POST method: Create new To-Do.' });
   const newTodo = req.body.todo.description;
+
   const newToDoObjet = {
     id: '99',
     description: newTodo,
@@ -26,9 +28,12 @@ app.post('/todos', (req, res, next) => {
 
   read('./data/todolist.json', 'utf8')
     .then(result => {
-      const resultArry = JSON.parse(result);
-      resultArry.push(newToDoObjet);
-      console.log(resultArry);
+      const CurrentList = JSON.parse(result);
+      CurrentList.push(newToDoObjet);
+      const updatedList = JSON.stringify(CurrentList);
+      write('./data/todolist.json', updatedList);
+      console.log(updatedList);
+      res.status(200).json({ Notification: 'new To-DO is added' });
     })
     .catch(err => res.status(404).json({ Error: err.message }));
 });
