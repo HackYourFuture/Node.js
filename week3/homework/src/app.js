@@ -4,12 +4,11 @@ const dataDealer = require('./data/data_dealer');
 const read = dataDealer.read;
 const write = dataDealer.write;
 const shortid = require('shortid');
-
-//  handling endpoints/routing with express
-
+const TodoItem = require('./todo_obj_constructor');
 const express = require('express');
 const app = express();
-/* before dealing with the endpints:  parse the request body */
+
+/* before dealing with the endpoints:  parse the request body */
 app.use(express.json());
 
 // ( 0 )
@@ -19,18 +18,12 @@ app.all('/', (req, res, next) => {
 
 // ( 1 )
 app.post('/todos', (req, res, next) => {
-  const newTodo = req.body.todo.description;
-
-  const newToDoObjet = {
-    id: shortid.generate(),
-    description: newTodo,
-    done: false
-  };
-
+  const postedTodo = req.body.todo.description;
+  const todoObject = new TodoItem(shortid.generate(), postedTodo, false);
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      CurrentList.push(newToDoObjet);
+      CurrentList.push(todoObject);
       const updatedList = JSON.stringify(CurrentList);
       write('./data/todolist.json', updatedList);
       res.status(200).json({ Notification: 'new To-DO is added' });
@@ -93,7 +86,7 @@ app.delete('/todos/:id/done', (req, res, next) => {
   });
 });
 
-//  errors: json parse on the body of the request, and invalid endpoints
+// errors handling: json parse on the body of the request, and invalid endpoints
 app.use((req, res, next) => {
   const error = new Error('Not found');
   error.status = 404;
