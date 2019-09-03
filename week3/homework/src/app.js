@@ -25,10 +25,16 @@ app.post('/todos', (req, res, next) => {
       const CurrentList = JSON.parse(result);
       CurrentList.push(todoObject);
       const updatedList = JSON.stringify(CurrentList);
-      write('./data/todolist.json', updatedList);
+      write('./data/todolist.json', pdatedList);
       res.status(200).json({ Notification: 'new To-DO is added' });
+      console.log('test');
     })
-    .catch(err => res.status(404).json({ Error: err.message }));
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos'
+      })
+    );
 });
 
 // ( 2 )
@@ -97,7 +103,8 @@ app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
     error: {
-      message: error.message
+      message: error.message,
+      catchLocation: 'app.use: haldeling errors section'
     }
   });
 });
