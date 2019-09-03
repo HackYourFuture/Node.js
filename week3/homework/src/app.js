@@ -25,9 +25,8 @@ app.post('/todos', (req, res, next) => {
       const CurrentList = JSON.parse(result);
       CurrentList.push(todoObject);
       const updatedList = JSON.stringify(CurrentList);
-      write('./data/todolist.json', pdatedList);
+      write('./data/todolist.json', updatedList);
       res.status(200).json({ Notification: 'new To-DO is added' });
-      console.log('test');
     })
     .catch(err =>
       res.status(404).json({
