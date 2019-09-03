@@ -113,10 +113,14 @@ app.get('/todos/:id', (req, res, next) => {
 
 // ( 6 )
 app.delete('/todos', (req, res, next) => {
-  res.status(200).json({
-    testExpress: 'delete method: clear the To-Do list.',
-    id: req.params.id
-  });
+  write('./data/todolist.json', JSON.stringify(sam))
+    .then(res.status(200).json({ Notification: 'All the To-Do items are deleted.' }))
+    .catch(err => {
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.get: /todos/:id'
+      });
+    });
 });
 
 // ( 7 )
