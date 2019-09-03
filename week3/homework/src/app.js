@@ -6,8 +6,8 @@ const read = dataDealer.read;
 
 const express = require('express');
 const app = express();
-
-app.use(express.json()); /* to parse the request body */
+/* before dealing with the endpints:  parse the request body */
+app.use(express.json());
 
 // ( 0 )
 app.all('/', (req, res, next) => {
