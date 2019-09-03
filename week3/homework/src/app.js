@@ -3,6 +3,7 @@
 const dataDealer = require('./data/data_dealer');
 const read = dataDealer.read;
 const write = dataDealer.write;
+const shortid = require('shortid');
 
 //  handling endpoints/routing with express
 
@@ -21,7 +22,7 @@ app.post('/todos', (req, res, next) => {
   const newTodo = req.body.todo.description;
 
   const newToDoObjet = {
-    id: '99',
+    id: shortid.generate(),
     description: newTodo,
     done: false
   };
@@ -32,7 +33,6 @@ app.post('/todos', (req, res, next) => {
       CurrentList.push(newToDoObjet);
       const updatedList = JSON.stringify(CurrentList);
       write('./data/todolist.json', updatedList);
-      console.log(updatedList);
       res.status(200).json({ Notification: 'new To-DO is added' });
     })
     .catch(err => res.status(404).json({ Error: err.message }));
