@@ -36,7 +36,7 @@ app.post('/todos', (req, res, next) => {
   const newTodo = req.body.todo.description;
   const newToDoObjet = {
     id: '99',
-    description: `${newTodo}`,
+    description: newTodo,
     done: false
   };
 
