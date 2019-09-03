@@ -9,22 +9,6 @@ const app = express();
 
 app.use(express.json()); /* to parse the request body */
 
-//  errors: json parse on the body of the request, and invalid endpoints
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
-
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message
-    }
-  });
-});
-
 // ( 0 )
 app.all('/', (req, res, next) => {
   res.status(200).json({ testExpress: 'Express is working!' });
@@ -101,6 +85,22 @@ app.delete('/todos/:id/done', (req, res, next) => {
   res.status(200).json({
     testExpress: 'post method: mark a single TO-Do as NOT done.',
     id: req.params.id
+  });
+});
+
+//  errors: json parse on the body of the request, and invalid endpoints
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
   });
 });
 
