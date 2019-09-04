@@ -12,12 +12,12 @@ const app = express();
 app.use(express.json());
 
 // ( 0 )
-app.all('/', (req, res, next) => {
+app.all('/', (req, res) => {
   res.status(200).json({ testExpress: 'Express is working!' });
 });
 
 // ( 1 )
-app.post('/todos', (req, res, next) => {
+app.post('/todos', (req, res) => {
   const postedTodo = req.body.todo.description;
   const todoObject = new TodoItem(shortid.generate(), postedTodo, false);
   read('./data/todolist.json', 'utf8')
@@ -37,14 +37,14 @@ app.post('/todos', (req, res, next) => {
 });
 
 // ( 2 )
-app.get('/todos', (req, res, next) => {
+app.get('/todos', (req, res) => {
   read('./data/todolist.json', 'utf8')
     .then(result => res.status(200).send(result))
-    .catch(err => res.status(404).json({ Error: err.message }));
+    .catch(err => res.status(404).json({ Error: err.message, catchLocation: 'app.get: /todos' }));
 });
 
 // ( 3 )
-app.put('/todos/:id', (req, res, next) => {
+app.put('/todos/:id', (req, res) => {
   const postedId = req.params.id;
   const postedTodo = req.body.todo.description;
 
@@ -57,7 +57,7 @@ app.put('/todos/:id', (req, res, next) => {
       }
       wantedTodo.description = postedTodo;
       write('./data/todolist.json', JSON.stringify(CurrentList));
-      res.status(200).json({ Notification: 'new To-DO is added' });
+      res.status(200).json({ Notification: 'The To-Do item is modified' });
     })
     .catch(err =>
       res.status(404).json({
@@ -68,31 +68,29 @@ app.put('/todos/:id', (req, res, next) => {
 });
 
 // ( 4 )
-app.delete('/todos/:id', (req, res, next) => {
+app.delete('/todos/:id', (req, res) => {
   const postedId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      // const updatedList = CurrentList.filter(todo => todo.id === postedId);
       const wantedTodo = CurrentList.find(todo => todo.id === postedId);
       if (wantedTodo === undefined) {
         throw new Error(`The To-Do item with ID:${postedId} is already not existed`);
       }
-      CurrentList.filter(todo => todo !== wantedTodo);
-
-      write('./data/todolist.json', JSON.stringify(CurrentList));
+      const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
+      write('./data/todolist.json', JSON.stringify(updatedList));
       res.status(200).json({ Notification: `The To-Do item with ID: ${postedId} is deleted` });
     })
     .catch(err =>
       res.status(404).json({
         Error: err.message,
-        catchLocation: 'app.post:/todos/:id'
+        catchLocation: 'app.delete:/todos/:id'
       })
     );
 });
 
 // ( 5 )
-app.get('/todos/:id', (req, res, next) => {
+app.get('/todos/:id', (req, res) => {
   const postedId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
@@ -112,10 +110,11 @@ app.get('/todos/:id', (req, res, next) => {
 });
 
 // ( 6 )
-app.delete('/todos', (req, res, next) => {
+app.delete('/todos', (req, res) => {
   write('./data/todolist.json', JSON.stringify(sam))
     .then(res.status(200).json({ Notification: 'All the To-Do items are deleted.' }))
     .catch(err => {
+      console.log('errrrr');
       res.status(404).json({
         Error: err.message,
         catchLocation: 'app.get: /todos/:id'
@@ -124,7 +123,7 @@ app.delete('/todos', (req, res, next) => {
 });
 
 // ( 7 )
-app.post('/todos/:id/done', (req, res, next) => {
+app.post('/todos/:id/done', (req, res) => {
   res.status(200).json({
     testExpress: 'post method: mark a single TO-Do as done.',
     id: req.params.id
@@ -132,7 +131,7 @@ app.post('/todos/:id/done', (req, res, next) => {
 });
 
 // ( 8 )
-app.delete('/todos/:id/done', (req, res, next) => {
+app.delete('/todos/:id/done', (req, res) => {
   res.status(200).json({
     testExpress: 'post method: mark a single TO-Do as NOT done.',
     id: req.params.id
