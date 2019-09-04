@@ -138,7 +138,7 @@ app.delete('/todos/:id/done', (req, res) => {
   });
 });
 
-// errors handling: json parse on the body of the request, and invalid endpoints
+// errors handling: JSON parse & stringify, and invalid endpoints
 app.use((req, res, next) => {
   const error = new Error('Not found');
   error.status = 404;
