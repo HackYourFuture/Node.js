@@ -13,9 +13,9 @@ const read = function(directory, Unicode) {
 
 const write = function(directory, data) {
   return new Promise(function(resolve, reject) {
-    fs.writeFile(directory, data, function(err, result) {
+    fs.writeFile(directory, data, err => {
       if (err) reject(err);
-      else resolve(result);
+      resolve();
     });
   });
 };
