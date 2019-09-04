@@ -1,35 +1,27 @@
 const fs = require('fs');
-const Joi = require('@hapi/joi');
+const DEFAULT_ENCODING = 'utf8';
 
-function readCountersFromFile() {
-  return new Promise((resolve, reject) => {
-    fs.readFile('counters.json', 'utf8', (err, data) => {
-      if (err) reject(err);
-      else resolve(JSON.parse(data));
+class Util {
+  constructor(filename) {
+    this._filename = filename;
+  }
+
+  read() {
+    return new Promise((resolve, reject) => {
+      fs.readFile(this._filename, DEFAULT_ENCODING, (err, data) => {
+        if (err) reject(err);
+        else resolve(JSON.parse(data));
+      });
     });
-  });
-}
+  }
 
-function saveCounters(data) {
-  return new Promise((resolve, reject) => {
-    fs.writeFile('counters.json', JSON.stringify(data), err => {
-      if (err) reject(err);
-      else resolve();
+  save(counters) {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(this._filename, JSON.stringify(counters, null, 2), error =>
+        error == null ? resolve() : reject(error)
+      );
     });
-  });
+  }
 }
 
-function validateCounter(counter) {
-  const schema = {
-    name: Joi.string()
-      .min(3)
-      .required(),
-  };
-  return Joi.validate(counter, schema);
-}
-
-module.exports = {
-  validateCounter,
-  saveCounters,
-  readCountersFromFile,
-};
+module.exports = Util;
