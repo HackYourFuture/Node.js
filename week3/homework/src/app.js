@@ -143,11 +143,6 @@ app.post('/todos/:id/done', (req, res) => {
         catchLocation: 'app.post:/todos/:id'
       })
     );
-
-  // res.status(200).json({
-  //   testExpress: 'post method: mark a single TO-Do as done.',
-  //   id: req.params.id
-  // });
 });
 
 // ( 8 )
