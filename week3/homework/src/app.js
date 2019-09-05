@@ -111,7 +111,7 @@ app.get('/todos/:id', (req, res) => {
 
 // ( 6 )
 app.delete('/todos', (req, res) => {
-  write('./data/todolist.json', JSON.stringify(sam))
+  write('./data/todolist.json', JSON.stringify([]))
     .then(res.status(200).json({ Notification: 'All the To-Do items are deleted.' }))
     .catch(err => {
       console.log('errrrr');
