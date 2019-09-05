@@ -2,20 +2,23 @@
 /* eslint-disable no-unneeded-ternary */
 'use strict';
 
-const express = require('express');
-const routes = require('./routes');
-
-const PORT = process.env.PORT || 3000;
-
-const app = express();
-
-app.use(express.json({
-  verify: (req, res, buf) => {
-    try { JSON.parse(buf); }
-    catch (e) { res.status(404).json('Invalid Json'); }
+class Start {
+  server() {
+    const express = require('express');
+    const routes = require('./routes');
+    const PORT = process.env.PORT || 3000;
+    const app = express();
+    routes.configure(app);
+    app.use(express.json({
+      verify: (req, res, buf) => {
+        try { JSON.parse(buf); }
+        catch (e) { res.status(404).json('Invalid Json'); }
+      }
+    }));
+    app.listen(PORT, () => console.log(`Server is activated on port ${PORT}.`));
   }
-}));
+}
 
-routes.configure(app);
+const start = new Start();
 
-app.listen(PORT, () => console.log(`Server is activated on port ${PORT}.`));
+start.server();
