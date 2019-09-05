@@ -8,13 +8,13 @@ class Start {
   server() {
     const PORT = process.env.PORT || 3000;
     const app = express();
-    routes.configure(app);
     app.use(express.json({
       verify: (req, res, buf) => {
         try { JSON.parse(buf); }
         catch (e) { res.status(404).json('Invalid Json'); }
       }
     }));
+    routes.configure(app);
     app.listen(PORT, () => console.log(`Server is activated on port ${PORT}.`));
   }
 }
