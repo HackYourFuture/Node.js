@@ -124,10 +124,31 @@ app.delete('/todos', (req, res) => {
 
 // ( 7 )
 app.post('/todos/:id/done', (req, res) => {
-  res.status(200).json({
-    testExpress: 'post method: mark a single TO-Do as done.',
-    id: req.params.id
-  });
+  const postedId = req.params.id;
+
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      if (wantedTodo === undefined) {
+        throw new Error(`There is No To-Do item with ID:${postedId}`);
+      }
+      console.log('test');
+      wantedTodo.done = true;
+      write('./data/todolist.json', JSON.stringify(CurrentList));
+      res.status(200).json({ Notification: 'The To-Do item is modified' });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos/:id'
+      })
+    );
+
+  // res.status(200).json({
+  //   testExpress: 'post method: mark a single TO-Do as done.',
+  //   id: req.params.id
+  // });
 });
 
 // ( 8 )
