@@ -135,7 +135,9 @@ app.post('/todos/:id/done', (req, res) => {
       }
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList));
-      res.status(200).json({ Notification: 'The To-Do item is modified as DONE' });
+      res
+        .status(200)
+        .json({ Notification: `The To-Do item with ID: ${postedId} is modified as Done` });
     })
     .catch(err =>
       res.status(404).json({
@@ -147,10 +149,32 @@ app.post('/todos/:id/done', (req, res) => {
 
 // ( 8 )
 app.delete('/todos/:id/done', (req, res) => {
-  res.status(200).json({
-    testExpress: 'post method: mark a single TO-Do as NOT done.',
-    id: req.params.id
-  });
+  const postedId = req.params.id;
+
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      if (wantedTodo === undefined) {
+        throw new Error(`There is No To-Do item with ID:${postedId}`);
+      }
+      wantedTodo.done = false;
+      write('./data/todolist.json', JSON.stringify(CurrentList));
+      res
+        .status(200)
+        .json({ Notification: `The To-Do item with ID: ${postedId} is modified as NOT done` });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos/:id'
+      })
+    );
+
+  // res.status(200).json({
+  //   testExpress: 'post method: mark a single TO-Do as NOT done.',
+  //   id: req.params.id
+  // });
 });
 
 // errors handling: JSON parse & stringify, and invalid endpoints
