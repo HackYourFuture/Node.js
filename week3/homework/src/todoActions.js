@@ -18,7 +18,6 @@ class TodoActions {
 
   async createToDo(req, res) {
     try {
-      console.log(req.body);
       if (req.body.description.trim()) {
         util.todos.push(new Todo(req.body.description));
         await util.saveTodos(util.todos);
