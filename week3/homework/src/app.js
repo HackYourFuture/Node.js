@@ -170,11 +170,6 @@ app.delete('/todos/:id/done', (req, res) => {
         catchLocation: 'app.post:/todos/:id'
       })
     );
-
-  // res.status(200).json({
-  //   testExpress: 'post method: mark a single TO-Do as NOT done.',
-  //   id: req.params.id
-  // });
 });
 
 // errors handling: JSON parse & stringify, and invalid endpoints
