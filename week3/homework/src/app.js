@@ -135,7 +135,7 @@ app.post('/todos/:id/done', (req, res) => {
       }
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList));
-      res.status(200).json({ Notification: 'The To-Do item is modified' });
+      res.status(200).json({ Notification: 'The To-Do item is modified as DONE' });
     })
     .catch(err =>
       res.status(404).json({
