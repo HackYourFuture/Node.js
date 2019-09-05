@@ -17,14 +17,24 @@ app.all('/', (req, res) => {
 });
 
 // ( 1 )
+
 app.post('/todos', (req, res) => {
-  const postedTodo = req.body.todo.description;
-  const todoObject = new TodoItem(shortid.generate(), postedTodo, false);
+  const postedToDo = req.body.todo || {};
+  const toDoDescription = postedToDo.description.trim() || {};
+  const postedObjLength = Object.keys(req.body).length;
+
+  if (toDoDescription === {} || typeof toDoDescription !== 'string' || postedObjLength !== 1) {
+    console.log(postedObjLength);
+    res.status(200).json({ Notification: 'Wrong Wrong' });
+    return;
+  }
+
+  const todoObject = new TodoItem(shortid.generate(), toDoDescription, false);
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
       CurrentList.push(todoObject);
-      const updatedList = JSON.stringify(CurrentList);
+      const updatedList = JSON.stringify(CurrentList, null, 2);
       write('./data/todolist.json', updatedList);
       res.status(200).json({ Notification: 'new To-DO is added' });
     })
@@ -46,7 +56,7 @@ app.get('/todos', (req, res) => {
 // ( 3 )
 app.put('/todos/:id', (req, res) => {
   const postedId = req.params.id;
-  const postedTodo = req.body.todo.description;
+  const toDoDescription = req.body.todo.description;
 
   read('./data/todolist.json', 'utf8')
     .then(result => {
@@ -55,14 +65,14 @@ app.put('/todos/:id', (req, res) => {
       if (wantedTodo === undefined) {
         throw new Error(`There is No To-Do item with ID:${postedId}`);
       }
-      wantedTodo.description = postedTodo;
-      write('./data/todolist.json', JSON.stringify(CurrentList));
+      wantedTodo.description = toDoDescription;
+      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res.status(200).json({ Notification: 'The To-Do item is modified' });
     })
     .catch(err =>
       res.status(404).json({
         Error: err.message,
-        catchLocation: 'app.post:/todos/:id'
+        catchLocation: 'app.put:/todos/:id'
       })
     );
 });
@@ -78,7 +88,7 @@ app.delete('/todos/:id', (req, res) => {
         throw new Error(`The To-Do item with ID:${postedId} is already not existed`);
       }
       const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
-      write('./data/todolist.json', JSON.stringify(updatedList));
+      write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
       res.status(200).json({ Notification: `The To-Do item with ID: ${postedId} is deleted` });
     })
     .catch(err =>
@@ -117,7 +127,7 @@ app.delete('/todos', (req, res) => {
       console.log('errrrr');
       res.status(404).json({
         Error: err.message,
-        catchLocation: 'app.get: /todos/:id'
+        catchLocation: 'app.delete: /todos'
       });
     });
 });
@@ -134,7 +144,7 @@ app.post('/todos/:id/done', (req, res) => {
         throw new Error(`There is No To-Do item with ID:${postedId}`);
       }
       wantedTodo.done = true;
-      write('./data/todolist.json', JSON.stringify(CurrentList));
+      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
         .status(200)
         .json({ Notification: `The To-Do item with ID: ${postedId} is modified as Done` });
@@ -142,7 +152,7 @@ app.post('/todos/:id/done', (req, res) => {
     .catch(err =>
       res.status(404).json({
         Error: err.message,
-        catchLocation: 'app.post:/todos/:id'
+        catchLocation: 'app.post:/todos/:id/done'
       })
     );
 });
@@ -159,7 +169,7 @@ app.delete('/todos/:id/done', (req, res) => {
         throw new Error(`There is No To-Do item with ID:${postedId}`);
       }
       wantedTodo.done = false;
-      write('./data/todolist.json', JSON.stringify(CurrentList));
+      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
         .status(200)
         .json({ Notification: `The To-Do item with ID: ${postedId} is modified as NOT done` });
@@ -167,7 +177,7 @@ app.delete('/todos/:id/done', (req, res) => {
     .catch(err =>
       res.status(404).json({
         Error: err.message,
-        catchLocation: 'app.post:/todos/:id'
+        catchLocation: 'app.delete:/todos/:id/done'
       })
     );
 });
