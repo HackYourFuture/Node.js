@@ -1,3 +1,4 @@
+'use strict';
 /* eslint-disable no-return-await */
 const path = require('path');
 const fs = require('fs').promises;

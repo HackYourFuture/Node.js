@@ -1,3 +1,5 @@
+'use strict';
+
 const todoActions = require('./todoActions');
 
 class Routes {

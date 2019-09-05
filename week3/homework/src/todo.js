@@ -1,3 +1,5 @@
+'use strict';
+
 const uuid = require('uuid/v4');
 class Todo {
   constructor(description) {
