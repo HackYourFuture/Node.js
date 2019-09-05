@@ -61,6 +61,7 @@ async function createTodo(req, res) {
   let todos = await readTodosFromFile();
   todo.id = uuidv4();
   todos.push(todo);
+  todo.done = false;
   await saveTodos(todos);
   res.status = 201;
   res.end();
