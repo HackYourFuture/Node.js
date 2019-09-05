@@ -133,7 +133,6 @@ app.post('/todos/:id/done', (req, res) => {
       if (wantedTodo === undefined) {
         throw new Error(`There is No To-Do item with ID:${postedId}`);
       }
-      console.log('test');
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList));
       res.status(200).json({ Notification: 'The To-Do item is modified' });
