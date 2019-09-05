@@ -3,8 +3,7 @@ const util = require('./util');
 
 class TodoActions {
   async readToDo(req, res) {
-    const todos = await util.loadToDos();
-    const todo = todos.find(todo => todo.id === req.params.id);
+    const todo = util.todos.find(todo => todo.id === req.params.id);
     if (todo)
       res.status(200).json({ message: 'Todo found', todos: todo });
     else
@@ -12,16 +11,14 @@ class TodoActions {
   }
 
   async readToDos(req, res) {
-    const todos = await util.loadToDos();
-    res.status(200).json({ message: 'TODO LIST', todos: todos });
+    res.status(200).json({ message: 'TODO LIST', todos: util.todos });
   }
 
   async createToDo(req, res) {
     try {
       if (req.body.description.trim()) {
-        const todos = await util.loadToDos();
-        todos.push(new Todo(req.body.description));
-        await util.saveTodos(todos);
+        util.todos.push(new Todo(req.body.description));
+        await util.saveTodos(util.todos);
         res.status(200).json({ message: 'Todo is created successfully' });
       }
       else {
@@ -34,14 +31,13 @@ class TodoActions {
   }
 
   async markToDo(req, res) {
-    const todos = await util.loadToDos();
-    const index = todos.findIndex(todo => todo.id === req.params.id);
+    const index = util.todos.findIndex(todo => todo.id === req.params.id);
     const markType = req.method === 'POST';
     const msg = req.method === 'POST' ? 'completed' : 'uncompleted';
     if (index > -1) {
-      todos[index].isCompleted = markType;
+      util.todos[index].isCompleted = markType;
       res.status(200).json({ message: `Todo is signed as ${msg}` });
-      await util.saveTodos(todos);
+      await util.saveTodos(util.todos);
     }
     else {
       res.status(404).json({ message: 'Todo is not found' });
@@ -49,12 +45,11 @@ class TodoActions {
   }
 
   async updateTodo(req, res) {
-    const todos = await util.loadToDos();
-    const index = todos.findIndex(todo => todo.id === req.params.id);
+    const index = util.todos.findIndex(todo => todo.id === req.params.id);
     if (index > -1) {
-      todos[index].description = req.body.description;
+      util.todos[index].description = req.body.description;
       res.status(200).json({ message: 'Todo is updated successfully' });
-      await util.saveTodos(todos);
+      await util.saveTodos(util.todos);
     }
     else {
       res.status(404).json({ message: 'Todo is not found' });
@@ -62,11 +57,10 @@ class TodoActions {
   }
 
   async deleteTodo(req, res) {
-    const todos = await util.loadToDos();
-    const index = todos.findIndex(todo => todo.id === req.params.id);
+    const index = util.todos.findIndex(todo => todo.id === req.params.id);
     if (index > -1) {
-      todos.splice(index, 1);
-      await util.saveTodos(todos);
+      util.todos.splice(index, 1);
+      await util.saveTodos(util.todos);
       res.status(200).json({ message: 'Todo is deleted successfully' });
     }
     else {

@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 const path = require('path');
 const fs = require('fs').promises;
 const FILE = path.join(__dirname, process.env.FILE || 'todos.json');
@@ -5,11 +6,15 @@ const FILE = path.join(__dirname, process.env.FILE || 'todos.json');
 class Util {
   constructor(file) {
     this.file = file;
+    this.init();
+  }
+  async init() {
+    return await this.loadToDos();
   }
   async loadToDos() {
     try {
       const todos = await fs.readFile(this.file, 'utf8');
-      return JSON.parse(todos);
+      this.todos = JSON.parse(todos);
     }
     catch (e) {
       return [];
