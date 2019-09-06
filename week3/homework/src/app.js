@@ -53,7 +53,7 @@ app.get('/todos', (req, res) => {
 // ( 3 )
 
 app.put('/todos/:id', (req, res) => {
-  const postedId = req.params.id;
+  const reqId = req.params.id;
   const toDoDescription = validation(req);
 
   if (toDoDescription === '') {
@@ -64,9 +64,9 @@ app.put('/todos/:id', (req, res) => {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
       if (wantedTodo === undefined) {
-        throw new Error(`There is No To-Do item with ID:${postedId}`);
+        throw new Error(`There is No To-Do item with ID:${reqId}`);
       }
       wantedTodo.description = toDoDescription;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
@@ -82,17 +82,17 @@ app.put('/todos/:id', (req, res) => {
 
 // ( 4 )
 app.delete('/todos/:id', (req, res) => {
-  const postedId = req.params.id;
+  const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
       if (wantedTodo === undefined) {
-        throw new Error(`The To-Do item with ID:${postedId} is already not existed`);
+        throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
       }
       const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
       write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
-      res.status(200).json({ Notification: `The To-Do item with ID: ${postedId} is deleted` });
+      res.status(200).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
     })
     .catch(err =>
       res.status(404).json({
@@ -104,13 +104,13 @@ app.delete('/todos/:id', (req, res) => {
 
 // ( 5 )
 app.get('/todos/:id', (req, res) => {
-  const postedId = req.params.id;
+  const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
       if (wantedTodo === undefined) {
-        throw new Error(`There is NO To-Do item with ID:${postedId}`);
+        throw new Error(`There is NO To-Do item with ID:${reqId}`);
       }
       res.status(200).json(wantedTodo);
     })
@@ -137,20 +137,20 @@ app.delete('/todos', (req, res) => {
 
 // ( 7 )
 app.post('/todos/:id/done', (req, res) => {
-  const postedId = req.params.id;
+  const reqId = req.params.id;
 
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
       if (wantedTodo === undefined) {
-        throw new Error(`There is No To-Do item with ID:${postedId}`);
+        throw new Error(`There is No To-Do item with ID:${reqId}`);
       }
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
         .status(200)
-        .json({ Notification: `The To-Do item with ID: ${postedId} is modified as Done` });
+        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as Done` });
     })
     .catch(err =>
       res.status(404).json({
@@ -162,20 +162,20 @@ app.post('/todos/:id/done', (req, res) => {
 
 // ( 8 )
 app.delete('/todos/:id/done', (req, res) => {
-  const postedId = req.params.id;
+  const reqId = req.params.id;
 
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === postedId);
+      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
       if (wantedTodo === undefined) {
-        throw new Error(`There is No To-Do item with ID:${postedId}`);
+        throw new Error(`There is No To-Do item with ID:${reqId}`);
       }
       wantedTodo.done = false;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
         .status(200)
-        .json({ Notification: `The To-Do item with ID: ${postedId} is modified as NOT done` });
+        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as NOT done` });
     })
     .catch(err =>
       res.status(404).json({
