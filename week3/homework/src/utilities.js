@@ -59,7 +59,13 @@ const createToDo = function(req, res) {
 
 const getToDos = function(req, res) {
   read('./data/todolist.json', 'utf8')
-    .then(result => res.status(200).send(result))
+    .then(result => {
+      if (result === '[]') {
+        res.status(200).json({ Notification: 'The ToDo list is already empty!' });
+        return;
+      }
+      res.status(200).send(result);
+    })
     .catch(err => res.status(404).json({ Error: err.message, catchLocation: 'app.get: /todos' }));
 };
 
