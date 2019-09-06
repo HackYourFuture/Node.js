@@ -35,17 +35,7 @@ app.delete('/todos/:id', (req, res) => utilities.deleteToDo(req, res));
 app.get('/todos/:id', (req, res) => utilities.readToDo(req, res));
 
 // ( 6 )
-app.delete('/todos', (req, res) => {
-  write('./data/todolist.json', JSON.stringify([]))
-    .then(res.status(200).json({ Notification: 'All the To-Do items are deleted.' }))
-    .catch(err => {
-      console.log('errrrr');
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.delete: /todos'
-      });
-    });
-});
+app.delete('/todos', (req, res) => utilities.deleteToDos(req, res));
 
 // ( 7 )
 app.post('/todos/:id/done', (req, res) => {

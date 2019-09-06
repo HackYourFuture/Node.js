@@ -121,6 +121,17 @@ const readToDo = function(req, res) {
       })
     );
 };
+const deleteToDos = function(req, res) {
+  write('./data/todolist.json', JSON.stringify([]))
+    .then(res.status(200).json({ Notification: 'All the To-Do items are deleted.' }))
+    .catch(err => {
+      console.log('errrrr');
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.delete: /todos'
+      });
+    });
+};
 module.exports = {
   validation,
   findToDo,
@@ -128,5 +139,6 @@ module.exports = {
   getToDos,
   updateToDo,
   deleteToDo,
-  readToDo
+  readToDo,
+  deleteToDos
 };
