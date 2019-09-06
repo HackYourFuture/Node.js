@@ -105,11 +105,28 @@ const deleteToDo = function(req, res) {
       );
   }
 };
+
+const readToDo = function(req, res) {
+  const reqId = req.params.id;
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = findToDo(CurrentList, reqId);
+      res.status(200).json(wantedTodo);
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.get: /todos/:id'
+      })
+    );
+};
 module.exports = {
   validation,
   findToDo,
   createToDo,
   getToDos,
   updateToDo,
-  deleteToDo
+  deleteToDo,
+  readToDo
 };

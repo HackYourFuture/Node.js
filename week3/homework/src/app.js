@@ -32,21 +32,7 @@ app.put('/todos/:id', (req, res) => utilities.updateToDo(req, res));
 app.delete('/todos/:id', (req, res) => utilities.deleteToDo(req, res));
 
 // ( 5 )
-app.get('/todos/:id', (req, res) => {
-  const reqId = req.params.id;
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      const wantedTodo = findToDo(CurrentList, reqId);
-      res.status(200).json(wantedTodo);
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.get: /todos/:id'
-      })
-    );
-});
+app.get('/todos/:id', (req, res) => utilities.readToDo(req, res));
 
 // ( 6 )
 app.delete('/todos', (req, res) => {
