@@ -14,7 +14,38 @@ By doing this homework you will learn:
 
 Create an HTTP web server using the native Node.js `http` module.
 
-TO BE CONTINUED
+1. The server will be a functioning web server that can serve a very simple web site. When opening the server url in the browser e.g. `http:\\localhost:3000` the server needs to serve the following html:
+
+```html
+<html>
+  <head>
+    <title>My First Web Server</title>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response.
+
+2. Once the browser receives the html it will process it and detect the `script` tag. The browser will then try to load this script from the server at the endpoint `http:\\localhost:3000\script.js`. Your server needs to return a javascript that inserts some text under `content`.
+
+```javascript
+document.getElementById("content").appendChild(document.createTextNode("Hello and Welcome to Server-land!"));
+```
+Do not forget to set the correct content-type.
+
+Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, then processes them based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
+
+3. *BONUS*: Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html (from step 1)
+
+```html
+<link rel="stylesheet" type="text/css" href="style.css"/>
+```
+
+When the server gets a request at `http:\\localhost:3000\style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type and be creative.
 
 ## 2. [PROJECT] Setting up HackYourTemperature
 
