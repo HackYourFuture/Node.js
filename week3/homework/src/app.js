@@ -144,10 +144,8 @@ app.post('/todos/:id/done', (req, res) => {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
-      if (wantedTodo === undefined) {
-        throw new Error(`There is No To-Do item with ID:${reqId}`);
-      }
+      const wantedTodo = findToDo(CurrentList, reqId);
+
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
