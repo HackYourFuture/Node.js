@@ -9,6 +9,7 @@ const express = require('express');
 const app = express();
 const utilities = require('./utilities');
 const validation = utilities.validation;
+const findToDo = utilities.findToDo;
 
 /* before dealing with the endpoints:  parse the request body */
 app.use(express.json());
@@ -18,13 +19,13 @@ app.all('/', (req, res) => {
   res.status(200).json({ testExpress: 'Express is working!' });
 });
 // -------
-const findToDo = function(CurrentList, reqId) {
-  let toDo = CurrentList.find(todo => todo.id === reqId);
-  if (toDo === undefined) {
-    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
-  }
-  return toDo;
-};
+// const findToDo = function(CurrentList, reqId) {
+//     let toDo = CurrentList.find(todo => todo.id === reqId);
+//     if (toDo === undefined) {
+//         throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
+//     }
+//     return toDo;
+// };
 // ( 1 )
 
 app.post('/todos', (req, res) => {

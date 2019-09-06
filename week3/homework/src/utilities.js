@@ -20,4 +20,12 @@ const validation = function(req) {
   return reqDescription;
 };
 
-module.exports = { validation };
+const findToDo = function(CurrentList, reqId) {
+  let toDo = CurrentList.find(todo => todo.id === reqId);
+  if (toDo === undefined) {
+    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
+  }
+  return toDo;
+};
+
+module.exports = { validation, findToDo };
