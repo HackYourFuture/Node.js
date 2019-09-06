@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 'use strict';
 
 const Todo = require('./todo');
@@ -34,7 +35,7 @@ class TodoActions {
 
   async markToDo(req, res) {
     const index = util.todos.findIndex(todo => todo.id === req.params.id);
-    const markType = req.method === 'POST';
+    const markType = req.method === 'POST' ? true : false;
     const msg = req.method === 'POST' ? 'completed' : 'uncompleted';
     if (index > -1) {
       util.todos[index].isCompleted = markType;

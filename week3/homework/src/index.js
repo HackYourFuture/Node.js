@@ -1,5 +1,4 @@
 /* eslint-disable block-spacing */
-/* eslint-disable no-unneeded-ternary */
 'use strict';
 const express = require('express');
 const routes = require('./routes');
