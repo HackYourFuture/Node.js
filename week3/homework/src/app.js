@@ -81,15 +81,20 @@ app.put('/todos/:id', (req, res) => {
 });
 
 // ( 4 )
+const findToDo = function(CurrentList, reqId) {
+  let toDo = CurrentList.find(todo => todo.id === reqId);
+  if (toDo === undefined) {
+    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
+  }
+  return toDo;
+};
 app.delete('/todos/:id', (req, res) => {
   const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
-      if (wantedTodo === undefined) {
-        throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
-      }
+      const wantedTodo = findToDo(CurrentList, reqId);
+
       const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
       write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
       res.status(200).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
