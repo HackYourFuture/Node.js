@@ -86,4 +86,30 @@ const updateToDo = function(req, res) {
     );
 };
 
-module.exports = { validation, findToDo, createToDo, getToDos, updateToDo };
+const deleteToDo = function(req, res) {
+  {
+    const reqId = req.params.id;
+    read('./data/todolist.json', 'utf8')
+      .then(result => {
+        const CurrentList = JSON.parse(result);
+        const wantedTodo = findToDo(CurrentList, reqId);
+        const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
+        write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
+        res.status(200).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
+      })
+      .catch(err =>
+        res.status(404).json({
+          Error: err.message,
+          catchLocation: 'app.delete:/todos/:id'
+        })
+      );
+  }
+};
+module.exports = {
+  validation,
+  findToDo,
+  createToDo,
+  getToDos,
+  updateToDo,
+  deleteToDo
+};

@@ -8,7 +8,7 @@ const write = dataDealer.write;
 const express = require('express');
 const app = express();
 const utilities = require('./utilities');
-const validation = utilities.validation;
+// const validation = utilities.validation;
 const findToDo = utilities.findToDo;
 
 /* before dealing with the endpoints:  parse the request body */
@@ -29,23 +29,7 @@ app.get('/todos', (req, res) => utilities.getToDos(req, res));
 app.put('/todos/:id', (req, res) => utilities.updateToDo(req, res));
 
 // ( 4 )
-app.delete('/todos/:id', (req, res) => {
-  const reqId = req.params.id;
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      const wantedTodo = findToDo(CurrentList, reqId);
-      const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
-      write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
-      res.status(200).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.delete:/todos/:id'
-      })
-    );
-});
+app.delete('/todos/:id', (req, res) => utilities.deleteToDo(req, res));
 
 // ( 5 )
 app.get('/todos/:id', (req, res) => {
