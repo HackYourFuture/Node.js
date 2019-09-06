@@ -112,10 +112,8 @@ app.get('/todos/:id', (req, res) => {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
-      if (wantedTodo === undefined) {
-        throw new Error(`There is NO To-Do item with ID:${reqId}`);
-      }
+      const wantedTodo = findToDo(CurrentList, reqId);
+
       res.status(200).json(wantedTodo);
     })
     .catch(err =>
