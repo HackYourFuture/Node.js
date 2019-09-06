@@ -61,7 +61,7 @@ const showToDos = function(req, res) {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       if (result === '[]') {
-        res.status(202).json({ Notification: 'The ToDo list is already empty!' });
+        res.status(202).json({ Notification: 'The ToDo list is empty!' });
         return;
       }
       res.status(200).send(result);
