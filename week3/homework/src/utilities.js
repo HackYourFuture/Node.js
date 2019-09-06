@@ -160,8 +160,6 @@ const modifyToDoStatus = function(req, res, boolean) {
     );
 };
 module.exports = {
-  validation,
-  findToDo,
   createToDo,
   showToDos,
   updateToDo,
