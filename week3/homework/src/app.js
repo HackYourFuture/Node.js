@@ -7,6 +7,8 @@ const shortid = require('shortid');
 const TodoItem = require('./todo_obj_constructor');
 const express = require('express');
 const app = express();
+const utilities = require('./utilities');
+const validation = utilities.validation;
 
 /* before dealing with the endpoints:  parse the request body */
 app.use(express.json());
@@ -19,23 +21,11 @@ app.all('/', (req, res) => {
 // ( 1 )
 
 app.post('/todos', (req, res) => {
-  const reqBodyLength = Object.keys(req.body).length;
-  const reqToDo = req.body.todo || {};
-  let toDoDescription = reqToDo.description || {};
-  if (typeof toDoDescription === 'string') {
-    toDoDescription = toDoDescription.trim();
-  }
-
-  if (
-    reqBodyLength !== 1 ||
-        toDoDescription === {} ||
-        typeof toDoDescription !== 'string' ||
-        toDoDescription.length === 0
-  ) {
+  const toDoDescription = validation(req);
+  if (toDoDescription === '') {
     res.status(200).json({ Notification: 'The posted To-Do is not valid' });
     return;
   }
-
   const todoObject = new TodoItem(shortid.generate(), toDoDescription, false);
   read('./data/todolist.json', 'utf8')
     .then(result => {
@@ -62,25 +52,6 @@ app.get('/todos', (req, res) => {
 
 // ( 3 )
 
-const validation = function(req) {
-  const reqBodyLength = Object.keys(req.body).length;
-  const reqToDo = req.body.todo || {};
-  let reqDescription = reqToDo.description || {};
-  console.log(reqDescription);
-  if (typeof reqDescription === 'string') {
-    reqDescription = reqDescription.trim();
-  }
-
-  if (
-    reqBodyLength !== 1 ||
-        reqDescription === {} ||
-        typeof reqDescription !== 'string' ||
-        reqDescription.length === 0
-  ) {
-    return (reqDescription = '');
-  }
-  return reqDescription;
-};
 app.put('/todos/:id', (req, res) => {
   const postedId = req.params.id;
   const toDoDescription = validation(req);
