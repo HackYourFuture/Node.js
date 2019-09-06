@@ -132,6 +132,25 @@ const deleteToDos = function(req, res) {
       });
     });
 };
+const markAsDone = function(req, res) {
+  const reqId = req.params.id;
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = findToDo(CurrentList, reqId);
+      wantedTodo.done = true;
+      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
+      res
+        .status(200)
+        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as Done` });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.post:/todos/:id/done'
+      })
+    );
+};
 module.exports = {
   validation,
   findToDo,
@@ -140,5 +159,6 @@ module.exports = {
   updateToDo,
   deleteToDo,
   readToDo,
-  deleteToDos
+  deleteToDos,
+  markAsDone
 };
