@@ -26,29 +26,7 @@ app.post('/todos', (req, res) => utilities.createToDo(req, res));
 app.get('/todos', (req, res) => utilities.getToDos(req, res));
 
 // ( 3 )
-app.put('/todos/:id', (req, res) => {
-  const reqId = req.params.id;
-  const toDoDescription = validation(req);
-  if (toDoDescription === '') {
-    res.status(200).json({ Notification: 'The posted To-Do is not valid' });
-    return;
-  }
-
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      const wantedTodo = findToDo(CurrentList, reqId);
-      wantedTodo.description = toDoDescription;
-      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
-      res.status(200).json({ Notification: 'The To-Do item is modified' });
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.put:/todos/:id'
-      })
-    );
-});
+app.put('/todos/:id', (req, res) => utilities.updateToDo(req, res));
 
 // ( 4 )
 app.delete('/todos/:id', (req, res) => {

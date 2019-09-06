@@ -63,4 +63,27 @@ const getToDos = function(req, res) {
     .catch(err => res.status(404).json({ Error: err.message, catchLocation: 'app.get: /todos' }));
 };
 
-module.exports = { validation, findToDo, createToDo, getToDos };
+const updateToDo = function(req, res) {
+  const reqId = req.params.id;
+  const toDoDescription = validation(req);
+  if (toDoDescription === '') {
+    res.status(200).json({ Notification: 'The posted To-Do is not valid' });
+    return;
+  }
+  read('./data/todolist.json', 'utf8')
+    .then(result => {
+      const CurrentList = JSON.parse(result);
+      const wantedTodo = findToDo(CurrentList, reqId);
+      wantedTodo.description = toDoDescription;
+      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
+      res.status(200).json({ Notification: 'The To-Do item is modified' });
+    })
+    .catch(err =>
+      res.status(404).json({
+        Error: err.message,
+        catchLocation: 'app.put:/todos/:id'
+      })
+    );
+};
+
+module.exports = { validation, findToDo, createToDo, getToDos, updateToDo };
