@@ -49,12 +49,7 @@ const createToDo = function(req, res) {
       write('./data/todolist.json', updatedList);
       res.status(201).json({ Notification: 'new To-DO is added' });
     })
-    .catch(err =>
-      res.status(500).json({
-        Error: err.message,
-        catchLocation: 'app.post:/todos'
-      })
-    );
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 const showToDos = function(req, res) {
@@ -66,7 +61,7 @@ const showToDos = function(req, res) {
       }
       res.status(200).send(result);
     })
-    .catch(err => res.status(500).json({ Error: err.message, catchLocation: 'app.get: /todos' }));
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 const updateToDo = function(req, res) {
@@ -84,12 +79,7 @@ const updateToDo = function(req, res) {
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res.status(201).json({ Notification: 'The To-Do item is modified' });
     })
-    .catch(err =>
-      res.status(500).json({
-        Error: err.message,
-        catchLocation: 'app.put:/todos/:id'
-      })
-    );
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 const deleteToDo = function(req, res) {
@@ -103,12 +93,7 @@ const deleteToDo = function(req, res) {
         write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
         res.status(201).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
       })
-      .catch(err =>
-        res.status(500).json({
-          Error: err.message,
-          catchLocation: 'app.delete:/todos/:id'
-        })
-      );
+      .catch(err => res.status(500).json({ Error: err.message }));
   }
 };
 
@@ -120,23 +105,13 @@ const readToDo = function(req, res) {
       const wantedTodo = findToDo(CurrentList, reqId);
       res.status(200).json(wantedTodo);
     })
-    .catch(err =>
-      res.status(500).json({
-        Error: err.message,
-        catchLocation: 'app.get: /todos/:id'
-      })
-    );
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 const deleteToDos = function(req, res) {
   write('./data/todolist.json', JSON.stringify([]))
     .then(res.status(201).json({ Notification: 'All the To-Do items are deleted.' }))
-    .catch(err => {
-      res.status(500).json({
-        Error: err.message,
-        catchLocation: 'app.delete: /todos'
-      });
-    });
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 const modifyToDoStatus = function(req, res, boolean) {
@@ -152,12 +127,7 @@ const modifyToDoStatus = function(req, res, boolean) {
         .status(201)
         .json({ Notification: `The To-Do item with ID: ${reqId} is modified as ${todoStatus}.` });
     })
-    .catch(err =>
-      res.status(500).json({
-        Error: err.message,
-        catchLocation: 'app.delete:/todos/:id/done'
-      })
-    );
+    .catch(err => res.status(500).json({ Error: err.message }));
 };
 
 module.exports = {
