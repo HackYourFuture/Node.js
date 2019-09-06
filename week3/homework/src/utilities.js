@@ -37,7 +37,7 @@ const findToDo = function(CurrentList, reqId) {
 const createToDo = function(req, res) {
   const toDoDescription = validation(req);
   if (toDoDescription === '') {
-    res.status(500).json({ Notification: 'The posted To-Do is not valid' });
+    res.status(202).json({ Notification: 'The posted To-Do is not valid' });
     return;
   }
   const todoObject = new TodoItem(shortid.generate(), toDoDescription, false);
@@ -61,7 +61,7 @@ const showToDos = function(req, res) {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       if (result === '[]') {
-        res.status(500).json({ Notification: 'The ToDo list is already empty!' });
+        res.status(202).json({ Notification: 'The ToDo list is already empty!' });
         return;
       }
       res.status(200).send(result);
@@ -73,7 +73,7 @@ const updateToDo = function(req, res) {
   const reqId = req.params.id;
   const toDoDescription = validation(req);
   if (toDoDescription === '') {
-    res.status(500).json({ Notification: 'The posted To-Do is not valid' });
+    res.status(202).json({ Notification: 'The posted To-Do is not valid' });
     return;
   }
   read('./data/todolist.json', 'utf8')
@@ -101,7 +101,7 @@ const deleteToDo = function(req, res) {
         const wantedTodo = findToDo(CurrentList, reqId);
         const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
         write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
-        res.status(204).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
+        res.status(201).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
       })
       .catch(err =>
         res.status(500).json({
@@ -130,7 +130,7 @@ const readToDo = function(req, res) {
 
 const deleteToDos = function(req, res) {
   write('./data/todolist.json', JSON.stringify([]))
-    .then(res.status(204).json({ Notification: 'All the To-Do items are deleted.' }))
+    .then(res.status(201).json({ Notification: 'All the To-Do items are deleted.' }))
     .catch(err => {
       res.status(500).json({
         Error: err.message,
@@ -159,6 +159,7 @@ const modifyToDoStatus = function(req, res, boolean) {
       })
     );
 };
+
 module.exports = {
   createToDo,
   showToDos,
