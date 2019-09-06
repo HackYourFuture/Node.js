@@ -19,13 +19,20 @@ app.all('/', (req, res) => {
 // ( 1 )
 
 app.post('/todos', (req, res) => {
-  const postedToDo = req.body.todo || {};
-  const toDoDescription = postedToDo.description.trim() || {};
-  const postedObjLength = Object.keys(req.body).length;
+  const reqBodyLength = Object.keys(req.body).length;
+  const reqToDo = req.body.todo || {};
+  let toDoDescription = reqToDo.description || {};
+  if (typeof toDoDescription === 'string') {
+    toDoDescription = toDoDescription.trim();
+  }
 
-  if (toDoDescription === {} || typeof toDoDescription !== 'string' || postedObjLength !== 1) {
-    console.log(postedObjLength);
-    res.status(200).json({ Notification: 'Wrong Wrong' });
+  if (
+    reqBodyLength !== 1 ||
+        toDoDescription === {} ||
+        typeof toDoDescription !== 'string' ||
+        toDoDescription.length === 0
+  ) {
+    res.status(200).json({ Notification: 'The posted To-Do is not valid' });
     return;
   }
 
@@ -54,9 +61,34 @@ app.get('/todos', (req, res) => {
 });
 
 // ( 3 )
+
+const validation = function(req) {
+  const reqBodyLength = Object.keys(req.body).length;
+  const reqToDo = req.body.todo || {};
+  let reqDescription = reqToDo.description || {};
+  console.log(reqDescription);
+  if (typeof reqDescription === 'string') {
+    reqDescription = reqDescription.trim();
+  }
+
+  if (
+    reqBodyLength !== 1 ||
+        reqDescription === {} ||
+        typeof reqDescription !== 'string' ||
+        reqDescription.length === 0
+  ) {
+    return (reqDescription = '');
+  }
+  return reqDescription;
+};
 app.put('/todos/:id', (req, res) => {
   const postedId = req.params.id;
-  const toDoDescription = req.body.todo.description;
+  const toDoDescription = validation(req);
+
+  if (toDoDescription === '') {
+    res.status(200).json({ Notification: 'The posted To-Do is not valid' });
+    return;
+  }
 
   read('./data/todolist.json', 'utf8')
     .then(result => {
