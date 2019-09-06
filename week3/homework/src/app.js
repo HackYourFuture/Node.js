@@ -17,7 +17,14 @@ app.use(express.json());
 app.all('/', (req, res) => {
   res.status(200).json({ testExpress: 'Express is working!' });
 });
-
+// -------
+const findToDo = function(CurrentList, reqId) {
+  let toDo = CurrentList.find(todo => todo.id === reqId);
+  if (toDo === undefined) {
+    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
+  }
+  return toDo;
+};
 // ( 1 )
 
 app.post('/todos', (req, res) => {
@@ -64,10 +71,8 @@ app.put('/todos/:id', (req, res) => {
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
-      const wantedTodo = CurrentList.find(todo => todo.id === reqId);
-      if (wantedTodo === undefined) {
-        throw new Error(`There is No To-Do item with ID:${reqId}`);
-      }
+      const wantedTodo = findToDo(CurrentList, reqId);
+
       wantedTodo.description = toDoDescription;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res.status(200).json({ Notification: 'The To-Do item is modified' });
@@ -81,13 +86,7 @@ app.put('/todos/:id', (req, res) => {
 });
 
 // ( 4 )
-const findToDo = function(CurrentList, reqId) {
-  let toDo = CurrentList.find(todo => todo.id === reqId);
-  if (toDo === undefined) {
-    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
-  }
-  return toDo;
-};
+
 app.delete('/todos/:id', (req, res) => {
   const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
