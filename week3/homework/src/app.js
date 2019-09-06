@@ -16,7 +16,7 @@ app.all('/', (req, res) => {
 app.post('/todos', (req, res) => utilities.createToDo(req, res));
 
 // ( 2 )
-app.get('/todos', (req, res) => utilities.getToDos(req, res));
+app.get('/todos', (req, res) => utilities.showToDos(req, res));
 
 // ( 3 )
 app.put('/todos/:id', (req, res) => utilities.updateToDo(req, res));
