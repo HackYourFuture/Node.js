@@ -3,8 +3,8 @@
 const dataDealer = require('./data/data_dealer');
 const read = dataDealer.read;
 const write = dataDealer.write;
-const shortid = require('shortid');
-const TodoItem = require('./todo_obj_constructor');
+// const shortid = require('shortid');
+// const TodoItem = require('./todo_obj_constructor');
 const express = require('express');
 const app = express();
 const utilities = require('./utilities');
@@ -20,35 +20,10 @@ app.all('/', (req, res) => {
 });
 
 // ( 1 )
-app.post('/todos', (req, res) => {
-  const toDoDescription = validation(req);
-  if (toDoDescription === '') {
-    res.status(200).json({ Notification: 'The posted To-Do is not valid' });
-    return;
-  }
-  const todoObject = new TodoItem(shortid.generate(), toDoDescription, false);
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      CurrentList.push(todoObject);
-      const updatedList = JSON.stringify(CurrentList, null, 2);
-      write('./data/todolist.json', updatedList);
-      res.status(200).json({ Notification: 'new To-DO is added' });
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.post:/todos'
-      })
-    );
-});
+app.post('/todos', (req, res) => utilities.createToDo(req, res));
 
 // ( 2 )
-app.get('/todos', (req, res) => {
-  read('./data/todolist.json', 'utf8')
-    .then(result => res.status(200).send(result))
-    .catch(err => res.status(404).json({ Error: err.message, catchLocation: 'app.get: /todos' }));
-});
+app.get('/todos', (req, res) => utilities.getToDos(req, res));
 
 // ( 3 )
 app.put('/todos/:id', (req, res) => {
