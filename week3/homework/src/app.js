@@ -18,16 +18,8 @@ app.use(express.json());
 app.all('/', (req, res) => {
   res.status(200).json({ testExpress: 'Express is working!' });
 });
-// -------
-// const findToDo = function(CurrentList, reqId) {
-//     let toDo = CurrentList.find(todo => todo.id === reqId);
-//     if (toDo === undefined) {
-//         throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
-//     }
-//     return toDo;
-// };
-// ( 1 )
 
+// ( 1 )
 app.post('/todos', (req, res) => {
   const toDoDescription = validation(req);
   if (toDoDescription === '') {
@@ -59,11 +51,9 @@ app.get('/todos', (req, res) => {
 });
 
 // ( 3 )
-
 app.put('/todos/:id', (req, res) => {
   const reqId = req.params.id;
   const toDoDescription = validation(req);
-
   if (toDoDescription === '') {
     res.status(200).json({ Notification: 'The posted To-Do is not valid' });
     return;
@@ -73,7 +63,6 @@ app.put('/todos/:id', (req, res) => {
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-
       wantedTodo.description = toDoDescription;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res.status(200).json({ Notification: 'The To-Do item is modified' });
@@ -87,14 +76,12 @@ app.put('/todos/:id', (req, res) => {
 });
 
 // ( 4 )
-
 app.delete('/todos/:id', (req, res) => {
   const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-
       const updatedList = CurrentList.filter(todo => todo !== wantedTodo);
       write('./data/todolist.json', JSON.stringify(updatedList, null, 2));
       res.status(200).json({ Notification: `The To-Do item with ID: ${reqId} is deleted` });
@@ -114,7 +101,6 @@ app.get('/todos/:id', (req, res) => {
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-
       res.status(200).json(wantedTodo);
     })
     .catch(err =>
@@ -141,12 +127,10 @@ app.delete('/todos', (req, res) => {
 // ( 7 )
 app.post('/todos/:id/done', (req, res) => {
   const reqId = req.params.id;
-
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-
       wantedTodo.done = true;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
@@ -164,12 +148,10 @@ app.post('/todos/:id/done', (req, res) => {
 // ( 8 )
 app.delete('/todos/:id/done', (req, res) => {
   const reqId = req.params.id;
-
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-
       wantedTodo.done = false;
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
