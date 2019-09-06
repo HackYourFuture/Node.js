@@ -1,15 +1,8 @@
 'use strict';
 
-const dataDealer = require('./data/data_dealer');
-const read = dataDealer.read;
-const write = dataDealer.write;
-// const shortid = require('shortid');
-// const TodoItem = require('./todo_obj_constructor');
 const express = require('express');
 const app = express();
 const utilities = require('./utilities');
-// const validation = utilities.validation;
-const findToDo = utilities.findToDo;
 
 /* before dealing with the endpoints:  parse the request body */
 app.use(express.json());
@@ -38,10 +31,10 @@ app.get('/todos/:id', (req, res) => utilities.readToDo(req, res));
 app.delete('/todos', (req, res) => utilities.deleteToDos(req, res));
 
 // ( 7 )
-app.post('/todos/:id/done', (req, res) => utilities.markAsDone(req, res));
+app.post('/todos/:id/done', (req, res) => utilities.modifyToDoStatus(req, res, true));
 
 // ( 8 )
-app.delete('/todos/:id/done', (req, res) => utilities.markAsNotDone(req, res));
+app.delete('/todos/:id/done', (req, res) => utilities.modifyToDoStatus(req, res, false));
 
 // errors handling: JSON parse & stringify, and invalid endpoints
 app.use((req, res, next) => {

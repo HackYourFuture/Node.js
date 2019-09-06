@@ -132,36 +132,19 @@ const deleteToDos = function(req, res) {
       });
     });
 };
-const markAsDone = function(req, res) {
+
+const modifyToDoStatus = function(req, res, boolean) {
   const reqId = req.params.id;
   read('./data/todolist.json', 'utf8')
     .then(result => {
       const CurrentList = JSON.parse(result);
       const wantedTodo = findToDo(CurrentList, reqId);
-      wantedTodo.done = true;
+      wantedTodo.done = boolean;
+      const todoStatus = wantedTodo.done === true ? 'Done' : 'Not Done';
       write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
       res
         .status(200)
-        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as Done` });
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.post:/todos/:id/done'
-      })
-    );
-};
-const markAsNotDone = function(req, res) {
-  const reqId = req.params.id;
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      const wantedTodo = findToDo(CurrentList, reqId);
-      wantedTodo.done = false;
-      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
-      res
-        .status(200)
-        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as NOT done` });
+        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as ${todoStatus}.` });
     })
     .catch(err =>
       res.status(404).json({
@@ -179,6 +162,5 @@ module.exports = {
   deleteToDo,
   readToDo,
   deleteToDos,
-  markAsDone,
-  markAsNotDone
+  modifyToDoStatus
 };
