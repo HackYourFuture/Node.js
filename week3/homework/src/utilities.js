@@ -29,7 +29,7 @@ const validation = function(req) {
 const findToDo = function(CurrentList, reqId) {
   let toDo = CurrentList.find(todo => todo.id === reqId);
   if (toDo === undefined) {
-    throw new Error(`The To-Do item with ID:${reqId} is already not existed`);
+    throw new Error(`The To-Do item with ID:${reqId} is not existed`);
   }
   return toDo;
 };
