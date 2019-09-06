@@ -41,25 +41,7 @@ app.delete('/todos', (req, res) => utilities.deleteToDos(req, res));
 app.post('/todos/:id/done', (req, res) => utilities.markAsDone(req, res));
 
 // ( 8 )
-app.delete('/todos/:id/done', (req, res) => {
-  const reqId = req.params.id;
-  read('./data/todolist.json', 'utf8')
-    .then(result => {
-      const CurrentList = JSON.parse(result);
-      const wantedTodo = findToDo(CurrentList, reqId);
-      wantedTodo.done = false;
-      write('./data/todolist.json', JSON.stringify(CurrentList, null, 2));
-      res
-        .status(200)
-        .json({ Notification: `The To-Do item with ID: ${reqId} is modified as NOT done` });
-    })
-    .catch(err =>
-      res.status(404).json({
-        Error: err.message,
-        catchLocation: 'app.delete:/todos/:id/done'
-      })
-    );
-});
+app.delete('/todos/:id/done', (req, res) => utilities.markAsNotDone(req, res));
 
 // errors handling: JSON parse & stringify, and invalid endpoints
 app.use((req, res, next) => {
