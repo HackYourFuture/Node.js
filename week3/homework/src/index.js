@@ -8,6 +8,29 @@ const port = 3041;
 
 app.use(express.json());
 
+function readTodoFiles() {
+  return new Promise(function(resolve, reject) {
+    fs.readFile('todo.json', 'utf8', (err, data) => {
+      if (err) reject(err);
+      else resolve(JSON.parse(data));
+    });
+  });
+}
+
+function saveTodos(savePath) {
+  return new Promise(function(resolve, reject) {
+    fs.writeFile('todo.json', JSON.stringify(savePath), 'utf8', err => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+}
+
+async function readTodos(req, res) {
+  const data = await readTodoFiles();
+  res.send(data);
+}
+
 async function deleteTodo(req, res) {
   let todos = await readTodoFiles();
   let todo = todos.find(todo => todo.id == req.params.id);
@@ -15,14 +38,6 @@ async function deleteTodo(req, res) {
   todos.splice(indexOfTodo, 1);
   todos.push(todo);
   await saveTodos(todo);
-  res.status = 201;
-  res.send();
-}
-
-async function deleteAllTodos(req, res) {
-  let allData = await readTodoFiles();
-  allData = [];
-  await saveTodos(allData);
   res.status = 201;
   res.send();
 }
@@ -51,22 +66,15 @@ async function updateTodo(req, res) {
   }
 }
 
-function readTodoFiles() {
-  return new Promise(function(resolve, reject) {
-    fs.readFile('todo.json', 'utf8', (err, data) => {
-      if (err) reject(err);
-      else resolve(JSON.parse(data));
-    });
-  });
-}
+function validateAndParseTodo(req) {
+  const { todo } = req.body;
+  if (todo == null) throw Error('todo not set');
 
-function saveTodos(savePath) {
-  return new Promise(function(resolve, reject) {
-    fs.writeFile('todo.json', JSON.stringify(savePath), 'utf8', err => {
-      if (err) reject(err);
-      else resolve();
-    });
-  });
+  if (todo.description != null) todo.description = todo.description.trim();
+
+  if (todo.description == null || todo.description.length === 0)
+    throw new Error('description not set');
+  return todo;
 }
 
 async function markAsDone(req, res) {
@@ -89,26 +97,18 @@ async function markAsNotDone(req, res) {
   res.end('this task is not done');
 }
 
-function validateAndParseTodo(req) {
-  const { todo } = req.body;
-  if (todo == null) throw Error('todo not set');
-
-  if (todo.description != null) todo.description = todo.description.trim();
-
-  if (todo.description == null || todo.description.length === 0)
-    throw new Error('description not set');
-  return todo;
-}
-
-async function readTodos(req, res) {
-  const data = await readTodoFiles();
-  res.send(data);
-}
-
 async function readSpecificTodo(req, res) {
   const todos = await readTodoFiles();
   const task = todos.find(todo => todo.id === req.params.id);
   res.send(task);
+}
+
+async function deleteAllTodos(req, res) {
+  let allData = await readTodoFiles();
+  allData = [];
+  await saveTodos(allData);
+  res.status = 201;
+  res.send();
 }
 
 app.get('/', (req, res) => {
