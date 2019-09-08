@@ -53,21 +53,6 @@ The client-server model is one of the most important concepts within web develop
 
 In web development the same thing happens. The browser is the client, and some computer that has the data you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
-
-HTTP protocol has several important components. Every request and response has a header and a body. Requests additionally have a url and an http method. The response has a very important header called content type.
-
-When you type in a url in your browser then the browser sends a request to the server. The server will ussually respond with an `index.html` file that describes how the page needs to look like. This is one way to make a request. However, most requests are not made by hand when typing in the url address bar. When the browser loads an html file it scans it and starts rendering elements on the page. At the same time the browser may encounter a image `<img src="my-website.com/photo.jpg" />` in the html. The image refers to a URL so the browser will automatically make a request. The same goes for loading javascript and css files. Next when the browser loads a javascript file, it will execute it. The javascript code can also start new http requests using `fetch` for example. 
-
-![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
-
-Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special header called content-type in the request (e.g. `text/javascrpt`). 
-
-Look into the following resources to increase your understanding:
-
-- [The Client Server Model](https://www.youtube.com/watch?v=L5BlpPU_muY)
-- [Client-Server Model & Structure of a Web Application](https://medium.freecodecamp.org/how-the-web-works-part-ii-client-server-model-the-structure-of-a-web-application-735b4b6d76e3)
-- [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
-
 ## 4. Express.js
 
 In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
