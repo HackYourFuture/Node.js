@@ -14,19 +14,22 @@ class Todos {
   async readTodos(req, res) {
     try {
       const todos = JSON.parse(await this.readFromFile());
-      res.json(todos);
-    } catch (error) {
-      Todos.handleError(res, error);
+      if (req.params.id) {
+        const todo = todos.find(todo => todo.id === req.params.id);
+        if (!todo)
+          return res.status(404).send({
+            error: {
+              type: '404 Page Not Found',
+              description: `${req.params.id} is not a valid id`
+            }
+          });
+        res.json(todo);
+      }
+ else {
+        res.json(todos);
+      }
     }
-  }
-
-  async readTodo(req, res) {
-    try {
-      const todos = JSON.parse(await this.readFromFile());
-      const todo = todos.find(todo => todo.id === req.params.id);
-      if (!todo) return res.status(404).send(`${req.params.id} is not a valid id`);
-      res.json(todo);
-    } catch (error) {
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -35,12 +38,13 @@ class Todos {
     try {
       const { error } = Todos.validateTodo(req.body);
       if (error) return res.status(400).send(error.details.map(d => d.message).join('\n'));
-      const { todo } = req.body;
+      const todo = { ...req.body.todo, id: uuidv4(), done: false };
       const todos = JSON.parse(await this.readFromFile());
-      todos.push(Object.assign(todo, { id: uuidv4(), done: false }));
+      todos.push(todo);
       await this.writeToFile(JSON.stringify(todos, null, 2));
       res.status(201).json(todo);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -52,11 +56,18 @@ class Todos {
       const { todo } = req.body;
       const todos = JSON.parse(await this.readFromFile());
       const originalTodo = todos.find(todo => todo.id === req.params.id);
-      if (!originalTodo) return res.status(404).send(`${req.params.id} is not a valid id`);
+      if (!todo)
+        return res.status(404).send({
+          error: {
+            type: '404 Page Not Found',
+            description: `${req.params.id} is not a valid id`
+          }
+        });
       originalTodo.description = todo.description;
       await this.writeToFile(JSON.stringify(todos, null, 2));
       res.json(originalTodo);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -65,11 +76,18 @@ class Todos {
     try {
       const todos = JSON.parse(await this.readFromFile());
       const originalTodo = todos.find(todo => todo.id === req.params.id);
-      if (!originalTodo) return res.status(404).send(`${req.params.id} is not a valid id`);
+      if (!originalTodo)
+        return res.status(404).send({
+          error: {
+            type: '404 Page Not Found',
+            description: `${req.params.id} is not a valid id`
+          }
+        });
       originalTodo.done = true;
       await this.writeToFile(JSON.stringify(todos, null, 2));
       res.json(originalTodo);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -78,11 +96,18 @@ class Todos {
     try {
       const todos = JSON.parse(await this.readFromFile());
       const originalTodo = todos.find(todo => todo.id === req.params.id);
-      if (!originalTodo) return res.status(404).send(`${req.params.id} is not a valid id`);
+      if (!originalTodo)
+        return res.status(404).send({
+          error: {
+            type: '404 Page Not Found',
+            description: `${req.params.id} is not a valid id`
+          }
+        });
       originalTodo.done = false;
       await this.writeToFile(JSON.stringify(todos, null, 2));
       res.json(originalTodo);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -91,11 +116,18 @@ class Todos {
     try {
       const todos = JSON.parse(await this.readFromFile());
       const deletedTodo = todos.findIndex(todo => todo.id === req.params.id);
-      if (!deletedTodo) return res.status(404).send(`${req.params.id} is not a valid id`);
+      if (deletedTodo === -1)
+        return res.status(404).send({
+          error: {
+            type: '404 Page Not Found',
+            description: `${req.params.id} is not a valid id`
+          }
+        });
       todos.splice(deletedTodo, 1);
       await this.writeToFile(JSON.stringify(todos, null, 2));
       res.sendStatus(204);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
@@ -104,13 +136,16 @@ class Todos {
     try {
       await this.writeToFile(JSON.stringify([], null, 2));
       res.sendStatus(204);
-    } catch (error) {
+    }
+ catch (error) {
       Todos.handleError(res, error);
     }
   }
 
   static handleError(res, error) {
-    return res.status(500).send({ error });
+    return res.status(500).send({
+      error: { type: 'Internal Server Error', description: `Oops! Sorry, it's me, not you :(.` }
+    });
   }
 
   static validateTodo(todo) {
@@ -119,9 +154,9 @@ class Todos {
         .keys({
           description: Joi.string()
             .min(2)
-            .required(),
+            .required()
         })
-        .required(),
+        .required()
     });
 
     return Joi.validate(todo, schema);
