@@ -7,7 +7,7 @@ const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 const port = 3000;
 
-app.use(express.json()); // parsee the request.body 
+app.use(express.json()); // parsee the request.body
 
 function readTodosFromFile() {
   return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ function readTodosFromFile() {
         resolve(JSON.parse(data));
       }
     });
-  })
+  });
 }
 
 function parseAndValidateTodo(request) {
@@ -29,27 +29,28 @@ function parseAndValidateTodo(request) {
 
   if (todo.description != null) todo.description = todo.description.trim();
 
-  if (todo.description == null || todo.description.length === 0) throw new Error('description not set');
+  if (todo.description == null || todo.description.length === 0)
+    throw new Error('description not set');
 
   return todo;
 }
-
 
 function saveTodos(todos) {
   return new Promise((resolve, reject) => {
     fs.writeFile('./todos.json', JSON.stringify(todos), 'utf8', err => {
       if (err) {
-        reject(err)
+        reject(err);
       } else {
-        resolve()
-      };
+        resolve();
+      }
     });
-  })
+  });
 }
 
 async function readTodos(req, res) {
   try {
     const todos = await readTodosFromFile();
+    if (todos == 0) res.send('no todo items in the list!');
     res.send(todos);
   } catch (err) {
     res.send(err.message);
@@ -60,7 +61,7 @@ async function readTodo(req, res) {
     const todos = await readTodosFromFile();
     const todo = todos.find(todo => todo.id == req.params.id);
     if (todo == null) {
-      res.send(`no todo item with id:${req.params.id}.`)
+      res.send(`no todo item with id:${req.params.id}.`);
     }
     res.send(todo);
   } catch (err) {
@@ -77,7 +78,7 @@ async function createTodo(req, res) {
     todo.done = false;
     await saveTodos(todos);
     res.status = 201;
-    res.end();
+    res.send();
   } catch (err) {
     res.send(err.message);
   }
@@ -88,12 +89,12 @@ async function markAsDone(req, res) {
     const todos = await readTodosFromFile();
     const targetTodo = todos.find(todo => todo.id == req.params.id);
     if (targetTodo == null) {
-      res.send(`no todo item with id:${req.params.id}.`)
+      res.send(`no todo item with id:${req.params.id}.`);
     }
     targetTodo.done = true;
     await saveTodos(todos);
     res.status = 201;
-    res.end();
+    res.send();
   } catch (err) {
     res.send(err.message);
   }
@@ -105,12 +106,12 @@ async function updateTodo(req, res) {
     const todos = await readTodosFromFile();
     const originalTodo = todos.find(todo => todo.id == req.params.id);
     if (originalTodo == null) {
-      res.send(`no todo item with id:${req.params.id}.`)
+      res.send(`no todo item with id:${req.params.id}.`);
     }
     originalTodo.description = updateTodo.description;
     await saveTodos(todos);
     res.status = 201;
-    res.end();
+    res.send();
   } catch (err) {
     res.send(err.message);
   }
@@ -121,7 +122,7 @@ async function deleteTodo(req, res) {
     const todos = await readTodosFromFile();
     const todo = todos.find(todo => todo.id == req.params.id);
     if (todo == null) {
-      res.send(`no todo item with id:${req.params.id}.`)
+      res.send(`no todo item with id:${req.params.id}.`);
     }
     const indexToDelete = todos.indexOf(todo);
     todos.splice(indexToDelete, 1);
@@ -137,7 +138,7 @@ async function clearTodos(req, res) {
   try {
     await saveTodos([]);
     res.status = 200;
-    res.end();
+    res.send();
   } catch (err) {
     res.send(err.message);
   }
@@ -148,12 +149,12 @@ async function markAsNotDone(req, res) {
     const todos = await readTodosFromFile();
     const targetTodo = todos.find(todo => todo.id == req.params.id);
     if (targetTodo == null) {
-      res.send(`no todo item with id:${req.params.id}.`)
+      res.send(`no todo item with id:${req.params.id}.`);
     }
     targetTodo.done = false;
     await saveTodos(todos);
     res.status = 200;
-    res.end();
+    res.send();
   } catch (err) {
     res.send(err.message);
   }
