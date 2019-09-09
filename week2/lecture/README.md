@@ -7,6 +7,7 @@
 * What is CRUD? Explain the four operations
 * explain how the CRUD operations are linked to http methods in RESTful APIs
 * finally complete the full picture of restful APIs: resources and operations
+  * make sure to also cover an example of nested resources. this will be in the homework, e.g. todos/123/reminders/543
 * explain that RESTful is not the only way to build APIs:
 * mention SOAP as an old standard and how REST tries to solve some of the issues of SOAP
 * mention gRPC and graphQL as emerging standards that are attempting to solve some of the issues of REST
