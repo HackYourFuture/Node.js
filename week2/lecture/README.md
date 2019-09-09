@@ -26,5 +26,6 @@
   * how to generate ids
   * how to respond with the correct status
   * how to correctly hande any errors (return 500 or 404 and a user friendly error message, while logging the error details)
+* show how to test the different endpoints and methods using postman
 
 
