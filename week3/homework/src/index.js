@@ -34,6 +34,7 @@ function parseAndValidateTodo(request) {
   return todo;
 }
 
+
 function saveTodos(todos) {
   return new Promise((resolve, reject) => {
     fs.writeFile('./todos.json', JSON.stringify(todos), 'utf8', err => {
@@ -47,68 +48,115 @@ function saveTodos(todos) {
 }
 
 async function readTodos(req, res) {
-  let todos = await readTodosFromFile();
-  res.send(todos);
+  try {
+    const todos = await readTodosFromFile();
+    res.send(todos);
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 async function readTodo(req, res) {
-  let todos = await readTodosFromFile();
-  let todo = todos.find(todo => todo.id == req.params.id);
-  res.send(todo);
+  try {
+    const todos = await readTodosFromFile();
+    const todo = todos.find(todo => todo.id == req.params.id);
+    if (todo == null) {
+      res.send(`no todo item with id:${req.params.id}.`)
+    }
+    res.send(todo);
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function createTodo(req, res) {
-  let todo = parseAndValidateTodo(req);
-  let todos = await readTodosFromFile();
-  todo.id = uuidv4();
-  todos.push(todo);
-  todo.done = false;
-  await saveTodos(todos);
-  res.status = 201;
-  res.end();
+  try {
+    const todo = parseAndValidateTodo(req);
+    const todos = await readTodosFromFile();
+    todo.id = uuidv4();
+    todos.push(todo);
+    todo.done = false;
+    await saveTodos(todos);
+    res.status = 201;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function markAsDone(req, res) {
-  let todos = await readTodosFromFile();
-  let targetTodo = todos.find(todo => todo.id == req.params.id);
-  targetTodo.done = true;
-  await saveTodos(todos);
-  res.status = 201;
-  res.end();
+  try {
+    const todos = await readTodosFromFile();
+    const targetTodo = todos.find(todo => todo.id == req.params.id);
+    if (targetTodo == null) {
+      res.send(`no todo item with id:${req.params.id}.`)
+    }
+    targetTodo.done = true;
+    await saveTodos(todos);
+    res.status = 201;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function updateTodo(req, res) {
-  let updateTodo = parseAndValidateTodo(req);
-  let todos = await readTodosFromFile();
-  let originalTodo = todos.find(todo => todo.id == req.params.id);
-  originalTodo.description = updateTodo.description;
-  await saveTodos(todos);
-  res.status = 201;
-  res.end();
+  try {
+    const updateTodo = parseAndValidateTodo(req);
+    const todos = await readTodosFromFile();
+    const originalTodo = todos.find(todo => todo.id == req.params.id);
+    if (originalTodo == null) {
+      res.send(`no todo item with id:${req.params.id}.`)
+    }
+    originalTodo.description = updateTodo.description;
+    await saveTodos(todos);
+    res.status = 201;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function deleteTodo(req, res) {
-  let todos = await readTodosFromFile();
-  let todo = todos.find(todo => todo.id == req.params.id);
-  let indexToDelete = todos.indexOf(todo);
-  todos.splice(indexToDelete, 1);
-  await saveTodos(todos);
-  res.status = 200;
-  res.end();
+  try {
+    const todos = await readTodosFromFile();
+    const todo = todos.find(todo => todo.id == req.params.id);
+    if (todo == null) {
+      res.send(`no todo item with id:${req.params.id}.`)
+    }
+    const indexToDelete = todos.indexOf(todo);
+    todos.splice(indexToDelete, 1);
+    await saveTodos(todos);
+    res.status = 200;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function clearTodos(req, res) {
-  await saveTodos([]);
-  res.status = 200;
-  res.end();
+  try {
+    await saveTodos([]);
+    res.status = 200;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 async function markAsNotDone(req, res) {
-  let todos = await readTodosFromFile();
-  let targetTodo = todos.find(todo => todo.id == req.params.id);
-  targetTodo.done = false;
-  await saveTodos(todos);
-  res.status = 200;
-  res.end();
+  try {
+    const todos = await readTodosFromFile();
+    const targetTodo = todos.find(todo => todo.id == req.params.id);
+    if (targetTodo == null) {
+      res.send(`no todo item with id:${req.params.id}.`)
+    }
+    targetTodo.done = false;
+    await saveTodos(todos);
+    res.status = 200;
+    res.end();
+  } catch (err) {
+    res.send(err.message);
+  }
 }
 
 app.get('/todos', (req, res) => readTodos(req, res));
