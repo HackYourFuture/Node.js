@@ -24,11 +24,9 @@ For more research, check the following resource:
 
 - [What is REST: a simple explanation for beginners](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
 
-## 2. What is Hypertext Transfer Protocol (HTTP)?
+## 2. HTTP methods
 
 A big part of making applications that follow the REST architecture is by use of HTTP methods.
-
-If you've every typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the basic way of sending requests and receiving responses.
 
 Like verbal communication, there's the _content_ (WHAT you are saying) and the _style_ (HOW you are saying it). HTTP refers to the \***\*style\*\*** of online communication. How you communicate over the web is done through specific HTTP methods (also called HTTP verbs), that describe what type of request is being made. The most important ones are:
 
