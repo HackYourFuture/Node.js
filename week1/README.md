@@ -5,7 +5,7 @@
 1. What is backend?
 2. What is Node.js?
 3. The client-server model
-4. Express.js
+4. Writing a server in Node.js
 5. (Optional) How does the internet work?
 
 ## 1. What is backend?
@@ -53,16 +53,19 @@ The client-server model is one of the most important concepts within web develop
 
 In web development the same thing happens. The browser is the client, and some computer that has the data you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
+If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving responses on the internet.
 
-HTTP protocol has several important components. Every request and response has a header and a body. Requests additionally have a url and an http method. The response has a very important header called content type.
+When you type in a url in your browser then the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next the browser starts scans the HTMLand starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image. 
 
-When you type in a url in your browser then the browser sends a request to the server. The server will ussually respond with an `index.html` file that describes how the page needs to look like. This is one way to make a request. However, most requests are not made by hand when typing in the url address bar. When the browser loads an html file it scans it and starts rendering elements on the page. At the same time the browser may encounter a image `<img src="my-website.com/photo.jpg" />` in the html. The image refers to a URL so the browser will automatically make a request. The same goes for loading javascript and css files. Next when the browser loads a javascript file, it will execute it. The javascript code can also start new http requests using `fetch` for example. 
+A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load, for example, some json data. 
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special header called content-type in the request (e.g. `text/javascrpt`). 
-
-If you've every typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving responses on the internet.
+The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special *header* called content-type in the request. The most common content types are:
+* `text/javascrpt`
+* `text/html`
+* `text/stylesheet`
+* `application/json`
 
 Look into the following resources to increase your understanding:
 
@@ -70,7 +73,29 @@ Look into the following resources to increase your understanding:
 - [Client-Server Model & Structure of a Web Application](https://medium.freecodecamp.org/how-the-web-works-part-ii-client-server-model-the-structure-of-a-web-application-735b4b6d76e3)
 - [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
-## 4. Express.js
+## 4. Writing a server in Node.js
+
+
+### 4.1 Node Package Manager - npm
+
+Writing backend code is very difficult. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. Luckily, we do not have to write everything from scratch. Often times we can use code that other people have written before us. 
+
+In order to make it easy to reuse code from other people Node.js has a small component Node Package Manager or npm for short. To give you an idea of just how easy it is to use npm, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
+
+If we want to use `express` in our code we have to do 2 things
+
+1. download (install) the code from the internet using the  command line
+`npm install express`
+2. declare that we will use express at the top of the java script file
+`let express = require("express");`
+
+You can find many other packages online at [https://www.npmjs.com/search?q=express](https://www.npmjs.com/search?q=express)
+
+Look into the following resources to increase your understanding:
+
+- [An Absolute Beginner's Guide to Using npm](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
+
+### 4.2 Express.js
 
 In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
 
