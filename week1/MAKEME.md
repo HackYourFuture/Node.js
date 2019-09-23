@@ -11,6 +11,9 @@
 
 ## 1. Exercises 
 
+
+> Inside your `week1` folder, create a folder called `node-exercises`. Put your code in separate folders for each exercise.
+
 ### 1.1 Practice the concepts
 
 In this week's interactive exercises, we'll be going back to the command line. We'll be using software from [Nodeschool](https://nodeschool.io/) to do some exercises.
@@ -41,8 +44,6 @@ Step 0. Create a new empty folder.
 Step 1. Create a file called `andrejs-awesome-function.js` (or something else, the name is arbitrary), then copy the function `padLeft` in it.`
 
 Step 2. Create another file for your code called `app.js`. In this file use the `padLeft` from `andrejs-awesome-function.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console. 
-
-
 
 Your output should be
 
@@ -87,15 +88,31 @@ Tips:
 
 ### 1.4 Create an HTTP web server
 
-## 2. Node.js exercises
+In this exercise we will build a simple web server. Simple in the sense it will only serve one html file and one javascript file. This is enough to serve a minimal web site.
 
-### 1. Create an HTTP web server
+Step 0. As always start with a new empty folder e.g. `exercise4`
 
-> Inside your `week1` folder, create a folder called `node-exercises`
+Step 1. Initialize npm in this folder
 
-Create an HTTP web server using the native Node.js `http` module.
+Step 2. Create a file for the code of your application
 
-1. The server will be a functioning web server that can serve a very simple web site. When opening the server url in the browser e.g. `http:\\localhost:3000` the server needs to serve the following html:
+Step 3. Copy the code from the lecture. This code create a server that listens on port 3000 and replies with *Hello World!*
+
+```javascript
+var http = require('http');
+
+//create a server
+let server = http.createServer(function (req, res) {
+  res.write('Hello World!'); //send a response back to the client
+  res.end(); //end the response
+});
+
+server.listen(3000); //the server listens on port 3000
+```
+
+Run the code and check that it works by opening a browser at `http:\\localhost:3000`
+
+Step 4. Instead of returning a simple `Hello World!` the server needs to return the following HTML.
 
 ```html
 <html>
@@ -103,33 +120,47 @@ Create an HTTP web server using the native Node.js `http` module.
     <title>My First Web Server</title>
   </head>
   <body>
+    <h1>Hello, anyone there?</h1>
     <div id="content"></div>
     <script src="script.js"></script>
   </body>
 </html>
 ```
 
-Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response.
+Run the code and check that it works by opening a browser at `http:\\localhost:3000`
 
-2. Once the browser receives the html it will process it and detect the `script` tag. The browser will then try to load this script from the server at the endpoint `http:\\localhost:3000\script.js`. Your server needs to return a javascript that inserts some text under `content`.
+Tips: 
+* don't be afraid to copy-paste this directly in the javascript file using as a multiline string. You shouldn't use a separate html file for now.
+* Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response. Use the function `response.setHeader(name, value)` - https://nodejs.org/api/http.html#http_response_setheader_name_value
+
+If you open the network tab you will notice that the browser tries to load the javascript `script.js`, but fails. This is because our server does not yet serve this file. So far the server only serves one thing, the html file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.  
+If you open the network tab you can see that when the browser is requesting the html code it is using the url `http:\\localhost:3000\`. On the other hand, when the browser is requesting the javascript it is using the url `http:\\localhost:3000\script.js`.
+ 
+Step 5. Make the server listen to and send back the following javascript code. 
 
 ```javascript
 document
   .getElementById('content')
-  .appendChild(document.createTextNode('Hello and Welcome to Server-land!'));
+  .appendChild(document.createTextNode('Welcome to Server-land!'));
 ```
 
-Do not forget to set the correct content-type.
+Tips: 
+* `if ( request.url === '\script.js' ) { /* send javascript */ } else { /* send HTML */ } `
+* the `content-type` for javascript is `text\javascript`
+
+
+Run the code and check that it works by opening a browser at `http:\\localhost:3000`. You should see the message *Welcome to Sever-land!*.
 
 Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, then processes them based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
 
-3. _BONUS_: Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html (from step 1)
+ _BONUS_  
+  Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html (from step 1)
 
 ```html
 <link rel="stylesheet" type="text/css" href="style.css" />
 ```
 
-When the server gets a request at `http:\\localhost:3000\style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type and be creative.
+When the server gets a request at `http:\\localhost:3000\style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type!
 
 ## 3. Code along
 
