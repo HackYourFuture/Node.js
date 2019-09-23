@@ -1,16 +1,20 @@
-# Node.js Week 1 (Readings)
+# Reading Material Node.js Week 1
 
 ## Agenda
 
+These are the topics for week 1:
+
 1. What is backend?
 2. What is Node.js?
+   - Node Package Manager (NPM)
+   - Express.js
 3. The client-server model
 4. Writing a server in Node.js
 5. (Optional) How does the internet work?
 
 ## 1. What is backend?
 
-In software development, we separate the user experience and utility (the `frontend`) from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../images/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
+In software development, we separate the user experience and utility (the `frontend`) from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../assets/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
 
 In web development the term backend can be boiled down to 3 components:
 
@@ -55,17 +59,18 @@ In web development the same thing happens. The browser is the client, and some c
 
 If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving responses on the internet.
 
-When you type in a url in your browser then the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next the browser starts scans the HTMLand starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image. 
+When you type in a url in your browser then the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next the browser starts scans the HTMLand starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load, for example, some json data. 
+A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load, for example, some json data.
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special *header* called content-type in the request. The most common content types are:
-* `text/javascrpt`
-* `text/html`
-* `text/stylesheet`
-* `application/json`
+The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
+
+- `text/javascrpt`
+- `text/html`
+- `text/stylesheet`
+- `application/json`
 
 Look into the following resources to increase your understanding:
 
@@ -75,19 +80,25 @@ Look into the following resources to increase your understanding:
 
 ## 4. Writing a server in Node.js
 
-
 ### 4.1 Node Package Manager - npm
 
-Writing backend code is very difficult. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. Luckily, we do not have to write everything from scratch. Often times we can use code that other people have written before us. 
+Writing backend code is not the easiest thing. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. Luckily, we do not have to write everything from scratch. Often times we can use code that other people have written before us.
 
-In order to make it easy to reuse code from other people Node.js has a small component Node Package Manager or npm for short. To give you an idea of just how easy it is to use npm, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
+In order to make it easy to reuse code from other people Node.js has a small component `Node Package Manager` or `npm` for short. To give you an idea of just how easy it is to use `npm`, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
 
 If we want to use `express` in our code we have to do 2 things
 
-1. download (install) the code from the internet using the  command line
-`npm install express`
-2. declare that we will use express at the top of the java script file
-`let express = require("express");`
+1. download (install) the code from the internet using the following command in the command line:
+
+```md
+npm install express
+```
+
+2. Declare that we will use Express at the top of the JavaScript file:
+
+```js
+let express = require("express");`
+```
 
 You can find many other packages online at [https://www.npmjs.com/search?q=express](https://www.npmjs.com/search?q=express)
 
@@ -113,8 +124,12 @@ For more research, use the following resources:
 
 ## 5. (Optional) How does the internet work?
 
-This part is optional, but still recommended to understand the wider context of what we as web developers deal with:
+This part is optional, but still recommended to understand the wider context of what we as web developers deal with, namely `the internet`:
 
 - YouTube Series: [How The Internet Works](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7)
 - [How the Internet Works for Developers I](https://www.youtube.com/watch?v=e4S8zfLdLgQ)
 - [How the Internet Works for Developers II](https://www.youtube.com/watch?v=FTAPjr7vgxE)
+
+## Finished?
+
+Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).

@@ -68,3 +68,7 @@ A RESTful API is nothing more than an API that follows the REST architectural pa
 For more information check out the following resource:
 
 - [What is an API? In English, please](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
+
+## Finished?
+
+Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).
