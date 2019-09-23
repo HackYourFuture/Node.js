@@ -7,7 +7,6 @@
 * What is CRUD? Explain the four operations
 * explain how the CRUD operations are linked to http methods in RESTful APIs
 * finally complete the full picture of restful APIs: resources and operations
-  * make sure to also cover an example of nested resources. this will be in the homework, e.g. todos/123/reminders/543
 * mention that RESTful is not the only way to build APIs but do not go into details
 
 ## Core concepts
@@ -17,7 +16,7 @@
 
 ## Build with students
 
-* Todo app with the four basic operations, no saving/reading to/from file, 
+* library app with the four basic operations, no saving/reading to/from file, 
   * make sure to explain how routes are defined (verb + url)
   * how request body can be get
   * how parameters can be extracted from the url (:id)
