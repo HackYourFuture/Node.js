@@ -5,9 +5,20 @@
 1. What is Representational State Transfer (REST)?
 2. What is Hypertext Transfer Protocol (HTTP)?
 3. What is a CRUD application?
+4. What is a web API?
 4. What is a RESTful API?
 
 ## 1. What is Representational State Transfer (REST)?
+
+The world of REST consists of two things: resources and actions.
+
+A resource can be any object, real or imaginary. In Instagram for example, a resource can be a user, a photo, a hashtag. REST offers a way a way to expose information about its resources. For example, for Instagram the state of a user (the resource), contains the user's name, the number of posts that user posted on Instagram so far, how many followers they have, and more. Resource have names e.g. *users*, *photos* and *hashtags* and each individual object in resource has an identifier. For example the *user* have a username.
+
+REST also enables clients to take actions on those resources, such as create new resources (i.e. create a new user) or change existing resources (i.e. edit a post).
+
+It means when a the server will *transfer* to the client a *representation* of the *state* of the requested resource.
+
+If this seems very abstract to you, don't worry, REST is a concept, an idea. During the lecture we will use the concepts from REST such as resources and operations to build great applications.
 
 Building software is like building houses: architecture is everything. The design of each part is just as important as the utility of it. REST is a specific architectural style for web applications. It serves to organise code in **predictable** ways.
 
@@ -57,17 +68,42 @@ The concept of CRUD is is an important criterium each web application should be 
 
 Read the following article to learn about CRUD in practice, using Facebook as an [example](https://medium.com/@Adetona77/understanding-crud-using-facebook-as-the-study-case-part-1-c4183cdf617a)
 
-## 4. What is a RESTful API?
+## 4. What is web API?
 
 To answer this question we must first understand what an API is. The abbreviation stands for Application Programming Interface and in its simplest form it is that part of an application that allows us to make use of its functionality. However, instead of a beautiful-looking user interface it's usually some kind of URL (which in this context is called an `endpoint`)
 
 Whenever developers make some kind of software that they want others to use, they make sure it can be communicated with. That part is called the API. The developers usually also write instructions for how to best communicate with the API, this is called `documentation`.
 
-A RESTful API is nothing more than an API that follows the REST architectural pattern. Check the following [link](https://openclassrooms.com/en/courses/3432056-build-your-web-projects-with-rest-apis/3496011-identify-examples-of-rest-apis) to see some examples of popular RESTful APIs.
+A useful analogy is that of a restaurant.
+
+> As a *client* when you go to the restaurant you are not allowed to go into the kitchen (server). However, you can talk to the waiter (API) who will pass on your request to the kitchen. The kitchen will use the things that it has such as ingredients, pans and pots and the chefs talent to prepare your food. The waiter will bring you the food (response). Of course, to order anything you need to know what is available and thus you need a menu (documentation).
+
+# 5. What is RESTful API?
+
+A RESTful API is nothing more than an API that follows the REST architectural pattern.
+
+That means that the API exposes resources and allows clients to perform operations on those resources. When a client wants to request information on a resource it needs to say which resource it wants information on. This is passed as a Universal Resource Locator (URL) in the HTTP request. The client also needs to say what operation he is trying to perform. This is specified in the method of the HTTP request.
+
+Lets look at a concrete example. Lets imagine a REST API for a library with a domain at `library.edu/`. The resources would be `books`, so the URL for the books resource would be `library.edu/books`. If a client, e.g the librarian, wants to get information on the books he needs to use the `GET` HTTP method.  The server will respond with a list of book information such as title, author etc.  
+Now imagine that the librarian wants to register/create a new book. He needs to specify the resource he wants to create using the same URL as before `library.edu/books` and use the `POST` method.   
+
+Next, lets think how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how does he tell the server which specific book to update. This is where the resource identifiers come in.
+The library needs to maintain and provide identifiers for each object. The user can then use this identifier in the URL e.g. `library.edu/books/TheWhiteCastle`. The identifier can be a number or text, it does not matter.   
+To summarize, here are the available operations and the corresponding URLs.
+
+Operation | URL | HTTP Method
+----------|-----|------------
+get all books|  `library.edu/books`| `GET`
+create a new book|  `library.edu/books`| `POST`
+update the information about a specific book|  `library.edu/books/TheWhiteCastle`| `PUT`
+delete a specific book|  `library.edu/books/TheWhiteCastle`| `DELETE`
+
+The URL in the example consists of a domain `library.edu` and a path `/books`. When writing APIs we are mostly concerned with the path. You might also hear the term *endpoint* or *route*. These are mostly synonymous with *path*.
 
 For more information check out the following resource:
 
 - [What is an API? In English, please](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
+- [Examples of REST APIs](https://openclassrooms.com/en/courses/3432056-build-your-web-projects-with-rest-apis/3496011-identify-examples-of-rest-apis)
 
 ## Finished?
 
