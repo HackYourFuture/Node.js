@@ -11,7 +11,7 @@
    * where to find documentation
 5. Client-server model (introduce URL endpoints and ports)
      * introduce HTTP. students need to know about request and response and content types, leave methods and status codes and body for week2
-6. NPM - briefly explain how to install and require modules (don't go into details of dependencies vs devDependencies and global vs local, its too much)
+6. NPM - explain `require` with a local file (see code-width-students). Then `npm init`. Finally explain `npm install` (don't go into details of dependencies vs devDependencies and global vs local, its too much)
 7. Express.js (again mention that there are other modules notably http but don't go into specifics)
 8. Briefly explain homework assignment
 

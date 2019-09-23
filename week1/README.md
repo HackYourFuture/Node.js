@@ -6,6 +6,8 @@
 2. What is Node.js?
 3. The client-server model
 4. Writing a server in Node.js
+   * Modularization and npm
+   * express.js  
 5. (Optional) How does the internet work?
 
 ## 1. What is backend?
@@ -76,11 +78,12 @@ Look into the following resources to increase your understanding:
 ## 4. Writing a server in Node.js
 
 
-### 4.1 Node Package Manager - npm
+### 4.1 Modularization and Node Package Manager - npm
 
-Writing backend code is very difficult. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. Luckily, we do not have to write everything from scratch. Often times we can use code that other people have written before us. 
+Writing backend code is very difficult. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. The code will be very long and complex. Luckily, we do not have to write everything in one file and we do not have to write everything from scratch. 
+Instead, we can split our code into multiple files and also re-use code that other people (or we have) have written before. 
 
-In order to make it easy to reuse code from other people Node.js has a small component Node Package Manager or npm for short. To give you an idea of just how easy it is to use npm, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
+The concept of splitting up code into reusable pieces is called **modularization** and the reusable pieces **modules** (sometimes called *packages* or *libraries*). The whole modularization in node is performed with the help of a small tool called Node Package Manager or npm for short. To give you an idea of just how easy it is to use npm, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
 
 If we want to use `express` in our code we have to do 2 things
 
@@ -91,8 +94,11 @@ If we want to use `express` in our code we have to do 2 things
 
 You can find many other packages online at [https://www.npmjs.com/search?q=express](https://www.npmjs.com/search?q=express)
 
+During the homework exercises you will practice how to use npm in more detail.
+
 Look into the following resources to increase your understanding:
 
+- [What is require?](https://nodejs.org/zh-cn/knowledge/getting-started/what-is-require/)
 - [An Absolute Beginner's Guide to Using npm](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### 4.2 Express.js
