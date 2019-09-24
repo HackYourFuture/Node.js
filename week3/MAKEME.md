@@ -9,6 +9,15 @@
 
 ## 1. Practice the concepts
 
+### 1.1 Chuck Norris programs do not accept input.
+
+Did you you know that there is an API for Chuck Noris jokes. That's incredibly, right?
+
+Write a small node program (not a server) that calls the this API http://www.icndb.com/api/ and prints a random joke to the conole.
+
+Hint: You need to install and require `node-fetch`.
+Hint: Print the entire response to the concole to see how it is structured.
+
 ## 2. Node.js exercises
 
 ## 3. Code along
