@@ -50,7 +50,7 @@ Output `Name: John <b>Doe</b>`
 
 You can find more complicated examples [here](https://mustache.github.io/mustache.5.html).
 
-[Mustache](https://media3.giphy.com/media/ehA575gOh0RIQ/giphy.gif?cid=790b761146a36446416541ec3708f8406232e40e052ee6d8&rid=giphy.gif)
+![Mustache](https://media3.giphy.com/media/ehA575gOh0RIQ/giphy.gif?cid=790b761146a36446416541ec3708f8406232e40e052ee6d8&rid=giphy.gif)
 
 _Fun fact_: Templating engines are not a new idea and have been around since almost the beginning of the internet. In fact, php the most ubiquitous language today, started out as a simple templating engine.
 
