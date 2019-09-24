@@ -37,6 +37,7 @@ Write a program that makes a reservation for the biggest party on the planet and
 
 Hints:
 * to set headers use `fetch(<URL>, { headers: { 'XXXX': 'YYYY' } }`
+* the documentation at https://www.npmjs.com/package/node-fetch can be of great help
 
 ## 2. Node.js exercises
 
