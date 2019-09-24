@@ -9,7 +9,7 @@
 
 ## 1. Practice the concepts
 
-### 1.1 Chuck Norris programs do not accept input.
+### 1.1. Chuck Norris programs do not accept input.
 
 Did you you know that there is an API for Chuck Noris jokes. That's incredibly, right?
 
