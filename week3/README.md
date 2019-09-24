@@ -42,7 +42,7 @@ The exact syntax and setup vary considerably, but the main components _data_, _t
 
 There are many implementations of templating engines available: Mustache, Pug (Jade), Handlebars, etc. In this course we will use [Mustache](https://mustache.github.io/#demo).
 
-The syntax for placeholders is double curly brackets (thus the name mustache). Lets look at a very simple example
+The syntax for placeholders is double curly brackets (thus the name mustache).Lets look at a very simple example
 
 Template `Name: {{firstName}} <b>{{lastName}}</b>`
 Data `{ "firstName": "John", "lastName": "Doe" }`
@@ -50,7 +50,9 @@ Output `Name: John <b>Doe</b>`
 
 You can find more complicated examples [here](https://mustache.github.io/mustache.5.html).
 
-_Fun fact_: Templating engines are not a new idea and have been around since almost the beginning of the internet. In fact, php the most ubiquitous language today started out as a simple templating engine.
+[Mustache](https://media3.giphy.com/media/ehA575gOh0RIQ/giphy.gif?cid=790b761146a36446416541ec3708f8406232e40e052ee6d8&rid=giphy.gif)
+
+_Fun fact_: Templating engines are not a new idea and have been around since almost the beginning of the internet. In fact, php the most ubiquitous language today, started out as a simple templating engine.
 
 To easily use mustache in combination with express, we will use a special package called `mustache-express`. This package lets mustache interact directly with express request handler and render content directly to the response object. You can find a basic example [here](https://github.com/bryanburgers/node-mustache-express).
 
