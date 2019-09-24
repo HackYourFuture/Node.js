@@ -41,6 +41,26 @@ Hints:
 * to set headers use `fetch(<URL>, { headers: { 'XXXX': 'YYYY' } }`
 * the documentation at https://www.npmjs.com/package/node-fetch can be of great help
 
+### 1.4. Fun with Mustache
+
+Do you know the game [Cards against  humanity](https://cardsagainsthumanity.com/). It's a game where players need to fill blanks in a sentence to make the funniest joke:
+
+![cards against humanity](https://www.snopes.com/tachyon/2015/11/cards-against-humanity.png?resize=865,391)
+
+Inspired by the game you want to write a program that simulates playing the game.  
+The program needs to fill in the blanks in the phrase: `_______ is great to ________` and print the result to the console.
+
+For the first blank select a random word from `subjects = ["shark", "popcorn",  "poison", "fork", "cherry", "toothbrush", "cannon"]`
+For the second blank select a random word from `punchlines = ["watch movie with", "spread some love",  "put on cake", "clean toilets", "go to the moon", "achieve world piece", "help people learn programing"]`
+
+You have to use Mustache to replace the words - https://github.com/janl/mustache.js
+
+Hints:
+* to get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
+* remember to install and require mustache before you use it in code
+* [the documentation on mustache has a very nice example](https://github.com/janl/mustache.js#usage)
+
+
 ## 2. Node.js exercises
 
 ## 3. Code along
