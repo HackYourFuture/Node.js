@@ -31,6 +31,8 @@ Hints:
 * use https://www.base64encode.org/ to convert `admin:hvgX8KlVEa` to base64
 * to set the authorization header `fetch(<URL>, { headers: { 'Authorization': 'Basic XXXXXX' } }`
 
+_Bonus_ points if you can encode the username and password to base64 using javascript code.
+
 ### 1.3. Party time
 
 Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations
