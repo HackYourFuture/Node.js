@@ -65,6 +65,11 @@ Hints:
 
 ## 3. Code along
 
+This you will build an application that sends emails. I dont have to explain how important this is as almost every web application needs to send emails. Emails are sent for example to verify users, to recover accounts, to notify users of events, etc.
+This will make require all the skills you have learned so far but I promise it will be a lot of fun.
+
+[Nodemailer - Send Emails From Your Node.js App](https://www.youtube.com/watch?v=nF9g1825mwk&t=469s)
+
 ## 4. PROJECT: HackYourTemperature III
 
 ## **SUBMIT YOUR HOMEWORK!**
