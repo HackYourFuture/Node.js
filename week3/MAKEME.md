@@ -56,11 +56,11 @@ _Bonus_ points if you can encode the username and password to base64 using javas
 Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations
 
 Step 1. Feel free to copy and modify the code from the previous exercise.  
-Step 2. Read the documentation  https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations . Find out  
-    * which methods are available (GET or POST)  
-    * what is the URL  
-    * what headers are expected, and    
-    * what should the request contain   
+Step 2. Read the documentation  https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations. Find out
+  * which methods are available (GET or POST)  
+  * what is the URL  
+  * what headers are expected, and    
+  * what should the request contain   
 Step 3. Print the response  
 
 Hints:
