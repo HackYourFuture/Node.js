@@ -109,6 +109,18 @@ For more information check out the following resource:
 - [What is an API? In English, please](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
 - [Examples of REST APIs](https://openclassrooms.com/en/courses/3432056-build-your-web-projects-with-rest-apis/3496011-identify-examples-of-rest-apis)
 
+# 6. Postman
+
+When creating APIs same as any other program it is important to test if they work as intended. The easiest way to do this is to call the various APIs and check the response that they send.
+
+Postman makes sending API requests simple. Instead of testing your APIs through a command line or terminal, we offer an intuitive graphical interface that is quick to learn and rewarding to master. You can install Postman by following [these steps](https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates).
+
+As you can see in the image below, when you enter a request in Postman and click the Send button, the server receives your request and returns a response that Postman displays in the interface.
+
+![postman illustration](https://s3.amazonaws.com/postman-static-getpostman-com/postman-docs/anatomy-of-a-request.png)
+
+Check [this guide](https://learning.getpostman.com/docs/postman/launching_postman/sending_the_first_request/#sending-a-request) to learn how to send a request with postman.
+
 ## Finished?
 
 Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).
