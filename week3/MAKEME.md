@@ -46,7 +46,7 @@ You need to use the credentials `admin:hvgX8KlVEa` to authenticate.
 
 Step 1. Feel free to copy and modify the code from the previous exercise.  
 Step 2. Visit https://www.base64encode.org/ to convert `admin:hvgX8KlVEa` to base64  
-Step 3. Set the authorization header in the GET request - `fetch(<URL>, { headers: { 'Authorization': 'Basic XXXXXX' } }`  
+Step 3. Set the authorization header in the GET request - `fetch(<URL>,{ headers: { 'Authorization': 'Basic XXXXXX' } }`  
 Step 4. Print the response  
 
 _Bonus_ points if you can encode the username and password to base64 using javascript code.
