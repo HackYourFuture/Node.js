@@ -9,9 +9,13 @@
 
 ## 1. Practice the concepts
 
+> The problems in the *practice the concepts* section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
+
 This week you'll finish the command line exercises. Go back to `learnyounode` and start doing **exercises 11 (HTTP FILE SERVER ) until 13 (HTTP JSON API SERVER)**
 
 ## 2. Node.js exercises
+
+> Inside of your `Node.js` fork, go to the folder `week3`. Inside of that folder, create a folder called `homework`. Inside, create a folder called `nodejs-exercises`. This will contain all the files for the following section.
 
 ### **Exercise 1: Chuck Norris programs do not accept input**
 
@@ -70,7 +74,9 @@ Hints:
 
 ## 3. Code along
 
-This you will build an application that sends emails. I dont have to explain how important this is as almost every web application needs to send emails. Emails are sent for example to verify users, to recover accounts, to notify users of events, etc. You will need all the skills you have learned so far but I promise you that it will be a lot of fun.
+> The *code along* section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
+
+This time you will build an application that sends emails. I dont have to explain how important this is. Almost every web application needs to send emails. Emails are sent for example to verify users, to recover accounts, to notify users of events, etc. You will need all the skills you have learned so far, but I promise you that it will be a lot of fun.
 
 [Nodemailer - Send Emails From Your Node.js App](https://www.youtube.com/watch?v=nF9g1825mwk&t=469s)
 
