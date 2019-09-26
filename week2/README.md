@@ -68,6 +68,10 @@ The concept of CRUD is is an important criterium each web application should be 
 
 Read the following article to learn about CRUD in practice, using Facebook as an [example](https://medium.com/@Adetona77/understanding-crud-using-facebook-as-the-study-case-part-1-c4183cdf617a)
 
+Look into the following resources to increase your understanding:
+* [ELI5: What is an API?](https://dev.to/awwsmm/eli5-what-is-an-api-1dd2)
+* [Web APIs Explained By Selling Goods From Your Farm](https://blog.codeanalogies.com/2018/02/27/web-apis-explained-by-selling-goods-from-your-farm/)
+
 ## 4. What is web API?
 
 To answer this question we must first understand what an API is. The abbreviation stands for Application Programming Interface and in its simplest form it is that part of an application that allows us to make use of its functionality. However, instead of a beautiful-looking user interface it's usually some kind of URL (which in this context is called an `endpoint`)
