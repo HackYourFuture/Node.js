@@ -27,7 +27,7 @@ When it's all installed, **do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
 
 ### **Exercise 1: Modularization**
 
-Lets practice how to use other peoples code in our applications. I wrote the following function this other day:
+Lets practice how to use code from other developers in our applications. I wrote the following function this other day:
 
 ```javascript
 function padLeft(val, num, str) {
@@ -61,7 +61,7 @@ Tips:
 - use `forEach` to loop over the array in `app.js`
 - use `padLeft(number, 4 , "")` to pad a number to 4 characters
 
-### **Exercise 3: npm**
+### **Exercise 2: npm**
 
 Oh no! Your boss calls you and tells you that he tried to pad some numbers to 8 characters and it was not working at all. He tells you to fix it as soon as possible.
 
@@ -88,7 +88,7 @@ Tips:
 - be careful to be in the correct directory when running `npm install left-pad`
 - use `padLeft(number, 8 , "")` to pad a number to 4 characters
 
-### **Exercise 4: Create an HTTP web server**
+### **Exercise 3: Create an HTTP web server**
 
 In this exercise we will build a simple web server. Simple in the sense it will only serve one html file and one javascript file. This is enough to serve a minimal web site.
 
