@@ -121,6 +121,8 @@ As you can see in the image below, when you enter a request in Postman and click
 
 Check [this guide](https://learning.getpostman.com/docs/postman/launching_postman/sending_the_first_request/#sending-a-request) to learn how to send a request with postman.
 
+Alternatively, [watch this video guide](https://www.youtube.com/embed/YKalL1rVDOE?list=PLM-7VG-sgbtBsenu0CM-UF3NZj3hQFs7E).
+
 ## Finished?
 
 Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).
