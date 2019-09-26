@@ -23,10 +23,18 @@ Did you know that there is an API for Chuck Noris jokes. That's incredible, righ
 
 Write a small node program (not a server) that calls the this API http://www.icndb.com/api/ and prints a random joke to the conole.
 
+Step 0. Create a new folder e.g. `exercise1`. Honestly guys do I even have to say this anymore.
+Step 1. In the folder you just created, initalize npm.
+Step 2. Create a javascript file that will hold the code for your program.
+Step 3. Install and require `node-fetch`.
+Step 4. GET a random joke from the URL http://www.icndb.com/api/ 
+Step 5. Print the joke to the console
+
 Hints:
 
-- You need to install and require `node-fetch`.
 - Print the entire response to the concole to see how it is structured.
+
+_This is the last time that steps 0-2 are explicitly written. For the next exercise I am assuming you know this already._
 
 ### **Exercise 2: Authentication**
 
@@ -36,16 +44,24 @@ For this exercise you need to write a program thats calls the API https://restap
 
 You need to use the credentials `admin:hvgX8KlVEa` to authenticate.
 
-Hints:
-
-- use https://www.base64encode.org/ to convert `admin:hvgX8KlVEa` to base64
-- to set the authorization header `fetch(<URL>, { headers: { 'Authorization': 'Basic XXXXXX' } }`
+Step 1. Feel free to copy and modify the code from the previous exercise.
+Step 2. Visit https://www.base64encode.org/ to convert `admin:hvgX8KlVEa` to base64
+Step 3. Set the authorization header in the GET request - `fetch(<URL>, { headers: { 'Authorization': 'Basic XXXXXX' } }`
+Step 4. Print the response
 
 _Bonus_ points if you can encode the username and password to base64 using javascript code.
 
 ### **Exercise 3: Party time**
 
 Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations
+
+Step 1. Feel free to copy and modify the code from the previous exercise.
+Step 2. Read the documentation  https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations . Find out
+    * which methods are available (GET or POST)
+    * what is the URL
+    * what headers are expected, and 
+    * what should the request contain
+Step 3. Print the response
 
 Hints:
 
@@ -59,17 +75,22 @@ Do you know the game [Cards against humanity](https://cardsagainsthumanity.com/)
 ![cards against humanity](https://www.snopes.com/tachyon/2015/11/cards-against-humanity.png?resize=865,391)
 
 Inspired by the game you want to write a program that simulates playing the game.  
-The program needs to fill in the blanks in the phrase: `_______ is great to ________` and print the result to the console.
+The program needs to fill in the blanks in the `_______ is great to ________` and print the result to the console.
 
 For the first blank select a random word from `subjects = ["shark", "popcorn", "poison", "fork", "cherry", "toothbrush", "cannon"]`
 For the second blank select a random word from `punchlines = ["watch movie with", "spread some love", "put on cake", "clean toilets", "go to the moon", "achieve world piece", "help people learn programing"]`
 
 You have to use Mustache to replace the words - https://github.com/janl/mustache.js
 
+Step 1. Install and require handlebar
+Step 2. copy the subjects amd punchlines to javascript
+Step 3. write code that picks a `subject` and `puncline` at random
+Step 4. replace the blanks in `phrase` with the random `subject` and `punchline` using handlebars
+
 Hints:
 
 - To get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
-- Remember to install and require mustache before you use it in code
+- Remember to install and require handlebars before you use it in code
 - [The documentation on mustache has a very nice example, try it out!](https://github.com/janl/mustache.js#usage)
 
 ## 3. Code along
