@@ -9,6 +9,8 @@
 
 ## 1. Practice the concepts
 
+> The problems in the *practice the concepts* section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
+
 This week you'll continue with the command line exercises. Go back to your command line and start doing **exercises 6 (MAKE IT MODULAR) until 10 (TIME SERVER)**
 
 ## 2. Node.js Exercises
@@ -18,6 +20,8 @@ This week you'll continue with the command line exercises. Go back to your comma
 ### Make a basic CRUD application
 
 ## 3. Code along
+
+> The *code along* section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
 
 In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
 
