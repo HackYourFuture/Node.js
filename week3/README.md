@@ -16,23 +16,30 @@ Another trendy reason for using APIs is known as "microservices". In a nutshell 
 
 ### How to consume an external API
 
-How to consume an external API:
+How to consume an external API. First of all, let's define the terms here.
 
-1. RTFM - read the manual. Every decent API has some sort of online documentation. The format and location is not standard. Look for a docs link. Pay special attention to authentication, versioning and how data is passed (query string or body).
-2. Try out the most basic example you can find in isolation. Remember Postman!
-3. Build up a library of postman requests for the API calls that you plan to use, they will be invaluable in debugging later
-4. Start implementing the API calls in your applicaiton
+By `consume` we refer to the act of using the service an API provides, to be used in our own application. This service will be in the form of some kind of data transfer: for example, let's say we want to get data from the [RandomUser API](https://randomuser.me/api/). The process of making an API call to that URL and then using that data to display something in our application is the `consumation` of that API.
 
-Further materials:
-[What Is an API and Why Should I Use One?](https://medium.com/@TebbaVonMathenstien/what-is-an-api-and-why-should-i-use-one-863c3365726b)
-[Microservices in a Nutshell](https://www.thoughtworks.com/insights/blog/microservices-nutshell)
-[https://youtu.be/ZtLVbJk7KcM](https://youtu.be/ZtLVbJk7KcM)
+Now, how do we go about doing this? Follow this basic guide to get started quickly:
+
+1. RTFM - read the manual. It's important to first know how the API works (what are the endpoints, what kind of data does it deliver, etc.). Every decent API has some sort of online documentation. The format and location is not standard. Look for a docs link. Pay special attention to authentication, versioning and how data is passed (query string or body).
+2. Try out the most basic example you can find in isolation. This usually means trying out the provided example, which the documentation provides. Remember to use Postman to test it out!
+3. Build up a library of Postman requests for the API calls that you plan to use, they will be invaluable in debugging later
+4. Start implementing the API calls in your application
+
+Further materials to learn more about this:
+
+- [What Is an API and Why Should I Use One?](https://medium.com/@TebbaVonMathenstien/what-is-an-api-and-why-should-i-use-one-863c3365726b)
+- [Microservices in a Nutshell](https://www.thoughtworks.com/insights/blog/microservices-nutshell)
+- [https://youtu.be/ZtLVbJk7KcM](https://youtu.be/ZtLVbJk7KcM)
 
 ## 2. What is a templating engine?
 
-So far all the servers that we have build were serving so-called **static** HTML. This means that the contants of the html did not change over time or based on the user.
+So far all the servers that we have build were serving so-called **static** HTML. This means that the contents of the HTML did not change over time or based on the user.
 
-With a templating engine, it's possible to create `dynamic` pages where parts of the content depend on the user that is viewing the page. By using templating engines we can, for example, display the name of the user on the page. Of course, one could inline the HTML inside javascript, but this is not a viable approach. The code quickly becomes tangled and unmaintainable, because it is impossible to separate HTML from javascript code.
+With a templating engine, it's possible to create `dynamic` pages where parts of the content depend on the user that is viewing the page; the content changes depending on who the user is and what they're doing. Take for example your Facebook account. Most likely the content of you see will be different from the content I'll see in my account.
+
+By using templating engines we can, for example, display the name of the user (that is logged in) on the page. Of course, one could inline the HTML inside JavaScript, but this is not a viable approach. The code quickly becomes tangled and unmaintainable, because it is impossible to separate HTML from JavaScript code.
 
 Templating engines work by combining some data (usually in JSON format) and a static template file stored on disc that contains _placeholders_ or _tokens_ where the data needs to be inserted. The process of combining the template and the data is often called _rendering_.
 
@@ -56,12 +63,12 @@ _Fun fact_: Templating engines are not a new idea and have been around since alm
 
 To easily use mustache in combination with express, we will use a special package called `mustache-express`. This package lets mustache interact directly with express request handler and render content directly to the response object. You can find a basic example [here](https://github.com/bryanburgers/node-mustache-express).
 
-### Further materials
+To read more about this, study the following materials:
 
-[mustache js template for node express](https://www.youtube.com/watch?v=mbHz11t84kI)
-[Overview of JavaScript Templating Engines](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/)
-[Javascript Templating Language](https://medium.com/@1sherlynn/javascript-templating-language-and-engine-mustache-js-with-node-and-express-f4c2530e73b2)
-[mustache + javascript](https://github.com/janl/mustache.js/)
+- [mustache js template for node express](https://www.youtube.com/watch?v=mbHz11t84kI)
+- [Overview of JavaScript Templating Engines](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/)
+- [Javascript Templating Language](https://medium.com/@1sherlynn/javascript-templating-language-and-engine-mustache-js-with-node-and-express-f4c2530e73b2)
+- [mustache + javascript](https://github.com/janl/mustache.js/)
 
 ## Finished?
 
