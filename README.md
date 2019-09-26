@@ -8,9 +8,9 @@
 
 So far you've learned about the fundamentals of what makes up a webpage in your browser. We call this `frontend`: the HTML that gives structure to our pages, the CSS that give it a nice look, and lastly the JavaScript that makes our page interactive. Everything you can "see" and "interact" with is made out of these technologies.
 
-However, there is a whole other layer to the cake that you might not be aware of. Have you ever wondered how data moves from one place to another, from one page to another? This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Essentially what's happening is that it's the code that tells the computer how to move and manipulate data.
+However, there is a whole other layer to the cake that you might not be aware of. Have you ever wondered how data moves from one place to another, from one page to another? This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Well here's the secret: there is code that tells the computer how to move and manipulate data. This code is hidden away from the user, because there is no need for them to know about it.
 
-During the following 3 weeks you'll be learning one **approach** of creating a backend. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to be written and executed outside of the browser.
+During the following 3 weeks you'll be learning one **approach** of creating a backend. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to be written and executed outside of the browser. Keep in mind that there are, like everything in development, multiple ways of doing this. There are different other languages and technologies that can be used to create a backend of an application.
 
 ## Learning goals
 
@@ -37,11 +37,11 @@ Verify the installation by running `node -v` (-v is short for version) from the 
 
 ## Planning
 
-| Week | Topic                               | Readings                       | Homework                                | Lesson Plan                               |
-| ---: | ----------------------------------- | ------------------------------ | --------------------------------------- | ----------------------------------------- |
-|   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Homework W1](week1/homework/README.md) | [Lesson Plan W1](week1/lecture/README.md) |
-|   2. | REST, CRUD & API                    | [Readings W2](week2/README.md) | [Homework W2](week2/homework/README.md) | [Lesson Plan W2](week2/lecture/README.md) |
-|   3. | Templating engines, API calls       | [Readings W3](week3/README.md) | [Homework W3](week3/homework/README.md) | [Lesson Plan W3](week3/lecture/README.md) |
+| Week | Topic                               | Readings                       | Homework                       | Lesson Plan                           |
+| ---: | ----------------------------------- | ------------------------------ | ------------------------------ | ------------------------------------- |
+|   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Homework W1](week1/MAKEME.md) | [Lesson Plan W1](week1/LESSONPLAN.md) |
+|   2. | REST, CRUD & API                    | [Readings W2](week2/README.md) | [Homework W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
+|   3. | Templating engines, API calls       | [Readings W3](week3/README.md) | [Homework W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
 
 ## Finished?
 

@@ -11,7 +11,9 @@
 
 This week you'll continue with the command line exercises. Go back to your command line and start doing **exercises 6 (MAKE IT MODULAR) until 10 (TIME SERVER)**
 
-## 2. Node.js
+## 2. Node.js Exercises
+
+> Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, create a folder called `nodejs-exercises`.
 
 ### Make a basic CRUD application
 
