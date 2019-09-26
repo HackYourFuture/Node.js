@@ -70,11 +70,9 @@ Hints:
 
 ## 3. Code along
 
-In the final week of this module you'll learn how to build your own version of a "user login system". You'll do it using Node.js and Express.js, technologies you're already familiar with. What you're probably not familiar with is is certain technologies (MongoDB/Mongoose and EJS) and processes (`authentication`, `validation` and `protected routes`).
+This you will build an application that sends emails. I dont have to explain how important this is as almost every web application needs to send emails. Emails are sent for example to verify users, to recover accounts, to notify users of events, etc. You will need all the skills you have learned so far but I promise you that it will be a lot of fun.
 
-Don't worry too much about not understanding everything. Most of what you're doing here will be repeated continuously. Just follow along and learn a lot!
-
-- [Basic Login System, with Node.js and Passport](https://www.youtube.com/watch?v=6FOq4cUdH8k)
+[Nodemailer - Send Emails From Your Node.js App](https://www.youtube.com/watch?v=nF9g1825mwk&t=469s)
 
 ## 4. PROJECT: HackYourTemperature III
 
