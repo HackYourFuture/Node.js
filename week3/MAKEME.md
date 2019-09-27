@@ -68,13 +68,13 @@ Hints:
 - to set headers use `fetch(<URL>, { headers: { 'XXXX': 'YYYY' } }`
 - the documentation at https://www.npmjs.com/package/node-fetch can be of great help
 
-### **Exercise 4: Fun with Mustache**
+### **Exercise 4: Fun with Handlebars**
 
 Do you know the game [Cards against humanity](https://cardsagainsthumanity.com/). It's a game where players need to fill blanks in a sentence to make the funniest joke:
 
 ![cards against humanity](https://www.snopes.com/tachyon/2015/11/cards-against-humanity.png?resize=865,391)
 
-Inspired by the game you want to write a program that simulates playing the game.  
+Inspired by the game you want to write a node program that simulates playing the game.  
 The program needs to fill in the blanks in the `_______ is great to ________` and print the result to the console.
 
 For the first blank select a random word from `subjects = ["shark", "popcorn", "poison", "fork", "cherry", "toothbrush", "cannon"]`
@@ -82,7 +82,7 @@ For the second blank select a random word from `punchlines = ["watch movie with"
 
 You have to use Mustache to replace the words - https://github.com/janl/mustache.js
 
-Step 1. Install and require handlebar  
+Step 1. Install and require handlebar (not `express-handlebars`, just `handlebars`)
 Step 2. copy the subjects amd punchlines to javascript  
 Step 3. write code that picks a `subject` and `puncline` at random  
 Step 4. replace the blanks in `phrase` with the random `subject` and `punchline` using handlebars  
@@ -90,8 +90,7 @@ Step 4. replace the blanks in `phrase` with the random `subject` and `punchline`
 Hints:
 
 - To get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
-- Remember to install and require handlebars before you use it in code
-- [The documentation on mustache has a very nice example, try it out!](https://github.com/janl/mustache.js#usage)
+- [The documentation on hnadlebars has a nice example, try it out!](https://www.npmjs.com/package/handlebars#usage)
 
 ## 3. Code along
 
