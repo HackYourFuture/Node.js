@@ -47,28 +47,24 @@ Templating engines work by combining some data (usually in JSON format) and a st
 
 The exact syntax and setup vary considerably, but the main components _data_, _template_ and _placeholders_ are found in every implementation. In addition to replacing data, many templating engines support some form of conditional expressions and loops/forEach for dealing with arrays.
 
-There are many implementations of templating engines available: Mustache, Pug (Jade), Handlebars, etc. In this course we will use [Mustache](https://mustache.github.io/#demo).
+There are many implementations of templating engines available: Mustache, Pug (Jade), Handlebars, etc. In this course we will use [Handlebars](https://handlebarsjs.com/).
 
-The syntax for placeholders is double curly brackets (thus the name mustache).Lets look at a very simple example
+The syntax for placeholders is double curly brackets. Let's look at a very simple example
 
 Template `Name: {{firstName}} <b>{{lastName}}</b>`
 Data `{ "firstName": "John", "lastName": "Doe" }`
 Output `Name: John <b>Doe</b>`
 
-You can find more complicated examples [here](https://mustache.github.io/mustache.5.html).
+You can find more complicated in the documentation [here](https://handlebarsjs.com/).
 
-![Mustache](https://media3.giphy.com/media/ehA575gOh0RIQ/giphy.gif?cid=790b761146a36446416541ec3708f8406232e40e052ee6d8&rid=giphy.gif)
-
-_Fun fact_: Templating engines are not a new idea and have been around since almost the beginning of the internet. In fact, php the most ubiquitous language today, started out as a simple templating engine.
-
-To easily use mustache in combination with express, we will use a special package called `mustache-express`. This package lets mustache interact directly with express request handler and render content directly to the response object. You can find a basic example [here](https://github.com/bryanburgers/node-mustache-express).
+To easily use handlebars in combination with express, we will use a special package called `express-handlebars`. This package lets handlebars interact directly with express request handler and render content directly to the response object. You can find a basic example [here](https://www.npmjs.com/package/express-handlebars#basic-usage).
 
 To read more about this, study the following materials:
 
-- [mustache js template for node express](https://www.youtube.com/watch?v=mbHz11t84kI)
+- [express + handlebars Tutorial](https://www.youtube.com/watch?v=1srD3Mdvf50)
 - [Overview of JavaScript Templating Engines](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/)
 - [Javascript Templating Language](https://medium.com/@1sherlynn/javascript-templating-language-and-engine-mustache-js-with-node-and-express-f4c2530e73b2)
-- [mustache + javascript](https://github.com/janl/mustache.js/)
+- [express-handlebars](https://www.npmjs.com/package/express-handlebars)
 
 ## Finished?
 
