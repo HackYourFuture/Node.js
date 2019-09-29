@@ -6,11 +6,9 @@ These are the topics for week 1:
 
 1. What is backend?
 2. What is Node.js?
-   - Node Package Manager (NPM)
-   - Express.js
 3. The client-server model
 4. Writing a server in Node.js
-   * Modularization and npm
+   * modularization and npm
    * express.js  
 5. (Optional) How does the internet work?
 
@@ -45,12 +43,6 @@ Node.js is software that allows you to use JavaScript to write the `application`
 
 Read the following article and code along: [Introduction into Node.js](https://codeburst.io/the-only-nodejs-introduction-youll-ever-need-d969a47ef219)
 
-Software builds on other software. Node.js is powerful because it allows us to use software others have written to help build our own unique applications. In Node.js these are called `modules`/`packages`/`dependencies` (can be used interchangeably). An easy way to get access to these is by using the Node Package Manager, also known as `npm`.
-
-Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
-
-It is also powerful because we can use the language we already know, JavaScript, to write backend applications. Watch the following video and code along: [Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
-
 ## 3. The client-server model
 
 The client-server model is one of the most important concepts within web development. The easiest way to explain this concept is by using an analogy.
@@ -82,6 +74,7 @@ Look into the following resources to increase your understanding:
 
 ## 4. Writing a server in Node.js
 
+Node is great powerful because we can use the language we already know, JavaScript, to write backend applications. Watch the following video and code along: [Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
 
 ### 4.1 Modularization and Node Package Manager - npm
 
@@ -90,27 +83,11 @@ Instead, we can split our code into multiple files and also re-use code that oth
 
 The concept of splitting up code into reusable pieces is called **modularization** and the reusable pieces **modules** (sometimes called *packages* or *libraries*). The whole modularization in node is performed with the help of a small tool called *Node Package Manager* or *npm* for short. To give you an idea of just how easy it is to use *npm*, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
 
-If we want to use `express` in our code we have to do 2 things
-
-1. download (install) the code from the internet using the following command in the command line:
-
-```md
-npm install express
-```
-
-2. Declare that we will use Express at the top of the JavaScript file:
-
-```js
-let express = require("express");`
-```
-
-You can find many other packages online at [https://www.npmjs.com/search?q=express](https://www.npmjs.com/search?q=express)
-
-During the homework exercises you will practice how to use npm in more detail.
+Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 Look into the following resources to increase your understanding:
 
-- [What is require?](https://nodejs.org/zh-cn/knowledge/getting-started/what-is-require/)
+- [NPM official website](https://www.npmjs.com/search?q=express)
 - [An Absolute Beginner's Guide to Using npm](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### 4.2 Express.js
