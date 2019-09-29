@@ -45,21 +45,21 @@ Read the following article and code along: [Introduction into Node.js](https://c
 
 ## 3. The client-server model
 
-The client-server model is one of the most important concepts within web development. The easiest way to explain this concept is by using an analogy.
+The client-server model is one of the most important concepts in web development. The easiest way to explain this concept is by using an analogy.
 
 > Let's say you are hungry and feel like going to a restaurant. The moment you enter the restaurant you are a customer, or in IT terms a `client`. You take a seat and decide to order various things, each order representing a separate `request`: you are requesting an orange juice and requesting a nice, healthy salad. Your requests are heard by the waiter, or in IT terms the `server`. Their job is to listen to your requests and do whatever is necessary to provide you with what you want. The actual services, like cooking the food, making the drinks or doing the dishes are all done by others. However, to the client the end result of these services are all provided by the server. You don't want to know who performs what service, you just want to eat. When the server comes back with whatever you ordered, they provide you with a `response`. This happens whether or not they could fulfill your requests.
 
-In web development the same thing happens. The browser is the client, and some computer that has the data you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
+In a web application the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
-If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving responses on the internet.
+If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
-When you type in a url in your browser then the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next the browser starts scans the HTMLand starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
+Let's see what happens when you type in a url in your browser. First, the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next, the browser starts scans the HTML and starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load, for example, some json data.
+A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load more resources, for example, some json data.
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
+The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not automatically determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
 
 - `text/javascrpt`
 - `text/html`
@@ -92,7 +92,7 @@ Look into the following resources to increase your understanding:
 
 ### 4.2 Express.js
 
-In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
+In Node.js it's possible to make a HTTP server, using the native `http` module, as we saw in the Node.js crash course video. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
 
 Practically speaking, what can we do with a web server like `http` or `Express`? All the magic that makes the frontend work:
 
