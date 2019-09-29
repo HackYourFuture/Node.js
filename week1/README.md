@@ -16,7 +16,7 @@ These are the topics for week 1:
 
 ## 1. What is backend?
 
-In software development, we separate the user experience and utility (the `frontend`) from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../assets/atm.jpg). What you can interact with,  pressing a button or inserting a card, is called the `user interface`. In software applications the term *frontend* is also used, and from that comes frontend code and frontend developer. However, everything that's needed to make it work the way it does, i.e. the  the hardware and software needed to make it do the real work is called `backend` and from that backend programmer.
+In software development, the user experience and utility (the `frontend`) is often separated from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../assets/atm.jpg). What you can interact with,  pressing a button or inserting a card, is `frontend` (a.k.a `user interface`). However, everything that's needed to make it work the way it does, i.e. the hardware and software needed to make it do the real work is called `backend`.
 
 In web development the term backend can be boiled down to 3 components:
 
