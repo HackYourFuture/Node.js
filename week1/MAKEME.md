@@ -41,7 +41,7 @@ The function adds characters to a string so that it has at least certain number 
 
 You find this function brilliant and want to use it in your code.
 
-Step 0. Create a new empty folder.
+Step 0. Create a new empty folder, e.g. `exercise1`
 
 Step 1. Create a file called `andrejs-awesome-function.js` (or something else, the name is arbitrary), then copy the function `padLeft` in it.`
 
@@ -50,10 +50,10 @@ Step 2. Create another file for your code called `app.js`. In this file use the 
 Your output should be:
 
 ```javascript
-12;
-846;
-2;
-1236;
+  12
+ 846
+   2
+1236
 ```
 
 Tips:
@@ -61,11 +61,11 @@ Tips:
 - use the `exports` keyword in `andrejs-awesome-function.js`
 - use the `require` keyword in `app.js`
 - use `forEach` to loop over the array in `app.js`
-- use `padLeft(number, 4 , "")` to pad a number to 4 characters
+- use `padLeft(number, 4 , " ")` to pad a number to 4 characters
 
 ### **Exercise 2: npm**
 
-Oh no! Your boss calls you and tells you that he tried to pad some numbers to 8 characters and it was not working at all. He tells you to fix it as soon as possible.
+Oh no! Your boss calls you and tells you that he tried to pad some numbers to 8 characters and it was not working at all. He tells you to fix the bug as soon as possible.
 
 When you look at the function code you realize that the function only works up to 5 characters.
 
@@ -75,32 +75,43 @@ function padLeft(val, num, str) {
 }
 ```
 
-What a stupid function! For a moment, you consider to rename the file to `andrejs-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters, but then it is just a matter of time before someone tries to use it for 9 characters. You scour the internet for clues and discover that there is already a function that does the same on npm https://www.npmjs.com/package/left-pad.
+What a stupid function! For a moment, you consider to rename the file to `andrejs-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters
 
-Your job now is to replace the function call from `padLeft` to use this new npm package called `left-pad`.
+```javascript
+function padLeft(val, num, str) {
+  return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
+}
+```
 
-Step 0. Before you start installing dependency you need to initialize npm using `npm init`
+Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads number available through npm https://www.npmjs.com/package/left-pad.
 
-Step 1. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the left-pad package
+Perfect!. Now all you need to do is replace the function call from `padLeft` to use this new npm package called `left-pad`.
+
+
+Step 0. Create a new empty folder, e.g. `exercise2`
+
+Step 1. Initialize npm using `npm init`
+
+Step 2. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the left-pad package
 
 Step 3. Pad the numbers to 8 characters and check if it works correctly
 
 Tips:
 
 - be careful to be in the correct directory when running `npm install left-pad`
-- use `padLeft(number, 8 , "")` to pad a number to 4 characters
+- use `padLeft(number, 8 , " ")` to pad a number to 8 characters
 
 ### **Exercise 3: Create an HTTP web server**
 
 In this exercise we will build a simple web server. Simple in the sense it will only serve one html file and one javascript file. This is enough to serve a minimal web site.
 
-Step 0. As always start with a new empty folder e.g. `exercise4`
+Step 0. As always start with a new empty folder e.g. `exercise3`
 
 Step 1. Initialize npm in this folder
 
 Step 2. Create a file for the code of your application
 
-Step 3. Copy the code from the lecture. This code create a server that listens on port 3000 and replies with _Hello World!_
+Step 3. Copy n paste the following code. This code create a server that listens on port 3000 and replies with _Hello World!_
 
 ```javascript
 var http = require('http');
@@ -116,7 +127,7 @@ server.listen(3000); //the server listens on port 3000
 
 Run the code and check that it works by opening a browser at `http:\\localhost:3000`
 
-Step 4. Instead of returning a simple `Hello World!` the server needs to return the following HTML.
+Step 4. Instead of returning `Hello World!` the server needs to return the following HTML.
 
 ```html
 <html>
@@ -138,10 +149,10 @@ Tips:
 - don't be afraid to copy-paste this directly in the javascript file using as a multiline string. You shouldn't use a separate html file for now.
 - Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response. Use the function `response.setHeader(name, value)` - https://nodejs.org/api/http.html#http_response_setheader_name_value
 
-If you open the network tab you will notice that the browser tries to load the javascript `script.js`, but fails. This is because our server does not yet serve this file. So far the server only serves one thing, the html file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.  
+If you open the network tab you will notice that the browser tries to load the javascript `script.js`, but fails. This is because our server does not serve this file yet. So far the server only serves one thing, the html file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.  
 If you open the network tab you can see that when the browser is requesting the html code it is using the url `http:\\localhost:3000\`. On the other hand, when the browser is requesting the javascript it is using the url `http:\\localhost:3000\script.js`.
 
-Step 5. Make the server listen to and send back the following javascript code.
+Step 5. Make the server listen to requests at `http:\\localhost:3000\script.js` and send back the following javascript code.
 
 ```javascript
 document
@@ -156,10 +167,10 @@ Tips:
 
 Run the code and check that it works by opening a browser at `http:\\localhost:3000`. You should see the message _Welcome to Sever-land!_.
 
-Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, then processes them based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
+Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
 
 _BONUS_  
- Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html (from step 1)
+ Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html.
 
 ```html
 <link rel="stylesheet" type="text/css" href="style.css" />
