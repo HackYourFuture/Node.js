@@ -34,7 +34,7 @@ That was not too hard now was it. Now you are ready for the real coding. We will
 
 **Creating new posts**
 
- To create a new blog posts users need to send a json in the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. If you did the practice sessions you already know how this works. You can use the following starter code:
+ To create a new blog posts, users need to send a json in the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. You can use the following starter code:
 
 ```javascript
 const fs = require("fs");
@@ -57,7 +57,7 @@ Up next:
 
 **Updating existing posts**
 
-Updating posts is very similar to creating them. You only need to change the METHOD and add a check that the blog post that you are trying to update already exists with `fs.existsSync(title)`.
+Updating posts is very similar to creating them. You only need to change the METHOD and add a check that the blog post that the user is trying to update already exists with `fs.existsSync(title)`.
 
 ```javascript
 app.<METHOD>('/blogs', (req, res) => {
@@ -78,7 +78,7 @@ Next up:
 
 **Deleting posts**
 
-To delete a post we need to delete the corresponding file. This time we are going to use a *url parameter* in express to send the title. Since we are deleting a file there is no need to send any content. To delete a file in Node you can use `fs.unlinkSync(<filename>)`:
+To delete a post we need to delete the corresponding file. This time we are going to use a *url parameter* in express to send the title. Since we are deleting a file there is no need to send any content in the request. To delete a file in Node you can use `fs.unlinkSync(<filename>)`:
 
 ```javascript
 app.<METHOD>('/blogs/:title', (req, res) => {
@@ -88,7 +88,7 @@ app.<METHOD>('/blogs/:title', (req, res) => {
 })
 ```
 
-Use Postman to test that your code works. Remember to use the correct url for example: `http://localhost:3000/blogs/My first blog`
+Use Postman to test that your code works. Remember to use the correct url, for example: `http://localhost:3000/blogs/My first blog`
 
 That was almost too easy, right? Next up, the hardest part:
 
@@ -99,13 +99,13 @@ To read a post the user needs to open the url `http:\\localhost:3000\blogs\My Fi
 ```javascript
 app.<METHOD>('/blogs/:title', (req, res) => {
     // How to get the tilte from the url parameters?
-    res.send(title);
+    res.sendfile(title);
 })
 ```
 
 Use Postman to test that your code works.
 
-All done. Then _Congratulations_
+All done? Then, _Congratulations_
 
 ![Congratulations](https://media.giphy.com/media/l1AsI389lnxkvQHAc/giphy.gif)
 
