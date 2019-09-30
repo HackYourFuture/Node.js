@@ -9,19 +9,19 @@ Add four more actions:
 
 ### `readTodo` (`GET /todos/:id`)
 
-  Get a single to-do with ID `:id`
+Get a single to-do with ID `:id`
 
 ### `clearTodos` (`DELETE /todos`)
 
-  Clears the list of to-dos
+Clears the list of to-dos
 
-### `markAsDone` (`POST /todos/:id/done`)
+### `markAsDone` (PATCH /todos/:id)
 
-  Sets the `done` flag of a single to-do to `true`
+Sets the done flag of a single to-do to true
 
-### `markAsNotDone` (`DELETE /todos/:id/done`)
+### `markAsNotDone` (PATCH /todos/:id)
 
-  Sets the `done` flag of a single to-do to `false`
+Sets the done flag of a single to-do to false
 
 ## Requirements
 
