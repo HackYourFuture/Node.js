@@ -15,13 +15,9 @@ Add four more actions:
 
   Clears the list of to-dos
 
-### `markAsDone` (`POST /todos/:id/done`)
+### `patchTodo` (`PATCH /todos/:id`)
 
-  Sets the `done` flag of a single to-do to `true`
-
-### `markAsNotDone` (`DELETE /todos/:id/done`)
-
-  Sets the `done` flag of a single to-do to `false`
+  Patches `done` and/or `description ` of a single to-do
 
 ## Requirements
 
