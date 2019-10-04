@@ -5,7 +5,7 @@
 Read through the code from the lecture, make sure you understand the flow of the
 program.
 
-Add four more actions:
+Add three more actions:
 
 ### `readTodo` (`GET /todos/:id`)
 
@@ -17,7 +17,7 @@ Add four more actions:
 
 ### `patchTodo` (`PATCH /todos/:id`)
 
-  Patches `done` and/or `description ` of a single to-do
+  Patches `done` and/or `description` of a single to-do
 
 ## Requirements
 
