@@ -5,7 +5,7 @@
 Read through the code from the lecture, make sure you understand the flow of the
 program.
 
-Add four more actions:
+Add three more actions:
 
 ### `readTodo` (`GET /todos/:id`)
 
@@ -17,7 +17,7 @@ Clears the list of to-dos
 
 ### `patchTodo` (`PATCH /todos/:id`)
 
-Sets the `done` flag of a single to-do to `true` or false.
+Sets the `done` and/or `description` fields of a single to-do.
 
 ## Requirements
 
