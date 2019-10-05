@@ -15,13 +15,9 @@ Get a single to-do with ID `:id`
 
 Clears the list of to-dos
 
-### `markAsDone` (`PATCH /todos/:id`)
+### `patchTodo` (`PATCH /todos/:id`)
 
-Sets the `done` flag of a single to-do to `true`
-
-### `markAsNotDone` (`PATCH /todos/:id`)
-
-Sets the`done`flag of a single to-do to`false`
+Sets the `done` flag of a single to-do to `true` or false.
 
 ## Requirements
 
