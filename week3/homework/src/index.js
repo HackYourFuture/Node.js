@@ -5,12 +5,13 @@ const app = express();
 const fs = require('fs');
 const uuidv4 = require('uuid/v4');
 const port = 3041;
+const todos = require('todos');
 
 app.use(express.json());
 
 function readTodoFiles() {
   return new Promise(function(resolve, reject) {
-    fs.readFile('todo.json', 'utf8', (err, data) => {
+    fs.readFile('todos.json', 'utf8', (err, data) => {
       if (err) reject(err);
       else resolve(JSON.parse(data));
     });
@@ -19,7 +20,7 @@ function readTodoFiles() {
 
 function saveTodos(savePath) {
   return new Promise(function(resolve, reject) {
-    fs.writeFile('todo.json', JSON.stringify(savePath), 'utf8', err => {
+    fs.writeFile('todos.json', JSON.stringify(savePath), 'utf8', err => {
       if (err) reject(err);
       else resolve();
     });
@@ -68,7 +69,7 @@ async function updateTodo(req, res) {
 
 function validateAndParseTodo(req) {
   const { todo } = req.body;
-  if (todo == null) throw Error('todo not set');
+  if (todo == null) throw new Error('todo not set');
 
   if (todo.description != null) todo.description = todo.description.trim();
 
