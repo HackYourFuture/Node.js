@@ -29,7 +29,11 @@ function saveTodos(savePath) {
 
 async function readTodos(req, res) {
   const data = await readTodoFiles();
-  res.send(data);
+  if (data.length === 0) {
+    res.send('Item not found. Please add some items.');
+  } else {
+    res.send(data);
+  }
 }
 
 async function deleteTodo(req, res) {
@@ -108,7 +112,7 @@ async function deleteAllTodos(req, res) {
   allData = [];
   await saveTodos(allData);
   res.status = 201;
-  res.send({ ok: 'All todos are successfully deleted' });
+  res.send('All todos are successfully deleted');
 }
 
 app.get('/', (req, res) => {
