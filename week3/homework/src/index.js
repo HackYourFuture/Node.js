@@ -5,7 +5,7 @@ const app = express();
 const fs = require('fs');
 const uuidv4 = require('uuid/v4');
 const port = 3041;
-const todos = require('todos');
+// const todos = require('./todos.json');
 
 app.use(express.json());
 
@@ -33,9 +33,9 @@ async function readTodos(req, res) {
 }
 
 async function deleteTodo(req, res) {
-  let todos = await readTodoFiles();
-  let todo = todos.find(todo => todo.id == req.params.id);
-  let indexOfTodo = todos.indexOf(todo);
+  const todos = await readTodoFiles();
+  const todo = todos.find(todo => todo.id == req.params.id);
+  const indexOfTodo = todos.indexOf(todo);
   todos.splice(indexOfTodo, 1);
   todos.push(todo);
   await saveTodos(todo);
@@ -63,18 +63,17 @@ async function updateTodo(req, res) {
     await saveTodos(todos);
     res.send();
   } catch (err) {
-    new Error(console.log(err.message));
+    console.log(err.message);
   }
 }
 
 function validateAndParseTodo(req) {
   const { todo } = req.body;
-  if (todo == null) throw new Error('todo not set');
+  if (todo == null) console.log('todo not set');
 
   if (todo.description != null) todo.description = todo.description.trim();
 
-  if (todo.description == null || todo.description.length === 0)
-    throw new Error('description not set');
+  if (todo.description == null || todo.description.length === 0) console.log('description not set');
   return todo;
 }
 
@@ -109,7 +108,7 @@ async function deleteAllTodos(req, res) {
   allData = [];
   await saveTodos(allData);
   res.status = 201;
-  res.send();
+  res.send({ ok: 'All todos are successfully deleted' });
 }
 
 app.get('/', (req, res) => {
