@@ -64,6 +64,7 @@ node index.js reset
 ## Bonus assignment
 
 - Use JSON to store to-dos
+- Read, write and remove todos to and from JSON files using streams.
 - Split each action (i.e. read, write, etc.) into a separate file
 - Use [commander](https://www.npmjs.com/package/commander) library to implement
   command line interface
