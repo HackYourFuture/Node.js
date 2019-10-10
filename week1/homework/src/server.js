@@ -10,6 +10,22 @@ function createServer(port) {
 
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
+    // let stateObj = {state};
+    response.setHeader('Content-Type', 'application/json');
+    if (request.url === '/' || request.url === '/reset') {
+      state = 10;
+      response.write(JSON.stringify({ state: state }));
+    } else if (request.url === '/add') {
+      response.write(JSON.stringify({ state: ++state }));
+    } else if (request.url === '/subtract') {
+      response.write(JSON.stringify({ state: --state }));
+    } else if (request.url === '/state') {
+      response.write(JSON.stringify({ state: state }));
+    } else {
+      response.statusCode = 404;
+      response.write(JSON.stringify({ error: 'Not found' }));
+    }
+    response.end();
   });
 
   return server;
