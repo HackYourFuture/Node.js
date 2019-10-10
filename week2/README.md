@@ -35,6 +35,13 @@ Documentation:
 
 [fs.appendFile()](https://nodejs.org/docs/latest-v8.x/api/fs.html#fs_fs_appendfile_file_data_options_callback)
 
+### Working with streams in Node.js
+[fs.readFile() vs fs.createReadStream()](https://medium.com/@dalaidunc/fs-readfile-vs-streams-to-read-text-files-in-node-js-5dd0710c80ea)
+
+[Node.js stream documentation](https://nodejs.org/api/stream.html)
+
+[Streams vs readFile and piping streams](https://www.freecodecamp.org/news/node-js-streams-everything-you-need-to-know-c9141306be93/)
+
 ### Building a command line interface (CLI)
 
 [Node.js Process Documentation](https://nodejs.org/docs/latest-v8.x/api/process.html)
