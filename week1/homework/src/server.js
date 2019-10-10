@@ -11,7 +11,7 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
     response.setHeader('Content-Type', 'application/json');
-    if (request.url === '/' || request.url === '/reset') {
+    if (request.url === '/reset') {
       state = 10;
       response.write(JSON.stringify({ state: state }));
     } else if (request.url === '/add') {
