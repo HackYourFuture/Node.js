@@ -9,34 +9,39 @@ function createServer(port) {
   let state = 10;
 
   const server = http.createServer((request, response) => {
-    let responseJsonObject = {};
+    const responseJsonObject = {};
+
     response.setHeader('Content-Type', 'application/json');
+
+    function createResponse(data) {
+      if (response.statusCode === 404) {
+        responseJsonObject.error = data;
+      } else {
+        responseJsonObject.state = data;
+      }
+      response.write(JSON.stringify(responseJsonObject));
+    }
+
     switch (request.url) {
       case '/state': {
-        responseJsonObject.state = state;
-        response.write(JSON.stringify(responseJsonObject));
+        createResponse(state);
         break;
       }
       case '/add': {
-        responseJsonObject.state = ++state;
-        response.write(JSON.stringify(responseJsonObject));
+        createResponse(++state);
         break;
       }
       case '/subtract': {
-        responseJsonObject.state = --state;
-        response.write(JSON.stringify(responseJsonObject));
+        createResponse(--state);
         break;
       }
       case '/reset': {
-        state = 10;
-        responseJsonObject.state = state;
-        response.write(JSON.stringify(responseJsonObject));
+        createResponse((state = 10));
         break;
       }
       default: {
         response.statusCode = 404;
-        responseJsonObject.error = 'Not found';
-        response.write(JSON.stringify(responseJsonObject));
+        createResponse('Not found');
         break;
       }
     }
@@ -47,5 +52,5 @@ function createServer(port) {
 }
 
 module.exports = {
-  createServer
+  createServer,
 };
