@@ -9,7 +9,7 @@ const http = require('http');
 function createServer(port) {
   let state = 10;
 
-  function getResponse(response, state) {
+  function constructResponse(response, state) {
     response.setHeader('Content-Type', 'application/json');
     response.write(JSON.stringify(state));
     response.end();
@@ -18,23 +18,23 @@ function createServer(port) {
   const server = http.createServer((request, response) => {
     switch (request.url) {
       case '/state':
-        getResponse(response, { state });
+        constructResponse(response, { state });
         break;
       case '/add':
         state++;
-        getResponse(response, { state });
+        constructResponse(response, { state });
         break;
       case '/subtract':
         state--;
-        getResponse(response, { state });
+        constructResponse(response, { state });
         break;
       case '/reset':
         state = 10;
-        getResponse(response, { state });
+        constructResponse(response, { state });
         break;
       default:
         response.statusCode = 404;
-        getResponse(response, { error: 'Not found' });
+        constructResponse(response, { error: 'Not found' });
     }
   });
 
