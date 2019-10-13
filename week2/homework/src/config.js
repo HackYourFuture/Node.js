@@ -22,7 +22,7 @@ program
   .command('list')
   .alias('ls')
   .description('Lists all the to-do list.')
-  .action(async() => {
+  .action(async () => {
     await program.listManager.listTodos();
   });
 
@@ -41,7 +41,7 @@ program
     `Updates the to-do item's title with the new title \
   of which id number matches with the id number provided`
   )
-  .action(async(id, title) => {
+  .action(async (id, title) => {
     await program.listManager.updateTodo(id, title);
   });
 
@@ -60,7 +60,7 @@ program
   .command('reset')
   .alias('rs')
   .description('Removes all the to-do items from the list.')
-  .action(async() => {
+  .action(async () => {
     await program.listManager.resetTodos();
   });
 

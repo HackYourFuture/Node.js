@@ -1,16 +1,11 @@
 'use strict';
-const { readFile } = require('fs');
-const { promisify } = require('util');
-
-const readFilePromised = promisify(readFile);
+const { readFile } = require('./utils');
 
 const getAllTodos = async path => {
   try {
-    const { todos } = await readFilePromised(path, 'utf8');
+    const { todos } = await readFile(path, 'utf8');
     return todos;
-  } catch (err) {
-    console.error(`Error occurred while reading todos from the file: \
-      ${err.message}`);
+  } catch (_) {
     return null;
   }
 };
