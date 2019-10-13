@@ -1,3 +1,5 @@
 'use strict';
 
-// TODO: Write the homework code in this file
+const commander = require('commander');
+
+const program = new commander.Command();
