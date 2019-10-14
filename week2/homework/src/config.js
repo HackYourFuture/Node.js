@@ -4,7 +4,7 @@ const commander = require('commander');
 
 const program = new commander.Command();
 
-// Configure Command Line Interface -Options-
+// Configure Command Line Interface -Options & Commands-
 
 program.version('1.0.0');
 

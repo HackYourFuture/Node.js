@@ -1,6 +1,7 @@
 'use strict';
 const getTodos = require('./reader');
 const saveTodos = require('./writer');
+const { message } = require('./constants');
 
 class ListManager {
   constructor (path) {
@@ -20,9 +21,7 @@ class ListManager {
       } else {
         this.todos = [];
         if (!(await saveTodos(this.dataPath, this.todos))) {
-          throw new Error(
-            'There is a fatal error that prevent program from preparing the todo data file!'
-          );
+          throw new Error(message.error.fatal);
         } else {
           this.lastTodoID = 0;
           return true;
@@ -30,8 +29,8 @@ class ListManager {
       }
     } catch (error) {
       // This is a real error that we can not keep on running
-      console.error(`Error occurred while trying to prepare todos data file.
-      Error: ${error.message}
+      console.error(`${message.misc.prepareFailError} 
+      Error: ${error.message}! 
       Program will end.`);
       this.todos = null;
       return false; // Tells that preparing did not go well
@@ -47,10 +46,10 @@ class ListManager {
             console.log(`Todo Item: ${todo.id}, ${todo.title}`);
           });
         } else {
-          console.log('There are no todos yet.');
+          console.log(message.success.emptyList);
         }
       } catch (error) {
-        console.log(`Todos could not be fetched. Error: ${error.message}`);
+        console.log(`${message.error.list} Error: ${error.message}`);
       }
     }
   }
@@ -60,10 +59,9 @@ class ListManager {
       this.todos.push({ id: ++this.lastTodoID, title });
       try {
         await saveTodos(this.dataPath, this.todos);
-        console.log('New Todo item successfully added to the list.');
+        console.log(message.success.add);
       } catch (error) {
-        console.error(`Error occurred while trying to save the list.
-        Error: ${error.message}`);
+        console.error(`${message.error.add} Error: ${error.message}`);
         this.lastTodoID--;
       }
     }
@@ -72,23 +70,21 @@ class ListManager {
   async removeTodo (id) {
     const parsedId = parseInt(id, 10);
     if (isNaN(parsedId)) {
-      console.error(`${id} is not a number. \
-      Please provide a number that might match with a todo item for remove operation.`);
+      console.error(`${id} is not a number. ${message.misc.argumentParseError('remove')}`);
       return;
     }
     if (this.isPrepared()) {
       const filteredTodos = this.todos.filter(todo => todo.id !== parsedId);
       if (filteredTodos.length === this.todos.length) {
-        console.warn(`Could not find a todo item with id ${id}!`);
+        console.warn(`${message.error.remove} ${id}!`);
         return;
       }
       this.todos = filteredTodos;
       try {
         await saveTodos(this.dataPath, this.todos);
-        console.log(`Todo item with id ${id} successfully removed from the list.`);
+        console.log(message.success.remove(id));
       } catch (error) {
-        console.error(`Error occurred while trying to save the list.
-        Error: ${error.message}`);
+        console.error(`${message.error.save} Error: ${error.message}`);
       }
     }
   }
@@ -96,8 +92,7 @@ class ListManager {
   async updateTodo (id, title) {
     const parsedId = parseInt(id, 10);
     if (isNaN(parsedId)) {
-      console.error(`${id} is not a number. \
-      Please provide a number that might match with a todo item for update operation.`);
+      console.error(`${id} is not a number. ${message.misc.argumentParseError('update')}`);
       return;
     }
     if (this.isPrepared()) {
@@ -106,13 +101,12 @@ class ListManager {
         todoToUpdate.title = title;
         try {
           await saveTodos(this.dataPath, this.todos);
-          console.log(`Todo item with id ${id} successfully updated.`);
+          console.log(message.success.update(id));
         } catch (error) {
-          console.error(`Error occurred while trying to save the list.
-          Error: ${error.message}`);
+          console.error(`${message.error.save} Error: ${error.message}`);
         }
       } else {
-        console.warn(`Could not find a todo item with id ${id}!`);
+        console.warn(`${message.error.update} ${id}!`);
       }
     }
   }
@@ -122,10 +116,9 @@ class ListManager {
       this.todos = [];
       try {
         await saveTodos(this.dataPath, this.todos);
-        console.log(`Reset operation have been done successfully.`);
+        console.log(message.success.reset);
       } catch (error) {
-        console.error(`Error occurred while trying to save the list.
-        Error: ${error.message}`);
+        console.error(`${message.error.save} Error: ${error.message}`);
       }
     }
   }

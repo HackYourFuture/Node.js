@@ -1,7 +1,7 @@
 'use strict';
 const { program: commander, configureCLI } = require('./config');
 const ListManager = require('./list-manager');
-const { cli } = require('./constants');
+const { cli, message } = require('./constants');
 
 const main = async () => {
   const manager = new ListManager();
@@ -32,8 +32,9 @@ const main = async () => {
     if (!isNaN(parsedId)) {
       await manager.removeTodo(parsedId);
     } else {
-      console.error(`${commander.remove} is not a number. \
-      Please provide a number that might match with a todo item for remove operation.`);
+      console.error(
+        `${commander.remove} is not a number. ${message.misc.argumentParseError('remove')}`
+      );
     }
   } else if (commander.reset) {
     await manager.resetTodos(commander.reset);
