@@ -25,6 +25,7 @@ class ListManager {
           );
         } else {
           this.lastTodoID = 0;
+          return true;
         }
       }
     } catch (error) {
@@ -41,11 +42,15 @@ class ListManager {
     if (this.isPrepared()) {
       try {
         this.todos = await getTodos(this.dataPath);
-        this.todos.forEach(todo => {
-          console.log(`Todo Item: ${todo.id}, ${todo.title}`);
-        });
+        if (this.todos.length > 0) {
+          this.todos.forEach(todo => {
+            console.log(`Todo Item: ${todo.id}, ${todo.title}`);
+          });
+        } else {
+          console.log('There are no todos yet.');
+        }
       } catch (error) {
-        console.log(`Todos could not be fetched.`);
+        console.log(`Todos could not be fetched. Error: ${error.message}`);
       }
     }
   }
@@ -65,8 +70,14 @@ class ListManager {
   }
 
   async removeTodo (id) {
+    const parsedId = parseInt(id, 10);
+    if (isNaN(parsedId)) {
+      console.error(`${id} is not a number. \
+      Please provide a number that might match with a todo item for remove operation.`);
+      return;
+    }
     if (this.isPrepared()) {
-      const filteredTodos = this.todos.filter(todo => todo.id !== id);
+      const filteredTodos = this.todos.filter(todo => todo.id !== parsedId);
       if (filteredTodos.length === this.todos.length) {
         console.warn(`Could not find a todo item with id ${id}!`);
         return;
@@ -83,8 +94,14 @@ class ListManager {
   }
 
   async updateTodo (id, title) {
+    const parsedId = parseInt(id, 10);
+    if (isNaN(parsedId)) {
+      console.error(`${id} is not a number. \
+      Please provide a number that might match with a todo item for update operation.`);
+      return;
+    }
     if (this.isPrepared()) {
-      const todoToUpdate = this.todos.find(todo => todo.id === id);
+      const todoToUpdate = this.todos.find(todo => todo.id === parsedId);
       if (todoToUpdate) {
         todoToUpdate.title = title;
         try {
@@ -94,6 +111,8 @@ class ListManager {
           console.error(`Error occurred while trying to save the list.
           Error: ${error.message}`);
         }
+      } else {
+        console.warn(`Could not find a todo item with id ${id}!`);
       }
     }
   }

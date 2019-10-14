@@ -22,9 +22,7 @@
         "--serial",
         "${workspaceRoot}/week1/homework/test/server.test.js"
       ],
-      "skipFiles": [
-        "<node_internals>/**/*.js"
-      ]
+      "skipFiles": ["<node_internals>/**/*.js"]
     },
     {
       "type": "node",
@@ -32,6 +30,13 @@
       "name": "Launch Week 1 - Lecture",
       "program": "${workspaceFolder}/week1/lecture/src/index.js",
       "cwd": "${workspaceFolder}/week1/lecture"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 2 - Homework",
+      "program": "${workspaceFolder}/week2/homework/src/index.js",
+      "cwd": "${workspaceFolder}/week2/homework"
     },
     {
       "type": "node",
