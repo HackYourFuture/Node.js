@@ -23,9 +23,7 @@ const main = async () => {
     return;
   }
 
-  if (commander.list) {
-    await manager.listTodos();
-  } else if (commander.add) {
+  if (commander.add) {
     await manager.addTodo(commander.add);
   } else if (commander.remove) {
     const parsedId = parseInt(commander.remove, 10);
@@ -38,6 +36,9 @@ const main = async () => {
     }
   } else if (commander.reset) {
     await manager.resetTodos(commander.reset);
+  }
+  if (commander.list) {
+    await manager.listTodos();
   }
 };
 
