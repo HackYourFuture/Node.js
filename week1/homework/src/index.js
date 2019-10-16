@@ -1,11 +1,11 @@
 'use strict';
 
-const http = require('http');
-
-const handleRequest = require('./server');
+const {
+  createServer
+} = require('./server');
 
 const PORT = 3000;
 
-http.createServer(handleRequest).listen(PORT, () => {
+createServer().listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
