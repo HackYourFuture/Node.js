@@ -1,0 +1,22 @@
+{
+  "name": "Node.js",
+  "version": "1.0.0",
+  "description": "> Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/Node.js/pulls).",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EsraZengn/Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EsraZengn/Node.js/issues"
+  },
+  "homepage": "https://github.com/EsraZengn/Node.js#readme"
+}
