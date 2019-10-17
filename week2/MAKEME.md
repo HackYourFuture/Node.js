@@ -7,13 +7,13 @@
 3. Code along
 4. PROJECT: HackYourTemperature II
 
-## 1. Practice the concepts
+## **1. Practice the concepts**
 
-> The problems in the *practice the concepts* section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
+> The problems in the _practice the concepts_ section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
 
 This week you'll continue with the command line exercises. Go back to your command line and start doing **exercises 6 (MAKE IT MODULAR) until 10 (TIME SERVER)**
 
-## 2. Node.js Exercises
+## **2. Node.js Exercises**
 
 > Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, create a folder called `nodejs-exercises`.
 
@@ -27,14 +27,14 @@ In our API blogs will have `title` and `content`. Let's jump right in.
 Step 0. Creata a new empty folder e.g. `exercise1`  
 Step 1. In the folder you just created, initalize npm  
 Step 2. Create a javascript file that will hold your code  
-Step 3. Install and require express   
-Step 4. Write or copy code from lecture to start an express server on port 3000. 
+Step 3. Install and require express  
+Step 4. Write or copy code from lecture to start an express server on port 3000.
 
-That was not too hard now was it. Now you are ready for the real coding. We will start off by 
+That was not too hard now was it. Now you are ready for the real coding. We will start off by
 
 **Creating new posts**
 
- To create a new blog posts users need to send a json in the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. If you did the practice sessions you already know how this works. You can use the following starter code:
+To create a new blog posts users need to send a json in the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. If you did the practice sessions you already know how this works. You can use the following starter code:
 
 ```javascript
 const fs = require("fs");
@@ -78,7 +78,7 @@ Next up:
 
 **Deleting posts**
 
-To delete a post we need to delete the corresponding file. This time we are going to use a *url parameter* in express to send the title. Since we are deleting a file there is no need to send any content. To delete a file in Node you can use `fs.unlinkSync(<filename>)`:
+To delete a post we need to delete the corresponding file. This time we are going to use a _url parameter_ in express to send the title. Since we are deleting a file there is no need to send any content. To delete a file in Node you can use `fs.unlinkSync(<filename>)`:
 
 ```javascript
 app.<METHOD>('/blogs/:title', (req, res) => {
@@ -109,21 +109,59 @@ All done. Then _Congratulations_
 
 ![Congratulations](https://media.giphy.com/media/l1AsI389lnxkvQHAc/giphy.gif)
 
-## 3. Code along
+## **3. Code along**
 
-> The *code along* section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
+> The _code along_ section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
 
-In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
+We'll start this week off with a blast, by building a small application that allows you to add people's basic information to a page. This is done **dynamically**, meaning that new information can get loaded in the page without having to do a page refresh. You'll learn how to use [Express.js](https://expressjs.com/) and a templating engine (you'll learn more about that in week 3) called [Handlebars](https://handlebarsjs.com/).
 
-Enjoy!
+Have fun!
 
-- [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
+- [Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
 
-## 4. [PROJECT] Extending HackYourTemperature
+## **4. PROJECT: HackYourTemperature II**
+
+> This week you'll continue building on `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`.
+
+So far you've build a basic web server. We loaded in the necessary modules. We have one `end point`, which is `/`. We have activated the server, by `listening` to it.
+
+This week's homework will be 2 parts:
+
+1. making templates to create a frontend that will be a simple page with a form
+2. creating a `POST` route that will allow us to access the submitted form data.
+
+### The Frontend
+
+Since we've already loaded in our package `express-handlebars`, we can get started immediately. If at any point you're stuck, try reading the [documentation](https://github.com/ericf/express-handlebars) or ask a question in Slack!
+
+1. We first have to make Express aware of the templating engine. We do this by using the `engine()` and `set()` functions. Paste in the following (and figure out what it does):
+
+```js
+app.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+```
+
+2. In the root of the project folder, create a new folder called `views`. Inside of this create another folder called `layouts`.
+3. Create 2 `.handlebars` files: inside layouts create `main.handlebars` and outside of the folder `index.handlebars`
+4. The content of `main.handlebars` should be the complete HTML document. Write a basic structure, including a `<head>` and `<body>`. As a final part, inside the `<body>` paste in the following: `{{ body }}` (this injects the HTML from `index.handlebars)` into the body)
+5. The content of the `index.handlebars` should be a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
+6. Test out your work! Make sure it renders a form in your browser
+
+### The Backend
+
+In this part we'll add another endpoint, with a `POST` method.
+
+1. First let's modify our `/` route. Instead of sending a string, send a template using the `render()` function. Pass in the name of the template, which is `index`
+2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `urlencoded()` method on the express object. Using the `use()` function from `app`, pass in the `urlencoded()` from `express`. Give the `urlencoded()` function the following argument: `{ extended: true }`
+3. Create a `POST` route, that has as an endpoint: `/weather`
+4. Inside the callback function of the route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
+5. Send the the form input back as a response to the client
+
+Test out your work and make sure that any time you submit something in the form, it returns as a response from the server the exact words you submitted.
 
 ## **SUBMIT YOUR HOMEWORK!**
 
-After you've finished your todo list it's time to show us what you got! Upload all your files to a forked repository (a copy from the teacher's). Then make a pull request to it.
+After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (a copy from the teacher's). Then make a pull request to it.
 
 If you need a refresher, take a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
 

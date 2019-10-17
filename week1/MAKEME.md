@@ -9,9 +9,9 @@
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v10** and NPM should be at least **v6**.
 
-## 1. Practice the concepts
+## **1. Practice the concepts**
 
-> The problems in the *practice the concepts* section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
+> The problems in the _practice the concepts_ section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
 
 In this week's interactive exercises, we'll be going back to the command line. We'll be using software from [Nodeschool](https://nodeschool.io/) to do some exercises.
 
@@ -23,7 +23,7 @@ npm install -g learnyounode
 
 When it's all installed, **do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
 
-## 2. Node.js exercises
+## **2. Node.js exercises**
 
 > Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, create a folder called `homework`. Inside, create a folder called `nodejs-exercises`. This will contain all the files for the following section.
 
@@ -167,17 +167,17 @@ _BONUS_
 
 When the server gets a request at `http:\\localhost:3000\style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type!
 
-## 3. Code along
+## **3. Code along**
 
-> The *code along* section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
+> The _code along_ section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
 
-We'll start this week off with a blast, by building a small application that allows you to add people's basic information to a page. This is done **dynamically**, meaning that new information can get loaded in the page without having to do a page refresh. You'll learn how to use [Express.js](https://expressjs.com/) and a templating engine (you'll learn more about that in week 3) called [Handlebars](https://handlebarsjs.com/).
+In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
 
-Have fun!
+Enjoy!
 
-- [Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
+- [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
 
-## 4. PROJECT: HackYourTemperature I
+## **4. PROJECT: HackYourTemperature I**
 
 > In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`.
 
@@ -187,7 +187,7 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 1. Create a JavaScript file called `server.js` (it can be any name but this is more meaningful)
 2. Initialize the Node Package Manager and create a `package.json` file by running `npm init -y`
-3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `node-fetch` (our XHR object to use in Node.js)
+3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `axios`
 4. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
 5. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
 
@@ -195,7 +195,7 @@ After writing all this code you can verify that it's working by running `node se
 
 ## **SUBMIT YOUR HOMEWORK!**
 
-After you've finished your todo list it's time to show us what you got! Upload all your files to a forked repository (a copy from the teacher's). Then make a pull request to it.
+After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (a copy from the teacher's). Then make a pull request to it.
 
 If you need a refresher, take a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
 
