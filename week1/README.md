@@ -6,17 +6,15 @@ These are the topics for week 1:
 
 1. What is backend?
 2. What is Node.js?
-   - Node Package Manager (NPM)
-   - Express.js
 3. The client-server model
 4. Writing a server in Node.js
-   * Modularization and npm
+   * modularization and npm
    * express.js  
 5. (Optional) How does the internet work?
 
 ## 1. What is backend?
 
-In software development, we separate the user experience and utility (the `frontend`) from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../assets/atm.jpg). What you can interact with it (press a button or insert a card), you are dealing with the `user interface`; which is the end result of frontend code. However, everything that's needed to make it work like that is found within the device: this is the hardware and software needed to make it work the way it does.
+In software development, the user experience and utility (the `frontend`) is often separated from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an [ATM](../assets/atm.jpg). What you can interact with,  pressing a button or inserting a card, is `frontend` (a.k.a `user interface`). However, everything that's needed to make it work the way it does, i.e. the hardware and software needed to make it do the real work is called `backend`.
 
 In web development the term backend can be boiled down to 3 components:
 
@@ -45,29 +43,23 @@ Node.js is software that allows you to use JavaScript to write the `application`
 
 Read the following article and code along: [Introduction into Node.js](https://codeburst.io/the-only-nodejs-introduction-youll-ever-need-d969a47ef219)
 
-Software builds on other software. Node.js is powerful because it allows us to use software others have written to help build our own unique applications. In Node.js these are called `modules`/`packages`/`dependencies` (can be used interchangeably). An easy way to get access to these is by using the Node Package Manager, also known as `npm`.
-
-Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
-
-It is also powerful because we can use the language we already know, JavaScript, to write backend applications. Watch the following video and code along: [Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
-
 ## 3. The client-server model
 
-The client-server model is one of the most important concepts within web development. The easiest way to explain this concept is by using an analogy.
+The client-server model is one of the most important concepts in web development. The easiest way to explain this concept is by using an analogy.
 
 > Let's say you are hungry and feel like going to a restaurant. The moment you enter the restaurant you are a customer, or in IT terms a `client`. You take a seat and decide to order various things, each order representing a separate `request`: you are requesting an orange juice and requesting a nice, healthy salad. Your requests are heard by the waiter, or in IT terms the `server`. Their job is to listen to your requests and do whatever is necessary to provide you with what you want. The actual services, like cooking the food, making the drinks or doing the dishes are all done by others. However, to the client the end result of these services are all provided by the server. You don't want to know who performs what service, you just want to eat. When the server comes back with whatever you ordered, they provide you with a `response`. This happens whether or not they could fulfill your requests.
 
-In web development the same thing happens. The browser is the client, and some computer that has the data you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
+In a web application the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
-If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving responses on the internet.
+If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
-When you type in a url in your browser then the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next the browser starts scans the HTMLand starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
+Let's see what happens when you type in a url in your browser. First, the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next, the browser starts scans the HTML and starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load, for example, some json data.
+A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load more resources, for example, some json data.
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
+The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not automatically determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
 
 - `text/javascrpt`
 - `text/html`
@@ -82,6 +74,7 @@ Look into the following resources to increase your understanding:
 
 ## 4. Writing a server in Node.js
 
+Node is great powerful because we can use the language we already know, JavaScript, to write backend applications. Watch the following video and code along: [Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
 
 ### 4.1 Modularization and Node Package Manager - npm
 
@@ -90,32 +83,16 @@ Instead, we can split our code into multiple files and also re-use code that oth
 
 The concept of splitting up code into reusable pieces is called **modularization** and the reusable pieces **modules** (sometimes called *packages* or *libraries*). The whole modularization in node is performed with the help of a small tool called *Node Package Manager* or *npm* for short. To give you an idea of just how easy it is to use *npm*, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
 
-If we want to use `express` in our code we have to do 2 things
-
-1. download (install) the code from the internet using the following command in the command line:
-
-```md
-npm install express
-```
-
-2. Declare that we will use Express at the top of the JavaScript file:
-
-```js
-let express = require("express");`
-```
-
-You can find many other packages online at [https://www.npmjs.com/search?q=express](https://www.npmjs.com/search?q=express)
-
-During the homework exercises you will practice how to use npm in more detail.
+Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 Look into the following resources to increase your understanding:
 
-- [What is require?](https://nodejs.org/zh-cn/knowledge/getting-started/what-is-require/)
+- [NPM official website](https://www.npmjs.com/search?q=express)
 - [An Absolute Beginner's Guide to Using npm](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### 4.2 Express.js
 
-In Node.js it's possible to make a HTTP server, using the native `http` module. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
+In Node.js it's possible to make a HTTP server, using the native `http` module, as we saw in the Node.js crash course video. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework that can do what the `http` module does and much more (in a simpler, faster and more readable way).
 
 Practically speaking, what can we do with a web server like `http` or `Express`? All the magic that makes the frontend work:
 

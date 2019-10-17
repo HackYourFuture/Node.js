@@ -5,20 +5,21 @@
 1. What is Representational State Transfer (REST)?
 2. What is Hypertext Transfer Protocol (HTTP)?
 3. What is a CRUD application?
-4. What is a web API?
-4. What is a RESTful API?
+4. Web API
+5. What is a RESTful API?
+6. Postamn
 
 ## 1. What is Representational State Transfer (REST)?
 
 The world of REST consists of two things: resources and actions.
 
-A resource can be any object, real or imaginary. In Instagram for example, a resource can be a user, a photo, a hashtag. REST offers a way a way to expose information about its resources. For example, for Instagram the state of a user (the resource), contains the user's name, the number of posts that user posted on Instagram so far, how many followers they have, and more. Resource have names e.g. *users*, *photos* and *hashtags* and each individual object in resource has an identifier. For example the *user* have a username.
+A resource can be any object, real or imaginary. In Instagram for example, a resource can be a user, a photo or a hashtag. REST offers a way to expose information about its resources. For example, for Instagram the state of a user (the resource), contains the user's name, the number of posts that user has on Instagram, how many followers they have, and more. Resource have names e.g. *users*, *photos* and *hashtags* and each individual object in resource has an identifier. For example, *user* has a username.
 
-REST also enables clients to take actions on those resources, such as create new resources (i.e. create a new user) or change existing resources (i.e. edit a post).
+REST also enables clients to take actions on those resources, such as create new resources (e.g. create a new user) or change existing resources (e.g. edit a post).
 
-It means when a the server will *transfer* to the client a *representation* of the *state* of the requested resource.
+REST stands for REpresantational State Transfer. This means that when a client request information about a resource, the server will *transfer* to the client a *representation* of the *state* of the requested resource.
 
-If this seems very abstract to you, don't worry, REST is a concept, an idea. During the lecture we will use the concepts from REST such as resources and operations to build great applications.
+If this seems very abstract to you, don't worry, REST is only a concept, an idea. During the lecture we will use the concepts from REST such as resources and operations to build great applications.
 
 Building software is like building houses: architecture is everything. The design of each part is just as important as the utility of it. REST is a specific architectural style for web applications. It serves to organise code in **predictable** ways.
 
@@ -37,13 +38,13 @@ For more research, check the following resource:
 
 ## 2. HTTP methods
 
-A big part of making applications that follow the REST architecture is by use of HTTP methods.
+A big part of making applications that follow the REST architecture is correct use of HTTP methods.
 
 Like verbal communication, there's the _content_ (WHAT you are saying) and the _style_ (HOW you are saying it). HTTP refers to the \***\*style\*\*** of online communication. How you communicate over the web is done through specific HTTP methods (also called HTTP verbs), that describe what type of request is being made. The most important ones are:
 
-- **GET**. This type of request is only about getting data from the server. Whenever a user enters a new webpage, this usually means a GET request gets send to the server to get the required files to display that webpage. All other data in the website stays unaffected.
+- **GET**. This type of request is only about getting data from the server. Whenever a user enters a new webpage, a GET request is sent to the server to get the required files to display that webpage. All other data in the website stays unaffected.
 - **POST**. This type of request allows the client to submit new data to the server. Generally speaking, its purpose is to store this new data into a database, or manipulate it and later return it back to the client.
-- **PUT**. This type of request allows the client to update existing data, which is already present in the client. The data is edited and then send back to the server, similar to the POST request but more semantic.
+- **PUT**. This type of request allows the client to update existing data, which is already present in the client. The data is edited and then send back to the server, similar to the POST request, but more semantic.
 - **DELETE**. This type of request tells the server to delete a particular set of data or resources.
 
 Why do you need to know all of this? HTTP is the foundation of how client-server interactions work on the web. It's important to have a universal policy that everyone holds on to, in order to have fast and effective online communication.
@@ -64,7 +65,7 @@ You might have noticed that these four actions nicely align with the HTTP method
 3. Update -> PUT
 4. Delete -> DELETE
 
-The concept of CRUD is is an important criterium each web application should be able to fulfill. Why? This is generally how users make use applications.
+The concept of CRUD is is an important criterium that each web application needs to fulfill. Why? This is generally how users use applications.
 
 Read the following article to learn about CRUD in practice, using Facebook as an [example](https://medium.com/@Adetona77/understanding-crud-using-facebook-as-the-study-case-part-1-c4183cdf617a)
 
@@ -72,11 +73,11 @@ Look into the following resources to increase your understanding:
 * [ELI5: What is an API?](https://dev.to/awwsmm/eli5-what-is-an-api-1dd2)
 * [Web APIs Explained By Selling Goods From Your Farm](https://blog.codeanalogies.com/2018/02/27/web-apis-explained-by-selling-goods-from-your-farm/)
 
-## 4. What is web API?
+## 4. Web API
 
-To answer this question we must first understand what an API is. The abbreviation stands for Application Programming Interface and in its simplest form it is that part of an application that allows us to make use of its functionality. However, instead of a beautiful-looking user interface it's usually some kind of URL (which in this context is called an `endpoint`)
+Application Programming Interface (API) in its simplest form is the part of an application that allows users to make use of its functionality. However, instead of a beautiful-looking user interface it's usually some kind of URL (which in this context is often called an `endpoint`).
 
-Whenever developers make some kind of software that they want others to use, they make sure it can be communicated with. That part is called the API. The developers usually also write instructions for how to best communicate with the API, this is called `documentation`.
+Whenever developers make some kind of software that they want others to use, they make sure it can be communicated with. That part is called the API. The developers usually also write instructions for how to best communicate with the API, this is called `API documentation`.
 
 A useful analogy is that of a restaurant.
 
@@ -91,9 +92,9 @@ That means that the API exposes resources and allows clients to perform operatio
 Lets look at a concrete example. Lets imagine a REST API for a library with a domain at `library.edu/`. The resources would be `books`, so the URL for the books resource would be `library.edu/books`. If a client, e.g the librarian, wants to get information on the books he needs to use the `GET` HTTP method.  The server will respond with a list of book information such as title, author etc.  
 Now imagine that the librarian wants to register/create a new book. He needs to specify the resource he wants to create using the same URL as before `library.edu/books` and use the `POST` method.   
 
-Next, lets think how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how does he tell the server which specific book to update. This is where the resource identifiers come in.
-The library needs to maintain and provide identifiers for each object. The user can then use this identifier in the URL e.g. `library.edu/books/TheWhiteCastle`. The identifier can be a number or text, it does not matter.   
-To summarize, here are the available operations and the corresponding URLs.
+Next, let's think how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how does he tell the server which specific book to update. This is where the resource identifiers come in.
+The library needs to maintain and provide identifiers for each object. The user uses this identifier in the URL e.g. `library.edu/books/TheWhiteCastle`. The identifier can be a number or text, it does not matter. The same url is also used to delete book, just with the `DELETE` method.
+To summarize, here are the available operations and the corresponding URLs. 
 
 Operation | URL | HTTP Method
 ----------|-----|------------
@@ -113,7 +114,7 @@ For more information check out the following resource:
 
 When creating APIs same as any other program it is important to test if they work as intended. The easiest way to do this is to call the various APIs and check the response that they send.
 
-Postman makes sending API requests simple. Instead of testing your APIs through a command line or terminal, we offer an intuitive graphical interface that is quick to learn and rewarding to master. You can install Postman by following [these steps](https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates).
+Postman makes this process of sending API requests and checking the response very simple. Instead of testing your APIs through a command line or terminal, they offer an intuitive graphical interface that is quick to learn and rewarding to master. You can install Postman by following [these steps](https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates).
 
 As you can see in the image below, when you enter a request in Postman and click the Send button, the server receives your request and returns a response that Postman displays in the interface.
 

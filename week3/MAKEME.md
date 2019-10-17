@@ -38,7 +38,7 @@ _This is the last time that steps 0-2 are explicitly written. For the next exerc
 
 ### **Exercise 2: Authentication**
 
-So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone. In order to guard the data APIs use some way to authenticate the user. The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`. There is catch. The username and password are not transimtted as plain text, but need to be encoded in base64.
+So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone. In order to guard the data APIs use some way to authenticate the user. The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`. Naturally, there is catch. The username and password are not sent as plain text, but need to be encoded in base64, which is a type of encoding text for use in HTTP.
 
 For this exercise you need to write a program thats calls the API https://restapiabasicauthe-sandbox.mxapps.io/api/books and prints the response to the console.
 
@@ -53,7 +53,7 @@ _Bonus_ points if you can encode the username and password to base64 using javas
 
 ### **Exercise 3: Party time**
 
-Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations
+Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api
 
 Step 1. Feel free to copy and modify the code from the previous exercise.  
 Step 2. Read the documentation https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations. Find out:
@@ -71,27 +71,29 @@ Hints:
 
 ### **Exercise 4: Fun with Handlebars**
 
-Do you know the game [Cards against humanity](https://cardsagainsthumanity.com/). It's a game where players need to fill blanks in a sentence to make the funniest joke:
+Do you know the game [Cards against humanity](https://cardsagainsthumanity.com/). It's a game where players need to fill blanks in a sentence to make the funniest joke. For example, in the photo below
 
 ![cards against humanity](https://www.snopes.com/tachyon/2015/11/cards-against-humanity.png?resize=865,391)
 
+The resulting phrase reads as: _Hope_ is a slipery slope that leads to a _dissapointing birthday party_.
+
 Inspired by the game you want to write a node program that simulates playing the game.  
-The program needs to fill in the blanks in the `_______ is great to ________` and print the result to the console.
+The program needs to fill in the blanks in the phrase `_______ is great to ________` and print the result to the console.
 
 For the first blank select a random word from `subjects = ["shark", "popcorn", "poison", "fork", "cherry", "toothbrush", "cannon"]`
 For the second blank select a random word from `punchlines = ["watch movie with", "spread some love", "put on cake", "clean toilets", "go to the moon", "achieve world piece", "help people learn programing"]`
 
-You have to use Mustache to replace the words - https://github.com/janl/mustache.js
+You have to use Handlebars to replace the words.
 
-Step 1. Install and require handlebar (not `express-handlebars`, just `handlebars`)
+Step 1. Install and require handlebar (not `express-handlebars`, just `handlebars`)  
 Step 2. copy the subjects amd punchlines to javascript  
-Step 3. write code that picks a `subject` and `puncline` at random  
+Step 3. write code that randomly picks a`subject` and `punchline`
 Step 4. replace the blanks in `phrase` with the random `subject` and `punchline` using handlebars
 
 Hints:
 
 - To get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
-- [The documentation on hnadlebars has a nice example, try it out!](https://www.npmjs.com/package/handlebars#usage)
+- [The documentation on handlebars has a nice example, check it out!](https://www.npmjs.com/package/handlebars#usage)
 
 ## **3. Code along**
 
