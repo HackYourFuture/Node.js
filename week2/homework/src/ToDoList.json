@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Go to barber shop"
+    },
+    {
+      "id": 2,
+      "title": "Pick child up from school"
+    },
+    {
+      "id": 3,
+      "title": "Go to supermarket"
+    }
+  ]
+}

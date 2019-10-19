@@ -2,7 +2,10 @@
   "name": "hyf-node-week-2-homework",
   "version": "1.0.0",
   "description": "HackYourFuture Node.js Week 2 - Homework",
-  "repository": "https://github.com/HackYourFuture/nodejs.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackYourFuture/nodejs.git"
+  },
   "main": "src/index.js",
   "author": "George Sapkin",
   "license": "MIT",
@@ -13,5 +16,12 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/HackYourFuture/nodejs/issues"
+  },
+  "homepage": "https://github.com/HackYourFuture/nodejs#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
