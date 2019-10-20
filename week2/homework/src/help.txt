@@ -1,0 +1,6 @@
+help -- to provide the help section about the app
+list -- to list the to-do list
+add -- to add a new item to-do list
+remove -- to remove an item from to-do list
+reset -- to reset all the to-dos
+update -- to update a current to-do
