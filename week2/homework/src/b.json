@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Write Homework"
+    },
+    {
+      "id": 2,
+      "title": "preparation for next lesson"
+    },
+    {
+      "id": 3,
+      "title": "watching movie"
+    }
+  ]
+}
