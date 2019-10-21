@@ -6,25 +6,26 @@ function createServer(port) {
   let state = 10;
 
   const server = http.createServer((request, response) => {
-    let serverResponseObject = {};
+    const serverResponseObject = {};
     response.setHeader('Content-Type', 'application/json');
+    // prettier-ignore
 
     if (request.url === '/state') {
       serverResponseObject.state = state;
     }
- else if (request.url === '/add') {
+    else if (request.url === '/add') {
       state++;
       serverResponseObject.state = state;
     }
- else if (request.url === '/subtract') {
+    else if (request.url === '/subtract') {
       state--;
       serverResponseObject.state = state;
     }
- else if (request.url === '/reset') {
+    else if (request.url === '/reset') {
       state = 10;
       serverResponseObject.state = state;
     }
- else {
+    else {
       response.statusCode = 404;
       serverResponseObject.error = 'Not found';
     }
