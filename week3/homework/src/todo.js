@@ -1,6 +1,6 @@
 'use strict';
 
-const fs   = require('fs');
+const fs = require('fs');
 const uuid = require('uuid/v4');
 
 const DEFAULT_ENCODING = 'utf8';
@@ -14,10 +14,10 @@ class Todo {
     const todos = await this.read();
 
     const todo = {
-      id:   uuid(),
+      id: uuid(),
       done: false,
 
-      description
+      description,
     };
 
     todos.push(todo);
@@ -30,8 +30,7 @@ class Todo {
   read() {
     return new Promise(resolve => {
       fs.readFile(this._filename, DEFAULT_ENCODING, (error, data) => {
-        if (error)
-          return resolve([]);
+        if (error) return resolve([]);
 
         return resolve(JSON.parse(data));
       });
@@ -56,21 +55,21 @@ class Todo {
   }
 
   async delete_(id) {
-    const todos         = await this.read();
+    const todos = await this.read();
     const filteredTodos = todos.filter(t => t.id !== id);
 
     return this._save(filteredTodos);
   }
 
+  clear() {
+    return this._save([]);
+  }
+
   // Methods starting with underscore should not be used outside of this class
   _save(todos) {
     return new Promise((resolve, reject) => {
-      fs.writeFile(
-        this._filename,
-        JSON.stringify(todos, null, 2),
-        error => error == null
-          ? resolve()
-          : reject(error)
+      fs.writeFile(this._filename, JSON.stringify(todos, null, 2), error =>
+        error == null ? resolve() : reject(error),
       );
     });
   }
