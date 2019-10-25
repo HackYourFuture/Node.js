@@ -64,7 +64,7 @@ class Todo {
       throw error;
     }
 
-    todo.done = Boolean(done);
+    todo.done = done;
 
     await this._save(todos);
 
