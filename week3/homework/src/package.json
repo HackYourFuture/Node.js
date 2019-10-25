@@ -1,0 +1,25 @@
+{
+  "name": "week-3-homework",
+  "version": "1.0.0",
+  "description": "Provides an API that performs simple CRUD operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/msnmz/Node.js.git"
+  },
+  "author": "Muharrem Sonmez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msnmz/Node.js/issues"
+  },
+  "homepage": "https://github.com/msnmz/Node.js#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "uuid": "^3.3.3"
+  }
+}
