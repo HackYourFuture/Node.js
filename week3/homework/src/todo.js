@@ -54,6 +54,23 @@ class Todo {
     return todo;
   }
 
+  async mark(id, done) {
+    const todos = await this.read();
+
+    const todo = todos.find(t => t.id === id);
+    if (!todo) {
+      const error = new Error(`To-do with ID ${id} does not exist`);
+      error.code = 'not-found';
+      throw error;
+    }
+
+    todo.done = Boolean(done);
+
+    await this._save(todos);
+
+    return todo;
+  }
+
   async delete_(id) {
     const todos = await this.read();
     const filteredTodos = todos.filter(t => t.id !== id);
