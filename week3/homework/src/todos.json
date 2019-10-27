@@ -1,0 +1,17 @@
+[
+  {
+    "description": "new task incoming",
+    "id": "594854da-584a-4fa4-b6a2-3f189153aa7e",
+    "done": true
+  },
+  {
+    "description": "new type of todo",
+    "id": "b9db0287-768f-4cdb-934d-c6c6358831d3",
+    "done": false
+  },
+  {
+    "description": "updated new task",
+    "id": "dd1e0d01-a35e-4b47-a3bd-689ccc64e75d",
+    "done": false
+  }
+]
