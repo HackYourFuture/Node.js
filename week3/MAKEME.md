@@ -6,6 +6,7 @@
 2. Node.js exercises
 3. Code along
 4. PROJECT: HackYourTemperature III
+5. Get your CV ready!
 
 ## **1. Practice the concepts**
 
@@ -117,14 +118,14 @@ This week we'll add our external API that we're going to work with: [Open Weathe
 ### The Backend
 
 1. First remove the response from last week
-2. Inside of the the `POST` route, bring in `axios` and insert the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
+2. Inside of the the `POST` route, bring in `axios` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
 
 ```js
 const APIKEY = require('./sources/secrets.json').API_KEY;
 axios(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
 ```
 
-There are 2 situations that could happen: if the city name is not found, we want to send to the client a response with a message that the city isn't found. Or the city is found, and then we want to return a message that contains the city name and current temperature. Let's take a look at the first one:
+Now, there are 2 situations that could happen: if the city name is not found, we want to send to the client a response with a message that the city isn't found. However, if the city is found and then we want to return a message that contains the city name and current temperature.
 
 3. If the result is not found, we `render()` to the page the `index` (just like in the `/` endpoint). However, also add a second argument, an object: `{ weatherText: "City is not found!" }`
 4. If the result is found, we also `render()` to the page the `index`. Also add here the object. Only, instead of just a string dynamically add in the `cityName` and temperature (gotten from the result of the API call). Hint: use template strings to add variables in your strings!
@@ -136,6 +137,12 @@ In the frontend we're going to add one thing:
 1. Navigate to `index.handlebars`. Underneath the `<form>`, add a `<p>`. Give it the following content: `{{ weatherText }}` (Notice how the name `weatherText` refers back to the key in the object passed in the `render()`)
 
 Now test out your work to see if it behaves as expected. Run your server with `node server.js`. Open your browser at the right port and fill in the form. On submit there should appear a message underneath the form, that either says that the city isn't found or what the temperature is.
+
+5. Get your CV ready!
+
+In this final exercise you have to prepare the first draft of your CV. You can do this easily by filling in the following form:
+
+- [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
