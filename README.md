@@ -2,7 +2,7 @@
 
 > Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/JavaScript1/pulls).
 
-# Module #5: Understand backend: creating web servers with JavaScript using Node.js (Backend)
+# Module #5 - Understand backend: creating web servers with JavaScript using Node.js (Backend)
 
 ![NodeJS](./assets/nodejs.png)
 
