@@ -58,7 +58,7 @@ If you've ever typed in a URL you might've seen the letters HTTP at the beginnin
 
 Let's see what happens when you type in a url in your browser. First, the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next, the browser starts scans the HTML and starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-A similar thing happens for script and link tags that load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can, in turn, start new http requests with `XMLHttpRequest` to load more resources, for example, some json data.
+A similar thing happens for script and link tags that load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can, in turn, start new http requests with `XMLHttpRequest` to load more resources, for example, some json data. This entire process is nicely visualized in the diagram below:
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
