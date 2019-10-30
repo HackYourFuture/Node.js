@@ -165,12 +165,12 @@ Tips:
 - `if ( request.url === '\script.js' ) { /* send javascript */ } else { /* send HTML */ }`
 - the `content-type` for javascript is `text\javascript`
 
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`. You should see the message _Welcome to Sever-land!_.
+Run the code and check that it works by opening a browser at `http:\\localhost:3000`. You should see the message _Welcome to Server-land!_.
 
 Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
 
 _BONUS_  
- Our website is working, but looks really stale. Try adding some style to it. The style should be from an external source. Add this to your html.
+ Our website is working, but looks stale. Try adding some style to it. The style should be from an external source. Add this to your html.
 
 ```html
 <link rel="stylesheet" type="text/css" href="style.css" />
