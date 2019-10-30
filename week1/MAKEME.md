@@ -65,7 +65,7 @@ Tips:
 
 ### **Exercise 2: npm**
 
-Oh no! Your boss calls you and tells you that he tried to pad some numbers to 8 characters and it was not working at all. He tells you to fix the bug as soon as possible.
+Oh no! A senior developer from your team slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you to (politely) fix the bug as soon as possible or face the wrath of management.
 
 When you look at the function code you realize that the function only works up to 5 characters.
 
