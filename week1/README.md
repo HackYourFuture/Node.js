@@ -52,7 +52,7 @@ The client-server model is one of the most important concepts in web development
 
 In a web application, the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you log in to your online bank account. As the client, you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
-### 3.1 Hypertext Transfer Protocol - HTTP
+### 3.1. Hypertext Transfer Protocol - HTTP
 
 If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
