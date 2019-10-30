@@ -10,7 +10,7 @@
 
 The role of a web server is to serve the user what they want: profile information, cake, video or any other type of data. Sometimes, in order to get the user what they want the server has to talk to other servers. The way servers talk to each other is no different than how your browser talks to a server. It uses the same HTTP protocol and very often REST and JSON as well.
 
-In a way using APIs serves a similar purpose as using a package in node. It allows us to reuse code that someone else has written. In the case of API we do not directly get the code, but we use the functionality that the code provides. For example, we could use APIs to [authenticate users](https://developers.facebook.com/docs/facebook-login/), [check addresses and locations](https://locationiq.com/#demo), [sending email](https://sendgrid.com/docs/for-developers/sending-email/api-getting-started/) and much more. As you can see from the examples it would be really difficult to build such services ourselves. Just imagine the security and legal issues involved in building a [payment processing system](https://stripe.com/docs/api)!
+In a way using APIs serves a similar purpose as using a package in node. It allows us to reuse code that someone else has written. In the case of API we do not directly get the code, but we use the functionality that the code provides. For example, we could use APIs to [authenticate users](https://developers.facebook.com/docs/facebook-login/), [check addresses and locations](https://locationiq.com/#demo), [send emails](https://sendgrid.com/docs/for-developers/sending-email/api-getting-started/) and much more. As you can see from the examples it would be really difficult to build such services ourselves. Just imagine the security and legal issues involved in building a [payment processing system](https://stripe.com/docs/api)!
 
 Another trendy reason for using APIs is known as "microservices". In a nutshell microservices is an approach to building web sites where the application is split into many small servers which use APIs to talk to each other. This is a huge topic that we do not have time to cover, but it is really good to know about. To understand it on a high level see the [video](https://www.youtube.com/watch?v=STKCRSUsyP0). 
 
@@ -24,8 +24,8 @@ Now, how do we go about doing this? Follow this basic guide to get started quick
 
 1. RTFM - read the manual. It's important to first know how the API works (what are the endpoints, what kind of data does it deliver, etc.). Every decent API has some sort of online documentation. The format and location is not standard. Look for a docs link. Pay special attention to authentication, versioning and how data is passed (query string or body).
 2. Try out the most basic example you can find in isolation. This usually means trying out the provided example, which the documentation provides. Remember to use Postman to test it out!
-3. Build up a library of Postman requests for the API calls that you plan to use, they will be invaluable in debugging later
-4. Start implementing the API calls in your application
+3. Build up a library of Postman requests for the API calls that you plan to use, they will be invaluable in debugging later.
+4. Start implementing the API calls in your application.
 
 Further materials to learn more about this:
 
