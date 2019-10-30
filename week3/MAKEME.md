@@ -20,7 +20,7 @@ This week you'll finish the command line exercises. Go back to `learnyounode` an
 
 ### **Exercise 1: Chuck Norris programs do not accept input**
 
-Did you know that there is an API for Chuck Noris jokes. That's incredible, right?
+Did you know that there is an API for Chuck Noris jokes. That's incredible, right!?
 
 Write a small node program (not a server) that calls the this API http://www.icndb.com/api/ and prints a random joke to the conole.
 
@@ -33,13 +33,13 @@ Step 5. Print the joke to the console
 
 Hints:
 
-- Print the entire response to the concole to see how it is structured.
+- First, print the entire response to the concole to see how it is structured.
 
 _This is the last time that steps 0-2 are explicitly written. For the next exercise I am assuming you know this already._
 
 ### **Exercise 2: Authentication**
 
-So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone. In order to guard the data APIs use some way to authenticate the user. The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`. Naturally, there is catch. The username and password are not sent as plain text, but need to be encoded in base64, which is a type of encoding text for use in HTTP.
+So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone. In order to guard the data APIs use some way to authenticate the user. The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`. Naturally, there is catch. The username and password are not sent as plain text, but need to be encoded in base64, which is a way of encoding text for use in HTTP.
 
 For this exercise you need to write a program thats calls the API https://restapiabasicauthe-sandbox.mxapps.io/api/books and prints the response to the console.
 
@@ -84,10 +84,10 @@ The program needs to fill in the blanks in the phrase `_______ is great to _____
 For the first blank select a random word from `subjects = ["shark", "popcorn", "poison", "fork", "cherry", "toothbrush", "cannon"]`
 For the second blank select a random word from `punchlines = ["watch movie with", "spread some love", "put on cake", "clean toilets", "go to the moon", "achieve world piece", "help people learn programing"]`
 
-You have to use Handlebars to replace the words.
+Use Handlebars to replace the blanks with a random word.
 
 Step 1. Install and require handlebar (not `express-handlebars`, just `handlebars`)  
-Step 2. copy the subjects amd punchlines to javascript  
+Step 2. copy the subjects and punchlines to javascript  
 Step 3. write code that randomly picks a`subject` and `punchline`
 Step 4. replace the blanks in `phrase` with the random `subject` and `punchline` using handlebars
 
