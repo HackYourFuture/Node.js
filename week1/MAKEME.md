@@ -41,7 +41,7 @@ The function adds characters to a string so that it has at least certain number 
 
 You find this function brilliant and want to use it in your code.
 
-Step 0. Create a new empty folder, e.g. `exercise1`
+Step 0. Create a new empty folder, e.g. `exercise1` inside your week1 homework folder
 
 Step 1. Create a file called `andrejs-awesome-function.js` (or something else, the name is arbitrary), then copy the function `padLeft` in it.`
 
