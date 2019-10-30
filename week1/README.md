@@ -7,6 +7,7 @@ These are the topics for week 1:
 1. What is backend?
 2. What is Node.js?
 3. The client-server model
+   * HTTP
 4. Writing a server in Node.js
    * modularization and npm
    * express.js  
@@ -50,6 +51,8 @@ The client-server model is one of the most important concepts in web development
 > Let's say you are hungry and feel like going to a restaurant. The moment you enter the restaurant you are a customer, or in IT terms a `client`. You take a seat and decide to order various things, each order representing a separate `request`: you are requesting an orange juice and requesting a nice, healthy salad. Your requests are heard by the waiter, or in IT terms the `server`. Their job is to listen to your requests and do whatever is necessary to provide you with what you want. The actual services, like cooking the food, making the drinks or doing the dishes are all done by others. However, to the client the end result of these services are all provided by the server. You don't want to know who performs what service, you just want to eat. When the server comes back with whatever you ordered, they provide you with a `response`. This happens whether or not they could fulfill your requests.
 
 In a web application, the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you log in to your online bank account. As the client, you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
+
+### 3.1 Hypertext Transfer Protocol - HTTP
 
 If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
