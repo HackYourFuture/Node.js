@@ -34,7 +34,7 @@ That was not too hard now was it. Now you are ready for the real coding. We will
 
 **Creating new posts**
 
-To create a new blog posts, users need to send a json in the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. You can use the following starter code:
+To create a new blog posts, users need to send a json in the body of the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. You can use the following starter code:
 
 ```javascript
 const fs = require("fs");
@@ -57,7 +57,7 @@ Up next:
 
 **Updating existing posts**
 
-Updating posts is very similar to creating them. You only need to change the METHOD and add a check that the blog post that the user is trying to update already exists with `fs.existsSync(title)`.
+Updating posts is very similar to creating them. You only need to use a different METHOD and add a check that the blog post that the user is trying to update already exists with `fs.existsSync(title)`.
 
 ```javascript
 app.<METHOD>('/blogs', (req, res) => {
