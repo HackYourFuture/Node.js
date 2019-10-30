@@ -92,7 +92,7 @@ That means that the API exposes resources and allows clients to perform operatio
 Let's look at a concrete example. Picture a REST API for a library with a domain at `library.edu/`. The resources would be `books`, so the URL for the books resource would be `library.edu/books`. If a client, e.g the librarian, wants to get information on the books he needs to use the `GET` HTTP method.  The server will respond with a list of book information such as title, author etc.  
 Now imagine that the librarian wants to register/create a new book. He needs to specify the resource he wants to create using the same URL as before `library.edu/books` and use the `POST` method.  The information about the book to be created such as title, author etc., is part of the request body.
 
-Next, let's think about how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how do they tell the server which specific book to update. This is where the resource identifiers come in.
+Next, let's think about how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how do they tell the server which specific book to update? This is where the resource identifiers come in.
 The library needs to maintain and provide identifiers for each object. The user uses this identifier in the URL e.g. `library.edu/books/TheWhiteCastle`. The identifier can be a number or text, it does not matter. The same url is also used to delete a book, just with the `DELETE` method.
 To summarize, here are the available operations and the corresponding URLs. 
 
@@ -103,7 +103,8 @@ create a new book|  `library.edu/books`| `POST`
 update the information about a specific book|  `library.edu/books/TheWhiteCastle`| `PUT`
 delete a specific book|  `library.edu/books/TheWhiteCastle`| `DELETE`
 
-The URL in the example consists of a domain `library.edu` and a path `/books`. When writing APIs we are mostly concerned with the path. You might also hear the term *endpoint* or *route*. These are mostly synonymous with *path*.
+The URL in the example consists of a domain `library.edu` and a path `/books`. When writing APIs we are mostly concerned with the *path*. You might also hear the synonymous *endpoint* or *route*. During this weeks homework you will implement this exact API and then you will learn how all the different things fit together.
+
 
 For more information check out the following resource:
 
