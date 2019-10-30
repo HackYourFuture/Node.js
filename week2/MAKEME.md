@@ -21,7 +21,7 @@ This week you'll continue with the command line exercises. Go back to your comma
 
 Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a good blog API.
 
-In our API blogs will have `title` and `content`. Let's jump right in.
+In our API, blogs will have `title` and `content`. Let's jump right in.
 
 **Setup:**  
 Step 0. Creata a new empty folder e.g. `exercise1`  
