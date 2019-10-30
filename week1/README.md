@@ -20,17 +20,17 @@ In web development the term backend can be boiled down to 3 components:
 
 - A `server`: a computer that is connected to other computers, which runs an application (see below) that allows for sharing and managing services (like a calculator or word processor) and resources (like images, text files).
 - A `database`: software that manages and saves sensitive data for later use.
-- An `application`: software that communicates between the server, database and frontend. It contains code that allows it to interact with and manipulate the server, database and other type of software services.
+- An `application`: software that communicates between the server, database, and frontend. It contains code that allows it to interact with and manipulate the server, database and other types of software services.
 
 For more information, read:
 [Basics of backend development](https://www.upwork.com/hiring/development/a-beginners-guide-to-back-end-development/)
 [Getting started with backend development](https://codeburst.io/getting-started-with-backend-development-bfd8299e22e8)
 
-When people refer to backend programming, they usually refer to **writing the application** part of the backend: the software that interacts with a server and database, and moves data from one computer to the next. The application consists of code that will be read by a database and/or server, so that they know what to do with the incoming input.
+When people refer to backend programming, they usually refer to **writing the application** part of the backend: the software that interacts with a server and database, and moves data from one computer to the next. The application consists of code that will be read by a database and/or server so that they know what to do with the incoming input.
 
 Why would we need a backend? There are multiple reasons:
 
-- **Security**. We don't want any random user to directly access our sensitive data, without verifying who they are. For example, if you have an online back account then you need to login to verify it's you. The whole process of login and verification is code written in a place that can't be reached so easily.
+- **Security**. We don't want any random user to directly access our sensitive data, without verifying who they are. For example, if you have an online bank account then you need to login to verify it's you. The whole process of login and verification is code written in a place that can't be reached so easily.
 - **Performance**. The speed of our user interfaces is greatly dependent upon the server that provides it. The backend contains code that makes sure it optimally makes use of the server's resources (hardware, memory, etc.) to provide the user with the best experience.
 - **Software interactions**. A web application usually makes use of other people's software, web services. The code that communicates with these services and implements it into the frontend is also contained within the backend.
 
@@ -49,17 +49,17 @@ The client-server model is one of the most important concepts in web development
 
 > Let's say you are hungry and feel like going to a restaurant. The moment you enter the restaurant you are a customer, or in IT terms a `client`. You take a seat and decide to order various things, each order representing a separate `request`: you are requesting an orange juice and requesting a nice, healthy salad. Your requests are heard by the waiter, or in IT terms the `server`. Their job is to listen to your requests and do whatever is necessary to provide you with what you want. The actual services, like cooking the food, making the drinks or doing the dishes are all done by others. However, to the client the end result of these services are all provided by the server. You don't want to know who performs what service, you just want to eat. When the server comes back with whatever you ordered, they provide you with a `response`. This happens whether or not they could fulfill your requests.
 
-In a web application the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you login to your online bank account. As the client you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
+In a web application, the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you log in to your online bank account. As the client, you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
 If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
 Let's see what happens when you type in a url in your browser. First, the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like. Next, the browser starts scans the HTML and starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-A similar thing happens for script and link tags which load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can in turn start new http requests with `XMLHttpRequest` to load more resources, for example, some json data.
+A similar thing happens for script and link tags that load javascript and css files respectively. After the browser loads a javascript file, it will start executing it. The javascript code can, in turn, start new http requests with `XMLHttpRequest` to load more resources, for example, some json data.
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-The following problem arises in HTTP communication: Because html, css, javascript and json are all just text files, the browser can not automatically determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
+The following problem arises in HTTP communication: Because html, css, javascript, and json are all just text files, the browser can not automatically determine what to do with it. Therefore the server sends a special _header_ called content-type in the request. The most common content types are:
 
 - `text/javascrpt`
 - `text/html`
