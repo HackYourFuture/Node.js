@@ -13,11 +13,11 @@
 
 The world of REST consists of two things: resources and actions.
 
-A resource can be any object, real or imaginary. On Instagram for example, a resource can be a user, a photo or a hashtag. REST offers a way to expose information about its resources. For example, for Instagram, the state of a user (the resource), contains the user's name, the number of posts that user has on Instagram, how many followers they have, and more. Resources have names e.g. *users*, *photos* and *hashtags* and each object in resource has an identifier. For example, a *user* has a username.
+A resource can be any object, real or imaginary. On Instagram for example, a resource can be a user, a photo or a hashtag. REST offers a way to expose information about its resources. For example, for Instagram, the state of a user (the resource), contains the user's name, the number of posts that user has on Instagram, how many followers they have, and more. Resources have names e.g. _users_, _photos_ and _hashtags_ and each object in resource has an identifier. For example, a _user_ has a username.
 
 REST also enables clients to take actions on those resources, such as create new resources (e.g. create a new user) or change existing resources (e.g. edit a post).
 
-REST stands for REpresantational State Transfer. This means that when a client request information about a resource, the server will *transfer* to the client a *representation* of the *state* of the requested resource.
+REST stands for REpresantational State Transfer. This means that when a client request information about a resource, the server will _transfer_ to the client a _representation_ of the _state_ of the requested resource.
 
 If this seems very abstract to you, don't worry, REST is only a concept, an idea. During the lecture, we will use the concepts from REST such as resources and operations to build great applications.
 
@@ -70,8 +70,9 @@ The concept of CRUD is an important criterium that each web application needs to
 Read the following article to learn about CRUD in practice, using Facebook as an [example](https://medium.com/@Adetona77/understanding-crud-using-facebook-as-the-study-case-part-1-c4183cdf617a)
 
 Look into the following resources to increase your understanding:
-* [ELI5: What is an API?](https://dev.to/awwsmm/eli5-what-is-an-api-1dd2)
-* [Web APIs Explained By Selling Goods From Your Farm](https://blog.codeanalogies.com/2018/02/27/web-apis-explained-by-selling-goods-from-your-farm/)
+
+- [ELI5: What is an API?](https://dev.to/awwsmm/eli5-what-is-an-api-1dd2)
+- [Web APIs Explained By Selling Goods From Your Farm](https://blog.codeanalogies.com/2018/02/27/web-apis-explained-by-selling-goods-from-your-farm/)
 
 ## 4. Web API
 
@@ -81,7 +82,7 @@ Whenever developers make some kind of software that they want others to use, the
 
 A useful analogy is that of a restaurant.
 
-> As a *client* when you go to the restaurant you are not allowed to go into the kitchen (server). However, you can talk to the waiter (API) who will pass on your request to the kitchen. The kitchen will use the things that it has such as ingredients, pans and pots, and the chef's talent to prepare your food. The waiter will bring you the food (response). Of course, to order anything you need to know what is available and thus you need a menu (documentation).
+> As a _client_ when you go to the restaurant you are not allowed to go into the kitchen (server). However, you can talk to the waiter (API) who will pass on your request to the kitchen. The kitchen will use the things that it has such as ingredients, pans and pots, and the chef's talent to prepare your food. The waiter will bring you the food (response). Of course, to order anything you need to know what is available and thus you need a menu (documentation).
 
 # 5. What is RESTful API?
 
@@ -89,22 +90,21 @@ A RESTful API is nothing more than an API that follows the REST architectural pa
 
 That means that the API exposes resources and allows clients to perform operations on those resources. When a client wants to request information on a resource it needs to say which resource it wants information on. This is passed as a Universal Resource Locator (URL) in the HTTP request. The client also needs to say what operation he is trying to perform. This is specified in the method of the HTTP request.
 
-Let's look at a concrete example. Picture a REST API for a library with a domain at `library.edu/`. The resources would be `books`, so the URL for the books resource would be `library.edu/books`. If a client, e.g the librarian, wants to get information on the books he needs to use the `GET` HTTP method.  The server will respond with a list of book information such as title, author etc.  
-Now imagine that the librarian wants to register/create a new book. He needs to specify the resource he wants to create using the same URL as before `library.edu/books` and use the `POST` method.  The information about the book to be created such as title, author etc., is part of the request body.
+Let's look at a concrete example. Picture a REST API for a library with a domain at `library.edu/`. The resources would be `books`, so the URL for the books resource would be `library.edu/books`. If a client, e.g the librarian, wants to get information on the books he needs to use the `GET` HTTP method. The server will respond with a list of book information such as title, author etc.  
+Now imagine that the librarian wants to register/create a new book. He needs to specify the resource he wants to create using the same URL as before `library.edu/books` and use the `POST` method. The information about the book to be created such as title, author etc., is part of the request body.
 
 Next, let's think about how the librarian would update the information for a specific book. The resource is still books and the method is `PUT`, but how do they tell the server which specific book to update? This is where the resource identifiers come in.
 The library needs to maintain and provide identifiers for each object. The user uses this identifier in the URL e.g. `library.edu/books/TheWhiteCastle`. The identifier can be a number or text, it does not matter. The same url is also used to delete a book, just with the `DELETE` method.
-To summarize, here are the available operations and the corresponding URLs. 
+To summarize, here are the available operations and the corresponding URLs.
 
-Operation | URL | HTTP Method
-----------|-----|------------
-get all books|  `library.edu/books`| `GET`
-create a new book|  `library.edu/books`| `POST`
-update the information about a specific book|  `library.edu/books/TheWhiteCastle`| `PUT`
-delete a specific book|  `library.edu/books/TheWhiteCastle`| `DELETE`
+| Operation                                    | URL                                | HTTP Method |
+| -------------------------------------------- | ---------------------------------- | ----------- |
+| get all books                                | `library.edu/books`                | `GET`       |
+| create a new book                            | `library.edu/books`                | `POST`      |
+| update the information about a specific book | `library.edu/books/TheWhiteCastle` | `PUT`       |
+| delete a specific book                       | `library.edu/books/TheWhiteCastle` | `DELETE`    |
 
-The URL in the example consists of a domain `library.edu` and a path `/books`. When writing APIs we are mostly concerned with the *path*. You might also hear the synonymous *endpoint* or *route*. During this weeks homework you will implement this exact API and then you will learn how all the different things fit together.
-
+The URL in the example consists of a domain `library.edu` and a path `/books`. When writing APIs we are mostly concerned with the _path_. You might also hear the synonymous _endpoint_ or _route_. During this weeks homework you will implement this exact API and then you will learn how all the different things fit together.
 
 For more information check out the following resource:
 
@@ -115,13 +115,15 @@ For more information check out the following resource:
 
 When creating APIs same as any other program it is important to test if they work as intended. The easiest way to do this is to call the various APIs and check the response that they send.
 
-Postman makes this process of sending API requests and checking the response very simple. Instead of testing your APIs through a command line or terminal, they offer an intuitive graphical interface that is quick to learn and rewarding to master. You can install Postman by following [these steps](https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates).
+Postman makes this process of sending API requests and checking the response very simple. Instead of testing your APIs through a command line or terminal, they offer an intuitive graphical interface that is quick to learn and rewarding to master.
+
+You can install Postman by following [these steps](https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates).
 
 As you can see in the image below, when you enter a request in Postman and click the Send button, the server receives your request and returns a response that Postman displays in the interface.
 
 ![postman illustration](https://s3.amazonaws.com/postman-static-getpostman-com/postman-docs/anatomy-of-a-request.png)
 
-Check [this guide](https://learning.getpostman.com/docs/postman/launching_postman/sending_the_first_request/#sending-a-request) to learn how to send a request with postman.
+Check [this guide](https://learning.getpostman.com/docs/postman/launching_postman/sending_the_first_request/#sending-a-request) to learn how to send a request with Postman.
 
 Alternatively, [watch this video guide](https://www.youtube.com/embed/YKalL1rVDOE?list=PLM-7VG-sgbtBsenu0CM-UF3NZj3hQFs7E).
 
