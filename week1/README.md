@@ -1,137 +1,134 @@
-# HackYourFuture Node.js Week 1
+# Reading Material Node.js Week 1
 
 ## Agenda
 
-1.  Recap last week
-2.  Previous homework
-3.  Questions & answers (Q&A)
-4.  What is Node.js?
-5.  Finding documentation
-6.  Read-eval-print loop (REPL)
-7.  Setting up a Node.js project using `npm init` and `package.json`
-8.  Installing dependencies using `npm install`
-    1. Local and global mode
-9.  Importing modules using `require`
-    1. Built-in, external modules and local files
-10. Building an HTTP server using built-in `http` module
-    1. HTTP request methods
-    2. HTTP response status codes
-    3. Routing
-    4. Example
-11. Homework
+These are the topics for week 1:
 
-## What is Node.js?
+1. What is backend?
+2. What is Node.js?
+3. The client-server model
+   - HTTP
+4. Writing a server in Node.js
+   - Modularization and Node Package Manager (NPM)
+   - Express.js
+5. (Optional) How does the internet work?
 
-From Node.js' [website](https://nodejs.org/en/):
+## 1. What is backend?
 
-> Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-> Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
-> and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of
-> open source libraries in the world.
+In software development, the user experience and utility (the `frontend`) is often separated from the code that actually makes it work (the `backend`). The real world contains many examples of this division: take for example an ATM:
 
-Videos:
+![ATM](../assets/atm.jpg)
 
-[Introduction to Node.js](https://www.youtube.com/watch?v=w-7RQ46RgxU&index=1&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+What you can interact with, the buttons or inserting a card, is called the `frontend` (also known as the `user interface`). However, everything that's needed to make it work the way it does, i.e. the software needed to make it do the real work (moving data from one place to another) is called the `backend`.
 
-[The V8 Engine](https://www.youtube.com/watch?v=86tgU7UaJmU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=3).
+In web development the term backend can be boiled down to 3 components:
 
-Reading:
+- A `server`: a computer that is connected to other computers, which runs an application (see below) that allows for sharing and managing services (like a calculator or word processor) and resources (like images, text files).
+- A `database`: software that manages and saves sensitive data for later use.
+- An `application`: software that communicates between the server, database, and frontend. It contains code that allows it to interact with and manipulate the server, database and other types of software services.
 
-[What is Node.js? What can you do with it? Why should you use it?](https://medium.com/@paynoattn/what-is-nodejs-what-can-you-do-with-it-why-should-you-use-it-8c8d6df32d6d#.qvbp8g4dq)
-_estimated time: 10 minutes_
+For more information, read:
 
-## Getting started with Node.js and npm
+- [Basics of backend development](https://www.upwork.com/hiring/development/a-beginners-guide-to-back-end-development/)
+- [Getting started with backend development](https://codeburst.io/getting-started-with-backend-development-bfd8299e22e8)
 
-Reading:
+When people refer to backend programming, they usually refer to **writing the application** part of the backend: the software that interacts with a server (a computer) and database, and moves data from one computer to the next. This is usually a `web server` that serves as an `API`, software that tells the reader (either the database software or computer) what to do with the data that's being moved.
 
-[A Beginner’s Guide to npm — the Node Package Manager](https://www.sitepoint.com/beginners-guide-node-package-manager/)
+Why would we need a backend? There are multiple reasons:
 
-[NPM tutorials. Follow chapters 1 - 10](https://docs.npmjs.com/getting-started/installing-node)
-_estimated time: 4-6 hours_
+- **Security**. We don't want any random user to directly access our sensitive data, without verifying who they are. For example, if you have an online bank account then you need to login to verify it's you. The whole process of login and verification is code written in a place that can't be reached so easily.
+- **Performance**. The speed of our user interfaces is greatly dependent upon the server that provides it. The backend contains code that makes sure it optimally makes use of the server's resources (hardware, memory, etc.) to provide the user with the best experience.
+- **Software interactions**. A web application usually makes use of other people's software, web services. The code that communicates with these services and implements it into the frontend is also contained within the backend.
 
-## Finding documentation
+For more information, read:
+[Why do we need the backend?](https://www.quora.com/Why-do-we-need-a-back-end-in-web-development-Cant-the-front-end-directly-send-requests-to-the-database)
 
-[Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web)
+## 2. What is Node.js?
 
-[Node.js Documentation](https://nodejs.org/docs/latest-v8.x/api/documentation.html)
+Node.js is software that allows you to use JavaScript to write the `application` part of the backend. The application is written in different _.js_ files, and are then read and executed using the _node_ command in the Command Line. For example, `node script.js`.
 
-## Read-eval-print loop (REPL)
+Read the following article and code along: [Introduction into Node.js](https://codeburst.io/the-only-nodejs-introduction-youll-ever-need-d969a47ef219)
 
-Documentation:
+## 3. The client-server model
 
-[REPL](https://nodejs.org/docs/latest-v8.x/api/repl.html)
+The client-server model is one of the most important concepts in web development. The easiest way to explain this concept is by using an analogy.
 
-## Setting up a Node.js project using `npm init` and `package.json`
+> Let's say you are hungry and feel like going to a restaurant. The moment you enter the restaurant you are a customer, or in IT terms a `client`. You take a seat and decide to order various things, each order representing a separate `request`: you are requesting an orange juice and requesting a nice, healthy salad. Your requests are heard by the waiter, or in IT terms the `server`. Their job is to listen to your requests and do whatever is necessary to provide you with what you want. The actual services, like cooking the food, making the drinks or doing the dishes are all done by others. However, to the client the end result of these services are all provided by the server. You don't want to know who performs what service, you just want to eat. When the server comes back with whatever you ordered, they provide you with a `response`. This happens whether or not they could fulfill your requests.
 
-Videos:
+In a web application, the process is very similar. The browser is the client, and some computer that has the data and services you want is the server. Let's say you log in to your online bank account:
 
-[Node Package Manager](https://www.youtube.com/watch?v=kQ1j0rEI7EI&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=20)
+As the client, you want to see the amount of money you currently have. The browser sends out a request to the server, who then activates the necessary services (in this example, some kind of database) and returns with a response containing the exact amount of money you currently have in the bank.
 
-[The package.json File](https://www.youtube.com/watch?v=_eRwjuIDJ2Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=21)
+### 3.1. Hypertext Transfer Protocol - HTTP
 
-Documentation:
+If you've ever typed in a URL you might've seen the letters HTTP at the beginning of it, i.e. `http://www.hackyourfuture.net`. It stands for **Hypertext Transfer Protocol** and it is the main way of sending requests and receiving data/responses on the internet.
 
-[npm init](https://docs.npmjs.com/cli/init)
+Let's see what happens when you type in a url in your browser. First, the browser sends an HTTP request to the server. The server sends back an HTTP response that contains html code that describes how the page needs to look like.
 
-[package.json](https://docs.npmjs.com/files/package.json)
+Next, the browser starts scans the HTML and starts rendering elements on the page. During this process the browser may encounter an image tag in the html `<img src="my-website.com/photo.jpg" />`. The image source is a URL so the browser will automatically make another HTTP request to get the image.
 
-## Installing dependencies using `npm install`
+A similar thing happens for script and link tags that load JavasSript and CSS files respectively. After the browser loads a JavasSript file, it will start executing it. The JavasSript code can, in turn, start new HTTP requests with `XMLHttpRequest` to load more resources, for example, some JSON data. This entire process is nicely visualized in the diagram below:
 
-[npm install](https://docs.npmjs.com/cli/install)
+![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-## Importing modules using `require`
+The following problem arises in HTTP communication: Because HTML, CSS, JavaScript, and JSON are ultimately just text files, the browser can not automatically determine what to do with it. Therefore the server sends a special _header_ called `content-type` in the request. The most common content types are:
 
-Videos:
+- `text/javascrpt`
+- `text/html`
+- `text/stylesheet`
+- `application/json`
 
-[Modules and require()](https://www.youtube.com/watch?v=xHLd36QoS4k&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=6)
+Look into the following resources to increase your understanding:
 
-[Module Patterns](https://www.youtube.com/watch?v=9UaZtgB5tQI&index=7&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+- [The Client Server Model](https://www.youtube.com/watch?v=L5BlpPU_muY)
+- [Client-Server Model & Structure of a Web Application](https://medium.freecodecamp.org/how-the-web-works-part-ii-client-server-model-the-structure-of-a-web-application-735b4b6d76e3)
+- [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
-[Modules](https://www.youtube.com/watch?v=9JhvjhZLsEw&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=8)
+## 4. Writing a web server in Node.js
 
-[More on Modules](https://www.youtube.com/watch?v=aNN1IKoEIdM&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=9)
+Node is great powerful because we can use the language we already know, JavaScript, to write backend applications. Watch the following video and code along: [Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
 
-[require Function](https://www.youtube.com/watch?v=e1Ln1FrLvh8&index=3&list=PLYxzS__5yYQmHbpKMARP04F344zYRX91I)
+### Modularization and Node Package Manager - npm
 
-Documentation:
+Writing backend code is not the easiest thing. Imagine having to write all the logic for sending and receiving HTTP requests via the internet, making sure that the request is correctly formatted as binary 1s and 0s. The code will be very long and complex. 
 
-[Node.js modules](https://nodejs.org/docs/latest-v8.x/api/modules.html)
+Luckily, we do not have to write everything in one file and we do not have to write everything from scratch. Instead, we can split our code into multiple files and also re-use code that other people (or we have) have written before.
 
-## Building an HTTP server using built-in `http` module
+The concept of splitting up code into reusable pieces is called **modularization** and the reusable pieces **modules** (sometimes called _packages_ or _libraries_). The whole modularization in node is performed with the help of a small tool called _Node Package Manager_ or _npm_ for short. 
 
-Videos:
+To give you an idea of just how easy it is to use _npm_, lets imagine that we want to reuse code for writing an http server. The code is prepared/packaged by other programmers and made available online under the name `express`.
 
-[Clients & Servers](https://www.youtube.com/watch?v=qSAze9b0wrY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=11)
+Read the following article and code along: [A Beginner’s Guide to npm — the Node Package Manager](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
-[Creating a Server](https://www.youtube.com/watch?v=lm86czWdrk0&index=12&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
+Look into the following resources to increase your understanding:
 
-[Creating a Basic Server](https://www.youtube.com/watch?v=pYOltVz7kL0&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=13)
+- [NPM official website](https://www.npmjs.com/search?q=express)
+- [An Absolute Beginner's Guide to Using npm](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
-[Simple Web File Server](https://www.youtube.com/watch?v=_D2w0voFlEk&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=14)
+### 4.2 Express.js
 
-[Basic Routing](https://www.youtube.com/watch?v=_zvWeGwVkCY&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=19)
+In Node.js it's possible to make a HTTP server, using the native `http` module, as we saw in the Node.js crash course video. However, this is rarely used in practice. Instead, we'll use [Express.js](https://expressjs.com/en/4x/api.html), a backend framework for Node.js that can do what the `http` module does and much more (in a simpler, faster and more readable way).
 
-Documentation:
+Practically speaking, what can we do with a web server like `http` or `Express`? All the magic that makes the frontend work:
 
-[`http` module documentation](https://nodejs.org/docs/latest-v8.x/api/http.html)
+- Get and store data that comes from the frontend
+- Make API calls to other services
+- Secure data that comes from both the frontend and the database
+- Any other type of calculation or business logic
 
-[HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+For more research, use the following resources:
 
-[HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [Express JS Crash Course](https://www.youtube.com/watch?v=L72fhGm1tfE)
+- [Going out to eat and understanding the basics of Express.js](https://medium.freecodecamp.org/going-out-to-eat-and-understanding-the-basics-of-express-js-f034a029fb66)
 
-## Control flow and events
+## 5. (Optional) How does the internet work?
 
-An important term when making applications is _control flow_. You already know
-all about it. Read through this page and answer this question: how do we control
-_flow_ in JavaScript?
+This part is optional, but still recommended to understand the wider context of what we as web developers deal with, namely `the internet`:
 
-[Examples of control flow in JavaScript](https://github.com/ummahusla/Codecademy-Exercise-Answers/tree/master/Language%20Skills/JavaScript/Unit%2005%20Control%20Flow/01%20More%20on%20Control%20Flow%20in%20JS)
+- YouTube Series: [How The Internet Works](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7)
+- [How the Internet Works for Developers I](https://www.youtube.com/watch?v=e4S8zfLdLgQ)
+- [How the Internet Works for Developers II](https://www.youtube.com/watch?v=FTAPjr7vgxE)
 
-## Homework
+## Finished?
 
-Check [README.md](homework/README.md) in `homework` subdirectory and use project
-in [lecture](lecture) for reference.
-
-## Prepare for the next lecture
-
-Read the [README.md](../week2/README.md) for week 2.
+Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).

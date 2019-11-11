@@ -1,98 +1,54 @@
-> Please help us improve and share your feedback! If you find better tutorials
-or links, please share them by [opening a pull request](https://github.com/HackYourFuture/Node.js/pulls).
+> If you are following the HackYourFuture curriculum we recommend you to start with module 1: [HTML/CSS/GIT](https://github.com/HackYourFuture/HTML-CSS). To get a complete overview of the HackYourFuture curriculum first, click [here](https://github.com/HackYourFuture/curriculum).
 
-# HackYourFuture - Node.js
+> Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/JavaScript1/pulls).
 
-This 3-week HYF Module is about Node.js. We can think of Node.js as "Javascript
-not running in a browser". This is what we mean by "backend", as in "backend
-developer".
+# Module #5 - Understand backend: creating web servers with JavaScript using Node.js (Backend)
+
+![NodeJS](./assets/nodejs.png)
+
+So far you've learned about the fundamentals of what makes up a webpage in your browser. We call this `frontend`: the HTML that gives structure to our pages, the CSS that give it a nice look, and lastly the JavaScript that makes our page interactive. Everything you can "see" and "interact" with is made out of these technologies.
+
+However, there is a whole part of applications that you might not be aware of. Have you ever wondered how data moves from one place to another, from one page to another? This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Well here's the secret: there is code that tells the computer how to move and manipulate data. This code is hidden away from the user, because there is no need for them to know about it.
+
+During the following 3 weeks you'll be learning one **approach** of creating a backend. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to be written and executed outside of the browser. Keep in mind that there are, like everything in development, multiple ways of doing this. There are different other languages and technologies that can be used to create a backend of an application.
+
+## Learning goals
+
+In this module you will get familiar with the world of backend development. By the end of it you have learned:
+
+- What is meant by the term `backend`
+- The `client-server` model
+- What HTTP and REST mean
+- How to `create your own web servers` with Node.js, using `Express.js`
+- What a `templating engine` is.
+- How to use the `Node Package Manager (NPM)`.
+- How to use Express.js to make a `RESTful API`
+- How to build a small `full-stack application`
+
+## Before you start
+
+Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v10.x**. Click on the following link to download it to your computer:
+
+- For [Ubuntu](https://github.com/nodesource/distributions#debinstall)
+- For [macOS](https://nodejs.org/en/download/)
+- For [Windows](https://nodejs.org/en/download/)
+
+Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v10.14.2` or a later version than that.
 
 ## Planning
 
-| Week | Topic              | Read                              | Homework                                    |
-| ---: | ------------------ | --------------------------------- | ------------------------------------------- |
-|   1. | Node.js, npm, http | [Week 1 Reading](week1/README.md) | [Week 1 Homework](week1/homework/README.md) |
-|   2. | fs, process        | [Week 2 Reading](week2/README.md) | [Week 2 Homework](week2/homework/README.md) |
-|   3. | express, REST      | [Week 3 Reading](week3/README.md) | [Week 3 Homework](week3/homework/README.md) |
+| Week | Topic                               | Readings                       | Homework                       | Lesson Plan                           |
+| ---: | ----------------------------------- | ------------------------------ | ------------------------------ | ------------------------------------- |
+|   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Homework W1](week1/MAKEME.md) | [Lesson Plan W1](week1/LESSONPLAN.md) |
+|   2. | REST, CRUD & API                    | [Readings W2](week2/README.md) | [Homework W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
+|   3. | Templating engines, API calls       | [Readings W3](week3/README.md) | [Homework W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
 
-## Before your first Node.js lecture
+## Finished?
 
-Start with the Node.js tutorials for beginners [from The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and
-[from thenewboston](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_).
+Did you finish the module? You're a rockstar!
 
-Read first weeks's [README.md](week1/README.md).
+If you feel ready for the next challenge, click [here](https://www.github.com/HackYourFuture/databases) to go to Databases!
 
-## Promises' refresher
+_The HackYourFuture curriculum is subject to CC BY copyright. This means you can freely use our materials, but just make sure to give us credit for it :)_
 
-Reading:
-
-Read Jim's summaries of [promises](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/promises.md)
-and [async & await](https://github.com/HackYourFuture/fundamentals/blob/master/fundamentals/async_await.md)
-from JavaScript module
-
-[Promises, async/await](http://javascript.info/async)
-
-## Node.js Setup
-
-We're going to use the latest Node.js LTS 8.x. Follow one of the following
-instructions depending on your operating system:
-
-* [CentOS/Fedora/RHEL](https://github.com/nodesource/distributions#rpminstall)
-* [Debian/Ubuntu](https://github.com/nodesource/distributions#debinstall)
-* [macOS](https://nodejs.org/en/download/)
-* [Windows](https://nodejs.org/en/download/)
-
-## Pre-requisites
-
-We will build on knowledge from the following HYF (sub)modules. If we feel we
-have gaps we should review the curriculum ourselves or ask a teacher to help.
-
-- [JavaScript1](https://github.com/HackYourFuture/JavaScript1)
-- [JavaScript2](https://github.com/HackYourFuture/JavaScript2)
-- [JavaScript3](https://github.com/HackYourFuture/JavaScript3)
-- [Git](https://github.com/HackYourFuture/Git)
-- [Bash/Command Line Interface](https://github.com/HackYourFuture/CommandLine)
-
-## What will we learn?
-
-- What is Node.js?
-- Using Node Package Manager (NPM)
-- Using `require` to include modules
-- Using `http` to handle and respond to HTTP requests
-- Using `fs` to read from and write to files
-- Using `process` to read arguments from command line
-- Using `express` to make a RESTful API
-
-## Why Node.js?
-
-It is essential to have a backend for almost all web application. The backend is
-a place where we, developers, can store our data, communicate with users and let
-users communicate with us, do smart things like calculations, data processing,
-etc.
-
-There are many languages for this. You might've heard of Java, C, C++, C#, Go,
-Python, Ruby, PHP and [so on](https://blog.newrelic.com/2016/08/18/popular-programming-languages-2016-go/).
-
-There are two reasons why we at HYF chose Node.js over others:
-
-1. You already know JavaScript, so it's easier to get started;
-2. Node.js is great for making web APIs because it is asynchronous by nature and
-   thus allows for high throughput, so it allows many users to make very light
-   requests at the same time.
-
-## Handing in homework
-
-Take a look at [this video](https://www.youtube.com/watch?v=-o0yomUVVpU)
-made by Daan, he explains how your homework needs to be handed in from now on.
-
-Also review the [Git workflow material](https://github.com/HackYourFuture/Git/blob/master/Lecture-3.md)
-and use it as a reference.
-
-## Rewatch previous lectures
-
-- Lecture 1 (Joost): https://www.youtube.com/watch?v=c8OvRVsbIsc
-- Lecture 2 (Joost): https://www.youtube.com/watch?v=pY7IDaLX-no
-- Lecture 3 (Joost): https://www.youtube.com/watch?v=oeWCqKJsHtU&t=99s
-
-*The HackYourFuture curriculum is subject to CC BY copyright. This means you can freely use our materials, but just make sure to give us credit for it :)*
-
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
