@@ -1,4 +1,4 @@
-# Node.js Week 3 (Readings)
+# Reading Material Node.js Week 3
 
 ## Agenda
 

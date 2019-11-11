@@ -6,6 +6,7 @@
 2. Node.js exercises
 3. Code along
 4. PROJECT: HackYourTemperature I
+5. Get your CV ready!
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v10** and NPM should be at least **v6**.
 
@@ -50,10 +51,10 @@ Step 2. Create another file for your code called `app.js`. In this file use the 
 Your output should be:
 
 ```javascript
-  12
- 846
-   2
-1236
+12;
+846;
+2;
+1236;
 ```
 
 Tips:
@@ -86,7 +87,6 @@ function padLeft(val, num, str) {
 Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads number available through npm https://www.npmjs.com/package/left-pad.
 
 Perfect!. Now all you need to do is replace the function call from `padLeft` to use this new npm package called `left-pad`.
-
 
 Step 0. Create a new empty folder, e.g. `exercise2`
 
@@ -203,6 +203,12 @@ Each week you'll be building a certain part of it. This week we'll get started w
 5. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
+
+5. Get your CV ready!
+
+In this final exercise you have to prepare the first draft of your CV. You can do this easily by filling in the following form:
+
+- [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
 ## **SUBMIT YOUR HOMEWORK!**
 

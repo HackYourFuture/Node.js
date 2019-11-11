@@ -6,7 +6,6 @@
 2. Node.js exercises
 3. Code along
 4. PROJECT: HackYourTemperature III
-5. Get your CV ready!
 
 ## **1. Practice the concepts**
 
@@ -137,12 +136,6 @@ In the frontend we're going to add one thing:
 1. Navigate to `index.handlebars`. Underneath the `<form>`, add a `<p>`. Give it the following content: `{{ weatherText }}` (Notice how the name `weatherText` refers back to the key in the object passed in the `render()`)
 
 Now test out your work to see if it behaves as expected. Run your server with `node server.js`. Open your browser at the right port and fill in the form. On submit there should appear a message underneath the form, that either says that the city isn't found or what the temperature is.
-
-5. Get your CV ready!
-
-In this final exercise you have to prepare the first draft of your CV. You can do this easily by filling in the following form:
-
-- [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
