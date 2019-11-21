@@ -22,7 +22,13 @@ Go to your favorite command line interface and run the following command
 npm install -g learnyounode
 ```
 
-When it's all installed, **do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
+When it's all installed, execute the command:
+
+```md
+learnyounode
+```
+
+And the menu will open up. **Do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
 
 ## **2. Node.js exercises**
 
