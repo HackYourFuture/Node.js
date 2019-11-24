@@ -214,7 +214,7 @@ After writing all this code you can verify that it's working by running `node se
 
 In this final exercise you have to prepare the first draft of your CV. Before preparing and submitting your CV, please look at the following link: [http://bit.ly/cvpreparation](http://bit.ly/cvpreparation).
 
-You can do this easily by filling in the following form:
+When you're feel prepared enough please fill in the following form:
 
 - [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
