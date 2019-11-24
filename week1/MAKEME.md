@@ -210,7 +210,7 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
-5. Get your CV ready!
+## 5. Get your CV ready!
 
 In this final exercise you have to prepare the first draft of your CV. You can do this easily by filling in the following form:
 
