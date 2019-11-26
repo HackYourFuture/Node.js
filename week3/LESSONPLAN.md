@@ -81,7 +81,8 @@ How to use them in Node
 
 **Exercise**
 
-Make bricks?
+* Use handlebars to build a simple UI for reading books from the Library app
+- think about adding buttons to create, edit, delete book
 
 ## Build with students
 
