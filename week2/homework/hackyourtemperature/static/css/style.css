@@ -1,0 +1,37 @@
+body{
+    color:pink;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    width: 35%;
+    margin: auto;
+}
+
+.sbmt-btn{
+    width: 20%;
+    margin: auto;
+    margin-top:5%;
+    background: pink;
+    color:purple;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    text-decoration: none;
+    height: 2.5em;
+    border: 2px solid purple;
+
+}
+.txt-input{
+    margin-top: 5%;
+    border-bottom: 2px solid purple;
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 3em;
+    font-size: 2em;
+    color: purple;
+}
