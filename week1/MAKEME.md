@@ -57,10 +57,10 @@ Step 2. Create another file for your code called `app.js`. In this file use the 
 Your output should be:
 
 ```javascript
-12;
-846;
-2;
-1236;
+___12;
+__846;
+____2;
+_1236;
 ```
 
 Tips:
