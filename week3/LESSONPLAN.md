@@ -8,9 +8,6 @@
 4. Consuming web APIs
 5. Templating engines
 
-, [Middleware](https://medium.com/@jamischarles/what-is-middleware-a-simple-explanation-bb22d6b41d01), [Middleware II](https://www.youtube.com/watch?v=9HOem0amlyg)| [Readings W2](week2/README.md) | [Homework W2](week2/homework/README.md) |
-| 3. | [Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
-
 ## Core concepts
 
 FIRST HALF (12:00 - 13:30)
@@ -18,6 +15,10 @@ FIRST HALF (12:00 - 13:30)
 ### Middleware
 
 **Explain**
+
+
+* [Middleware](https://medium.com/@jamischarles/what-is-middleware-a-simple-explanation-bb22d6b41d01)
+* [Middleware II](https://www.youtube.com/watch?v=9HOem0amlyg)| 
 
 https://d33wubrfki0l68.cloudfront.net/a22bb45df146d43b57f2f6c90182d19e7394cd96/d6e10/assets-jekyll/blog/express-middleware-examples/middleware-30b3b30ad54e21d8281719042860f3edd9fb1f40f93150233a08165d908f4631.png
 
@@ -58,14 +59,17 @@ Why do we need server-server communication (reuse, separation-of-concerns)
 
 1. Get the image from https://randomfox.ca/floof/ and redirect to it
 
+2. Instead of redirecting show in inside an html
+
+This is prelude to part 2, mention how it is ugly that the HTML and javascript are all mixed up
 
 SECOND HALF (14:00 - 16:00)
-
-2. Instead of redirecting show in inside an html
 
 ### Templating engines
 
 **Explain**
+
+[Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
 
 Motiviation, link to last exercise, js, html and styling all intermixed in same file, it is a mess
 
@@ -81,14 +85,12 @@ How to use them in Node
 
 **Exercise**
 
-* Use handlebars to build a simple UI for reading books from the Library app
-- think about adding buttons to create, edit, delete book
+- Use handlebars to build a simple UI for reading books from the Library app
+   - get the books with axios/fetch
+   - EXTRA: buttons to create, edit, delete book
+   
+# !!!IMPORTANT!!!
 
-## Build with students
+Ask students to prepare for databse course aby installing mySQL.
 
-1. A node js that consumes an external API e.g. https://randomfox.ca/floof/
-   in stage 1 node should redirect to the url in the json
-2. Make the application server inline HTML that uses the image url
-   discuss how HTML code and javascript are mixed and how this lead to tempating engines
-3. Use pug to refactor the app from step 2
    
