@@ -117,7 +117,7 @@ We'll start this week off with a blast, by building a small application that all
 
 Have fun!
 
-- [Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
+- [Express JS Crash Course - Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
 
 ## **4. PROJECT: HackYourTemperature II**
 
