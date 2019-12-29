@@ -156,9 +156,9 @@ Tips:
 - Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response. Use the function `response.setHeader(name, value)` - https://nodejs.org/api/http.html#http_response_setheader_name_value
 
 If you open the network tab you will notice that the browser tries to load the javascript `script.js`, but fails. This is because our server does not serve this file yet. So far the server only serves one thing, the html file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.  
-If you open the network tab you can see that when the browser is requesting the html code it is using the url `http:\\localhost:3000\`. On the other hand, when the browser is requesting the javascript it is using the url `http:\\localhost:3000\script.js`.
+If you open the network tab you can see that when the browser is requesting the html code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/script.js`.
 
-Step 5. Make the server listen to requests at `http:\\localhost:3000\script.js` and send back the following javascript code.
+Step 5. Make the server listen to requests at `http://localhost:3000/script.js` and send back the following javascript code.
 
 ```javascript
 document
@@ -168,10 +168,10 @@ document
 
 Tips:
 
-- `if ( request.url === '\script.js' ) { /* send javascript */ } else { /* send HTML */ }`
-- the `content-type` for javascript is `text\javascript`
+- `if ( request.url === '/script.js' ) { /* send javascript */ } else { /* send HTML */ }`
+- the `content-type` for javascript is `text/javascript`
 
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`. You should see the message _Welcome to Server-land!_.
+Run the code and check that it works by opening a browser at `http://localhost:3000`. You should see the message _Welcome to Server-land!_.
 
 Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
 
@@ -182,7 +182,7 @@ _BONUS_
 <link rel="stylesheet" type="text/css" href="style.css" />
 ```
 
-When the server gets a request at `http:\\localhost:3000\style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type!
+When the server gets a request at `http://localhost:3000/style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type!
 
 ## **3. Code along**
 
