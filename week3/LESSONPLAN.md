@@ -24,19 +24,10 @@ https://d33wubrfki0l68.cloudfront.net/a22bb45df146d43b57f2f6c90182d19e7394cd96/d
 
 Express middleware are functions that execute during the lifecycle of a request to the Express server. Each middleware has access to the HTTP request and response for each route (or path) it’s attached to. In fact, Express itself is compromised wholly of middleware functions. Additionally, middleware can either terminate the HTTP request or pass it on to another middleware function using next (more on that soon). This “chaining” of middleware allows you to compartmentalize your code and create reusable middleware.
 
-**Examples **  
+**Examples**  
 
 express.json() - parses the body of type application/json a request and makes it available as a javascript object
-body-parser    - parses the body of type form-data and amkes it available as javascript object
-
-### Error handling using middleware
-
-***Examples**  
-
-* Sync error handling  
-* Async error handling using callbacks
-* Async error handling using async/await
-* Safeguarding
+body-parser    - parses the body of type form-data and makes it available as javascript object
 
 ### Consuming web APIs
 
@@ -71,9 +62,9 @@ SECOND HALF (14:00 - 16:00)
 
 [Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
 
-Motiviation, link to last exercise, js, html and styling all intermixed in same file, it is a mess
+Motivation, link to last exercise, js, html and styling all intermixed in same file, it is a mess
 
-Solution is to use a templating engine to separrate the view from the node code but still use the data from node in the view
+Solution is to use a templating engine to separate the view from the node code but still use the data from node in the view
 
 How do templating engines work
 
@@ -91,6 +82,6 @@ How to use them in Node
    
 # !!!IMPORTANT!!!
 
-Ask students to prepare for databse course aby installing mySQL.
+Ask students to prepare for database course by installing mySQL.
 
    
