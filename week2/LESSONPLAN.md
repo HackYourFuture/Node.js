@@ -33,7 +33,22 @@ Facebook: Explain what are the main resources: users, posts, comments.
 
 **Exercise**
 
-Ask students to identify the resources on Github and write them down together.
+1. Ask students to identify the resources on Github and write them down together.
+
+
+2. Ask different students to identify the following in this screenshot:
+
+![HTTP request exercise](../assets/request_exercise.png)
+
+* URL:  
+* PORT:  
+* Method:  
+* IP address:  
+* Request ?? status:  
+* Explain request headers:  
+* Response status:  
+* Explain response headers:  
+
 
 ### CRUD and HTTP methods
 
