@@ -16,6 +16,7 @@ const HTML= (`
 </html>`);
 
 
+
 //create a server
 let server = http.createServer(function(req, res) {
   if (req.url==='/script.js') {
