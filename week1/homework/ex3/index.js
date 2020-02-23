@@ -9,7 +9,7 @@ const server = http.createServer(function(req, res) {
     res.writeHead(200, { "Content-Type": "text/html" });
     fs.createReadStream(path.join(__dirname, "index.html")).pipe(res);
   } else if (req.url === "/script.js") {
-    res.writeHead(200, { "Content-Type": "text/javascript" });
+    res.writeHead(200, { "Content-Type": "application/javascript" });
     fs.createReadStream(path.join(__dirname, "script.js")).pipe(res);
   } else if (req.url === "/style.css") {
     res.writeHead(200, { "Content-Type": "text/css" });
