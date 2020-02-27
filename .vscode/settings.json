@@ -2,4 +2,7 @@
   "editor.tabSize": 2,
   "eslint.autoFixOnSave": true,
   "javascript.validate.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 }
