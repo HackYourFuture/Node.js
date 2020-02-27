@@ -1,0 +1,14 @@
+{
+  "name": "blogs",
+  "version": "1.0.0",
+  "description": "e1",
+  "main": "e1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ramzi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -20,7 +20,7 @@ const HTML= (`
 //create a server
 let server = http.createServer(function(req, res) {
   if (req.url==='/script.js') {
-    res.setHeader('Content-Type','text/javascript')
+    res.setHeader('Content-Type','application/javascript')
     let jsElement = (`document.getElementById('content').appendChild(document.createTextNode('Welcome to Server-land!'))`)
     res.write(jsElement)
   } else if (req.url === '/') {
