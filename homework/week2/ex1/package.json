@@ -1,0 +1,14 @@
+{
+  "name": "ex1",
+  "version": "1.0.0",
+  "description": "blog api",
+  "main": "blogAPI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Naji",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

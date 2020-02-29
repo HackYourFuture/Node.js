@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "web server",
   "main": "webServer.js",
-  "dependencies": {
-    "web.js": "^1.0.1"
-  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Naji Nabulsi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "web.js": "^1.0.1"
+  }
 }
