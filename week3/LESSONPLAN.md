@@ -26,20 +26,24 @@ Express middleware are functions that execute during the lifecycle of a request 
 
 **Examples**  
 
-express.json() - parses the body of type application/json a request and makes it available as a javascript object
-body-parser    - parses the body of type form-data and makes it available as javascript object
+* express.json() - parses the body of request with type application/json and makes it available as a javascript object
+* body-parser    - parses the body of request with type form-data and makes it available as javascript object
 
 ### Consuming web APIs
 
 **Explain**
 
+Traditional server architecture one client one server that does anything: 
 https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/27f810ea-2722-455a-9a0d-bb5b54c28393/api-based-platforms-api-diagram.png
 
 https://cdn.darknet.org.uk/wp-content/uploads/2018/08/HTTP-Security-Considerations-An-Introduction-To-HTTP-Basics.png
 
+In reality the server does not do everything on its own. Instead it uses services from other servers 
 https://www.notion.so/gajduk/Hosting-b4025782198b494ba6bd053953c8933b#f8f31bc004ab46199639d914daad79fe
 
-Why do we need server-server communication (reuse, separation-of-concerns)
+Why do we need server-server communication?
+* reuse - we do not want to write new code if someone has already done that in the past and we can just use it
+* separation-of-concerns - especially in big organizations like netflix etc
 
 **Examples**
 
@@ -62,13 +66,13 @@ SECOND HALF (14:00 - 16:00)
 
 [Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
 
-Motivation, link to last exercise, js, html and styling all intermixed in same file, it is a mess
+Motivation: make a story with a link to last exercise. The js, html and styling code are all intermixed in same file, it is a mess
 
 Solution is to use a templating engine to separate the view from the node code but still use the data from node in the view
 
-How do templating engines work
+How do templating engines work - they replace tokens/placeholders in a template string/file with actual data coming from json
 
-How to use them in Node
+How to use them in Node - https://www.npmjs.com/package/handlebars
 
 **Example**
 
