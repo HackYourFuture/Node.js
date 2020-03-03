@@ -19,14 +19,14 @@ This week you'll finish the command line exercises. Go back to `learnyounode` an
 
 ### **Exercise 1: Chuck Norris programs do not accept input**
 
-Did you know that there is an API for Chuck Noris jokes. That's incredible, right!?
+Did you know that there is an API for Chuck Noris jokes? That's incredible, right!?
 
-Write a small node program (not a server) that calls the this API http://www.icndb.com/api/ and prints a random joke to the conole.
+Write a small JavaScript function that calls this API http://www.icndb.com/api/ and prints a random joke to the console. You'll be using `node` to execute the JavaScript file.
 
 Step 0. Create a new folder e.g. `exercise1`. Honestly guys do I even have to say this anymore.  
-Step 1. In the folder you just created, initalize npm.  
-Step 2. Create a javascript file that will hold the code for your program.  
-Step 3. Install and require `node-fetch`.  
+Step 1. In the folder you just created, initalize npm (using the correct command in the command line).  
+Step 2. Create a javascript file that will hold the code for your program, called `norris-jokes.js`.  
+Step 3. Install and require `node-fetch` in that file.  
 Step 4. GET a random joke from the URL http://www.icndb.com/api/  
 Step 5. Print the joke to the console
 
