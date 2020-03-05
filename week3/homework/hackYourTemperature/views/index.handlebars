@@ -1,0 +1,18 @@
+<h3>
+    {{greeting}}
+    {{errMessage}}
+</h3>
+
+
+<form action="/weather" method="post">
+    <input type="text" name="cityName" class="txt-input" placeholder="Search for a city">
+    <input type="submit" class="sbmt-btn" value="Search">
+</form>
+
+<div>
+    <ul>
+        <li>{{temp}}</li>
+        <li>{{maxTemp}}</li>
+        <li>{{minTemp}}</li>
+    </ul>
+</div>
