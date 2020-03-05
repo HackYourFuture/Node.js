@@ -31,7 +31,8 @@ app.delete('/blogs/:title', (req, res) => {
 
 app.get('/blogs/:title', (req, res) => {
     const title = req.params.title;
-    res.sendfile(title);
+    // res.sendfile(title);
+    res.sendFile(title, { root: __dirname, headers: { 'Content-Type': 'text/plain' } });
 })
 
 app.listen(3000, () => console.log('listen to port'));
