@@ -4,7 +4,9 @@ const express = require('express');
 const app = express();
 
 const url = 'https://reservation100-sandbox.mxapps.io/rest-doc/api/swagger.json';
+// const url = 'https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations';
 
+// https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations
 app.get('/', (req, res) => {
 
     fetch(url, { headers: { 'Content-Type': 'application/json' } })

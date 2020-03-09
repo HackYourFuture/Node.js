@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
     let randSubjects = Math.floor(Math.random() * lenSubjects);
     let randPunchlines = Math.floor(Math.random() * lenPunchlines);
-    res.render('home', { firstname: subjects[randSubjects], lastname: punchlines[randPunchlines] });
+    res.render('home', { subject: subjects[randSubjects], punchline: punchlines[randPunchlines] });
 
 });
 
