@@ -9,7 +9,7 @@ app.get('/', (req,res) => {
   fetch('http://api.icndb.com/jokes/random')
   .then(res => res.json())
   .then(repo => {
-    console.log(repo.value.joke)
+    res.send(repo.value.joke)
   })
 })
 

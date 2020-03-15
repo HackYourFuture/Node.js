@@ -11,11 +11,11 @@ const encodedPass=Buffer.from(authentication).toString('base64');
 
 app.get('/', (req,res) =>{
   fetch(url, {
-    headers : {'authorization' : `basic ${encodedPass}`}
+    headers : {'authorization' : `Basic ${encodedPass}`}
   })
   .then(res => res.json())
   .then(repo => {
-    console.log(repo)
+    res.send(repo)
   })
 })
 

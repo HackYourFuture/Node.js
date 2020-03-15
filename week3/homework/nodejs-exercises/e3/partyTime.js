@@ -17,11 +17,11 @@ app.get('/', (req,res) => {
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify(attendies)
   })
-  .then(res => {
-    console.log(res)
+  .then(json => {
+    res.send(json)
   })
   .catch(err => {
-    console.log(err)
+    res.send(err)
   })
 })
 
