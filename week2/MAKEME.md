@@ -19,9 +19,11 @@ This week you'll continue with the command line exercises. Go back to your comma
 
 ### Make a blog API
 
-Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a good blog API.
+Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application. Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`.
 
-In our API, blogs will have `title` and `content`. Let's jump right in.
+We also want our blogs to be stored `persistently` so that they do not dissapear when the Node.js application is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive. 
+
+Let's start by setting up our environment.
 
 **Setup:**  
 Step 0. Creata a new empty folder e.g. `exercise1`  
@@ -34,7 +36,7 @@ That was not too hard now was it. Now you are ready for the real coding. We will
 
 **Creating new posts**
 
-To create a new blog posts, users need to send a json in the body of the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. You can use the following starter code:
+To create a new blog posts, users need to send a json in the body of the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. The idea is that the name of the file will match the title of the blog popst while the content will be stored as the content of the file. You can use the following starter code:
 
 ```javascript
 const fs = require("fs");
