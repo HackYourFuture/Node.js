@@ -17,11 +17,16 @@ REST stands for Representational State Transfer. This means that when a client r
 
 If this seems very abstract to you, don't worry, REST is only a concept, an idea of how applications should be organized.
 
-The world of `REST` consists of two things: resources and actions (request and response).
+The world of `REST` consists of two things: resources and operations (Creating, Reading, Updating, Deleting).
 
 A `resource` can be any object, real or imaginary. On Instagram for example, a resource can be a user, a photo or a hashtag. REST offers a way to expose information about its resources. For example, for Instagram, the state of a user (the resource), contains the user's name, the number of posts that user has on Instagram, how many followers they have, and more. Resources have names e.g. _users_, _photos_ and _hashtags_ and each object in resource has an identifier. For example, a _user_ has a username.
 
-REST also enables clients to take actions on those resources, such as create new resources (e.g. create a new user) or change existing resources (e.g. edit a post).
+REST also enables clients to take actions on those resources. We call these actions `CRUD` operations:
+
+- Creating new resources, such as videos/images/text files, etc.
+- Retrieving those files and reading them.
+- Updating the content of those files.
+- Deleting those files.
 
 The most important features of REST are:
 
