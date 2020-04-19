@@ -8,7 +8,7 @@
 
 ## 1. Making use of other APIs
 
-The role of a web server is to serve the user what they want: profile information, cake, video or any other type of data. Sometimes, in order to get the user what they want the server has to talk to other servers. The way servers talk to each other is no different than how your browser talks to a server. It uses the same HTTP protocol and very often REST and JSON as well.
+The role of a web server is to serve the user what they want: your user account information, video/images or any other type of data. Sometimes, in order to get the user what they want the server has to talk to other servers. The way servers talk to each other is no different than how your browser talks to a server. It uses the same HTTP protocol and very often REST and JSON as well.
 
 In a way using APIs serves a similar purpose as using a package in node. It allows us to reuse code that someone else has written. In the case of API we do not directly get the code, but we use the functionality that the code provides. For example, we could use APIs to [authenticate users](https://developers.facebook.com/docs/facebook-login/), [check addresses and locations](https://locationiq.com/#demo), [send emails](https://sendgrid.com/docs/for-developers/sending-email/api-getting-started/) and much more. As you can see from the examples it would be really difficult to build such services ourselves. Just imagine the security and legal issues involved in building a [payment processing system](https://stripe.com/docs/api)!
 
@@ -30,7 +30,6 @@ Now, how do we go about doing this? Follow this basic guide to get started quick
 Further materials to learn more about this:
 
 - [What Is an API and Why Should I Use One?](https://medium.com/@TebbaVonMathenstien/what-is-an-api-and-why-should-i-use-one-863c3365726b)
-- [Microservices in a Nutshell](https://www.thoughtworks.com/insights/blog/microservices-nutshell)
 - [https://youtu.be/ZtLVbJk7KcM](https://youtu.be/ZtLVbJk7KcM)
 
 ## 2. What is a templating engine?

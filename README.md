@@ -6,11 +6,13 @@
 
 ![NodeJS](./assets/nodejs.png)
 
-So far you've learned about the fundamentals of what makes up a webpage in your browser. We call this `frontend`: the HTML that gives structure to our pages, the CSS that give it a nice look, and lastly the JavaScript that makes our page interactive. Everything you can "see" and "interact" with is made out of these technologies.
+So far you've learned about the fundamentals of what makes up a webpage in your browser. We call this `frontend`: the HTML that gives structure to our pages, the CSS that give it a nice look, and the JavaScript that makes our page interactive. Everything you can "see" and "interact" with is made out of these technologies.
 
-However, there is a whole part of applications that you might not be aware of. Have you ever wondered how data moves from one place to another, from one page to another? This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Well here's the secret: there is code that tells the computer how to move and manipulate data. This code is hidden away from the user, because there is no need for them to know about it.
+However, there is a whole part of applications that you might not be aware of. Have you ever wondered how data moves from one place to another, from one page to another?
 
-During the following 3 weeks you'll be learning one **approach** of creating a backend. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to be written and executed outside of the browser. Keep in mind that there are, like everything in development, multiple ways of doing this. There are different other languages and technologies that can be used to create a backend of an application.
+This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Well here's the secret: there is code that tells the computer how to move and manipulate data. This code is hidden away from the user, because there is no need for them to know about it.
+
+During the following 3 weeks you'll be learning all about this. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to write backend applications.
 
 ## Learning goals
 
@@ -18,7 +20,7 @@ In this module you will get familiar with the world of backend development. By t
 
 - What is meant by the term `backend`
 - The `client-server` model
-- What HTTP and REST mean
+- What `HTTP` and `REST` mean
 - How to `create your own web servers` with Node.js, using `Express.js`
 - What a `templating engine` is.
 - How to use the `Node Package Manager (NPM)`.
@@ -33,7 +35,29 @@ Before you start you need to install a very important software: Node.js! We're g
 - For [macOS](https://nodejs.org/en/download/)
 - For [Windows](https://nodejs.org/en/download/)
 
-Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v10.14.2` or a later version than that.
+Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v12.13.0` or a later version than that.
+
+## How to use this repository
+
+This repository consists of 3 essential parts:
+
+1. `Reading materials`: this document contains all the required theory you need to know _**while**_ you're coding. It's meant as both study material and as a reference to understand what you're doing.
+2. `Homework`: this document contains the instructions for each week's homework.
+3. `Lesson Plans`: this part is meant for teachers as a reference. However, as a student don't be shy to take a look at it as well!
+
+After your first class you should start off with checking the `reading materials` for that week. At the beginning that would be the [Week 1 Reading](/Week1/README.md). Study all the concepts and try to get the gist of everything. After, you can get started with the `homework` for that week.
+
+Before you start with the homework, make sure you've made a `fork` of the right repository: [HackYourHomework/Node.js](https://www.github.com/hackyourhomework/Node.js). Once you've cloned it to your computer you can proceed by making `GIT` branches for each week. Start at the `master` branch and execute the following (note that they're 3 different commands):
+
+```console
+foo@bar:~$ git branch week1-YOURNAME
+foo@bar:~$ git branch week2-YOURNAME
+foo@bar:~$ git branch week3-YOURNAME
+```
+
+Then execute `git checkout week1-YOURNAME` and you can get started!
+
+If you have any questions or if something is not entirely clear ¯\\\_(ツ)\_/¯, please ask/comment on Slack!
 
 ## Planning
 
