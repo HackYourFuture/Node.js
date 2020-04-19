@@ -19,9 +19,9 @@ This week you'll continue with the command line exercises. Go back to your comma
 
 ### Make a blog API
 
-Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application. Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`.
+Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application. Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are blog `posts`. Each blog post will have a `title` and `content`. The `title` will also serve as an`id` uniquely identifying a blog post.
 
-We also want our blogs to be stored `persistently` so that they do not dissapear when the Node.js application is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive. 
+We want our blog posts to be stored `persistently` so that they do not dissapear when the Node.js application is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive. 
 
 Let's start by setting up our environment.
 
@@ -32,16 +32,27 @@ Step 2. Create a javascript file that will hold your code
 Step 3. Install and require express  
 Step 4. Write or copy code from lecture to start an express server on port 3000.
 
-That was not too hard now was it. Now you are ready for the real coding. We will start off by
+That was not too hard now was it. Before we start coding we need to define what operations will be supported via our API.
 
-**Creating new posts**
+| Operation | Description | Method | Route |
+| --------- | ----------- | ------ | ----- |
+| Create    | Given a title and content create a new post |  |  |
+| Read one  | Given a title, return the content of a single blog post |  |  |
+| Update    | Given a title and content update an existing blog post |  |  |
+| Delete    | Given a title delete an existing blog post |  |  |
 
-To create a new blog posts, users need to send a json in the body of the request, e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. We are going to store the blog posts in separate files using the `fs` module. The idea is that the name of the file will match the title of the blog popst while the content will be stored as the content of the file. You can use the following starter code:
+Take a minute to fill in the correct method and route in the table above.
+Let us start with
+
+**Creating a new post**
+
+To create a new blog posts, the body of the request should contain a json with `title` and `content` , e.g. `{ "title": "My first blog", "content": "Lorem ipsum" }`. The blog posts will be stored in separate files using the `fs` module. The idea is that the name of the file will match the title of the blog post while the content will be stored as the content of the file. You can use the following starter code:
 
 ```javascript
 const fs = require("fs");
-app.<METHOD>('/blogs', (req, res) => {
-    // How to get the tile and content from the request??
+app.<METHOD>('/posts', (req, res) => {
+    // How to get the tiтle and content from the request??
+    // what if the request does not have a title and/or content
     fs.writeFileSync(title, content);
     res.end('ok')
 })
@@ -57,34 +68,35 @@ Hint: Remember `express.json()`. Why did we use it during our lectures?
 
 Up next:
 
-**Updating existing posts**
+**Updating existing post**
 
-Updating posts is very similar to creating them. You only need to use a different METHOD and add a check that the blog post that the user is trying to update already exists with `fs.existsSync(title)`.
+Updating posts is very similar to creating them. This time we are going to use a _url parameter_ in express to send the `title` while the `content` will be part of the `body`. Make sure to use the correct `HTTP METHOD` and check that the blog post under update already exists with `fs.existsSync(title)`.
 
 ```javascript
-app.<METHOD>('/blogs', (req, res) => {
-    // How to get the tile and content from the request??
+app.<METHOD>('/posts/:title', (req, res) => {
+    // How to get the title and content from the request??
+    // what if the request does not have a title and/or content
     if (fs.existsSync(title)) {
       fs.writeFileSync(title, content);
       res.end('ok')
     }
     else {
-      res.end('post does not exist');
+      // post not found
     }
 })
 ```
 
-Use Postman to test that your code works. Try updating an existing post. Does it work? Now try updating a post that does not exist. Do you get the correct response?
+Use Postman to test that your code works. Try updating an existing post. Does it work? Now try updating a post that does not exist. Do you get the correct response and status code?
 
 Next up:
 
-**Deleting posts**
+**Deleting a post**
 
-To delete a post we need to delete the corresponding file. This time we are going to use a _url parameter_ in express to send the title. Since we are deleting a file there is no need to send any content in the request. To delete a file in Node you can use `fs.unlinkSync(<filename>)`:
+When deleting a post the corresponding file should be deleted. Since we are deleting a file there is no need to send any content in the request. To delete a file in Node use `fs.unlinkSync(<filename>)`:
 
 ```javascript
-app.<METHOD>('/blogs/:title', (req, res) => {
-    // How to get the tilte from the url parameters?
+app.<METHOD>('/posts/:title', (req, res) => {
+    // How to get the title from the request?
     fs.unlinkSync(title);
     res.end('ok');
 })
@@ -94,22 +106,31 @@ Use Postman to test that your code works. Remember to use the correct url, for e
 
 That was almost too easy, right? Next up, the hardest part:
 
-**Reading posts**
+**Reading a post**
 
 To read a post the user needs to open the url `http:\\localhost:3000\blogs\My First Blog`. The server needs to send back the content of the file `My First Blog`. In express this can be done with the `res.sendfile(<filename>)` command.
 
 ```javascript
 app.<METHOD>('/blogs/:title', (req, res) => {
-    // How to get the tilte from the url parameters?
+    // How to get the title from the request?
     res.sendfile(title);
 })
 ```
 
-Use Postman to test that your code works.
+**Use Postman to test that your code works.**
 
 All done? Then, _Congratulations_
 
 ![Congratulations](https://media.giphy.com/media/l1AsI389lnxkvQHAc/giphy.gif)
+
+**Bonus: Reading all posts**
+In addition to reading the content of a single post build an operation that reads all existing posts. To limit the size of response only send the title of the blog posts, e.g. `[{"title":"My First Blog"}, {"title":"Second Blog"}]`
+
+```javascript
+app.<METHOD>('/blogs', (req, res) => {
+    // how to get the file names of all files in a folder??
+})
+```
 
 ## **3. Code along**
 
