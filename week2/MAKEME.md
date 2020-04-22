@@ -205,25 +205,24 @@ This week's homework we will expand on that, in 2 parts:
 
 Since we've already loaded in our package `express-handlebars`, we can get started immediately. If at any point you're stuck, try reading the [documentation](https://github.com/ericf/express-handlebars) or ask a question in Slack!
 
-1. We first have to make Express aware of the templating engine. We do this by using the `engine()` and `set()` functions. Paste in the following (and figure out what it does):
+1. We first have to make Express aware of the templating engine. We do this by using the `engine()` and `set()` functions. Paste in the following (and figure out what it does, by checking the [documentation](https://github.com/express-handlebars/express-handlebars)):
 
 ```js
 app.set('view engine', 'handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ defaultLayout: false }));
 ```
 
-2. In the root of the project folder, create a new folder called `views`. Inside of this create another folder called `layouts`.
-3. Create 2 `.handlebars` files: inside layouts create `main.handlebars` and outside of the folder `index.handlebars`
-4. The content of `main.handlebars` should be the complete HTML document. Write a basic structure, including a `<head>` and `<body>`. As a final part, inside the `<body>` paste in the following: `{{ body }}` (this injects the HTML from `index.handlebars)` into the body)
-5. The content of the `index.handlebars` should be a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
-6. Test out your work! Make sure it renders a form in your browser
+2. In the root of the project folder, create a new folder called `views`.
+3. Create 1 `.handlebars` file inside the `views` folder, named `index.handlebars`
+4. The content of `main.handlebars` should be a regular, complete HTML document. Write a basic structure, including a `<head>` and `<body>`. The latter should include a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
+5. Test out your work! Make sure it renders a form in your browser
 
 ### 4.2 The Backend
 
 In this part we'll add another endpoint, with a `POST` method.
 
 1. First let's modify our `/` route. Instead of sending a string, send a template using the `render()` function. Pass in the name of the template, which is `index`
-2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `urlencoded()` method on the express object. Using the `use()` function from `app`, pass in the `urlencoded()` from `express`. Give the `urlencoded()` function the following argument: `{ extended: true }`
+2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`.
 3. Create a `POST` route, that has as an endpoint: `/weather`
 4. Inside the callback function of the route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
 5. Send the the form input back as a response to the client

@@ -31,7 +31,7 @@ REST also enables clients to take actions on those resources. We call these acti
 The most important features of REST are:
 
 - An application has a `frontend` (client) and a `backend` (server). This is called [separation of concerns](https://medium.com/machine-words/separation-of-concerns-1d735b703a60): each section has its specific job to do. The frontend deals with presenting data in a user friendly way, the backend deals with all the logic and data manipulation
-- The server is `stateless`, which means that it doesn't store any data about a client session. Simply put, when you refresh the page you won't keep the data you requested before (unless it's saved in the browser). Whenever a client sends a request to the server, each request from the client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. This makes it possible to handle requests from millions of users.
+- The server is `stateless`, which means that it doesn't store any data about a client session. Simply put, when you refresh the page you won't keep the data you requested before (unless it's saved in the browser or in a file on the server). Whenever a client sends a request to the server, each request from the client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. This makes it possible to handle requests from millions of users.
 - Server responses can be temporarily stored on the client (a browser) using a process called `caching`: storing files like images or webpages in the browser to load the next time you enter a website (instead of getting them from the server, which generally takes longer to do). Certain user data can also be saved through the browser's `localStorage` or `cookies`
 - Client-server communication is done through `Hypertext Transfer Protocol` (more on that later), which serves as the style (the how) of communication.
 
@@ -120,7 +120,7 @@ For more information check out the following resources:
 
 # 6. Postman
 
-When creating APIs it is important to test if they work as intended. The easiest way to do this is send a request and check the APIs response.
+When creating APIs it is important to test if they work as intended. The easiest way to do this is to send a request and check the API's response.
 
 Normally, you would send a request using the browser or the command line. But there's a tool we can use that's made especially for these testing purposes: [Postman](https://www.youtube.com/watch?v=i1jU-kivApg)
 
@@ -132,9 +132,7 @@ As you can see in the image below, when you enter a request in Postman and click
 
 ![postman illustration](https://s3.amazonaws.com/postman-static-getpostman-com/postman-docs/anatomy-of-a-request.png)
 
-Check [this guide](https://learning.getpostman.com/docs/postman/launching_postman/sending_the_first_request/#sending-a-request) to learn how to send a request with Postman.
-
-Alternatively, [watch this video guide](https://www.youtube.com/embed/YKalL1rVDOE?list=PLM-7VG-sgbtBsenu0CM-UF3NZj3hQFs7E).
+Watch this [video guide](https://www.youtube.com/embed/YKalL1rVDOE?list=PLM-7VG-sgbtBsenu0CM-UF3NZj3hQFs7E) to learn about how to start sending your first requests with Postman!
 
 ## Finished?
 
