@@ -28,14 +28,18 @@ Additionally, middleware can either terminate the HTTP request or pass it on to 
 
 **Example**
 
-Try out the following code and use Postman to make the request. Show the student the importance of `express.json()` to parse the request and makes the form data available in the `req.body`.
+Try out the following code and show how the middleware gets applied to the request, before it reaches the endpoint `/test`.
 
 ```js
 const express = require('express');
 const app = express();
 
-app.use(express.json());
-app.post('/test', (req, res) => res.json(req.body));
+app.use(function (req, res, next) {
+  console.log('hello from the middleware!');
+  next();
+});
+
+app.post('/test', (req, res) => res.send('Hello from test!'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
@@ -43,67 +47,122 @@ app.listen(PORT, () => {
 });
 ```
 
+Explain use cases for using middleware, like validation (`express-validator`) or parsing the request (`express.json()`)
+
 **Exercise**
+
+Ask students to create a simple Express server:
+
+- with one POST endpoint `/`.
+- This endpoint should receive form data (a single property, `email`) in JSON format.
+- To parse the request, have them use `express.json()`, as a middleware function.
+- Have them use Postman to test whether or not it works.
+
+At the end of the exercise ask 1 or 2 students to show their approach.
 
 **Essence**
 
-Middleware allows the web server to modify the request gets in order to make it better interpretable within the route. For example,
+Middleware allows the web server to modify the request gets in order to make it better interpretable within the route. For example, when sending form data in a request we want to make sure the server can understand the format it comes in properly. Therefore, we use the middleware `express.json()`.
 
 ### Consuming web APIs
 
 **Explanation**
 
-Traditional server architecture one client one server that does anything:
-https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/27f810ea-2722-455a-9a0d-bb5b54c28393/api-based-platforms-api-diagram.png
-
-https://cdn.darknet.org.uk/wp-content/uploads/2018/08/HTTP-Security-Considerations-An-Introduction-To-HTTP-Basics.png
-
-In reality the server does not do everything on its own. Instead it uses services from other servers
-https://www.notion.so/gajduk/Hosting-b4025782198b494ba6bd053953c8933b#f8f31bc004ab46199639d914daad79fe
-
-Why do we need server-server communication?
-
-- reuse - we do not want to write new code if someone has already done that in the past and we can just use it
-- separation-of-concerns - especially in big organizations like netflix etc
+Web applications are built using many different services. There's no need to have your application's do everything, from authentication to payment processing. To make things easier we use external services, also known as `web APIs`. Such a service can be used through their API, which allows us to get access to certain functionality and data, to use in our own application. This server to server communication through APIs is also known as `consumation` of web APIs.
 
 **Example**
 
-- Location services - https://api.postcode.nl/documentation/json-rest/v1/Address/viewByPostcode
-- Process payments (Stripe) - https://stripe.com/docs/api/invoices
+- Social login is a way for applications to outsource authentication, via services like Facebook or Google (examples are [Udemy](https://www.udemy.com/join/login-popup/), or [Medium](https://medium.com/))
+- Online payment processing is outsourced to services like Stripe or Adyen (examples are [Udemy](https://www.udemy.com/), or [bol.com](https://www.bol.com)))
 
 **Exercise**
 
-1. Get the image from https://randomfox.ca/floof/ and redirect to it
+Ask students to create a simple Express server:
 
-2. Instead of redirecting show it inside HTML
+- With 1 GET endpoint `/github`
+- Inside the route, make an API request using `node-fetch` to `https://api.github.com/users/:username/repos`
+- Replace the `:username:` with your own GitHub user name
+- Respond to the client with the first repository that comes up
+- Use Postman to test your work
 
-This is prelude to part 2, mention how it is ugly that the HTML and javascript are all mixed up
+**Essence**
+
+Why write everything yourself, when you can make use of other web services? By consuming web APIs we can extend the usability of our application, without the need to do all the work ourselves!
 
 SECOND HALF (14:00 - 16:00)
 
 ### Templating engines
 
-**Explain**
+**Explanation**
 
-[Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
-
-Motivation: make a story with a link to last exercise. The js, html and styling code are all intermixed in same file, it is a mess
-
-Solution is to use a templating engine to separate the view from the node code but still use the data from node in the view
-
-How do templating engines work - they replace tokens/placeholders in a template string/file with actual data coming from json
-
-How to use them in Node - https://www.npmjs.com/package/handlebars
+A templating engine is a technology that makes it possible to to create `dynamic` pages. Instead of writing regular HTML, you'll create `templates`. This is similar to HTML, but with one big difference: certain values serve as placeholders. These placeholders will be filled in with actual content, when the page is rendered. The type of content that is chosen depends on the person that's viewing it.
 
 **Example**
 
-3. Use handlebars to refactor the page from exercise 2
+A simple example of a Handlebars template:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars Example</title>
+  </head>
+  <body>
+    <!-- The Handlebars template will be injected here -->
+    <div id="entry-container"></div>
+
+    <!-- This script contains the Handlebars template. Notice the placeholders "title" and "body" -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class='entry'>
+        <h1>
+          {{title}}
+        </h1>
+        <div class='body'>
+          {{body}}
+        </div>
+      </div>
+    </script>
+
+    <!-- We need to load in the Handlebars package -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <!-- In this script we write the logic that compiles the template and injects it into the container -->
+    <script>
+      // Get access to DOM elements
+      const container = document.getElementById('entry-container');
+      // Access the HTML from inside the script
+      const template = document.getElementById('entry-template').innerHTML;
+
+      // Use Handlebars to compile the template
+      const compiledTemplate = Handlebars.compile(template);
+
+      // Content to be used in template
+      const content = { title: 'I love...', body: 'HackYourFuture!!!!' };
+
+      // Inject the template into the container
+      container.innerHTML = compiledTemplate(content);
+    </script>
+  </body>
+</html>
+```
 
 **Exercise**
 
-- Use Handlebars to build a simple UI for reading books from the Library app
-  - get the books with axios/fetch
-  - EXTRA: buttons to create, edit, delete book
+Ask students to get dynamically render content to an HTML page, using [Handlebars](http://handlebarsjs.com/). The HTML page should include:
+
+- A complete HTML document
+- A CDN link to Handlebars: https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js
+- A JavaScript file that contains the content and the Handlebars template
+- Use the following object as the dynamic content: `{ question: "What's the best coding school in the world?" , answer: "HackYourFuture!" }`
+- A `<div>` that will contain the rendered Handlebars template
+
+Make use of the [documentation](http://handlebarsjs.com/installation/#usage) to figure out how to do it!
+
+**Essence**
+
+Templating engines are a way to generate HTML with dynamically changing content.
 
 # !!!IMPORTANT!!!
 
