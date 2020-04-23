@@ -183,7 +183,7 @@ This week we'll add our external API that we're going to work with: [Open Weathe
 2. Inside of the the `POST` route, bring in `axios` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
 
 ```js
-const APIKEY = require('./sources/secrets.json').API_KEY;
+const API_KEY = require('./sources/keys.json').API_KEY;
 axios(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
 ```
 
