@@ -15,89 +15,152 @@ This week you'll finish the command line exercises. Go back to `learnyounode` an
 
 ## **2. Node.js exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week3`. Inside of that folder, create a folder called `homework`. Inside, create a folder called `nodejs-exercises`. This will contain all the files for the following section.
+> Inside of your `Node.js` fork, go to the folder `week3`. Inside of that folder, navigate to `/homework/nodejs-exercises`. For each exercise, create a JavaScript file (and other necessary files if needed).
 
 ### **Exercise 1: Chuck Norris programs do not accept input**
 
-Did you know that there is an API for Chuck Noris jokes? That's incredible, right!?
+Did you know that there is an API for Chuck Norris jokes? That's incredible, right!?
 
-Write a small JavaScript function that calls this API http://www.icndb.com/api/ and prints a random joke to the console. You'll be using `node` to execute the JavaScript file.
+Write a small JavaScript function that calls this API [The Internet Chuck Norris Databases](http://www.icndb.com/api/) and prints a random joke to the console. You'll be using the `node` command to execute the JavaScript file.
 
-Step 0. Create a new folder e.g. `exercise1`. Honestly guys do I even have to say this anymore.  
-Step 1. In the folder you just created, initalize npm (using the correct command in the command line).  
-Step 2. Create a javascript file that will hold the code for your program, called `norris-jokes.js`.  
-Step 3. Install and require `node-fetch` in that file.  
-Step 4. GET a random joke from the URL http://www.icndb.com/api/  
-Step 5. Print the joke to the console
+Follow the steps:
+
+1. In `/homework/nodejs-exercises`, initialize NPM (using the correct command in the command line)
+2. Create a JavaScript file that will hold the code for your program, called `norris-jokes.js`
+3. Install `node-fetch`
+4. Require `node-fetch` in `norris-jokes.js`
+5. Write a function called `getNorrisJoke`
+6. `GET` a random joke inside the function, using the API: http://www.icndb.com/api/
+7. Make use of `async/await` and `try/catch`
+8. Print the joke to the console
 
 Hints:
 
-- First, print the entire response to the concole to see how it is structured.
-
-_This is the last time that steps 0-2 are explicitly written. For the next exercise I am assuming you know this already._
+- First, print the entire response to the console to see how it is structured.
 
 ### **Exercise 2: Authentication**
 
-So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone. In order to guard the data APIs use some way to authenticate the user. The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`. Naturally, there is catch. The username and password are not sent as plain text, but need to be encoded in base64, which is a way of encoding text for use in HTTP.
+So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone.
 
-For this exercise you need to write a program thats calls the API https://restapiabasicauthe-sandbox.mxapps.io/api/books and prints the response to the console.
+In order to guard the data APIs use some way to `authenticate` the user. To authenticate essential means: to verify the identity of the user. Does the server "know" them, or is it a complete stranger?
 
-You need to use the credentials `admin:hvgX8KlVEa` to authenticate.
+The simplest form of authentication is called _basic_. Similarly to how you log in to a website, the basic authentication expect a username and a password. This is sent in the request as part of the header, under the type: `Authorization`. The content of the header is: `Basic <username>:<password>`.
 
-Step 1. Feel free to copy and modify the code from the previous exercise.  
-Step 2. Visit https://www.base64encode.org/ to convert `admin:hvgX8KlVEa` to base64  
-Step 3. Set the authorization header in the GET request - `fetch(<URL>,{ headers: { 'Authorization': 'Basic XXXXXX' } }`  
-Step 4. Print the response
+Naturally, there is catch. The username and password are not sent as plain text, but need to be encoded in base64, which is a way of encoding text for use in HTTP.
 
-_Bonus_ points if you can encode the username and password to base64 using javascript code.
+For this exercise you'll make an API request using Node.js. You'll be making a request to an API that requires you to authenticate yourself.
+
+The API can be found at https://restapiabasicauthe-sandbox.mxapps.io/api/books. In order to use it, you need to use the credentials `admin:hvgX8KlVEa` to authenticate.
+
+Follow the steps:
+
+1. Create a function called `getBooks`
+2. Visit https://www.base64encode.org/ to convert the following credentials to base64 encoding:
+
+```md
+admin:hvgX8KlVEa
+```
+
+3. Inside the function, reuse `node-fetch` to make the API request
+4. Set the Authorization header and API URL in the GET request -
+
+```js
+fetch(<INSERT_API_URL>, {
+    headers: { 'Authorization': 'Basic <INSERT_BASE64_CREDENTIALS>' }
+  });
+```
+
+5. Make use of `async/await` and `try/catch`
+6. Print the response to the console!
 
 ### **Exercise 3: Party time**
 
-Write a program that makes a reservation for the biggest party on the planet and prints the response. I will not explain how the API works, instead you should read the documentation - https://reservation100-sandbox.mxapps.io/rest-doc/api
+Are you excited for the biggest party on the planet? We are and we would like to invite everyone, but there is only a limited number of seats.
 
-Step 1. Feel free to copy and modify the code from the previous exercise.  
-Step 2. Read the documentation https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations. Find out:
+Write a function that makes a reservation and log the response to the console. First take a look at the documentation of the API, before you proceed: https://reservation100-sandbox.mxapps.io/rest-doc/api.
 
-- which methods are available (GET or POST)
-- what is the URL
-- what headers are expected, and
-- what should the request contain  
-  Step 3. Print the response
+Then follow the steps:
+
+1. Create a function called `makeReservation`
+2. Read the documentation https://reservation100-sandbox.mxapps.io/rest-doc/api#/reservations/post_reservations. Find out:
+
+- Which methods are available (GET or POST)?
+- What is the URL?
+- What headers are expected?
+- What should the request body contain?
+
+3. Inside of the `makeReservation` function, reuse `node-fetch` method to make an API request
+4. Include in your request the correct headers and body
+5. Make use of `async/await` and `try/catch`
+6. Print the response to the console
 
 Hints:
 
-- to set headers use `fetch(<URL>, { headers: { 'XXXX': 'YYYY' } }`
-- the documentation at https://www.npmjs.com/package/node-fetch can be of great help
+- To set headers use `fetch(<URL>, { headers: { 'XXXX': 'YYYY' } }`
+- The documentation at https://www.npmjs.com/package/node-fetch can be of great help
 
 ### **Exercise 4: Fun with Handlebars**
 
-Do you know the game [Cards against humanity](https://cardsagainsthumanity.com/). It's a game where players need to fill blanks in a sentence to make the funniest joke. For example, in the photo below
+Do you know the game [Cards Against Humanity](https://cardsagainsthumanity.com/)? It's a game where players need to fill blanks in a sentence to make the funniest joke. For example, in the photo below:
 
 ![cards against humanity](https://www.snopes.com/tachyon/2015/11/cards-against-humanity.png?resize=865,391)
 
-The resulting phrase reads as: _Hope_ is a slipery slope that leads to a _dissapointing birthday party_.
+The resulting phrase reads as: _Hope_ is a slippery slope that leads to a _disappointing birthday party_.
 
-Inspired by the game you want to write a node program that simulates playing the game.  
-The program needs to fill in the blanks in the phrase `_______ is great to ________` and print the result to the console.
+Inspired by the game _you want to write a Node.js function that simulates playing the game_. You'll do this with help of [Handlebars.js](https://handlebarsjs.com/), the templating engine we've been using to build this module's project.
 
-For the first blank select a random word from `subjects = ["shark", "popcorn", "poison", "fork", "cherry", "toothbrush", "cannon"]`
-For the second blank select a random word from `punchlines = ["watch movie with", "spread some love", "put on cake", "clean toilets", "go to the moon", "achieve world piece", "help people learn programing"]`
+Inside of this function you want to do several things:
 
-Use Handlebars to replace the blanks with a random word.
+- It needs to randomly select 2 words needs to fill in the blanks in the phrase `_______ is great to ________` and print the result to the console.
 
-Step 1. Install and require handlebar (not `express-handlebars`, just `handlebars`)  
-Step 2. copy the subjects and punchlines to javascript  
-Step 3. write code that randomly picks a`subject` and `punchline`
-Step 4. replace the blanks in `phrase` with the random `subject` and `punchline` using handlebars
+Follow the steps:
+
+1. Install and require [Handlebars](https://handlebarsjs.com/installation/). Note that it's just `handlebars`, not `express-handlebars`
+2. Create 2 functions, 1 called `drawCard` and 1 called `getRandomWord`
+3. The `getRandomWord` function returns a random array position from an array of 7 items. To get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
+4. The `drawCard` function should first define a variable (called `cardData`), which contains an object with 2 keys: subject and punchline.
+5. Randomly assign to these keys values, taken from the following 2 arrays (make use of the `getRandomWord` function!):
+
+For the key `subject`, select a random word from the following array:
+
+```js
+const subjects = [
+  'shark',
+  'popcorn',
+  'poison',
+  'fork',
+  'cherry',
+  'toothbrush',
+  'cannon',
+];
+```
+
+For the key `punchline`, select a random word from the following array:
+
+```js
+const punchlines = [
+  'watch movie with',
+  'spread some love',
+  'put on cake',
+  'clean toilets',
+  'go to the moon',
+  'achieve world piece',
+  'help people learn programing',
+];
+```
+
+6. Create a variable, called `card`, that contains a template literal with the following: `_______ is great to ________`. Replace the `___` with the Handlebars placeholders
+7. Compile the `card` using the `compile` method
+8. Combine the compiled template with the `cardData`
+9. Log the result to the console!
 
 Hints:
 
-- To get a random number between 0 and 6 use `Math.floor(Math.random()*7)`
-- [The documentation on handlebars has a nice example, check it out!](https://www.npmjs.com/package/handlebars#usage)
+If you don't know how to use Handlebars, [the documentation has a nice example!](https://www.npmjs.com/package/handlebars#usage)
 
 ## **3. Code along**
 
-> The _code along_ section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
+> Create a new GitHub repository for this project. It's a portfolio piece!
 
 This time you will build an application that sends emails. I dont have to explain how important this is. Almost every web application needs to send emails. Emails are sent for example to verify users, to recover accounts, to notify users of events, etc. You will need all the skills you have learned so far, but I promise you that it will be a lot of fun.
 
@@ -105,22 +168,22 @@ This time you will build an application that sends emails. I dont have to explai
 
 ## **4. PROJECT: HackYourTemperature III**
 
-> This week you'll finish `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`.
+> This week you'll finish `HackYourTemperature`. Continue working from `/homework/hackyourtemperature`
 
-This week we'll add our external API that we're going to work with: [Open Weather Map](https://openweathermap.org/). The goal this week is to learn how to use data from the frontend to use in an API call from the backend, and then to send the result back to the frontend.
+This week we'll add our external API that we're going to work with: [Open Weather Map](https://openweathermap.org/). The goal this week is to learn how to make an API request from the backend, and then to send the result to the frontend.
 
-### The API
+### 4.1 The API
 
 1. We first have to make an account: do so via [the website](https://openweathermap.org/appid)
 2. Go back to your project folder and create a new folder called `sources`. Inside create a file called `keys.json`. Go to your OpenWeatherMap account, find the API Key and copy it into `keys.json`
 
-### The Backend
+### 4.2 The Backend
 
-1. First remove the response from last week
+1. Remove the response from last week, we'll rewrite it later
 2. Inside of the the `POST` route, bring in `axios` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
 
 ```js
-const APIKEY = require('./sources/secrets.json').API_KEY;
+const API_KEY = require('./sources/keys.json').API_KEY;
 axios(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
 ```
 
@@ -129,13 +192,17 @@ Now, there are 2 situations that could happen: if the city name is not found, we
 3. If the result is not found, we `render()` to the page the `index` (just like in the `/` endpoint). However, also add a second argument, an object: `{ weatherText: "City is not found!" }`
 4. If the result is found, we also `render()` to the page the `index`. Also add here the object. Only, instead of just a string dynamically add in the `cityName` and temperature (gotten from the result of the API call). Hint: use template strings to add variables in your strings!
 
-### The Frontend
+### 4.3 The Frontend
 
 In the frontend we're going to add one thing:
 
 1. Navigate to `index.handlebars`. Underneath the `<form>`, add a `<p>`. Give it the following content: `{{ weatherText }}` (Notice how the name `weatherText` refers back to the key in the object passed in the `render()`)
 
 Now test out your work to see if it behaves as expected. Run your server with `node server.js`. Open your browser at the right port and fill in the form. On submit there should appear a message underneath the form, that either says that the city isn't found or what the temperature is.
+
+**YOU JUST BUILD YOUR VERY FIRST FULL STACK APPLICATION!**
+
+![Success Kid](https://i.pinimg.com/474x/ef/c9/9b/efc99bd36587b1f8acc8a51cd2f9f861--kidney-surgery-kid-memes.jpg)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
