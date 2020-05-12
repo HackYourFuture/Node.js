@@ -75,7 +75,7 @@ A similar thing happens for script and link tags that load JavasSript and CSS fi
 
 ![Requests](https://fullstackopen.com/static/7094858c9c7ec9149d10607e9e1d94bb/14be6/19e.png)
 
-The following problem arises in HTTP communication: Because HTML, CSS, JavaScript, and JSON are ultimately just text files, the server can not automatically determine what to do with it. Therefore the client sends a special _header_ called `content-type` in the request. The most common content types are:
+The following problem arises in HTTP communication: Because HTML, CSS, JavaScript, and JSON are ultimately just text files, the server can not automatically determine what to do with it. Therefore the client sends a special _header_ called `Content-Type` in the request. The most common content types are:
 
 - `text/javascrpt`
 - `text/html`
