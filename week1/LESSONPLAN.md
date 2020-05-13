@@ -7,8 +7,10 @@ The purpose of this class is to introduce to the student:
 - Recap of previous module most relevant concepts
 
 1. Backend and Node.js basics
-2. Node.js and NPM basics (`npm init`, `npm install`, `package.json`, `require` and `modules.export`)
-3. How to create a basic Express.js server
+2. Client-server model
+3. Node.js and NPM basics (`npm init`, `npm install`, `package.json`, `require` and `modules.export`)
+4. How to create a basic Express.js server
+5. Serving static files with Express
 
 ## FIRST HALF (12.05 - 13.30)
 
@@ -56,7 +58,7 @@ Execute the file with `node` in the command line.
 
 We can use Node.js, from the command line, in order to run JavaScript files to perform calculations (without use of a browser) or that can interact with the operating system.
 
-### 3. Client-server model
+### 2. Client-server model
 
 #### Explanation
 
@@ -93,7 +95,7 @@ The client-server model describes how each communicates with the other, through 
 
 ## SECOND HALF (14.00 - 16.00)
 
-### 4. Node Package Manager (NPM)
+### 3. Node Package Manager (NPM)
 
 #### Explanation
 
@@ -127,7 +129,7 @@ console.log(oneLinerJoke.getRandomJoke().body);
 
 Developers don't want to rebuild the same thing, therefore we have publicly accessible modules others have made (and that we can make ourselves as well) to be used freely. NPM is the place where those are stored for JavaScript modules.
 
-### 5. Express.js
+### 4. Express.js
 
 #### Explanation
 
@@ -183,8 +185,35 @@ Write an Express app that serves the following HTML:
 </html>
 ```
 
-If time left: Create an external stylesheet that includes CSS rules to alternate the colors of the list items. Link the stylesheet to the HTML file.
 
 #### Essence
 
 Express.js is used to easily create web servers, that allow us (among other reasons) to serve HTML so our browser can read it. The browser sends a request to a specific address, like `/`, and our server (through Express) responds with an HTML file.
+
+### 5. Serving static files with Express
+
+#### Explanation
+Motiviation based on previous exercise where HTML code is put in the javascript. Instead of doing this, the HTML can be saved in a file in the project and then send with express when needed.
+
+#### Example
+Save the HTML content in a new file in the project e.g. `index.html`. Then modify the javascript code to serve the HTML from the file instead of having it hardcoded.
+```javascript
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => res.sendfile('index.html'));
+
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+```
+
+#### Exercise
+```css
+li:nth-child(even) {background-color: #CCC}
+```
+If time left: Save the above css in a file `style.css`.
+Link the stylesheet in the HTML file. Extend the express app to return the sylesheet for route `\style.css`.
+
+#### Essence
+
+By serving content from files our javascript code is kept clean and at the same time UI designers can easily work on the HTML/CSS files without having to navigate code.
