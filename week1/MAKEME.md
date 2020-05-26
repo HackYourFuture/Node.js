@@ -40,7 +40,7 @@ Lets practice how to use code from other developers in our applications. I wrote
 
 ```javascript
 function padLeft(val, num, str) {
-  return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
@@ -49,9 +49,9 @@ This function adds characters to a string so that it has at least a certain numb
 You find this function brilliant and want to use it in your code. Follow the steps:
 
 1. Create a new empty folder, e.g. `1-pad-numbers` inside your week1 homework folder
-2. Create a file called `padLeft.js`, then copy the function `padLeft` in it.`
-3. Create another file for your code called `app.js`.
-4. In this file use the `padLeft` from `padLeft.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console.
+2. Inside, create a file called `padLeft.js`, then copy the function `padLeft` in it.`
+3. Also create file called `app.js`.
+4. In this file use the `padLeft` function from `padLeft.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console.
 
 Expected output (replace the underscore with spaces):
 
@@ -64,10 +64,10 @@ _1236;
 
 Tips:
 
-- use the `exports` keyword in `andrejs-awesome-function.js`
-- use the `require` keyword in `app.js`
-- use `forEach` to loop over the array in `app.js`
-- use `padLeft(number, 4 , " ")` to pad a number to 4 characters
+-   use the `exports` keyword in `padLeft.js`
+-   use the `require` keyword in `app.js`
+-   use `forEach` to loop over the array in `app.js`
+-   use `padLeft(number, 4 , " ")` to pad a number to 4 characters
 
 ### **Exercise 2: To the left, to the left...**
 
@@ -76,33 +76,36 @@ Oh no! A senior developer from your team Slacks you that he tried to pad some nu
 When you look at the function code you realize that the function only works up to 5 characters.
 
 ```javascript
+// This change doesn't satisfy our needs!
 function padLeft(val, num, str) {
-  return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
-What a stupid function! For a moment, you consider to rename the file to `andrejs-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters:
+What a stupid function! For a moment, you consider to rename the file to `my-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters:
 
 ```javascript
+// This change doesn't do much for us either...
 function padLeft(val, num, str) {
-  return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
-Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads number available through NPM: [left-pad](https://www.npmjs.com/package/left-pad).
+Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad).
 
-Perfect! Now all you need to do is replace the function call from `padLeft` to use this new NPM package. Follow the steps:
+Perfect! Let's use this one instead of our own. Follow the steps:
 
 1. Create a new empty folder, e.g. `2-left-pad`
-2. Initialize NPM using `npm init`, to create a `package.json` file
-3. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package
-4. In `app.js`, replace the function call from `padLeft` to use this new npm package called `left-pad` instead
-5. Pad the numbers to 8 characters and check if it works correctly
+2. Inside we'll recreate our `app.js` file (copy and paste from the previous folder is fine)
+3. Also, initialize NPM using `npm init`, to create a `package.json` file
+4. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package inside of `app.js`
+5. Replace the function `padLeft` to use this new NPM package called `left-pad` instead
+6. Pad the numbers to 8 characters and check if it works correctly
 
 Tips:
 
-- Make sure you're in the correct directory when running `npm install left-pad`
-- Use `padLeft(number, 8 , " ")` to pad a number to 8 characters
+-   Make sure you're in the correct directory when running `npm install left-pad`
+-   Use `padLeft(number, 8 , " ")` to pad a number to 8 characters
 
 ### **Exercise 3: Create an HTTP web server**
 
@@ -120,8 +123,8 @@ var http = require('http');
 
 //create a server
 let server = http.createServer(function (req, res) {
-  res.write('Hello World!'); // Sends a response back to the client
-  res.end(); // Ends the response
+	res.write('Hello World!'); // Sends a response back to the client
+	res.end(); // Ends the response
 });
 
 server.listen(3000); // The server listens on port 3000
@@ -135,14 +138,14 @@ If it works, proceed to step 5. If it doesn't try to debug it until it does.
 
 ```html
 <html>
-  <head>
-    <title>My First Web Server</title>
-  </head>
-  <body>
-    <h1>Hello, anyone there?</h1>
-    <div id="content"></div>
-    <script src="script.js"></script>
-  </body>
+	<head>
+		<title>My First Web Server</title>
+	</head>
+	<body>
+		<h1>Hello, anyone there?</h1>
+		<div id="content"></div>
+		<script src="script.js"></script>
+	</body>
 </html>
 ```
 
@@ -162,9 +165,7 @@ Let's send a different response, depending on the URL.
 8. Write 2 conditional statements, if the URL is `/` we send the HTML file and if it's `/script.js` we send the JavaScript file. Make sure the JavaScript file includes the following:
 
 ```javascript
-document
-  .getElementById('content')
-  .appendChild(document.createTextNode('Welcome to Server-land!'));
+document.getElementById('content').appendChild(document.createTextNode('Welcome to Server-land!'));
 ```
 
 Run the code and check that it works by opening a browser at `http://localhost:3000`. You should see the message _Welcome to Server-land!_.
@@ -190,7 +191,7 @@ In this application you'll be building an Ebook Sales Application. You'll make i
 
 Enjoy!
 
-- [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
+-   [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
 
 ## **4. PROJECT: HackYourTemperature I**
 
@@ -214,7 +215,7 @@ In this final exercise you have to prepare the first draft of your CV. Before pr
 
 When you feel prepared enough please fill in the following form:
 
-- [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
+-   [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
