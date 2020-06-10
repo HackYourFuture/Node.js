@@ -1,0 +1,42 @@
+<div class="card w-75 container bg-light">
+      <div class="row no-gutters">
+        <div class="col-md-5 d-flex align-items-center justify-content-center p-3 forecast">
+          {{#if dayTime}}
+          <i class="wi wi-owm-{{icon.weatherIcon}}"></i>
+          {{else}}
+          <i class="wi wi-owm-night-{{icon.weatherIcon}}"></i>
+          {{/if}}
+          <span class=" ml-3">
+            {{weatherInfo.temp}}
+            <i class="wi wi-celsius"></i>
+          </span>
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h5 class="card-title place">{{weatherInfo.name}}, {{weatherInfo.country}}</h5>
+            <p class="display-5 desc text-capitalize">{{weatherInfo.desc}}</p>
+            <ul class="list-group">
+              <li class="text-danger" >Max : {{weatherInfo.max}} <i class="wi wi-celsius"></i>
+              </li>
+              <li class="text-primary" >Min : {{weatherInfo.min}} <i class="wi wi-celsius"></i>
+              </li>
+              <li class="text-secondary" >Humidity : {{weatherInfo.humidity}}
+                <i class="wi wi-humidity"></i>
+              </li>
+              <li class="d-flex align-items-center text-info">
+               <span>Wind : {{weatherInfo.windSpeed}}</span>
+               <i class="wi wi-wind from-{{icon.windIcon}}-deg ml-2"></i>
+              </li>
+              <li class="text-warning">
+                <span><i class="wi wi-sunrise"></i></span>
+                Sunrise : {{weatherInfo.sunrise}}
+                </li>
+                 <li class="sunset">
+                <span><i class="wi wi-sunset "></i></span>
+                Sunset : {{weatherInfo.sunset}}
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>

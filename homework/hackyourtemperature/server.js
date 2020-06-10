@@ -1,16 +1,20 @@
 const express = require('express'),
   exphbs = require('express-handlebars'),
   axios = require('axios'),
-  router = require('./routes/weather');
+  router = require('./routes/weather'),
+  path = require('path');
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'public')))
+
 //Body parser middleware 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 //Handlebar middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'index' }));
 app.set('view engine', 'handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: false }));
 
 //Router middleware
 app.use(router)

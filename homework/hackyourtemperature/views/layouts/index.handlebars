@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/weather-icons.min.css">
+  <link rel="stylesheet" href="./css/weather-icons-wind.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <form action="/weather" method="POST">
+      <div class="input-group mb-3">
+        <input class="form-control" type="text" name="cityName" placeholder="Enter a city name" required>
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">Get Weather <i class="wi wi-thermometer ml-2"></i> </button>
+        </div>
+      </div>
+    </form>
+  {{{body}}}
+    
+  </div>
+</body>
+
+</html>
