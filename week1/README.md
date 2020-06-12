@@ -15,7 +15,7 @@ These are the topics for week 1:
 
 ## 1. What is backend?
 
-In software development, the the code that makes the display is often separated from the code that handles the data traffic. The real world contains many examples of this division: take for example an ATM:
+In software development, the code that makes the display is often separated from the code that handles the data traffic. The real world contains many examples of this division: take for example an ATM:
 
 ![ATM](../assets/atm.jpg)
 
