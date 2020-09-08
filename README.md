@@ -29,35 +29,57 @@ In this module you will get familiar with the world of backend development. By t
 
 ## Before you start
 
-Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v10.x**. Click on the following link to download it to your computer:
+Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v12.x**. Click on the following link to download it to your computer:
 
 - For [Ubuntu](https://github.com/nodesource/distributions#debinstall)
 - For [macOS](https://nodejs.org/en/download/)
 - For [Windows](https://nodejs.org/en/download/)
 
-Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v12.13.0` or a later version than that.
+Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v12.18.0` or a later version than that.
 
 ## How to use this repository
 
+### Repository content
+
 This repository consists of 3 essential parts:
 
-1. `Reading materials`: this document contains all the required theory you need to know _**while**_ you're coding. It's meant as both study material and as a reference to understand what you're doing.
-2. `Homework`: this document contains the instructions for each week's homework.
-3. `Lesson Plans`: this part is meant for teachers as a reference. However, as a student don't be shy to take a look at it as well!
+1. `README`: this document contains all the required theory you need to understand **while** working on the homework. It contains not only the right resources to learn about the concepts, but also lectures done by HackYourFuture teachers. This is the **first thing** you should start with every week
+2. `MAKEME`: this document contains the instructions for each week's homework. Start with the exercises rather quickly, so that you can ground the concepts you read about earlier.
+3. `LESSONPLAN`: this document is meant for teachers as a reference. However, as a student don't be shy to take a look at it as well!
 
-After your first class you should start off with checking the `reading materials` for that week. At the beginning that would be the [Week 1 Reading](/Week1/README.md). Study all the concepts and try to get the gist of everything. After, you can get started with the `homework` for that week.
+### How to study
 
-Before you start with the homework, make sure you've made a `fork` of the right repository: [HackYourHomework/Node.js](https://www.github.com/hackyourhomework/Node.js). Once you've cloned it to your computer you can proceed by making `GIT` branches for each week. Start at the `master` branch and execute the following (note that they're 3 different commands):
+Let's say you are just starting out with the JavaScript2 module. This is what you do...
 
-```console
-foo@bar:~$ git branch week1-YOURNAME
-foo@bar:~$ git branch week2-YOURNAME
-foo@bar:~$ git branch week3-YOURNAME
-```
+1. The week always starts on **Wednesday**. First thing you'll do is open the `README.md` for that week. For the first week of `JavaScript2`, that would be [Week1 Reading](/Week1/README.md)
+2. You spend **Wednesday** and **Thursday** going over the resources and try to get a basic understanding of the concepts. In the meanwhile, you'll also implement any feedback you got on last week's homework (from the JavaScript1 module)
+3. On **Friday** you start with the homework, found in the `MAKEME.md`. For the first week of `JavaScript2`, that would be [Week1 Homework](/Week1/MAKEME.md)
+4. You spend **Friday** and **Saturday** playing around with the exercises and write down any questions you might have
+5. **DEADLINE 1**: You'll submit any questions you might have before **Saturday 23.59**, in the class channel
+6. On **Sunday** you'll attend class. It'll be of the Q&A format, meaning that there will be no new material. Instead your questions shall be discussed and you can learn from others
+7. You spend **Monday** and **Tuesday** finalizing your homework
+8. **DEADLINE 2**: You submit your homework to the right channels (GitHub) before **Tuesday 23.59**. If you can't make it on time, please communicate it with your mentor
+9. Start the new week by going back to point 1!
 
-Then execute `git checkout week1-YOURNAME` and you can get started!
+In summary:
 
-If you have any questions or if something is not entirely clear ¯\\\_(ツ)\_/¯, please ask/comment on Slack!
+![Weekflow](assets/weekflow.png)
+
+To have a more detailed overview of the guidelines, please read [this document](https://docs.google.com/document/d/1JUaEbxMQTyljAPFsWIbbLwwvvIXZ0VCHmCCN8RaeVIc/edit?usp=sharing) or ask your mentor/class on Slack!
+
+### Video lectures
+
+For each module HackYourFuture provides you with video lectures. These are made by experienced software developers who know what they're talking about. The main teacher for this module will be [Andrej Gajduk](https://hackyourfuture.slack.com/team/UL0P2MB52): Product Owner and Senior Full-Stack Developer!
+
+You can find out more about him here:
+
+- [Personal Website](https://gajd.uk/)
+- [GitHub](https://github.com/gajduk)
+- [@gajduk on Slack](https://hackyourfuture.slack.com/team/UL0P2MB52)
+
+Learn from Andrej in the following playlist of videos he has made for you! (Click on the image to open the link)
+
+<a href="https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="./assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
 
 ## Planning
 

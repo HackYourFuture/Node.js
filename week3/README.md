@@ -6,6 +6,12 @@
    - How to consume an external API?
 2. What is a templating engine?
 
+## 0. Video Lectures
+
+Your teacher Andrej has made video lectures for this week's material. You can find them here: [Videos 14 - 18](https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn)
+
+<a href="https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="../assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
+
 ## 1. Making use of other APIs
 
 The role of a web server is to serve the user what they want: for example, your user account information, video/images or any other type of data.

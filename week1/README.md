@@ -13,6 +13,12 @@ These are the topics for week 1:
    - Express.js
 5. (Optional) How does the internet work?
 
+## 0. Video Lectures
+
+Your teacher Andrej has made video lectures for this week's material. You can find them here: [Videos 1 - 5](https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn)
+
+<a href="https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="../assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
+
 ## 1. What is backend?
 
 In software development, the code that makes the display is often separated from the code that handles the data traffic. The real world contains many examples of this division: take for example an ATM:
