@@ -11,9 +11,9 @@
 
 ## 0. Video Lectures
 
-Your teacher Andrej has made video lectures for this week's material. You can find them here: [Videos 6 - 13](https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn)
+Your teacher Andrej has made video lectures for this week's material. You can find them here: [Videos 6 - 13](https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn)
 
-<a href="https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="../assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
+<a href="https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="../assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
 
 ## 1. What is Representational State Transfer (REST)?
 

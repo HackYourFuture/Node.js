@@ -79,7 +79,7 @@ You can find out more about him here:
 
 Learn from Andrej in the following playlist of videos he has made for you! (Click on the image to open the link)
 
-<a href="https://www.youtube.com/watch?v=wTsvV0I4PlA&list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="./assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
+<a href="https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="./assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
 
 ## Planning
 
