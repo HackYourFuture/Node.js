@@ -21,17 +21,22 @@ This week you'll continue with the command line exercises. Go back to your comma
 
 Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application.
 
-Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`.
+Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`. The `title` will also serve as an`id` uniquely identifying a blog post.
 
-We also want our blogs to be stored `persistently`. Data persistence means keeping the data you are working with around whether or not the service is restarted.
+We also want our blogs to be stored `persistently`. Data persistence means keeping the data you are working with around whether or not the Node.js service is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive. 
 
-In the frontend this could be something simple like when a user is filling out a form, leaves the page and then comes back later, the form is still filled out where they left off.
+Before we start coding we need to define what operations will be supported via our API. Here's what we're going to do...
 
-In the backend it means that saving incoming data into separate files on the hard drive.
+| Operation | Description | Method | Route |
+| --------- | ----------- | ------ | ----- |
+| Create    | Given a title and content create a new post |  |  |
+| Read one  | Given a title, return the content of a single blog post |  |  |
+| Update    | Given a title and content update an existing blog post |  |  |
+| Delete    | Given a title delete an existing blog post |  |  |
 
-We'll do the same by saving each blog post as a separate file.
+What do you think should be filled in the `Method` and `Route` columns? Think about it and see if you can guess what it should be...
 
-Let's start by setting up our environment. Follow the steps:
+Once you're ready, let's start by setting up our environment. Follow the steps:
 
 **Setup:**
 
@@ -84,19 +89,24 @@ Up next:
 
 **1.2 Updating existing posts**
 
-Updating posts is very similar to creating them. You only need to use a different METHOD and add a check that the blog post that the user is trying to update already exists with `fs.existsSync()`.
+Updating posts is very similar to creating them. You only need to use a different METHOD and add a conditional statement that checks to see if the blog post that the user is trying to update already exists with `fs.existsSync()`.
+
+This time we are going to use a _url parameter_ in Express to send the `title` while the `content` will be part of the `body`.
 
 Follow the steps:
 
 1. Inside `server.js`, add the following starter code in the correct place:
 
 ```javascript
-app.<METHOD>('/blogs', (req, res) => {
-    if() { // Add condition here
+app.<METHOD>('/posts/:title', (req, res) => {
+    // How to get the title and content from the request?
+    // What if the request does not have a title and/or content?
+    if () {
       fs.writeFileSync(title, content);
       res.end('ok')
-    } else {
-      // Respond with message here
+    }
+    else {
+      // Send response with error message
     }
 })
 ```
@@ -117,7 +127,7 @@ Next up:
 
 To delete a post we need to target a file by using an identifier: the title. However, instead of getting the title through the body of the request, we're going to get it from the `URL parameters`.
 
-To delete a file with `fs`, we'll use the `fs.unlinkSync(<filename>)` method.
+Since we are deleting a file there is no need to send any content in the request. To delete a file with `fs`, we'll use the `fs.unlinkSync(<filename>)` method.
 
 Follow the steps:
 
@@ -160,6 +170,7 @@ Follow the steps:
 
 ```javascript
 app.<METHOD>('/blogs/:title', (req, res) => {
+
     // How to get the title from the url parameters?
     res.sendFile(title);
 })
@@ -170,11 +181,20 @@ app.<METHOD>('/blogs/:title', (req, res) => {
 4. Add a condition, only send the file if it exists. Make use of the `fs.existsSync(title)` method.
 5. Send a file using the `res.sendFile(<filename>)` method.
 
-After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. No body content needed!
+After you've finished writing your code, **use Postman to test that your code works**. Send a request using the correct HTTP verb and URL. No body content needed!
 
 All done? Congratulations!
 
 ![Congratulations](https://media.giphy.com/media/l1AsI389lnxkvQHAc/giphy.gif)
+
+**Bonus: Reading all posts**
+In addition to reading the content of a single post build an operation that reads all existing posts. To limit the size of response only send the title of the blog posts, e.g. `[{"title":"My First Blog"}, {"title":"Second Blog"}]`
+
+```javascript
+app.<METHOD>('/blogs', (req, res) => {
+    // how to get the file names of all files in a folder??
+})
+```
 
 ## **3. Code along**
 
