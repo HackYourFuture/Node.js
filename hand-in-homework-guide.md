@@ -6,7 +6,9 @@ In this module you'll submit your homework only using GIT and GitHub.
 
 ## 1. GitHub homework guide
 
-Follow the walkthrough to learn how to submit your homework for each week:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=CpYARPYGQU8" target="_blank"><img src="./assets/submit-homework.png" width="400" height="250" alt="HYF Video" /></a>
+
+Watch the video (by clicking the image) or go through the following walk-through to learn how to submit your homework:
 
 ONE TIME ONLY (START OF EVERY MODULE)
 
@@ -34,6 +36,6 @@ Homework week 1 <Your name>
 
 For a visual walkthrough the steps please watch the following video one of our teachers, Unmesh Joshi, has made:
 
-- [GitHub Homework flow](https://www.youtube.com/watch?v=2qJPAVTiKPE)
+-   [GitHub Homework flow](https://www.youtube.com/watch?v=2qJPAVTiKPE)
 
 If you have any questions or if something is not entirely clear ¯\\\_(ツ)\_/¯, please ask/comment on Slack!

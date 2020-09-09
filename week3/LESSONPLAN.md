@@ -14,78 +14,160 @@ FIRST HALF (12:00 - 13:30)
 
 ### Middleware
 
-**Explain**
+**Explanation**
 
+Middleware is a general term for software that serves to "glue together" separate, often complex and already existing, programs.
 
-* [Middleware](https://medium.com/@jamischarles/what-is-middleware-a-simple-explanation-bb22d6b41d01)
-* [Middleware II](https://www.youtube.com/watch?v=9HOem0amlyg)| 
+In Express, middleware are functions that execute during the lifecycle of a request to the Express server.
 
-https://d33wubrfki0l68.cloudfront.net/a22bb45df146d43b57f2f6c90182d19e7394cd96/d6e10/assets-jekyll/blog/express-middleware-examples/middleware-30b3b30ad54e21d8281719042860f3edd9fb1f40f93150233a08165d908f4631.png
+Each middleware has access to the HTTP request and response for each route (or path) it’s attached to.
 
-Express middleware are functions that execute during the lifecycle of a request to the Express server. Each middleware has access to the HTTP request and response for each route (or path) it’s attached to. In fact, Express itself is compromised wholly of middleware functions. Additionally, middleware can either terminate the HTTP request or pass it on to another middleware function using next (more on that soon). This “chaining” of middleware allows you to compartmentalize your code and create reusable middleware.
+![middleware](https://d33wubrfki0l68.cloudfront.net/a22bb45df146d43b57f2f6c90182d19e7394cd96/d6e10/assets-jekyll/blog/express-middleware-examples/middleware-30b3b30ad54e21d8281719042860f3edd9fb1f40f93150233a08165d908f4631.png)
 
-**Examples**  
+Additionally, middleware can either terminate the HTTP request or pass it on to another middleware function using the `next()` function (more on that soon). This “chaining” of middleware allows you to compartmentalize your code and create reusable middleware.
 
-* express.json() - parses the body of request with type application/json and makes it available as a javascript object
-* body-parser    - parses the body of request with type form-data and makes it available as javascript object
+**Example**
 
-### Consuming web APIs
+Try out the following code and show how the middleware gets applied to the request, before it reaches the endpoint `/test`.
 
-**Explain**
+```js
+const express = require('express');
+const app = express();
 
-Traditional server architecture one client one server that does anything: 
-https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/27f810ea-2722-455a-9a0d-bb5b54c28393/api-based-platforms-api-diagram.png
+app.use(function (req, res, next) {
+  console.log('hello from the middleware!');
+  next();
+});
 
-https://cdn.darknet.org.uk/wp-content/uploads/2018/08/HTTP-Security-Considerations-An-Introduction-To-HTTP-Basics.png
+app.post('/test', (req, res) => res.send('Hello from test!'));
 
-In reality the server does not do everything on its own. Instead it uses services from other servers 
-https://www.notion.so/gajduk/Hosting-b4025782198b494ba6bd053953c8933b#f8f31bc004ab46199639d914daad79fe
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+```
 
-Why do we need server-server communication?
-* reuse - we do not want to write new code if someone has already done that in the past and we can just use it
-* separation-of-concerns - especially in big organizations like netflix etc
-
-**Examples**
-
-* Location services - https://api.postcode.nl/documentation/json-rest/v1/Address/viewByPostcode
-* Process payments (Stripe)  - https://stripe.com/docs/api/invoices
+Explain use cases for using middleware, like validation (`express-validator`) or parsing the request (`express.json()`)
 
 **Exercise**
 
-1. Get the image from https://randomfox.ca/floof/ and redirect to it
+Ask students to create a simple Express server:
 
-2. Instead of redirecting show in inside an html
+- with one POST endpoint `/`.
+- This endpoint should receive form data (a single property, `email`) in JSON format.
+- To parse the request, have them use `express.json()`, as a middleware function.
+- Have them use Postman to test whether or not it works.
 
-This is prelude to part 2, mention how it is ugly that the HTML and javascript are all mixed up
+At the end of the exercise ask 1 or 2 students to show their approach.
+
+**Essence**
+
+Middleware allows the web server to modify the request gets in order to make it better interpretable within the route. For example, when sending form data in a request we want to make sure the server can understand the format it comes in properly. Therefore, we use the middleware `express.json()`.
+
+### Consuming web APIs
+
+**Explanation**
+
+Web applications are built using many different services. There's no need to have your application's do everything, from authentication to payment processing. To make things easier we use external services, also known as `web APIs`. Such a service can be used through their API, which allows us to get access to certain functionality and data, to use in our own application. This server to server communication through APIs is also known as `consumation` of web APIs.
+
+**Example**
+
+- Social login is a way for applications to outsource authentication, via services like Facebook or Google (examples are [Udemy](https://www.udemy.com/join/login-popup/), or [Medium](https://medium.com/))
+- Online payment processing is outsourced to services like Stripe or Adyen (examples are [Udemy](https://www.udemy.com/), or [bol.com](https://www.bol.com)))
+
+**Exercise**
+
+Ask students to create a simple Express server:
+
+- With 1 GET endpoint `/github`
+- Inside the route, make an API request using `node-fetch` to `https://api.github.com/users/:username/repos`
+- Replace the `:username:` with your own GitHub user name
+- Respond to the client with the first repository that comes up
+- Use Postman to test your work
+
+**Essence**
+
+Why write everything yourself, when you can make use of other web services? By consuming web APIs we can extend the usability of our application, without the need to do all the work ourselves!
 
 SECOND HALF (14:00 - 16:00)
 
 ### Templating engines
 
-**Explain**
+**Explanation**
 
-[Templating engines](https://www.youtube.com/watch?v=oZGmHNZv7Sc)
-
-Motivation: make a story with a link to last exercise. The js, html and styling code are all intermixed in same file, it is a mess
-
-Solution is to use a templating engine to separate the view from the node code but still use the data from node in the view
-
-How do templating engines work - they replace tokens/placeholders in a template string/file with actual data coming from json
-
-How to use them in Node - https://www.npmjs.com/package/handlebars
+A templating engine is a technology that makes it possible to to create `dynamic` pages. Instead of writing regular HTML, you'll create `templates`. This is similar to HTML, but with one big difference: certain values serve as placeholders. These placeholders will be filled in with actual content, when the page is rendered. The type of content that is chosen depends on the person that's viewing it.
 
 **Example**
 
-3. Use handlebars to refactor the page from exercise 2
+A simple example of a Handlebars template:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars Example</title>
+  </head>
+  <body>
+    <!-- The Handlebars template will be injected here -->
+    <div id="entry-container"></div>
+
+    <!-- This script contains the Handlebars template. Notice the placeholders "title" and "body" -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class='entry'>
+        <h1>
+          {{title}}
+        </h1>
+        <div class='body'>
+          {{body}}
+        </div>
+      </div>
+    </script>
+
+    <!-- We need to load in the Handlebars package -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <!-- In this script we write the logic that compiles the template and injects it into the container -->
+    <script>
+      // Get access to DOM elements
+      const container = document.getElementById('entry-container');
+      // Access the HTML from inside the script
+      const template = document.getElementById('entry-template').innerHTML;
+
+      // Use Handlebars to compile the template
+      const compiledTemplate = Handlebars.compile(template);
+
+      // Content to be used in template
+      const content = { title: 'I love...', body: 'HackYourFuture!!!!' };
+
+      // Inject the template into the container
+      container.innerHTML = compiledTemplate(content);
+    </script>
+  </body>
+</html>
+```
 
 **Exercise**
 
-- Use handlebars to build a simple UI for reading books from the Library app
-   - get the books with axios/fetch
-   - EXTRA: buttons to create, edit, delete book
-   
+Ask students to get dynamically render content to an HTML page, using [Handlebars](http://handlebarsjs.com/). The HTML page should include:
+
+- A complete HTML document
+- A CDN link to Handlebars: https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js
+- A JavaScript file that contains the content and the Handlebars template
+- Use the following object as the dynamic content: `{ question: "What's the best coding school in the world?" , answer: "HackYourFuture!" }`
+- A `<div>` that will contain the rendered Handlebars template
+
+Make use of the [documentation](http://handlebarsjs.com/installation/#usage) to figure out how to do it!
+
+**Essence**
+
+Templating engines are a way to generate HTML with dynamically changing content.
+
 # !!!IMPORTANT!!!
 
-Ask students to prepare for database course by installing mySQL.
+Before class ends, ask the students to prepare for the next module ([Databases](http://github.com/hackyourfuture/databases)) course by installing MySQL:
 
-   
+- On Windows: download this [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
+- On Linux: download this [MySQL Community Server](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-server_8.0.19-1ubuntu19.10_amd64.deb-bundle.tar)
+- On MacOS: download this [MySQL Community Server](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.19-macos10.15-x86_64.dmg)

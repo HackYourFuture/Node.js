@@ -8,7 +8,7 @@
 4. PROJECT: HackYourTemperature I
 5. Get your CV ready!
 
-> Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v10** and NPM should be at least **v6**.
+> Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v12** and NPM should be at least **v6**.
 
 ## **1. Practice the concepts**
 
@@ -32,29 +32,28 @@ And the menu will open up. **Do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**
 
 ## **2. Node.js exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, create a folder called `homework`. Inside, create a folder called `nodejs-exercises`. This will contain all the files for the following section.
+> Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/homework/nodejs-exercises`. For each exercise, create the necessary files here.
 
-### **Exercise 1: Modularization**
+### **Exercise 1: Pad numbers**
 
 Lets practice how to use code from other developers in our applications. I wrote the following function this other day:
 
 ```javascript
 function padLeft(val, num, str) {
-  return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
-The function adds characters to a string so that it has at least certain number of characters. For example. `padLeft('foo', 5, '')` returns `" foo"` and `padLeft('5', 2, '0')` returns `"05"`. Pretty neat!?
+This function adds characters to a string so that it has at least a certain number of characters. For example. `padLeft('foo', 5, '')` returns `" foo"` and `padLeft('5', 2, '0')` returns `"05"`. Pretty neat huh!?
 
-You find this function brilliant and want to use it in your code.
+You find this function brilliant and want to use it in your code. Follow the steps:
 
-Step 0. Create a new empty folder, e.g. `exercise1` inside your week1 homework folder
+1. Create a new empty folder, e.g. `1-pad-numbers` inside your week1 homework folder
+2. Inside, create a file called `padLeft.js`, then copy the function `padLeft` in it.`
+3. Also create file called `app.js`.
+4. In this file use the `padLeft` function from `padLeft.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console.
 
-Step 1. Create a file called `andrejs-awesome-function.js` (or something else, the name is arbitrary), then copy the function `padLeft` in it.`
-
-Step 2. Create another file for your code called `app.js`. In this file use the `padLeft` from `andrejs-awesome-function.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console.
-
-Your output should be:
+Expected output (replace the underscore with spaces):
 
 ```javascript
 ___12;
@@ -65,138 +64,138 @@ _1236;
 
 Tips:
 
-- use the `exports` keyword in `andrejs-awesome-function.js`
-- use the `require` keyword in `app.js`
-- use `forEach` to loop over the array in `app.js`
-- use `padLeft(number, 4 , " ")` to pad a number to 4 characters
+-   use the `exports` keyword in `padLeft.js`
+-   use the `require` keyword in `app.js`
+-   use `forEach` to loop over the array in `app.js`
+-   use `padLeft(number, 4 , " ")` to pad a number to 4 characters
 
-### **Exercise 2: npm**
+### **Exercise 2: To the left, to the left...**
 
-Oh no! A senior developer from your team slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you to (politely) fix the bug as soon as possible or face the wrath of management.
+Oh no! A senior developer from your team Slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you to (politely) fix the bug as soon as possible or face the wrath of management.
 
 When you look at the function code you realize that the function only works up to 5 characters.
 
 ```javascript
+// This change doesn't satisfy our needs!
 function padLeft(val, num, str) {
-  return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
-What a stupid function! For a moment, you consider to rename the file to `andrejs-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters
+What a stupid function! For a moment, you consider to rename the file to `my-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters:
 
 ```javascript
+// This change doesn't do much for us either...
 function padLeft(val, num, str) {
-  return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
+	return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
 }
 ```
 
-Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads number available through npm https://www.npmjs.com/package/left-pad.
+Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad).
 
-Perfect!. Now all you need to do is replace the function call from `padLeft` to use this new npm package called `left-pad`.
+Perfect! Let's use this one instead of our own. Follow the steps:
 
-Step 0. Create a new empty folder, e.g. `exercise2`
-
-Step 1. Initialize npm using `npm init`
-
-Step 2. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the left-pad package
-
-Step 3. Pad the numbers to 8 characters and check if it works correctly
+1. Create a new empty folder, e.g. `2-left-pad`
+2. Inside we'll recreate our `app.js` file (copy and paste from the previous folder is fine)
+3. Also, initialize NPM using `npm init`, to create a `package.json` file
+4. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package inside of `app.js`
+5. Replace the function `padLeft` to use this new NPM package called `left-pad` instead
+6. Pad the numbers to 8 characters and check if it works correctly
 
 Tips:
 
-- be careful to be in the correct directory when running `npm install left-pad`
-- use `padLeft(number, 8 , " ")` to pad a number to 8 characters
+-   Make sure you're in the correct directory when running `npm install left-pad`
+-   Use `padLeft(number, 8 , " ")` to pad a number to 8 characters
 
 ### **Exercise 3: Create an HTTP web server**
 
-In this exercise we will build a simple web server. Simple in the sense it will only serve one html file and one javascript file. This is enough to serve a minimal web site.
+In this exercise we will build a simple web server. It will only serve one HTML file and one JavaScript file. This is enough to serve a minimal web site.
 
-Step 0. As always start with a new empty folder e.g. `exercise3`
+Follow the steps:
 
-Step 1. Initialize npm in this folder
-
-Step 2. Create a file for the code of your application
-
-Step 3. Copy n paste the following code. This code create a server that listens on port 3000 and replies with _Hello World!_
+1. As always start with a new empty folder e.g. `3-web-server`
+2. Initialize NPM in this folder, using the correct command you've learned in the previous exercise
+3. Create a file, called `server.js`, for the code of your application
+4. Copy and paste the following code. This code create a server that listens on port 3000 and sends the client a response with the message _Hello World!_.
 
 ```javascript
 var http = require('http');
 
 //create a server
-let server = http.createServer(function(req, res) {
-  res.write('Hello World!'); //send a response back to the client
-  res.end(); //end the response
+let server = http.createServer(function (req, res) {
+	res.write('Hello World!'); // Sends a response back to the client
+	res.end(); // Ends the response
 });
 
-server.listen(3000); //the server listens on port 3000
+server.listen(3000); // The server listens on port 3000
 ```
 
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`
+Now run the code (using `node server.js` in the command line) and check that it works by opening a browser at `http:\\localhost:3000`.
 
-Step 4. Instead of returning `Hello World!` the server needs to return the following HTML.
+If it works, proceed to step 5. If it doesn't try to debug it until it does.
+
+5. Create a file, called `index.html` and paste in the following HTML.
 
 ```html
 <html>
-  <head>
-    <title>My First Web Server</title>
-  </head>
-  <body>
-    <h1>Hello, anyone there?</h1>
-    <div id="content"></div>
-    <script src="script.js"></script>
-  </body>
+	<head>
+		<title>My First Web Server</title>
+	</head>
+	<body>
+		<h1>Hello, anyone there?</h1>
+		<div id="content"></div>
+		<script src="script.js"></script>
+	</body>
 </html>
 ```
 
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`
+6. Now we want to send this HTML as a response instead. Replace the "Hello World!" with the name of the HTML file.
+7. Before sending a response, give the response you're sending a `header`: the `Content-Type` should be `text/html`. Use the following function: [response.setHeader(name, value)](https://nodejs.org/api/http.html#http_response_setheader_name_value)
 
-Tips:
+Run the code and check that it works by opening a browser at `http:\\localhost:3000`.
 
-- don't be afraid to copy-paste this directly in the javascript file using as a multiline string. You shouldn't use a separate html file for now.
-- Do not forget to set the content-type to `text/html` so that the browser knows how to deal with the response. Use the function `response.setHeader(name, value)` - https://nodejs.org/api/http.html#http_response_setheader_name_value
+If you open the Network tab (in the developer tools of your browser) you will notice that the browser tries to load the JavaScript `script.js`, but fails. This is because our server does not **serve** this file yet.
 
-If you open the network tab you will notice that the browser tries to load the javascript `script.js`, but fails. This is because our server does not serve this file yet. So far the server only serves one thing, the html file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.  
-If you open the network tab you can see that when the browser is requesting the html code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/script.js`.
+So far the server only serves one thing, the HTML file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.
 
-Step 5. Make the server listen to requests at `http://localhost:3000/script.js` and send back the following javascript code.
+If you open the Network tab you can see that when the browser is requesting the HTML code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/script.js`.
+
+Let's send a different response, depending on the URL.
+
+8. Write 2 conditional statements, if the URL is `/` we send the HTML file and if it's `/script.js` we send the JavaScript file. Make sure the JavaScript file includes the following:
 
 ```javascript
-document
-  .getElementById('content')
-  .appendChild(document.createTextNode('Welcome to Server-land!'));
+document.getElementById('content').appendChild(document.createTextNode('Welcome to Server-land!'));
 ```
-
-Tips:
-
-- `if ( request.url === '/script.js' ) { /* send javascript */ } else { /* send HTML */ }`
-- the `content-type` for javascript is `text/javascript`
 
 Run the code and check that it works by opening a browser at `http://localhost:3000`. You should see the message _Welcome to Server-land!_.
 
-Congratulations, you have created your very own working web server. In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
+Congratulations, you have created your very own working web server!
+
+> In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
 
 _BONUS_  
- Our website is working, but looks stale. Try adding some style to it. The style should be from an external source. Add this to your html.
+ Our website is working, but looks stale. Try adding some style to it. The style should be from an external source. Add this to your HTML file.
 
 ```html
 <link rel="stylesheet" type="text/css" href="style.css" />
 ```
 
-When the server gets a request at `http://localhost:3000/style.css` respond with some css e.g. `#content { color: blue }`. Don't forget the content-type!
+When the server gets a request at `http://localhost:3000/style.css` respond with a CSS file that contains some basic CSS rules e.g. `#content { color: blue }`. Don't forget to specify the `Content-Type` in the header of the request!
 
 ## **3. Code along**
 
-> The _code along_ section is designed to give you an idea of how different concepts fit together. You do not have to submit your code, but you have to finish the code along.
+> Create a new GitHub repository for this project. It's a portfolio piece!
 
 In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
 
 Enjoy!
 
-- [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
+-   [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
 
 ## **4. PROJECT: HackYourTemperature I**
 
-> In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`.
+> In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`. You'll add to it every week.
 
 In this module you'll be rebuilding an existing application, starting from scratch. The application is called `HackYourTemperature` and you can find it here: [HackYourTemperature](https://hackyourtemperature.herokuapp.com/).
 
@@ -216,7 +215,7 @@ In this final exercise you have to prepare the first draft of your CV. Before pr
 
 When you feel prepared enough please fill in the following form:
 
-- [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
+-   [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
