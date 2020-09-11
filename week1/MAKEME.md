@@ -32,46 +32,17 @@ And the menu will open up. **Do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**
 
 ## **2. Node.js exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/homework/nodejs-exercises`. For each exercise, create the necessary files here.
+> Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/homework/exercises`. For each exercise, you will find a separate folder.
 
 ### **Exercise 1: Pad numbers**
 
-Lets practice how to use code from other developers in our applications. I wrote the following function this other day:
+Lets practice how to use code from other developers in our applications. In the file `/1-pad-numbers/padLeft.js` you will find a function I wrote the other day. Study the function and read the description to understand what it does.
 
-```javascript
-function padLeft(val, num, str) {
-	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
-}
-```
-
-This function adds characters to a string so that it has at least a certain number of characters. For example. `padLeft('foo', 5, '')` returns `" foo"` and `padLeft('5', 2, '0')` returns `"05"`. Pretty neat huh!?
-
-You find this function brilliant and want to use it in your code. Follow the steps:
-
-1. Create a new empty folder, e.g. `1-pad-numbers` inside your week1 homework folder
-2. Inside, create a file called `padLeft.js`, then copy the function `padLeft` in it.`
-3. Also create file called `app.js`.
-4. In this file use the `padLeft` function from `padLeft.js` to pad the `numbers = [ "12", "846", "2", "1236" ]` to exactly 4 spaces then print each padded number in the console.
-
-Expected output (replace the underscore with spaces):
-
-```javascript
-___12;
-__846;
-____2;
-_1236;
-```
-
-Tips:
-
--   use the `exports` keyword in `padLeft.js`
--   use the `require` keyword in `app.js`
--   use `forEach` to loop over the array in `app.js`
--   use `padLeft(number, 4 , " ")` to pad a number to 4 characters
+Your task is to use this function in another file `1-pad-number/script.js`. Open the file and follow the instructions.
 
 ### **Exercise 2: To the left, to the left...**
 
-Oh no! A senior developer from your team Slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you to (politely) fix the bug as soon as possible or face the wrath of management.
+Oh no! A senior developer from your team Slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you (politely) to fix the bug as soon as possible or face the wrath of management.
 
 When you look at the function code you realize that the function only works up to 5 characters.
 
@@ -82,7 +53,7 @@ function padLeft(val, num, str) {
 }
 ```
 
-What a stupid function! For a moment, you consider to rename the file to `my-terrible-function.js`, but realize that will not help your situation in any way. You could add additional three zeroes so that it works for 8 characters:
+What a stupid function! For a moment, you consider to rename the file to `terrible-function.js`, but realize that will not help your situation in any way. You could add three zeroes so that it works for 8 characters:
 
 ```javascript
 // This change doesn't do much for us either...
@@ -93,64 +64,30 @@ function padLeft(val, num, str) {
 
 Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad).
 
-Perfect! Let's use this one instead of our own. Follow the steps:
+Perfect! Let's use this module instead. Follow the steps:
 
-1. Create a new empty folder, e.g. `2-left-pad`
-2. Inside we'll recreate our `app.js` file (copy and paste from the previous folder is fine)
-3. Also, initialize NPM using `npm init`, to create a `package.json` file
-4. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package inside of `app.js`
-5. Replace the function `padLeft` to use this new NPM package called `left-pad` instead
-6. Pad the numbers to 8 characters and check if it works correctly
+1. Open the folder `/2-left-pad`
+2. Initialize NPM using `npm init`, to create a `package.json` file
+3. Copy and paste your code from the previous exercise in `script.js`
+4. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package inside of `script.js`
+5. Replace the call to function `padLeft` to use this new NPM package called `left-pad` instead
+6. Pad the numbers to 8 characters and check if everything works correctly
 
 Tips:
 
 -   Make sure you're in the correct directory when running `npm install left-pad`
--   Use `padLeft(number, 8 , " ")` to pad a number to 8 characters
 
 ### **Exercise 3: Create an HTTP web server**
 
-In this exercise we will build a simple web server. It will only serve one HTML file and one JavaScript file. This is enough to serve a minimal web site.
+In this exercise, you will build a simple web server. It will only serve one HTML file and one JavaScript file. This is enough for a minimal web site.
 
-Follow the steps:
+To help you get started some code is already provided for you. Check the file `3-web-server` and try to understand what the code does.
 
-1. As always start with a new empty folder e.g. `3-web-server`
-2. Initialize NPM in this folder, using the correct command you've learned in the previous exercise
-3. Create a file, called `server.js`, for the code of your application
-4. Copy and paste the following code. This code create a server that listens on port 3000 and sends the client a response with the message _Hello World!_.
+Check that the code is working fine by running it and opening the web site in your browser at `http:\\localhost:3000`. You should see the text `Hello World!`. While working on this exercise and the project, make sure to constantly check that your changes work as expected by running your code and checking the browser.
 
-```javascript
-var http = require('http');
+Your job is to change the code so that it serves HTML instead of just `Hello World!`.
 
-//create a server
-let server = http.createServer(function (req, res) {
-	res.write('Hello World!'); // Sends a response back to the client
-	res.end(); // Ends the response
-});
-
-server.listen(3000); // The server listens on port 3000
-```
-
-Now run the code (using `node server.js` in the command line) and check that it works by opening a browser at `http:\\localhost:3000`.
-
-If it works, proceed to step 5. If it doesn't try to debug it until it does.
-
-5. Create a file, called `index.html` and paste in the following HTML.
-
-```html
-<html>
-	<head>
-		<title>My First Web Server</title>
-	</head>
-	<body>
-		<h1>Hello, anyone there?</h1>
-		<div id="content"></div>
-		<script src="script.js"></script>
-	</body>
-</html>
-```
-
-6. Now we want to send this HTML as a response instead. Replace the "Hello World!" with the name of the HTML file.
-7. Before sending a response, give the response you're sending a `header`: the `Content-Type` should be `text/html`. Use the following function: [response.setHeader(name, value)](https://nodejs.org/api/http.html#http_response_setheader_name_value)
+Using node, read the contents of the file `index.html` then send it as a response. Make sure to set the correct `Content-Type` header.
 
 Run the code and check that it works by opening a browser at `http:\\localhost:3000`.
 
@@ -160,19 +97,22 @@ So far the server only serves one thing, the HTML file. In order to serve differ
 
 If you open the Network tab you can see that when the browser is requesting the HTML code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/script.js`.
 
-Let's send a different response, depending on the URL.
+Let's change our code to send a different response, depending on the request URL.
 
-8. Write 2 conditional statements, if the URL is `/` we send the HTML file and if it's `/script.js` we send the JavaScript file. Make sure the JavaScript file includes the following:
-
-```javascript
-document.getElementById('content').appendChild(document.createTextNode('Welcome to Server-land!'));
-```
+To do this you need to write 2 conditional if statements. 
+1. If the URL is `/` send the HTML file, same as before
+2. If the URL is `/index.js` send the corresponding JavaScript file after reading it from the file system. Don't forget to set the correct `Content-Type` header.
 
 Run the code and check that it works by opening a browser at `http://localhost:3000`. You should see the message _Welcome to Server-land!_.
 
 Congratulations, you have created your very own working web server!
 
 > In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
+
+Tips:
+-  To set a response header [response.setHeader(name, value)](https://nodejs.org/api/http.html#http_response_setheader_name_value)
+-  To read a file from the file system [fs.readFileSync(path)](https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_readfilesync_path_options)
+-  Tired of restarting your server!? [nodemon](https://www.npmjs.com/package/nodemon) is here to help.
 
 _BONUS_  
  Our website is working, but looks stale. Try adding some style to it. The style should be from an external source. Add this to your HTML file.
