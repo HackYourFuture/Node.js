@@ -15,15 +15,15 @@ This week you'll continue with the command line exercises. Go back to your comma
 
 ## **2. Node.js Exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, navigate to `/homework/nodejs-exercises`. For each exercise, create the necessary files here.
+> Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, navigate to `/homework/exercises`. For each exercise, you will a corresponding folder where your code should go.
 
 ### **Exercise 1: Make a blog API**
 
 Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application.
 
-Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`. The `title` will also serve as an`id` uniquely identifying a blog post.
+Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`. The `title` will also serve as an `id` uniquely identifying a blog post.
 
-We also want our blogs to be stored `persistently`. Data persistence means keeping the data you are working with around whether or not the Node.js service is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive. 
+We also want our blogs to be stored `persistently`. Data persistence means keeping the data you are working with around whether or not the Node.js service is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive, where the blog post title will match the file name. 
 
 Before we start coding we need to define what operations will be supported via our API. Here's what we're going to do...
 
@@ -40,13 +40,11 @@ Once you're ready, let's start by setting up our environment. Follow the steps:
 
 **Setup:**
 
-1. Create a new empty folder e.g. `1-blog-api`
-2. In the folder you just created, initialize a `package.json` file
-3. Create a JavaScript file, called `server.js`, that will contain the server code
-4. Install and require [Express.js](https://www.npmjs.com/package/express)
-5. Create a basic Express setup, that has one endpoint (`/`).
+1. Navigate to the exercise folder `1-blog-api`
+2. In the folder there is already a `server.js` and `package.json` file prepared for you with some starter code and the express dependency.
+3. Install the dependencies locally by running `npm install`. This command will read the dependencies from `package.json` and download them on your computer.
 
-That was not too hard now was it. Now you are ready for the real coding. We will start off by...
+That was not too hard, was it? Now you are ready for the real coding. We will start off by...
 
 **1.1 Creating new posts**
 
@@ -57,7 +55,7 @@ To create a new blog post, we need 2 things:
 
 We won't work on the first point, but we'll assume the incoming data from the client will be in JSON format. For example: `{ "title": "My first blog", "content": "Lorem ipsum" }`.
 
-Instead, we'll create another endpoint in our web server that will receive the data and store it into a separate file. The file storage will happen with use of [fs](https://nodejs.org/api/fs.html#fs_file_system), a native Node.js module that allows us to interact with our computer's file system so we can create new files.
+You need to create another endpoint in our web server that will receive the data and store it into a separate file. The file storage will happen with use of [fs](https://nodejs.org/api/fs.html#fs_file_system), a native Node.js module that allows us to interact with our computer's file system so we can create new files.
 
 Follow the steps:
 
@@ -78,7 +76,7 @@ app.<METHOD>('/blogs', (req, res) => {
 
 Hint: Remember `express.json()`. Why did we use it during our lectures?
 
-After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. As the data you'll be sending in the request body, you can make use of the example: `{ "title": "My first blog", "content": "Lorem ipsum" }`. Make sure that you specify the`Content-Type` as JSON, though!
+After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. As the data you'll be sending in the request body, you can make use of the example: `{ "title": "My first blog", "content": "Lorem ipsum" }`. Make sure that you specify the`Content-Type` as JSON!
 
 Expected output:
 You should get a response `ok` and see a new file `My first blog` in your `1-blog-api` folder.
@@ -112,7 +110,7 @@ app.<METHOD>('/posts/:title', (req, res) => {
 ```
 
 2. Replace `<METHOD>` with the correct HTTP verb.
-3. Add a condition: if the file with the given title exists, rewrite it with the given content. Otherwise response with a message, saying 'This post does not exist!'. Make use of the `fs.existsSync(title)`.
+3. Add a condition: if the file with the given title exists, rewrite it with the given content. Otherwise respond with a message, saying 'This post does not exist!'. Make use of the `fs.existsSync(title)` to check if a file exists.
 
 After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. As the data you'll be sending in the request body, you can make use of the example: `{ "title": "My first blog", "content": "This content is now updated!" }`.
 
@@ -125,9 +123,9 @@ Next up:
 
 **1.3 Deleting posts**
 
-To delete a post we need to target a file by using an identifier: the title. However, instead of getting the title through the body of the request, we're going to get it from the `URL parameters`.
+For deleting posts we will again make use of `URL parameters`, this time to specify which post we want to delete.
 
-Since we are deleting a file there is no need to send any content in the request. To delete a file with `fs`, we'll use the `fs.unlinkSync(<filename>)` method.
+Since we are deleting a post there is no need to send any content in the request. To delete the corresponding, you can use `fs.unlinkSync(<filename>)`.
 
 Follow the steps:
 
@@ -137,8 +135,8 @@ Follow the steps:
 app.<METHOD>('/blogs/:title', (req, res) => {
     // How to get the title from the url parameters?
     if () { // Add condition here
-    fs.unlinkSync(title);
-    res.end('ok');
+      fs.unlinkSync(title);
+      res.end('ok');
     } else {
       // Respond with message here
     }
@@ -156,13 +154,11 @@ After you've finished writing your code, use Postman to test that your code work
 
 Wanting to read a file is the most common form of request a client can send. Type in `https://www.google.com/` into your browser and you are sending a request, wanting to read a file!
 
-When a web server receives for a request wanting to read a file, it sends back a response including the file that needs to be read.
+When a web server receives a request to read a file, it sends back a response including the file that needs to be read.
 
-In our blog application, we'll be sending the correct file depending on the title of the blog. We specify this in our request by putting the title of that blog in the URL parameters, like `http://localhost:3000/blogs/blogtitle`.
+In our blog application, we'll be sending the correct file depending on the title of the blog post. We specify this in our request by putting the title of that blog in the URL parameters, like `http://localhost:3000/blogs/blogtitle`.
 
 The moment the web server gets a request coming in at our new endpoint, we'll look at the URL parameters and then respond with the correct file.
-
-In Express this we can send a file in the response using the `res.sendFile(<filename>)` method.
 
 Follow the steps:
 
@@ -172,16 +168,21 @@ Follow the steps:
 app.<METHOD>('/blogs/:title', (req, res) => {
 
     // How to get the title from the url parameters?
-    res.sendFile(title);
+    // check if post exists
+    const post = fs.readFileSync(title);
+    // send response
 })
 ```
 
 2. Replace `<METHOD>` with the correct HTTP verb.
 3. Figure out how to get the `title` from the request.
-4. Add a condition, only send the file if it exists. Make use of the `fs.existsSync(title)` method.
-5. Send a file using the `res.sendFile(<filename>)` method.
+4. Add a condition, only send the post if it exists. Make use of the `fs.existsSync(title)` method.
 
-After you've finished writing your code, **use Postman to test that your code works**. Send a request using the correct HTTP verb and URL. No body content needed!
+After you've finished writing your code, **use Postman to test that your code works**. Send a request using the correct HTTP verb and URL.
+
+
+Expected output:
+If the requested post exists, the response should be the post content as plain text. Otherwise the response should be 'This post does not exist!'. Both responses should have the appropriate status.
 
 All done? Congratulations!
 
@@ -212,7 +213,7 @@ Have fun!
 
 ## **4. PROJECT: HackYourTemperature II**
 
-> This week you'll continue building on `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`.
+> This week you'll continue building on `HackYourTemperature`. Use the same folder from the previous week.
 
 So far you've build a basic web server. We've loaded in the necessary modules. We have one `end point`, which is `/`. And we have activated the server, by `listening` to a port number.
 
@@ -234,7 +235,7 @@ app.engine('handlebars', exphbs({ defaultLayout: false }));
 
 2. In the root of the project folder, create a new folder called `views`.
 3. Create 1 `.handlebars` file inside the `views` folder, named `index.handlebars`
-4. The content of `main.handlebars` should be a regular, complete HTML document. Write a basic structure, including a `<head>` and `<body>`. The latter should include a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
+4. The content of `index.handlebars` should be a regular, complete HTML document. Write a basic structure, including a `<head>` and `<body>`. The latter should include a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
 5. Test out your work! Make sure it renders a form in your browser
 
 ### 4.2 The Backend

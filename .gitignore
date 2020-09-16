@@ -3,5 +3,5 @@ bin
 homework-solution
 node_modules
 npm-debug.log
+package-lock.json
 yarn-error.log
-week1/build-with-students/modularization/step2-npm/package-lock.json
