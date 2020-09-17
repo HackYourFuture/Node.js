@@ -24,8 +24,6 @@ For example, we could use APIs to [authenticate users](https://developers.facebo
 
 As you can see from the examples it would be really difficult to build such services ourselves. Just imagine the security and legal issues involved in building a [payment processing system](https://stripe.com/docs/api)!
 
-Another trendy reason for using APIs is known as "microservices". In a nutshell, microservices is an approach to building web sites where the application is split into many small servers which use APIs to talk to each other. This is a huge topic that we do not have time to cover, but it is really good to know about. To understand it on a high level see the [video](https://www.youtube.com/watch?v=STKCRSUsyP0).
-
 ### How to consume an external API?
 
 How to consume an external API. First of all, let's define the terms here.
