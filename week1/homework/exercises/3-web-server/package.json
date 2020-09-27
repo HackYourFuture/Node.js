@@ -1,0 +1,14 @@
+{
+  "name": "3-web-server",
+  "version": "1.0.0",
+  "description": "A simple express server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrej Gajduk",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
