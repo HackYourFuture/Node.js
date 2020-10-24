@@ -19,3 +19,9 @@
 let numbers = [ "12", "846", "2", "1236" ];
 
 // YOUR CODE GOES HERE
+let requiredPadLeft = require('./padLeft.js');
+
+numbers.forEach(string => {
+  console.log(requiredPadLeft(string, 5, ' '));
+});
+
