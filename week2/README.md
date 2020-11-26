@@ -122,7 +122,7 @@ The URL in the example consists of a domain `library.edu` and a path `/books`. W
 For more information check out the following resources:
 
 - [What is an API? In English, please](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
-- [Examples of REST APIs](https://openclassrooms.com/en/courses/3432056-build-your-web-projects-with-rest-apis/3496011-identify-examples-of-rest-apis)
+- [Examples of REST APIs](https://nordicapis.com/5-examples-of-apis-we-use-in-our-everyday-lives/)
 
 # 6. Postman
 
