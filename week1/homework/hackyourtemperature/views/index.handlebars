@@ -1,0 +1,27 @@
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+  {{> header }}
+    <div class="container mt-4">
+<form action="/weather" method="POST">
+    <label for="validationDefault03">City Name</label>
+      <input type="text" name="cityName" class="form-control" id="validationDefault03" required>
+    {{!-- <input type="text" name="cityName"> --}}
+    {{!-- <button type="submit" class="btn btn-secondary">Submit</button> --}}
+    <button class="btn btn-primary mt-4" type="submit">Submit</button>
+  </form>
+  
+    {{!-- </div>
+    <div class="container mt-2 text-center">
+    <p class="text-primary h3">{{weatherText}}</p>
+  </div> --}}
+ {{> footer }}
+  </body>
+  </html>

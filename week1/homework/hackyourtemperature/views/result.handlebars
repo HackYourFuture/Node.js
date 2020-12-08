@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+{{> header}}
+
+<div class="container" style="margin-top: 100px">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card bg-primary">
+      <div class="card-body">
+        <h5 class="card-title h4 text-white font-italic">The Temperature</h5>
+        <p class="card-text text-white h6 font-weight-light text-capitalize">{{ weatherText }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 ">
+    <div class="card bg-primary">
+      <div class="card-body">
+        <h5 class="card-title h4 text-white font-italic">More Relative Information</h5>
+        <p class="card-text text-white h6 font-weight-light text-capitalize">{{ description }} </br>{{humidity}} </br>{{wind}} </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{{> footer}}
