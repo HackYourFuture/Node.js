@@ -8,7 +8,7 @@ const API_KEY = require('./sources/keys.json').API_KEY;
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
-})); 
+}));
 
 app.engine("handlebars", exphbs({
   defaultLayout: false
@@ -18,7 +18,7 @@ app.set("view engine", 'handlebars');
 
 app.post('/weather', (req, res) => {
   const cityName = req.body.cityName;
-  
+
 if(cityName){
   axios.get(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}&q=${cityName}&units=metric`)
   .then(response=>{
@@ -29,7 +29,7 @@ if(cityName){
     humidity :`The humidity is ${response.data.main.humidity}`,
     wind : `Wind speed ${response.data.wind.speed}`,
     })
-   
+
   }).catch(err=>{
     res.render('error',{ weatherText: `${err.response.status} ${err.response.statusText}` })
     })
