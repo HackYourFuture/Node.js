@@ -8,6 +8,12 @@
  *
  */
 
-let numbers = [ "12", "846", "2", "1236" ];
+let numbers = ["12", "846", "2", "1236"];
 
 // YOUR CODE GOES HERE
+
+const fn = require("./padLeft.js")
+
+numbers.forEach(number => {
+  console.log(fn.padLeft(number, 8, '_'))
+})
