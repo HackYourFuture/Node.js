@@ -1,0 +1,9 @@
+body {
+  background-color: gray;
+  text-align: center;
+}
+#content {
+  color: blue;
+  background-color: white;
+  font-size: 34px;
+}

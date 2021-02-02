@@ -3,12 +3,30 @@
  */
 
 var http = require('http');
+const fs = require('fs');
 
 //create a server
 let server = http.createServer(function (req, res) {
   // YOUR CODE GOES IN HERE
-	res.write('Hello World!'); // Sends a response back to the client
-	res.end(); // Ends the response
+  if (req.url === '/' || req.url === '/index.html') {
+    let data = fs.readFileSync('./index.html');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data); // Sends a response back to the client
+  } else if (req.url === '/index.js') {
+    let data = fs.readFileSync('./index.js');
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.write(data); // Sends a response back to the client
+  } else if (req.url === '/style.css') {
+    let data = fs.readFileSync('./style.css');
+    res.writeHead(200, {'Content-Type': 'text/css'});
+    res.write(data); // Sends a response back to the client
+  } else {
+    res.write('404, there is an error, link is broken');
+  }
+  res.end(); // Ends the response
 });
 
-server.listen(3000); // The server starts to listen on port 3000
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+  console.log('Server initialized successfully');
+});
