@@ -18,12 +18,12 @@ let server = http.createServer(function (req, res) {
       }
       if (req.url === "/") {
         res.writeHeader(200, { "Content-Type": "text/html" })
-        res.write("Hello World!!!")
+        res.write(html)
         res.end()
       }
       if (req.url === "/script.js") {
         res.writeHeader(200, { "Content-Type": "text/html" })
-        res.write(html);
+        res.write("Hello world!!!");
         res.end()
       }
     });
