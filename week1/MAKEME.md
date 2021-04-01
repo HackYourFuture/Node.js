@@ -91,11 +91,11 @@ Using node, read the contents of the file `index.html` then send it as a respons
 
 Run the code and check that it works by opening a browser at `http:\\localhost:3000`.
 
-If you open the Network tab (in the developer tools of your browser) you will notice that the browser tries to load the JavaScript `script.js`, but fails. This is because our server does not **serve** this file yet.
+If you open the Network tab (in the developer tools of your browser) you will notice that the browser tries to load the JavaScript `index.js`, but fails. This is because our server does not **serve** this file yet.
 
 So far the server only serves one thing, the HTML file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.
 
-If you open the Network tab you can see that when the browser is requesting the HTML code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/script.js`.
+If you open the Network tab you can see that when the browser is requesting the HTML code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/index.js`.
 
 Let's change our code to send a different response, depending on the request URL.
 
