@@ -2,15 +2,20 @@
 
 ## Todo List
 
-1. Practice the concepts
-2. Node.js exercises
-3. Code along
-4. PROJECT: HackYourTemperature I
-5. Get your CV ready!
+1. Crash course
+2. Practice the concepts
+3. Node.js exercises
+4. Code along
+5. PROJECT: HackYourTemperature I
+6. Get your CV ready!
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v12** and NPM should be at least **v6**.
 
-## **1. Practice the concepts**
+## **1. Crash course**
+
+There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch it and code along.
+
+## **2. Practice the concepts**
 
 > The problems in the _practice the concepts_ section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
 
@@ -30,7 +35,7 @@ learnyounode
 
 And the menu will open up. **Do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
 
-## **2. Node.js exercises**
+## **3. Node.js exercises**
 
 > Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/homework/exercises`. For each exercise, you will find a separate folder.
 
@@ -123,7 +128,7 @@ _BONUS_
 
 When the server gets a request at `http://localhost:3000/style.css` respond with a CSS file that contains some basic CSS rules e.g. `#content { color: blue }`. Don't forget to specify the `Content-Type` in the header of the request!
 
-## **3. Code along**
+## **4. Code along**
 
 > Create a new GitHub repository for this project. It's a portfolio piece!
 
@@ -133,7 +138,7 @@ Enjoy!
 
 -   [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
 
-## **4. PROJECT: HackYourTemperature I**
+## **5. PROJECT: HackYourTemperature I**
 
 > In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`. You'll add to it every week.
 
@@ -149,7 +154,7 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
-## 5. Get your CV ready!
+## 6. Get your CV ready!
 
 In this final exercise you have to prepare the first draft of your CV. Before preparing and submitting your CV, please look at the following link: [http://bit.ly/cvpreparation](http://bit.ly/cvpreparation).
 
