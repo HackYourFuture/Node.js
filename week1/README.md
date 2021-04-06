@@ -12,7 +12,7 @@ These are the topics for week 1:
    - [Express.js](https://study.hackyourfuture.net/#/node-js/express-js)
 
 ### Extra reading (Optional)
-1. [How does the internet work?](https://study.hackyourfuture.net/#/the-internet)
+1. [How does the internet work?](https://study.hackyourfuture.net/#/the-internet/)
 
 ## 0. Video's
 
@@ -31,7 +31,7 @@ Now that we have gotten the big picture it is time to see how we can build these
 In the Node.js page you have read about different modules (or packages as some call them) and we will be using one of these called **Express.js** with which we can easily create web servers. The express.js package has become an industry standard that is widely used. Have a look what it does [here](https://study.hackyourfuture.net/#/node-js/express-js).
 
 ## Extra reading
-If you have time left over this week (or any week this module) then it is a good idea to look at the topic of 'the internet' and learn how it works [here](https://study.hackyourfuture.net/#/the-internet). This will be valuable when you get into the more complex applications.
+If you have time left over this week (or any week this module) then it is a good idea to look at the topic of 'the internet' and learn how it works [here](https://study.hackyourfuture.net/#/the-internet/). This will be valuable when you get into the more complex applications.
 
 ## Finished?
 
