@@ -261,4 +261,4 @@ The homework that needs to be submitted is the following:
 1. Node.js exercises
 2. Project: HackYourTemperature II
 
-_Deadline Saturday 23.59 CET_
+_Deadline Tuesday 23.59 CET_
