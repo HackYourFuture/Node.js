@@ -252,7 +252,7 @@ Test out your work using Postman and make sure that any time you submit somethin
 
 ## **SUBMIT YOUR HOMEWORK!**
 
-After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (a copy from the teacher's). Then make a pull request to it.
+After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (same as week 1). Then make a pull request to it.
 
 If you need a refresher, take a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
 
@@ -261,4 +261,4 @@ The homework that needs to be submitted is the following:
 1. Node.js exercises
 2. Project: HackYourTemperature II
 
-_Deadline Saturday 23.59 CET_
+_Deadline Tuesday 23.59 CET_

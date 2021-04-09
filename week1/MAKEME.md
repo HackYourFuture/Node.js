@@ -7,7 +7,6 @@
 3. Node.js exercises
 4. Code along
 5. PROJECT: HackYourTemperature I
-6. Get your CV ready!
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v12** and NPM should be at least **v6**.
 
@@ -154,23 +153,13 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
-## 6. Get your CV ready!
-
-In this final exercise you have to prepare the first draft of your CV. Before preparing and submitting your CV, please look at the following link: [http://bit.ly/cvpreparation](http://bit.ly/cvpreparation).
-
-When you feel prepared enough please fill in the following form:
-
--   [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
-
 ## **SUBMIT YOUR HOMEWORK!**
 
-After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (a copy from the teacher's). Then make a pull request to it.
-
-If you need a refresher, take a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
+After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
 
 The homework that needs to be submitted is the following:
 
 1. Node.js exercises
 2. Project: HackYourTemperature I
 
-_Deadline Saturday 23.59 CET_
+_Deadline Tuesday 23.59 CET_
