@@ -154,14 +154,6 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
-## 6. Get your CV ready!
-
-In this final exercise you have to prepare the first draft of your CV. Before preparing and submitting your CV, please look at the following link: [http://bit.ly/cvpreparation](http://bit.ly/cvpreparation).
-
-When you feel prepared enough please fill in the following form:
-
--   [Fill in your CV details!](https://hackyourfuture.typeform.com/to/nbktd8)
-
 ## **SUBMIT YOUR HOMEWORK!**
 
 After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
