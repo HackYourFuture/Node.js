@@ -8,6 +8,11 @@
  *
  */
 
-let numbers = [ "12", "846", "2", "1236" ];
+
 
 // YOUR CODE GOES HERE
+let numbers = [ "12", "846", "2", "1236" ];
+const padLeft=require('left-pad')
+numbers.forEach((el)=>{
+    console.log(padLeft(el,8,'_'))
+})
