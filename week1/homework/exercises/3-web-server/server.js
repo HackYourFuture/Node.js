@@ -2,7 +2,7 @@
  * Exercise 3: Create an HTTP web server
  */
 
-var http = require('http');
+const http = require('http');
 
 //create a server
 let server = http.createServer(function (req, res) {
