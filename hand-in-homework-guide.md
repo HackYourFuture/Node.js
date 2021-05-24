@@ -12,7 +12,7 @@ Watch the video (by clicking the image) or go through the following walk-through
 
 ONE TIME ONLY (START OF EVERY MODULE)
 
-1. Create a [fork](https://help.github.com/en/articles/fork-a-repo) of the homework module repository. For Node.js, the homework module repository is `https://www.github.com/HackYourHomework/Node.js`. You do this by using the `fork` option on the top right
+1. Create a [fork](https://help.github.com/en/articles/fork-a-repo) of the homework module repository. For Node.js, the homework module repository is `https://www.github.com/HackYourHomework/Node.js-classXX` where XX is your class number. You do this by using the `fork` option on the top right
 2. Navigate to the URL of the cloned repository (it should be in your personal GitHub account, under "repositories")
 3. Clone the repository, using SSH, to your local machine. You can do this by typing in `git clone <git url>` in the command line
 4. On your local machine, navigate to the folder using the command line
@@ -20,18 +20,20 @@ ONE TIME ONLY (START OF EVERY MODULE)
 
 EVERY WEEK
 
-1. Create a new branch for each week you have homework. For example, for the week 1 homework create a branch called `YOUR_NAME-w1`
-2. Inside the correct week folder, create another folder called `homework` if it is not there yet. Make your homework files in there, while on the correct branch
-3. Once you're finished, add and commit everything. Make the commit message meaningful, for example `finished project for homework week1`
-4. Push the branch to your forked repository
-5. On the GitHub page of your forked repository, click on the `create pull request` button. Make sure the `base repository` is your teacher's repository, on branch master
-6. Give the pull request a title in the following format:
+1. Do a `git pull` on your main branch to get the latest version.
+2. Create a new branch for each week you have homework. For example, for the week 1 homework for Node create a branch called `YOUR_NAME-w1-Node`. Don't forget to checkout this branch after creating it.
+3. Make your homework!
+4. Once you're finished, add your homework to a commit. Make sure you *only* commit your homework files and nothing else. You can use `git add -p` if you only want to add a couple files. You can always check what is happening with the `git status` command (as one of our mentors always says, it is the console.log of git!). 
+5. Create the commit (`git commit`). Make the commit message meaningful, for example `finished project for homework week1`.
+6. Push the branch to your forked repository
+7. On the GitHub page of your forked repository, click on the `create pull request` button. Make sure the `base repository` is your teacher's repository, on branch master
+8. Give the pull request a title in the following format:
 
 ```markdown
 Homework week 1 <Your name>
 ```
 
-7. Submit the pull request from your forked repository branch into the `master` branch
-8. Do a little victory dance because you did it! Good job!
+9. Submit the pull request from your forked repository branch into the `main` branch
 
 If you have any questions or if something is not entirely clear ¯\\\_(ツ)\_/¯, please ask/comment on Slack!
+
