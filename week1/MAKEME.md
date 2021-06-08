@@ -66,7 +66,7 @@ function padLeft(val, num, str) {
 }
 ```
 
-Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad).
+Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad). _Note: this package is deprecated which means that it is not being developed anymore but it can be used in the current state. The reason is that in modernJS we have the function `padStart()` which does the same. The goal of the exercise is to learn to use a package so we will still use it, but in general we do not want to use deprecated packages_
 
 Perfect! Let's use this module instead. Follow the steps:
 
