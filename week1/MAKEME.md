@@ -12,7 +12,7 @@
 
 ## **1. Crash course**
 
-There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch it and code along.
+There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch the first 58 minutes and code along, the rest of the video will be handled in the next weeks so you can come back to!
 
 ## **2. Practice the concepts**
 
