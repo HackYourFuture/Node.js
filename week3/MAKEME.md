@@ -135,11 +135,11 @@ This week we'll add our external API that we're going to work with: [Open Weathe
 ### 4.2 The Backend
 
 1. Remove the response from last week, we'll rewrite it later
-2. Inside of the the `POST` route, bring in `axios` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
+2. Inside of the the `POST` route, bring in `node-fetch` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
 
 ```js
 const API_KEY = require('./sources/keys.json').API_KEY;
-axios(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
+fetch(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
 ```
 
 Now, there are 2 situations that could happen: if the city name is not found, we want to send to the client a response with a message that the city isn't found. However, if the city is found and then we want to return a message that contains the city name and current temperature.
