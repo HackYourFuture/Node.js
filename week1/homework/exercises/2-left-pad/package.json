@@ -1,0 +1,14 @@
+{
+  "name": "2-left-pad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "padLeft.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}
