@@ -2,253 +2,79 @@
 
 ## Todo List
 
-1. Practice the concepts
-2. Node.js exercises
-3. Code along
-4. PROJECT: HackYourTemperature II
+1. Prep exercises
+2. Practice exercises
+3. PROJECT: HackYourTemperature II
+4. Code alongs
 
-## **1. Practice the concepts**
+## **1. Prep exercises**
 
-> The problems in the _practice the concepts_ section are designed to get you warmed up for the real exercises below. You do not have to submit your code, but you have to finish all the exercises.
+> Prep exercises are exercises that you should work on _before_ the session on Sunday. These are a little more difficult or show an important concept and as such are a great exercise to talk about with your mentor. Have a solution ready by Sunday as you may be asked to show what you did.
 
-This week you'll continue with the command line exercises. Go back to your command line and start doing **exercises 6 (MAKE IT MODULAR) until 10 (TIME SERVER)**
+Inside your `Node.js` fork, go to the folder `week2`. Inside of that folder, navigate to `/prep-exercises`. For each exercise, you will find a separate folder. The `README` explains what needs to be done. There will also be some questions at the bottom to think about. Go through them _before_ the session on Sunday as it will be covered then.
 
-## **2. Node.js Exercises**
+## **2. Practice exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, navigate to `/homework/exercises`. For each exercise, you will a corresponding folder where your code should go.
+Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, navigate to `/practice-exercises`. For each exercise, you will find a separate folder. The `README` explains what needs to be done. Go through them to practice concepts that you have learned about!
 
-### **Exercise 1: Make a blog API**
-
-Anyone here still remember blogs!? They were all the rage around 10 years ago. We are a bit late to the party, but I think we can still make some money with a blog application.
-
-Since you just learned about REST and APIs we are going to use them when writing this application. The resource in the application are `blogs`. Each blog will have a `title` and `content`. The `title` will also serve as an `id` uniquely identifying a blog post.
-
-We also want our blogs to be stored `persistently`. Data persistence means keeping the data you are working with around whether or not the Node.js service is restarted. To achieve this, each blog post will be stored as a separate file on the hard drive, where the blog post title will match the file name. 
-
-Before we start coding we need to define what operations will be supported via our API. Here's what we're going to do...
-
-| Operation | Description | Method | Route |
-| --------- | ----------- | ------ | ----- |
-| Create    | Given a title and content create a new post |  |  |
-| Read one  | Given a title, return the content of a single blog post |  |  |
-| Update    | Given a title and content update an existing blog post |  |  |
-| Delete    | Given a title delete an existing blog post |  |  |
-
-What do you think should be filled in the `Method` and `Route` columns? Think about it and see if you can guess what it should be...
-
-Once you're ready, let's start by setting up our environment. Follow the steps:
-
-**Setup:**
-
-1. Navigate to the exercise folder `1-blog-api`
-2. In the folder there is already a `server.js` and `package.json` file prepared for you with some starter code and the express dependency.
-3. Install the dependencies locally by running `npm install`. This command will read the dependencies from `package.json` and download them on your computer.
-
-That was not too hard, was it? Now you are ready for the real coding. We will start off by...
-
-**1.1 Creating new posts**
-
-To create a new blog post, we need 2 things:
-
-1. A user that sends data from a client (for example, a webpage that contains a `<form>`)
-2. A web server that listens to a request that comes in at a certain `endpoint`.
-
-We won't work on the first point, but we'll assume the incoming data from the client will be in JSON format. For example: `{ "title": "My first blog", "content": "Lorem ipsum" }`.
-
-You need to create another endpoint in our web server that will receive the data and store it into a separate file. The file storage will happen with use of [fs](https://nodejs.org/api/fs.html#fs_file_system), a native Node.js module that allows us to interact with our computer's file system so we can create new files.
-
-Follow the steps:
-
-1. Inside `server.js`, add the following starter code in the correct place:
-
-```javascript
-const fs = require("fs");
-
-app.<METHOD>('/blogs', (req, res) => {
-    // How to get the title and content from the request??
-    fs.writeFileSync(title, content);
-    res.end('ok')
-})
-```
-
-2. Replace `<METHOD>` with the correct HTTP verb.
-3. Figure out how to access the `title` and `content` properties from out of the request.
-
-Hint: Remember `express.json()`. Why did we use it during our lectures?
-
-After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. As the data you'll be sending in the request body, you can make use of the example: `{ "title": "My first blog", "content": "Lorem ipsum" }`. Make sure that you specify the`Content-Type` as JSON!
-
-Expected output:
-You should get a response `ok` and see a new file `My first blog` in your `1-blog-api` folder.
-
-![Obama not bad](https://nwlc.org/wp-content/uploads/2016/09/notbad.jpg)
-
-Up next:
-
-**1.2 Updating existing posts**
-
-Updating posts is very similar to creating them. You only need to use a different METHOD and add a conditional statement that checks to see if the blog post that the user is trying to update already exists with `fs.existsSync()`.
-
-This time we are going to use a _url parameter_ in Express to send the `title` while the `content` will be part of the `body`.
-
-Follow the steps:
-
-1. Inside `server.js`, add the following starter code in the correct place:
-
-```javascript
-app.<METHOD>('/posts/:title', (req, res) => {
-    // How to get the title and content from the request?
-    // What if the request does not have a title and/or content?
-    if () {
-      fs.writeFileSync(title, content);
-      res.end('ok')
-    }
-    else {
-      // Send response with error message
-    }
-})
-```
-
-2. Replace `<METHOD>` with the correct HTTP verb.
-3. Add a condition: if the file with the given title exists, rewrite it with the given content. Otherwise respond with a message, saying 'This post does not exist!'. Make use of the `fs.existsSync(title)` to check if a file exists.
-
-After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. As the data you'll be sending in the request body, you can make use of the example: `{ "title": "My first blog", "content": "This content is now updated!" }`.
-
-Does it send the correct response in the case the post exists, or if it doesn't?
-
-Expected output:
-If the request could be handled, respond with 'ok', else respond with 'This post does not exist!'.
-
-Next up:
-
-**1.3 Deleting posts**
-
-For deleting posts we will again make use of `URL parameters`, this time to specify which post we want to delete.
-
-Since we are deleting a post there is no need to send any content in the request. To delete the corresponding, you can use `fs.unlinkSync(<filename>)`.
-
-Follow the steps:
-
-1. Inside `server.js`, add the following starter code in the correct place:
-
-```javascript
-app.<METHOD>('/blogs/:title', (req, res) => {
-    // How to get the title from the url parameters?
-    if () { // Add condition here
-      fs.unlinkSync(title);
-      res.end('ok');
-    } else {
-      // Respond with message here
-    }
-})
-```
-
-2. Replace `<METHOD>` with the correct HTTP verb.
-3. Figure out how to get the `title` from the request.
-4. Add a condition, only delete the file if it exists. Make use of the `fs.existsSync(title)` method.
-5. Delete the file by passing the title to the `fs.unlinkSync()` method.
-
-After you've finished writing your code, use Postman to test that your code works. Send a request using the correct HTTP verb and URL. No body content needed!
-
-**1.4 Reading posts**
-
-Wanting to read a file is the most common form of request a client can send. Type in `https://www.google.com/` into your browser and you are sending a request, wanting to read a file!
-
-When a web server receives a request to read a file, it sends back a response including the file that needs to be read.
-
-In our blog application, we'll be sending the correct file depending on the title of the blog post. We specify this in our request by putting the title of that blog in the URL parameters, like `http://localhost:3000/blogs/blogtitle`.
-
-The moment the web server gets a request coming in at our new endpoint, we'll look at the URL parameters and then respond with the correct file.
-
-Follow the steps:
-
-1. Inside `server.js`, add the following starter code in the correct place:
-
-```javascript
-app.<METHOD>('/blogs/:title', (req, res) => {
-
-    // How to get the title from the url parameters?
-    // check if post exists
-    const post = fs.readFileSync(title);
-    // send response
-})
-```
-
-2. Replace `<METHOD>` with the correct HTTP verb.
-3. Figure out how to get the `title` from the request.
-4. Add a condition, only send the post if it exists. Make use of the `fs.existsSync(title)` method.
-
-After you've finished writing your code, **use Postman to test that your code works**. Send a request using the correct HTTP verb and URL.
-
-
-Expected output:
-If the requested post exists, the response should be the post content as plain text. Otherwise the response should be 'This post does not exist!'. Both responses should have the appropriate status.
-
-All done? Congratulations!
-
-![Congratulations](https://media.giphy.com/media/l1AsI389lnxkvQHAc/giphy.gif)
-
-**Bonus: Reading all posts**
-In addition to reading the content of a single post build an operation that reads all existing posts. To limit the size of response only send the title of the blog posts, e.g. `[{"title":"My First Blog"}, {"title":"Second Blog"}]`
-
-```javascript
-app.<METHOD>('/blogs', (req, res) => {
-    // how to get the file names of all files in a folder??
-})
-```
-
-## **3. Code along**
-
-> Create a new GitHub repository for this project. It's a portfolio piece!
-
-This week we'll practice with a new concept: the `templating engine`. You'll learn more about that next week, but for now just follow along.
-
-In this small application a user will be able to add people's basic information to a page. This is done **dynamically**, meaning that new information can get loaded in the page without having to do a page refresh.
-
-You'll learn how to use [Express.js](https://expressjs.com/) and a templating engine (you'll learn more about that in week 3) called [Handlebars](https://handlebarsjs.com/).
-
-Have fun!
-
-- [Express JS Crash Course - Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
-
-## **4. PROJECT: HackYourTemperature II**
+## **3. PROJECT: HackYourTemperature II**
 
 > This week you'll continue building on `HackYourTemperature`. Use the same folder from the previous week.
 
-So far you've build a basic web server. We've loaded in the necessary modules. We have one `end point`, which is `/`. And we have activated the server, by `listening` to a port number.
+So far you've build a basic web server. We've loaded in the necessary modules. We have an `end point`, which is `/`. We have activated the server, by `listening` to a port number. And we have created a `POST` request to handle input from the user.
 
 This week's homework we will expand on that, in 2 parts:
 
-1. We'll make templates to create a frontend that will be a simple page with a form
-2. We'll create a `POST` route that will allow us to access the submitted form data
+1. We will connect our API to an external API to grab the data we want.
+2. We are going to add tests to our API to ensure that it works as intended.
 
-### 4.1 The Frontend
+### 3.1 Add external API
 
-Since we've already loaded in our package `express-handlebars`, we can get started immediately. If at any point you're stuck, try reading the [documentation](https://github.com/ericf/express-handlebars) or ask a question in Slack!
+Our external API that we're going to work with is the [Open Weather Map API](https://openweathermap.org/). The goal of this part is to learn how to make an API request from the backend, and then to send the result to the frontend.
 
-1. We first have to make Express aware of the templating engine. We do this by using the `engine()` and `set()` functions. Paste in the following (and figure out what it does, by checking the [documentation](https://github.com/express-handlebars/express-handlebars)):
+#### 3.1.1 Setting up the API
+
+1. We first have to make an account: do so via [the website](https://openweathermap.org/appid)
+2. Go back to your project folder and create a new folder called `sources`. Inside create a file called `keys.json`. Go to your OpenWeatherMap account, find the API Key and copy it into `keys.json`
+
+#### 3.1.2 Fetch it from our API
+
+1. Remove the response from last week, we'll rewrite it later
+2. Inside of the the `POST` route, bring in `node-fetch` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to add the API Key, like so:
 
 ```js
-app.set('view engine', 'handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: false }));
+const API_KEY = require("./sources/keys.json").API_KEY;
+fetch(`https://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`);
 ```
 
-2. In the root of the project folder, create a new folder called `views`.
-3. Create 1 `.handlebars` file inside the `views` folder, named `index.handlebars`
-4. The content of `index.handlebars` should be a regular, complete HTML document. Write a basic structure, including a `<head>` and `<body>`. The latter should include a `<form>`. Make sure it has an `<input>` field, which should be of `type="text"` and have a `name="cityName"`. Also add a submit button. The form should be submitted to our `POST` request endpoint, which is `/weather`. Let the form know about this endpoint by passing it as a value to the `action` property: `action="/weather"`
-5. Test out your work! Make sure it renders a form in your browser
+Now, there are 2 situations that could happen: if the city name is not found, we want to send to the client a response with a message that the city isn't found. However, if the city is found and then we want to return a message that contains the city name and current temperature.
 
-### 4.2 The Backend
+3. If the result is not found, we `render()` to the page the `index` (just like in the `/` endpoint). However, also add a second argument, an object: `{ weatherText: "City is not found!" }`
+4. If the result is found, we also `render()` to the page the `index`. Also add here the object. Only, instead of just a string dynamically add in the `cityName` and temperature (gotten from the result of the API call). Hint: use template strings to add variables in your strings!
 
-In this part we'll add another endpoint, with a `POST` method.
+Check that this works as expected!
 
-1. First let's modify our `/` route. Instead of sending a string, send a template using the `render()` function. Pass in the name of the template, which is `index`
-2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`.
-3. Create a `POST` route, that has as an endpoint: `/weather`
-4. Inside the callback function of the route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
-5. Send the the form input back as a response to the client
+### 3.2 Adding test cases
 
-Test out your work using Postman and make sure that any time you submit something in the form, it returns as a response from the server the exact words you submitted.
+TODO
+
+## **4. Code alongs**
+
+> Remember to upload the end code of all code alongs to your Github profile so that you can refer back to it anytime!
+
+### 4.1 Library API
+
+Our mentor Andrej has created his own code along to build a Library API. Way to go above and beyond! Have a look and code along to go through all the steps of an API in its simplest form.
+
+- [Library API](https://www.youtube.com/watch?v=PVb_vIyw4HI)
+
+### 4.2 Ebook Sales application
+
+In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
+
+Enjoy!
+
+- [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
 
 ## **SUBMIT YOUR HOMEWORK!**
 
@@ -258,7 +84,6 @@ If you need a refresher, take a look at the following [guide](../hand-in-homewor
 
 The homework that needs to be submitted is the following:
 
-1. Node.js exercises
-2. Project: HackYourTemperature II
+1. Project: HackYourTemperature II
 
 _Deadline Tuesday 23.59 CET_
