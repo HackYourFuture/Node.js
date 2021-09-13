@@ -54,9 +54,10 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 1. Create a JavaScript file called `server.js` (it can be any name but this is more meaningful)
 2. Initialize the Node Package Manager and create a `package.json` file by running `npm init -y`
-3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `axios`
-4. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
-5. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
+3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `node-fetch` (a library to handle http requests in node)
+4. As we want to use modernJS `import` statements, add the line `"type": "module"` to the `package.json` file
+5. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
+6. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
@@ -64,13 +65,14 @@ After writing all this code you can verify that it's working by running `node se
 
 In this part we'll add another endpoint, with a `POST` method.
 
-1. First let's modify our `/` route. Instead of sending a string, send a template using the `render()` function. Pass in the name of the template, which is `index`
+1. Create a `POST` route, that has as an endpoint: `/weather`
 2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`.
-3. Create a `POST` route, that has as an endpoint: `/weather`
-4. Inside the callback function of the route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
-5. Send the the form input back as a response to the client
+3. Inside the callback function of the `POST` route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
+4. Send the the form input back as a response to the client
 
 Test out your work using Postman and make sure that any time you submit something in the form, it returns as a response from the server the exact words you submitted.
+
+If you are tired of constantly restarting your server, google the `nodemon` package to see if that will be useful for you!
 
 ## **SUBMIT YOUR HOMEWORK!**
 
