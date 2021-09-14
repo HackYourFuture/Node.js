@@ -4,15 +4,15 @@
 
 1. Crash course
 2. Practice the concepts
-3. Node.js exercises
-4. Code along
+3. Prep exercises
+4. Node.js exercises
 5. PROJECT: HackYourTemperature I
 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v12** and NPM should be at least **v6**.
 
 ## **1. Crash course**
 
-There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch the first 58 minutes and code along, the rest of the video will be handled in the next weeks so you can come back to!
+There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch the first 58 minutes and code along, the rest of the video will be handled in the next two weeks so you can come back to it in week 3!
 
 ## **2. Practice the concepts**
 
@@ -32,110 +32,17 @@ When it's all installed, execute the command:
 learnyounode
 ```
 
-And the menu will open up. **Do exercise 1 (HELLO WORLD) until 5 (FILTERED LS)**!
+And the menu will open up. **Do exercise 1 (HELLO WORLD) until 8 (HTTP COLLECT)**!
 
-## **3. Node.js exercises**
+## **3. Prep exercises**
 
-> Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/homework/exercises`. For each exercise, you will find a separate folder.
+> Prep exercises are exercises that you should work on _before_ the session on Sunday. These are a little more difficult or show an important concept and as such are a great exercise to talk about with your mentor. Have a solution ready by Sunday as you may be asked to show what you did.
 
-### **Exercise 1: Pad numbers**
+Inside your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/prep-exercises`. For each exercise, you will find a separate folder. The `README` explains what needs to be done. There will also be some questions at the bottom to think about. Go through them _before_ the session on Sunday as it will be covered then.
 
-Lets practice how to use code from other developers in our applications. In the file `/1-pad-numbers/padLeft.js` you will find a function I wrote the other day. Study the function and read the description to understand what it does.
+## **4. Practice exercises**
 
-Your task is to use this function in another file `1-pad-number/script.js`. Open the file and follow the instructions.
-
-### **Exercise 2: To the left, to the left...**
-
-Oh no! A senior developer from your team Slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you (politely) to fix the bug as soon as possible or face the wrath of management.
-
-When you look at the function code you realize that the function only works up to 5 characters.
-
-```javascript
-// This change doesn't satisfy our needs!
-function padLeft(val, num, str) {
-	return '00000'.replace(/0/g, str).slice(0, num - val.length) + val;
-}
-```
-
-What a stupid function! For a moment, you consider to rename the file to `terrible-function.js`, but realize that will not help your situation in any way. You could add three zeroes so that it works for 8 characters:
-
-```javascript
-// This change doesn't do much for us either...
-function padLeft(val, num, str) {
-	return '00000000'.replace(/0/g, str).slice(0, num - val.length) + val;
-}
-```
-
-Then it would be just a matter of time before someone tries to use it for 9 characters and you get the same issue. You scour StackOverflow for related questions and discover that there is already a function that pads numbers, available through NPM: [left-pad](https://www.npmjs.com/package/left-pad). _Note: this package is deprecated which means that it is not being developed anymore but it can be used in the current state. The reason is that in modernJS we have the function `padStart()` which does the same. The goal of the exercise is to learn to use a package so we will still use it, but in general we do not want to use deprecated packages_
-
-Perfect! Let's use this module instead. Follow the steps:
-
-1. Open the folder `/2-left-pad`
-2. Initialize NPM using `npm init`, to create a `package.json` file
-3. Copy and paste your code from the previous exercise in `script.js`
-4. Follow the instructions on the website - from https://www.npmjs.com/package/left-pad on how to install and require the `left-pad` package inside of `script.js`
-5. Replace the call to function `padLeft` to use this new NPM package called `left-pad` instead
-6. Pad the numbers to 8 characters and check if everything works correctly
-
-Tips:
-
--   Make sure you're in the correct directory when running `npm install left-pad`
-
-### **Exercise 3: Create an HTTP web server**
-
-In this exercise, you will build a simple web server. It will only serve one HTML file and one JavaScript file. This is enough for a minimal web site.
-
-To help you get started some code is already provided for you. Check the file `3-web-server` and try to understand what the code does.
-
-Check that the code is working fine by running it and opening the web site in your browser at `http:\\localhost:3000`. You should see the text `Hello World!`. While working on this exercise and the project, make sure to constantly check that your changes work as expected by running your code and checking the browser.
-
-Your job is to change the code so that it serves HTML instead of just `Hello World!`.
-
-Using node, read the contents of the file `index.html` then send it as a response. Make sure to set the correct `Content-Type` header.
-
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`.
-
-If you open the Network tab (in the developer tools of your browser) you will notice that the browser tries to load the JavaScript `index.js`, but fails. This is because our server does not **serve** this file yet.
-
-So far the server only serves one thing, the HTML file. In order to serve different things, we somehow have to determine what is being requested. This is where the `request.url` comes in.
-
-If you open the Network tab you can see that when the browser is requesting the HTML code it is using the url `http://localhost:3000/`. On the other hand, when the browser is requesting the javascript it is using the url `http://localhost:3000/index.js`.
-
-Let's change our code to send a different response, depending on the request URL.
-
-To do this you need to write 2 conditional if statements. 
-1. If the URL is `/` send the HTML file, same as before
-2. If the URL is `/index.js` send the corresponding JavaScript file after reading it from the file system. Don't forget to set the correct `Content-Type` header.
-
-Run the code and check that it works by opening a browser at `http://localhost:3000`. You should see the message _Welcome to Server-land!_.
-
-Congratulations, you have created your very own working web server!
-
-> In a nutshell this is how most web sites work. The client requests resources, server sends them, then the client processes the response based on the content type. This processing often leads to new requests and the cycle continues until everything is loaded and ready for the user to interact with.
-
-Tips:
--  To set a response header [response.setHeader(name, value)](https://nodejs.org/api/http.html#http_response_setheader_name_value)
--  To read a file from the file system [fs.readFileSync(path)](https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_readfilesync_path_options)
--  Tired of restarting your server!? [nodemon](https://www.npmjs.com/package/nodemon) is here to help.
-
-_BONUS_  
- Our website is working, but looks stale. Try adding some style to it. The style should be from an external source. Add this to your HTML file.
-
-```html
-<link rel="stylesheet" type="text/css" href="style.css" />
-```
-
-When the server gets a request at `http://localhost:3000/style.css` respond with a CSS file that contains some basic CSS rules e.g. `#content { color: blue }`. Don't forget to specify the `Content-Type` in the header of the request!
-
-## **4. Code along**
-
-> Create a new GitHub repository for this project. It's a portfolio piece!
-
-In this application you'll be building an Ebook Sales Application. You'll make it possible to add new books to a list of books. You'll even learn how to put it out online, so you can get a URL that you can use to access your application anywhere.
-
-Enjoy!
-
--   [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
+Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, navigate to `/practice-exercises`. For each exercise, you will find a separate folder. The `README` explains what needs to be done. Go through them to practice concepts that you have learned about!
 
 ## **5. PROJECT: HackYourTemperature I**
 
@@ -147,11 +54,25 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 1. Create a JavaScript file called `server.js` (it can be any name but this is more meaningful)
 2. Initialize the Node Package Manager and create a `package.json` file by running `npm init -y`
-3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `axios`
-4. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
-5. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
+3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `node-fetch` (a library to handle http requests in node)
+4. As we want to use modernJS `import` statements, add the line `"type": "module"` to the `package.json` file
+5. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
+6. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
+
+### 4.1 Adding a POST request
+
+In this part we'll add another endpoint, with a `POST` method.
+
+1. Create a `POST` route, that has as an endpoint: `/weather`
+2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`.
+3. Inside the callback function of the `POST` route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
+4. Send the the form input back as a response to the client
+
+Test out your work using Postman and make sure that any time you submit something in the form, it returns as a response from the server the exact words you submitted.
+
+If you are tired of constantly restarting your server, google the `nodemon` package to see if that will be useful for you!
 
 ## **SUBMIT YOUR HOMEWORK!**
 
@@ -159,7 +80,6 @@ After you've finished your todo list it's time to show us what you got! Have a l
 
 The homework that needs to be submitted is the following:
 
-1. Node.js exercises
-2. Project: HackYourTemperature I
+1. Project: HackYourTemperature I
 
 _Deadline Tuesday 23.59 CET_
