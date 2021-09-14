@@ -86,8 +86,8 @@ Learn from Andrej in the following playlist of videos he has made for you! (Clic
 | Week | Topic                               | Readings                       | Homework                       | Lesson Plan                           |
 | ---: | ----------------------------------- | ------------------------------ | ------------------------------ | ------------------------------------- |
 |   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Homework W1](week1/MAKEME.md) | [Lesson Plan W1](week1/LESSONPLAN.md) |
-|   2. | REST, CRUD & API                    | [Readings W2](week2/README.md) | [Homework W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
-|   3. | Templating engines, API calls       | [Readings W3](week3/README.md) | [Homework W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
+|   2. | REST, CRUD, API calls, Testing      | [Readings W2](week2/README.md) | [Homework W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
+|   3. | Templating engines                  | [Readings W3](week3/README.md) | [Homework W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
 
 ## Finished?
 
