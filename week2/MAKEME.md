@@ -77,7 +77,7 @@ describe("POST /", () => {
 
 Setup a test script in your `package.json` to check that it works! You should get no errors and 1 passing test.
 
-### 3.2.1. Configuring jest with supertest
+#### 3.2.1. Configuring jest with supertest
 
 Jest is a JavaScript testing framework, but `express`, `node-fetch` and `supertest` are a little more than just JavaScript. So we need to do some extra configuration.
 
@@ -100,7 +100,7 @@ const request = supertest(app);
 
 Run your tests again and you should get a green passing test again without any errors.
 
-### 3.2.2 Writing the tests
+#### 3.2.2 Writing the tests
 
 Now comes the fun part, it is time to write your tests. Think about what needs to be tested! Remember that the happy path is just a small part of your api. What if the user does not give a cityName? What if the cityName is gibberish?
 
