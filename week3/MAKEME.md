@@ -19,7 +19,7 @@ This week you'll finish the command line exercises. Go back to `learnyounode` an
 
 Inside your `Node.js` fork, go to the folder `week3`. Inside of that folder, navigate to `/prep-exercises`. For each exercise, you will find a separate folder. The `README` explains what needs to be done. There will also be some questions at the bottom to think about. Go through them _before_ the session on Sunday as it will be covered then.
 
-## **3. Code alongs **
+## **3. Code alongs**
 
 > Remember to upload the end code of all code alongs to your Github profile so that you can refer back to it anytime!
 
