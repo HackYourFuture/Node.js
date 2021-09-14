@@ -4,17 +4,15 @@
 
 1. [What is a CRUD application?](https://study.hackyourfuture.net/#/definitions/crud)
 2. [How do you design an API?](https://study.hackyourfuture.net/#/the-internet/designing-apis.md)
-
-- What is Representational State Transfer (REST)?
-- What is a RESTful API?
+   - What is Representational State Transfer (REST)?
+   - What is a RESTful API?
 
 3. [Making use of other APIs](https://study.hackyourfuture.net/#/node-js/consuming-apis.md)
    - How to consume an external API?
    - Example of middleware
 4. [Automated API testing](TODO)
-
-- [Postman](https://www.postman.com/use-cases/api-testing-automation/)
-- [supertest](https://www.npmjs.com/package/supertest)
+   - [Postman](https://www.postman.com/use-cases/api-testing-automation/)
+   - [supertest](https://www.npmjs.com/package/supertest)
 
 ## 0. Video Lectures
 
