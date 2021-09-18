@@ -50,7 +50,7 @@ Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, 
 
 In this module you'll be rebuilding an existing application, starting from scratch. The application is called `HackYourTemperature` and you can find it here: [HackYourTemperature](https://hackyourtemperature.herokuapp.com/).
 
-Each week you'll be building a certain part of it. This week we'll get started with creating a web server, using [Express.js](https://expressjs.com/).
+Each week you'll be building a certain part of it. This week we'll get started with creating a web server, using [Express.js](https://expressjs.com/). Inside of the `hackyourtemperature` folder:
 
 1. Create a JavaScript file called `server.js` (it can be any name but this is more meaningful)
 2. Initialize the Node Package Manager and create a `package.json` file by running `npm init -y`
