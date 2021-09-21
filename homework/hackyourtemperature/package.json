@@ -1,0 +1,20 @@
+{
+  "name": "hackyourtemperature",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "node-fetch": "^3.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "type": "module"
+}
