@@ -66,7 +66,7 @@ After writing all this code you can verify that it's working by running `node se
 In this part we'll add another endpoint, with a `POST` method.
 
 1. Create a `POST` route, that has as an endpoint: `/weather`
-2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`.
+2. To make Express aware of what data type the incoming data is (which is JSON). We do that using the `json()` method on the Express object. Using the `use()` function from `app`, pass in the `json()` from `express`. like that ==> `app.use(express.json());`
 3. Inside the callback function of the `POST` route, get access to the `cityName` and put it inside a variable. Hint: use the `body` object from the request to find it.
 4. Send the the form input back as a response to the client
 
