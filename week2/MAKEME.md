@@ -85,6 +85,7 @@ The first problem is that we use `modules` and `modernJS`. Jest in of itself doe
 
 1. Install `babel-jest` and `@babel/preset-env` as developer dependencies. These are babel packages that are made to help `jest` compile
 2. Copy over the `babel.config.cjs` and `jest.config.js` files in the `config-files` folder to the `hackyourtemperature` folder. There are some comments in there explaining what we are configuring, but it will be hard to know how it all fits together. That is out of scope for now, but if you are interested you can do some research!
+3. Restart `jest` so that it can pick up the new `config` files
 
 The second problem is that tests in jest run asynchronously and whenever we will run multiple tests at the same time our server's code will start our application using the same port.
 
@@ -99,6 +100,8 @@ const request = supertest(app);
 ```
 
 Run your tests again and you should get a green passing test again without any errors.
+
+If you get a `cannot use import outside a module` error, that means that the `babel` setup has gone wrong. Make sure you have the latest version of Node and that the config files are being used. You can check if the files are being used by adding a syntax error to the file. If you get the same error then the config files are not being compiled.
 
 #### 3.2.2 Writing the tests
 
