@@ -12,7 +12,7 @@
 
 ## **1. Crash course**
 
-There is a great crash course available here: https://www.youtube.com/watch?v=fBNz5xF-Kx4. Watch the first 58 minutes and code along, the rest of the video will be handled in the next two weeks so you can come back to it in week 3!
+There is a great crash course available here: https://www.youtube.com/watch?v=2LUdnb-mls0. It introduces a lot of the concepts you will be practicing this week.
 
 ## **2. Practice the concepts**
 
