@@ -2,15 +2,15 @@
 
 In this exercise, you will build a simple web server. It will only serve one HTML file and one JavaScript file. This is enough for a minimal web site.
 
-To help you get started some code is already provided for you. Check the file `3-web-server` and try to understand what the code does.
+To help you get started some code is already provided for you. Check the file `server.js` and try to understand what the code does.
 
-Check that the code is working fine by running it and opening the web site in your browser at `http:\\localhost:3000`. You should see the text `Hello World!`. While working on this exercise and the project, make sure to constantly check that your changes work as expected by running your code and checking the browser.
+Check that the code is working fine by running it and opening the web site in your browser at `http://localhost:3000`. You should see the text `Hello World!`. While working on this exercise and the project, make sure to constantly check that your changes work as expected by running your code and checking the browser.
 
 Your job is to change the code so that it serves HTML instead of just `Hello World!`.
 
 Using node, read the contents of the file `index.html` then send it as a response. Make sure to set the correct `Content-Type` header.
 
-Run the code and check that it works by opening a browser at `http:\\localhost:3000`.
+Run the code and check that it works by opening a browser at `http://localhost:3000`.
 
 If you open the Network tab (in the developer tools of your browser) you will notice that the browser tries to load the JavaScript `index.js`, but fails. This is because our server does not **serve** this file yet.
 
@@ -34,7 +34,7 @@ Congratulations, you have created your very own working web server!
 Tips:
 
 - To set a response header [response.setHeader(name, value)](https://nodejs.org/api/http.html#http_response_setheader_name_value)
-- To read a file from the file system [fs.readFileSync(path)](https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_readfilesync_path_options)
+- To read a file from the file system [fsPromises.readFile(path[, options])](https://nodejs.org/docs/latest-v14.x/api/fs.html#fs_fspromises_readfile_path_options)
 - Tired of restarting your server!? [nodemon](https://www.npmjs.com/package/nodemon) is here to help.
 
 _BONUS_  
