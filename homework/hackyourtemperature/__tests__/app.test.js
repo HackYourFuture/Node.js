@@ -11,7 +11,7 @@ describe('POST /', () => {
   it('Status code is 200', async () => {
     const response = await request
       .post('/weather')
-      .send({ cityName: 'lelystad' });
+      .send({ cityName: 'Amsterdam' });
 
     expect(response.statusCode).toBe(200);
   });
@@ -19,7 +19,7 @@ describe('POST /', () => {
   it('Test if user gives incorrect cityName', async () => {
     const response = await request
       .post('/weather')
-      .send({ cityName: 'lelystad' });
+      .send({ cityName: 'Amsterdam' });
 
     expect(response.body.weatherText).toContain('cityName');
   });
