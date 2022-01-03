@@ -31,7 +31,7 @@ You'll learn how to use a templating engine called [Handlebars](https://handleba
 
 Have fun!
 
-- [Express JS Crash Course - Member App](https://www.youtube.com/watch?v=L72fhGm1tfE)
+- [Express JS Crash Course - Member App](https://www.youtube.com/watch?v=L72fhGm1tfE). Note that this tutorial is a little outdated as the `express-handlebars` library has changed its API. You will have to look at the `express-handlebars` documentation and see what changes are needed!
 
 ### 3.2 Mailer
 
