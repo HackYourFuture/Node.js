@@ -6,6 +6,7 @@
 2. Prep exercises
 3. Code along
 4. PROJECT: HackYourTemperature III
+5. Optional: Side project ideas
 
 ## **1. Practice the concepts**
 
@@ -100,6 +101,20 @@ TIPS:
 **YOU JUST BUILT YOUR VERY FIRST FULL STACK APPLICATION WITH TESTING!**
 
 ![Success Kid](https://i.pinimg.com/474x/ef/c9/9b/efc99bd36587b1f8acc8a51cd2f9f861--kidney-surgery-kid-memes.jpg)
+
+## **5. Optional: Side project ideas**
+
+> A part of the HackYourFuture curriculum is to work on as many side projects as you can throughout the time you have. This is a nice way to add extra knowledge to your arsenal and show in your CV that you are motivated to learn new technologies. This is also a great time to learn new things as there are plenty of mentors available to help you out in the `#projects` channel on Slack! You will not get this amount of time and support once you start working. Have a look at the [hyf_projects repo](https://github.com/HackYourFuture/hyf_projects/blob/main/README.md#project-2-a-try-out-application) for more details.
+
+### 5.1 Web Sockets
+
+It is becoming normal that all webpages automatically refresh whenever there is new data available. Think about the live news feeds that tell you when there is a new item, or that there is a new message on twitter. This is all implemented using Web Sockets, where you as a programmer can set up a link between your page and the server.
+
+Have a go by building a simple full stack chat application with an express websocket server!
+
+### 5.2 GraphQL
+
+We focused solely on the REST way of building an API, but there is a different way called `GraphQL`. This allows the frontend to define in their query the data that they want to get back. Very cool, but also quite complex. If you are up for a challenge, try to recreate your project using GraphQL (`express-graphql` package is probably the easiest way)!
 
 ## **SUBMIT YOUR HOMEWORK?**
 

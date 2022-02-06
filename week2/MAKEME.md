@@ -6,6 +6,7 @@
 2. Practice exercises
 3. PROJECT: HackYourTemperature II
 4. Code alongs
+5. Optional: Side project ideas
 
 ## **1. Prep exercises**
 
@@ -136,6 +137,16 @@ In this application you'll be building an Ebook Sales Application. You'll make i
 Enjoy!
 
 - [Ebook Sales Application](https://www.youtube.com/watch?v=QT3_zT97_1g)
+
+## **5. Optional: Side project ideas**
+
+> A part of the HackYourFuture curriculum is to work on as many side projects as you can throughout the time you have. This is a nice way to add extra knowledge to your arsenal and show in your CV that you are motivated to learn new technologies. This is also a great time to learn new things as there are plenty of mentors available to help you out in the `#projects` channel on Slack! You will not get this amount of time and support once you start working. Have a look at the [hyf_projects repo](https://github.com/HackYourFuture/hyf_projects/blob/main/README.md#project-2-a-try-out-application) for more details.
+
+### 5.1 Document your API!
+
+When using API's in the `Using API's` module you will have noticed that those API's all have extensive documentation on how to use it. As developers like to build tools for everything there are quite a few good tools to semi-automatically document your API from your code! Saves a lot of work and makes sure that you don't forget to update the documentation if the code changes!
+
+Add automatic documentation to your API by using one of these tools (Swagger, apiDoc or docbox)!
 
 ## **SUBMIT YOUR HOMEWORK!**
 
