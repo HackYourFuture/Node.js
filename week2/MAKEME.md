@@ -148,6 +148,16 @@ When using API's in the `Using API's` module you will have noticed that those AP
 
 Add automatic documentation to your API by using one of these tools (Swagger, apiDoc or docbox)!
 
+### 5.2 Web Sockets
+
+It is becoming normal that all webpages automatically refresh whenever there is new data available. Think about the live news feeds that tell you when there is a new item, or that there is a new message on twitter. This is all implemented using Web Sockets, where you as a programmer can set up a link between your page and the server.
+
+Have a go by building a simple full stack chat application with an express websocket server!
+
+### 5.3 GraphQL
+
+We focused solely on the REST way of building an API, but there is a different way called `GraphQL`. This allows the frontend to define in their query the data that they want to get back. Very cool, but also quite complex. If you are up for a challenge, try to recreate your project using GraphQL (`express-graphql` package is probably the easiest way)!
+
 ## **SUBMIT YOUR HOMEWORK!**
 
 After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (same as week 1). Then make a pull request to it.

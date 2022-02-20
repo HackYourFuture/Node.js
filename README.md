@@ -12,7 +12,7 @@ However, there is a whole part of applications that you might not be aware of. H
 
 This is where `backend` comes into play: all the parts of an application that can't directly be accessed by the user, but happen "behind the screen". Well here's the secret: there is code that tells the computer how to move and manipulate data. This code is hidden away from the user, because there is no need for them to know about it.
 
-During the following 3 weeks you'll be learning all about this. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to write backend applications.
+During the following 2 weeks you'll be learning all about this. As a tool to illustrate these concepts we will be using `Node.js`: software that allows us to use the language of JavaScript to write backend applications.
 
 ## Learning goals
 
@@ -29,13 +29,13 @@ In this module you will get familiar with the world of backend development. By t
 
 ## Before you start
 
-Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v12.x**. Click on the following link to download it to your computer:
+Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v16.x**. Click on the following link to download it to your computer:
 
 - For [Ubuntu](https://github.com/nodesource/distributions#debinstall)
 - For [macOS](https://nodejs.org/en/download/)
 - For [Windows](https://nodejs.org/en/download/)
 
-Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v12.18.0` or a later version than that.
+Verify the installation by running `node -v` (-v is short for version) from the Command Line. It should say: `v16.13.0` or a later version than that.
 
 ## How to use this repository
 
@@ -87,7 +87,6 @@ Learn from Andrej in the following playlist of videos he has made for you! (Clic
 | ---: | ----------------------------------- | ------------------------------ | ------------------------------ | ------------------------------------- |
 |   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Homework W1](week1/MAKEME.md) | [Lesson Plan W1](week1/LESSONPLAN.md) |
 |   2. | REST, CRUD, API calls, Testing      | [Readings W2](week2/README.md) | [Homework W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
-|   3. | Templating engines                  | [Readings W3](week3/README.md) | [Homework W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
 
 ## Finished?
 
