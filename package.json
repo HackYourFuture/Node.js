@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3"
+  },
+  "name": "node.js-class35",
+  "description": "> If you are following the HackYourFuture curriculum we recommend you to start with module 1: [HTML/CSS/GIT](https://github.com/HackYourFuture/HTML-CSS). To get a complete overview of the HackYourFuture curriculum first, click [here](https://github.com/HackYourFuture/curriculum).",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohaziz101/Node.js-class35.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohaziz101/Node.js-class35/issues"
+  },
+  "homepage": "https://github.com/Mohaziz101/Node.js-class35#readme"
+}

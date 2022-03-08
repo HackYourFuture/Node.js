@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "name": "hackyourtemperature",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "babel-jest": "^27.5.1",
+    "express": "^4.17.3",
+    "express-handlebars": "^5.3.5",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "jest": "^27.5.1",
+    "jest-simple-config": "^0.4.4",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.2.2"
+  },
+  "description": ""
+}
