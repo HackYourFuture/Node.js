@@ -113,7 +113,6 @@ Per test, create a new `it` with a nice descriptive title. That is the title you
 Some hints:
 
 - The `request` variable we created by calling `supertest(app)` has functions on it called `get`, `post`, etc. So to send a `POST` request you would write `request.post('/your-endpoint')`.
-- `supertest` works with promises, that means you need to have asynchronous testing functions. Google how you can do asynchronous testing in `jest`, you will need to do something with a `done` callback
 - To send a body with your request, you can chain a `.send({ your: 'object' })` to the promise given by the `post` function
 - One of your tests will not give a fixed result but a dynamic one (namely the temperature that will change). Usually you will want to mock the API code, but that is out of the scope of this exercise. For now think about checking that the string 'contains' parts that you need. (If you ever find some time and want to look into how to do this, have a look at the jest documentation on mocking modules)
 - Don't forget to check the status code!
