@@ -1,6 +1,6 @@
 > If you are following the HackYourFuture curriculum we recommend you to start with module 1: [HTML/CSS/GIT](https://github.com/HackYourFuture/HTML-CSS). To get a complete overview of the HackYourFuture curriculum first, click [here](https://github.com/HackYourFuture/curriculum).
 
-> Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/JavaScript1/pulls).
+> Please help us improve and share your feedback! If you find better tutorials or links, please share them by [opening a pull request](https://github.com/HackYourFuture/Node.js/pulls).
 
 # Module #5 - Understand backend: creating web servers with JavaScript using Node.js (Backend)
 
@@ -51,9 +51,9 @@ This repository consists of 3 essential parts:
 
 Let's say you are just starting out with the Node.js module. This is what you do...
 
-1. The week always starts on **Wednesday**. First thing you'll do is open the `README.md` for that week. For the first week of `Node.js`, that would be [Week1 Reading](/Week1/README.md)
+1. The week always starts on **Wednesday**. First thing you'll do is open the `README.md` for that week. For the first week of `Node.js`, that would be [Week1 Reading](./week1/README.md)
 2. You spend **Wednesday** and **Thursday** going over the resources and try to get a basic understanding of the concepts. In the meanwhile, you'll also implement any feedback you got on last week's homework (from the JavaScript3 module)
-3. On **Friday** you start with the homework, found in the `MAKEME.md`. For the first week of `Node.js`, that would be [Week1 Homework](/Week1/MAKEME.md)
+3. On **Friday** you start with the homework, found in the `MAKEME.md`. For the first week of `Node.js`, that would be [Week1 Homework](/week1/MAKEME.md)
 4. You spend **Friday** and **Saturday** playing around with the exercises and write down any questions you might have
 5. **DEADLINE 1**: You'll submit any questions you might have before **Saturday 23.59**, in the class channel
 6. On **Sunday** you'll attend class. It'll be of the Q&A format, meaning that there will be no new material. Instead your questions shall be discussed and you can learn from others
