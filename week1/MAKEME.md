@@ -61,7 +61,7 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 After writing all this code you can verify that it's working by running `node server.js` from the Command Line and checking your browser at `http://localhost:3000`. The page should display the message `hello from backend to frontend!`.
 
-### 4.1 Adding a POST request
+### 5.1 Adding a POST request
 
 In this part we'll add another endpoint, with a `POST` method.
 
