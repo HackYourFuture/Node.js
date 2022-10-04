@@ -9,5 +9,9 @@
  */
 
 let numbers = [ "12", "846", "2", "1236" ];
+const leftpad = require("left-pad");
 
+numbers.forEach((number) => {
+  console.log(leftpad(number, 5, "_"));
+})
 // YOUR CODE GOES HERE

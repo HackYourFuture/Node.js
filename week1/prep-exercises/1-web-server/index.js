@@ -1,2 +1,2 @@
 const contentElement = document.getElementById('content');
-contentElement.textContent = 'Welcome to Server-land!';
+contentElement.textContent = "Welcome to class-39's Server-land!";
