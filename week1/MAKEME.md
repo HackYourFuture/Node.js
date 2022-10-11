@@ -7,7 +7,7 @@
 3. Prep exercises
 4. Node.js exercises
 5. PROJECT: HackYourTemperature I
-
+ 
 > Before we proceed, let's check to see if we have the latest versions of Node.js and the Node Package Manager (NPM) installed. You can do that by going to the Command Line (CLI) and running `node -v` and `npm -v`. Node.js should be at least **v12** and NPM should be at least **v6**.
 
 ## **1. Crash course**
