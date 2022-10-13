@@ -22,7 +22,7 @@ app.post('/weather', async (req, res) => {
     const data = await response.json()
 
     if (!data.name) {
-        return res.status(404).render("index", {
+        return res.status(400 ).render("index", {
             weatherText: "City is not found!"
         });
     }

@@ -22,11 +22,11 @@ describe("if requested city name is VALID", () => {
 
 
 describe("if requested city name is INVALID", () => {
-  it("Invalid city name responds 404 status code.", async () => {
+  it("Invalid city name responds 400 status code.", async () => {
     const response = await request
       .post("/weather")
       .send({ cityName: "ndnd" });
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(400);
   })
 })
 
