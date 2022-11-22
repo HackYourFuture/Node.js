@@ -1,0 +1,16 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+<form action="/weather" method="POST" class="mb-4">
+  <div class="form-group">
+    <label for="name">City Name</label>
+    <input type="text" name="cityName" class="form-control" />
+  </div>
+
+  <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+</form>
+
+{{#if dataCity}}
+  <h4>Result</h4>
+  <p>The temperature in {{cityName}} is {{dataCity.temp}}</p>
+{{else}}
+  <p>{{cityNotFound}}</p>
+{{/if}}
