@@ -16,7 +16,7 @@
 
 ## 0. Video Lectures
 
-Your teacher Andrej has made video lectures for this week's material that complements the reading material. You can find them here: [Videos 7 - 10](https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn) (up to and including Middleware)
+Your teacher Andrej has made video lectures for this week's material that complements the reading material. You can find them here: [Videos 7 - 10](https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn)
 
 <a href="https://www.youtube.com/playlist?list=PLVYDhqbgYpYXpc_l_Vlj8yz3LjgkkWXnn" target="_blank"><img src="../assets/andrej.png" width="600" height="350" alt="HYF Video" /></a>
 
