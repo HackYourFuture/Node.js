@@ -20,9 +20,9 @@ app.post("/weather", async (req, res) => {
   const cityName = req.body.cityName;
 
   const externalApiURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${API_KEY}&q=${cityName}`;
-  const tempWeather = await fetch(externalApiURL).then((response) =>
-    response.json()
-  );
+  const resWeather = await fetch(externalApiURL);
+  const tempWeather = await resWeather.json();
+
   const dataCity = tempWeather.main;
   if (!dataCity) {
     res.render("index", { cityNotFound: "City you searched is not found" });
