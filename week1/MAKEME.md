@@ -48,7 +48,7 @@ Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, 
 
 > In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`. You'll add to it every week.
 
-In this module you'll be rebuilding an existing application, starting from scratch. The application is called `HackYourTemperature` and you can find it here: [HackYourTemperature](https://hackyourtemperature.herokuapp.com/).
+In this module you'll be building the simplest of API's, starting from scratch.
 
 Each week you'll be building a certain part of it. This week we'll get started with creating a web server, using [Express.js](https://expressjs.com/). Inside of the `hackyourtemperature` folder:
 
