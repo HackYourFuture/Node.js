@@ -2,7 +2,7 @@
 /*eslint-env node*/
 
 import express from 'express';
-import fetch, { Response } from 'node-fetch';
+import fetch from 'node-fetch';
 import keys from './sources/keys.js';
 //import exphbs from 'express-handlebars';
 
@@ -30,11 +30,9 @@ app.post('/weather', async (req, res) => {
       console.log(forecast);
       const currentTemp = forecast.main.temp;
 
-      res
-        .status(200)
-        .send({
-          weatherText: `current temperature in ${cityName} is ${currentTemp}°C`,
-        });
+      res.status(200).send({
+        weatherText: `current temperature in ${cityName} is ${currentTemp}°C`,
+      });
     } else {
       res.status(404).send({ weatherText: 'City is not found!' });
     }
