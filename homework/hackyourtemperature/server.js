@@ -1,4 +1,3 @@
-/*eslint no-undef: "error"*/
 /*eslint-env node*/
 
 //import exphbs from 'express-handlebars';
