@@ -25,6 +25,7 @@ app.post('/weather', async (req, res) => {
       console.log(
         `Response sended: current temperature in ${cityName} is ${currentTemp}°C`,
       );
+      //res.setHeader('Content-Type', 'application/json'); // need or not???
       res.status(200).send({
         weatherText: `current temperature in ${cityName} is ${currentTemp}°C`,
       });
