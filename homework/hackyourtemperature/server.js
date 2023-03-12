@@ -21,6 +21,7 @@ app.post('/weather',async (req, res) => {
     }
     const cityData = await cityRes.json()
     if(cityData.length === 0){
+      res.status(404)
       res.send({ weatherText: "City is not found!" })
     }
     const lat = cityData[0].lat
@@ -32,7 +33,7 @@ app.post('/weather',async (req, res) => {
     }
     const weatherData = await weatherRes.json()
     const {name, main} = weatherData
-    
+    res.status(200)
     res.send({name, main})} catch(error){
     console.log(error.message)
   }
