@@ -18,6 +18,8 @@
     "supertest": "^6.3.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.5.0",
     "nodemon": "^2.0.21"
   },
   "type": "module"
