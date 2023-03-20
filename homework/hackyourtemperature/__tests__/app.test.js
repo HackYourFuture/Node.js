@@ -3,7 +3,7 @@ import supertest from "supertest";
 
 const request = supertest(app);
 
-describe("Positive scenarios: correct cityName is provided", () => {
+describe("POST / Positive scenarios: correct cityName is provided", () => {
     it("Should respond with 200 when we pass a correct city", async () => {
       const res = await request.post("/weather").send({
         cityName: "Amsterdam",
@@ -31,7 +31,7 @@ describe("Positive scenarios: correct cityName is provided", () => {
 
   })
 
-  describe("negative scenario: cityName is invalid", () => {
+  describe("POST / negative scenario: cityName is invalid", () => {
     it("Should respond with 404 status code if the cityName is invalid", async () => {
       const res = await request.post("/weather").send({
         cityName: "Amsfffffffterdam",
