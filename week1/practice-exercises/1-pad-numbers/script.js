@@ -1,4 +1,4 @@
-
+const padLeft = require('./padLeft');
 /**
  ** Exercise 1: Pad numbers 
  * 
@@ -17,5 +17,8 @@
  */
 
 let numbers = [ "12", "846", "2", "1236" ];
+numbers.forEach(element => {
+  console.log(padLeft(element,5,"_"));
+});
 
 // YOUR CODE GOES HERE
