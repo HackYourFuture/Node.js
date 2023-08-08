@@ -9,8 +9,17 @@ app.get("/", (req, res) => {
 });
 
 app.post("/weather", (req, res) => {
-  const { cityName } = req.body;
-  res.send(`You entered: ${cityName}`);
+  try {
+    const { cityName } = req.body;
+
+    if (!cityName) {
+      throw new Error("City name is missing");
+    }
+
+    res.send(`You entered: ${cityName}`);
+  } catch (error) {
+    res.status(400).send(`Error: ${error.message}`);
+  }
 });
 
 app.listen(port, () => {
