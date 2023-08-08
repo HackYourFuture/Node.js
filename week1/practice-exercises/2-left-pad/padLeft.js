@@ -9,3 +9,12 @@ function padLeft(val, num, str) {
 }
 
 // YOUR CODE GOES HERE
+
+console.log(padLeft('foo', 5, '_'))
+console.log(padLeft('2', 2, '0'))
+console.log(padLeft('42', 3, '-'))
+console.log(padLeft('test', 6, '+'))
+console.log(padLeft('abc', 4, '#'));
+
+
+module.exports = padLeft;
