@@ -10,8 +10,23 @@
  * - Print the entire response to the console to see how it is structured.
  */
 
-function printChuckNorrisJoke() {
-  // YOUR CODE GOES IN HERE
+
+const fetch = require('node-fetch');
+async function printChuckNorrisJoke() {
+try{
+  const response = await fetch('http://www.icndb.com/api/');
+  const data =  await response.json();
+   if (data.type === 'succes'){
+     const joke =  data.value.jokes;
+     console.log('chakinoreis jokes:' , joke);
+     
+   }else{
+     console.error('there is no joke found);
+   }
+  catch (error) {
+  console.log('error message', error)
+  }
+}
 
 }
 
