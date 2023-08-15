@@ -10,8 +10,22 @@
  * - Print the entire response to the console to see how it is structured.
  */
 
-function printChuckNorrisJoke() {
+const fetch = require('node-fetch')
+
+async function printChuckNorrisJoke() {
   // YOUR CODE GOES IN HERE
+  try {
+    const response = await fetch('https://api.chucknorris.io/jokes/random')
+    const data = await response.json()
+
+    if(data.type === 'success'){
+      console.log(data.value.jok)
+    } else{
+      console.error('Failed to fetch a joke!')
+    }
+  } catch (error) {
+      console.error('An error occurred:', console.message)
+  }
 
 }
 
