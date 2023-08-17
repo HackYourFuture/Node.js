@@ -12,6 +12,10 @@ app.get("/", async (req, res) => {
 
 app.post("/weather", async (req, res) => {
   const cityName = req.body.cityName;
+  if (!cityName) {
+    console.log("City name is empty.");
+    return res.status(400).json({ error: "City name is required." });
+  }
   try {
     const cityData = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${keys.API_KEY}&units=metric`
