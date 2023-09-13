@@ -7,20 +7,20 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Week 1 - Homework",
-      "program": "${workspaceFolder}/week1/homework/src/index.js",
-      "cwd": "${workspaceFolder}/week1/homework"
+      "name": "Launch Week 1 - Assignments",
+      "program": "${workspaceFolder}/week1/assignments/src/index.js",
+      "cwd": "${workspaceFolder}/week1/assignments"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Week 1 - Homework Tests",
-      "program": "${workspaceRoot}/week1/homework/node_modules/ava/profile.js",
+      "name": "Launch Week 1 - Assignments Tests",
+      "program": "${workspaceRoot}/week1/assignments/node_modules/ava/profile.js",
       "args": [
         "--concurrency=1",
         "--no-color",
         "--serial",
-        "${workspaceRoot}/week1/homework/test/server.test.js"
+        "${workspaceRoot}/week1/assignments/test/server.test.js"
       ],
       "skipFiles": [
         "<node_internals>/**/*.js"

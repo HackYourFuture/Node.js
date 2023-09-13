@@ -44,7 +44,7 @@ It is time to start practicing interviews as it is a big part of the hiring proc
 You don't have to do all of this at this moment. This week you will get a message in your class channel about when the Career Training 2 session will be. _Before_ that session make sure to have:
 
 - Read the whole [‘Interview Preparation’ Repo](https://github.com/HackYourFuture/interviewpreparation).
-- Done the homework: make a copy of [this file](https://docs.google.com/document/u/2/d/114rTGS4eG6tpkrMAyVIdvgTrnpmkRL6ax_smkw1B0HI/copy) and submit your answers to the team [here](https://hackyourfuture.typeform.com/to/s6zYAugm).
+- Done the assignments: make a copy of [this file](https://docs.google.com/document/u/2/d/114rTGS4eG6tpkrMAyVIdvgTrnpmkRL6ax_smkw1B0HI/copy) and submit your answers to the team [here](https://hackyourfuture.typeform.com/to/s6zYAugm).
 
 ## Extra reading
 

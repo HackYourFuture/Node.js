@@ -1,6 +1,6 @@
 .DS_Store
 bin
-homework-solution
+assignments-solution
 node_modules
 npm-debug.log
 package-lock.json

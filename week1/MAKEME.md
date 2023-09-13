@@ -1,4 +1,4 @@
-# Homework Node.js Week 1
+# Assignments Node.js Week 1
 
 ## Todo List
 
@@ -46,7 +46,7 @@ Inside of your `Node.js` fork, go to the folder `week1`. Inside of that folder, 
 
 ## **5. PROJECT: HackYourTemperature I**
 
-> In this part of the homework you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `homework`, create a new folder called `hackyourtemperature`. You'll add to it every week.
+> In this part of the assignments you'll be setting up the basis of your project: `HackYourTemperature`. Inside the folder `assignments`, create a new folder called `hackyourtemperature`. You'll add to it every week.
 
 In this module you'll be building the simplest of API's, starting from scratch.
 
@@ -76,9 +76,9 @@ If you are tired of constantly restarting your server, google the `nodemon` pack
 
 ## **SUBMIT YOUR HOMEWORK!**
 
-After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
+After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-assignments-guide.md) to see how it's done.
 
-The homework that needs to be submitted is the following:
+The assignments that needs to be submitted is the following:
 
 1. Project: HackYourTemperature I
 

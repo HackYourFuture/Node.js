@@ -1,4 +1,4 @@
-# Homework Node.js Week 2
+# Assignments Node.js Week 2
 
 ## Todo List
 
@@ -25,7 +25,7 @@ Inside of your `Node.js` fork, go to the folder `week2`. Inside of that folder, 
 
 So far you've build a basic web server. We've loaded in the necessary modules. We have an `end point`, which is `/`. We have activated the server, by `listening` to a port number. And we have created a `POST` request to handle input from the user.
 
-This week's homework we will expand on that, in 2 parts:
+This week's assignments we will expand on that, in 2 parts:
 
 1. We will connect our API to an external API to grab the data we want.
 2. We are going to add tests to our API to ensure that it works as intended.
@@ -143,7 +143,7 @@ Enjoy!
 Remember that the Career Training 2 session is coming up (check your class channel on slack for the exact date). Before the session make sure you have:
 
 - Read the whole [‘Interview Preparation’ Repo](https://github.com/HackYourFuture/interviewpreparation).
-- Done the homework: make a copy of [this file](https://docs.google.com/document/u/2/d/114rTGS4eG6tpkrMAyVIdvgTrnpmkRL6ax_smkw1B0HI/copy) and submit your answers to the team [here](https://hackyourfuture.typeform.com/to/s6zYAugm).
+- Done the assignments: make a copy of [this file](https://docs.google.com/document/u/2/d/114rTGS4eG6tpkrMAyVIdvgTrnpmkRL6ax_smkw1B0HI/copy) and submit your answers to the team [here](https://hackyourfuture.typeform.com/to/s6zYAugm).
 
 ## **6. Optional: Side project ideas**
 
@@ -169,9 +169,9 @@ We focused solely on the REST way of building an API, but there is a different w
 
 After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (same as week 1). Then make a pull request to it.
 
-If you need a refresher, take a look at the following [guide](../hand-in-homework-guide.md) to see how it's done.
+If you need a refresher, take a look at the following [guide](../hand-in-assignments-guide.md) to see how it's done.
 
-The homework that needs to be submitted is the following:
+The assignments that needs to be submitted is the following:
 
 1. Project: HackYourTemperature II
 

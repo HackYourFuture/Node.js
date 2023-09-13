@@ -33,7 +33,7 @@ Node.js is a server-side platform, that allows us to use JavaScript to write bac
 Show students how to use Node.js to execute JavaScript files. Start with the following simple example, but explain how this log will be found inside of the command line instead of
 
 ```js
-console.log('Hello World!');
+console.log("Hello World!");
 ```
 
 #### Exercise
@@ -42,14 +42,14 @@ In a new JavaScript file write a function that returns true if a day is a weeken
 
 ```javascript
 function isWeekend(dayOfWeek) {
-  if (dayOfWeek === 'Saturday') return true;
-  if (dayOfWeek === 'Monday') return false;
+  if (dayOfWeek === "Saturday") return true;
+  if (dayOfWeek === "Monday") return false;
   // fill in the rest
 }
 
-console.log('Tuesday is a ' + (isWeekend('Tuesday') ? 'weekend' : 'week day')); // week day
-console.log('Friday is a ' + (isWeekend('Friday') ? 'weekend' : 'week day')); // week day
-console.log('Sunday is a ' + (isWeekend('Sunday') ? 'weekend' : 'week day')); // weekend
+console.log("Tuesday is a " + (isWeekend("Tuesday") ? "weekend" : "week day")); // week day
+console.log("Friday is a " + (isWeekend("Friday") ? "weekend" : "week day")); // week day
+console.log("Sunday is a " + (isWeekend("Sunday") ? "weekend" : "week day")); // weekend
 ```
 
 Execute the file with `node` in the command line.
@@ -153,11 +153,11 @@ In a new folder:
 Create a JavaScript file called `server.js`, with the following code:
 
 ```javascript
-const express = require('express');
+const express = require("express");
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get("/", (req, res) => res.send("Hello World!"));
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 ```
@@ -176,7 +176,7 @@ Write an Express app that serves the following HTML:
   <body>
     <h1>Things to do</h1>
     <ul>
-      <li>Write homework</li>
+      <li>Write assignments</li>
       <li>Buy groceries</li>
       <li>Prepare dinner</li>
       <li>Watch movie</li>
@@ -185,7 +185,6 @@ Write an Express app that serves the following HTML:
 </html>
 ```
 
-
 #### Essence
 
 Express.js is used to easily create web servers, that allow us (among other reasons) to serve HTML so our browser can read it. The browser sends a request to a specific address, like `/`, and our server (through Express) responds with an HTML file.
@@ -193,24 +192,31 @@ Express.js is used to easily create web servers, that allow us (among other reas
 ### 5. Serving static files with Express
 
 #### Explanation
+
 Motiviation based on previous exercise where HTML code is put in the javascript. Instead of doing this, the HTML can be saved in a file in the project and then send with express when needed.
 
 #### Example
+
 Save the HTML content in a new file in the project e.g. `index.html`. Then modify the javascript code to serve the HTML from the file instead of having it hardcoded.
+
 ```javascript
-const express = require('express');
+const express = require("express");
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => res.sendfile('index.html'));
+app.get("/", (req, res) => res.sendfile("index.html"));
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 ```
 
 #### Exercise
+
 ```css
-li:nth-child(even) {background-color: #CCC}
+li:nth-child(even) {
+  background-color: #ccc;
+}
 ```
+
 If time left: Save the above css in a file `style.css`.
 Link the stylesheet in the HTML file. Extend the express app to return the sylesheet for route `\style.css`.
 
