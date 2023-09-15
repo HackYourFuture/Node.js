@@ -11,7 +11,7 @@
    - How to consume an external API?
    - Example of middleware
 4. [Automated API testing](https://study.hackyourfuture.net/#/testing/api-testing.md)
-   - [Postman](https://www.postman.com/use-cases/api-testing-automation/)
+   - [Postman](https://www.postman.com/automated-testing/)
    - [supertest](https://www.npmjs.com/package/supertest)
 
 ## 0. Video Lectures
