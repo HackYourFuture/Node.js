@@ -19,3 +19,10 @@
 let numbers = [ "12", "846", "2", "1236" ];
 
 // YOUR CODE GOES HERE
+
+const padLeft = require('./padLeft');
+
+console.log(padLeft(numbers[0], 5, '_'))
+console.log(padLeft(numbers[1], 5, '_'))
+console.log(padLeft(numbers[2], 5, '_'))
+console.log(padLeft(numbers[3], 5, '_'))
