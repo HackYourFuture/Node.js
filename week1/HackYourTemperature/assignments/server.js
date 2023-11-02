@@ -29,8 +29,9 @@ app.post('/weather', (req, res) => {
   const cityName = req.body.cityName;
   if(!cityName) {
     res.status(400).send('City Name Is Required.');
-  } else {}
+  } else {
   res.send(`You Submitted: ${cityName}`);
+  }
 });
 
 app.listen(port, () => {
