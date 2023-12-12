@@ -13,6 +13,8 @@
 4. [Automated API testing](https://study.hackyourfuture.net/#/testing/api-testing.md)
    - [Postman](https://www.postman.com/automated-testing/)
    - [supertest](https://www.npmjs.com/package/supertest)
+5. [Interview preparation](https://github.com/HackYourFuture/interviewpreparation)
+
 
 ## 0. Video Lectures
 
