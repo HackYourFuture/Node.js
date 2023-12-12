@@ -39,9 +39,6 @@ We will also look into enhancing your API. One thing to keep in mind that your o
 
 Lastly, it is time to learn how to automate the testing of our API's. This can be done in Postman using [automated testsuites](https://www.postman.com/use-cases/api-testing-automation/) but we are going to do it using code, similar to unit testing learned in JavaScript. Have a look [here](https://study.hackyourfuture.net/#/testing/api-testing.md) on how to do that using the [supertest](https://www.npmjs.com/package/supertest) library.
 
-## Career training II (Interview preparation)
-If you haven't finished all the material yet, then continue with it this week.
-
 ## Finished?
 
 Are you finished with going through the materials? High five! If you feel ready to get practical, click [here](./MAKEME.md).
