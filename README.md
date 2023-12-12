@@ -16,20 +16,20 @@ During the following 2 weeks you'll be learning all about this. As a tool to ill
 
 ## Learning goals
 
-In this module you will get familiar with the world of backend development. By the end of it you have learned:
+In this module you get familiar with the world of backend development. By the end of it, you have learned:
 
-- What is meant by the term `backend`
-- The `client-server` model
-- What `HTTP` and `REST` mean
-- How to `create your own web servers` with Node.js, using `Express.js`
-- What a `templating engine` is.
-- How to use the `Node Package Manager (NPM)`.
-- How to use Express.js to make a `RESTful API`
-- How to build a small `full-stack application`
+- What is meant by the term `backend`;
+- The `client-server` model;
+- What `HTTP` and `REST` mean;
+- How to `create your own web servers` with Node.js, using `Express.js`;
+- What a `templating engine` is;
+- How to use the `Node Package Manager (NPM)`;
+- How to use Express.js to make a `RESTful API`;
+- How to build a small `full-stack application`.
 
 ## Before you start
 
-Before you start you need to install a very important software: Node.js! We're going to use the latest stable version of it, which is **v16.x**. Click on the following link to download it to your computer:
+Before you start you need to install a very important software: Node.js! We're using the latest stable version of it, which is **v16.x**. Click on the following link to download it to your computer:
 
 - For [Ubuntu](https://github.com/nodesource/distributions#debinstall)
 - For [macOS](https://nodejs.org/en/download/)
@@ -69,7 +69,7 @@ To have a more detailed overview of the guidelines, please read [this document](
 
 ### Video lectures
 
-For each module HackYourFuture provides you with video lectures. These are made by experienced software developers who know what they're talking about. The main teacher for this module will be [Andrej Gajduk](https://hackyourfuture.slack.com/team/UL0P2MB52): Product Owner and Senior Full-Stack Developer!
+For each module, HackYourFuture provides you with video lectures. These are made by experienced software developers who know what they're talking about. The main mentor for this module is [Andrej Gajduk](https://hackyourfuture.slack.com/team/UL0P2MB52): Product Owner and Senior Full-Stack Developer!
 
 You can find out more about him here:
 
