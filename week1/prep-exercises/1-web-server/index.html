@@ -1,10 +1,73 @@
-<html>
-	<head>
-		<title>My First Web Server</title>
-	</head>
-	<body>
-		<h1>Hello, anyone there?</h1>
-		<div id="content"></div>
-		<script src="index.js"></script>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Node App</title>
+	<style>
+		* {
+			margin: 0%;
+			padding: 0%;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: #232323;
+		}
+
+		.main-contenet {
+			width: 80%;
+			padding: 10px 40px;
+			background-color: #343434;
+			border-radius: 5px;
+			margin: 20px auto;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			color: #fff;
+			font-family: 'Courier New', Courier, monospace;
+		}
+
+		a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: bold;
+			margin: 3px 10px;
+		}
+
+		.navbar {
+			padding: 4px 30px 10px 0px;
+			border-bottom: #232323 3px solid;
+		}
+
+		.page-content {
+			text-align: center;
+			padding-bottom: 40px;
+		}
+
+		.page-content h3 {
+			padding-top: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="main-contenet">
+		<div class="navbar">
+			<a href="Ali">Ali</a>
+			<a href="Carmen">Carmen</a>
+			<a href="Ahmed">Ahmed</a>
+			<a href="Hann">Hann</a>
+
+		</div>
+		<div class="page-content">
+			<h3>{{%content%}}</h3>
+
+		</div>
+	</div>
+
+</body>
+
 </html>
