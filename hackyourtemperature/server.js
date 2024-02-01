@@ -10,12 +10,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/weather', (req, res) => {
-    // const city = req.body.cityName;
+    //const city = req.body.cityName;
     const { cityName } = req.body;
     if (cityName === '') {
-        res.send(`City Name is required!`);
-        throw new Error(`required!`)
-
+        res.send(`City Name is required`);
+        throw new Error(`REQUIRED (req.body.cityName)`);
     }
     res.send(`You entered : ${cityName}`);
 });
