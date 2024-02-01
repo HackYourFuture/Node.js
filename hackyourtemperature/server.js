@@ -10,8 +10,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/weather', (req, res) => {
-    const city = req.body.cityName;
-    res.send(`You entered : ${city}`);
+    // const city = req.body.cityName;
+    const { cityName } = req.body;
+    if (cityName === '') {
+        res.send(`City Name is required!`);
+        throw new Error(`required!`)
+
+    }
+    res.send(`You entered : ${cityName}`);
 });
 
 app.listen(PORT, () => {
