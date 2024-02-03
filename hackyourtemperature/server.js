@@ -1,5 +1,6 @@
 //const express = require('express');
 import express from 'express';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,11 +11,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/weather', (req, res) => {
-    //const city = req.body.cityName;
     const { cityName } = req.body;
-    if (cityName === '') {
-        res.send(`City Name is required`);
-        throw new Error(`REQUIRED (req.body.cityName)`);
+
+    if (!cityName || cityName.trim() === '') {
+        res.status(400).send(`City Name is required`);
+
     }
     res.send(`You entered : ${cityName}`);
 });
