@@ -1,4 +1,3 @@
-//const express = require('express');
 import express from 'express';
 
 const app = express();
@@ -19,6 +18,7 @@ app.post('/weather', (req, res) => {
     }
     res.send(`You entered : ${cityName}`);
 });
+
 
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`);
