@@ -1,4 +1,4 @@
-# Authentication
+# Basic Authentication
 
 So far all the APIs we used would happily respond to any request. In reality, most APIs hold sensitive information that should not be accessible for everyone.
 

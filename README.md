@@ -86,8 +86,8 @@ Learn from Andrej in the following playlist of videos he has made for you! (Clic
 | Week | Topic                               | Readings                       | Assignments                       | Lesson Plan                           |
 | ---: | ----------------------------------- | ------------------------------ | --------------------------------- | ------------------------------------- |
 |   1. | Client-server model, HTTP & Express | [Readings W1](week1/README.md) | [Assignments W1](week1/MAKEME.md) | [Lesson Plan W1](week1/LESSONPLAN.md) |
-|   2. | REST, CRUD, API calls, Testing      | [Readings W2](week2/README.md) | [Assignments W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
-|   3. | == Work in progress ==      | [Readings W3](week3/README.md) | | [Lesson Plan W3](week3/LESSONPLAN.md) |
+|   2. | REST, CRUD, API calls      | [Readings W2](week2/README.md) | [Assignments W2](week2/MAKEME.md) | [Lesson Plan W2](week2/LESSONPLAN.md) |
+|   3. | User Authentication, session management, Testing      | [Readings W3](week3/README.md) | [Assignments W3](week3/MAKEME.md) | [Lesson Plan W3](week3/LESSONPLAN.md) |
 
 ## Finished?
 
