@@ -47,7 +47,4 @@ app.post('/weather', async (req, res) => {
 
 });
 
-
-
-
 export default app;
