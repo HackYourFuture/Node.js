@@ -8,15 +8,15 @@
    - [Adding users to our application](https://study.hackyourfuture.net/#/node-js/user-registration.md)
    - [How to securely store user passwords](https://study.hackyourfuture.net/#/node-js/storing-passwords.md)
 
-2. [Session management](https://study.hackyourfuture.net/#/node-js/session-management)
-   - Login and session tokens:
-      - Opaque token
-      - JSON Web Token (JWT)
+3. [Session management](https://study.hackyourfuture.net/#/node-js/session-management)
+   - Login and session tokens
    - The `Authorization` header
    - Protected endpoints
    - Logout
 
-4. [Automated API testing](https://study.hackyourfuture.net/#/testing/api-testing.md)
+4. [JSON Web Tokens](https://study.hackyourfuture.net/#/node-js/jwt-tokens.md) 
+
+5. [Automated API testing](https://study.hackyourfuture.net/#/testing/api-testing.md)
    - [Postman](https://www.postman.com/automated-testing/)
    - [supertest](https://www.npmjs.com/package/supertest)
 
@@ -32,7 +32,7 @@ You may have noticed a common trend when visiting websites that require you to s
 3. **Accessing protected resources** - getting access to a special place in the website that only you can access (ex: shopping card, profile page)
 4. **Logout** - Stop using the website.
 
-We will learn how to implement user regsitration and securtly store user passwords. We will also learn how to implement a login endpoint and check if the provided username / password combination is correct. Lastly, we will implemenet a special endpoint that can be only accessible to a user who previously logged in.
+We will learn how to implement user registration and securely store user passwords. We will also learn how to implement a login endpoint and check if the provided username / password combination is correct. Lastly, we will implement a special endpoint that can be only accessible to a user who previously logged in.
 
 Lastly, it is time to learn how to automate the testing of our API's. This can be done in Postman using [automated testsuites](https://www.postman.com/use-cases/api-testing-automation/) but we are going to do it using code, similar to unit testing learned in JavaScript. Have a look [here](https://study.hackyourfuture.net/#/testing/api-testing.md) on how to do that using the [supertest](https://www.npmjs.com/package/supertest) library.
 
