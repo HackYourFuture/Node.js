@@ -2,7 +2,7 @@
 
 ## Agenda
 
-1. Authentication
+1. Authentication & Authorisation
 2. User registration and using bcrypt to store passwords.
 3. Login, protected endpoints and logout
 4. Testing
