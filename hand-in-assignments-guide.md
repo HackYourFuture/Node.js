@@ -12,7 +12,7 @@ Watch the video (by clicking the image) or go through the following walk-through
 
 ONE TIME ONLY (START OF EVERY MODULE)
 
-1. Create a [fork](https://help.github.com/en/articles/fork-a-repo) of the assignments module repository. For Node.js, the assignments module repository is `https://www.github.com/HackYourAssignment/Node.js-classXX` where XX is your class number. You do this by using the `fork` option on the top right
+1. Create a [fork](https://help.github.com/en/articles/fork-a-repo) of the assignments module repository. For Node.js, the assignments module repository is `https://www.github.com/HackYourAssignment/Node.js-cohortXX` where XX is your class number. You do this by using the `fork` option on the top right
 2. Navigate to the URL of the cloned repository (it should be in your personal GitHub account, under "repositories")
 3. Clone the repository, using SSH, to your local machine. You can do this by typing in `git clone <git url>` in the command line
 4. On your local machine, navigate to the folder using the command line
