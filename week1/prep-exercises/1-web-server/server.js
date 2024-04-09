@@ -10,7 +10,7 @@ const server = http.createServer(function (req, res) {
 
   // Serve index.html for the root URL
   if (url === '/') {
-    fs.readFile('index.html', function(err, data) {
+    fs.readFile(path.join(__dirname, "index.html"), (err, data) => {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end('Internal Server Error');
@@ -22,7 +22,7 @@ const server = http.createServer(function (req, res) {
   } 
   // Serve index.js for the /index.js URL
   else if (url === '/index.js') {
-    fs.readFile('index.js', function(err, data) {
+    fs.readFile(path.join(__dirname, "index.js"), (err, data) => {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end('Internal Server Error');
@@ -34,7 +34,7 @@ const server = http.createServer(function (req, res) {
   }
   // Serve style.css for the /style.css URL
   else if (url === '/style.css') {
-    fs.readFile(path.join(__dirname, 'style.css'), function(err, data) {
+    fs.readFile(path.join(__dirname, "style.css"), (err, data) => {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end('Internal Server Error');
