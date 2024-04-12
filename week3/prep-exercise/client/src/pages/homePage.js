@@ -48,6 +48,7 @@ function createHomePage(state) {
 
       if (!response.ok) {
         logger.debug('getProfile', data.message);
+        removeToken();
         state = initializeState();
         loadPage(createLoginPage, state);
         return;
