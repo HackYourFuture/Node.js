@@ -39,14 +39,14 @@ Requirements:
    - No server-side token invalidation is required; the client should handle token deletion.
    - Return a success response with a status code indicating successful logout (e.g., 204 No Content).
 
-## Client
+## Client (optional)
 
-A client front-end is provided in the `client` folder and is statically served by the backend. This client works against the API as specified above.
+While you can test the endpoints of your API with Postman and/or by creating unit tests with Jest and Supertest, we have also provided a fully functional demo front-end application that demonstrates how a web token based authentication system might be used from the front-end side. The demo front-end resides in the `client` folder and is statically served by the backend. The client expects an API that meets the specification as outlined above.
 
-The client allows you to register, login and logout. After logging in, it fetches the profile of the logged-in user and shows it on its home page. If this fetch fails, e.g. due to an expired token, the user is redirected to the login page.
+The client allows you to register, login and logout. After logging in, it uses the received web token to fetch the profile of the logged-in user and shows it on its home page. If this fetch fails, e.g. due to an expired token, the user is redirected to the login page.
 
-After logging in, the client stores the json web token in `localStorage`. When the client starts it tries to load this token from `localStorage`. If a token was found it considers the user logged in and tries to load the client's home page. Otherwise it loads the login page.
+Upon logging in, the client stores the json web token in `localStorage`. When the client starts it tries to load this token from `localStorage`. If a token was found it will bypass the login page and tries to load the client's home page directly. This may fail if the token is expired as mentioned earlier. If no token was found in `localStorage` at client startup the login page is loaded.
 
 When logging out, the token is removed from `localStorage` and the user is redirected to the login page.
 
-The client code logs debug information in the browser console. This may help you to understand the application flow as you navigate through its pages.
+The client code logs debug information in the browser console. This may help you to follow the application flow as you navigate through its pages.

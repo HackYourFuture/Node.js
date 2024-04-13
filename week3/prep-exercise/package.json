@@ -5,7 +5,8 @@
   "main": "app.js",
   "types": "module",
   "scripts": {
-    "start": "nodemon ./server-demo/app.js"
+    "start": "nodemon ./server/app.js",
+    "demo": "nodemon ./server-demo/app.js"
   },
   "type": "module",
   "keywords": [],
