@@ -10,7 +10,7 @@ Requirements:
 
 1. Register Endpoint:
 
-   - Implement a `POST` endpoint `auth/register` that allows users to register with a username and password.
+   - Implement a `POST` endpoint `/auth/register` that allows users to register with a username and password.
    - Validate the request body to ensure it includes a username and password.
    - Hash the user's password using `bcrypt` before storing it in memory.
    - Return a success message along with the user's ID and username upon successful registration, format: `{id: <id>, username: <username>}`
@@ -18,7 +18,7 @@ Requirements:
 
 1. Login Endpoint:
 
-   - Create a `POST` endpoint `auth/login` that allows users to log in with their registered credentials.
+   - Create a `POST` endpoint `/auth/login` that allows users to log in with their registered credentials.
    - Verify the user's credentials by comparing the hashed password stored in memory.
    - If authentication succeeds, generate a JWT containing the user's ID and sign it with a secret key.
    - Return the JWT token to the client upon successful login, format: `{token: <token-value>}` with status code 201.
@@ -26,7 +26,7 @@ Requirements:
 
 1. Get Profile Endpoint:
 
-   - Implement a `GET` endpoint `auth/profile` that allows authenticated users to retrieve their profile information.
+   - Implement a `GET` endpoint `/auth/profile` that allows authenticated users to retrieve their profile information.
    - Extract the JWT token from the Authorization header.
    - Verify the JWT token and decode the payload to retrieve the user's ID.
    - Retrieve the user's profile information from memory using the decoded user ID.
@@ -35,7 +35,7 @@ Requirements:
 
 1. Logout Endpoint:
 
-   - Create a `POST` endpoint `auth/logout` that allows users to logout and invalidate their JWT token.
+   - Create a `POST` endpoint `/auth/logout` that allows users to logout and invalidate their JWT token.
    - No server-side token invalidation is required; the client should handle token deletion.
    - Return a success response with a status code indicating successful logout (e.g., 204 No Content).
 
