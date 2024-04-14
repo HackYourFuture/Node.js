@@ -9,11 +9,11 @@ import logger from './logger.js';
 async function fetchAndLog(url, options = { method: 'GET' }) {
   const { method, headers, body } = options;
   const extras = [];
-  if (headers) {
-    extras.push(headers);
-  }
   if (body) {
     extras.push(body);
+  }
+  if (headers) {
+    extras.push(headers);
   }
   logger.debug('fetch', `${method} ${url}`, ...extras);
 
