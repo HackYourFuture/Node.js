@@ -7,8 +7,18 @@ import logger from './logger.js';
  * @returns Same as for fetch
  */
 async function fetchAndLog(url, options = { method: 'GET' }) {
-  logger.debug('fetch', `${options.method} ${url}`);
+  const { method, headers, body } = options;
+  const extras = [];
+  if (headers) {
+    extras.push(headers);
+  }
+  if (body) {
+    extras.push(body);
+  }
+  logger.debug('fetch', `${method} ${url}`, ...extras);
+
   const response = await fetch(url, options);
+
   logger.debug('status', response.status);
   return response;
 }
