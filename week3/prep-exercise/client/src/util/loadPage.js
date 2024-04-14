@@ -6,8 +6,8 @@ import logger from './logger.js';
  * @param {*} state State object to be passed to the page
  */
 function loadPage(pageFactoryFn, state) {
-  logger.debug('state', state);
   logger.debug('loadPage', pageFactoryFn.name.replace('create', ''));
+  logger.debug('state', state);
   const appRoot = document.getElementById('app-root');
   appRoot.innerHTML = '';
 

@@ -47,7 +47,8 @@ function createHomePage(state) {
       const data = await response.json();
 
       if (!response.ok) {
-        logger.debug('getProfile', data.message);
+        state = { ...state, error: data.message };
+        logger.debug('state', state);
         removeToken();
         state = initializeState();
         loadPage(createLoginPage, state);
