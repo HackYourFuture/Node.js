@@ -45,8 +45,12 @@ While you can test the endpoints of your API with Postman and/or by creating uni
 
 The client allows you to register, login and logout. After logging in, it uses the received JWT token to fetch the profile of the logged-in user and shows it on its home page. If this fetch fails, e.g. due to an expired token, the user is redirected to the login page.
 
-Upon logging in, the client stores the JWT token in `localStorage`. When the client starts it tries to load this token from `localStorage`. If a token was found it will bypass the login page and tries to load the client's home page directly. This may fail if the token is expired as mentioned earlier. If no token was found in `localStorage` at client startup the login page is loaded.
+Upon logging in, the client stores the JWT token in `localStorage`. When the client starts it tries to load this token from `localStorage`. If a token was found it try to load the client's home page directly. This may fail if the token is expired as mentioned earlier in which case the login page is loaded. If no token was found in `localStorage` at client startup the login page is loaded directly.
 
 When logging out, the token is removed from `localStorage` and the user is redirected to the login page.
+
+The process is illustrated in the diagram below.
+
+![client-date-diagram](./assets/client-state-diagram.png)
 
 The client code logs debug information in the browser console. This may help you to follow the application flow as you navigate through its pages.
