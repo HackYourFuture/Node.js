@@ -1,12 +1,23 @@
-# Prep exercise
+# Server Prep exercise week 3
 
-## Server
+## Goals
 
 In this exercise, you will build a secure authentication and authorization system using Node.js and Express.js with four main endpoints: `register`, `login`, `getProfile`, and `logout`. The system will utilize JWT (JSON Web Tokens) for managing user sessions.
 
 Files to be modified are located in the `server` folder.
 
-Requirements:
+This will allow you to learn and practice using NodeJs and ExpressJs:
+
+  - Securing your application with authentication and authorization principles
+  - Implement a standard API for users management with register, login, getProfile, and logout
+  - Managing user sessions using JWT (JSON Web Tokens)
+
+## Requirements
+
+You need to implement all those endpoints
+
+**Note:** We provide a helper to store your users so you can focus on learning the security part.
+          Please read more in [the next section](#database-helper)
 
 1. Register Endpoint:
 
@@ -16,7 +27,7 @@ Requirements:
    - Return a success message along with the user's ID and username upon successful registration, format: `{id: <id>, username: <username>}`
    - In case of any errors along the way, return an appropriate error message (format: `{message: <message-text>}`) with a corresponding status code in the 40x range.
 
-1. Login Endpoint:
+2. Login Endpoint:
 
    - Create a `POST` endpoint `/auth/login` that allows users to log in with their registered credentials.
    - Verify the user's credentials by comparing the hashed password stored in memory.
@@ -24,7 +35,7 @@ Requirements:
    - Return the JWT token to the client upon successful login, format: `{token: <token-value>}` with status code 201.
    - In case of any errors along the way, return an appropriate error message (format: `{message: <message-text>}`) with a corresponding status code in the 40x range.
 
-1. Get Profile Endpoint:
+3. Get Profile Endpoint:
 
    - Implement a `GET` endpoint `/auth/profile` that allows authenticated users to retrieve their profile information.
    - Extract the JWT token from the Authorization header.
@@ -33,11 +44,66 @@ Requirements:
    - Return a message with the user's username upon successful profile retrieval.
    - In case of any errors along the way, return an appropriate error message (format: `{message: <message-text>}`) with a status code 401 (Unauthorized).
 
-1. Logout Endpoint:
+4. Logout Endpoint:
 
    - Create a `POST` endpoint `/auth/logout` that allows users to logout and invalidate their JWT token.
    - No server-side token invalidation is required; the client should handle token deletion.
    - Return a success response with a status code indicating successful logout (e.g., 204 No Content).
+
+## Database helper
+
+We understand there is a lot going on this week. To help you focus on user management, JWT and security, we decided to give you a small `database` tool.
+
+In [`users.js`](./users.js) you will find few lines that has been already added for you:
+
+```javascript
+import newDatabase from './database.js'
+
+// Change this boolean to true if you wish to keep your
+// users between restart of your application
+const isPersistent = true
+const database = newDatabase({isPersistent})
+```
+
+### To store something
+
+To store something in the database you can use `database.create`
+
+**Important:** `database.create` will create an `id` for you
+
+```javascript
+const theObjectIWouldLikeToStore = {
+    some: "object with one key"
+}
+
+const storedObject = database.create(theObjectIWouldLikeToStore)
+
+console.log(storedObject)
+// {
+//    some: "object with one key",
+//    id: '6a9252f7-d74a-4c6f-8076-dac277549e9b'
+// }
+```
+
+### To get something from the database
+
+You can only get something by `id` using `database.getById`
+
+It will return the first object it finds with the passed `id` or it will return `undefined`
+
+```javascript
+const storedObject = database.getById('6a9252f7-d74a-4c6f-8076-dac277549e9b')
+// {
+//    some: "object with one key",
+//    id: '6a9252f7-d74a-4c6f-8076-dac277549e9b'
+// }
+
+const notFoundObject = database.getById('NOT-A-VALID-ID')
+// undefined
+```
+
+
+
 
 ## Client (optional)
 
