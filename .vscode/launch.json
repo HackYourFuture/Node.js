@@ -22,9 +22,7 @@
         "--serial",
         "${workspaceRoot}/week1/assignments/test/server.test.js"
       ],
-      "skipFiles": [
-        "<node_internals>/**/*.js"
-      ]
+      "skipFiles": ["<node_internals>/**/*.js"]
     },
     {
       "type": "node",
@@ -46,6 +44,20 @@
       "name": "Launch Week 3 - Lecture",
       "program": "${workspaceFolder}/week3/lecture/src/index.js",
       "cwd": "${workspaceFolder}/week3/lecture"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 3 - Prep exercise",
+      "program": "${workspaceFolder}/week3/prep-exercise/server/app.js",
+      "cwd": "${workspaceFolder}/week3//prep-exercise"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Week 3 - Prep exercise demo",
+      "program": "${workspaceFolder}/week3/prep-exercise/server-demo/app.js",
+      "cwd": "${workspaceFolder}/week3//prep-exercise"
     }
   ]
 }

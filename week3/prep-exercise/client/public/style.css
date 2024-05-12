@@ -1,0 +1,25 @@
+/* Adapted from: https://gist.github.com/osfx/94bc9084a0484ef2ee3d */
+
+.auth-panel {
+  margin-top: 100px;
+  padding: 0px;
+}
+
+.auth-submit-btn {
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.auth-title {
+  /* background-color: #2bbbad;
+  color: white; */
+  padding: 8px;
+  margin-top: 0px;
+}
+
+form {
+  padding: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
