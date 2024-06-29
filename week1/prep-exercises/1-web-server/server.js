@@ -1,31 +1,38 @@
 const http = require('http');
-const fs = require('fs');
+const fs = require('fs').promises;
+const path = require('path');
+const { JSDOM } = require('jsdom');
+const manipulateDOM = require('./index.js');
 
-// Create a server
-let server = http.createServer(function (req, res) {
-  // Handle requests based on URL
-  if (req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('This is the home page');
-    res.end();
-  } else if (req.url === '/index.js') {
-    fs.readFile('index.js', 'utf8', function(err, data) {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.write('Error reading file');
-        res.end();
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/javascript' });
-        res.write(data);
-        res.end();
-      }
-    });
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.write('404 Not Found');
-    res.end();
-  }
+const server = http.createServer(async (req, res) => {
+    if (req.url === '/') {
+        try {
+            const indexPath = path.join(__dirname, 'index.html');
+            const data = await fs.readFile(indexPath, 'utf8');
+
+            // Create a new JSDOM instance
+            const dom = new JSDOM(data);
+            const { document } = dom.window;
+
+            // Perform DOM manipulation
+            manipulateDOM(document);
+
+            // Send the modified HTML as response
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/html');
+            res.end(dom.serialize());
+        } catch (err) {
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'text/plain');
+            res.end('Error reading or processing index.html');
+        }
+    } else {
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Not Found');
+    }
 });
 
-server.listen(3000);
-console.log("Listening on port 3000");
+server.listen(3000, 'localhost', () => {
+    console.log('Server running at http://localhost:3000/');
+});
