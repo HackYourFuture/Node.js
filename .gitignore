@@ -1,10 +1,2 @@
-.DS_Store
-bin
-assignments-solution
-node_modules
-npm-debug.log
-package-lock.json
-yarn-error.log
-*.bkp
 
-week3/prep-exercise/server-demo/
+node_modules
