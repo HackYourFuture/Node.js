@@ -1,7 +1,6 @@
 import express from 'express';
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
 
@@ -11,9 +10,8 @@ app.get('/', (req, res) => {
 
 app.post('/weather', (req, res) => {
     const { cityName } = req.body;
-    res.send(cityName);
+    res.send(`City name received: ${cityName}`);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(3000)
+console.log("first server running on port 3000")
