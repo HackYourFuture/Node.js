@@ -28,10 +28,15 @@ server.listen(PORT, () => {
 }); // The server starts to listen on port 3000
 async function handleResponse(res, fileName, contentType) {
   try {
-    const filePath = path.join(__dirname, fileName);
-    const data = await fs.readFile(filePath);
     res.writeHead(200, { "Content-Type": contentType });
-    res.end(data);
+    const data = await fs.readFile(fileName,(err,data)=>{
+      if(err){
+        console.log(err);
+      }else{
+      res.end(data);
+    }
+    } );
+   
   } catch (err) {
     res.writeHead(400, { "Content-Type": "text/html" });
     res.end("Contents you are looking for are Not Found");

@@ -1,0 +1,17 @@
+{
+  "name": "self_study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crash_course_express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon crash_cource_express.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

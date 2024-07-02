@@ -9,14 +9,19 @@ const PORT = process.env.PORT || 3000;
 
 let server = http.createServer(async function (req, res) {
   try {
-    if (req.url === "/") {
-      await handleResponse(res, "index.html", "text/html");
-    } else if (req.url === "/index.js") {
-      await handleResponse(res, "index.js", "text/javascript");
-    } else if (req.url === "/style.css") {
-      await handleResponse(res, "style.css", "text/css");
-    } else {
-      handleUnknownPath(res);
+   
+    switch (req.url) {
+      case "/":
+        await handleResponse(res, "index.html", "text/html");
+        break;
+      case "/index.js":
+        await handleResponse(res, "index.js", "text/javascript");
+        break;
+      case "/style.css":
+        await handleResponse(res, "style.css", "text/css");
+        break;
+      default:
+        handleUnknownPath(res);
     }
   } catch (err) {
     handleUnknownPath(res);
@@ -28,10 +33,15 @@ server.listen(PORT, () => {
 }); // The server starts to listen on port 3000
 async function handleResponse(res, fileName, contentType) {
   try {
-    const filePath = path.join(__dirname, fileName);
-    const data = await fs.readFile(filePath);
     res.writeHead(200, { "Content-Type": contentType });
-    res.end(data);
+    const data = await fs.readFile(fileName,(err,data)=>{
+      if(err){
+        console.log(err);
+      }else{
+      res.end(data);
+    }
+    } );
+   
   } catch (err) {
     res.writeHead(400, { "Content-Type": "text/html" });
     res.end("Contents you are looking for are Not Found");
