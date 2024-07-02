@@ -1,0 +1,15 @@
+{
+  "name": "2-left-pad",
+  "version": "1.0.0",
+  "description": "A senior developer from your team Slacks you that he tried to pad some numbers to 8 characters and it was not working at all. He asks you (politely) to fix the bug as soon as possible or face the wrath of management.",
+  "main": "padLeft.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}
