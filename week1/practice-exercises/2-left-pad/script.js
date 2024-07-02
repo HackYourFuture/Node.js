@@ -1,13 +1,25 @@
+
 /**
- ** Exercise 2: To the left, to the left...
+ ** Exercise 1: Pad numbers 
  * 
- * Copy and paste your code from the previous exercise.
- * Replace the function `padLeft` to use
- * this new NPM package called `left-pad` instead then
- * Pad the numbers to 8 characters to confirm that it works correctly
- *
+ * In this file use the padLeft function from padLeft.js to
+ * pad the numbers to exactly 5 spaces and log them to the console
+ * 
+ * Expected output (replace the underscore with spaces):
+ * 
+ *  ___12;
+ *  __846;
+ *  ____2;
+ *  _1236;
+ * 
+ * Tips:
+ *   where to use `exports` and where `require`?
  */
+ const {padLeft} = require('./padLeft.js');
+ numbers = [ "12", "846", "2", "1236" ];
+ numbers.forEach(number => {
+	number = padLeft(number, 5, '_');
 
-let numbers = [ "12", "846", "2", "1236" ];
-
+	console.log(number);
+});
 // YOUR CODE GOES HERE
