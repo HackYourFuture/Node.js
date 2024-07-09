@@ -1,0 +1,21 @@
+{
+  "name": "config-files",
+  "version": "1.0.0",
+  "main": "jest.config.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2",
+    "supertest": "^7.0.0"
+  },
+  "description": ""
+}
