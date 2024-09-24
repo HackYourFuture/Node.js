@@ -1,6 +1,8 @@
+const leftPad = require("left-pad");
+
 /**
- ** Exercise 2: To the left, to the left...
- * 
+ ** Exercise 2: To th xxe left, to the left...
+ *
  * Copy and paste your code from the previous exercise.
  * Replace the function `padLeft` to use
  * this new NPM package called `left-pad` instead then
@@ -8,6 +10,8 @@
  *
  */
 
-let numbers = [ "12", "846", "2", "1236" ];
+let numbers = ["12", "846", "2", "1236"];
 
-// YOUR CODE GOES HERE
+numbers.forEach((value) => {
+  console.log(leftPad(value, 8));
+});
