@@ -16,7 +16,7 @@ app.post('/weather', (req, res) => {
   const cityName = req.body.cityName;
 
   if (!cityName) {
-    return res.status(400).json({ error: "Oops..." });
+    return res.status(400).json({ error: "Your request is missing the field 'cityName'" });
   }
   
   res.status(200).json({
