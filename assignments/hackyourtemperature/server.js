@@ -1,7 +1,7 @@
 import express from "express";
-
-// import express-handlebars from "express-handlebars";
-// import node-fetch from 'node-fetch';
+import { keys } from "./sources/keys.js";
+import fetch from "node-fetch";
+import { engine } from "express-handlebars";
 
 const app = express();
 const port = 3000;
@@ -12,16 +12,24 @@ app.get('/', (req, res) => {
 
 app.use(express.json())
 
-app.post('/weather', (req, res) => {
+app.post('/weather', async (req, res) => {
   const cityName = req.body.cityName;
 
-  if (!cityName) {
-    return res.status(400).json({ error: "Your request is missing the field 'cityName'" });
+  if(!cityName) {
+    return res.status(400).json({weatherText: "City is not found!" })
   }
-  
-  res.status(200).json({
-    message: `The city name is: ${cityName}`,
-  });
+
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${keys.API_KEY}&units=metric`);
+    if (!response.ok) {
+      return res.status(response.status).json({error: "API error"});
+    }
+    const data = await response.json();
+    return res.status(200).send(`It is ${data.main.temp}°C in ${cityName}`)
+  } 
+  catch {
+    console.error("Error fetching data");
+  }
 })
 
 app.listen(port, () => {
