@@ -36,14 +36,3 @@ Have a go by building a simple full stack chat application with an express webso
 ### 3.3 GraphQL
 
 We focused solely on the REST way of building an API, but there is a different way called `GraphQL`. This allows the frontend to define in their query the data that they want to get back. Very cool, but also quite complex. If you are up for a challenge, try to recreate your project using GraphQL (`express-graphql` package is probably the easiest way)!
-
-## **SUBMIT YOUR ASSIGNMENT!**
-After you've finished your todo list it's time to show us what you got! Upload all your files to your forked repository (same as week 1). Then make a pull request to it.
-
-If you need a refresher, take a look at the following [guide](../hand-in-assignments-guide.md) to see how it's done.
-
-The assignments that needs to be submitted is the following:
-
-1. Project: HackYourTemperature II
-
-_Deadline Tuesday 23.59 CET_
