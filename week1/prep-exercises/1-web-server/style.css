@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+  color: #333;
+  padding: 20px;
+}
+
+#content {
+  text-align: center;
+  color: #007bff;  /* Blue color for the content */
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 30px auto;
+  width: 50%;
+}
