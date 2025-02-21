@@ -77,7 +77,7 @@ Follow the steps:
 1. Inside `server.js`, add the following starter code in the correct place:
 
 ```javascript
-app.<METHOD>('/posts/:title', (req, res) => {
+app.<METHOD>('/blogs/:title', (req, res) => {
     // How to get the title and content from the request?
     // What if the request does not have a title and/or content?
     if () {
