@@ -74,7 +74,7 @@ Test out your work using Postman and make sure that any time you submit somethin
 
 If you are tired of constantly restarting your server, google the `nodemon` package to see if that will be useful for you!
 
-## **SUBMIT YOUR HOMEWORK!**
+## **Submit your assignment!**
 
 After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-assignments-guide.md) to see how it's done.
 
