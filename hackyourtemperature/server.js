@@ -26,12 +26,12 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-/* Posting with CURL
+/* Posting with curl
  $ curl -X POST http://localhost:8000/weather   -H "Content-Type: application/json"   -d '{"cityName":"Amsterdam"}' > post_weather_response.json
-*/
+ */
 
-//Testing using curl
-
-// curl -X POST http://localhost:8000/weather \
-// -H "Content-Type: application/json" \
-// -d '{"cityName":"Amsterdam"}'
+/*Testing using curl
+ curl -X POST http://localhost:8000/weather \
+ -H "Content-Type: application/json" \
+ -d '{"cityName":"Amsterdam"}'
+ */
