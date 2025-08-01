@@ -1,0 +1,11 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: bisque;
+}
+
+#content {
+  color: blue;
+  font-size: 24px;
+  margin: 20px;
+}
