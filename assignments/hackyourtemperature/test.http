@@ -1,0 +1,10 @@
+### This is a GET request to /
+GET http://localhost:3000/
+
+### This is a POST request to /weather
+POST http://localhost:3000/weather
+Content-Type: application/json
+
+{
+  "cityName": "Copenhagen"
+}
