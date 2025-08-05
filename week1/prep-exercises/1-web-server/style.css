@@ -1,0 +1,22 @@
+#content {
+  color: rgb(17, 17, 17);
+  font-size: 24px;
+  font-family: Arial, comic-sans, sans-serif;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  border: 2px solid rgb(241, 244, 241);
+}
+
+h1 {
+  color: rgb(241, 244, 241);
+  text-align: center;
+  border: 2px solid rgb(9, 9, 9);
+  padding: 20px;
+}
+body {
+  background-color: #17e25e;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
