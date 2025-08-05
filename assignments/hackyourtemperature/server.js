@@ -1,15 +1,14 @@
 import express from "express";
-import handlebars from "express-handlebars"; // Updated import
-import fetch from "node-fetch"; // Renamed for clarity
+import handlebars from "express-handlebars";
+import fetch from "node-fetch";
 const port = process.env.PORT || 8000;
 
 const app = express();
 
-// ✅ Middleware MUST come before routes
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json()); 
 
 app.get("/", (req, res) => {
-  res.type("html"); // Express shortcut for setting Content-Type
+  res.type("html"); 
   res.send("Hello from backend to frontend!");
 });
 
