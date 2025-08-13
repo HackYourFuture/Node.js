@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken';
 
-
-
 const experiment1 = async () => {
   const payload = { userId: 123, username: 'Alex' };
   const secret = 'HackMyFuture';

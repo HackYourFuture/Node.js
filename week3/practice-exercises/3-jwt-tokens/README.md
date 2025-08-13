@@ -4,12 +4,12 @@ In this exercise, we will use and test the `jsonwebtoken` library to understand 
 ## Experiment 1
 
 ### Question
-Can we verify JWT using a different application?
+Can we verify a JWT using a different application?
 
 ### Experiment 
-1. use `jwt.sign()` to sign a new payload with a secret of your choice. Print the result to the console.
-2. Copy the JWT, paste in https://www.jwt.io/ . You will see the payload and a "Invalid Signature" message.
-3. On the bottom right, below the payload, paste the password you used to verify the JWT.
+1. Use `jwt.sign()` to sign a new payload with a secret of your choice. Print the result to the console.
+2. Copy the JWT and paste it into https://www.jwt.io/. You will see the payload and an "Invalid Signature" message.
+3. On the bottom right, below the payload, paste the password you used to sign the JWT.
 
 ### Analyze
 * Can we see the JWT payload without having access to the secret?
@@ -23,14 +23,13 @@ What happens when we create JWT tokens with the same payload but different secre
 ### Experiment 
 Use jsonwebtoken's `sign` function to create two JWT tokens with the same payload but different secret keys. Print both tokens to the console and try to verify each token with both secrets.
 
-
 ### Analyze
-* Are the tokens similar or different? What parts are similar? what parts are different?
+* Are the tokens similar or different? What parts are similar? What parts are different?
 * Is it possible to guess the secret that was used from a signed JWT?
 
 ## Experiment 3
 ### Question
-What happens if we try to verify a token with the incorrect secret?
+What happens if we try to verify a token with an incorrect secret?
 
 ### Experiment 
 Try to verify the following JWT:
