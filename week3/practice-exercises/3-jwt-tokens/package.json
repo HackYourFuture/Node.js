@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  },
+  "name": "3-jwt-tokens",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "jwt.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

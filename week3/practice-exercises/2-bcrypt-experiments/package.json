@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  },
+  "name": "2-bcrypt-examples",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "bcrypt.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
