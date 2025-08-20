@@ -12,7 +12,7 @@
 
 ## **1. Crash course**
 
-There is a great crash course available here: https://www.youtube.com/watch?v=2LUdnb-mls0. It introduces a lot of the concepts you will be practicing this week.
+There is a great crash course available here: https://www.youtube.com/watch?v=32M1al-Y6Ag. It introduces a lot of the concepts you will be practicing this week.
 
 ## **2. Practice the concepts**
 
@@ -54,7 +54,7 @@ Each week you'll be building a certain part of it. This week we'll get started w
 
 1. Create a JavaScript file called `server.js` (it can be any name but this is more meaningful)
 2. Initialize the Node Package Manager and create a `package.json` file by running `npm init -y`
-3. Install and load in the necessary modules for this project: they are `express` (our web server), `express-handlebars` (our templating engine) and `node-fetch` (a library to handle http requests in node)
+3. Install and load in the necessary modules for this project: `express` (our web server).
 4. As we want to use modernJS `import` statements, add the line `"type": "module"` to the `package.json` file
 5. Set up your web server using Express (creating an Express instance, listen to **port 3000**)
 6. Make a `GET` request to `/` that sends the message `hello from backend to frontend!` to the client
@@ -72,8 +72,17 @@ In this part we'll add another endpoint, with a `POST` method.
 
 Test out your work using Postman and make sure that any time you submit something in the form, it returns as a response from the server the exact words you submitted.
 
-If you are tired of constantly restarting your server, google the `nodemon` package to see if that will be useful for you!
+If you are tired of constantly restarting your server, google the `nodemon` package to see if that will be useful for you! 
 
+Also starting from **Node.js 18**, there is a built-in `--watch` flag that allows you to automatically restart your script when files change — similar to what `nodemon` does, but **without installing any extra packages**. 
+
+### Usage
+
+Run your script with the --watch flag directly in your command line or add it to your package.json scripts like this:
+
+```bash
+node --watch script.js
+```
 ## **Submit your assignment!**
 
 After you've finished your todo list it's time to show us what you got! Have a look at the following [guide](../hand-in-assignments-guide.md) to see how it's done.

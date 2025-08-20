@@ -41,8 +41,7 @@ Our external API that we're going to work with is the [Open Weather Map API](htt
 
 #### 3.1.2 Fetch it from our API
 
-1. Remove the response from the `POST` route from last week, we'll rewrite it later
-2. Inside of the the `POST` route, bring in `node-fetch` and pass the value of the API endpoint: `https://api.openweathermap.org/data/2.5/weather`. For it to work we first have to import the keys, like so:
+1. Inside the `POST` route, fetch data from the OpenWeatherMap API endpoint `https://api.openweathermap.org/data/2.5/weather` using the built-in fetch function:
 
 ```js
 import keys from "./sources/keys.js";
